@@ -1,0 +1,294 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MES50HP 验证与开发提示词</title><style>:root{color-scheme:light;--ink:#182b40;--blue:#155bc1;--muted:#5b6c80;--line:#dce4ef}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f6fb;color:var(--ink);font:16px/1.85 "Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}aside{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#10243c;color:white;padding:26px 20px}aside strong{display:block;font-size:19px;margin-bottom:14px}aside a{display:block;color:#cddcf0;text-decoration:none;font-size:13px;padding:5px 0;line-height:1.6}aside a:hover{color:white}main{margin:30px 35px 70px 305px;background:white;padding:42px 52px;max-width:1280px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 32px #10243c09}h1{font-size:31px;line-height:1.5;letter-spacing:.02em;margin:0 0 25px}h2{font-size:24px;margin:52px 0 20px;border-top:2px solid var(--line);padding-top:25px;scroll-margin-top:20px}h3{font-size:19px;margin:30px 0 12px;color:#234d7d;scroll-margin-top:20px}p{margin:13px 0}a{color:var(--blue);text-underline-offset:3px}blockquote{margin:20px 0;background:#eef5ff;border-left:4px solid #3880d6;padding:12px 20px;color:#345777;font-size:14px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:13px;line-height:1.75;table-layout:auto}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;overflow-wrap:anywhere}th{background:#eaf0f8;text-align:left;font-weight:700}tr:nth-child(even) td{background:#fafcff}pre{overflow:auto;background:#10243c;color:#e2edfa;padding:20px;border-radius:8px;font:13px/1.75 Consolas,monospace;white-space:pre}code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.9em;background:#eff3f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre code{background:transparent;padding:0;color:inherit}li{padding:3px 0}hr{border:0;border-top:1px solid var(--line);margin:32px 0}.badge{display:inline-block;background:#155bc1;color:white;padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:18px}.diagram{background:#eff5fc;border:1px solid #c9d9ed;border-radius:9px;padding:20px;margin:22px 0}.diagram-title{font-weight:700;margin-bottom:15px}.flow{display:flex;align-items:stretch;gap:9px;margin:12px 0}.flow div{flex:1;background:white;border:1px solid #c4d6eb;border-radius:7px;padding:12px 6px;text-align:center;font-size:12px;line-height:1.75}.flow b{align-self:center;color:#1d66b9}.diagram p{font-size:12px;color:#506783}.footer{margin-top:40px;color:var(--muted);font-size:13px}@media(max-width:1100px){aside{position:static;width:auto;max-height:280px}main{margin:18px;padding:28px}.flow{gap:4px}.flow div{font-size:11px}}@media print{aside,.badge{display:none}body{background:white;font-size:10pt}main{margin:0;padding:0;max-width:none;border:0;box-shadow:none}h1{font-size:23pt}h2{font-size:17pt;break-before:page;border:0;margin-top:0}h3{font-size:12pt;break-after:avoid}table{font-size:8pt}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt;background:#f0f3f6;color:#182b40}a{color:inherit;text-decoration:none}.diagram{break-inside:avoid}@page{size:A4;margin:18mm}}pre{white-space:pre-wrap;overflow-wrap:anywhere}pre code{font-family:Consolas,"Microsoft YaHei",monospace;line-height:1.9}</style></head><body><aside><strong>MES50HP 验证与开发</strong><a href="#section-0">1. 先确定连接方案</a><a href="#section-1">2. 固定的职责范围</a><a href="#section-2">3. 功能清单与开发顺序</a><a href="#section-3">4. 提示词使用方法</a><a href="#section-4">提示词 0：固定分工与工作约束（首先发送）</a><a href="#section-5">提示词 1：审查旧工程，找出能复用的部分</a><a href="#section-6">提示词 2：复现旧工程的可用基线</a><a href="#section-7">提示词 3：建立一路图像正确性基线</a><a href="#section-8">提示词 4：确定内部图像接口并实现基础处理</a><a href="#section-9">提示词 5：网络控制与电脑测试工具</a><a href="#section-10">提示词 6：测试图片与真实视频传输</a><a href="#section-11">提示词 7：双目真正并行，再增加 HDMI</a><a href="#section-12">提示词 8：网络图像输入、第四路与双向负载</a><a href="#section-13">提示词 9：迁移接收端到香橙派</a><a href="#section-14">提示词 10：阶段收尾、恢复与交付</a><a href="#section-15">5. 每轮报告格式</a></aside><main><h1 id="document-title">MES50HP 旧工程验证、整合与开发提示词</h1><p>日期：2026-10-19。适用硬件：MES50HP／PGL50H；最终协同设备为香橙派 5 16GB／RK3588S。</p>
+<h2 id="section-0">1. 先确定连接方案</h2><p>现在不要求香橙派必须在场，但从网络开发阶段起必须有电脑或香橙派作为测试接收端。不能只开发 FPGA 发送逻辑，最后才第一次检查能否接收图片。</p>
+<p>开发阶段可以这样连接：</p>
+<pre><code class="language-text">开发电脑 ──配套下载器/JTAG── MES50HP       编译结果下载与调试
+开发电脑 ──对应的串口连接── MES50HP         日志和控制，按板卡实际接口确认
+摄像头 ──匹配排线──────── MES50HP          摄像头输入
+外部视频源 ──HDMI──────── MES50HP HDMI-IN  视频输入
+MES50HP HDMI-OUT ──HDMI── 显示器           可选板级调试显示
+MES50HP RJ45 ──网线────── 开发电脑 RJ45    视频收发与协议验证
+</code></pre>
+<p>最终连接：</p>
+<pre><code class="language-text">MES50HP RJ45 ──Cat5e 或 Cat6 网线── 香橙派 5 RJ45
+香橙派 HDMI ──HDMI 线───────────── 显示器
+</code></pre>
+<p>需要同时连接电脑、外部图像源或多块板时，使用千兆交换机。直连先使用普通网线；确认双方实际协商到千兆，若协商异常再检查 PHY 配置、线缆和接口状态。设置固定地址时选择未被占用的同一网段，不能照抄一个可能冲突的地址。</p>
+<p>JTAG 用于下载调试，UART 用于低速日志/命令，HDMI 用于图像输入输出；它们都不替代本项目首版 FPGA—香橙派网络数据链路。网口图像协议是待验证/开发功能，不是插线后就有的视频设备。普通 HDMI 线不能接入香橙派 HDMI 输出口来接收 FPGA 画面；也不能默认用一根 USB 线得到视频传输功能。</p>
+<p>当前先采用千兆以太网 UDP，PCIe、光口、USB 视频作为后续有明确需求时的备选。先测出实际带宽瓶颈再决定是否换接口。四路原尺寸高清视频不预设能通过千兆链路传输。</p>
+<h2 id="section-1">2. 固定的职责范围</h2><p>FPGA：时钟复位、摄像头/HDMI/网络图像接收、通道与帧编号、DDR 完整帧缓存、格式转换、裁剪缩小、可开关的滤波/灰度/边缘特征、图像传输、按键事件、LED 控制、运行统计和故障恢复。</p>
+<p>香橙派：视频文件解码、模型输入适配、车道检测与拟合、虚实线判断、斑马线/道路边缘/可行驶区域检测、信号灯和目标识别、多帧跟踪、交通规则判断、全景标定融合、最终界面和 HDMI 输出。</p>
+<p>保留彩色主图像；灰度、滤波和边缘图作为可选辅助路径。避免强制滤波、缩小或丢失颜色影响模型识别。最终检测框由香橙派绘制，不要求回传 FPGA 画框。FPGA HDMI 是调试路径。</p>
+<h2 id="section-2">3. 功能清单与开发顺序</h2><table>
+<thead>
+<tr>
+<th>编号</th>
+<th>功能</th>
+<th>验证重点</th>
+<th>优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>F01</td>
+<td>工程与硬件基线</td>
+<td>器件、工具/IP 版本、顶层、引脚、时钟、源码可重建</td>
+<td>首先</td>
+</tr>
+<tr>
+<td>F02</td>
+<td>时钟、复位、启动顺序</td>
+<td>PLL、各域复位、DDR 与接口就绪后再启动</td>
+<td>首先</td>
+</tr>
+<tr>
+<td>F03</td>
+<td>LED、按键、串口状态</td>
+<td>消抖、事件、可读取状态；按实际外设数量映射</td>
+<td>基础</td>
+</tr>
+<tr>
+<td>F04</td>
+<td>DDR 基础读写</td>
+<td>地址与数据模式测试、错误统计</td>
+<td>基础</td>
+</tr>
+<tr>
+<td>F05</td>
+<td>HDMI 彩条/单路调试输出</td>
+<td>显示时序、颜色、稳定性</td>
+<td>基础</td>
+</tr>
+<tr>
+<td>F06</td>
+<td>一路摄像头采集</td>
+<td>配置、像素拼接、颜色、行帧边界</td>
+<td>基础</td>
+</tr>
+<tr>
+<td>F07</td>
+<td>一路完整帧缓存</td>
+<td>写完发布、读完释放、无覆盖/撕裂</td>
+<td>基础</td>
+</tr>
+<tr>
+<td>F08</td>
+<td>HDMI 输入</td>
+<td>固定支持规格、断开恢复、独立时钟</td>
+<td>基础</td>
+</tr>
+<tr>
+<td>F09</td>
+<td>内部图像接口</td>
+<td>通道、帧号、格式、尺寸、采集计数、帧完整性</td>
+<td>单路稳定前确定</td>
+</tr>
+<tr>
+<td>F10</td>
+<td>格式整理、裁剪、缩小</td>
+<td>边界、颜色、坐标映射、与参考输出对比</td>
+<td>第一阶段处理</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>网络控制和测试数据</td>
+<td>ARP、UDP、计数器、命令与应答、心跳</td>
+<td>提前与接收端联调</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>测试图片/真实视频发送</td>
+<td>分包、完整性、速率控制、重启恢复</td>
+<td>单路闭环</td>
+</tr>
+<tr>
+<td>F13</td>
+<td>灰度、简单滤波、Sobel</td>
+<td>独立开关、像素和标志对齐、资源/时序</td>
+<td>单路闭环后</td>
+</tr>
+<tr>
+<td>F14</td>
+<td>双目并行</td>
+<td>不是二选一；独立接收、缓存、帧号</td>
+<td>双路阶段</td>
+</tr>
+<tr>
+<td>F15</td>
+<td>摄像头与 HDMI 并行</td>
+<td>不同输入时钟、规格、带宽与调度</td>
+<td>三路阶段</td>
+</tr>
+<tr>
+<td>F16</td>
+<td>网络图像输入与回传</td>
+<td>组帧、校验、超时、完整后处理、双向负载</td>
+<td>第四路候选</td>
+</tr>
+<tr>
+<td>F17</td>
+<td>四路并行</td>
+<td>独立动态来源、断一路不干扰其他路</td>
+<td>多路阶段</td>
+</tr>
+<tr>
+<td>F18</td>
+<td>统计、恢复、固化、持续运行</td>
+<td>贯穿各阶段；最后形成完整交付记录</td>
+<td>全程</td>
+</tr>
+</tbody></table>
+<p>先单路正确，再多路；先测试图，再真实图；先固定规格，再增加兼容规格。F09、F18 需要在早期就落实，不是最后才补。F08 与摄像头可分别验证，F11 可在单路图像稳定前开始独立验证。</p>
+<h2 id="section-3">4. 提示词使用方法</h2><p>把旧工程、板卡手册、对应例程放到另一台电脑能访问的位置。在工程根目录打开 AI，先发送提示词 0，再按阶段发送后续提示词。已有功能也要验证，不预设必须重写。</p>
+<p>每个阶段可以持续多轮。当前阶段达到验收条件或产生明确阻塞记录后，再进入依赖它的下一阶段。独立任务不必等阻塞解除才能推进。没有实物时允许做静态检查、仿真和接收程序开发，但上板结果必须标为待验证。</p>
+<p>以下路径均是拟建立的项目相对路径，用于在另一台电脑组织记录，不代表该电脑已经存在这些文件。</p>
+<h2 id="section-4">提示词 0：固定分工与工作约束（首先发送）</h2><pre><code class="language-text">你现在接手我已有的 MES50HP FPGA 工程。当前打开目录是工作入口，请先识别实际工程位置、顶层和资料路径，不假设特定路径存在。
+
+目标硬件为 MES50HP/PGL50H，后续协同设备为香橙派5 16GB/RK3588S。先以硬件手册、原理图、工程实际约束核对具体器件封装和板卡版本。
+
+职责固定如下：
+1. FPGA负责采集、DDR缓存、格式整理、裁剪缩小、可选灰度/滤波/边缘特征、网络图像收发、按键与LED、统计和故障恢复。
+2. 香橙派负责车道与虚实线、斑马线、道路边缘、信号灯、行人车辆等最终识别，多帧处理、驾驶判断、全景融合、界面和最终HDMI输出。
+3. FPGA保留彩色主图；基础特征是可选辅助路径。FPGA HDMI仅作调试。
+4. 首版采用千兆以太网UDP协同，先用电脑作测试端，后迁移到香橙派。不预设现有网口例程已支持图片收发，不预设PCIe DMA可用。
+5. 单板先单路，再双目并行，再摄像头+HDMI，再验证网络第四路。第二块FPGA不是默认项。
+
+请遵守：
+- 先检查项目内适用的AGENTS.md等工作约束，再审查工程。
+- 第一轮只审查和记录，不批量重构、升级IP、改引脚或删除旧文件。文档可以新增。
+- 记录当前Git状态；有Git时保留未提交改动，没有Git时制定版本备份方案。不要清理旧工程产物来制造干净状态。
+- 旧工程作为证据保留，按模块决定保留/修复/替换，不能因为结构不同就全部推倒。
+- 引脚、电压、时钟、DDR和PHY设置以对应实物资料为准，禁止猜测。
+- 区分“源码存在、静态检查通过、仿真通过、综合通过、布局布线时序通过、上板通过”。禁止把其中一步写成全部完成。
+- 工具或硬件不可用时记录限制，继续可独立完成的工作，不编造报告。
+- 每次只推进当前阶段，完成修改、适当检查和文档，再报告结果。
+- 阶段结束给出：改动文件、实际执行检查、证据路径、未验证项、下一步。
+
+现在先读取目录并给出工程概况，不进行RTL改动。
+</code></pre>
+<h2 id="section-5">提示词 1：审查旧工程，找出能复用的部分</h2><pre><code class="language-text">请审查当前旧工程，完成F01及其他功能的现状清点，不修改RTL和约束。
+
+1. 找出所有PDS工程、顶层、源码、约束、IP配置、初始化文件、脚本和生成产物，辨别当前主工程、旧副本和自动生成文件。
+2. 确认顶层实际引用的模块。不能仅按文件存在就判定功能已接入。
+3. 追踪时钟复位、摄像头、HDMI、DDR、网络、按键LED、串口链路；画出真实数据流，用文件位置支持结论。
+4. 特别检查摄像头是单路选择还是双路同时采集；HDMI是切换输入还是并行；网口是发送测试数据、字符还是完整图像。
+5. 检查已有日志与下载文件对应哪个源码版本，不把旧报告当作当前检查结果。
+6. 按F01-F18建立功能矩阵：现状、证据、缺口、保留/修复/替换建议、下一项验证。
+7. 检查PDS和仿真工具能否调用、IP是否齐全，列出缺失外部文件和绝对路径依赖。不执行来源不明安装包。
+
+生成docs/fpga_audit.md、docs/fpga_function_matrix.csv、docs/fpga_validation_plan.md。输出以具体证据为依据，给出最小改动路线。本轮结束不要开始大规模整合。
+</code></pre>
+<h2 id="section-6">提示词 2：复现旧工程的可用基线</h2><pre><code class="language-text">基于审查记录，先复现当前最可信的已有工程，作为后续比较基线。
+
+确认版本备份和可恢复点，补齐已知依赖，使用匹配PDS/IP版本尝试重建。不要为追求最新版本自动升级IP。
+
+分别记录综合、布局布线、资源、时序、未约束路径和警告。工具可运行时真正执行；工具不可用时只记录静态发现和人工执行步骤。
+
+核对器件、引脚、电气标准、输入时钟、复位、DDR初始化、PHY延时等设置。缺少硬件证据时列出待核对项，不猜配置。
+
+有板卡和下载能力时验证当前版本；无板卡时编写最短上板操作表。准备LED/按键/串口状态及DDR基础验证。未知的旧下载文件不得直接视为可用于当前硬件。
+
+生成docs/baseline_reproduction.md，明确当前能可靠复现到哪一级。先修复阻止基线重建的问题，保持改动最小，不直接合入四路功能。
+</code></pre>
+<h2 id="section-7">提示词 3：建立一路图像正确性基线</h2><pre><code class="language-text">请在可恢复基线上完成一路视频基线。优先复用旧工程已经可靠运行的输入，不同时改多个输入模块。
+
+检查一路摄像头的配置、字节拼像素、RGB565位序、行帧边界、实际尺寸和时钟；核对DDR缓存读写完成条件、槽状态和复位恢复。
+
+加入必要的输入帧数、完整帧数、丢帧、缓存溢出及视频有效状态。接口、计数器命名尽量沿用一致规范。
+
+用纯色、网格、递增数据验证颜色、位置和完整性。能仿真时针对边界、缺帧、输入输出速度不同等风险做小范围有意义的验证；不写仅重复实现的形式测试。
+
+通过HDMI调试输出验证一路画面。单独说明输入规格和显示规格，不能假定所有720p/1080p例程参数相同。
+
+验收：完整图像无明显错行和撕裂，计数器解释得通，断流后恢复。无实物则保留上板待验证状态。输出docs/single_stream_validation.md，并更新功能矩阵。
+</code></pre>
+<h2 id="section-8">提示词 4：确定内部图像接口并实现基础处理</h2><pre><code class="language-text">基于已验证单路，整合统一图像接口和可配置基础处理，避免一次重写全部工程。
+
+先形成docs/video_interface.md：明确像素格式、有效信号、帧/行标记、通道号、帧号、尺寸、采集计数、背压规则、跨时钟方式及缓存所有权。摄像头/HDMI不能等待时，定义溢出后的整帧丢弃与重新对齐。
+
+依次实现/复用：颜色格式整理、ROI裁剪、缩小。首版可用最近邻缩小验证链路，但记录对细线、小目标识别的影响。保留彩色主路径；配置在安全帧边界生效，记录实际裁剪和缩放关系。
+
+主路径稳定后，才加入独立开关的灰度、一种简单滤波、Sobel。特征图必须与来源帧、尺寸及坐标关系对应，像素和有效标志延迟一致。
+
+建立软件参考，检查纯色、网格、边界和选定真实图。记录整数结果或近似误差。每新增模块查看资源和时序，不一次加入所有增强算法。
+
+不要在本阶段开发车道语义识别或驾驶规则。输出docs/preprocess_validation.md并更新矩阵；未完成的可选模块明确留待后续。
+</code></pre>
+<h2 id="section-9">提示词 5：网络控制与电脑测试工具</h2><pre><code class="language-text">请为MES50HP与电脑建立首版以太网UDP测试链路，之后同一协议迁移至香橙派。
+
+先核对实际板上PHY、RGMII时钟/延时和已有ARP/UDP模块，不能套用其他网口扩展板工程。确认MAC/IP配置、链路状态和实际协商速率。
+
+第一步FPGA发送递增数字；第二步电脑发送带编号的设置LED或查询状态命令。配置/命令定义应答、超时及去重，避免重发变成重复翻转。
+
+先写docs/network_protocol.md，明确网络字节序、消息类型、长度、版本、会话/重启识别和边界检查，再实现收发。
+
+开发tools/host_test下的最小测试工具，优先使用Python标准库提供命令收发和日志；不要让基础网络测试必须依赖识别模型。固定地址按当前网卡环境配置，避免与现有网络冲突。
+
+能接硬件时实测双向通信和重启恢复；否则用模拟数据验证电脑端并列出待上板步骤。输出docs/network_control_validation.md。
+</code></pre>
+<h2 id="section-10">提示词 6：测试图片与真实视频传输</h2><pre><code class="language-text">基于控制链路，先传固定彩条/棋盘格，再传一路真实图像。先固定低负载规格，实测后再提高。
+
+发送协议明确会话、通道、帧号、图像格式/尺寸、帧字节数、片号/片数、偏移、有效长度及完整性检查。按实际MTU限制单包大小，首版避免IP分片，不假设全链路支持巨帧。
+
+电脑工具应支持重组、图片保存、可选预览、统计和模拟数据测试。允许包乱序、重复；缺包或超时不得提交拼错的帧，队列有上限，优先保留新的完整图。预览依赖可作为可选安装项。
+
+测试图逐字节比对，真实图检查颜色和位置；记录发送/接收完整帧数、字节率、丢包/丢帧、队列积压、重启和断线恢复。无时钟校准不能直接用两台设备时间相减宣称单向延迟。
+
+执行适当编译/仿真/上板验证，明确证据等级。输出docs/video_transport_validation.md及可复现运行命令。网络接收成功后再与香橙派联调，不必等待所有四路完成。
+</code></pre>
+<h2 id="section-11">提示词 7：双目真正并行，再增加 HDMI</h2><pre><code class="language-text">从稳定单路扩展双路，再增加HDMI。先审查原有结构，不能把输入选择器当成并行采集器。
+
+每个摄像头保留独立接收、时钟处理、边界识别、缓存和帧号，公用DDR和网络时明确仲裁与速率限制。相机配置总线是否可共享、地址和选择线如何工作，必须核对硬件，不能猜。
+
+双路稳定后加入HDMI独立输入。保留各路实际规格，先采用明确支持组合，不立即实现任意分辨率热切换。
+
+计算新增逻辑、片内存储、DDR读写量和网络负载，执行资源/时序检查。不得靠无限增加FIFO解决长期吞吐不足。
+
+逐路展示不同动态内容、遮挡/断开一路，验证其他路持续更新；记录各路采集、发送和完整接收帧率。没有上板证据时不能标记并行采集完成。
+
+输出docs/multi_input_validation.md并更新功能矩阵。两路和三路分别保存可恢复版本，不跳过中间验收。
+</code></pre>
+<h2 id="section-12">提示词 8：网络图像输入、第四路与双向负载</h2><pre><code class="language-text">请新增网络像素图像输入，支持外部设备/香橙派解码后的图片进入FPGA，处理后返回。这是图像数据入口，不是字符叠加或原始MP4文件接收。
+
+沿用协议定义或明确版本扩展，实现长度/偏移/通道/格式边界检查、完整性、组帧、超时丢弃、缓存上限、重复包处理、会话变化清理。只有完整有效帧可以提交处理。
+
+电脑端发送独立动态测试图。确认返回数据确实经过FPGA预处理，不是电脑/香橙派本地直接显示。定义输入与输出消息类型和路由，避免自动回送循环。
+
+先验证单一网络输入往返，再与双目和HDMI并行。分别核算FPGA、接收设备的RX/TX、DDR及全部网络负载。处理能力不足时明确降低尺寸/帧率，不隐性丢图后宣称达标。
+
+四路验收使用独立动态编号，逐路断开和改变内容；第四路是独立来源，不能重复已有画面。四路同步采集不等于四路同步曝光，也不等于全景融合。
+
+输出docs/network_input_validation.md和docs/four_stream_validation.md。四路640x360 RGB565每路15fps仅作首测建议，最终规格以实测确定。
+</code></pre>
+<h2 id="section-13">提示词 9：迁移接收端到香橙派</h2><pre><code class="language-text">目前网络协议和电脑测试工具已有基线，请将接收/控制程序迁移到香橙派5 16GB/RK3588S，先不加入完整识别和全景。
+
+确认系统、实际网卡名、千兆协商、依赖和显示环境，保留相同协议，避免为迁移操作系统重写FPGA链路。先保存正确图片，再连续显示，再验证按键和LED。
+
+原预览和后续识别共用接收服务；保留原始彩色图像，绘制使用独立缓冲。按通道/帧号管理可选特征图，不把不同帧配在一起。
+
+最终显示器接香橙派HDMI。文件模式以后由香橙派解码后发FPGA并接收返回；不能为了方便把所有文件识别直接旁路FPGA后声称完成链路验证。
+
+比较电脑与香橙派的完整接收率、队列、显示和CPU负载，输出docs/orangepi_link_validation.md。后续道路识别作为独立软件任务推进，不扩大本轮FPGA任务。
+</code></pre>
+<h2 id="section-14">提示词 10：阶段收尾、恢复与交付</h2><pre><code class="language-text">对当前已实现范围进行恢复、持续运行和交付验证。不要把未实现功能补写成已完成。
+
+检查输入断开恢复、网线断开恢复、接收进程重启、FPGA复位、异常/缺包、缓存压力；一路故障不应污染其他路。控制命令过期/重复有明确处理，ARM失联时不得继续显示旧的驾驶许可状态。
+
+先做短时冒烟检查，再做约2小时持续运行；时间安排无法完成时记录实际运行时长和剩余项。统计按阶段保存，不伪造结果。
+
+核对最终源码、约束、IP配置、工具版本、资源与时序、下载文件、协议、测试工具、配置和测试记录一一对应。按实际工具流程验证上电固化和断电重启；不能把JTAG临时下载等同固化启动。
+
+生成docs/fpga_release_checklist.md、docs/fpga_quick_start.md，更新F01-F18矩阵和未解决问题清单。给出从干净环境重建、下载、接线和运行的步骤。保留所有未提交用户改动和既有资料。
+</code></pre>
+<h2 id="section-15">5. 每轮报告格式</h2><pre><code class="language-text">本轮目标：
+本轮结论：通过 / 部分通过 / 阻塞 / 待上板
+实际改动：
+实际执行的检查与结果：
+证据文件：
+当前支持的输入、图像格式与规格：
+资源和时序状态：
+尚未验证或已知失败：
+下一步最小任务：
+</code></pre>
+<p>需要继续时可发送：</p>
+<pre><code class="language-text">请按当前功能矩阵和验证计划继续下一个最小任务。先核对上一阶段证据是否满足依赖；不重复已通过且没有变化的验证，不把待上板项目标记为完成。完成本轮修改和必要检查后，按约定格式报告。
+</code></pre>
+</main></body></html>

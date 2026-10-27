@@ -1,0 +1,1380 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>资料审查清单</title><style>:root{color-scheme:light;--ink:#182b40;--blue:#155bc1;--muted:#5b6c80;--line:#dce4ef}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f6fb;color:var(--ink);font:16px/1.85 "Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}aside{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#10243c;color:white;padding:26px 20px}aside strong{display:block;font-size:19px;margin-bottom:14px}aside a{display:block;color:#cddcf0;text-decoration:none;font-size:13px;padding:5px 0;line-height:1.6}aside a:hover{color:white}main{margin:30px 35px 70px 305px;background:white;padding:42px 52px;max-width:1280px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 32px #10243c09}h1{font-size:31px;line-height:1.5;letter-spacing:.02em;margin:0 0 25px}h2{font-size:24px;margin:52px 0 20px;border-top:2px solid var(--line);padding-top:25px;scroll-margin-top:20px}h3{font-size:19px;margin:30px 0 12px;color:#234d7d;scroll-margin-top:20px}p{margin:13px 0}a{color:var(--blue);text-underline-offset:3px}blockquote{margin:20px 0;background:#eef5ff;border-left:4px solid #3880d6;padding:12px 20px;color:#345777;font-size:14px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:13px;line-height:1.75;table-layout:auto}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;overflow-wrap:anywhere}th{background:#eaf0f8;text-align:left;font-weight:700}tr:nth-child(even) td{background:#fafcff}pre{overflow:auto;background:#10243c;color:#e2edfa;padding:20px;border-radius:8px;font:13px/1.75 Consolas,monospace;white-space:pre}code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.9em;background:#eff3f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre code{background:transparent;padding:0;color:inherit}li{padding:3px 0}hr{border:0;border-top:1px solid var(--line);margin:32px 0}.badge{display:inline-block;background:#155bc1;color:white;padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:18px}.diagram{background:#eff5fc;border:1px solid #c9d9ed;border-radius:9px;padding:20px;margin:22px 0}.diagram-title{font-weight:700;margin-bottom:15px}.flow{display:flex;align-items:stretch;gap:9px;margin:12px 0}.flow div{flex:1;background:white;border:1px solid #c4d6eb;border-radius:7px;padding:12px 6px;text-align:center;font-size:12px;line-height:1.75}.flow b{align-self:center;color:#1d66b9}.diagram p{font-size:12px;color:#506783}.footer{margin-top:40px;color:var(--muted);font-size:13px}@media(max-width:1100px){aside{position:static;width:auto;max-height:280px}main{margin:18px;padding:28px}.flow{gap:4px}.flow div{font-size:11px}}@media print{aside,.badge{display:none}body{background:white;font-size:10pt}main{margin:0;padding:0;max-width:none;border:0;box-shadow:none}h1{font-size:23pt}h2{font-size:17pt;break-before:page;border:0;margin-top:0}h3{font-size:12pt;break-after:avoid}table{font-size:8pt}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt;background:#f0f3f6;color:#182b40}a{color:inherit;text-decoration:none}.diagram{break-inside:avoid}@page{size:A4;margin:18mm}}</style></head><body><aside><strong>资料审查清单</strong><a href="比赛开发文档_ADAS.html">开发手册</a><a href="资料审查清单.html">资料审查</a><a href="单板四路视频方案与开源调研.html">前次单板核查</a><a href="GitHub开源方案对比与自主开发方针.html">GitHub 多方案对比</a><a href="GitHub开源项目对比索引.csv">开源证据索引</a><a href="资料文件索引.csv">6,896 项文件索引</a><hr><a href="#覆盖范围与限制">覆盖范围与限制</a><a href="#文件类型统计">文件类型统计</a><a href="#逐份-pdf-索引">逐份 PDF 索引</a><a href="#内容完全相同的-pdf-分组">内容完全相同的 PDF 分组</a><a href="#压缩包及安装文件登记">压缩包及安装文件登记</a><a href="#与-adas-主线关系较弱的资料">与 ADAS 主线关系较弱的资料</a><a href="#信息来源区分">信息来源区分</a><a href="#v11-四路方案关联说明">V1.1 四路方案关联说明</a></aside><main><span class="badge">工程实施方案 · 2026-10-19</span><h1 id="资料审查清单">资料审查清单</h1>
+<blockquote>
+<p>审查日期：2026-10-19。此清单记录原始资料覆盖范围，配合《比赛开发文档_ADAS.md》阅读。</p>
+</blockquote>
+<h2 id="覆盖范围与限制">覆盖范围与限制</h2>
+<ul>
+<li>原始文件：6,896 个，4,394,637,528 字节。仅统计 <code>资料/</code> 目录，不含压缩包内部成员。</li>
+<li>PDF：120 个，文本已全部提取；按 SHA-256 去重后为 91 份不同内容。</li>
+<li>重点核对：赛题 ADAS 页面、MES50HP 硬件、HDMI/DDR/OV5640/以太网/PCIe 说明与关键 RTL，以及 PCIe ZIP 的驱动/应用/工程结构。</li>
+<li>对 5 份几乎没有可提取文本的点位图/连接座图纸，仅记录存在与文件信息；接线与结构设计时需渲染或打开对应图纸核对。</li>
+<li>没有逐行审计数千个生成文件；没有启动安装器、旧程序或连接实物；CAD/PCB 文件未做电气和布线审查。</li>
+<li>两份 XLSX 为许可证申请模板和工具告警参考，登记用途，未修改或逐表分析。</li>
+<li>软件安装包、可执行文件和芯片数据手册属于依赖/参考，不能视为 ADAS 功能代码。</li>
+</ul>
+<h2 id="文件类型统计">文件类型统计</h2>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th align="right">数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.log</code></td>
+<td align="right">2123</td>
+</tr>
+<tr>
+<td><code>.vp</code></td>
+<td align="right">1080</td>
+</tr>
+<tr>
+<td><code>.v</code></td>
+<td align="right">804</td>
+</tr>
+<tr>
+<td><code>(无扩展名)</code></td>
+<td align="right">434</td>
+</tr>
+<tr>
+<td><code>.db</code></td>
+<td align="right">348</td>
+</tr>
+<tr>
+<td><code>.txt</code></td>
+<td align="right">216</td>
+</tr>
+<tr>
+<td><code>.adf</code></td>
+<td align="right">208</td>
+</tr>
+<tr>
+<td><code>.pdf</code></td>
+<td align="right">120</td>
+</tr>
+<tr>
+<td><code>.fdc</code></td>
+<td align="right">119</td>
+</tr>
+<tr>
+<td><code>.prt</code></td>
+<td align="right">116</td>
+</tr>
+<tr>
+<td><code>.pvf</code></td>
+<td align="right">90</td>
+</tr>
+<tr>
+<td><code>.idf</code></td>
+<td align="right">87</td>
+</tr>
+<tr>
+<td><code>.vhdl</code></td>
+<td align="right">87</td>
+</tr>
+<tr>
+<td><code>.pds</code></td>
+<td align="right">82</td>
+</tr>
+<tr>
+<td><code>.tcl</code></td>
+<td align="right">69</td>
+</tr>
+<tr>
+<td><code>.sbit</code></td>
+<td align="right">68</td>
+</tr>
+<tr>
+<td><code>.dat</code></td>
+<td align="right">66</td>
+</tr>
+<tr>
+<td><code>.cmr</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.dmr</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.bgr</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.smsk</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.prr</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.netlist</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.rtr</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.snr</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.vm</code></td>
+<td align="right">58</td>
+</tr>
+<tr>
+<td><code>.ccr</code></td>
+<td align="right">41</td>
+</tr>
+<tr>
+<td><code>.pcf</code></td>
+<td align="right">30</td>
+</tr>
+<tr>
+<td><code>.csv</code></td>
+<td align="right">20</td>
+</tr>
+<tr>
+<td><code>.last_generated</code></td>
+<td align="right">20</td>
+</tr>
+<tr>
+<td><code>.settings</code></td>
+<td align="right">20</td>
+</tr>
+<tr>
+<td><code>.vh</code></td>
+<td align="right">20</td>
+</tr>
+<tr>
+<td><code>.f</code></td>
+<td align="right">17</td>
+</tr>
+<tr>
+<td><code>.rar</code></td>
+<td align="right">15</td>
+</tr>
+<tr>
+<td><code>.wf</code></td>
+<td align="right">12</td>
+</tr>
+<tr>
+<td><code>.fic</code></td>
+<td align="right">12</td>
+</tr>
+<tr>
+<td><code>.rcf</code></td>
+<td align="right">8</td>
+</tr>
+<tr>
+<td><code>.zip</code></td>
+<td align="right">7</td>
+</tr>
+<tr>
+<td><code>.lock</code></td>
+<td align="right">5</td>
+</tr>
+<tr>
+<td><code>.m</code></td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td><code>.sfc</code></td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td><code>.docx</code></td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td><code>.xlsx</code></td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td><code>.do</code></td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td><code>.dxf</code></td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td><code>.7z</code></td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td><code>.exe</code></td>
+<td align="right">2</td>
+</tr>
+<tr>
+<td><code>.png</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.ino</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.c</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.hex</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.dwg</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.bat</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.pcb</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.sch</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.jpg</code></td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td><code>.ini</code></td>
+<td align="right">1</td>
+</tr>
+</tbody></table>
+<h2 id="逐份-pdf-索引">逐份 PDF 索引</h2>
+<p>“文本字符”用于发现扫描图纸，不代表人工阅读深度；页数为 PDF 物理页数。低文本图纸已明确标注。</p>
+<table>
+<thead>
+<tr>
+<th align="right">序号</th>
+<th>原始相对路径</th>
+<th align="right">页数</th>
+<th align="right">文本字符</th>
+<th>审查用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right">1</td>
+<td><code>资料/紫光同创.pdf</code></td>
+<td align="right">17</td>
+<td align="right">10690</td>
+<td>主依据：重点阅读选题三，关键页渲染核对</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td><code>资料/OV5640双目摄像头资料/原理图/DOUBLE-DVP-OV5640-1113(1).pdf</code></td>
+<td align="right">1</td>
+<td align="right">2247</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td><code>资料/OV5640双目摄像头资料/原理图/DOUBLE-DVP-OV5640-1113.pdf</code></td>
+<td align="right">1</td>
+<td align="right">2247</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程1-基于盘古50K/OV5640双目摄像头实验例程v1(1).pdf</code></td>
+<td align="right">6</td>
+<td align="right">1708</td>
+<td>按不同目标板区分的摄像头参考</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程1-基于盘古50K/OV5640双目摄像头实验例程v1.pdf</code></td>
+<td align="right">6</td>
+<td align="right">1708</td>
+<td>按不同目标板区分的摄像头参考</td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程2-基于PGX-NANO/OV5640双目摄像头实验例程v1(1).pdf</code></td>
+<td align="right">7</td>
+<td align="right">1987</td>
+<td>按不同目标板区分的摄像头参考</td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程2-基于PGX-NANO/OV5640双目摄像头实验例程v1.pdf</code></td>
+<td align="right">7</td>
+<td align="right">1987</td>
+<td>按不同目标板区分的摄像头参考</td>
+</tr>
+<tr>
+<td align="right">8</td>
+<td><code>资料/OV5640双目摄像头资料/芯片数据/OV5640_AF_Imaging_Module_Application_Guide_(DVP_Interface)(1).pdf</code></td>
+<td align="right">63</td>
+<td align="right">81123</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">9</td>
+<td><code>资料/OV5640双目摄像头资料/芯片数据/OV5640_AF_Imaging_Module_Application_Guide_(DVP_Interface).pdf</code></td>
+<td align="right">63</td>
+<td align="right">81123</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td><code>资料/OV5640双目摄像头资料/芯片数据/OV5640_DataSheet(1).pdf</code></td>
+<td align="right">177</td>
+<td align="right">224905</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">11</td>
+<td><code>资料/OV5640双目摄像头资料/芯片数据/OV5640_DataSheet.pdf</code></td>
+<td align="right">177</td>
+<td align="right">224905</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">12</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/1_Demo Document/OV5640双目摄像头实验例程(1).pdf</code></td>
+<td align="right">8</td>
+<td align="right">2159</td>
+<td>按不同目标板区分的摄像头参考</td>
+</tr>
+<tr>
+<td align="right">13</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/1_Demo Document/OV5640双目摄像头实验例程.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2159</td>
+<td>按不同目标板区分的摄像头参考</td>
+</tr>
+<tr>
+<td align="right">14</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/FMC-base-V1.1-24-12-10(200K)-20241225(1).pdf</code></td>
+<td align="right">3</td>
+<td align="right">5366</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/FMC-base-V1.1-24-12-10(200K)-20241225.pdf</code></td>
+<td align="right">3</td>
+<td align="right">5366</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">16</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/MES-FMC-LPC-IO硬件使用手册_v1.1(0408)(1).pdf</code></td>
+<td align="right">11</td>
+<td align="right">4027</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">17</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/MES-FMC-LPC-IO硬件使用手册_v1.1(0408).pdf</code></td>
+<td align="right">11</td>
+<td align="right">4027</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">18</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/MES-LPC-IO V1.1- 20250210点位图(1).pdf</code></td>
+<td align="right">2</td>
+<td align="right">2959</td>
+<td>图纸：文本不足，实物接线时需视觉核对</td>
+</tr>
+<tr>
+<td align="right">19</td>
+<td><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/MES-LPC-IO V1.1- 20250210点位图.pdf</code></td>
+<td align="right">2</td>
+<td align="right">2959</td>
+<td>图纸：文本不足，实物接线时需视觉核对</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/MES50HP开发板配套教程清单v3.pdf</code></td>
+<td align="right">1</td>
+<td align="right">564</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">21</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/2-1.3寸oled屏硬件手册/MES-OLED-V1.0原理图.pdf</code></td>
+<td align="right">1</td>
+<td align="right">576</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">22</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/3-SPI显示屏硬件手册/GMT024-8p10p-SPI2.40TFTST7789_LCM SPEC.pdf</code></td>
+<td align="right">8</td>
+<td align="right">4225</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">23</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/3-SPI显示屏硬件手册/GMT024-8p电路原理图.pdf</code></td>
+<td align="right">1</td>
+<td align="right">1061</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">24</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/3-SPI显示屏硬件手册/ST7789VW_ 控制芯片手册.pdf</code></td>
+<td align="right">317</td>
+<td align="right">422310</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">25</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/3-SPI显示屏硬件手册/WM_GMT024-01（规格书）(1).pdf</code></td>
+<td align="right">1</td>
+<td align="right">192</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">26</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/1-ADDA锯齿波实验说明.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2352</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">27</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/2_MES-ADDA正弦波实验说明.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2312</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">28</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/3_MES-ADDA三角波实验说明.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2359</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">29</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/4_MES-ADDA方波实验说明.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2328</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">30</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/5_锯齿波回环实验说明.pdf</code></td>
+<td align="right">14</td>
+<td align="right">3650</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">31</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/6_HDMI显示波形实验说明.pdf</code></td>
+<td align="right">11</td>
+<td align="right">2248</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">32</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/1-硬件手册/ADDA/MES-ADDA-V1.1原理图.pdf</code></td>
+<td align="right">4</td>
+<td align="right">3224</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">33</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/1-硬件手册/ADDA/mes-adda模块硬件手册.pdf</code></td>
+<td align="right">9</td>
+<td align="right">2837</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">34</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/1-硬件手册/双路AD/MES-ADx2-V1.0元件位置图.pdf</code></td>
+<td align="right">2</td>
+<td align="right">3350</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">35</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/1-硬件手册/双路AD/MES-ADx2-V1原理图.pdf</code></td>
+<td align="right">4</td>
+<td align="right">3444</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">36</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/1-硬件手册/双路AD/双路AD模块硬件手册.pdf</code></td>
+<td align="right">4</td>
+<td align="right">937</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">37</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/4-芯片数据手册/1.3寸oled屏/0.96 UN-2864KSWEG01.pdf</code></td>
+<td align="right">40</td>
+<td align="right">53174</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">38</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/4-芯片数据手册/ADDA模块/MS9280.pdf</code></td>
+<td align="right">24</td>
+<td align="right">15215</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">39</td>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/4-芯片数据手册/ADDA模块/MS9708.pdf</code></td>
+<td align="right">22</td>
+<td align="right">17102</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/demo_document/视频板demo.pdf</code></td>
+<td align="right">6</td>
+<td align="right">5064</td>
+<td>特定扩展底板/模块例程说明</td>
+</tr>
+<tr>
+<td align="right">41</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/hardware/MES50H-HDMI硬件指导手册v1.1.pdf</code></td>
+<td align="right">38</td>
+<td align="right">28877</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">42</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/hardware/原理图/MES-HDMI-BASE-V1.1原理图.pdf</code></td>
+<td align="right">8</td>
+<td align="right">22504</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">43</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/hardware/原理图/MES50HP核心板原理图.pdf</code></td>
+<td align="right">8</td>
+<td align="right">24662</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">44</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/HDMI PHY/MS7200 Register Map.pdf</code></td>
+<td align="right">15</td>
+<td align="right">28062</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">45</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/HDMI PHY/MS7210 Register Map.pdf</code></td>
+<td align="right">13</td>
+<td align="right">21776</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">46</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/HDMI PHY/《MS7200 Datasheet-EN》.pdf</code></td>
+<td align="right">15</td>
+<td align="right">19284</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">47</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/HDMI PHY/《MS7210 Datasheet-CN》-sp.pdf</code></td>
+<td align="right">14</td>
+<td align="right">14745</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">48</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/DS02001_Logos系列FPGA器件数据手册V2.9.pdf</code></td>
+<td align="right">57</td>
+<td align="right">64559</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">49</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/PGL50H_UG/UG020002_Logos系列FPGA专用RAM模块（DRM）用户指南_V1.4.pdf</code></td>
+<td align="right">84</td>
+<td align="right">102237</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">50</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/PGL50H_UG/UG020003_Logos系列FPGA算术处理模块（APM）用户指南_V1.4.pdf</code></td>
+<td align="right">29</td>
+<td align="right">31386</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">51</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/PGL50H_UG/UG020004 Logos系列FPGA时钟资源（Clock）用户指南V1.8.pdf</code></td>
+<td align="right">53</td>
+<td align="right">62327</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">52</td>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/PGL50H_UG/UG020007_Logos系列产品GTP用户指南.pdf</code></td>
+<td align="right">437</td>
+<td align="right">514750</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">53</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/demo/网口底板demo说明.pdf</code></td>
+<td align="right">19</td>
+<td align="right">12722</td>
+<td>特定扩展底板/模块例程说明</td>
+</tr>
+<tr>
+<td align="right">54</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/demo_document/网口板demo说明.pdf</code></td>
+<td align="right">18</td>
+<td align="right">12622</td>
+<td>特定扩展底板/模块例程说明</td>
+</tr>
+<tr>
+<td align="right">55</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/hardware/MES50H-Ethernet硬件指导手册v1.1.pdf</code></td>
+<td align="right">30</td>
+<td align="right">22167</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">56</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/hardware/原理图/MES-Ethernet-base-V1.1原理图.pdf</code></td>
+<td align="right">6</td>
+<td align="right">19302</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">57</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/hardware/原理图/MES50HP核心板原理图.pdf</code></td>
+<td align="right">8</td>
+<td align="right">24662</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">58</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/DS02001_Logos系列FPGA器件数据手册V2.9.pdf</code></td>
+<td align="right">57</td>
+<td align="right">64559</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">59</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/YT8614/YT8614_Datasheet_v1.06.pdf</code></td>
+<td align="right">116</td>
+<td align="right">188190</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">60</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/PGL50H_UG/UG020002_Logos系列FPGA专用RAM模块（DRM）用户指南_V1.4.pdf</code></td>
+<td align="right">84</td>
+<td align="right">102237</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">61</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/PGL50H_UG/UG020003_Logos系列FPGA算术处理模块（APM）用户指南_V1.4.pdf</code></td>
+<td align="right">29</td>
+<td align="right">31386</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">62</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/PGL50H_UG/UG020004 Logos系列FPGA时钟资源（Clock）用户指南V1.8.pdf</code></td>
+<td align="right">53</td>
+<td align="right">62327</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">63</td>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/PGL50H_UG/UG020007_Logos系列产品GTP用户指南.pdf</code></td>
+<td align="right">437</td>
+<td align="right">514750</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">64</td>
+<td><code>资料/盘古50K开发板资料/OV5640资料/原理图/DOUBLE-DVP-OV5640-1113.pdf</code></td>
+<td align="right">1</td>
+<td align="right">2247</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">65</td>
+<td><code>资料/盘古50K开发板资料/OV5640资料/芯片数据/OV5640_AF_Imaging_Module_Application_Guide_(DVP_Interface).pdf</code></td>
+<td align="right">63</td>
+<td align="right">81123</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">66</td>
+<td><code>资料/盘古50K开发板资料/OV5640资料/芯片数据/OV5640_DataSheet.pdf</code></td>
+<td align="right">177</td>
+<td align="right">224905</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">67</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/1-硬件指导手册/MES-Linein-MIC-V1.0原理图.pdf</code></td>
+<td align="right">1</td>
+<td align="right">1122</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">68</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/1-硬件指导手册/MES-Linein-MIC硬件使用说明.pdf</code></td>
+<td align="right">8</td>
+<td align="right">3334</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">69</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/1-硬件指导手册/MES-PMOD-X4-V1.0原理图(1).pdf</code></td>
+<td align="right">1</td>
+<td align="right">1126</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">70</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/1-硬件指导手册/MES-Speaker-V1.0原理图(1).pdf</code></td>
+<td align="right">1</td>
+<td align="right">1349</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">71</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/1-硬件指导手册/MES-Speaker硬件使用说明.pdf</code></td>
+<td align="right">7</td>
+<td align="right">3320</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">72</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/2-芯片数据手册/ES7243E DS(1).pdf</code></td>
+<td align="right">28</td>
+<td align="right">39120</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">73</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/2-芯片数据手册/ES8156 DS(1).pdf</code></td>
+<td align="right">26</td>
+<td align="right">35410</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">74</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/2-芯片数据手册/SGM8903 REV.B.4_20120917.pdf</code></td>
+<td align="right">14</td>
+<td align="right">18277</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">75</td>
+<td><code>资料/盘古50K开发板资料/PMOD音频模块组合/3-实验例程/voice_loop_50 demo说明文档.pdf</code></td>
+<td align="right">5</td>
+<td align="right">1507</td>
+<td>特定扩展底板/模块例程说明</td>
+</tr>
+<tr>
+<td align="right">76</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/3_Hardware/MES50HP开发板硬件使用手册_1V1.pdf</code></td>
+<td align="right">38</td>
+<td align="right">32778</td>
+<td>硬件规格/原理图参考，版本需对应实物</td>
+</tr>
+<tr>
+<td align="right">77</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/10_OV5640双目摄像头实验例程v1.pdf</code></td>
+<td align="right">6</td>
+<td align="right">1708</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">78</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/11_以太网传输实验例程说明v1.pdf</code></td>
+<td align="right">21</td>
+<td align="right">13596</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">79</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/12_音频回环实验说明.pdf</code></td>
+<td align="right">5</td>
+<td align="right">1507</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">80</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/13_锯齿波回环实验说明.pdf</code></td>
+<td align="right">14</td>
+<td align="right">3650</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">81</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/14_MES-ADDA正弦波实验说明.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2312</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">82</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/15_MES-ADDA三角波实验说明.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2359</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">83</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/16_MES-ADDA方波实验说明.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2328</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">84</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/17_HDMI显示波形实验说明.pdf</code></td>
+<td align="right">11</td>
+<td align="right">2248</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">85</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/18_1.3寸OLED屏显示实验说明.pdf</code></td>
+<td align="right">20</td>
+<td align="right">15303</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">86</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/19_蜂鸣器简易电子琴实验说明.pdf</code></td>
+<td align="right">5</td>
+<td align="right">2732</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">87</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/1_LED流水灯实验例程说明v1.pdf</code></td>
+<td align="right">8</td>
+<td align="right">5182</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">88</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/20_VGA输出彩条实验说明.pdf</code></td>
+<td align="right">12</td>
+<td align="right">4933</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">89</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/2_键控流水灯实验例程说明v1.pdf</code></td>
+<td align="right">7</td>
+<td align="right">7540</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">90</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/3_I2C读写实验例程说明v1.pdf</code></td>
+<td align="right">7</td>
+<td align="right">2616</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">91</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/4_串口收发实验例程说明v1.pdf</code></td>
+<td align="right">22</td>
+<td align="right">30452</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">92</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/5_6_HDMI实验例程说明v2.pdf</code></td>
+<td align="right">7</td>
+<td align="right">2220</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">93</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/7_DDR读写实验例程说明v1.pdf</code></td>
+<td align="right">9</td>
+<td align="right">1532</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">94</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/8_光纤通信测试实验例程说明v2.pdf</code></td>
+<td align="right">9</td>
+<td align="right">1904</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">95</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/9_PCIE通信测试实验例程说明v1.pdf</code></td>
+<td align="right">8</td>
+<td align="right">2858</td>
+<td>板级例程说明；视频/通信为重点</td>
+</tr>
+<tr>
+<td align="right">96</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/工具使用篇/01_PDS安装指导手册.pdf</code></td>
+<td align="right">11</td>
+<td align="right">3165</td>
+<td>开发工具工作流参考</td>
+</tr>
+<tr>
+<td align="right">97</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/工具使用篇/02_PDS快速使用手册.pdf</code></td>
+<td align="right">36</td>
+<td align="right">7102</td>
+<td>开发工具工作流参考</td>
+</tr>
+<tr>
+<td align="right">98</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/工具使用篇/03_IP核安装与查看用户指南.pdf</code></td>
+<td align="right">4</td>
+<td align="right">600</td>
+<td>开发工具工作流参考</td>
+</tr>
+<tr>
+<td align="right">99</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/工具使用篇/04_PDS与modelsim联合仿真.pdf</code></td>
+<td align="right">4</td>
+<td align="right">1003</td>
+<td>开发工具工作流参考</td>
+</tr>
+<tr>
+<td align="right">100</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/工具使用篇/05_FPGA&amp;CPLD的下载与固化_v1.1.pdf</code></td>
+<td align="right">11</td>
+<td align="right">1739</td>
+<td>开发工具工作流参考</td>
+</tr>
+<tr>
+<td align="right">101</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/3_Hardware/核心板连接座/0.5mm双槽BTB 4.5H 公母座产品图.pdf</code></td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td>图纸：文本不足，实物接线时需视觉核对</td>
+</tr>
+<tr>
+<td align="right">102</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/3_Hardware/点位图/底板点位图1.pdf</code></td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td>图纸：文本不足，实物接线时需视觉核对</td>
+</tr>
+<tr>
+<td align="right">103</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/3_Hardware/点位图/底板点位图2.pdf</code></td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td>图纸：文本不足，实物接线时需视觉核对</td>
+</tr>
+<tr>
+<td align="right">104</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/3_Hardware/点位图/核心板点位图1.pdf</code></td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td>图纸：文本不足，实物接线时需视觉核对</td>
+</tr>
+<tr>
+<td align="right">105</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/3_Hardware/点位图/核心板点位图2.pdf</code></td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td>图纸：文本不足，实物接线时需视觉核对</td>
+</tr>
+<tr>
+<td align="right">106</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/EEPROM/AT24C01C-AT24C02C-AT24C04C-AT24C08C-Data-Sheet-20006141A.pdf</code></td>
+<td align="right">45</td>
+<td align="right">80530</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">107</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/EEPROM/AT24C01C-AT24C02C-I2C-Compatible-Two-Wire-Serial-EEPROM-1Kbit-2Kbit-20006111A.pdf</code></td>
+<td align="right">45</td>
+<td align="right">73242</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">108</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/EEPROM/iic_timing.pdf</code></td>
+<td align="right">1</td>
+<td align="right">428</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">109</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/EEPROM/IIC状态机.pdf</code></td>
+<td align="right">1</td>
+<td align="right">210</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">110</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/Ethernet_PHY/rtl8211e(g)-vb(vl)-cg_datasheet_1.6.pdf</code></td>
+<td align="right">79</td>
+<td align="right">138366</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">111</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/HDMI PHY/《MS7200 Datasheet-EN》(1).pdf</code></td>
+<td align="right">15</td>
+<td align="right">19284</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">112</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/HDMI PHY/《MS7210 Datasheet-CN》-sp(1).pdf</code></td>
+<td align="right">14</td>
+<td align="right">14745</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">113</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/OV5640/DOUBLE-DVP-OV5640-1113.pdf</code></td>
+<td align="right">1</td>
+<td align="right">2247</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">114</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/OV5640/OV5640_AF_Imaging_Module_Application_Guide_(DVP_Interface).pdf</code></td>
+<td align="right">63</td>
+<td align="right">81123</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">115</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/OV5640/OV5640_DataSheet.pdf</code></td>
+<td align="right">177</td>
+<td align="right">224905</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">116</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/power/EZ8303.pdf</code></td>
+<td align="right">13</td>
+<td align="right">18877</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">117</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/power/SGM2054 REV.A_20220129.pdf</code></td>
+<td align="right">14</td>
+<td align="right">20353</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">118</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/power/SGM61032_RAMAXEL_20210930(1)(1)(1).pdf</code></td>
+<td align="right">12</td>
+<td align="right">23865</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">119</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/power/SGM61163 REV.A.3_20220415.pdf</code></td>
+<td align="right">27</td>
+<td align="right">63955</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+<tr>
+<td align="right">120</td>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/6_doc/VESA/Vesa  Monitor Timing_v1r12.pdf</code></td>
+<td align="right">100</td>
+<td align="right">202494</td>
+<td>芯片/接口参考，按具体外设查证</td>
+</tr>
+</tbody></table>
+<h2 id="内容完全相同的-pdf-分组">内容完全相同的 PDF 分组</h2>
+<p>下列分组通过原始文件 SHA-256 判定；文件名不同也可能内容相同。未列出的文件不代表没有类似内容，只表示二进制哈希不同。</p>
+<h3 id="sha-256-b306d0b407bff5975e975741422f09c5274bb2de7702d0d7bea7456827a7b592">SHA-256 <code>b306d0b407bff5975e975741422f09c5274bb2de7702d0d7bea7456827a7b592</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/原理图/DOUBLE-DVP-OV5640-1113(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/原理图/DOUBLE-DVP-OV5640-1113.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/OV5640资料/原理图/DOUBLE-DVP-OV5640-1113.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/OV5640/DOUBLE-DVP-OV5640-1113.pdf</code></li>
+</ul>
+<h3 id="sha-256-d0962f8fe535bee322143593532602da840403f043b1101e03d2529849fc5b86">SHA-256 <code>d0962f8fe535bee322143593532602da840403f043b1101e03d2529849fc5b86</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/实验例程1-基于盘古50K/OV5640双目摄像头实验例程v1(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/实验例程1-基于盘古50K/OV5640双目摄像头实验例程v1.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/10_OV5640双目摄像头实验例程v1.pdf</code></li>
+</ul>
+<h3 id="sha-256-403990f29c5b88993dfa7ccf0fab3a5cdd9de5a2b81fb2d7e0c84d987d425214">SHA-256 <code>403990f29c5b88993dfa7ccf0fab3a5cdd9de5a2b81fb2d7e0c84d987d425214</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/实验例程2-基于PGX-NANO/OV5640双目摄像头实验例程v1(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/实验例程2-基于PGX-NANO/OV5640双目摄像头实验例程v1.pdf</code></li>
+</ul>
+<h3 id="sha-256-d709bdf8dc26ad2608759b4dfb4bc083da409f7d3dc7074c47c6b6bfa9d81ad8">SHA-256 <code>d709bdf8dc26ad2608759b4dfb4bc083da409f7d3dc7074c47c6b6bfa9d81ad8</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/芯片数据/OV5640_AF_Imaging_Module_Application_Guide_(DVP_Interface)(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/芯片数据/OV5640_AF_Imaging_Module_Application_Guide_(DVP_Interface).pdf</code></li>
+<li><code>资料/盘古50K开发板资料/OV5640资料/芯片数据/OV5640_AF_Imaging_Module_Application_Guide_(DVP_Interface).pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/OV5640/OV5640_AF_Imaging_Module_Application_Guide_(DVP_Interface).pdf</code></li>
+</ul>
+<h3 id="sha-256-c314bd8cbae376e1ea215b20501dcbe9ba86777d359ef7f1f2f9c807b41bf4d1">SHA-256 <code>c314bd8cbae376e1ea215b20501dcbe9ba86777d359ef7f1f2f9c807b41bf4d1</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/芯片数据/OV5640_DataSheet(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/芯片数据/OV5640_DataSheet.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/OV5640资料/芯片数据/OV5640_DataSheet.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/OV5640/OV5640_DataSheet.pdf</code></li>
+</ul>
+<h3 id="sha-256-ce60caae61d65d65f229fc2d64f613c865d2bded389b6b60863bbbe2f5937a07">SHA-256 <code>ce60caae61d65d65f229fc2d64f613c865d2bded389b6b60863bbbe2f5937a07</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/1_Demo Document/OV5640双目摄像头实验例程(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/1_Demo Document/OV5640双目摄像头实验例程.pdf</code></li>
+</ul>
+<h3 id="sha-256-eb97a5574aaf016b6df847f58ec172ff7b3f589dda1efc2f2280d4bf09e70f56">SHA-256 <code>eb97a5574aaf016b6df847f58ec172ff7b3f589dda1efc2f2280d4bf09e70f56</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/FMC-base-V1.1-24-12-10(200K)-20241225(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/FMC-base-V1.1-24-12-10(200K)-20241225.pdf</code></li>
+</ul>
+<h3 id="sha-256-850b5aab8986f045d53e554e1184da1f8cc2649d352bb53aaf3cec92b9482324">SHA-256 <code>850b5aab8986f045d53e554e1184da1f8cc2649d352bb53aaf3cec92b9482324</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/MES-FMC-LPC-IO硬件使用手册_v1.1(0408)(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/MES-FMC-LPC-IO硬件使用手册_v1.1(0408).pdf</code></li>
+</ul>
+<h3 id="sha-256-f50aff03457692265322d3cf9a9217b9496b9b547741c0f727bb096cd506f3ec">SHA-256 <code>f50aff03457692265322d3cf9a9217b9496b9b547741c0f727bb096cd506f3ec</code></h3>
+<ul>
+<li><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/MES-LPC-IO V1.1- 20250210点位图(1).pdf</code></li>
+<li><code>资料/OV5640双目摄像头资料/实验例程4-基于100Pro+开发板/FMC+双目Demo/3_Hardware/MES-LPC-IO V1.1- 20250210点位图.pdf</code></li>
+</ul>
+<h3 id="sha-256-08c3871a3a55f0a8fcaa784c44ce4e5b48c22ce91d328d15f61743034ec57da3">SHA-256 <code>08c3871a3a55f0a8fcaa784c44ce4e5b48c22ce91d328d15f61743034ec57da3</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/2_MES-ADDA正弦波实验说明.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/14_MES-ADDA正弦波实验说明.pdf</code></li>
+</ul>
+<h3 id="sha-256-4c0c50e7aa317d7eacec2d8fe5e2678019aa06956613572bc7265765c6b0e943">SHA-256 <code>4c0c50e7aa317d7eacec2d8fe5e2678019aa06956613572bc7265765c6b0e943</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/3_MES-ADDA三角波实验说明.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/15_MES-ADDA三角波实验说明.pdf</code></li>
+</ul>
+<h3 id="sha-256-4ea6e3be54507485614c34bb509fc144a7d1217c05f1ae49a5abf80580369345">SHA-256 <code>4ea6e3be54507485614c34bb509fc144a7d1217c05f1ae49a5abf80580369345</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/4_MES-ADDA方波实验说明.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/16_MES-ADDA方波实验说明.pdf</code></li>
+</ul>
+<h3 id="sha-256-6b99e791d9c0a28311e45ca67517efed5efc4b49a78aba7fa5979fbc0278f8e0">SHA-256 <code>6b99e791d9c0a28311e45ca67517efed5efc4b49a78aba7fa5979fbc0278f8e0</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/5_锯齿波回环实验说明.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/13_锯齿波回环实验说明.pdf</code></li>
+</ul>
+<h3 id="sha-256-1825aa3f2515e0a4052687ea2e58694925d836c1a4dc326e3b6363163b0fc0cd">SHA-256 <code>1825aa3f2515e0a4052687ea2e58694925d836c1a4dc326e3b6363163b0fc0cd</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/ADDA模块资料/5-实验例程说明/6_HDMI显示波形实验说明.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/1_Demo_document/实验例程说明篇/17_HDMI显示波形实验说明.pdf</code></li>
+</ul>
+<h3 id="sha-256-fa375427dc087df4667f45e03c08b244c45129f9c55c85ca0871fd1af73f05ed">SHA-256 <code>fa375427dc087df4667f45e03c08b244c45129f9c55c85ca0871fd1af73f05ed</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/hardware/原理图/MES50HP核心板原理图.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/MES50HP-网口板/hardware/原理图/MES50HP核心板原理图.pdf</code></li>
+</ul>
+<h3 id="sha-256-3ffeecfdb4e6741d369b7b6d89d118ca8cf2bcfd617fd7ea3f21f1798fbf5207">SHA-256 <code>3ffeecfdb4e6741d369b7b6d89d118ca8cf2bcfd617fd7ea3f21f1798fbf5207</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/HDMI PHY/《MS7200 Datasheet-EN》.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/HDMI PHY/《MS7200 Datasheet-EN》(1).pdf</code></li>
+</ul>
+<h3 id="sha-256-2e9ea30aaf970a5b53a6f9d71185959a8145df45f1ef0d516b77e13f6c5d25f3">SHA-256 <code>2e9ea30aaf970a5b53a6f9d71185959a8145df45f1ef0d516b77e13f6c5d25f3</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/HDMI PHY/《MS7210 Datasheet-CN》-sp.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/HDMI PHY/《MS7210 Datasheet-CN》-sp(1).pdf</code></li>
+</ul>
+<h3 id="sha-256-2607224f475e252dc2ad74e0d55ca5abafb4e638a5ee1312d196e12e1b6eee9a">SHA-256 <code>2607224f475e252dc2ad74e0d55ca5abafb4e638a5ee1312d196e12e1b6eee9a</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/DS02001_Logos系列FPGA器件数据手册V2.9.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/DS02001_Logos系列FPGA器件数据手册V2.9.pdf</code></li>
+</ul>
+<h3 id="sha-256-5c7b2e7752a0141c05126654563a56d6862f36b8fd2118b84cc7c2ab059cb592">SHA-256 <code>5c7b2e7752a0141c05126654563a56d6862f36b8fd2118b84cc7c2ab059cb592</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/PGL50H_UG/UG020002_Logos系列FPGA专用RAM模块（DRM）用户指南_V1.4.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/PGL50H_UG/UG020002_Logos系列FPGA专用RAM模块（DRM）用户指南_V1.4.pdf</code></li>
+</ul>
+<h3 id="sha-256-9c9949c084fc0ac84d944f5e8dbf5745360eb0e18e70272b09bc64ada8a54101">SHA-256 <code>9c9949c084fc0ac84d944f5e8dbf5745360eb0e18e70272b09bc64ada8a54101</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/PGL50H_UG/UG020003_Logos系列FPGA算术处理模块（APM）用户指南_V1.4.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/PGL50H_UG/UG020003_Logos系列FPGA算术处理模块（APM）用户指南_V1.4.pdf</code></li>
+</ul>
+<h3 id="sha-256-41faf94fdb6030b80da95c8ca1bde40e1b24855b971da1fb1a5e6b984a3c0760">SHA-256 <code>41faf94fdb6030b80da95c8ca1bde40e1b24855b971da1fb1a5e6b984a3c0760</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/PGL50H_UG/UG020004 Logos系列FPGA时钟资源（Clock）用户指南V1.8.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/PGL50H_UG/UG020004 Logos系列FPGA时钟资源（Clock）用户指南V1.8.pdf</code></li>
+</ul>
+<h3 id="sha-256-be92702587dee82cc8513a95045d96f77b371f8c4da4683fe6591966d38d1ddd">SHA-256 <code>be92702587dee82cc8513a95045d96f77b371f8c4da4683fe6591966d38d1ddd</code></h3>
+<ul>
+<li><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/ic_datasheet/PGL50H/PGL50H_UG/UG020007_Logos系列产品GTP用户指南.pdf</code></li>
+<li><code>资料/盘古50K开发板资料/MES50HP-网口板/ic_datasheet/PGL50H/PGL50H_UG/UG020007_Logos系列产品GTP用户指南.pdf</code></li>
+</ul>
+<h2 id="压缩包及安装文件登记">压缩包及安装文件登记</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th align="right">大小（MB，十进制）</th>
+<th>本项目意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>资料/OV5640双目摄像头资料/实验例程1-基于盘古50K/HDMI_DDR3_OV5640_test(1).rar</code></td>
+<td align="right">14.23</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/OV5640双目摄像头资料/实验例程1-基于盘古50K/HDMI_DDR3_OV5640_test.rar</code></td>
+<td align="right">14.23</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/PCIE资料/pcie_test_platform_v1_0(1).zip</code></td>
+<td align="right">13.91</td>
+<td>已检查内部驱动、应用、DMA 目标器件与指南</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/PDS开发软件安装包/PDS_2022.2-SP6.4-win64.zip</code></td>
+<td align="right">1934.65</td>
+<td>工具/IP 安装资料，未执行</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/3-SPI显示屏硬件手册/2.4TFT7789V横屏显示代码.rar</code></td>
+<td align="right">0.01</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/3-SPI显示屏硬件手册/2.4TFTST7789参考代码STM32(1).zip</code></td>
+<td align="right">0.16</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/ADDA模块资料/3-SPI显示屏硬件手册/ESP32-ISP屏接线图-库文件.zip</code></td>
+<td align="right">25.29</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/MES50H-HDMI视频板/demo/hdmi_base.zip</code></td>
+<td align="right">4.56</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/MES50HP-网口板/demo/eth_test.rar</code></td>
+<td align="right">22.28</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/PDS开发软件安装包/lite版本的软件，不用license/PDS_2022.2-SP1-Lite.zip</code></td>
+<td align="right">765.62</td>
+<td>工具/IP 安装资料，未执行</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/PDS开发软件安装包/lite版本的软件，不用license/system_ip_lite.zip</code></td>
+<td align="right">42.44</td>
+<td>工具/IP 安装资料，未执行</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/01_led_test.rar</code></td>
+<td align="right">1.01</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/02_key_led_test.rar</code></td>
+<td align="right">0.42</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/03_i2c_eeprom_test.rar</code></td>
+<td align="right">0.64</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/04_uart_test.rar</code></td>
+<td align="right">0.56</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/05_hdmi_test.rar</code></td>
+<td align="right">1.28</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/06_hdmi_loop.rar</code></td>
+<td align="right">1.44</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/07_ddr3_test.rar</code></td>
+<td align="right">18.51</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/09_pcie_test.rar</code></td>
+<td align="right">17.67</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/10_HDMI_DDR3_OV5640_test.rar</code></td>
+<td align="right">14.23</td>
+<td>主参考：已解包检查采集/帧缓存关键 RTL</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/2_Demo/11_ethernet_test.rar</code></td>
+<td align="right">4.23</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/5_Software/pcie_test_platform.rar</code></td>
+<td align="right">1.88</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/HDMI PHY/2023.03.13 MS7200寄存器配置说明.7z</code></td>
+<td align="right">2.14</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/4_IC_datasheet/HDMI PHY/2023.03.13 MS7210寄存器配置说明.7z</code></td>
+<td align="right">2.01</td>
+<td>按需查阅/移植的配套资料</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/5_Software/串口调试助手/sscom5.13.1.exe</code></td>
+<td align="right">0.45</td>
+<td>历史调试工具，未执行</td>
+</tr>
+<tr>
+<td><code>资料/盘古50K开发板资料/盘古50K开发板/5_Software/网络调试助手/Wireshark-win32-2.4.1.0.exe</code></td>
+<td align="right">53.60</td>
+<td>历史调试工具，未执行</td>
+</tr>
+</tbody></table>
+<h2 id="与-adas-主线关系较弱的资料">与 ADAS 主线关系较弱的资料</h2>
+<p>ADDA 波形、OLED/SPI 屏、音频回环与多网口级联可作为后续外设扩展参考。首版不引入这些功能，以减少接口占用、调试成本和进度风险。多型号相机工程用于架构参考，不能混用其 PLL、DDR 和引脚。</p>
+<h2 id="信息来源区分">信息来源区分</h2>
+<ul>
+<li>赛题与厂商事实：以原 PDF、原始 RTL 和 ZIP 内材料为依据。</li>
+<li>香橙派平台：用户已核实为香橙派 5 16GB/RK3588S；BSP、RKNN 与接口适配是新增工程方案，当前库中没有对应完整板级资料。</li>
+<li>内部设计约定：主文档中的新模块名、地址、数据包结构、指标与时间计划均为建议，尚未实物验证。</li>
+</ul>
+<h2 id="v11-四路方案关联说明">V1.1 四路方案关联说明</h2>
+<ul>
+<li>手册现拟采用两块 MES50HP、每板两路采集、经千兆交换机汇总至香橙派 5/RK3588S；这是待验证工程路线，不表示已采购、已完成或已取得规则确认。</li>
+<li>J8/PMOD 用户 I/O 依据 MES50HP 硬件手册；双 40pin/68 I/O 的 FMC 备选依据 MES-FMC-LPC-IO 手册。两者主板接口不同，不能直接互换。</li>
+<li>当前选题指南未见明确限定只能使用一块 FPGA；该结论不扩展到未提供的补充规则。</li>
+<li>双目例程仍为编译选择一路；每板必须改造为双路并行，才能把两块板作为四路采集系统。</li>
+<li>原始资料未改变，6,896 项文件索引及 PDF 清单统计保持不变。</li>
+</ul>
+<p class="footer">原始资料分析与实施建议。硬件、模型与性能尚待实物验证。可使用浏览器打印功能导出 PDF。</p></main></body></html>

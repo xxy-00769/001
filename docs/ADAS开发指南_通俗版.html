@@ -1,0 +1,394 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ADAS 开发指南：从接好设备到完成演示</title><style>:root{color-scheme:light;--ink:#182b40;--blue:#155bc1;--muted:#5b6c80;--line:#dce4ef}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f6fb;color:var(--ink);font:16px/1.85 "Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}aside{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#10243c;color:white;padding:26px 20px}aside strong{display:block;font-size:19px;margin-bottom:14px}aside a{display:block;color:#cddcf0;text-decoration:none;font-size:13px;padding:5px 0;line-height:1.6}aside a:hover{color:white}main{margin:30px 35px 70px 305px;background:white;padding:42px 52px;max-width:1280px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 32px #10243c09}h1{font-size:31px;line-height:1.5;letter-spacing:.02em;margin:0 0 25px}h2{font-size:24px;margin:52px 0 20px;border-top:2px solid var(--line);padding-top:25px;scroll-margin-top:20px}h3{font-size:19px;margin:30px 0 12px;color:#234d7d;scroll-margin-top:20px}p{margin:13px 0}a{color:var(--blue);text-underline-offset:3px}blockquote{margin:20px 0;background:#eef5ff;border-left:4px solid #3880d6;padding:12px 20px;color:#345777;font-size:14px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:13px;line-height:1.75;table-layout:auto}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;overflow-wrap:anywhere}th{background:#eaf0f8;text-align:left;font-weight:700}tr:nth-child(even) td{background:#fafcff}pre{overflow:auto;background:#10243c;color:#e2edfa;padding:20px;border-radius:8px;font:13px/1.75 Consolas,monospace;white-space:pre}code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.9em;background:#eff3f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre code{background:transparent;padding:0;color:inherit}li{padding:3px 0}hr{border:0;border-top:1px solid var(--line);margin:32px 0}.badge{display:inline-block;background:#155bc1;color:white;padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:18px}.diagram{background:#eff5fc;border:1px solid #c9d9ed;border-radius:9px;padding:20px;margin:22px 0}.diagram-title{font-weight:700;margin-bottom:15px}.flow{display:flex;align-items:stretch;gap:9px;margin:12px 0}.flow div{flex:1;background:white;border:1px solid #c4d6eb;border-radius:7px;padding:12px 6px;text-align:center;font-size:12px;line-height:1.75}.flow b{align-self:center;color:#1d66b9}.diagram p{font-size:12px;color:#506783}.footer{margin-top:40px;color:var(--muted);font-size:13px}@media(max-width:1100px){aside{position:static;width:auto;max-height:280px}main{margin:18px;padding:28px}.flow{gap:4px}.flow div{font-size:11px}}@media print{aside,.badge{display:none}body{background:white;font-size:10pt}main{margin:0;padding:0;max-width:none;border:0;box-shadow:none}h1{font-size:23pt}h2{font-size:17pt;break-before:page;border:0;margin-top:0}h3{font-size:12pt;break-after:avoid}table{font-size:8pt}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt;background:#f0f3f6;color:#182b40}a{color:inherit;text-decoration:none}.diagram{break-inside:avoid}@page{size:A4;margin:18mm}}main{max-width:1100px}table{font-size:14px}input[type=checkbox]{margin-right:8px}h3{margin-top:36px}</style></head><body><aside><strong>ADAS 开发指南</strong><a href="比赛开发文档_ADAS.html">查阅详细开发手册</a><hr><a href="#1-最后要做出什么">1. 最后要做出什么</a><a href="#2-两块板子分别做什么">2. 两块板子分别做什么</a><a href="#3-先准备哪些东西">3. 先准备哪些东西</a><a href="#4-需要掌握哪些技术">4. 需要掌握哪些技术</a><a href="#5-按什么顺序开发">5. 按什么顺序开发</a><a href="#6-四路输入到底怎么接">6. 四路输入到底怎么接</a><a href="#7-四个窗口和全景有什么区别">7. 四个窗口和全景有什么区别</a><a href="#8-现有资料和开源项目怎么用">8. 现有资料和开源项目怎么用</a><a href="#9-开发卡住时先查什么">9. 开发卡住时先查什么</a><a href="#10-怎么证明作品已经完成">10. 怎么证明作品已经完成</a><a href="#11-现在就从这份清单开始">11. 现在就从这份清单开始</a></aside><main><span class="badge">从接好设备到完成演示 · 2026-10-19</span><h1 id="adas-开发指南从接好设备到完成演示">ADAS 开发指南：从接好设备到完成演示</h1>
+<blockquote>
+<p>平台：MES50HP FPGA 开发板＋香橙派 5（16GB，RK3588S）。<br>更新日期：2026-10-19。本文用于安排实际开发，具体接口、引脚和协议参数请查阅<a href="%E6%AF%94%E8%B5%9B%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3_ADAS.md">详细开发手册</a>。<br>本文描述的是待开发路线，尚未完成实物验证。</p>
+</blockquote>
+<h2 id="1-最后要做出什么">1. 最后要做出什么</h2>
+<p>做出一套放在桌面上就能演示的驾驶辅助系统：接入道路画面，识别信号灯、车道线和行人，再根据你按下的“前进、左转、右转”等按键，显示允许通行、停车或违规提醒。</p>
+<p>例如：屏幕出现红灯时，系统提示停车；此时按“前进”，系统提示闯红灯风险。右侧是实线时，按“向右变道”，系统提醒不能跨实线。</p>
+<p>先用按键模拟驾驶操作，用屏幕和 LED 显示结果。第一版不需要制作能真正行驶的小车。</p>
+<p>按以下三个成果推进，每完成一个再增加难度：</p>
+<table>
+<thead>
+<tr>
+<th>成果</th>
+<th>屏幕上能看到什么</th>
+<th>说明完成了什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一版：一路画面</td>
+<td>摄像头画面经过 FPGA，到香橙派显示</td>
+<td>两块板子已经能一起工作</td>
+</tr>
+<tr>
+<td>第二版：识别与提醒</td>
+<td>道路画面上出现识别结果，按键能触发相应提醒</td>
+<td>核心驾驶辅助功能已经连起来</td>
+</tr>
+<tr>
+<td>第三版：四路与全景</td>
+<td>四个独立来源同时显示，条件满足后再做全景融合</td>
+<td>多路采集、处理和显示可以共同运行</td>
+</tr>
+</tbody></table>
+<h2 id="2-两块板子分别做什么">2. 两块板子分别做什么</h2>
+<p>可以把整个系统理解为一条处理流水线：</p>
+<pre><code class="language-text">摄像头或外部视频
+       ↓
+MES50HP：接收画面，整理和处理像素，再发送出去
+       ↓ 先尝试用网线传输
+香橙派：识别道路内容，判断驾驶操作，绘制提示
+       ↓ HDMI
+显示器：显示最后的结果
+</code></pre>
+<p>**FPGA 负责把图像稳定地收进来、处理好、送出去。**例如把大图缩小、调整亮度，或者提取便于后续分析的图像内容。它需要用 Verilog 编写硬件逻辑，再通过 PDS 软件生成可下载到板子的文件。</p>
+<p>**香橙派负责理解画面和显示结果。**它运行 Linux，使用程序分析图像，判断“这是红灯”“右侧是实线”，再把框、文字和告警画到屏幕上。</p>
+<p>正常使用时，显示器接香橙派的 HDMI 输出。FPGA 的 HDMI 输出可以在调试期间临时接显示器，用来判断它是否收到了正确画面。</p>
+<p>原画面预览和识别画面共用同一套接收程序。后续可以增加两个启动入口：一个只看收到的画面，一个显示识别结果；不必各写一套网络接收代码。</p>
+<h2 id="3-先准备哪些东西">3. 先准备哪些东西</h2>
+<table>
+<thead>
+<tr>
+<th>物品</th>
+<th>用途</th>
+<th>什么时候需要</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MES50HP、配套电源、下载器</td>
+<td>接收和处理视频，下载 FPGA 程序</td>
+<td>开始就需要</td>
+</tr>
+<tr>
+<td>香橙派 5 16GB、合适电源、散热和启动存储</td>
+<td>运行识别、驾驶判断和显示程序</td>
+<td>开始就需要</td>
+</tr>
+<tr>
+<td>已有双目摄像头及匹配排线</td>
+<td>提供两路候选摄像头输入</td>
+<td>先使用其中一路</td>
+</tr>
+<tr>
+<td>显示器、HDMI 线、网线</td>
+<td>显示结果、传输图像</td>
+<td>开始就需要</td>
+</tr>
+<tr>
+<td>开发电脑</td>
+<td>编辑程序、编译 FPGA 工程、配置香橙派</td>
+<td>开始就需要</td>
+</tr>
+<tr>
+<td>U 盘和道路测试视频</td>
+<td>反复验证同样的交通场景</td>
+<td>做识别前准备</td>
+</tr>
+<tr>
+<td>外部 HDMI 视频源</td>
+<td>为 FPGA 提供另一路视频，可先用电脑播放测试内容</td>
+<td>扩展输入时准备</td>
+</tr>
+<tr>
+<td>交换机</td>
+<td>需要把更多有线设备放在同一网络时使用</td>
+<td>按接线方案决定</td>
+</tr>
+<tr>
+<td>第二块 FPGA 板、另一套摄像头</td>
+<td>四颗实体摄像头路线的候选设备</td>
+<td>暂不作为默认采购项</td>
+</tr>
+</tbody></table>
+<p>接线前先对照 MES50HP 硬件手册核对接口方向、排线方向和电压。摄像头排线在断电时插拔。不要因为插头外形相似就尝试连接。</p>
+<h2 id="4-需要掌握哪些技术">4. 需要掌握哪些技术</h2>
+<p>不必先学完所有内容。每做到一步，只补上这一步需要的知识。</p>
+<table>
+<thead>
+<tr>
+<th>技术或工具</th>
+<th>在项目里用来做什么</th>
+<th>第一次接触时先完成什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PDS</td>
+<td>打开、编译和下载 FPGA 工程</td>
+<td>从源码编译一个 LED 例程，并让板上灯闪烁</td>
+</tr>
+<tr>
+<td>Verilog</td>
+<td>描述 FPGA 内部如何接收和处理数据</td>
+<td>看懂时钟、复位、计数器和简单数据传递</td>
+</tr>
+<tr>
+<td>Linux</td>
+<td>香橙派运行程序的环境</td>
+<td>能启动系统、打开终端、运行程序、查看错误</td>
+</tr>
+<tr>
+<td>Python、OpenCV</td>
+<td>读取视频、处理图像、绘制结果</td>
+<td>打开一个视频并显示其中一张图</td>
+</tr>
+<tr>
+<td>以太网、UDP</td>
+<td>在两块板之间传输数据</td>
+<td>先成功发送和接收一个数字</td>
+</tr>
+<tr>
+<td>RKNN</td>
+<td>让适配的识别模型在香橙派上运行</td>
+<td>跑通与系统匹配的官方图片识别示例</td>
+</tr>
+<tr>
+<td>Git 或阶段备份</td>
+<td>保留每一步可以运行的版本</td>
+<td>修改前能恢复上一次正常的工程</td>
+</tr>
+</tbody></table>
+<p>常见词可以这样理解：</p>
+<ul>
+<li><strong>帧</strong>：视频中的一张图。每秒 15 帧，就是每秒更新 15 张图。</li>
+<li><strong>分辨率</strong>：一张图有多宽、多高。例如 640×360。</li>
+<li><strong>带宽</strong>：连接每秒能搬运多少数据。图越大、帧数越多，需要搬运的数据越多。</li>
+<li><strong>缓存</strong>：临时放图像的地方，用来协调接收、处理和显示的速度。</li>
+<li><strong>延迟</strong>：真实场景发生变化，到屏幕显示这个变化所花的时间。</li>
+<li><strong>模型</strong>：用于识别图像的算法文件。模型识别内容，驾驶规则决定如何回应。</li>
+<li><strong>NPU</strong>：香橙派芯片中用于加速适配模型的计算单元，需要配套软件才能使用。</li>
+</ul>
+<h2 id="5-按什么顺序开发">5. 按什么顺序开发</h2>
+<p>每一步都保存源码、配置和一段结果记录。只有“怎么运行、运行后应该看到什么”都写清楚，才算完成这一步。</p>
+<h3 id="第一步让两块板子分别运行起来">第一步：让两块板子分别运行起来</h3>
+<p><strong>要做的事：</strong></p>
+<ol>
+<li>在电脑安装与 MES50HP 例程匹配的 PDS，打开最简单的 LED 工程。</li>
+<li>从源码重新编译并下载，确认 LED 按预期闪烁。</li>
+<li>给香橙派安装适合该板型、支持视频和 NPU 的系统，接好散热和显示器。</li>
+<li>在香橙派上播放一段本地视频，再运行配套 NPU 示例。</li>
+</ol>
+<p>**完成标志：**FPGA 工程能重新编译并运行；香橙派可以播放视频和运行示例。保存系统镜像版本、工具版本与启动方法。</p>
+<h3 id="第二步先让-fpga-看见一路画面">第二步：先让 FPGA 看见一路画面</h3>
+<p>**要做的事：**先运行资料中的 HDMI 彩条例程，再测试 HDMI 输入输出，最后接入一路摄像头。此时可以把显示器临时接到 FPGA 上检查画面。</p>
+<p>用红、绿、蓝色物体或测试图检查颜色，用网格检查错行，用移动物体检查画面是否更新。</p>
+<p>**完成标志：**画面连续、颜色正确，移动物体没有明显裂成上下两部分。能明确指出当前用的是哪一路输入。</p>
+<p>**遇到问题时：**先保留例程原来的设置，核对线缆、分辨率、工程型号和摄像头配置。一次只改一处。</p>
+<h3 id="第三步让-fpga-与香橙派先传少量数据">第三步：让 FPGA 与香橙派先传少量数据</h3>
+<p>**要做的事：**用网线连接两块板，设置同一网段内不同的固定地址。先让 FPGA 发送不断递增的数字，香橙派接收并打印；再由香橙派发送命令，让 FPGA 控制 LED。</p>
+<p>这里优先使用 UDP，因为已有以太网例程可参考。PCIe 等方式留到确实发现传输能力不足时再评估。</p>
+<p>**完成标志：**数字持续更新，LED 能响应命令；重启任一设备后，按记录操作能够重新连通。</p>
+<h3 id="第四步把一张完整图片传到香橙派">第四步：把一张完整图片传到香橙派</h3>
+<p>**要做的事：**先传固定的彩条或棋盘格，再换成摄像头画面。图片较大时，需要拆成多个数据包发送，接收端再按顺序拼回。</p>
+<p>每个数据包至少要能说明“来自哪一路、属于哪张图、是这张图的第几部分”。一张图没收完整，就丢弃或标为无效，避免把两张图拼在一起。</p>
+<p>**完成标志：**香橙派保存的图片完整、颜色正确，没有错行；随后能够连续显示视频。显示器从这一步开始接香橙派。</p>
+<h3 id="第五步在香橙派上完成一个识别任务">第五步：在香橙派上完成一个识别任务</h3>
+<p>先选红绿灯识别，使用固定的一批道路图片和视频。先在电脑上确认方法可用，再部署到香橙派，最后把输入切换成 FPGA 传来的画面。</p>
+<p>如果使用神经网络模型，先对同一张图片比较电脑与香橙派的结果，再测试连续视频。模型转成 RKNN 后，要重新检查识别是否明显变差。</p>
+<p>识别失败的片段也要保存。例如逆光、信号灯太小、多个方向的灯同时出现。看到红色物体就判红灯，不能作为可靠的红绿灯识别。</p>
+<p>**完成标志：**香橙派能在收到的真实画面上标出结果，并明确显示无法判断的情况。用于推理的图必须来自 FPGA 接收链路。</p>
+<h3 id="第六步加入按键和驾驶判断">第六步：加入按键和驾驶判断</h3>
+<p>先用简单按钮或键盘调试判断程序，再连接 FPGA 上的实体按键。把“看到了什么”和“应该怎么办”分成两部分，方便分别检查。</p>
+<table>
+<thead>
+<tr>
+<th>道路情况</th>
+<th>模拟操作</th>
+<th>预期结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>当前行驶方向红灯</td>
+<td>前进</td>
+<td>提示停车，并产生闯红灯风险告警</td>
+</tr>
+<tr>
+<td>当前行驶方向绿灯</td>
+<td>前进</td>
+<td>显示信号灯允许通行；其他风险仍需检查</td>
+</tr>
+<tr>
+<td>右侧实线</td>
+<td>向右变道</td>
+<td>提示不能跨实线</td>
+</tr>
+<tr>
+<td>右侧虚线</td>
+<td>向右变道</td>
+<td>显示车道线条件允许；仍需检查行人、车辆等风险</td>
+</tr>
+<tr>
+<td>画面中断或结果无法确定</td>
+<td>任意操作</td>
+<td>显示无法判断，不沿用旧的通行提示</td>
+</tr>
+</tbody></table>
+<p>红绿灯需要对应当前行驶方向，不能直接用画面里任意一个灯的颜色。遇到模糊或遮挡，不要只凭单张图立即改变状态。</p>
+<p>**完成标志：**同一段视频配合不同按键，会得到合理且可重复的结果；拔掉输入后，不继续显示旧的允许通行状态。</p>
+<h3 id="第七步支持-u-盘道路视频">第七步：支持 U 盘道路视频</h3>
+<p>这一步能让你反复测试相同场景，也便于加载后来提供的素材。</p>
+<pre><code class="language-text">U 盘接香橙派
+    ↓ 香橙派读取并解码成一张张图
+通过数据连接送入 FPGA
+    ↓ FPGA 处理后返回
+香橙派识别、判断并显示
+</code></pre>
+<p>MP4 文件不能直接当作图像像素发给 FPGA，需要先解码。这里的双向图片传输属于需要开发的功能，接好网线不会自动具备。</p>
+<p>早期也可以用电脑经 HDMI 给 FPGA 播放视频，帮助检查视频输入。香橙派的正常 HDMI 输出留给最终显示器。</p>
+<p>**完成标志：**换一段没有参与调试的视频，无需修改程序就能加载；不能只靠文件名或播放时间给出预先写好的答案。记录哪些文件格式能播放，不能播放时给出清楚提示。</p>
+<h3 id="第八步从一路增加到四路">第八步：从一路增加到四路</h3>
+<p>按“两路摄像头 → 加入 HDMI → 加入第四路外部图像数据”的顺序扩展，每加一路就重新检查已有输入。</p>
+<p>双目接口提供两路候选输入，但现有摄像头例程是选择其中一路，必须修改接收和缓存逻辑，才能同时采集两路。</p>
+<p>**完成标志：**四路各自显示不同的动态内容；遮挡或断开其中一路，其他路继续正常更新。第四路画面必须真正进入 FPGA，不能只是香橙派直接读取后放到第四个窗口。</p>
+<h3 id="第九步最后再优化画面速度和全景">第九步：最后再优化画面、速度和全景</h3>
+<p>先保证四路稳定，再增加分辨率、帧率和算法数量。建议四路从每路 640×360、每秒 15 帧开始，这是开发起点，不是比赛规定或已经达到的成绩。</p>
+<p>先测哪一环节慢：采集、传输、识别还是显示。排队的旧图越积越多时，应优先处理较新的完整画面，并记录丢弃情况，避免屏幕持续显示很久以前的道路状态。</p>
+<p>**完成标志：**能给出每路实测帧率、延迟和连续运行记录，说明哪些场景效果好、哪些仍有问题。</p>
+<h2 id="6-四路输入到底怎么接">6. 四路输入到底怎么接</h2>
+<p>当前先验证单板方案：</p>
+<table>
+<thead>
+<tr>
+<th>通道</th>
+<th>候选来源</th>
+<th>需要补做什么</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>双目摄像头中的第一个镜头</td>
+<td>先跑通单路采集</td>
+</tr>
+<tr>
+<td>2</td>
+<td>双目摄像头中的第二个镜头</td>
+<td>改成两路同时采集、分别存图</td>
+</tr>
+<tr>
+<td>3</td>
+<td>外部设备的 HDMI 输出接 MES50HP HDMI-IN</td>
+<td>与摄像头同时接收，处理不同画面大小和更新速度</td>
+</tr>
+<tr>
+<td>4</td>
+<td>外部设备通过网口等接口发送图像数据</td>
+<td>编写图像接收、拼包、缓存和来源标记逻辑</td>
+</tr>
+</tbody></table>
+<p>一个网口可以在协议设计和实际带宽允许的情况下，同时接收第四路图像、向香橙派发送处理结果。需要多个设备时可通过交换机连接。是否够用要实测，不必预设一定需要第二个网口。</p>
+<p>例如四路 640×360、每像素 2 字节、每秒 15 帧，单算 FPGA 发出的图像约为 <strong>27.6 MB/s</strong>。实际还要加上数据包开销；若香橙派同时处理往返数据，其网口也要分别核算接收和发送负载。四路 1080p 高清原图的数据量大得多，不能直接套用这个结果。</p>
+<p>每路建立一条记录：“谁产生画面 → 从哪个口进入 → FPGA 做了什么 → 香橙派在哪个窗口显示”。同一张图复制四份不算四个独立来源。</p>
+<p>今年文字要求至少四路视频流并行采集，未明确写成四颗直接接入的摄像头。但混合输入只是当前待验证路线，能否完成仍取决于硬件资源、程序和实际测试。</p>
+<h3 id="什么时候考虑两块-fpga">什么时候考虑两块 FPGA</h3>
+<p>当目标变成四颗实体摄像头，且现有双目模组适合使用时，可以比较两块 MES50HP 各采两路、香橙派汇总的方案。</p>
+<p>增加第二块板仍需要双路采集程序、设备编号、时间对应和掉线恢复。两块板各运行一个“选一路”的例程，并不会自动产生四路输入。因此先完成单板一路和双路验证，再决定是否采购。</p>
+<h2 id="7-四个窗口和全景有什么区别">7. 四个窗口和全景有什么区别</h2>
+<p><strong>四个窗口</strong>是把四张图摆在一块屏幕上。它便于查看和验证四路输入，是合理的阶段成果。</p>
+<p><strong>全景融合</strong>需要让相邻摄像头的画面在空间和时间上接得上。通常要固定摄像头位置，拍摄标定板来测量镜头特点，修正畸变，变换视角，再处理重叠区域的亮度和接缝。</p>
+<p>双目摄像头的两个镜头通常看向相近方向，不会自动覆盖车辆前后左右。互不相关的四段道路视频适合测试多路处理，不能据此展示真实连续的车辆环视全景。</p>
+<p>因此，顺序是：<strong>四路独立输入 → 四窗口稳定显示 → 确认相机视角和安装 → 标定与对齐 → 全景融合。</strong></p>
+<h2 id="8-现有资料和开源项目怎么用">8. 现有资料和开源项目怎么用</h2>
+<p>按当前步骤查资料，不需要一次读完所有文件：</p>
+<table>
+<thead>
+<tr>
+<th>当前在做什么</th>
+<th>先查哪类资料</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不确定接线和接口</td>
+<td>MES50HP 硬件使用手册</td>
+</tr>
+<tr>
+<td>不会编译、下载</td>
+<td>PDS 工具使用说明和 LED 例程</td>
+</tr>
+<tr>
+<td>收不到摄像头或 HDMI 画面</td>
+<td>对应板型的摄像头、HDMI 例程</td>
+</tr>
+<tr>
+<td>图像错行、撕裂</td>
+<td>DDR 图像缓存例程与详细手册第 10 章</td>
+</tr>
+<tr>
+<td>两块板不能通信</td>
+<td>板上以太网例程与详细手册第 12 章</td>
+</tr>
+<tr>
+<td>要做识别和驾驶判断</td>
+<td>详细手册第 13、14 章</td>
+</tr>
+<tr>
+<td>要比较开源方法</td>
+<td><a href="GitHub%E5%BC%80%E6%BA%90%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94%E4%B8%8E%E8%87%AA%E4%B8%BB%E5%BC%80%E5%8F%91%E6%96%B9%E9%92%88.md">GitHub 开源方案对比</a></td>
+</tr>
+</tbody></table>
+<p>开源项目用于参考接收、缓存、分包、驱动等具体方法。先确认对方用的 FPGA、板卡和摄像头是否相同，再决定能借用哪一部分。换了板型，通常需要重新核对引脚、时钟、存储器和厂商专用模块；仅修改工程名称通常不够。</p>
+<p>2023 年视频魔盒的采集、缩放、拼接方法值得参考。今年还增加了道路识别、驾驶判断和多路协作等任务。2023 年图中的网口主要用于字符叠加，不能据此认为已经具备第四路视频输入。</p>
+<p>今年处理器规则不高于 RK3568；本作品按已经确定的制作目标使用 RK3588S。具体规则原文和两年对比保留在详细手册中。</p>
+<h2 id="9-开发卡住时先查什么">9. 开发卡住时先查什么</h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>优先检查</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>没有画面</td>
+<td>供电、线缆方向、输入源、显示模式、是否下载了正确工程</td>
+</tr>
+<tr>
+<td>红蓝颜色反了</td>
+<td>像素颜色顺序和格式，先用纯色图验证</td>
+</tr>
+<tr>
+<td>画面错行或上下撕裂</td>
+<td>每行长度、图片完整性、缓存是否被提前覆盖</td>
+</tr>
+<tr>
+<td>有画面但越看越慢</td>
+<td>是否在不停处理积压的旧图，分别记录接收与处理时间</td>
+</tr>
+<tr>
+<td>电脑识别正常，香橙派不正常</td>
+<td>模型转换、输入大小、颜色顺序、配套驱动和运行库</td>
+</tr>
+<tr>
+<td>按键后没有正确提示</td>
+<td>先看识别结果，再看按键事件，最后看判断规则</td>
+</tr>
+<tr>
+<td>增加一路后所有画面异常</td>
+<td>总数据量、各路编号、独立缓存和不同输入的更新节奏</td>
+</tr>
+</tbody></table>
+<p>每次只改一个关键因素，修改前保存正常版本。记录“现象、改了什么、结果”，比连续试很多参数更容易定位问题。</p>
+<h2 id="10-怎么证明作品已经完成">10. 怎么证明作品已经完成</h2>
+<p>至少留下以下记录：</p>
+<ul>
+<li>一张实际接线图，能指出四路来源和最终显示口。</li>
+<li>从重新上电到进入演示的操作说明。</li>
+<li>单路和四路的视频记录，能看出各路确实在独立更新。</li>
+<li>红灯前进、实线变道、无法判断和输入中断的测试结果。</li>
+<li>一段后来加入的道路素材测试，记录成功和失败片段。</li>
+<li>每路实际帧率、画面延迟与连续运行情况。</li>
+<li>对应同一版本的 FPGA 工程、下载文件、香橙派程序、模型和配置。</li>
+</ul>
+<p>通过 U 盘场景测试，说明系统能处理这些场景；通过四路独立输入测试，说明系统能同时接收四路。两项分别记录。</p>
+<p>可以按下面的顺序录制演示：先介绍设备和接线，展示一路真实输入，再展示信号灯和车道线判断，配合按键触发提醒，最后展示四路画面和已完成的全景效果。只展示有实测记录的能力。</p>
+<h2 id="11-现在就从这份清单开始">11. 现在就从这份清单开始</h2>
+<p>第一轮只完成以下事项：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 清点现有板卡、电源、线缆和摄像头，拍摄实物与接线照片。</li>
+<li><input disabled="" type="checkbox"> 建立开发记录，写下板卡型号、系统和工具版本。</li>
+<li><input disabled="" type="checkbox"> 从源码重新编译 FPGA LED 例程并上板运行。</li>
+<li><input disabled="" type="checkbox"> 香橙派正常播放视频，并跑通配套 NPU 示例。</li>
+<li><input disabled="" type="checkbox"> FPGA 稳定接收一路摄像头画面。</li>
+<li><input disabled="" type="checkbox"> 两块板之间完成数字发送和 LED 控制。</li>
+<li><input disabled="" type="checkbox"> 香橙派收到 FPGA 发来的一张正确图片，再连续显示视频。</li>
+</ul>
+<p>**第一个正式里程碑：一路摄像头 → FPGA → 香橙派 → 显示器。**做到这里，再加入红绿灯识别、按键判断和更多视频输入。</p>
+<p>需要查具体实现时，打开<a href="%E6%AF%94%E8%B5%9B%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3_ADAS.md">详细开发手册</a>；需要核对规则时，查阅<a href="../%E8%B5%84%E6%96%99/%E7%B4%AB%E5%85%89%E5%90%8C%E5%88%9B.pdf">今年赛题原文</a>的选题三。</p>
+</main></body></html>

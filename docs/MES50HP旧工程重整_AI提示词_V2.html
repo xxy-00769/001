@@ -1,0 +1,210 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MES50HP 旧工程重整提示词 V2</title><style>:root{color-scheme:light;--ink:#182b40;--blue:#155bc1;--muted:#5b6c80;--line:#dce4ef}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f6fb;color:var(--ink);font:16px/1.85 "Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}aside{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#10243c;color:white;padding:26px 20px}aside strong{display:block;font-size:19px;margin-bottom:14px}aside a{display:block;color:#cddcf0;text-decoration:none;font-size:13px;padding:5px 0;line-height:1.6}aside a:hover{color:white}main{margin:30px 35px 70px 305px;background:white;padding:42px 52px;max-width:1280px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 32px #10243c09}h1{font-size:31px;line-height:1.5;letter-spacing:.02em;margin:0 0 25px}h2{font-size:24px;margin:52px 0 20px;border-top:2px solid var(--line);padding-top:25px;scroll-margin-top:20px}h3{font-size:19px;margin:30px 0 12px;color:#234d7d;scroll-margin-top:20px}p{margin:13px 0}a{color:var(--blue);text-underline-offset:3px}blockquote{margin:20px 0;background:#eef5ff;border-left:4px solid #3880d6;padding:12px 20px;color:#345777;font-size:14px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:13px;line-height:1.75;table-layout:auto}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;overflow-wrap:anywhere}th{background:#eaf0f8;text-align:left;font-weight:700}tr:nth-child(even) td{background:#fafcff}pre{overflow:auto;background:#10243c;color:#e2edfa;padding:20px;border-radius:8px;font:13px/1.75 Consolas,monospace;white-space:pre}code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.9em;background:#eff3f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre code{background:transparent;padding:0;color:inherit}li{padding:3px 0}hr{border:0;border-top:1px solid var(--line);margin:32px 0}.badge{display:inline-block;background:#155bc1;color:white;padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:18px}.diagram{background:#eff5fc;border:1px solid #c9d9ed;border-radius:9px;padding:20px;margin:22px 0}.diagram-title{font-weight:700;margin-bottom:15px}.flow{display:flex;align-items:stretch;gap:9px;margin:12px 0}.flow div{flex:1;background:white;border:1px solid #c4d6eb;border-radius:7px;padding:12px 6px;text-align:center;font-size:12px;line-height:1.75}.flow b{align-self:center;color:#1d66b9}.diagram p{font-size:12px;color:#506783}.footer{margin-top:40px;color:var(--muted);font-size:13px}@media(max-width:1100px){aside{position:static;width:auto;max-height:280px}main{margin:18px;padding:28px}.flow{gap:4px}.flow div{font-size:11px}}@media print{aside,.badge{display:none}body{background:white;font-size:10pt}main{margin:0;padding:0;max-width:none;border:0;box-shadow:none}h1{font-size:23pt}h2{font-size:17pt;break-before:page;border:0;margin-top:0}h3{font-size:12pt;break-after:avoid}table{font-size:8pt}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt;background:#f0f3f6;color:#182b40}a{color:inherit;text-decoration:none}.diagram{break-inside:avoid}@page{size:A4;margin:18mm}}pre{white-space:pre-wrap;overflow-wrap:anywhere}pre code{font-family:Consolas,"Microsoft YaHei",monospace;line-height:1.9}</style></head><body><aside><strong>旧工程重整提示词 V2</strong><a href="#section-1">一、这次整合的明确目标</a><a href="#section-2">二、怎样使用</a><a href="#section-3">提示词 A：重新接手，复核旧工程并确定保留边界</a><a href="#section-4">提示词 B：复现旧基线，先修复采集、DDR、显示可靠性</a><a href="#section-5">提示词 C：整理旧检测、HUD、v11，保留能力但隔离来源</a><a href="#section-6">提示词 D：定义像素接口，补齐裁剪缩小与可比对预处理</a><a href="#section-7">提示词 E：实物网络控制，先让协议真正离开 FPGA</a><a href="#section-8">提示词 F：发送正确的图像，隔离原图、特征图和HUD</a><a href="#section-9">提示词 G：接香橙派，建立正式单路职责闭环</a><a href="#section-10">提示词 H：单路收尾及后续多路计划</a><a href="#section-11">三、每次继续开发时可用的补充提示词</a><a href="#section-12">四、什么结果需要要求 AI 纠正</a></aside><main><h1 id="section-0">MES50HP 旧工程重整与联调：AI 执行提示词 V2</h1><p>日期：2026-10-19。</p>
+<p>这份提示词针对已经存在的摄像头、DDR、HDMI、预处理、启发式道路检测、HUD、v11 按键实验和主机协议代码。它替代从零开发式的通用提示词。下文的旧工程状态来自用户提供的另一台电脑审查记录，本机没有访问该电脑，也没有独立核验这些文件和上板结果。接手 AI 必须先核实。</p>
+<h2 id="section-1">一、这次整合的明确目标</h2><p>先交付可靠单路 FPGA 图像设备：</p>
+<pre><code class="language-text">CMOS1摄像头
+   ↓
+正确接收、颜色整理、帧编号
+   ↓
+完整帧缓存与可配置基础处理
+   ├──调试HDMI：原图/处理图/历史诊断叠加
+   └──网络：电脑验证后迁移至香橙派
+
+按键 → 事件 → 香橙派驾驶判断 → LED状态返回
+</code></pre>
+<p>暂时没有香橙派时，电脑测试端代替它验证协议、显示和事件。不因电脑代替测试就宣称香橙派部署完成。</p>
+<p>正式语义识别和驾驶决策固定由香橙派负责：车道拟合、虚实线、斑马线、道路边缘、信号灯、行人车辆、导航、交通规则和告警。FPGA 做基础图像处理并提供可靠数据。</p>
+<p>旧 FPGA 白黄候选、线型初判、斑马线、中心偏移和本地规则保留作可选诊断与对比，不直接认定无用，不作为继续扩大 FPGA 语义识别的主线。历史诊断若资源或时序不允许，可通过独立构建配置保留。最终显示由香橙派负责，现阶段 HDMI/HUD 保留板级验收用途。</p>
+<h2 id="section-2">二、怎样使用</h2><ol>
+<li>在另一台电脑打开旧工程所在工作目录，将本文件交给 AI。</li>
+<li>首先发送提示词 A，完成事实复核和架构计划。</li>
+<li>再按 B—H 顺序执行，每轮允许多次修复，但不得跳过前置证据。</li>
+<li>已通过且没有改动的检查不必每轮全部重跑；受到新改动影响的检查必须重做。</li>
+<li>没有板卡、PDS、下载器等条件时，完成能做的静态检查、测试或主机工具，明确标出待上板，不编造成功。</li>
+</ol>
+<p>下文的新报告路径都是建议的项目相对路径，接手 AI 应根据真实目录组织，避免覆盖已有文件。</p>
+<h2 id="section-3">提示词 A：重新接手，复核旧工程并确定保留边界</h2><pre><code class="language-text">你现在作为工程负责人，接手我已有的MES50HP项目。这次任务是审查、复现、整理和逐步开发，不是从零重写。
+
+一、先核对工作目录和工作约束
+读取适用的AGENTS.md，确认当前所在目录、Git仓库、未提交改动、PDS工程和资料位置。以下是历史记录中的路径线索，不代表一定仍存在：
+- E:/FPGA drive/HDMI_DDR3_OV5640/
+- source/rtl/hdmi_ddr_ov5640_top.v
+- host/adas_demo.py、host/README.md
+- E:/FPGA drive/_archive/experiments/v11_lane_interaction_20261018/BOARD_ACCEPTANCE.md
+若路径不符，先在可访问项目目录中查找，不把不存在的路径写成已读取。
+
+二、固定当前系统分工
+硬件：MES50HP/PGL50H，后续香橙派5 16GB/RK3588S。
+FPGA负责采集、DDR缓存、格式转换、裁剪缩小、可选灰度/滤波/Sobel/颜色阈值、图像传输、按键采集、LED执行、统计与恢复。
+香橙派负责最终车道和线型、斑马线/道路边缘、信号灯/行人车辆等识别，以及跟踪、驾驶规则、全景和最终HDMI显示。
+首版通信选千兆以太网UDP，先用电脑测试，再迁移至香橙派。不能默认旧结果编码已形成物理通信。
+
+三、待复核的历史状态
+1. 主顶层选择CMOS1单路，已有RGB565转换、DDR和HDMI。
+2. 已有灰度、中值滤波、Sobel、白黄候选、左右边界/虚实线启发式、中心偏移、斑马线连续帧确认和HUD叠加。
+3. v11四键请求/阻止/强制告警/取消曾通过现场测试，但在归档中，当前构建入口未纳入；其规则使用合成状态，摄像头只是背景。
+4. host已有结果编码和Python/C解析，但没有实体数据链路。
+5. road_*卷积/整网推理和PC SegFormer属于研究支线；软件速度、距离、TTC不是实测值。
+6. 已有测试台、参考模型、CRC、超时、坏帧清除可能可复用，不能当冗余清理。
+以上都需要用当前源码、构建配置、测试及历史记录复核，历史上板结论要与具体版本绑定。
+
+四、第一轮只审查和新增报告，不改RTL、约束、IP，不移动删除文件
+追踪实际顶层引用与构建入口，输出每项功能：文件/模块证据、是否被实际引用、配置条件、数据来自真实画面还是合成状态、输出给谁、已有验证等级、可复用范围和风险。
+特别找出：RGB565位序；预处理/HUD在DDR前还是后；边界线是否修改主像素；规则状态来源；网络端口是否存在；串口/网口是否真正接通；输入选择还是并行采集。
+绘制“旧工程真实架构”和“目标架构”，每条链路给证据。区分已综合逻辑、测试台逻辑和主机模拟，不能仅凭文件名判定。
+
+五、生成
+- docs/reintegration/00_project_audit.md
+- docs/reintegration/function_matrix.csv
+- docs/reintegration/01_target_architecture.md
+- docs/reintegration/02_execution_plan.md
+功能矩阵至少包含：功能、源码位置、顶层连接、输入真实性、验证等级、保留/修复/诊断/暂停、依赖、验收方式。
+清单覆盖：时钟复位、摄像头、DDR、HDMI、预处理、历史检测、v11、按键LED、结果协议、实体网络、坏帧/超时、固化启动。
+
+请明确指出旧建议中“真实感知→本地规则→FPGA最终显示”与当前分工的差别：当前阶段保留它作诊断证据，不继续按它扩大正式产品架构。最后给出按小改动推进的计划，本轮不要自动进入重构。
+</code></pre>
+<h2 id="section-4">提示词 B：复现旧基线，先修复采集、DDR、显示可靠性</h2><pre><code class="language-text">请按照审查报告复现旧工程，先建立一个可恢复、可对比的基线，再修复单路可靠性。不要同时升级工具、替换算法、改通信和大改目录。
+
+1. 保存当前Git状态和恢复点。没有Git时先进行不覆盖原目录的必要源码、约束、IP配置和工程文件备份；备份位置排除自身，避免递归复制。不删除用户未提交内容。
+2. 确认实际器件型号/封装、板卡版本、PDS版本、顶层、约束和生成IP。核对现有日志及sbit与源码版本的对应关系，无法对应则标记未知。
+3. 尝试从源码重建。记录实际执行命令、工具版本、综合结果、布局布线、资源、setup/hold和未约束路径。综合成功不等于时序通过，旧报告不等于本轮结果。
+4. 对DDR可靠性欠账逐项列证据：初始化就绪、地址单位/步长、突发长度、握手、写完成、读完释放、跨时钟、读写同槽、输入中断和复位残留。按当前DDR IP实际接口判断，不能假设是标准AXI。
+5. 检查摄像头8bit两拍组RGB565、行帧边界复位、红蓝位序和有效区。只在有证据时修复，不凭感觉改摄像头寄存器。
+6. 为单路加入或复用帧数、完整帧、丢帧、FIFO溢出、DDR错误/就绪状态。提供实际可读方式：现有串口/调试接口/临时HUD；不以计数器仅在RTL存在作为已可观测。
+
+验证顺序：DDR测试数据→固定图/颜色→摄像头原图→已有处理模式。重点检查完整性，不先追求识别效果。
+有意义的仿真覆盖：帧边界、读写速度差、溢出、断流和复位；可以复用已有测试台。板上用纯红绿蓝、网格和移动物体检查。HDMI输入输出实际规格分别记录。
+
+如果定位到缓存覆盖，修复所有权管理：写完且事务完成才发布完整帧，读完才能归还；溢出丢整帧并重新对齐。摄像头不可任意暂停，不能靠背压让它等待。
+
+输出03_baseline.md、04_single_stream_reliability.md以及每个修复的最小差异。单独记录原版本和修复版本证据，不把修复前成绩直接沿用到修复后。
+验收：当前源码可重建，一路画面与计数一致，已验证范围明确；无硬件时保留待上板状态。
+</code></pre>
+<h2 id="section-5">提示词 C：整理旧检测、HUD、v11，保留能力但隔离来源</h2><pre><code class="language-text">请基于可靠单路整理既有功能，不扩大语义识别算法，不把历史实验直接并入默认运行模式。
+
+一、逐项确认旧处理模块
+灰度、中值滤波、Sobel、白黄候选、左右边界/线型初判、偏移、斑马线确认、HUD。对每个模块标出输入帧、处理延迟、输出含义、使用条件及资源。先使用已有测试台和参考模型验证，避免无依据重写。
+
+二、建立清楚的运行边界，模式名称可按项目规范调整
+NORMAL：彩色主图像，按配置裁剪/缩小，供后续图像传输；不得带诊断HUD污染算法输入。
+DIAGNOSTIC：历史候选涂色、边界线、斑马线候选、像素偏移和HUD，供板级检查及比较。
+SYNTHETIC_TEST：v11等合成状态测试，必须在状态输出和画面上明确可识别；不能自动混入正常真实画面结论。
+资源不足时用不同构建配置保留诊断，避免强行常驻。明确综合关闭的模块是否真的被裁剪，不能只凭文件在目录就计算占用。
+
+三、处理v11
+先读取验收记录并找齐对应源码、顶层和构建入口，复现它原来能证明的内容。不要把“历史现场通过”扩展成当前整合版本上板通过。
+从中复用按键消抖、按下/长按事件、事件编号、取消等与业务无关的部分；阻止、强制执行、告警的交通规则留在测试模块或主机软件，不作为正式FPGA决策主线。
+按实际按键数量建立动作映射表。保持一次按下对应一次事件，重发相同事件不能重复执行。若引入可靠事件传输，定义编号、应答、有限重试和过期处理，避免丢包后延迟触发旧操作。
+
+四、配置和测试
+模式切换在安全帧边界生效，事件源和状态源可追踪。保留原图/处理图/HUD图之间的对应关系，不把不同帧的检测叠到当前画面上。
+对边界、坏帧、断流、重复按键、取消、模式切换做适当验证。v11合成状态测试与真实视频输入测试分别登记。
+
+输出05_legacy_module_disposition.md、06_modes_and_events.md，更新正式构建入口和功能矩阵。road_*、PC模型、模拟速度/TTC仅归档标记暂停，不删除；不要把软件模拟数值包装成硬件测量。
+</code></pre>
+<h2 id="section-6">提示词 D：定义像素接口，补齐裁剪缩小与可比对预处理</h2><pre><code class="language-text">请将现有可靠图像链路整理为可供主机识别的基础图像输出。优先采用小范围适配器接入既有模块，避免为了统一命名重写全部路径。
+
+先生成07_video_interface.md，明确：颜色位序、字节序、有效信号、行/帧标志、通道/帧号、宽高、stride、采集计数单位、配置版本、完整性、复位和背压规则。
+记录采集计数是每路帧起始还是其他事件；多设备未校时不能宣称绝对时间同步。
+
+保留彩色主路径，新增/复用可开关ROI裁剪和缩小。首版选择一种明确支持的缩小方式，不宣称任意尺寸缩放。给出尺寸合法性、边界、偶数限制（若存在）及修改配置的生效帧。
+裁剪/缩小要能向主机报告原图尺寸、ROI位置、缩放后尺寸，后续识别框才能正确恢复坐标。不要只改输出计数器而未选择像素。
+
+已有灰度/中值/Sobel先检查资源和效果再复用。对彩色主路径不强制启用中值滤波；神经网络识别所需原图不得被强制二值化。特征图可先本地验证，不默认和主图全部常开网络发送。
+
+用软件参考检查固定图、随机小图和实际道路样例中的颜色、边界与坐标。整数算法要求一致时逐像素比对，近似算法定义误差。核对处理延迟中像素和标志同步移动；现有帧统计与坏帧恢复继续有效。
+
+交付08_preprocess_validation.md和可重现测试数据/命令。报告实际资源时序变化和支持规格。不要在本轮改进FPGA车道拟合、斑马线语义或训练模型。
+</code></pre>
+<h2 id="section-7">提示词 E：实物网络控制，先让协议真正离开 FPGA</h2><pre><code class="language-text">请审查已有host结果编码和Python/C解析，并把实体通信建立起来。现有解析器仅作为候选资产，不能直接推定已能使用。
+
+1. 核对主顶层是否已有网络端口、板上PHY型号、原理图引脚、RGMII时钟/延时、复位和链路状态。不得套用多网口底板或其他FPGA的约束。
+2. 优先参考当前MES50HP匹配的ARP/UDP例程，先独立验证小数据双向通信，再与视频主工程整合。若编译当前网络基线需要临时测试顶层，明确区分它与正式顶层。
+3. 建立09_network_protocol.md，区分图像片、配置/查询、按键事件、LED状态、心跳、可选历史诊断结果。原有“车道结果消息”不是视频消息，分别定义。
+4. 明确版本、网络字节序、消息长度、会话/启动标识、命令编号、应答、校验和超时。应用CRC若保留应明确覆盖范围；不得把应用CRC当作唯一安全机制。
+5. 控制命令采用设定状态等幂等形式，配置和按键事件去重。队列和重试有上限，失联后过期事件不应自动执行。主机返回的LED状态有有效期，本地通信故障有独立指示。
+
+电脑先用标准库测试工具：接收递增数字，查询状态，设置LED，接收一次真实按键事件。记录实际MAC/IP、网卡、千兆协商和抓包证据；网络配置不能破坏当前远程连接。
+指明线缆：MES50HP RJ45到电脑RJ45/可靠USB千兆网卡，普通Cat5e/Cat6；下载仍走配套JTAG，串口仅作低速诊断。
+
+加入合理的协议解析异常测试，检查短包、非法长度、重复、乱序、超时、会话变化。不得把主机自发自收当成FPGA通信通过。
+
+输出10_network_control_validation.md、接线和运行说明。没有下载能力时完成可独立验证的RTL/主机工具并明确硬件阻塞。实体双向控制完成后再推进真实图像传输。
+</code></pre>
+<h2 id="section-8">提示词 F：发送正确的图像，隔离原图、特征图和HUD</h2><pre><code class="language-text">基于已验证的实体网络链路，按固定测试图→DDR测试帧→一路真实摄像头图的顺序实现视频传输。不一开始发送四路，不并行重写所有缓存。
+
+一、先设计可计算的规格
+选低负载首测规格，例如640x360 RGB565 15fps仅作为候选，检查现有摄像头及缩放支持。核算像素、片头、以太网开销、DDR读取和发送节奏。实际分辨率以验证结果为准。
+优先先实现只读一个消费者，再整合HDMI与网络双消费者。明确读完成、引用/槽归还和慢消费者处理，不能HDMI读完就覆盖网络还在读的图。
+
+二、协议和重组
+每片包含足够的会话、通道、帧号、图像/派生类型、规格、帧总长度、片号/片数、偏移、载荷长度和完整性信息。片大小按MTU核算，首版避免IP分片，不默认巨帧。
+RX主机检查上限、格式、偏移、片数、重复、乱序、缺包和超时；完整位图/等价机制确认全部片收齐后才提交。不能凭最后一片到达判断完整。
+队列受限，允许按规则丢旧完整帧，不能一直积压；不逐包无限重传实时视频。
+
+三、数据语义
+默认发送不含HUD的彩色图；如果发送特征图，明确类型、同源帧号、ROI和缩放关系。旧候选涂色和HUD仅作可选诊断，不得偷偷作为模型输入原图。
+检查RGB565网络字节序和主机展开方式，用纯红绿蓝图排除通道颠倒。
+
+四、主机与验证
+在现有host目录上增量开发或创建清楚的测试子目录。支持保存图片、可选实时显示、逐帧元数据和统计；复用解析代码前先验证兼容，勿破坏原测试。
+固定图逐字节对比，真实图检查完整性。注入丢包、重复、乱序，验证拒收坏帧及恢复。实测断网、主机进程重启、FPGA重启。
+区分采集、发送、完整接收和显示帧率；分别记录丢弃原因和测试时长。无校时不直接减两端时间算单向延迟，可用可靠往返或同屏拍摄等方式并说明测量范围。
+
+输出11_video_transport_validation.md。当前阶段完成定义：电脑接收来自FPGA的真实彩色视频，帧完整、状态可信、可恢复。此时即可进入香橙派迁移，不等四路。
+</code></pre>
+<h2 id="section-9">提示词 G：接香橙派，建立正式单路职责闭环</h2><pre><code class="language-text">现在把已经在电脑验证的接收和控制程序迁移至香橙派5 16GB/RK3588S。若当前无法访问香橙派，先准备部署脚本、依赖说明和人工操作步骤，不宣称板端验证。
+
+连接：MES50HP RJ45→Cat5e/Cat6→香橙派RJ45；需要电脑同时调试时使用千兆交换机；显示器接香橙派HDMI。核对实际协商速率、IP和Linux网卡名，不硬编码eth0。
+JTAG继续接开发电脑下载，串口用于日志。不要把香橙派HDMI输出当成视频输入，不默认普通USB线可传FPGA视频。
+
+先原样复现电脑端的保存图片、预览、配置、按键事件和LED，再加识别。保留同一网络协议，不为更换运行平台无故改FPGA。
+
+识别接入时由香橙派完成最终车道/线型、斑马线/道路边缘、信号灯/行人车辆与驾驶判断。可以逐项实现，不要求本轮全部完成。旧FPGA初判作为明确标注的对比数据，不能混入正式识别结果而不标来源。
+先建立结果结构，分别包含输入会话/帧号、检测有效性、识别结果、按键事件、决策和原因。处理过期图像、未知和断流，不沿用旧许可。按键与结果匹配要考虑图像年龄，不能按当前接收时间任意配对。
+
+联调先使用合成识别状态验证消息和规则，但明确标注该模式；再用真实画面替换验证至少一个场景。模拟通过不能填写真实道路识别通过。
+原预览和识别视图共用接收服务，叠加使用独立缓冲。香橙派最终HDMI，FPGA仅保留调试HDMI。LED返回命令含状态有效期或可解释的失联处理。
+
+输出12_orangepi_single_stream.md，分别列网络、显示、模型、真实场景和恢复证据。NPU驱动/runtime与模型工具按实际系统匹配，不盲目安装旧包覆盖驱动。
+</code></pre>
+<h2 id="section-10">提示词 H：单路收尾及后续多路计划</h2><pre><code class="language-text">请先验收本轮单路整合，再制定多路扩展。没有通过的项如实标记，不通过扩大范围掩盖问题。
+
+单路必查：
+- 源码、工具、约束、IP和下载文件版本对应；当前顶层确实包括本轮模块。
+- 摄像头颜色/行帧正确，DDR完整帧管理，无已知覆盖和撕裂。
+- 原图与可选处理分离，HUD不污染正式算法图像。
+- 控制、按键和LED形成实际实体链路；合成和真实来源明确。
+- 真实图像收发、缺包丢弃、进程重启和断流恢复。
+- 资源、时序、未约束项、实际规格和测试时长可查。
+- JTAG下载和上电固化分别验证，不能混为一谈。
+- 连续运行先短测，再在条件允许时完成约2小时；未完成就记录实际时长和后续步骤。
+
+生成13_single_stream_acceptance.md、14_quick_start.md、15_open_issues.md和更新后的功能矩阵。把“已实现但待上板”和“已通过实物测试”分开。
+
+后续按依赖规划，不立即同时改所有输入：
+1. 双目真正并行：核对接口与配置总线，共享资源单独仲裁，各路独立缓存/帧号。两路选择不算并行。
+2. HDMI与双目并行：每路时钟、格式、容量和调度独立考虑。
+3. 网络像素输入：组帧、校验、超时、完整后提交、像素处理后返回；避免回送循环。MP4需先在外部解码。
+4. 四路独立动态编号和逐路断开验收；统计每路吞吐和不同步程度。
+5. 标定融合和最终道路AI在香橙派，四宫格不当作真实全景。
+
+每一步先算DDR/网络/资源，再修改RTL；四路起步可评估每路640x360 RGB565 15fps，不能写成已达性能或比赛硬指标。
+</code></pre>
+<h2 id="section-11">三、每次继续开发时可用的补充提示词</h2><pre><code class="language-text">请根据最新审查、功能矩阵和当前阶段报告继续下一项最小任务。
+先说明本轮要解决的具体问题、为什么是当前依赖、将改哪些模块、怎样验收，然后直接在已有授权范围内执行。
+保留用户改动和可恢复基线；避免无关重构及反复运行与本次无关的大范围检查。
+如果工具或实物缺失，明确阻塞到哪个验证级别，继续独立可做部分，不能编造结果。
+收尾按以下格式：本轮结论；改动文件；实际执行检查及结果；证据路径；支持规格；资源/时序；未验证/失败；下一步。
+</code></pre>
+<h2 id="section-12">四、什么结果需要要求 AI 纠正</h2><p>出现以下表述时，要求它返回证据，不能直接接受结论：</p>
+<ul>
+<li>“有解析器，所以通信完成”：必须给实际发送端、物理链路和接收证据。</li>
+<li>“有两个摄像头接口，所以双路完成”：必须给同时更新和独立帧记录。</li>
+<li>“v11通过，所以真实变道告警通过”：必须区分合成状态与真实识别。</li>
+<li>“文件已加入，所以正式顶层包含”：必须核对构建入口及实例化。</li>
+<li>“综合通过，所以板子能跑”：必须区分时序、下载和实物验证。</li>
+<li>“候选颜色正确，所以车道识别完成”：必须核对最终语义判断来源和测试范围。</li>
+<li>“重整意味着删除旧算法”：诊断和研究资产应保留可追溯记录，不因当前分工变动而直接删除。</li>
+</ul>
+<p>当前优先级是：保留旧成果，修好单路可靠性，接通实体图像通信，再接香橙派。不要把本轮任务变成继续堆叠FPGA画面效果或整网推理实验。</p>
+</main></body></html>

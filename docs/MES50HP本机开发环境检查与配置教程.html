@@ -1,0 +1,286 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MES50HP 本机环境检查与配置教程</title><style>:root{color-scheme:light;--ink:#182b40;--blue:#155bc1;--muted:#5b6c80;--line:#dce4ef}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f6fb;color:var(--ink);font:16px/1.85 "Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}aside{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#10243c;color:white;padding:26px 20px}aside strong{display:block;font-size:19px;margin-bottom:14px}aside a{display:block;color:#cddcf0;text-decoration:none;font-size:13px;padding:5px 0;line-height:1.6}aside a:hover{color:white}main{margin:30px 35px 70px 305px;background:white;padding:42px 52px;max-width:1280px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 32px #10243c09}h1{font-size:31px;line-height:1.5;letter-spacing:.02em;margin:0 0 25px}h2{font-size:24px;margin:52px 0 20px;border-top:2px solid var(--line);padding-top:25px;scroll-margin-top:20px}h3{font-size:19px;margin:30px 0 12px;color:#234d7d;scroll-margin-top:20px}p{margin:13px 0}a{color:var(--blue);text-underline-offset:3px}blockquote{margin:20px 0;background:#eef5ff;border-left:4px solid #3880d6;padding:12px 20px;color:#345777;font-size:14px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:13px;line-height:1.75;table-layout:auto}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;overflow-wrap:anywhere}th{background:#eaf0f8;text-align:left;font-weight:700}tr:nth-child(even) td{background:#fafcff}pre{overflow:auto;background:#10243c;color:#e2edfa;padding:20px;border-radius:8px;font:13px/1.75 Consolas,monospace;white-space:pre}code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.9em;background:#eff3f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre code{background:transparent;padding:0;color:inherit}li{padding:3px 0}hr{border:0;border-top:1px solid var(--line);margin:32px 0}.badge{display:inline-block;background:#155bc1;color:white;padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:18px}.diagram{background:#eff5fc;border:1px solid #c9d9ed;border-radius:9px;padding:20px;margin:22px 0}.diagram-title{font-weight:700;margin-bottom:15px}.flow{display:flex;align-items:stretch;gap:9px;margin:12px 0}.flow div{flex:1;background:white;border:1px solid #c4d6eb;border-radius:7px;padding:12px 6px;text-align:center;font-size:12px;line-height:1.75}.flow b{align-self:center;color:#1d66b9}.diagram p{font-size:12px;color:#506783}.footer{margin-top:40px;color:var(--muted);font-size:13px}@media(max-width:1100px){aside{position:static;width:auto;max-height:280px}main{margin:18px;padding:28px}.flow{gap:4px}.flow div{font-size:11px}}@media print{aside,.badge{display:none}body{background:white;font-size:10pt}main{margin:0;padding:0;max-width:none;border:0;box-shadow:none}h1{font-size:23pt}h2{font-size:17pt;break-before:page;border:0;margin-top:0}h3{font-size:12pt;break-after:avoid}table{font-size:8pt}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt;background:#f0f3f6;color:#182b40}a{color:inherit;text-decoration:none}.diagram{break-inside:avoid}@page{size:A4;margin:18mm}}pre{white-space:pre-wrap;overflow-wrap:anywhere}table{font-size:14px}</style></head><body><aside><strong>本机开发环境配置</strong><a href="#section-1">1. 检查结论：现在缺什么</a><a href="#section-2">2. 历史电脑到底用什么环境</a><a href="#section-6">3. 第一步：保留历史目录，建立当前开发目录</a><a href="#section-7">4. 第二步：确认已安装的 PDS 和本机授权</a><a href="#section-11">5. 第三步：安装 ModelSim 并配置厂商库</a><a href="#section-14">6. 第四步：Python 环境按用途选择</a><a href="#section-17">7. 第五步：修改工作副本的工具路径</a><a href="#section-19">8. 第六步：下载器驱动与网口</a><a href="#section-22">9. 按这份清单验收环境</a><a href="#section-23">10. 本次结论的证据入口</a></aside><main><span class="badge">环境核查与迁移 · 2026-10-20</span><h1 id="section-0">MES50HP 本机开发环境检查与配置教程</h1><p>检查日期：2026-10-20。历史资料位置：<code>E:/zhoumian/FPGA/历史工程/FPGA drive</code>。本文用于在当前 Windows 电脑复现历史工程并继续开发。</p>
+<h2 id="section-1">1. 检查结论：现在缺什么</h2><p><strong>PDS 已经安装，不需要从头装一遍。优先补齐 ModelSim、确认本机许可证和下载器驱动，再调整旧工程脚本路径。</strong></p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>历史电脑依据</th>
+<th>当前电脑实际情况</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Windows</td>
+<td>历史构建使用 Windows 路径与 PowerShell</td>
+<td>Windows 11 专业版 64 位，约 32GB 内存</td>
+<td>可继续使用</td>
+</tr>
+<tr>
+<td>PDS</td>
+<td>2022.2-SP6.1，build 138931</td>
+<td>已安装 2022.2-SP6.4，build 146967，命令行帮助执行成功</td>
+<td>先保留 SP6.4，单独验证兼容性</td>
+</tr>
+<tr>
+<td>ModelSim</td>
+<td>SE-64 10.7，实际仿真版本日志可核对</td>
+<td>PATH、卸载注册表及已检查的软件目录未发现</td>
+<td>需要安装，或提供已有安装位置进一步检查</td>
+</tr>
+<tr>
+<td>Pango 仿真原语</td>
+<td>旧 SP6.1 下的厂商库</td>
+<td>SP6.4 的 <code>GTP_GRS.v</code>、<code>GTP_DRM18K.v</code> 存在</td>
+<td>仿真时显式指定新库路径</td>
+</tr>
+<tr>
+<td>PDS 许可证</td>
+<td>旧日志显示曾成功签出，但也曾有即将到期警告</td>
+<td>未发现安装目录内 <code>.lic</code>，未发现当前进程相关许可证环境变量</td>
+<td>本机授权待配置/核验；不能据此断言所有授权方式都不存在</td>
+</tr>
+<tr>
+<td>下载器驱动</td>
+<td>旧机有配置下载记录</td>
+<td>当前未检测到在线 Pango/JTAG/FTDI 等相关设备；PDS 附带驱动安装文件</td>
+<td>接下载器后检查，必要时安装</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>协议工具要求 3.10+；旧脚本绑定旧用户目录</td>
+<td>默认 <code>python</code>/<code>py -3</code> 是 3.9.9；另有 3.14.4 和工具专用环境</td>
+<td>协议工具用明确路径，不用默认 3.9</td>
+</tr>
+<tr>
+<td>PowerShell</td>
+<td>脚本包含 <code>[IO.Path]::GetRelativePath</code>，需现代运行环境</td>
+<td>当前执行检查使用 PowerShell 7.6.5</td>
+<td>开发脚本使用 PowerShell 7</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>历史工程按版本管理和输入哈希记录</td>
+<td>Git 2.53.0.windows.2 可用</td>
+<td>无需重装</td>
+</tr>
+<tr>
+<td>编辑器</td>
+<td>不绑定特定编辑器</td>
+<td>VS Code 有安装记录；<code>code</code> 命令实际指向 Qoder</td>
+<td>选择自己使用的编辑器，核对打开的目录</td>
+</tr>
+<tr>
+<td>Visual C++ 运行库</td>
+<td>原 PDS 安装教程要求运行库</td>
+<td>当前已有 VC++ 2022 x64/x86 14.51</td>
+<td>无需因旧教程重复安装 VS2017；以工具启动检查为准</td>
+</tr>
+<tr>
+<td>C 编译器</td>
+<td>历史便携 C 解析器有 GCC 测试命令</td>
+<td>PATH 和已检查目录未发现可用 GCC/Clang/MSVC 命令</td>
+<td>仅需要验证 C 解析器时再装，不影响 FPGA/Python 主线</td>
+</tr>
+<tr>
+<td>Wireshark</td>
+<td>网络阶段可用来抓包</td>
+<td>PATH、卸载记录和已检查目录未发现</td>
+<td>实体网络排障前建议安装，不是编译前提</td>
+</tr>
+<tr>
+<td>算法软件包</td>
+<td>旧 <code>road_first</code> 有专用依赖</td>
+<td>Codex 配套 Python 3.12 有 NumPy/Pillow，未找到 ONNX Runtime/OpenCV</td>
+<td>算法实验时另建环境，暂不阻塞 FPGA</td>
+</tr>
+</tbody></table>
+<p>“未发现”的结论限于检查过的命令、注册表、旧路径和常见软件位置，不是逐盘扫描所有隐藏/便携软件。电脑有 Realtek 有线千兆网卡，目前未接线，协商速率尚未验证。无线连接正常，不需要修改它。</p>
+<p>本轮未安装软件、修改环境变量、运行历史构建脚本、改动 RTL/约束或下载板卡。PDS 只在独立检查目录运行了 <code>-help</code>，没有验证综合许可、完整编译或上板。</p>
+<h2 id="section-2">2. 历史电脑到底用什么环境</h2><h3 id="section-3">2.1 FPGA 工具链</h3><p>以下结论相互印证，并非只看 README：</p>
+<ul>
+<li><code>build.bat</code> 中 <code>PDS_BIN</code> 为 <code>D:/PDS/PDS_2022.2-SP6.1/bin</code>。</li>
+<li><code>flow.tcl</code> 标明 SP6.1，配置 Logos、PGL50H、速度等级 -6、FBG484。</li>
+<li><code>.pds</code> 文件头记录 <code>2022.2-SP6.1 build 138931</code>。其中旧的 <code>2022.1</code> 流程标识不能单独用来推断实际工具版本。</li>
+<li><code>tests/pnr_help.txt</code> 记录同一版本与旧许可证签出信息。</li>
+</ul>
+<h3 id="section-4">2.2 仿真</h3><p>旧脚本使用 <code>D:/PDS/Modelsim/win64</code> 下的 <code>vlib.exe</code>、<code>vmap.exe</code>、<code>vlog.exe</code>、<code>vsim.exe</code>。历史 <code>tmp/video_modes/20261019_204949_809_3bc5e988/version.log</code> 明确记录 ModelSim SE-64 10.7 编译器。</p>
+<p>仿真还引用 PDS 安装目录的厂商原语，不能只安装 ModelSim 而不配置库。历史原厂 DDR/PLL 仿真记录中曾使用 <code>-novopt</code> 绕开旧版本优化阶段崩溃；这是具体测试的兼容措施，不应给所有测试无条件追加，更不能假定新版 Questa 支持同样参数。</p>
+<h3 id="section-5">2.3 主机程序</h3><p>普通诊断与结果解析要求 Python 3.10+，使用标准库。部分旧图像参考测试另需 NumPy、Pillow。<code>host/road_first/requirements.txt</code> 记录：</p>
+<pre><code class="language-text">numpy==2.3.5
+Pillow&gt;=11,&lt;13
+onnxruntime==1.23.2
+</code></pre>
+<p>这些依赖属于研究算法分支，不是所有 FPGA 操作的前提。当前证据不能确定旧电脑所有 Python 环境的精确版本与包清单；脚本中出现过 Codex 配套 Python 的绝对路径，迁移时必须替换。</p>
+<h2 id="section-6">3. 第一步：保留历史目录，建立当前开发目录</h2><p>历史目录作为参考保留。建议当前工作副本使用较短、无空格和中文的路径，例如：</p>
+<pre><code class="language-text">E:/FPGA_Work/MES50HP/
+    HDMI_DDR3_OV5640/    工作工程
+    tmp/                新的仿真与构建输出
+    licenses/           本机有效授权（不提交到版本库）
+</code></pre>
+<p>工作副本应包含源码、约束、<code>.pds</code>、<code>flow.tcl</code>、IP 的配置及所需生成文件、测试与工具。不要仅复制 <code>.v</code>；也不必为了开发把整个历史 <code>tmp</code>、归档位流和模型复制多份。若原仓库有本地改动、未跟踪文件或外部依赖，需要一并确认，不能只用 Git 已提交内容代替当前工作状态。</p>
+<p>当前历史路径有空格和中文，本轮读取正常，不表示旧 PDS 全流程已兼容。工作副本迁移后，先检查各模块初始化文件、IP 路径、Tcl 和脚本。不要对整个目录做无差别字符串替换；历史报告中的旧路径是证据，不应伪装改写成新执行结果。</p>
+<h2 id="section-7">4. 第二步：确认已安装的 PDS 和本机授权</h2><h3 id="section-8">4.1 现有 PDS 可以继续用</h3><p>当前安装路径：</p>
+<pre><code class="language-text">E:/XUEXI/FPGA_PDS/PDS_2022.2-SP6.4
+</code></pre>
+<p>在 PowerShell 中检查：</p>
+<pre><code class="language-powershell">$pdsRoot = &#39;E:\XUEXI\FPGA_PDS\PDS_2022.2-SP6.4&#39;
+Test-Path &quot;$pdsRoot\bin\pds_shell.exe&quot;
+&amp; &quot;$pdsRoot\bin\pds_shell.exe&quot; -help
+</code></pre>
+<p>本轮已执行帮助命令，输出 <code>2022.2-SP6.4 build 146967</code>。因此，“PDS 不在 PATH”不等于未安装，使用完整路径就可以调用。</p>
+<h3 id="section-9">4.2 授权如何配置</h3><p>旧机器的节点锁定许可证不能预设适用于这台机器。向板卡供应商或紫光同创正规渠道申请/确认适用于本机、器件和相应综合工具的有效许可。申请所需的机器信息按对方工具和要求采集。</p>
+<p>取得本机许可后，按照 <a href="../%E8%B5%84%E6%96%99/%E7%9B%98%E5%8F%A450K%E5%BC%80%E5%8F%91%E6%9D%BF%E8%B5%84%E6%96%99/%E7%9B%98%E5%8F%A450K%E5%BC%80%E5%8F%91%E6%9D%BF/1_Demo_document/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E7%AF%87/01_PDS%E5%AE%89%E8%A3%85%E6%8C%87%E5%AF%BC%E6%89%8B%E5%86%8C.pdf">PDS 安装指导</a> 配置。该教程明确给出 PDS 变量 <code>PANGO_LICENSE_FILE</code>；若流程实际使用 OEM Synplify，还需要对应的 <code>SNPSLMD_LICENSE_FILE</code> 授权，不能只装运行库就认为综合工具可用。</p>
+<p>以下命令仅在已经把真实有效许可放到该路径后使用，文件名是示例：</p>
+<pre><code class="language-powershell">$licensePath = &#39;E:\FPGA_Work\MES50HP\licenses\pds_local.lic&#39;
+if (-not (Test-Path -LiteralPath $licensePath)) {
+    throw &#39;请先放入适用于本机的有效许可证，并修改实际路径。&#39;
+}
+[Environment]::SetEnvironmentVariable(&#39;PANGO_LICENSE_FILE&#39;, $licensePath, &#39;User&#39;)
+$env:PANGO_LICENSE_FILE = $licensePath
+</code></pre>
+<p>重开 PDS 和终端后生效。帮助命令成功不能证明授权可用，授权验收应是一个小型工程真正完成所需综合和后端流程。遇到 license checkout failed，先检查许可种类、主机绑定、有效期和工具支持，不通过反复重装解决。</p>
+<p>旧 Lite 安装包不需要许可证的目录标记，不代表它与当前工程的器件、IP 和功能完全匹配，因此不推荐直接用 Lite 替换现有 SP6.4。</p>
+<h3 id="section-10">4.3 SP6.4 与旧 SP6.1 怎么选</h3><p>先保留当前 SP6.4，复制一个工作工程逐级检查：打开→源码解析→综合→布局布线与时序→位流。保存版本差异和警告，不能只看到 <code>.sbit</code> 就确认迁移成功。</p>
+<p>本轮没有实测 SP6.4 对旧工程全部 IP、约束和后端结果的兼容性。若复现出现确定的版本问题，再获取正规的 SP6.1 安装包，按安装器支持情况隔离安装或使用另一套环境。当前资料库已找到 SP6.4 和 SP1 Lite 包，未在已检查目录找到 SP6.1 安装包。</p>
+<h2 id="section-11">5. 第三步：安装 ModelSim 并配置厂商库</h2><h3 id="section-12">5.1 获取与安装</h3><p>历史版本是 ModelSim SE-64 10.7。优先通过学校授权、供应商支持或软件正规渠道获得可用仿真器及许可；如果只能获得较新 ModelSim/Questa，先确认 PDS 支持与加密 IP 兼容，再测试旧脚本，不把名字相近视为完全可替代。</p>
+<p>本工作空间未找到可直接确认的 ModelSim 安装包。PDS 中有联合仿真教程，不意味着已经包含完整 ModelSim 安装程序或许可。</p>
+<p>安装到路径简洁的位置，例如 <code>E:/FPGA_Tools/ModelSim</code>。安装完成后找到实际包含以下文件的目录，具体可能叫 <code>win64</code> 或 <code>win64pe</code>，不要照抄旧路径：</p>
+<pre><code class="language-text">vlib.exe
+vmap.exe
+vlog.exe
+vsim.exe
+</code></pre>
+<p>在 PowerShell 中用实际路径检查：</p>
+<pre><code class="language-powershell">$modelSimBin = &#39;E:\FPGA_Tools\ModelSim\win64&#39;  # 改成真实目录
+foreach ($toolName in &#39;vlib.exe&#39;,&#39;vmap.exe&#39;,&#39;vlog.exe&#39;,&#39;vsim.exe&#39;) {
+    if (-not (Test-Path (Join-Path $modelSimBin $toolName))) {
+        throw &quot;缺少 $toolName，请检查安装目录。&quot;
+    }
+}
+&amp; &quot;$modelSimBin\vlog.exe&quot; -version
+&amp; &quot;$modelSimBin\vsim.exe&quot; -version
+</code></pre>
+<p>能够显示版本还不等于运行仿真时许可签出成功，需要实际建立工作库、编译小测试台并运行退出。</p>
+<h3 id="section-13">5.2 两种库配置方式</h3><p>**使用现有 PowerShell 仿真脚本：**脚本中已经列出原语源文件并编译时，传入当前 PDS 的 <code>PrimitiveLibrary</code>，无需为了同一个测试重复建立全部器件库。</p>
+<p>当前可用原语目录：</p>
+<pre><code class="language-text">E:/XUEXI/FPGA_PDS/PDS_2022.2-SP6.4/arch/vendor/pango/verilog/simulation
+</code></pre>
+<p>**使用 PDS 图形界面联合仿真：**按 <a href="../%E8%B5%84%E6%96%99/%E7%9B%98%E5%8F%A450K%E5%BC%80%E5%8F%91%E6%9D%BF%E8%B5%84%E6%96%99/%E7%9B%98%E5%8F%A450K%E5%BC%80%E5%8F%91%E6%9D%BF/1_Demo_document/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E7%AF%87/04_PDS%E4%B8%8Emodelsim%E8%81%94%E5%90%88%E4%BB%BF%E7%9C%9F.pdf">PDS 与 ModelSim 联合仿真教程</a>，在 Compile Simulation Libraries 中选择仿真器位置、Verilog、Logos 对应库和输出目录。注意本板是 Logos/PGL50H，不是其他示例的 Logos-2。界面以实际安装版为准。</p>
+<p>初次验证从不含 DDR PHY 的简单测试开始，再运行使用厂商原语的测试，最后验证涉及加密 DDR/PLL 的完整测试。任何一级失败，都保留原日志，区别语法错误、缺原语、许可失败和仿真器兼容问题。</p>
+<h2 id="section-14">6. 第四步：Python 环境按用途选择</h2><h3 id="section-15">6.1 诊断通信：现成环境已经够用</h3><p>当前 S5 工具的 Python 为：</p>
+<pre><code class="language-text">E:/code/StreamLab/tools/MES50HP_S5_tools/.venv/Scripts/python.exe
+</code></pre>
+<p>它使用 Python 3.14.4，本机此前已通过回环模拟收发。无需重新安装第三方包，也不要用默认的 <code>python</code> 或 <code>py -3</code>，因为它们当前会选 3.9。</p>
+<p>检查：</p>
+<pre><code class="language-powershell">$pythonExe = &#39;E:\zhoumian\FPGA\tools\MES50HP_S5_tools\.venv\Scripts\python.exe&#39;
+&amp; $pythonExe --version
+</code></pre>
+<p>此环境位于 S5 工具目录，可以用于相同标准库要求的诊断脚本；不要将它当作已经安装图像算法依赖的全项目环境。</p>
+<h3 id="section-16">6.2 图像参考或算法：以后另建 Python 3.12 环境</h3><p>需要 NumPy/Pillow 的参考测试，或继续运行旧 ONNX 模型时，建议另装官方 Python 3.12 x64，并建立独立环境。旧包固定版本的 Windows wheel 对 Python 3.14 支持不能预设，因此不要把研究依赖强塞进当前 S5 环境。</p>
+<p>安装 Python 3.12 后，先运行 <code>py -0p</code> 确认解释器选择，再在实际工作副本中执行：</p>
+<pre><code class="language-powershell">Set-Location &#39;E:\FPGA_Work\MES50HP\HDMI_DDR3_OV5640&#39;
+py -3.12 -m venv .venv
+$pythonExe = Join-Path $PWD &#39;.venv\Scripts\python.exe&#39;
+&amp; $pythonExe -m pip install --upgrade pip
+&amp; $pythonExe -m pip install &#39;numpy==2.3.5&#39; &#39;Pillow&gt;=11,&lt;13&#39;
+&amp; $pythonExe -c &quot;import sys,numpy,PIL; print(sys.version); print(numpy.__version__,PIL.__version__)&quot;
+</code></pre>
+<p>仅在继续旧研究模型时，再运行：</p>
+<pre><code class="language-powershell">&amp; $pythonExe -m pip install -r &#39;.\host\road_first\requirements.txt&#39;
+&amp; $pythonExe -c &quot;import onnxruntime; print(onnxruntime.__version__)&quot;
+</code></pre>
+<p>OpenCV、RKNN、CUDA、PyTorch 不属于当前 FPGA 基线的必装项。香橙派部署、视频接收显示和训练模型时分别按实际任务安装。本轮没有为你安装 Python 3.12 或这些包。</p>
+<h2 id="section-17">7. 第五步：修改工作副本的工具路径</h2><p>安装完软件还不够，旧脚本仍然指向旧机器。</p>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>旧值/问题</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>build.bat</code></td>
+<td><code>D:/PDS/PDS_2022.2-SP6.1/bin</code></td>
+<td>工作副本改成实际 PDS bin</td>
+</tr>
+<tr>
+<td>多个 <code>run.ps1</code></td>
+<td><code>D:/PDS/Modelsim/win64</code></td>
+<td>优先使用 <code>-ModelSim</code> 参数覆盖</td>
+</tr>
+<tr>
+<td>部分 <code>run.ps1</code></td>
+<td>SP6.1 仿真库</td>
+<td>使用 <code>-PrimitiveLibrary</code> 覆盖成实际安装版</td>
+</tr>
+<tr>
+<td>仿真/构建脚本</td>
+<td><code>E:/FPGA drive/tmp/...</code></td>
+<td><code>-OutputParent</code> 改成当前工作目录同级的 <code>tmp</code> 下</td>
+</tr>
+<tr>
+<td><code>tools/s5_diag/run.ps1</code></td>
+<td>旧用户 <code>19511</code> 的 Python</td>
+<td>传入 <code>-Python</code></td>
+</tr>
+<tr>
+<td>构建脚本/历史 manifest</td>
+<td>旧源文件和仿真证据绝对路径</td>
+<td>重新生成当前证据，不批量改写历史结果</td>
+</tr>
+</tbody></table>
+<p>部分脚本要求输出必须位于“工程父目录的 tmp”内，所以输出参数不是任意目录都能用。这是路径校验，不是工具未安装。</p>
+<p>下面以工作副本和已经安装好的仿真器为前提，给出 S5 应用层仿真调用示例：</p>
+<pre><code class="language-powershell">Set-Location &#39;E:\FPGA_Work\MES50HP\HDMI_DDR3_OV5640&#39;
+$modelSimBin = &#39;E:\FPGA_Tools\ModelSim\win64&#39;  # 改成实际目录
+$pythonExe = &#39;E:\zhoumian\FPGA\tools\MES50HP_S5_tools\.venv\Scripts\python.exe&#39;
+.\tools\s5_diag\run.ps1 `
+    -ModelSim $modelSimBin `
+    -Python $pythonExe `
+    -OutputParent &#39;E:\FPGA_Work\MES50HP\tmp\s5_diag&#39;
+</code></pre>
+<p>这会创建新测试目录并执行主机测试和 RTL 仿真，不是本轮已经跑过的结果，也不能证明实体网口已通。</p>
+<p>其他脚本的参数不完全相同，先读开头 <code>param(...)</code> 再运行。当前 KEY8 相关 <code>tools/video_modes/run.ps1</code> 支持 <code>-ModelSim</code>、<code>-PrimitiveLibrary</code>、<code>-OutputParent</code> 等参数，可据实际路径适配。</p>
+<p>PowerShell 7 已可用，应在该终端运行脚本；旧 Windows PowerShell 5.1 可能不支持某些 .NET API。检查：</p>
+<pre><code class="language-powershell">$PSVersionTable.PSVersion
+</code></pre>
+<p>如果只因从网络下载的 <code>.ps1</code> 被标记而阻止执行，先核对脚本来源与内容，必要时仅对指定可信文件解除阻止。不要为了运行整个工程全局设置 Unrestricted。</p>
+<h3 id="section-18">暂时别直接双击旧 build.bat</h3><p>它不只是检查环境：会删除并重新生成 <code>impl.tcl</code>，也会删除通用输出目录中同名旧位流，然后运行构建。先保留历史目录、选好工作副本、修好路径和授权，再执行。</p>
+<p><code>flow.tcl</code> 是构建模板，<code>impl.tcl</code> 可能被 PDS 追加内容；不要把历史 <code>impl.tcl</code> 当成需要不断手改的主配置。完整构建与仿真都应保留本轮独立日志。</p>
+<h2 id="section-19">8. 第六步：下载器驱动与网口</h2><h3 id="section-20">8.1 下载器</h3><p>当前 PDS 已附带 USB 驱动文件：</p>
+<pre><code class="language-text">E:/XUEXI/FPGA_PDS/PDS_2022.2-SP6.4/driver
+</code></pre>
+<p>接入板卡配套下载器、正确供电后，在设备管理器检查设备是否出现以及是否有黄色警告。若缺驱动，优先用当前 PDS 安装器的 USB Cable Driver 组件或供应商适用于该下载器的正规驱动；是否用本目录 <code>dpinst-amd64.exe</code> 应先核对下载器和系统兼容性，不能给不相关 USB 设备强制替换驱动。</p>
+<p>验收先打开 PDS Configuration 扫描 JTAG 链，确认器件正确。扫描不等于烧录，不必在环境核对时覆盖当前位流。后续选定基线后再下载，Flash 固化和断电重启单独验收。</p>
+<p>教程：<a href="../%E8%B5%84%E6%96%99/%E7%9B%98%E5%8F%A450K%E5%BC%80%E5%8F%91%E6%9D%BF%E8%B5%84%E6%96%99/%E7%9B%98%E5%8F%A450K%E5%BC%80%E5%8F%91%E6%9D%BF/1_Demo_document/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E7%AF%87/05_FPGA&CPLD%E7%9A%84%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%9B%BA%E5%8C%96_v1.1.pdf">FPGA/CPLD 下载与固化</a>。其中旧教程涉及并口驱动的步骤，只对实际使用的并口下载器考虑；USB 下载器不需要为了凑齐步骤装并口驱动。无需全局关闭防护软件。</p>
+<h3 id="section-21">8.2 网口</h3><p>本机已有 Realtek PCIe GbE 千兆网卡，目前显示未连接。用 Cat5e/Cat6 网线连接 FPGA 实际使用的网口，或通过千兆交换机连接，届时检查是否协商到 1Gbps。</p>
+<p>现阶段不改 IP、Wi-Fi、网桥或防火墙。等 FPGA 交付真正接通 MAC/PHY 的位流，再按该版本实际地址设置有线网卡。现有 S5 软件模拟通过，不代表目前 FPGA 位流能够回复 UDP。</p>
+<p>网络故障排查时再装 Wireshark（需要抓包时安装配套 Npcap），选择对应有线网卡抓 <code>arp or udp.port == 8000</code>；端口按最终发布配置调整。没有 ICMP 实现时不能仅凭 ping 不通判断工具安装失败。</p>
+<h2 id="section-22">9. 按这份清单验收环境</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> 当前 PDS SP6.4 可执行文件存在，<code>-help</code> 正常，版本已核实。</li>
+<li><input checked="" disabled="" type="checkbox"> PDS 配套关键仿真原语文件存在。</li>
+<li><input checked="" disabled="" type="checkbox"> Git 可用，当前检查使用 PowerShell 7。</li>
+<li><input checked="" disabled="" type="checkbox"> S5 独立 Python 3.14 环境存在，此前回环收发已验证。</li>
+<li><input checked="" disabled="" type="checkbox"> VC++ x64/x86 运行库已有安装记录。</li>
+<li><input disabled="" type="checkbox"> 本机 PDS/实际综合工具授权有效，小工程可完成所需流程。</li>
+<li><input disabled="" type="checkbox"> ModelSim/兼容仿真器安装完成，许可与小仿真验证通过。</li>
+<li><input disabled="" type="checkbox"> 厂商原语与旧项目测试能在新路径运行。</li>
+<li><input disabled="" type="checkbox"> 工作副本的工具、输出、Python 路径已经适配。</li>
+<li><input disabled="" type="checkbox"> 当前源码通过 SP6.4 重建，版本差异、资源与时序有记录。</li>
+<li><input disabled="" type="checkbox"> 下载器驱动正确，JTAG 可以识别实际器件。</li>
+<li><input disabled="" type="checkbox"> 联网时网卡协商到千兆；实体诊断在对应 FPGA 位流上测试。</li>
+</ul>
+<p>最先处理的顺序：<strong>确认本机 PDS 授权 → 安装 ModelSim → 适配工作副本路径 → 跑小测试 → 验证厂商库 → 重建视频工程 → 扫描/下载上板。</strong></p>
+<h2 id="section-23">10. 本次结论的证据入口</h2><ul>
+<li><a href="../%E5%8E%86%E5%8F%B2%E5%B7%A5%E7%A8%8B/FPGA%20drive/HDMI_DDR3_OV5640/build.bat">旧 build.bat</a>：旧 PDS 路径和构建副作用。</li>
+<li><a href="../%E5%8E%86%E5%8F%B2%E5%B7%A5%E7%A8%8B/FPGA%20drive/HDMI_DDR3_OV5640/flow.tcl">旧 flow.tcl</a>：器件和版本配置。</li>
+<li><a href="../%E5%8E%86%E5%8F%B2%E5%B7%A5%E7%A8%8B/FPGA%20drive/tmp/video_modes/20261019_204949_809_3bc5e988/version.log">旧 ModelSim 版本日志</a>：10.7 编译器。</li>
+<li><a href="../%E5%8E%86%E5%8F%B2%E5%B7%A5%E7%A8%8B/FPGA%20drive/HDMI_DDR3_OV5640/tests/pnr_help.txt">旧 PDS 帮助记录</a>：SP6.1 build 138931 与历史许可状态。</li>
+<li><a href="../%E5%8E%86%E5%8F%B2%E5%B7%A5%E7%A8%8B/FPGA%20drive/HDMI_DDR3_OV5640/tools/s5_diag/run.ps1">S5 脚本</a>：工具参数和旧 Python 绝对路径。</li>
+<li><a href="../%E5%8E%86%E5%8F%B2%E5%B7%A5%E7%A8%8B/FPGA%20drive/HDMI_DDR3_OV5640/host/road_first/requirements.txt">研究分支依赖</a>：算法软件包范围。</li>
+<li><a href="../tmp/analysis/environment_audit_20261020/pds_help.log">本机 PDS 帮助输出</a>：SP6.4 build 146967 实际启动证据。</li>
+<li><a href="../tools/MES50HP_S5_tools/%E6%9C%AC%E6%9C%BA%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md">已部署 S5 工具说明</a>：Python 环境与软件模拟验证边界。</li>
+</ul>
+<p>历史工程文档中有旧的架构决策，不能代替最新用户方案。当前讨论已调整为 FPGA HDMI 合成显示、优先传前摄到香橙派；这不改变本教程的基本工具需求，教程也没有修改工程来实现该架构。</p>
+</main></body></html>

@@ -1,0 +1,287 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>单板四路视频方案与开源调研</title><style>:root{color-scheme:light;--ink:#182b40;--blue:#155bc1;--muted:#5b6c80;--line:#dce4ef}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f3f6fb;color:var(--ink);font:16px/1.85 "Microsoft YaHei","Noto Sans CJK SC",system-ui,sans-serif}aside{position:fixed;left:0;top:0;bottom:0;width:270px;overflow:auto;background:#10243c;color:white;padding:26px 20px}aside strong{display:block;font-size:19px;margin-bottom:14px}aside a{display:block;color:#cddcf0;text-decoration:none;font-size:13px;padding:5px 0;line-height:1.6}aside a:hover{color:white}main{margin:30px 35px 70px 305px;background:white;padding:42px 52px;max-width:1280px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 32px #10243c09}h1{font-size:31px;line-height:1.5;letter-spacing:.02em;margin:0 0 25px}h2{font-size:24px;margin:52px 0 20px;border-top:2px solid var(--line);padding-top:25px;scroll-margin-top:20px}h3{font-size:19px;margin:30px 0 12px;color:#234d7d;scroll-margin-top:20px}p{margin:13px 0}a{color:var(--blue);text-underline-offset:3px}blockquote{margin:20px 0;background:#eef5ff;border-left:4px solid #3880d6;padding:12px 20px;color:#345777;font-size:14px}table{border-collapse:collapse;width:100%;margin:20px 0;font-size:13px;line-height:1.75;table-layout:auto}th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;overflow-wrap:anywhere}th{background:#eaf0f8;text-align:left;font-weight:700}tr:nth-child(even) td{background:#fafcff}pre{overflow:auto;background:#10243c;color:#e2edfa;padding:20px;border-radius:8px;font:13px/1.75 Consolas,monospace;white-space:pre}code{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.9em;background:#eff3f8;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre code{background:transparent;padding:0;color:inherit}li{padding:3px 0}hr{border:0;border-top:1px solid var(--line);margin:32px 0}.badge{display:inline-block;background:#155bc1;color:white;padding:4px 12px;border-radius:20px;font-size:12px;margin-bottom:18px}.diagram{background:#eff5fc;border:1px solid #c9d9ed;border-radius:9px;padding:20px;margin:22px 0}.diagram-title{font-weight:700;margin-bottom:15px}.flow{display:flex;align-items:stretch;gap:9px;margin:12px 0}.flow div{flex:1;background:white;border:1px solid #c4d6eb;border-radius:7px;padding:12px 6px;text-align:center;font-size:12px;line-height:1.75}.flow b{align-self:center;color:#1d66b9}.diagram p{font-size:12px;color:#506783}.footer{margin-top:40px;color:var(--muted);font-size:13px}@media(max-width:1100px){aside{position:static;width:auto;max-height:280px}main{margin:18px;padding:28px}.flow{gap:4px}.flow div{font-size:11px}}@media print{aside,.badge{display:none}body{background:white;font-size:10pt}main{margin:0;padding:0;max-width:none;border:0;box-shadow:none}h1{font-size:23pt}h2{font-size:17pt;break-before:page;border:0;margin-top:0}h3{font-size:12pt;break-after:avoid}table{font-size:8pt}tr{break-inside:avoid}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt;background:#f0f3f6;color:#182b40}a{color:inherit;text-decoration:none}.diagram{break-inside:avoid}@page{size:A4;margin:18mm}}</style></head><body><aside><strong>单板四路视频方案与开源调研</strong><a href="比赛开发文档_ADAS.html">开发手册</a><a href="资料审查清单.html">资料审查</a><a href="单板四路视频方案与开源调研.html">前次单板核查</a><a href="GitHub开源方案对比与自主开发方针.html">GitHub 多方案对比</a><a href="GitHub开源项目对比索引.csv">开源证据索引</a><a href="资料文件索引.csv">6,896 项文件索引</a><hr><a href="#1-结论与边界">1. 结论与边界</a><a href="#2-推荐数据流">2. 推荐数据流</a><a href="#3-参考案例fpga-video-capture">3. 参考案例：FPGA-Video-Capture</a><a href="#4-视频资料与版本区别">4. 视频资料与版本区别</a><a href="#5-其他可用开源资料">5. 其他可用开源资料</a><a href="#6-香橙派传输接口选择">6. 香橙派传输接口选择</a><a href="#7-带宽和画质预算">7. 带宽和画质预算</a><a href="#8-建议实施顺序与验收">8. 建议实施顺序与验收</a><a href="#9-本地资料与可追溯性">9. 本地资料与可追溯性</a></aside><main><span class="badge">工程实施方案 · 2026-10-19</span><h1 id="mes50hp-单板四路视频方案与开源调研">MES50HP 单板四路视频方案与开源调研</h1>
+<blockquote>
+<p>**后续决定已更新：**外部仓库仅作参考，不指定其为工程底座；最终显示统一由香橙派输出，原预览与 AI 显示共享接收服务。完整比较见 <a href="GitHub%E5%BC%80%E6%BA%90%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94%E4%B8%8E%E8%87%AA%E4%B8%BB%E5%BC%80%E5%8F%91%E6%96%B9%E9%92%88.md">GitHub 开源方案对比与自主开发方针</a>。本文保留前一轮单板接口和源码核查记录；其中 FPGA 最终 OSD 回传路线不再作为当前主线。</p>
+</blockquote>
+<blockquote>
+<p>日期：2026-10-19。面向香橙派 5 16GB / RK3588S 的 ADAS 作品。
+本文核对了本地硬件手册、2026 赛题原文、开源项目源码和公开页面。属于静态审查，尚未用 PDS 重新编译，也未连接实物验证。外部仓库及文档只作为参考资料。
+本次方案调整：优先验证“一块 MES50HP + 双目两路 + HDMI 一路 + 网络一路”；原开发手册 V1.1 的双 FPGA 四摄像头方案保留为后续真实四视角的备选。</p>
+</blockquote>
+<h2 id="1-结论与边界">1. 结论与边界</h2>
+<p>用户提供的接口截图确实对应本地《MES50HP开发板硬件使用手册_1V1.pdf》扩展底板资源列表。该板有 HDMI-IN、HDMI-OUT、两个千兆以太网口、两个 SFP、PCIe x2、40pin IO、PMOD、USB 转串口等接口。</p>
+<p>不必把四路视频输入全部限制为四个直接连接 DVP 的摄像头。可以将双目两路、HDMI 一路、网络一路汇总到同一块 FPGA。单板接口条件具备；四路独立输入、缓存调度、输出并行工作仍是需要开发验证的系统功能。</p>
+<p>不能将“有两个镜头”当作配套例程已经实现双路并行，也不能将“有网口”当作已经能接任意网络摄像头。</p>
+<p>2026 选题三原文（PDF 物理第 14 页）要求：</p>
+<blockquote>
+<p>实现至少四路的视频流的并行采集与低延迟传输（模拟车的前、后、左、右），优化数据流带宽。</p>
+</blockquote>
+<p>基础任务允许 HDMI、摄像头或其他图像输入接口。测评标准（物理第 15 页）另有图像拼接或融合、模拟汽车全景影像的要求。因此，可采用混合视频输入，但四个显示窗口、四路并行输入、真实四方位环视融合应分别验收。外部视频模拟方案是否满足全部高阶评分，由官方解释决定；本文不作官方认可承诺。</p>
+<h2 id="2-推荐数据流">2. 推荐数据流</h2>
+<pre><code class="language-text">双目左摄像头 ── DVP ──────────→ 输入通道 0 ┐
+双目右摄像头 ── DVP ──────────→ 输入通道 1 │
+电脑播放场景 A ─ HDMI-IN ─────→ 输入通道 2 ├→ 各路 CDC/FIFO
+电脑播放场景 B ─ 自定义 UDP ──→ 输入通道 3 ┘       ↓
+                                            DDR 帧缓存与仲裁
+                                                   ↓
+                                             缩放、画面合成
+                                                   ├→ HDMI-OUT → 显示器（FPGA 处理结果）
+                                                   └→ UDP 图像打包 → 香橙派
+                                                                       ↓
+                                                           重组帧、分视角、NPU 推理
+                                                                       ↓
+                                                          OSD、驾驶决策、告警显示
+</code></pre>
+<p>电脑的 HDMI 和 UDP 应提供两个不同场景，不要把一路画面复制两份当作独立来源。电脑用于产生可重复的模拟输入；后续也可以让香橙派发送一路已解码场景视频，但必须把“素材发送”和“FPGA 返回画面的识别”分成独立管线，防止误接成反馈循环。</p>
+<p>网口规划有两种：</p>
+<ul>
+<li>初期优先复用开源工程已接入的一组 RGMII，利用千兆全双工同时接收第四路视频、发送合成画面，通过交换机连接电脑与香橙派。收发方向各有带宽预算，不能把双向当成一个方向的 2Gb/s。</li>
+<li>后期可以网口 0 输入、网口 1 输出，便于隔离和调试，但需要增加第二套 PHY/MAC/UDP 接口逻辑、IP/MAC 配置及约束。两个物理接口不代表项目已驱动两口。</li>
+</ul>
+<p>HDMI 监视输出与网络发送应采用独立的缓冲和流量控制。网络拥塞时可丢弃待发送帧并计数，不应阻塞本地 HDMI 的固定输出时序。</p>
+<h2 id="3-参考案例fpga-video-capture">3. 参考案例：FPGA-Video-Capture</h2>
+<ul>
+<li>仓库：<a href="https://github.com/flytt-away/FPGA-Video-Capture">https://github.com/flytt-away/FPGA-Video-Capture</a></li>
+<li>本次审查提交：<code>2845007c4b65c781feafa0c9f80eaef6ae35e3f1</code>。</li>
+<li>README 自述为“2023 集创赛紫光同创杯一等奖项目”，这里将获奖情况按作者自述引用，未额外核对官方获奖名单。</li>
+<li>工程文件：<code>board_3_oneboard_design/3_ddr_test.pds</code>。</li>
+<li>顶层文件：<code>board_3_oneboard_design/source/ddr_test_top.v</code>，顶层模块名为 <code>test_ddr</code>。</li>
+<li>工程器件配置为 Logos / PGL50H / FBG484 / -6，工程记录使用 PDS 2022.1。实际移植要核对所用 MES50HP 板卡版本与安装工具版本。</li>
+<li>仓库顶层为 MIT License，版权声明为 2024 flytt away。README 说明部分模块来自小眼睛半导体、正点原子等例程；复用应保留仓库许可、原文件头和第三方声明，不应把全部模块都说成原创。</li>
+</ul>
+<h3 id="31-已核实存在的功能">3.1 已核实存在的功能</h3>
+<table>
+<thead>
+<tr>
+<th>文件/模块</th>
+<th>静态审查发现</th>
+<th>对本项目的用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ddr_test_top.v</code> 约 552–619 行</td>
+<td>两套相机配置与两套 <code>cmos_8_16bit</code> 采集实例</td>
+<td>作为双目同时接入的 RTL 起点，需实测两路都在更新</td>
+</tr>
+<tr>
+<td><code>ms7200_ctrl.v</code>、<code>ms7210_ctrl.v</code>、<code>hdmi_ctrl.v</code></td>
+<td>HDMI 接收与发送芯片初始化逻辑</td>
+<td>对接本板 MS7200/MS7210，核对引脚和视频格式</td>
+</tr>
+<tr>
+<td><code>video_zoom.v</code></td>
+<td>图像缩放实现，README 描述为双线性插值</td>
+<td>HDMI 输入缩小、网络输出缩小</td>
+</tr>
+<tr>
+<td><code>axi_m_arbitration.v</code></td>
+<td>四组视频端口、FIFO 与 DDR 仲裁结构</td>
+<td>四路缓存与四宫格显示基础</td>
+</tr>
+<tr>
+<td><code>udp_rx.v</code>、<code>udp_tx.v</code>、<code>udp_top.v</code></td>
+<td>UDP 收发逻辑</td>
+<td>以太网视频链路基础</td>
+</tr>
+<tr>
+<td><code>eth_img_rec.v</code></td>
+<td>接收自定义帧头、分辨率、RGB565 像素</td>
+<td>第四路网络输入起点</td>
+</tr>
+<tr>
+<td><code>eth_img_pkt.v</code></td>
+<td>图像 UDP 打包，默认 960×540</td>
+<td>发送合成缩小图至香橙派</td>
+</tr>
+<tr>
+<td><code>pcie_dma_ctrl.v</code>、PCIe IP</td>
+<td>PCIe 输出相关逻辑</td>
+<td>后期高带宽路线参考，不能直接当作香橙派驱动</td>
+</tr>
+<tr>
+<td><code>video_enhance.v</code></td>
+<td>图像增强处理逻辑</td>
+<td>可作为强弱光处理的参考，效果需重新验证</td>
+</tr>
+</tbody></table>
+<h3 id="32-当前公开版本的关键接线">3.2 当前公开版本的关键接线</h3>
+<p>在 <code>ddr_test_top.v</code> 约 677–715 行：</p>
+<ul>
+<li><code>video0</code> 接 <code>pix_clk_in</code>、<code>zoom_de_out</code>、<code>zoom_data_out</code>，来源是 HDMI。</li>
+<li><code>video1</code> 也接上述同一组 HDMI 信号。</li>
+<li><code>video2</code> 接 CMOS1。</li>
+<li><code>video3</code> 接 CMOS2。</li>
+<li>紧随其后已经留有 <code>video1</code> 接 <code>rgmii_clk_0</code>、<code>eth0_rx_de</code>、<code>eth0_rx_data</code>、<code>eth0_rx_vs</code> 的另一组连线，但被注释。</li>
+</ul>
+<p>因此，当前源码默认是“HDMI 一路复制为两个缓存输入 + 两路摄像头”。存在网络接收实现及预留接法，不等于当前默认版本已经四路独立输入。</p>
+<p>恢复网络输入时应成组切换时钟、像素、有效信号与帧同步，不能只替换数据线。检查 DDR 读写调度对异步输入、断流、帧率不同和独立帧完成标志的处理，不能仅取消注释就宣布功能完成。<code>axi_m_arbitration.v</code> 的读仲裁存在成对服务结构，需要结合 FIFO 水位和帧完成行为仿真验证。</p>
+<h3 id="33-网络输入不是-rtsp">3.3 网络输入不是 RTSP</h3>
+<p><code>eth_img_rec.v</code> 默认识别：</p>
+<ul>
+<li>帧标志 <code>0xF05AA50F</code>。</li>
+<li>分辨率信息 <code>{16&#39;d960,16&#39;d540}</code>。</li>
+<li>随后的 RGB565 像素，每个 32 位数据字包含两个 16 位像素。</li>
+</ul>
+<p>部分尺寸判断直接写成常量。更改分辨率时不能只改模块参数，必须检查所有计数终点、帧头判断、FIFO、缓存跨度和发送端格式。</p>
+<p>输入格式需要专门的电脑/香橙派发送程序：视频解码 → 缩放 → RGB565 → 按协议分包 → UDP 发送。普通 IP 摄像头的 RTSP/H.264/H.265 数据不能直接交给这个像素接收模块。字节序、帧头位置、包内像素顺序和包间节奏都必须用抓包和测试图确认，不能仅凭常量值编写发送端。</p>
+<p>接收模块主要按收到的像素数量推进状态，尚不能据此证明具备完善的丢包、乱序和帧超时恢复。正式版本建议引入帧号、包号、像素偏移、有效长度、超时及完整帧提交机制，并同步修改两端协议。</p>
+<h3 id="34-上位机缺失与移植工作">3.4 上位机缺失与移植工作</h3>
+<p>README 明确说本次只上传了 FPGA 设计，上位机代码当时留在另一台电脑；当前检出的目录也没有完整的 Linux 上位机应用、YOLO 推理和 ARM 软件工程。</p>
+<p>所以“README 提到 gtk/ffmpeg、PCIe/以太网视频接收、YOLO 识别”只能说明项目总体设计，不能当作这些源码已全部公开。香橙派端应自行建立接收、重组、RGB565 转 RGB/BGR、RKNN 推理、OSD 和驾驶决策程序。</p>
+<p>直接使用历史 <code>.sbit</code> 不能替代源码重编译验证。先核对器件、引脚、电压、DDR、PHY 和 HDMI 芯片，再处理 PDS/IP 版本迁移；先下载易恢复的配置进行测试，后续再考虑固化。</p>
+<h2 id="4-视频资料与版本区别">4. 视频资料与版本区别</h2>
+<ol>
+<li>最初提供的视频：<a href="https://www.bilibili.com/video/BV1ss4y1i733/">https://www.bilibili.com/video/BV1ss4y1i733/</a><ul>
+<li>字幕在约 12–26 秒说明双目加 HDMI 共三路输入、HDMI 分成两路、形成四画面并输出 1080p60。</li>
+<li>约 42–54 秒说明通过 HDMI 分配器，一路到监视器，一路到 HDMI 采集卡供上位机识别。</li>
+<li>作者评论确认 YOLO 运行于上位机，FPGA 做采集与拼接。</li>
+<li>用户指出还有光口。已核实 MES50HP 的确有两个 SFP；但现有视频字幕和本次检出的单板源码不能证明该演示光口是否提供第四个独立输入。不能用接口存在与否替代连线和代码证据。</li>
+</ul>
+</li>
+<li>同作者 v2.0：<a href="https://www.bilibili.com/video/BV1YF41197NK/">https://www.bilibili.com/video/BV1YF41197NK/</a><ul>
+<li>从公开关联视频列表找到，标题为同项目 v2.0；本次未逐段审查内容。</li>
+</ul>
+</li>
+<li>仓库 README 链接的 v3.0：<a href="https://www.bilibili.com/video/BV1am4y1H7hp/">https://www.bilibili.com/video/BV1am4y1H7hp/</a><ul>
+<li>已核对公开页面，作者 UID 与最初视频一致（94007900），标题为同项目多路采集识别 v3.0，发布于 2023 年。</li>
+<li>本次仅核对页面元数据，未逐段审查其接线与性能；不可将旧视频的 HDMI 采集卡链路直接当作 v3.0 的唯一路线。</li>
+</ul>
+</li>
+</ol>
+<p>已找到直接对应 2023 项目的代码与演示。尚未取得并逐条比较 2023 官方完整赛题，不能认定 2023 与 2026 的验收要求完全一致。开发和验收仍按本地 2026 指南建立。</p>
+<h2 id="5-其他可用开源资料">5. 其他可用开源资料</h2>
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>已核实内容</th>
+<th>建议用途与限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://github.com/shanyinshuiyue/License_Plate_Recognization">https://github.com/shanyinshuiyue/License_Plate_Recognization</a></td>
+<td>描述采用紫光 FPGA → PCIe → RK3568，YOLOv5s + LPRNet；<code>readme.txt</code> 指定 RK3568_MES2L100H、PDS 2022.2-SP6.4，目录包含驱动/上位机、模型部署、硬件逻辑</td>
+<td>适合研究 ARM 端 PCIe 采集与模型衔接；硬件不同，当前只核对说明，未审查驱动或运行脚本，不可直接运行并期待适配 RK3588S</td>
+</tr>
+<tr>
+<td><a href="https://github.com/yunhuaCN/fpga-race">https://github.com/yunhuaCN/fpga-race</a></td>
+<td>搜索描述为紫光双目读取与视频处理；README 指定 MES50HP_v2、PDS 2022.2-SP1-Lite</td>
+<td>相近板卡的备选对照；当前只核对简介与 README，不能保证实际双路并行或可直接编译</td>
+</tr>
+<tr>
+<td><a href="https://github.com/frogtao/Ethernet-transmission-system">https://github.com/frogtao/Ethernet-transmission-system</a></td>
+<td>README 描述 PC/FPGA 图片双向传输、双板传输、双目拼接和运动检测</td>
+<td>用于学习网络收发与处理结构；本次未核实目标板和 RTL 正确性，不作为直接移植承诺</td>
+</tr>
+<tr>
+<td><a href="https://github.com/airockchip/rknn_model_zoo">https://github.com/airockchip/rknn_model_zoo</a></td>
+<td>Rockchip 官方维护，提供模型转换和 Python/C API 推理例程，列有 RK3588 和 YOLOv5/YOLOv8 支持</td>
+<td>香橙派 NPU 推理优先参考；按开发板系统匹配 Toolkit2、运行库、NPU 驱动和模型版本，不能把模型表中的单模型 FPS 当系统端到端成绩</td>
+</tr>
+</tbody></table>
+<p>本机 Tabbit 启动器缺失，因此网页资料通过公开 HTTP/API 与 Git 获取。B 站关键词搜索接口返回 412，GitHub 部分 API 返回限流；本次使用已知视频、仓库 README、关联视频和 GitHub 仓库搜索交叉查证，属于有针对性的资料调研，不是全网穷尽检索。</p>
+<h2 id="6-香橙派传输接口选择">6. 香橙派传输接口选择</h2>
+<p>用户已明确授权按工程适用性选择接口，不要求必须使用网口。当前决策是：第一版采用千兆以太网，HDMI/USB 采集卡作为备选；只有实际图像细节和带宽需求超出前者能力时，才将 PCIe 升为主线。这个选择基于现有代码复用和当前画面预算，不是接口限制。</p>
+<p>香橙派 5 官方 Wiki 明确列出 M.2 PCIe 2.0 x1、千兆网口、USB 3.0 和 HDMI 输出：<a href="https://www.orangepi.org/orangepiwiki/index.php/Orange_Pi_5">https://www.orangepi.org/orangepiwiki/index.php/Orange_Pi_5</a> 。这块 RK3588S 板的 PCIe 不能按其他 RK3588 板的 PCIe 3.0 x4 规划。MES50HP 的 PCIe x2 端点若接香橙派 x1 主机，需确认 IP 支持 x1 协商及实际接线，M.2 插槽也会被占用，不能同时默认留给 NVMe。Gen2 x1 扣除 8b/10b 编码后理论为 500MB/s，实际 DMA 吞吐更低，应实测；它仍有承载高分辨率原始视频的潜力。</p>
+<p>香橙派的 HDMI 是显示输出，不能用一根 HDMI 线把 MES50HP HDMI-OUT 接到香橙派 HDMI 口完成采集。采用 HDMI 路线时必须另加采集设备，并确认其实际采集格式、USB 速度和 Linux 兼容性。</p>
+<table>
+<thead>
+<tr>
+<th>接口</th>
+<th>适用性</th>
+<th>实际工作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>千兆以太网</td>
+<td>第一版优先</td>
+<td>自定义 UDP 原始像素，开发香橙派接收与完整帧重组；先低分辨率，实测丢包与延迟</td>
+</tr>
+<tr>
+<td>HDMI → USB 采集卡 → 香橙派</td>
+<td>调试/备选</td>
+<td>Linux UVC 兼容、USB 带宽、实际输出格式与延迟要实测；需要同时监视可加 HDMI 分配器</td>
+</tr>
+<tr>
+<td>PCIe</td>
+<td>后期高带宽候选</td>
+<td>MES50HP 有端点接口，但需确认香橙派 5 实际引出接口、转接线、供电、参考时钟、复位、链路宽度及 ARM64 DMA 驱动；不是插线即可使用</td>
+</tr>
+<tr>
+<td>SFP 光口</td>
+<td>板间或远端扩展</td>
+<td>需要匹配的收发两端、光模块和协议；不能直接插到香橙派 RJ45 当普通网线</td>
+</tr>
+<tr>
+<td>40pin / PMOD</td>
+<td>控制与特定扩展</td>
+<td>通用 IO 本身不是现成的 Linux 视频输入口；高速图像连接还涉及电压、时钟、引脚和驱动</td>
+</tr>
+<tr>
+<td>USB 转串口 / JTAG</td>
+<td>调试与控制</td>
+<td>不作为四路图像的主要传输通道</td>
+</tr>
+</tbody></table>
+<p>显示也要明确位置：MES50HP HDMI-OUT 直接显示的是 FPGA 合成/增强结果。如果想在同一画面看到香橙派生成的检测框，可由香橙派 HDMI 输出最终画面；若要求仍由 FPGA HDMI 输出，则需要将框坐标、文本/状态等结果回传给 FPGA 并做 OSD。回传结果携带输入帧号，避免在错误时刻标框。只把图像送到香橙派，不会使识别框自动出现在 FPGA 的显示器上。</p>
+<h2 id="7-带宽和画质预算">7. 带宽和画质预算</h2>
+<p>纯像素载荷公式：<code>宽 × 高 × 帧率 × 每像素位数</code>。以下按 RGB565，不含网络头、帧协议、重传或冗余。</p>
+<table>
+<thead>
+<tr>
+<th>合成图像规格</th>
+<th align="right">纯像素载荷</th>
+<th>千兆网络判断</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>960×540 @30fps</td>
+<td align="right">248.832 Mb/s</td>
+<td>适合第一版验证，仍需测 FPGA/系统有效吞吐</td>
+</tr>
+<tr>
+<td>960×540 @60fps</td>
+<td align="right">497.664 Mb/s</td>
+<td>线速预算可容纳，不代表现有代码已跑通</td>
+</tr>
+<tr>
+<td>1280×720 @30fps</td>
+<td align="right">442.368 Mb/s</td>
+<td>可作为后续画质目标，需适配 RTL 尺寸</td>
+</tr>
+<tr>
+<td>1920×1080 @30fps</td>
+<td align="right">995.328 Mb/s</td>
+<td>加上协议开销后无法通过单千兆口持续完整传输</td>
+</tr>
+<tr>
+<td>1920×1080 @60fps</td>
+<td align="right">1,990.656 Mb/s</td>
+<td>超过单千兆口能力</td>
+</tr>
+</tbody></table>
+<p>开源工程的 HDMI 默认输出结构是 1920×1080；以太网发送前另有一次缩小，打包模块默认 960×540。不要把“HDMI 1080p60”误读为“以太网 1080p60”，也不要把输出刷新率当作四路源各自的采集帧率。</p>
+<p>960×540 四宫格中，每个视角只有约 480×270。初期可用于演示和大目标检测；远处行人、交通灯和车道细节可能不足。后续可增加逐路图像发送、重点视角 ROI 或独立分辨率策略。香橙派应保留视角编号，逐格切分后推理能减少跨格误检，并将检测框变换回合成图坐标。</p>
+<h2 id="8-建议实施顺序与验收">8. 建议实施顺序与验收</h2>
+<ol>
+<li><strong>基线整理</strong>：固定本次提交，保留许可证；核对实物板卡版本、工程器件、全部 IO/时序约束和 PDS/IP 版本。先重新构建最小 HDMI 链路，记录警告与时序结果。</li>
+<li><strong>双目并行</strong>：加入两套采集与独立缓存。左右镜头分别遮挡、移动不同图卡，确认一路变化不会影响另一路；记录各路帧率，不能只看两格有图。</li>
+<li><strong>三路输入</strong>：加入 HDMI，电脑播放带时间码/帧号的测试视频；两个镜头加 HDMI 各自保持独立更新，先验证四宫格中的三个独立来源。</li>
+<li><strong>网络单路自测</strong>：电脑产生固定 960×540 RGB565 图案，用明确的包协议送入 FPGA。先验证像素排列、字节序、行边界，再验证视频；添加超时与错误计数。</li>
+<li><strong>接入第四路</strong>：将 <code>video1</code> 从重复 HDMI 切到完整的网络信号组；确认四个不同来源均能持续更新。插拔网线或暂停发送时，其他三路与 HDMI 输出继续运行。</li>
+<li><strong>FPGA → 香橙派</strong>：复用/修订图像打包模块，先传 960×540@15fps，再测 30fps。核对发送帧号、收包数、完整帧率、丢帧、CPU 占用和持续运行温度。</li>
+<li><strong>四路输入与网络输出并行</strong>：验证同口全双工或双口隔离。记录每个方向吞吐及 FIFO 高水位，防止发送和接收互相饿死；做突发流量与断流恢复测试。</li>
+<li><strong>NPU 和驾驶逻辑</strong>：先静态图跑通 RKNN，再接实时帧，最后加入灯色、行人、障碍物、停止/转向/报警状态机。PC 上位机 YOLO 的实现不能直接当作 ARM NPU 实现。</li>
+<li><strong>最终显示</strong>：确定最终 OSD 在香橙派还是 FPGA；测量源画面变化到最终显示/告警的端到端延迟。展示四路独立输入、四宫格、识别、控制结果，并保存测试录像和日志。</li>
+<li><strong>全景能力升级</strong>：先用具有重叠区域的多视角素材验证标定、投影和融合；后续需要真实车周环视时，再增加合适的四个实际视角。双 FPGA 四摄像头方案留在此阶段比较成本和工作量。</li>
+</ol>
+<p>最低验收矩阵：每路输入均有独立变化；任一路断流其余通道继续；网络丢包后恢复完整帧；本地 HDMI 不受网络阻塞；香橙派识别输入来自 FPGA 返回数据；采集、传输、推理、显示帧率分别记录；模拟全景与真实环视分别说明。</p>
+<h2 id="9-本地资料与可追溯性">9. 本地资料与可追溯性</h2>
+<ul>
+<li>板卡手册：<code>资料/盘古50K开发板资料/盘古50K开发板/3_Hardware/MES50HP开发板硬件使用手册_1V1.pdf</code>，文内第 20–21 页列扩展口，后续章节描述网口/SFP/PCIe/HDMI。</li>
+<li>赛题指南：<code>资料/紫光同创.pdf</code>，选题三在物理第 14–16 页。</li>
+<li>开源审查副本：<code>tmp/analysis/open-source-research/FPGA-Video-Capture/</code>，未改动参考源码，未执行其构建脚本。</li>
+<li>核心代码固定版本链接：<a href="https://github.com/flytt-away/FPGA-Video-Capture/blob/2845007c4b65c781feafa0c9f80eaef6ae35e3f1/board_3_oneboard_design/source/ddr_test_top.v#L677-L715">https://github.com/flytt-away/FPGA-Video-Capture/blob/2845007c4b65c781feafa0c9f80eaef6ae35e3f1/board_3_oneboard_design/source/ddr_test_top.v#L677-L715</a></li>
+<li>数据接收固定版本链接：<a href="https://github.com/flytt-away/FPGA-Video-Capture/blob/2845007c4b65c781feafa0c9f80eaef6ae35e3f1/board_3_oneboard_design/source/eth_img_rec.v">https://github.com/flytt-away/FPGA-Video-Capture/blob/2845007c4b65c781feafa0c9f80eaef6ae35e3f1/board_3_oneboard_design/source/eth_img_rec.v</a></li>
+</ul>
+<p>本次结论是单板混合四路的开发可行性和复用范围判断，不是已经完成作品的性能证明。</p>
+<p class="footer">原始资料分析与实施建议。硬件、模型与性能尚待实物验证。可使用浏览器打印功能导出 PDF。</p></main></body></html>
