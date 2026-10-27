@@ -1,0 +1,1 @@
+.rtl_screen -top_module {TOP} -include_path {<D:/admin/desktop/AD_DA_50H/ADDA_CNT>} -design_files {<D:/admin/desktop/AD_DA_50H/ADDA_CNT/source/TOP.v|work><D:/admin/desktop/AD_DA_50H/ADDA_CNT/ipcore/ad_clock_125m/ad_clock_125m.v|work>}

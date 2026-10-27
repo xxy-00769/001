@@ -1,0 +1,1 @@
+.rtl_screen -top_module {beep_test} -include_path {<E:/board/PGL50H_box/hardware_module/demo/demo/beep_test/prj>} -design_files {<E:/board/PGL50H_box/hardware_module/demo/demo/beep_test/prj/source/btn_deb.v|work><E:/board/PGL50H_box/hardware_module/demo/demo/beep_test/prj/source/beep_test.v|work>}

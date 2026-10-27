@@ -1,0 +1,1 @@
+.rtl_screen -top_module {TOP} -include_path {<E:/board/PGL50H_box/hardware_module/pmod_module/demo/MES-ADDA/demo/ADDA_LOOP>} -design_files {<E:/board/PGL50H_box/hardware_module/pmod_module/demo/MES-ADDA/demo/ADDA_LOOP/source/TOP.v|work><E:/board/PGL50H_box/hardware_module/pmod_module/demo/MES-ADDA/demo/ADDA_LOOP/ipcore/ad_clock_125m/ad_clock_125m.v|work>}
