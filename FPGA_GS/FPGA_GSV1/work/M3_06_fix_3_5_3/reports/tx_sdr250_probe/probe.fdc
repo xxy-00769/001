@@ -1,0 +1,61 @@
+define_attribute {p:sys_clk} {PAP_IO_LOC} {P20}
+define_attribute {p:sys_clk} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:rgmii2_txc} {PAP_IO_LOC} {C20}
+define_attribute {p:rgmii2_txc} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:rgmii2_txc} {PAP_IO_DRIVE} {24}
+define_attribute {p:rgmii2_txc} {PAP_IO_SLEW} {FAST}
+define_attribute {p:rgmii2_tx_ctl} {PAP_IO_LOC} {F22}
+define_attribute {p:rgmii2_tx_ctl} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:rgmii2_tx_ctl} {PAP_IO_DRIVE} {24}
+define_attribute {p:rgmii2_tx_ctl} {PAP_IO_SLEW} {FAST}
+define_attribute {p:rgmii2_txd[0]} {PAP_IO_LOC} {C22}
+define_attribute {p:rgmii2_txd[0]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:rgmii2_txd[0]} {PAP_IO_DRIVE} {24}
+define_attribute {p:rgmii2_txd[0]} {PAP_IO_SLEW} {FAST}
+define_attribute {p:rgmii2_txd[1]} {PAP_IO_LOC} {E20}
+define_attribute {p:rgmii2_txd[1]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:rgmii2_txd[1]} {PAP_IO_DRIVE} {24}
+define_attribute {p:rgmii2_txd[1]} {PAP_IO_SLEW} {FAST}
+define_attribute {p:rgmii2_txd[2]} {PAP_IO_LOC} {E22}
+define_attribute {p:rgmii2_txd[2]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:rgmii2_txd[2]} {PAP_IO_DRIVE} {24}
+define_attribute {p:rgmii2_txd[2]} {PAP_IO_SLEW} {FAST}
+define_attribute {p:rgmii2_txd[3]} {PAP_IO_LOC} {F21}
+define_attribute {p:rgmii2_txd[3]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:rgmii2_txd[3]} {PAP_IO_DRIVE} {24}
+define_attribute {p:rgmii2_txd[3]} {PAP_IO_SLEW} {FAST}
+create_clock -name sys_clk -period 20 [get_ports {sys_clk}]
+set_clock_uncertainty 0.2 [get_clocks {sys_clk}] -setup -hold
+create_generated_clock -name tx_phase -source [get_ports {sys_clk}] -edges {1 2 3} -edge_shift {2 -6 -14} [get_pins {u_cfg_pll/u_pll_e3/CLKOUT4}]
+create_generated_clock -name eth2_phy_tx_capture -source [get_pins {u_cfg_pll/u_pll_e3/CLKOUT4}] -divide_by 2 [get_ports {rgmii2_txc}]
+set_clock_uncertainty 0.3 [get_clocks {eth2_phy_tx_capture}] -setup -hold
+set_output_delay -clock [get_clocks {eth2_phy_tx_capture}] -max 1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+set_output_delay -clock [get_clocks {eth2_phy_tx_capture}] -min -1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+set_output_delay -clock [get_clocks {eth2_phy_tx_capture}] -clock_fall -add_delay -max 1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+set_output_delay -clock [get_clocks {eth2_phy_tx_capture}] -clock_fall -add_delay -min -1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+
+define_attribute {p:sys_clk} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:sys_clk} {PAP_IO_DIRECTION} {INPUT}
+
+define_attribute {p:rgmii2_txc} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:rgmii2_txc} {PAP_IO_DIRECTION} {OUTPUT}
+
+define_attribute {p:rgmii2_tx_ctl} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:rgmii2_tx_ctl} {PAP_IO_DIRECTION} {OUTPUT}
+
+define_attribute {p:rgmii2_txd[0]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:rgmii2_txd[0]} {PAP_IO_DIRECTION} {OUTPUT}
+
+define_attribute {p:rgmii2_txd[1]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:rgmii2_txd[1]} {PAP_IO_DIRECTION} {OUTPUT}
+
+define_attribute {p:rgmii2_txd[2]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:rgmii2_txd[2]} {PAP_IO_DIRECTION} {OUTPUT}
+
+define_attribute {p:rgmii2_txd[3]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:rgmii2_txd[3]} {PAP_IO_DIRECTION} {OUTPUT}
+
+define_attribute {i:u_cfg_pll.u_pll_e3} {PAP_LOC} {PLL_158_75}
+define_attribute {i:out_data[*]} {PAP_IO_REGISTER} {TRUE}
+define_attribute {i:clk_ff} {PAP_IO_REGISTER} {TRUE}
+

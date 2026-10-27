@@ -1,0 +1,79 @@
+##### Written on 2026/10/22 17:02:04 ###############################
+
+
+##### INFO ##################################################
+
+Current device : 
+	PGL50H-6FBG484
+
+Top Module : 
+	tx_clock_probe
+
+Constraint File(s) : 
+	E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_clock_probe/probe.fdc
+
+##### SUMMARY ######################################################
+
+Found 0 error(s), 4 critical warning(s), 0 warning(s), out of 49 constraint(s)
+
+
+Inapplicable constraints(except overwritten constraints):
+********************************************
+
+define_attribute {p:rgmii2_tx_ctl} {PAP_IO_LOC} {F22}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_clock_probe/probe.fdc(line number: 7)] | Port rgmii2_tx_ctl has been placed at location F22, whose type is share pin.
+
+define_attribute {p:rgmii2_txd[1]} {PAP_IO_LOC} {E20}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_clock_probe/probe.fdc(line number: 15)] | Port rgmii2_txd[1] has been placed at location E20, whose type is share pin.
+
+define_attribute {p:rgmii2_txd[2]} {PAP_IO_LOC} {E22}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_clock_probe/probe.fdc(line number: 19)] | Port rgmii2_txd[2] has been placed at location E22, whose type is share pin.
+
+define_attribute {p:rgmii2_txd[3]} {PAP_IO_LOC} {F21}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_clock_probe/probe.fdc(line number: 23)] | Port rgmii2_txd[3] has been placed at location F21, whose type is share pin.
+
+
+Constraints with issues:
+********************************************
+
+
+Issues without commands:
+********************************************
+
+
+Unconstrained ports:
+********************************************
+
+
+Constraints with matching wildcard expressions:
+********************************************
+
+set_output_delay -clock [get_clocks {eth2_phy_tx_capture}] -clock_fall -add_delay -max 1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+	I: The pattern 'rgmii2_txd[*]' in command 'get_ports {rgmii2_txd[*] rgmii2_tx_ctl}' match 4 objects below:
+	I: port rgmii2_txd[0]
+	I: port rgmii2_txd[1]
+	I: port rgmii2_txd[2]
+	I: port rgmii2_txd[3]
+
+set_output_delay -clock [get_clocks {eth2_phy_tx_capture}] -clock_fall -add_delay -min -1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+	I: The pattern 'rgmii2_txd[*]' in command 'get_ports {rgmii2_txd[*] rgmii2_tx_ctl}' match 4 objects below:
+	I: port rgmii2_txd[0]
+	I: port rgmii2_txd[1]
+	I: port rgmii2_txd[2]
+	I: port rgmii2_txd[3]
+
+set_output_delay -clock [get_clocks {eth2_phy_tx_capture}] -max 1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+	I: The pattern 'rgmii2_txd[*]' in command 'get_ports {rgmii2_txd[*] rgmii2_tx_ctl}' match 4 objects below:
+	I: port rgmii2_txd[0]
+	I: port rgmii2_txd[1]
+	I: port rgmii2_txd[2]
+	I: port rgmii2_txd[3]
+
+set_output_delay -clock [get_clocks {eth2_phy_tx_capture}] -min -1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+	I: The pattern 'rgmii2_txd[*]' in command 'get_ports {rgmii2_txd[*] rgmii2_tx_ctl}' match 4 objects below:
+	I: port rgmii2_txd[0]
+	I: port rgmii2_txd[1]
+	I: port rgmii2_txd[2]
+	I: port rgmii2_txd[3]
+
+

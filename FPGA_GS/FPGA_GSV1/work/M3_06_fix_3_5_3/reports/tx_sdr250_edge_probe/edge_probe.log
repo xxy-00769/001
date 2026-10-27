@@ -1,0 +1,725 @@
+License checkout: fabric_shell from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling architecture definition.
+W: Warning : The license will invalid in 12 days. In order not to affect your usage, please update the license in time.
+
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.pds'.
+Executing : add_design probe_pll.v
+Executing : add_design probe_pll.v successfully.
+Executing : add_design top.v
+Executing : add_design top.v successfully.
+Executing : add_constraint probe.fdc
+Executing : add_constraint probe.fdc successfully.
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484 successfully.
+
+
+Executing : compile -top_module tx_clock_probe
+
+
+Process "Compile" started.
+Current time: Thu Oct 22 17:43:15 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.pds'.
+License checkout: fabric_ads from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+I: Enable Verilog2k features and keywords
+Start rtl-analyze.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v
+I: Verilog-0001: Analyzing file E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v
+I: Verilog-0002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 18)] Analyzing module probe_pll (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v successfully.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v
+I: Verilog-0001: Analyzing file E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v
+I: Verilog-0002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 1)] Analyzing module tx_clock_probe (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v successfully.
+I: Module "tx_clock_probe" is set as top module.
+Executing : rtl-analyze successfully. Time elapsed: 1.254s wall, 0.016s user + 0.000s system = 0.016s CPU (1.2%)
+
+Start rtl-elaborate.
+I: Verilog-0003: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 1)] Elaborating module tx_clock_probe
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 3)] Elaborating instance u_cfg_pll
+I: Verilog-0003: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 18)] Elaborating module probe_pll
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 236)] Elaborating instance u_pll_e3
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 123)] Net clkfb in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 126)] Net pfden in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 127)] Net clkout0_gate in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 128)] Net clkout0_2pad_gate in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 129)] Net clkout1_gate in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 130)] Net clkout2_gate in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 131)] Net clkout3_gate in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 132)] Net clkout4_gate in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 133)] Net clkout5_gate in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 134)] Net dyn_idiv in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 135)] Net dyn_odiv0 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 136)] Net dyn_odiv1 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 137)] Net dyn_odiv2 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 138)] Net dyn_odiv3 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 139)] Net dyn_odiv4 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 140)] Net dyn_fdiv in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 141)] Net dyn_duty0 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 142)] Net dyn_duty1 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 143)] Net dyn_duty2 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 144)] Net dyn_duty3 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+W: Verilog-2021: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe_pll.v(line number: 145)] Net dyn_duty4 in probe_pll(original module probe_pll) does not have a driver, tie it to 0
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 8)] Elaborating instance pad
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 8)] Elaborating instance pad
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 8)] Elaborating instance pad
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 8)] Elaborating instance pad
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 10)] Elaborating instance ctl_pad
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/top.v(line number: 11)] Elaborating instance clock_pad
+Executing : rtl-elaborate successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-prep.
+Executing : rtl-prep successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-infer.
+Start DFF-inference.
+Executing : DFF-inference successfully.
+Executing : rtl-infer successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-control-opt.
+Executing : rtl-control-opt successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-data-opt.
+Executing : rtl-data-opt successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start FSM inference.
+Executing : FSM inference successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start sdm2adm.
+W: Loop was found during constant probe.
+Executing : sdm2adm successfully. Time elapsed: 0.004s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Saving design to DB.
+Action compile: Real time elapsed is 0h:0m:3s
+Action compile: CPU time elapsed is 0h:0m:0s
+Action compile: Process CPU time elapsed is 0h:0m:0s
+Current time: Thu Oct 22 17:43:18 2026
+Action compile: Peak memory pool usage is 140 MB
+Action from compile to compile: Total Real Time elapsed is 0h:0m:3s
+Action from compile to compile: Total CPU time elapsed is 0h:0m:0s
+Action from compile to compile: Total Process CPU Time elapsed is 0h:0m:0s
+Process "Compile" done.
+Executing : compile -top_module tx_clock_probe successfully.
+
+
+Executing : synthesize -ads -selected_syn_tool_opt 2
+
+
+Process "Synthesize" started.
+Current time: Thu Oct 22 17:43:18 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.pds'.
+License checkout: fabric_ads from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Reading design from compile DB
+Reading design from compile DB successfully.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Constraint check start.
+Compiling prim grid devices.
+Building architecture model.
+Loading device packaging model.
+Building architecture floorplan logic view.
+Executing : get_ports sys_clk
+Executing : get_ports sys_clk successfully.
+Executing : create_clock -name sys_clk -period 20 [get_ports sys_clk]
+Executing : create_clock -name sys_clk -period 20 [get_ports sys_clk] successfully.
+Executing : get_clocks sys_clk
+Executing : get_clocks sys_clk successfully.
+Executing : set_clock_uncertainty 0.2 [get_clocks sys_clk] -setup -hold
+Executing : set_clock_uncertainty 0.2 [get_clocks sys_clk] -setup -hold successfully.
+Executing : get_ports sys_clk
+Executing : get_ports sys_clk successfully.
+Executing : get_pins u_cfg_pll/u_pll_e3/CLKOUT4
+Executing : get_pins u_cfg_pll/u_pll_e3/CLKOUT4 successfully.
+Executing : create_generated_clock -name tx_phase -source [get_ports sys_clk] -edges {1 2 3} -edge_shift {2 -6 -14} [get_pins u_cfg_pll/u_pll_e3/CLKOUT4]
+Executing : create_generated_clock -name tx_phase -source [get_ports sys_clk] -edges {1 2 3} -edge_shift {2 -6 -14} [get_pins u_cfg_pll/u_pll_e3/CLKOUT4] successfully.
+Executing : get_pins u_cfg_pll/u_pll_e3/CLKOUT4
+Executing : get_pins u_cfg_pll/u_pll_e3/CLKOUT4 successfully.
+Executing : get_ports rgmii2_txc
+Executing : get_ports rgmii2_txc successfully.
+Executing : create_generated_clock -name eth2_phy_tx_capture -source [get_pins u_cfg_pll/u_pll_e3/CLKOUT4] -edges {1 3 5} [get_ports rgmii2_txc]
+Executing : create_generated_clock -name eth2_phy_tx_capture -source [get_pins u_cfg_pll/u_pll_e3/CLKOUT4] -edges {1 3 5} [get_ports rgmii2_txc] successfully.
+Executing : get_clocks eth2_phy_tx_capture
+Executing : get_clocks eth2_phy_tx_capture successfully.
+Executing : set_clock_uncertainty 0.3 [get_clocks eth2_phy_tx_capture] -setup -hold
+Executing : set_clock_uncertainty 0.3 [get_clocks eth2_phy_tx_capture] -setup -hold successfully.
+Executing : get_clocks eth2_phy_tx_capture
+Executing : get_clocks eth2_phy_tx_capture successfully.
+Executing : get_ports {rgmii2_txd[*] rgmii2_tx_ctl}
+I: The pattern 'rgmii2_txd[*]' in command 'get_ports {rgmii2_txd[*] rgmii2_tx_ctl}' match 4 objects below:
+I: port rgmii2_txd[0]
+I: port rgmii2_txd[1]
+I: port rgmii2_txd[2]
+I: port rgmii2_txd[3]
+Executing : get_ports {rgmii2_txd[*] rgmii2_tx_ctl} successfully.
+Executing : set_output_delay -clock [get_clocks eth2_phy_tx_capture] -max 1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+Executing : set_output_delay -clock [get_clocks eth2_phy_tx_capture] -max 1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}] successfully.
+Executing : get_clocks eth2_phy_tx_capture
+Executing : get_clocks eth2_phy_tx_capture successfully.
+Executing : get_ports {rgmii2_txd[*] rgmii2_tx_ctl}
+I: The pattern 'rgmii2_txd[*]' in command 'get_ports {rgmii2_txd[*] rgmii2_tx_ctl}' match 4 objects below:
+I: port rgmii2_txd[0]
+I: port rgmii2_txd[1]
+I: port rgmii2_txd[2]
+I: port rgmii2_txd[3]
+Executing : get_ports {rgmii2_txd[*] rgmii2_tx_ctl} successfully.
+Executing : set_output_delay -clock [get_clocks eth2_phy_tx_capture] -min -1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+Executing : set_output_delay -clock [get_clocks eth2_phy_tx_capture] -min -1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}] successfully.
+Executing : get_clocks eth2_phy_tx_capture
+Executing : get_clocks eth2_phy_tx_capture successfully.
+Executing : get_ports {rgmii2_txd[*] rgmii2_tx_ctl}
+I: The pattern 'rgmii2_txd[*]' in command 'get_ports {rgmii2_txd[*] rgmii2_tx_ctl}' match 4 objects below:
+I: port rgmii2_txd[0]
+I: port rgmii2_txd[1]
+I: port rgmii2_txd[2]
+I: port rgmii2_txd[3]
+Executing : get_ports {rgmii2_txd[*] rgmii2_tx_ctl} successfully.
+Executing : set_output_delay -clock [get_clocks eth2_phy_tx_capture] -clock_fall -add_delay -max 1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+Executing : set_output_delay -clock [get_clocks eth2_phy_tx_capture] -clock_fall -add_delay -max 1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}] successfully.
+Executing : get_clocks eth2_phy_tx_capture
+Executing : get_clocks eth2_phy_tx_capture successfully.
+Executing : get_ports {rgmii2_txd[*] rgmii2_tx_ctl}
+I: The pattern 'rgmii2_txd[*]' in command 'get_ports {rgmii2_txd[*] rgmii2_tx_ctl}' match 4 objects below:
+I: port rgmii2_txd[0]
+I: port rgmii2_txd[1]
+I: port rgmii2_txd[2]
+I: port rgmii2_txd[3]
+Executing : get_ports {rgmii2_txd[*] rgmii2_tx_ctl} successfully.
+Executing : set_output_delay -clock [get_clocks eth2_phy_tx_capture] -clock_fall -add_delay -min -1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}]
+Executing : set_output_delay -clock [get_clocks eth2_phy_tx_capture] -clock_fall -add_delay -min -1.0 [get_ports {rgmii2_txd[*] rgmii2_tx_ctl}] successfully.
+I: The pattern 'i:out_data[*]' in command 'define_attribute' match 1 objects below:
+I: instance out_data[4:0]
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.fdc(line number: 7)] | Port rgmii2_tx_ctl has been placed at location F22, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.fdc(line number: 15)] | Port rgmii2_txd[1] has been placed at location E20, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.fdc(line number: 19)] | Port rgmii2_txd[2] has been placed at location E22, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.fdc(line number: 23)] | Port rgmii2_txd[3] has been placed at location F21, whose type is share pin.
+Constraint check end.
+
+C: SDC-2025: Clock source 'n:u_cfg_pll/clkout3' need a clock constraint, please use 'create_clock' or 'create_generate_clock' to generate.
+Executing : get_ports sys_clk
+Executing : get_ports sys_clk successfully.
+Executing : get_pins u_cfg_pll/u_pll_e3:CLKOUT3
+Executing : get_pins u_cfg_pll/u_pll_e3:CLKOUT3 successfully.
+Executing : create_generated_clock -name sys_clk|u_cfg_pll/u_pll_e3/CLKOUT3_Inferred -source [get_ports sys_clk] [get_pins u_cfg_pll/u_pll_e3:CLKOUT3] -master_clock sys_clk -edges {1 2 3} -edge_shift {0.000000 -8.000000 -16.000000} -add
+Executing : create_generated_clock -name sys_clk|u_cfg_pll/u_pll_e3/CLKOUT3_Inferred -source [get_ports sys_clk] [get_pins u_cfg_pll/u_pll_e3:CLKOUT3] -master_clock sys_clk -edges {1 2 3} -edge_shift {0.000000 -8.000000 -16.000000} -add successfully.
+Start pre-mapping.
+Executing : pre-mapping successfully. Time elapsed: 0.027s wall, 0.031s user + 0.000s system = 0.031s CPU (117.0%)
+
+Start mod-gen.
+Executing : mod-gen successfully. Time elapsed: 0.017s wall, 0.000s user + 0.031s system = 0.031s CPU (186.2%)
+
+Start logic-optimization.
+Executing : logic-optimization successfully. Time elapsed: 0.010s wall, 0.016s user + 0.000s system = 0.016s CPU (149.0%)
+
+Start tech-mapping phase 1.
+W: Public-4008: Instance 'pattern[6]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'pattern[7]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'pattern[5]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+Executing : tech-mapping phase 1 successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start tech-mapping phase 2.
+Executing : tech-mapping phase 2 successfully. Time elapsed: 0.009s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start tech-optimization.
+Executing : tech-optimization successfully. Time elapsed: 0.007s wall, 0.016s user + 0.000s system = 0.016s CPU (219.6%)
+
+Start phys-optimization.
+Executing : phys-optimization successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start restore-hierarchy.
+Executing : restore-hierarchy successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+
+Cell Usage:
+GTP_DFF                      11 uses
+GTP_GRS                       1 use
+GTP_LUT1                      2 uses
+GTP_LUT5CARRY                 4 uses
+GTP_PLL_E3                    1 use
+
+I/O ports: 7
+GTP_INBUF                   1 use
+GTP_OUTBUF                  6 uses
+
+Mapping Summary:
+Total LUTs: 6 of 42800 (0.01%)
+	LUTs as dram: 0 of 17000 (0.00%)
+	LUTs as logic: 6
+Total Registers: 11 of 64200 (0.02%)
+Total Latches: 0
+
+DRM18K:
+Total DRM18K = 0.0 of 134 (0.00%)
+
+APMs:
+Total APMs = 0.00 of 84 (0.00%)
+
+Total I/O ports = 7 of 296 (2.36%)
+
+
+Overview of Control Sets:
+
+Number of unique control sets : 2
+
+Histogram:
+**************************************************************
+  Fanout      | Count    | Sync Set/Reset    Async Set/Reset
+--------------------------------------------------------------
+  [0, 2)      | 1        | 1                 0
+  [2, 4)      | 0        | 0                 0
+  [4, 6)      | 0        | 0                 0
+  [6, 8)      | 0        | 0                 0
+  [8, 10)     | 0        | 0                 0
+  [10, 12)    | 1        | 1                 0
+  [12, 14)    | 0        | 0                 0
+  [14, 16)    | 0        | 0                 0
+  [16, Inf)   | 0        | 0                 0
+--------------------------------------------------------------
+  The maximum fanout: 10
+==============================================================
+
+Flip-Flop Distribution:
+************************************************************************
+  Clock Enable    Sync Set/Reset    Async Set/Reset    Total Registers
+------------------------------------------------------------------------
+  NO              NO                NO                 11
+  NO              NO                YES                0
+  NO              YES               NO                 0
+  YES             NO                NO                 0
+  YES             NO                YES                0
+  YES             YES               NO                 0
+========================================================================
+
+Latch Distribution:
+************************************************
+  Gate Enable    Preset/Clear    Total Latches
+************************************************
+  NO             NO              0
+  NO             YES             0
+  YES            NO              0
+  YES            YES             0
+************************************************
+
+Design 'tx_clock_probe' has been successfully synthesized to architecture-specific objects.
+Saving design to DB.
+Saving design to tx_clock_probe_syn.vm
+Constructing timing graph ...
+Timing graph has been constructed successfully
+Action synthesize: Real time elapsed is 0h:0m:3s
+Action synthesize: CPU time elapsed is 0h:0m:2s
+Action synthesize: Process CPU time elapsed is 0h:0m:2s
+Current time: Thu Oct 22 17:43:20 2026
+Action synthesize: Peak memory pool usage is 263 MB
+Action from compile to synthesize: Total Real Time elapsed is 0h:0m:6s
+Action from compile to synthesize: Total CPU time elapsed is 0h:0m:2s
+Action from compile to synthesize: Total Process CPU Time elapsed is 0h:0m:2s
+Process "Synthesize" done.
+Executing : synthesize -ads -selected_syn_tool_opt 2 successfully.
+
+
+Executing : dev_map
+
+
+Process "Device Map" started.
+Current time: Thu Oct 22 17:43:21 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Compiling operator packing rules.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Compiling tech operator impls.
+Building architecture model.
+Loading device packaging model.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Flattening design 'tx_clock_probe'
+Device mapping started.
+Optimizing circuit logic.
+Checking design netlist.
+Processing tech operator.
+I: The instance clkbufg_0(GTP_CLKBUFG) has been inserted on the net data_clk in design, driver pin CLKOUT3(instance u_cfg_pll/u_pll_e3) -> load pin CLK(instance out_data[0]).
+I: The instance clkbufg_1(GTP_CLKBUFG) has been inserted on the net clock_clk in design, driver pin CLKOUT4(instance u_cfg_pll/u_pll_e3) -> load pin CLK(instance clk_ff).
+Converting tech operator to gate operator.
+Processing gate operator.
+I: Infer CARRY group, base inst: N7_0_1/gateop, insts:4.
+I: Register inst = clk_ff/opit_0, Replicated inst = clk_ff/opit_0_cpy0
+C: DeviceMap-2006: Invalid attribute PAP_IO_REGISTER to inst clk_ff/opit_0 will be ignored, as the inst does not connect IO inst.
+I: INST: "out_data[2]/opit_0" has been packed in IOL "pins[2].pad/opit_1" success.
+I: INST: "out_data[3]/opit_0" has been packed in IOL "pins[3].pad/opit_1" success.
+I: INST: "clk_ff/opit_0_cpy0" has been packed in IOL "clock_pad/opit_1" success.
+I: INST: "out_data[4]/opit_0" has been packed in IOL "ctl_pad/opit_1" success.
+I: INST: "out_data[0]/opit_0" has been packed in IOL "pins[0].pad/opit_1" success.
+I: INST: "out_data[1]/opit_0" has been packed in IOL "pins[1].pad/opit_1" success.
+Device Utilization Summary:
++------------------------------------------------------------------------+
+| Logic Utilization     | Used     | Available     | Utilization(%)     
++------------------------------------------------------------------------+
+| APM                   | 0        | 84            | 0                  
+| IOCKDLY               | 0        | 40            | 0                  
+| FF                    | 6        | 64200         | 1                  
+| LUT                   | 6        | 42800         | 1                  
+| Distributed RAM       | 0        | 17000         | 0                  
+| DLL                   | 0        | 10            | 0                  
+| DQSL                  | 0        | 18            | 0                  
+| DRM                   | 0        | 134           | 0                  
+| FUSECODE              | 0        | 1             | 0                  
+| IO                    | 7        | 296           | 3                  
+| IOCKDIV               | 0        | 20            | 0                  
+| IOCKGATE              | 0        | 20            | 0                  
+| IPAL                  | 0        | 1             | 0                  
+| PLL                   | 1        | 5             | 20                 
+| RCKB                  | 0        | 24            | 0                  
+| SCANCHAIN             | 0        | 2             | 0                  
+| START                 | 0        | 1             | 0                  
+| USCM                  | 2        | 30            | 7                  
+| HSST                  | 0        | 1             | 0                  
+| OSC                   | 0        | 1             | 0                  
+| CRYSTAL               | 0        | 2             | 0                  
+| RESCAL                | 0        | 4             | 0                  
+| UDID                  | 0        | 1             | 0                  
+| PCIE                  | 0        | 1             | 0                  
++------------------------------------------------------------------------+
+
+Device mapping done.
+Total device mapping takes 0.02 sec.
+
+Design 'tx_clock_probe' has been successfully mapped to architecture-specific objects.
+Saving design to DB.
+Action dev_map: Real time elapsed is 0h:0m:3s
+Action dev_map: CPU time elapsed is 0h:0m:2s
+Action dev_map: Process CPU time elapsed is 0h:0m:2s
+Current time: Thu Oct 22 17:43:23 2026
+Action dev_map: Peak memory pool usage is 235 MB
+Action from compile to dev_map: Total Real Time elapsed is 0h:0m:9s
+Action from compile to dev_map: Total CPU time elapsed is 0h:0m:4s
+Action from compile to dev_map: Total Process CPU Time elapsed is 0h:0m:4s
+Process "Device Map" done.
+Executing : dev_map successfully.
+
+
+Executing : pnr -optimize_multi_corner_timing
+
+
+Process "Place & Route" started.
+Current time: Thu Oct 22 17:43:23 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Building architecture model.
+Loading device packaging model.
+pnr strategy configuration : 
+strategy name : 0
+Building architecture floorplan logic view.
+Constraint check start.
+Executing : def_port {rgmii2_tx_ctl} LOC=F22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/device_map/tx_clock_probe.pcf(line number: 3)] | Port rgmii2_tx_ctl has been placed at location F22, whose type is share pin.
+Executing : def_port {rgmii2_tx_ctl} LOC=F22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST successfully
+Executing : def_port {rgmii2_txc} LOC=C20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST
+Executing : def_port {rgmii2_txc} LOC=C20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST successfully
+Executing : def_port {rgmii2_txd[0]} LOC=C22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST
+Executing : def_port {rgmii2_txd[0]} LOC=C22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST successfully
+Executing : def_port {rgmii2_txd[1]} LOC=E20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/device_map/tx_clock_probe.pcf(line number: 6)] | Port rgmii2_txd[1] has been placed at location E20, whose type is share pin.
+Executing : def_port {rgmii2_txd[1]} LOC=E20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST successfully
+Executing : def_port {rgmii2_txd[2]} LOC=E22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/device_map/tx_clock_probe.pcf(line number: 7)] | Port rgmii2_txd[2] has been placed at location E22, whose type is share pin.
+Executing : def_port {rgmii2_txd[2]} LOC=E22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST successfully
+Executing : def_port {rgmii2_txd[3]} LOC=F21 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/device_map/tx_clock_probe.pcf(line number: 8)] | Port rgmii2_txd[3] has been placed at location F21, whose type is share pin.
+Executing : def_port {rgmii2_txd[3]} LOC=F21 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=24 SLEW=FAST successfully
+Executing : def_port {sys_clk} LOC=P20 VCCIO=3.3 IOSTANDARD=LVCMOS33
+Executing : def_port {sys_clk} LOC=P20 VCCIO=3.3 IOSTANDARD=LVCMOS33 successfully
+Executing : def_inst_site {u_cfg_pll/u_pll_e3/goppll} PLL_158_75
+Executing : def_inst_site {u_cfg_pll/u_pll_e3/goppll} PLL_158_75 successfully
+Constraint check end.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 5993935
+
+I: Column Clock Check open.
+Read Column Clock Map.
+
+Placement started.
+Phase 1 Pre global placement started.
+Phase 1.1 1st GP placement started.
+Design Utilization : 1%.
+First map gop timing takes 0.03 sec
+Worst slack after clock region global placement is -4443
+Wirelength after clock region global placement is 1638 and checksum is EFB688F8DF8E9648.
+1st GP placement takes 1.56 sec.
+
+Phase 1.2 Clock placement started.
+Mapping instance clkbufg_0/gopclkbufg to USCM_84_108.
+Mapping instance clkbufg_1/gopclkbufg to USCM_84_109.
+Clock placement takes 0.11 sec.
+
+Wirelength after Pre Global Placement is 1638 and checksum is EFB688F8DF8E9648.
+Pre global placement takes 1.72 sec.
+
+Phase 2 Global placement started.
+Phase 2.1 Fixed placement started.
+Placed fixed group with base inst clock_pad/opit_1_OQ on IOL_327_294.
+Placed fixed group with base inst ctl_pad/opit_1_OQ on IOL_327_269.
+Placed fixed group with base inst pins[0].pad/opit_1_OQ on IOL_327_293.
+Placed fixed group with base inst pins[1].pad/opit_1_OQ on IOL_327_266.
+Placed fixed group with base inst pins[2].pad/opit_1_OQ on IOL_327_265.
+Placed fixed group with base inst pins[3].pad/opit_1_OQ on IOL_327_270.
+Placed fixed group with base inst sys_clk_ibuf/opit_1 on IOL_327_210.
+Placed fixed instance clkbufg_0/gopclkbufg on USCM_84_108.
+Placed fixed instance clkbufg_1/gopclkbufg on USCM_84_109.
+Placed fixed instance u_cfg_pll/u_pll_e3/goppll on PLL_158_75.
+Placed fixed instance BKCL_auto_0 on BKCL_328_184.
+Fixed placement takes 0.02 sec.
+
+Phase 2.2 Process placement started.
+Process placement takes 0.00 sec.
+
+Phase 2.3 IO placement started.
+IO placement takes 0.02 sec.
+
+Phase 2.4 2nd GP placement started.
+Run super clustering :
+	Initial slack -68.
+	1 iterations finished.
+	Final slack -68.
+Super clustering done.
+Design Utilization : 1%.
+Worst slack after global placement is -68
+2nd GP placement takes 0.30 sec.
+
+Wirelength after global placement is 236 and checksum is 43D6A0E2EA61EEE8.
+Global placement takes 0.33 sec.
+
+Phase 3 Post global placement started.
+Phase 3.1 Macro cell placement started.
+I: Process macros using "Greedy".
+Wirelength after macro cell placement is 236 and checksum is 43D6A0E2EA61EEE8.
+Macro cell placement takes 0.00 sec.
+
+Phase 3.2 3rd GP placement started.
+Run super clustering :
+	Initial slack -68.
+	1 iterations finished.
+	Final slack -68.
+Super clustering done.
+Design Utilization : 1%.
+Worst slack after post global placement is -68
+3rd GP placement takes 0.31 sec.
+
+Wirelength after post global placement is 236 and checksum is 43D6A0E2EA61EEE8.
+Post global placement takes 0.31 sec.
+
+Phase 4 Legalization started.
+The average distance in LP is 5.230769.
+Wirelength after legalization is 257 and checksum is 7E1991A521CCE2CB.
+Legalization takes 0.00 sec.
+
+Phase 5 Timing-driven detailed placement started.
+Phase 5.1 Replication placement started.
+Worst slack before Replication Place is -68.
+Replication placement takes 0.02 sec.
+
+Wirelength after replication placement is 257 and checksum is 7E1991A521CCE2CB.
+Phase 5.2 DP placement started.
+Legalized cost -68.000000.
+The detailed placement ends at 11th iteration.
+DP placement takes 0.02 sec.
+
+Wirelength after detailed placement is 257 and checksum is 7E1991A521CCE2CB.
+Timing-driven detailed placement takes 0.03 sec.
+
+I: Replicate Registers:clk_ff/opit_0 CLMS_322_289(/FF0/FF) IOL_327_294(/OFF/FF) 
+Worst slack is -68, TNS after placement is -340.
+Placement done.
+Total placement takes 2.39 sec.
+Finished placement.
+
+Routing started.
+Building routing graph takes 1.08 sec.
+Worst slack is -68, TNS before global route is -340.
+Processing design graph takes 0.17 sec.
+Total memory for routing:
+	115.205291 M.
+Total nets for routing : 33.
+Global Routing step 1 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 1 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 2 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 3 processed 0 nets, it takes 0.00 sec.
+Unrouted nets 0 at the end of iteration 0.
+Global Routing step 1 processed 2 nets, it takes 0.00 sec.
+Unrouted nets 4 at the end of iteration 0.
+Unrouted nets 0 at the end of iteration 1.
+Global Routing step 2 processed 6 nets, it takes 0.00 sec.
+Global Routing step 3 processed 0 nets, it takes 0.00 sec.
+Global routing takes 0.03 sec.
+Total 33 subnets.
+    forward max bucket size 489 , backward 8.
+        Unrouted nets 6 at the end of iteration 0.
+    route iteration 0, CPU time elapsed 0.015625 sec.
+    forward max bucket size 486 , backward 5.
+        Unrouted nets 0 at the end of iteration 1.
+    route iteration 1, CPU time elapsed 0.000000 sec.
+Detailed routing takes 1 iterations
+Detailed routing takes 0.03 sec.
+Start fix hold violation.
+Build tmp routing results takes 0.00 sec.
+Timing analysis takes 0.00 sec.
+No hold violation.
+Hold Violation Fix in router takes 0 iterations.
+Fix hold violation Finished.
+Hold Violation Fix in router takes 0.05 sec.
+
+Dispose routing result:
+    Collect routing result.
+    Delete unused device instances.
+    Annotate routing result.
+    Change LUT configuration.
+    Dispose misc instances.
+    Annotate routing result again.
+Finish routing takes 0.00 sec.
+Used SRB routing arc is 226.
+Cleanup routing takes 0.00 sec.
+Routing done.
+Total routing takes 1.67 sec.
+
+
+Device Utilization Summary :
++---------------------------------------------------------------------------+
+| Logic Utilization        | Used     | Available     | Utilization(%)     
++---------------------------------------------------------------------------+
+| Use of APM               | 0        | 84            | 0                  
+| Use of BKCL              | 1        | 4             | 25                 
+| Use of CLMA              | 0        | 6450          | 0                  
+|   FF                     | 0        | 38700         | 0                  
+|   LUT                    | 0        | 25800         | 0                  
+|   LUT-FF pairs           | 0        | 25800         | 0                  
+| Use of CLMS              | 3        | 4250          | 1                  
+|   FF                     | 6        | 25500         | 1                  
+|   LUT                    | 6        | 17000         | 1                  
+|   LUT-FF pairs           | 2        | 17000         | 1                  
+|   Distributed RAM        | 0        | 17000         | 0                  
+| Use of CRYSTAL           | 0        | 2             | 0                  
+| Use of DLL               | 0        | 10            | 0                  
+| Use of DQSL              | 0        | 18            | 0                  
+| Use of DRM               | 0        | 134           | 0                  
+| Use of FUSECODE          | 0        | 1             | 0                  
+| Use of HARD0N1           | 5        | 6672          | 1                  
+| Use of HSST              | 0        | 1             | 0                  
+| Use of IO                | 7        | 296           | 3                  
+|   IOBD                   | 0        | 64            | 0                  
+|   IOBR_LR                | 0        | 7             | 0                  
+|   IOBR_TB                | 0        | 8             | 0                  
+|   IOBS_LR                | 7        | 161           | 5                  
+|   IOBS_TB                | 0        | 56            | 0                  
+| Use of IOCKDIV           | 0        | 20            | 0                  
+| Use of IOCKDLY           | 0        | 40            | 0                  
+| Use of IOCKGATE          | 0        | 20            | 0                  
+| Use of IOCKGMUX_TEST     | 0        | 20            | 0                  
+| Use of IOL               | 7        | 400           | 2                  
+| Use of IPAL              | 0        | 1             | 0                  
+| Use of LDO               | 0        | 4             | 0                  
+| Use of MFG_TEST          | 0        | 1             | 0                  
+| Use of OSC               | 0        | 1             | 0                  
+| Use of PCIE              | 0        | 1             | 0                  
+| Use of PIOMUX_TEST       | 0        | 10            | 0                  
+| Use of PLL               | 1        | 5             | 20                 
+| Use of PREGMUX_TEST      | 0        | 6             | 0                  
+| Use of RCKB              | 0        | 24            | 0                  
+|  RCKB dataused           | 0        | 24            | 0                  
+| Use of RCKBMUX_TEST      | 0        | 12            | 0                  
+| Use of RESCAL            | 0        | 4             | 0                  
+| Use of SCANCHAIN         | 0        | 2             | 0                  
+| Use of START             | 1        | 1             | 100                
+| Use of UDID              | 0        | 1             | 0                  
+| Use of USCM              | 2        | 30            | 7                  
+|  USCM dataused           | 0        | 30            | 0                  
+| Use of USCMMUX_TEST      | 0        | 30            | 0                  
+| Use of VCKBMUX_TEST      | 0        | 12            | 0                  
++---------------------------------------------------------------------------+
+
+Finished routing.
+Design 'tx_clock_probe' has been placed and routed successfully.
+Saving design to DB.
+Finished placement and routing.
+Action pnr: Real time elapsed is 0h:0m:11s
+Action pnr: CPU time elapsed is 0h:0m:8s
+Action pnr: Process CPU time elapsed is 0h:0m:8s
+Current time: Thu Oct 22 17:43:33 2026
+Action pnr: Peak memory pool usage is 881 MB
+Action from compile to pnr: Total Real Time elapsed is 0h:0m:20s
+Action from compile to pnr: Total CPU time elapsed is 0h:0m:12s
+Action from compile to pnr: Total Process CPU Time elapsed is 0h:0m:12s
+Process "Place & Route" done.
+Executing : pnr -optimize_multi_corner_timing successfully.
+
+
+Executing : report_timing -nworst 100 -max_path 200 -input_pins TRUE
+
+
+Process "Report Timing" started.
+Current time: Thu Oct 22 17:43:33 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_sdr250_edge_probe/probe.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Building architecture model.
+Loading device packaging model.
+Reading design from pnr DB.
+Start Report Post-PnR timing.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 5993935
+
+Constructing timing graph ...
+Timing graph has been constructed successfully
+Report timing is finished successfully.
+Action report_timing: Real time elapsed is 0h:0m:5s
+Action report_timing: CPU time elapsed is 0h:0m:3s
+Action report_timing: Process CPU time elapsed is 0h:0m:3s
+Current time: Thu Oct 22 17:43:37 2026
+Action report_timing: Peak memory pool usage is 876 MB
+Action from compile to report_timing: Total Real Time elapsed is 0h:0m:25s
+Action from compile to report_timing: Total CPU time elapsed is 0h:0m:15s
+Action from compile to report_timing: Total Process CPU Time elapsed is 0h:0m:15s
+Process "Report Timing" done.
+Executing : report_timing -nworst 100 -max_path 200 -input_pins TRUE successfully.

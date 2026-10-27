@@ -1,0 +1,1269 @@
+Physical Constraint Editor
+用户手册
+(Version 1.3)
+深圳市紫光同创电子有限公司
+版权所有
+侵权必究
+
+1 / 61
+文档版本修订记录
+版本号
+发布日期
+修订记录
+V1.0
+2022.7.12
+初始版本
+V1.1
+2022.8.5
+增加properties 窗口功能描述
+V1.2
+2022.10.26
+增加Region 资源过滤功能描述
+V1.3
+2023.1.12
+增加Bundle nets 描述
+
+2 / 61
+目录
+1 功能介绍............................................................................................................8
+1.1 PCE 简介......................................................................................................8
+1.2 启动PCE......................................................................................................8
+1.2.1 在PDS 中打开PCE............................................................................... 8
+1.2.2 在安装目录下单独打开PCE..............................................................10
+2 菜单工具栏介绍..............................................................................................12
+2.1 工具栏介绍................................................................................................12
+2.2 右键菜单介绍............................................................................................14
+2.2.1 工具栏右键菜单.................................................................................14
+2.2.2 标题右键菜单.....................................................................................14
+3 窗口介绍..........................................................................................................16
+3.1 DESIGN BROWSER........................................................................................16
+3.2 FLOORPLAN VIEW....................................................................................... 20
+3.3 PACKAGE VIEW........................................................................................... 21
+3.4 I/O TABLE....................................................................................................22
+3.5 REGION........................................................................................................24
+3.6 PROPERTIES 界面.........................................................................................25
+3.7 窗口关联....................................................................................................26
+4 详细操作..........................................................................................................27
+4.1 搜索实例....................................................................................................27
+4.2 约束实例....................................................................................................28
+4.3 查看已约束实例........................................................................................29
+4.4 IO 约束....................................................................................................... 31
+4.4.1 在floorplan view/package view 窗口约束IO.....................................31
+4.4.2 在I/O Table 中约束IO....................................................................... 31
+4.5 区域约束....................................................................................................34
+4.5.1 通过Region 窗口进行删除区域........................................................34
+4.5.2 进入Region 模式后进行新建区域操作............................................35
+4.5.3 查看区域信息.....................................................................................36
+4.5.4 Bundle Nets 功能................................................................................. 36
+4.6 PRESERVE 约束............................................................................................37
+4.6.1 单个Device 设置preserve.................................................................37
+4.6.2 多个Device 设置preserve.................................................................38
+4.7 取消约束....................................................................................................39
+
+3 / 61
+4.7.1 在Design Browser 中取消约束..........................................................39
+4.7.2 在floorplan view/package view 中取消约束.................................... 39
+4.8 改变约束位置............................................................................................39
+4.8.1 改变单个已约束instance 的位置..................................................... 39
+4.8.2 改变多个已约束instance 的位置..................................................... 40
+4.9 重新加载DESIGN DB/PCF....................................................................... 40
+4.10 MARK 功能............................................................................................... 41
+4.11 局部放大视图..........................................................................................43
+4.12 导出按顺序排列的PCF 文件.................................................................44
+4.12.1 UI 操作............................................................................................... 44
+4.12.2 排序效果展示...................................................................................45
+4.13 TCL 命令的使用......................................................................................46
+4.13.1 约束相关...........................................................................................46
+4.13.2 Region 相关........................................................................................46
+4.13.3 preserve 命令.....................................................................................48
+4.13.4 swap_constraint 命令........................................................................ 49
+4.13.5 保存PCF 文件相关...........................................................................49
+4.13.6 Select 命令相关................................................................................. 50
+4.13.7group 相关.......................................................................................... 50
+4.13.8close 相关........................................................................................... 52
+4.14 PCE HIGHLIGHT 功能...............................................................................52
+4.14.1 PCE 中floorplanview 上的device highlight 的操作.........................52
+4.14.2 PCE 中designbrowser 上的design highlight 的操作....................... 53
+4.15 EXPORT REGION 功能................................................................................54
+4.16 PCE SWAP LOCATION 功能....................................................................... 56
+4.16.1 PCE 中Design Browser 窗口下的Swap Location 的操作................ 56
+4.16.2 PCE 中floorplan view 窗口的Swap Location 的操作...................... 58
+4.16.3 PCE 中package view 窗口的Swap Location 的操作........................59
+4.16.4 PCE 中Swap Location 失败的操作................................................... 60
+4.17 CLOCK REGION 显示..................................................................................... 61
+
+4 / 61
+图目录
+图1-1
+PCE 主界面............................................................................................8
+图1-2
+工具栏的Physical Constraint Editor 图标............................................8
+图1-3
+Tool 菜单下的Physical Constraint Editor(Post-Map)........................... 9
+图1-4
+PDS 中没有PCF 文件的Input Physical Constraint File.......................9
+图1-5
+PDS 中有PCF 文件的Input Physical Constraint File.........................10
+图1-6
+选择需要加载的Map DB 文件........................................................... 11
+图2-1 工具栏中视图View 相关操作..............................................................12
+图2-2
+PCE 工具栏的右键菜单......................................................................14
+图2-3
+PCE 标题栏的右键菜单......................................................................15
+图3-1 资源浏览器Design Browser.................................................................16
+图3-2
+Design 工具栏...................................................................................... 16
+图3-3 搜索功能................................................................................................17
+图3-4
+未隐藏已约束实例和已隐藏已约束实例..........................................17
+图3-5
+未隐藏未约束实例和已隐藏未约束实例..........................................17
+图3-6
+未有Hier 结构的显示.........................................................................18
+图3-7
+site 编辑............................................................................................... 18
+图3-8
+locate to device.....................................................................................19
+图3-9
+floorplan view 缩略图..........................................................................19
+图3-10
+package view 缩略图.........................................................................20
+图3-11
+view 窗口下的窗口切换标签........................................................... 20
+图3-12
+floorplan view 窗口............................................................................21
+图3-13
+Package View 窗口............................................................................ 22
+图3-14
+package view 窗口的右键菜单.........................................................22
+图3-15
+I/O Table 界面....................................................................................23
+图3-16
+区域窗口............................................................................................24
+图3-17
+Properties 按钮................................................................................... 25
+图3-18
+Properties 界面显示........................................................................... 25
+
+5 / 61
+图4-1
+使用“*”搜索实例............................................................................27
+图4-2
+点击Hide Constraint 按钮，搜索实例...............................................27
+图4-3
+点击Hide UnConstraint 按钮，搜索实例..........................................28
+图4-4
+使用一个“?”搜索实例.................................................................... 28
+图4-5
+使用多个“?”搜索实例.................................................................... 28
+图4-6
+约束实例..............................................................................................29
+图4-7
+查看已约束的实例..............................................................................29
+图4-8
+HighLight Device.................................................................................30
+图4-9
+Show Highlight List............................................................................. 30
+图4-10 将IO 拖放到floorplan view 的IO Device 中....................................31
+图4-11
+将IO 拖放到package view 的pin 脚中...........................................31
+图4-12
+I/O Table 窗口....................................................................................32
+图4-13
+Loc 设置举例.....................................................................................32
+图4-14
+同一Bank 中VCCIO 值一致...........................................................33
+图4-15
+包含IODELAY 的输入.....................................................................33
+图4-16
+差分IO 约束......................................................................................33
+图4-17
+Delete Region.....................................................................................34
+图4-18
+delete region....................................................................................... 34
+图4-19
+点击Region Mode 按钮进入Region 模式.......................................35
+图4-20
+指定约束区域....................................................................................35
+图4-21
+区域命名提示框................................................................................35
+图4-22
+Draw Area Undo Constraint...............................................................36
+图4-23
+查看区域信息....................................................................................36
+图4-24
+bundle nets 显示................................................................................. 37
+图4-25
+bundle net 选中...................................................................................37
+图4-26
+Bundle net 设置.................................................................................. 37
+图4-27
+设置preserve..................................................................................... 38
+图4-28
+设置区域preserve............................................................................. 38
+
+6 / 61
+图4-29
+取消约束............................................................................................39
+图4-30 选择多个实例.......................................................................................40
+图4-31
+重载提示............................................................................................40
+图4-32
+重载失败提示....................................................................................41
+图4-33
+mark....................................................................................................41
+图4-34
+mark 图样...........................................................................................42
+图4-35
+mark 按键...........................................................................................42
+图4-36
+mark browser......................................................................................43
+图4-37
+局部放大视图....................................................................................44
+图4-38 选择导出排序pcf 功能.......................................................................44
+图4-39 排序后...................................................................................................45
+图4-40
+界面同时取消2 个约束打印group 信息.........................................51
+图4-41
+界面同时拖动2 个约束至其他位置打印group 信息.....................51
+图4-42
+界面同时对2 个inst 作区域约束打印group 信息.........................51
+图4-43
+界面同时取消位置约束及区域约束后点击Undo 打印group 信息51
+图4-44
+界面同时删除多个region 后点击Undo 打印group 信息..............52
+图4-45
+界面同时删除多个region 后打印group 信息................................ 52
+图4- 46
+无约束device 高亮............................................................................53
+图4-47
+有约束device 高亮............................................................................53
+图4-48
+design 高亮.........................................................................................54
+图4-49
+右键增加export region 按钮.............................................................55
+图4-50
+export region 窗口..............................................................................55
+图4-51
+进度条................................................................................................56
+图4-52
+右键增加swap location.....................................................................57
+图4-53
+约束位置交换成功............................................................................57
+图4-54
+右键增加swap location.....................................................................58
+图4-55
+右键swap location 灰显....................................................................59
+图4-56
+package view 选中2 个IO 右键增加swap location........................60
+
+7 / 61
+图4-57
+clock region 显示...............................................................................61
+
+功能介绍
+8 / 61
+1 功能介绍
+1.1 PCE 简介
+该文档详细描述了Physical Constraint Editor（以后简称PCE）的使用方法和
+各项功能。PCE 能够对实例和IO 进行布局约束、区域约束和I/O 设置。
+PCE 主界面，如下图所示。
+图1- 1 PCE 主界面
+1.2 启动PCE
+打开软件，新建工程，添加add.vm(在PDS 安装后所在目录内)。以下两种
+方式可以启动PCE：
+1.2.1 在PDS 中打开PCE
+（1）点击工具栏的Physical Constraint Editor 图标，如下图所示。
+图1- 2 工具栏的Physical Constraint Editor 图标
+（2）点击菜单栏“Tools”下的“Physical Constraint Editor(Post-Map)”，如下图
+所示。
+
+功能介绍
+9 / 61
+图1- 3 Tool 菜单下的Physical Constraint Editor(Post-Map)
+在PDS 中启动PCE 时，当PDS 原工程中没有Physical Constraint File（以下
+简称PCF）文件时，将弹出输入PCF 文件对话框，文本框内容为空，如下图所
+示。
+图1- 4 PDS 中没有PCF 文件的Input Physical Constraint File
+当PDS 原工程中有PCF 文件时，则弹出的输入PCF 文件对话框的文本框内
+容为工程中现有的PCF 文件，如下图所示。
+
+功能介绍
+10 / 61
+图1- 5 PDS 中有PCF 文件的Input Physical Constraint File
+【Add and Replace project pcf.】：可以直接输入需要新建的PCF 文件名或者
+选择已经存在的PCF 文件添加到PDS 工程中，则点击【Open】按钮后可以将该
+PCF 文件加载到PCE 中。如果输入的是不存在的合法的PCF 文件名，则会在点
+击【Open】按钮后在工作目录下创建该名字的PCF 文件(可以手动加上后缀.pcf
+也可以不加后缀，若未加后缀则软件会在新建PCF 文件时自动加上后缀.pcf)。
+如果选择的PCF 和工程中原有的PCF 文件不一致，那么选择的PCF 文件将替换
+工程中原有的PCF 文件，并影响PDS 工程的状态。如果文本框为空，【Open】
+按钮将不可使用。
+【Delete pcf from project】：将PDS 工程中已有的PCF 文件移除，打开的PCE
+不会加载任何的PCF 文件。如果PDS 工程中没有PCF 文件，选择该选项，
+【Open】
+将不可使用。
+对于【Apply】按钮，其表现行为和功能与【Open】按钮相似，区别在于其
+只会应用改变，而不打开PCE。
+如果选中的PCF 文件有error，则会报error，但是仍然可以进去PCE，给用
+户修改的机会；而在pnr 阶段，如果PCF 中有error 则会报error，并终止flow 的
+执行。
+1.2.2 在安装目录下单独打开PCE
+点击安装目录下的bin 文件夹的pce.exe 可执行性文件启动PCE。通过这种
+
+功能介绍
+11 / 61
+单独启动PCE 的方式，需要用户手动选择需要加载的Map DB 文件，如下图所
+示。
+图1- 6 选择需要加载的Map DB 文件
+
+菜单工具栏介绍
+12 / 61
+2 菜单工具栏介绍
+2.1 工具栏介绍
+PCE 工具栏中相关操作如图所示。
+图2- 1 工具栏中视图View 相关操作
+图中由左至右各个按钮代表的操作如下：
+Design Browser：显示/隐藏Design Browser 窗口。
+Region：显示/隐藏Region 窗口。
+Properties：显示/隐藏Properties 窗口。
+Selection：显示/隐藏Selection 窗口。
+Mark Browser：显示/隐藏Mark Browser 窗口。
+I/O Table：显示/隐藏I/O Table 窗口。
+Console：打开/隐藏命令行控制台。
+Add PCF File:添加pcf
+Open PCE file As Test:以文本形式打开PCF 文件
+Remove PCF File：删除pcf
+Save：保存
+Save as：另存为
+Reset：重置
+View All：显示完整视图。
+Zoom In：放大视图。
+Zoom Out：缩小视图。
+Previous View：上一视图。
+Next View：下一视图。
+Undo：撤销按钮。当在PCE 中执行约束命令或者取消约束命令后点击Undo，
+可以撤销到执行上一次命令前，Undo 最大次数与执行约束命令次数相同；Undo
+
+菜单工具栏介绍
+13 / 61
+操作支持进度条显示，且进度条支持Cancel；当执行remove pcf 文件、add pcf
+文件、reload pcf 文件、Reset 操作后禁止Undo 操作。
+Redo：恢复按钮。当在PCE 中执行Undo 操作后点击Redo 可以恢复到Undo
+操作前，Redo 最大次数与Undo 操作次数相同；Redo 操作支持进度条显示，且
+进度条支持Cancel；当执行remove pcf 文件、add pcf 文件、reload pcf 文件、Reset
+操作后禁止Redo 操作
+Region Mode：打开/关闭区域约束模式。
+Auto-Fit Selection：开启/关闭自适应显示选中对象模式。
+Show Differential IO：在package view 中显示/隐藏差分IO。
+Show Airline：PCE floorplan 界面显示design inst 做过位置约束后的连接关
+系
+Search Inst：在Device 界面打开device instance 搜索框。
+View ALL Widget：该窗口可以实时显示device view 界面所在芯片的位置以
+及选中的design net，该窗口通过点击滚动条之间的按钮，在device view 界面右
+下角显示
+Show cell connections:打开cell connections 控制窗口
+Settings：分为两个页面，layers 和General
+1) layers 页面：
+A. Design、Device、I/OBanks。三种类型下分别为约束的object、硬件上的
+device、硬件上的I/O。若相应类型的前面状态为被选中，则表示该种类型在
+floorplan view/package view 中显示。若没有被选中，则表示该种类型在floorplan
+view/package view 中不会显示。
+B. Layers 窗口中有Clock Pad、Ref Pin、Share Pin、PLL Pad 四类pin 脚的可
+选项，代表四种不同类型的管脚（打开界面时，四种类型均默认为不勾选状态）。
+勾选某种类型，则在Package View 中画出对应标识的管脚（Package View 画图中，
+C 表示Clock Pad，R 表示Ref Pin，S 表示Share Pin，P 表示PLL Pad）。
+2) General 页面，存在配置项-Add comment to error cmds，默认不勾选，当勾
+选该框时，激活PCE 保存时，pcf 中会将错误、无效的约束命令注释并在console
+
+菜单工具栏介绍
+14 / 61
+打印报告信息；未勾选时，激活PCE 保存时，pcf 中不会将错误、无效的约束命
+令注释。
+2.2 右键菜单介绍
+2.2.1 工具栏右键菜单
+右键点击工具栏空白区域，会出现如下图所示的右键菜单。
+图2- 2 PCE 工具栏的右键菜单
+Design Browser：显示/隐藏Design Browser 按钮(不可选)。
+I/O Table：显示/隐藏I/O Table 按钮。
+Console：显示/隐藏TCL Console 按钮。
+File：显示/隐藏工具栏File 相关操作的按钮。
+Zoom：显示/隐藏工具栏View All、Zoom In、Zoom Out 图标。
+History：显示/隐藏工具栏Previous View、Next View、Undo、redo 图标。
+Mode：显示/隐藏工具栏Region Mode 图标。
+Show Connection: 显示/隐藏工具栏Differential IO、show airline 按钮。
+Search Deive Inst：显示/隐藏搜索框按钮。
+Deivce：显示/隐藏View all Widget、setting、show cell connections 按钮。
+2.2.2 标题右键菜单
+右键点击标题处，会出现右键菜单，如图所示。
+
+菜单工具栏介绍
+15 / 61
+图2- 3 PCE 标题栏的右键菜单
+Close：关闭当前窗口。
+Close All But This：关闭除了当前窗口外的全部其他窗口。
+Open Containing Folder：打开该PCF 文件所在的文件夹。
+
+窗口介绍
+16 / 61
+3 窗口介绍
+以下详细介绍各窗口的功能和使用方法。
+3.1 Design browser
+Design 窗口分类显示当前所有的实例。主要有Leaf Cell、IO、CarryChain、
+Group 等分类。在Design 窗口可查找特定实例和IO，也可以点击类型名称拖动
+至右侧Floorplan view 或Package view 窗口进行约束。
+Device 窗口展示硬件上的信息，主要为Design、Device、I/O Banks。三种类
+型下分别为约束的object、硬件上的device、硬件上的I/O。若相应类型的前面
+状态为被选中，则表示该种类型在floorplan view/package view 中显示。若没有被
+选中，则表示该种类型在floorplan view/package view 中不会显示。
+Design Browser 窗口如下图所示：
+图3- 1 资源浏览器Design Browser
+Design 窗口中有工具栏如下图所示：
+图3-2 Design 工具栏
+
+窗口介绍
+17 / 61
+其中：第一个Search：搜索功能，如下图所示：
+图3- 3 搜索功能
+第二个Collapse All：折叠功能
+第三个Hide Constraint：隐藏已约束的实例。如下图所示：
+图3- 4 未隐藏已约束实例和已隐藏已约束实例
+第四个Hide UnConstraint：隐藏未约束的实例。如下图所示：
+图3- 5 未隐藏未约束实例和已隐藏未约束实例
+第五个Show By hierarchy：是否显示hier 层级结构。如下图所示：
+
+窗口介绍
+18 / 61
+图3- 6 未有Hier 结构的显示
+第六个Scroll to selected object：是否自动滚动到选择对象位置。开启此功能
+后在其他页面如floorplan 上选择design browser 中的design inst，design browser
+会滚动的该对象位置。
+图3- 7 site 编辑
+对于选中module，右键新增支持Locate to device，点击后跳转并高亮
+floorplan 上所有的位置约束；Assign to Region，支持将选中的instance 或选中的
+module 下的instance 约束到选择区域(如果某个instance 已经有约束，则忽略掉
+该instance)；Unassign from Region，支持将约束在某个区域中的instance 或module
+中的instance 取消约束。Floorplan View 界面中选中instance 也支持Assign to
+Region/Unassign from Region 功能。
+
+窗口介绍
+19 / 61
+图3- 8 locate to device
+Design Browser 右侧为器件缩略图，如下2 图分别表示floorplan view 和
+package view 的缩略图。用户在进行放大操作时，能在缩略图中观察全局的约束
+情况，并且鼠标拖动缩略图中的方框，可以移动视角，单击缩略图中任意位置也
+能迅速定位到该范围。
+图3- 9 floorplan view 缩略图
+
+窗口介绍
+20 / 61
+图3- 10 package view 缩略图
+缩略图同样可以显示约束的相关信息，在floorplan view 或package view 中
+约束后，可以在缩略图中查看相应的约束信息，包括区域约束和非区域约束。
+3.2 Floorplan View
+该窗口显示芯片的资源位置，四周为IO 资源，中间为逻辑资源。可把实例
+拖动到当前窗口与其匹配的device 中，已约束的位置会高亮显示。取消约束后，
+恢复默认状态。窗口还可显示区域约束的范围，放入该区域的实例会在自动布局
+时，布局到该区域内。
+点击“view”窗口下方的按钮，可切换窗口，如图所示。
+图3- 11 view 窗口下的窗口切换标签
+点击“floorplan view”标签进入相应窗口，如图所示。
+
+窗口介绍
+21 / 61
+图3- 12 floorplan view 窗口
+3.3 Package View
+该窗口显示芯片的管脚封装位置，可将IO 实例约束到该窗口。已约束的位
+置会高亮显示，取消约束则恢复默认状态。
+“package view”，切换到下图，该窗口显示已约束的IO 位置。
+
+窗口介绍
+22 / 61
+图3- 13 Package View 窗口
+右键点击该窗口空白处可选择“Package Top View”或“Package Bottom
+View”，如下图所示。
+图3- 14 package view 窗口的右键菜单
+3.4 I/O Table
+该窗口可以对I/O 进行设置，其约束效果也是实时反馈到package view 和
+Design Browser 中。IO Table 可以通过点击对应列的表头进行列排序，可以通过
+
+窗口介绍
+23 / 61
+移动列的表头来移动列的位置，也可以通过表头右键点击reset order 来恢复默认
+的顺序，方便操作。在编辑IO 约束时，对已有约束，如果需要拷贝对应属性值
+到其他端口，可以灵活运用右键copy 和paste。Copy 可以对单行端口的多个属
+性值进行复制，然后粘贴到其他端口上。IO Table 如下图所示。
+图3- 15 I/O Table 界面
+可设置的选项包括：
+I/O NAME：显示I/O 名称。
+I/O DIRECTION：显示I/O 类型，共input、output、inout 三种。
+LOC：约束的管脚。
+BANK：该管脚所在的bank。
+VCCIO：IO 输入输出电压。
+IOSTANDARD：IO 标准。
+DISABLE_DRIVE 列：DRIVE 使能（仅TITAN 系列支持，该列用于使能
+DRIVE，勾选则表示可以设置PMOS/NMOS，不勾选则表示可以设置DRIVE，
+界面默认为不勾选状态，该参数不会写入约束文件中）。
+DRIVE：驱动电流。
+PMOS_FINGER：单端驱动器的PMOS 驱动能力(仅TITAN 系列支持)。
+NMOS_FINGER：单端驱动器的NMOS 驱动能力(仅TITAN 系列支持)。
+BUS_KEEPER：设置上拉下拉电阻。
+SLEW：转换速率。
+HYS_DRIVE_MODE：输入迟滞模式。
+VREF_MODE：参考电压VREF 模式。
+VREF_MODE_VALUE：内部产生VREF 和专用VREF 输入管脚模式设置。
+DDR_TERM_MODE：DDR memory 应用输入匹配电阻设置。
+
+窗口介绍
+24 / 61
+DIFF_IN_TERM_MODE：差分输入的输入匹配电阻设置。
+OPEN_DRAIN：驱动模式选择。
+IN_DELAY：输入延迟。
+OUT_DELAY：输出延迟。
+CP_IPT：修正poly 电流的default 值。
+CAL_MODE：DDR 模式输入内置端接电阻校准功能控制。
+DDR_RES：使用校准功能使能时的内置电阻值。
+CLAMP：功能用于当IO 输入电压高于电源VCCIO 时，将输入电压钳位在
+VCCIO + VT
+3.5 Region
+区域约束是指划定某区域，选中region 打开Properties 栏，在Properties 窗
+口中的general 窗口显示区域中支持的资源类型，若勾选区域支持该资源约束，
+不勾选，区域不支持该资源约束，statistics 窗口显示区域存在的资源及数量，
+Instances 界面显示当前约束的design inst，将实例拖至该区域内，后续的布局将
+保证该实例布局在该区域内。Region 窗口如下图所示。
+图3- 16 区域窗口
+
+窗口介绍
+25 / 61
+3.6Properties 界面
+PCE 中提供了Properties 界面，供用户查看选中对象的基本属性值。可以在
+该窗口在PCE 的工具栏中点击Properties 按钮打开Properties 界面，见下图：
+图3-17 Properties 按钮
+Properties 界面会显示选中对象的基本属性，如下图：
+图3-18 Properties 界面显示
+且Properties 的工具栏提供了一些操作工具共用户保持，切换查看Properties，
+这些工具从左到右依次为previous object，next object，Automatically update。
+【previous object】切换显示上一个对象的Properties
+【next object】切换显示下一个对象的Properties
+【Automatically update】自动更新成选中对象的Properties，默认为开启状态
+不同的对象Properties 页面中显示的属性不同，具体划分见下表：
+选中对象
+显示页面
+子页面显示内容
+region
+General
+显示region 中资源类型（可选择）
+Statstics
+显示region 中各类型资源数量
+Instances
+显示约束在region 中的design inst
+preserve
+region
+Statstics
+显示region 中各类型资源数量
+gate devcie
+inst
+General
+显示name，unit，cell，view，site(x,y),（x,y）像素
+坐标
+
+窗口介绍
+26 / 61
+prim device
+inst
+General
+显示name，parent,unit,cell
+inst
+General
+显示Cell Paramarters，name，unit，cell，view，file，
+connected，pin out 信息
+nets
+显示该module 的pin 以及连接的nets
+port
+General
+显示name，file，direction
+port bus
+General
+显示name，file，direction，left_index,right_index，
+size
+pin pad
+General
+显示name，unit，cell，view，site(x,y),（x,y）
+bank
+General
+显示name，(ref pin size)，pin size，(ref pin name)
+Site
+显示bank 中各Pin 的pin name，Instance name，Pad name
+Bundle nets
+General
+显示name
+Clock Region
+General
+显示name，unit，cell，view，site(x,y),（x,y）
+表3-1 Properties 属性显示
+3.7窗口关联
+floorplan view 中的IO 和package view 中的IO 以及I/O Table 中IO 的约束是
+一一对应的，当其中一个窗口某IO 实例的约束位置改变时，其它窗口会同时改
+变以保持一致。
+
+详细操作
+27 / 61
+4 详细操作
+4.1 搜索实例
+在搜索框中搜索支持“*”（匹配0 至多个字符）和“?”（仅匹配一个字符）
+两种模糊匹配符，并且它们不区分大小写。
+举例1.1：搜索条件输入I*F，搜索结果如下图所示。
+图4- 1 使用“*”搜索实例
+举例1.2：输入搜索条件后，点击Hide Constraint 按钮，会隐藏满足搜索条
+件的已约束实例，如图所示：
+图4- 2 点击Hide Constraint 按钮，搜索实例
+举例1.3：输入搜索条件后，点击Hide UnConstraint 按钮，会隐藏满足搜索
+条件的未约束实例，如图所示：
+
+详细操作
+28 / 61
+图4- 3 点击Hide UnConstraint 按钮，搜索实例
+举例2.1：搜索条件输入I?F，匹配结果变少，如下图所示。
+图4- 4 使用一个“?”搜索实例
+举例3：搜索条件输入I??F，如下图所示。
+图4- 5 使用多个“?”搜索实例
+4.2 约束实例
+在Design Browser 中点击某实例名，例如T_GTP_INV/opit_0，按住鼠标左
+
+详细操作
+29 / 61
+键，拖至floorplan view 上某位置，若约束成功，则该位置资源高亮，实例名前
+图标消失，如下图所示。
+图4- 6 约束实例
+4.3 查看已约束实例
+如果要查看已约束的实例的放置位置，可以在Design Browser 中点击该实例
+的名称，然后可以看到右侧floorplan view 中该实例会高亮显示，如下图所示。
+图4- 7 查看已约束的实例
+
+详细操作
+30 / 61
+Floorplan view 支持用户设置自定义device 高亮颜色，右键新增菜单选项如
+下设置：
+1. HighLight Device(当有devcie选中时高亮，设置颜色可设置一个或多个选
+中的device)
+图4- 8 HighLight Device
+2. UnHighLight Device（存在设置高亮的device时高亮，可以取消一个或多
+个设置高亮的device的高亮颜色）
+3. Show Highlight Widget （存在显示高亮配置界面且界面上有设置高亮的
+device时，该选项高亮显示）
+图4- 9 Show Highlight List
+
+详细操作
+31 / 61
+4.4 IO 约束
+4.4.1 在floorplan view/package view 窗口约束IO
+在Design Browser 中点击某IO 的名称，例如LUT_INIT[4]，按住鼠标左键，
+拖至floorplan view 或package view 的某个pin 脚中，若约束成功，则该位置资源
+高亮，实例名前图标消失，如下两图所示。
+图4- 10 将IO 拖放到floorplan view 的IO Device 中
+图4- 11 将IO 拖放到package view 的pin 脚中
+4.4.2 在I/O Table 中约束IO
+（1）在IO Table 中进行IO 约束的操作说明
+通过点击工具栏的I/O Table 按钮打开I/O Table 窗口，如图4-8 所示。点击
+任一栏的Loc 的空白处，可以手动输入合法管脚或从下拉列表中选择需要约束的
+
+详细操作
+32 / 61
+管脚，Bank 栏自动显示该管脚所属的bank，点击其他列显示的下拉列表，可以
+选择需要设置的值。
+图4- 12 I/O Table 窗口
+IO Table 中的Loc 一旦确定了，Bank 也会确定。其他列则需自己给出默认
+的VCCIO 电压值和默认的IOSTANDARD 标准值。IO Table 中所有的列若是可
+以编辑，点击了之后就会出现下拉框。
+图4- 13 Loc 设置举例
+其中，需要注意的是：若一个Loc 位置已经被一个port 占用了，则其他的
+port 不再可以选择此Loc 位置。Loc 中输入的位置信息对大小写不敏感，但是若
+是输入有误，则返回之前正确的Loc 值。
+（2）IO 约束的相关说明
+同一个Bank 中的VCCIO 电压值是一致的，若是改变其中任何一个电压值，
+其余的也都会跟着改变。示例如图4-10 所示。
+
+详细操作
+33 / 61
+图4- 14 同一Bank 中VCCIO 值一致
+Input 类型的端口可以设置IN_DELAY，Output 类型的端口可以设置
+OUT_DELAY，如下图所示。
+图4- 15 包含IODELAY 的输入
+其中，IN_DELAY 或者OUT_DELAY 输入合法值均为正整数，具体数值取
+决于使用的器件，不同的器件类型，输入范围不一样。
+对于差分IO（Diff IO），因为是成对出现的，所以在设置值时，若是设置其
+中一个，另外一个也会跟着一起设置，并且除了Loc 不同，其他项的值均一致。
+如图所示：
+图4- 16 差分IO 约束
+其中INVOUTCO 与INVOUTCOB 为一对差分IO 对。
+（3）PGT180H 的PAP_IO_DRIVE 与PAP_IO_PMOS_FINGER、
+PAP_IO_NMOS_ FINGER 之间的对应说明
+PGT180H 可以选择设置PAP_IO_DRIVE，也可以选择设置
+
+详细操作
+34 / 61
+PAP_IO_PMOS_FINGER 和PAP_IO_NMOS_FINGER，它们之间存在的对应关系
+详见如下：
+PGT180H 的IOB 驱动器P 管/N 管finger 数量的电流对应关系
+Finger
+PGT180H的IOB驱动器P管/N管finger数量对应的电流(mA)
+Vccio=3.3V
+Vccio=2.5V
+Vccio=1.8V
+Vccio=1.5V
+Vccio=1.2V
+1
+9
+7.5
+5.2
+3.8
+2.2
+2
+18
+15
+10.4
+7.6
+4.4
+3
+27
+22.5
+15.6
+11.4
+6.6
+4
+36
+30
+20.8
+15.2
+8.8
+5
+45
+37.5
+26
+19
+11.2
+6
+54
+45
+31.2
+22.8
+13.2
+说明：
+1）测试条件为ttcorner。
+2）表中的Finger 列表示PAP_IO_PMOS_FINGER 和
+PAP_IO_NMOS_FINGER 设置的数值。
+4.5 区域约束
+4.5.1 通过Region 窗口进行删除区域
+图4- 17 Delete Region
+选中region 右键delete 后，会弹出提示框，让用户确认是否继续操作，点击
+YES 则删除，点击NO 则取消删除操作。
+图4- 18 delete region
+
+详细操作
+35 / 61
+4.5.2 进入Region 模式后进行新建区域操作
+(1)点击工具栏的Region Mode 按钮进入Region 模式，如图所示。
+图4- 19 点击Region Mode 按钮进入Region 模式
+(2) 在floorplan view 中右键点击可以看到draw region 命令，然后可以直接
+在floorplan 上利用鼠标选择区域来指定约束区域，如下图所示。
+图4- 20 指定约束区域
+鼠标选择区域之后会出现命名提示框，如下图所示。
+图4- 21 区域命名提示框
+（3）选择Draw Area Undo Constraint，鼠标选择区域之后会出现Undo
+Constraint View 弹框，该界面支持批量取消约束inst 和IO（对区域范围内的位置
+约束起作用）。
+
+详细操作
+36 / 61
+图4- 22 Draw Area Undo Constraint
+4.5.3 查看区域信息
+打开Properties 窗口在region 栏中选中相应region，可以在Properties 窗口查
+看region 信息包括资源使用信息以及约束进region 的instance，如下图所示。
+图4- 23 查看区域信息
+4.5.4 Bundle Nets 功能
+floorplan 上的区域约束之间会显示bundle nets，以此来显示区域之间的紧密
+程度，如下图：
+
+详细操作
+37 / 61
+图4-24 bundle nets 显示
+选中显示的bundle nets，打开selection 窗口中，可以看到Name 栏显示bundle
+nets(*)，其中*代表bundle net 数量，如下图：
+图4-25 bundle net 选中
+可以在Settings 的Layers 页下的bundle nets 项来控制各个等级的bundle nets
+是否显示。
+图4-26 Bundle net 设置
+4.6 preserve 约束
+4.6.1 单个Device 设置preserve
+在Floorplan 界面，选中单个Device，在右键菜单中选中功能set preserve，
+
+详细操作
+38 / 61
+即可设置preserve 属性。
+设置了preserve 后的device 如下图所示：
+图4- 27 设置preserve
+对于单个设置了preserve 的device，也可以右键选中功能unset preserve，取
+消设置的preserve 属性。
+4.6.2 多个Device 设置preserve
+在Floorplan 界面，选中一个区域（region），右键set preserve，即可对该region
+设置preserve 属性，即该区域内的所有device 均设置了preserve 属性。
+设置了preserve 的region 如下图所示：
+图4- 28 设置区域preserve
+对于区域设置了preserve，也可以选中该区域(region)，然后右键选中功能
+unset preserve，取消设置的preserve 属性。
+
+详细操作
+39 / 61
+4.7 取消约束
+4.7.1 在Design Browser 中取消约束
+在Design Browser 窗口选中已约束的instance，打开右键菜单，选择“Undo
+constraint”，如下图所示，则可以取消约束。
+图4- 29 取消约束
+4.7.2 在floorplan view/package view 中取消约束
+在floorplan view 或package view 上选中已约束的资源，拖回至Design
+Browser 窗口内或在floorplan view 和package view 中点击右键菜单的Undo
+constraint 选项，都可以取消约束。
+4.8 改变约束位置
+4.8.1 改变单个已约束instance 的位置
+在floorplan view 或package view 上选中已约束的资源，将其拖放到其它可
+约束的位置。
+
+详细操作
+40 / 61
+4.8.2 改变多个已约束instance 的位置
+按住Ctrl 键，选择多个已约束的instance，将其拖放到其它可约束的位置，
+如下图所示。若某实例已被选中，按住Ctrl 键单击该实例可取消选中。
+图4-30 选择多个实例
+4.9 重新加载Design DB/PCF
+当载入进PCE 的Design DB 或者PCF 文件在外部发生变化后，PCE 界面将
+提示是否reload，如下图所示。
+图4- 31 重载提示
+点击“Yes”按钮，将把被改动后的文件（Design DB 或者PCF）重新加载
+到PCE 中并替换原来的文件，选择“No”按钮，将不把被改动后的文件重新载
+入到PCE 中。
+如果被改动的是Design DB 文件，当Design DB 文件重新加载失败时，将提
+
+详细操作
+41 / 61
+示Design DB 加载失败，如下图所示。点击“OK”按钮后，PCE 将退出。
+图4- 32 重载失败提示
+4.10
+Mark 功能
+在floorplan view 中，支持对instance 和device 资源进行mark，mark 后会有
+“菱形”标识。与此同时，在mark browser 会同步mark 信息，并以颜色区分。
+在mark browser 能够定位某个以mark 的资源位置，并且能够将不需要mark 的
+资源移除mark browser。（在design Browser 中也支持对inst，port 进行mark 操
+作、同时在IO table、IO tree 中也支持对port 进行mark 操作）
+具体操作如下所示：
+1.对于选中资源，右键选择Mark/Unmark
+图4- 33 mark
+
+详细操作
+42 / 61
+2.Mark 资源效果如下
+图4- 34 mark 图样
+3.在工具栏有按钮菱形控制是否显示Mark browser 窗口
+图4- 35 mark 按键
+4.显示Mark browser 如下
+
+详细操作
+43 / 61
+图4- 36 mark browser
+5.相同的操作，在Mark browser 能够移除掉不需要的资源，具体做法是选中
+资源右键菜单选中Unmark 功能，或者点击Unmark all 清除全部的mark 标记。
+支持mark 操作的视图还有design browser、package view、IO table，且mark
+具有通信功能。即在design browser 中选中inst 进行mark，mark browser 中会显
+示该inst 名，再将该inst 进行LOC 约束，floorplan 界面中给inst 上存在相同的
+mark 标记，且在其中一处清除mark 标记，其他相关通信界面该inst 的mark 标
+记同样清除。（IO table、IO tree、package view、mark browser 的mark 通信同理）
+4.11局部放大视图
+device界面中按alt 键可以打开放大视图，按住alt 键可以拖动该视图在device
+界面移动，鼠标离开放大视图即可关闭，在放大视图中允许进行正常视图操作，
+并查看相关信息，如下图所示。
+
+详细操作
+44 / 61
+图4- 37 局部放大视图
+4.12
+导出按顺序排列的PCF 文件
+4.12.1 UI 操作
+floorplan 的右键菜单点击Export pcf file (tidy data);点击后出现对话框，让用
+户选择保存文件的地址，确认后将文件保存到指定位置。
+图4- 38 选择导出排序pcf 功能
+
+详细操作
+45 / 61
+4.12.2 排序效果展示
+图4-39 排序后
+系统的注释优先显示，然后依次如下的顺序
+a.所有的def_port 命令，默认字符串排序即可（端口约束）
+b.所有的region 的声明，按照region name 排序，也就是默认字符串排序即
+可。
+位置预留命令，默认字符串排序即可
+c.所有位置约束，先按照device 类型分类,相同device 类型下，按照design
+instance 名字排序。
+d.最后注释排在所有命令的后面，需要整体按照ASCII 的字符排序（特别说
+明，这地方由于无法区分用户的注释，所以可能会出现排序在注释区域的任何
+位置，或者顶部，不会穿插到命令中间去的情况。第二种特殊情况，就是当设备
+相关的注释已经写到了开头，带读取的时候已经将这个注释和，第一行合并在一
+起了。这个时候会保持和之前的一致。）
+e.不满足上面任何一条规则的信息都默认排序到注释的后面，并保持原来相
+对顺序的不变
+
+详细操作
+46 / 61
+4.13
+TCL 命令的使用
+PCE 的控制台目前支持的命令有：constraint、unconstraint、region、save_
+constraint、save_as_ constraint、swap_constraint 、set_preserve 、unset_preserve 、
+select、group 和close。
+4.13.1 约束相关
+(1) constraint 命令
+constraint -def_inst_site
+-grid_dev_instance
+[-prim_dev_instance]
+或者
+constraint -def_inst_region
+-region
+中括号内容表示可选设置项。
+示例：
+constraint
+-def_inst_site
+aaa
+-grid_dev_instance
+CLMA_5_4
+constraint
+-def_inst_site
+aaa
+-grid_dev_instance
+CLMA_5_4
+FGA
+constraint
+-def_inst_region
+aaa
+-region
+region1
+(2) unconstraint 命令
+unconstraint –design_instance
+上面的这条命令用于取消约束。
+需要注意的是：若要将design_instance 约束到region 区域，必须在Region
+Mode 下才能成功。如果design_instance 名字中包含‘[’和‘]’字符，则需要使用‘{ }’
+将整个design_instance 名字括起来，多个design_instance 名字之间使用‘;’进行分
+割。
+4.13.2 Region 相关
+region 命令可用于进入或退出Region 模式，也可用于创建或删除region。
+(1)创建region 的命令
+
+详细操作
+47 / 61
+region
+-create
+-value
+示例：region -create region1 -value (68,69,74,74)
+上面的命令用于创建一个region，需要给出region name 以及想要在哪个坐
+标区域(xmin,xmax,ymin,ymax)创建该region。value 参数的第一个值为x 坐标的
+开始值，第二个参数为x 坐标的结束值，第三个参数为y 坐标的开始值，第四个
+参数为y 坐标的结束值。开始值必须小于等于结束值，且都必须为整数。
+(2)删除region 的命令
+region –delete
+示例：region -delete region1
+上面的命令用于删除一个region。需要指定将要删除的region name。
+(3)编辑Region 的命令
+region -edit
+-new_name
+-new_value
+示例：region -edit region3 -new_name region3 -new_value (2,61,35,116)
+用于编辑region 名及范围，-edit 后为被编辑的region 名，-new_name 后为新
+的region 名，-new_value 后为新的region 大小
+(4)进入Region 模式的命令
+region -in
+上面的命令用于进入Region 模式。
+(5)退出Region 模式的命令
+region -out
+上面的命令用于退出Region 模式。
+(6)将inst 约束到Region 的命令
+region -add
+-addconstraint
+示例：region -add region1 –addconstraint inst1
+-add 后为inst 需要约束的region 名，-addconstraint 后为需要作区域约束的inst
+名
+(7)将inst 从Region 中取消约束的命令
+region -add
+-unaddconstraint
+
+详细操作
+48 / 61
+示例：region -add region1 -unaddconstraint inst1
+-add 后为inst 约束的region 名，-unaddconstraint 后为需要取消区域约束的inst
+名
+4.13.3 preserve 命令
+(1) set_presetve 命令
+set_preserve -device {device_instance_name}
+或者
+set_preserve -region {region_name}
+示例：
+输入命令：
+set_preserve -device {CLMA_261_373}
+即可对该device instance 设置preserve 属性
+Floorplan 中已存在region1 时，输入命令：
+set_preserve -region {region1}
+即可对区域设置preserve 属性
+(2) unset_preserve 命令
+unset_preserve -device {device_instance_name}
+或者
+unset_preserve -region {region_name}
+示例：
+输入命令：
+unset_preserve -device {CLMA_261_373}
+即可取消CLMA_261_373 上的属性preserve。
+
+详细操作
+49 / 61
+Floorplan 中已存在region1，并且region1 已设置preserve 属性时，输入命令：
+unset_preserve -region region1
+即可对区域设置preserve 属性
+4.13.4 swap_constraint 命令
+使用swap_constraint 命令可以交换2 个已约束的IO 或2 个已约束inst 的约
+束位置。
+命令格式：
+swap_constraint [ argument: base_inst string ] [ argument: target_inst string ]
+[ argument: base_inst string ]和[ argument: target_inst string ]表示需要交换的2
+个inst 名
+eg：
+swap_constraint {apm_result_obuf/opit_0}
+{dram_result_obuf/opit_0}
+4.13.5 保存PCF 文件相关
+(1)保存PCF 文件的命令
+约束完毕之后可用该命令进行约束文件保存，也可以对pcf 文件进行另存为。
+命令格式：
+save_constraint –file_name <PCF file name> 保存pcf 文件
+save_as_constraint -constraint_save_as <PCF file name> 另存为pcf 文件
+(2)当前PCE 界面约束保存pcf 处理规则：
+1) 新增约束以增量形式添加到pcf 文件中。
+2) 修改约束在原有行的基础上修改约束命令。
+3) 删除约束将客户约束直接注释掉。
+4) 原有约束文件中的注释需要保留。
+(3)注意事项
+1)如果当前PCE 窗口已有PCF 文件，若输入save_constraint -file_name 指定
+的PCF 路径与当前PCF 文件不同，则会给出提示告诉用户另存为；若只输入
+
+详细操作
+50 / 61
+save_constraint，则会将约束保存在当前PCF 文件；若输入save_as_constraint
+-constraint_save_as 指定相对路径或绝对路径后PCF 文件另存为成功。
+2)如果当前PCE 窗口没有PCF 文件，则输入不同类型的命令会得到以下不
+同结果：
+①只输入save_constraint，将会给出提示，告诉用户需要设置保存路径。
+②输入保存PCF 文件的路径为相对路径时，将在当前工作目录下创建该相
+对路径并保存。
+③只输入后缀“.pcf”，没有文件名，将会给出提示信息，告诉用户要以正确
+的格式保存。
+④输入的PCF 文件的后缀名(.pcf)不对，将会给出提示信息，告诉用户要以
+正确的格式保存。
+⑤如果保存的路径或者文件名中有非法字符时，将会给出提示信息，告诉用
+户要以正确的格式保存。
+3)如果给出的绝对路径不可写或者在创建路径的时候失败，则会给出提示。
+4.13.6 Select 命令相关
+使用select 命令可以选择device_instance 或者design_instance 进行定位。
+命令格式：
+select
+–dev_instance
+或
+select
+–design_instance
+eg：
+select
+-design_instance
+aaa
+select
+-dev_instance
+CLMA_5_4
+4.13.7group 相关
+在PCE 中group 命令表示当前操作进入group 模式，group 一般不在命令行
+使用，主要表现在界面操作后在Tcl Console 打印信息，group 支持的参数如下
+
+详细操作
+51 / 61
+1）-unconstraint：group 模式下取消约束。用户界面取消约束（包括1 个或
+多个），Tcl Console 打印信息如下图4-38 所示：
+图4- 40 界面同时取消2 个约束打印group 信息
+2）-constraint_site：group 模式下位置约束。例如界面floorplan view 拖动多
+个位置约束至其他位置，Tcl Console 打印信息如下图4-39 所示：
+图4- 41 界面同时拖动2 个约束至其他位置打印group 信息
+3）-constraint_region：group 模式下区域约束。例如界面对多个inst 作区域
+约束，Tcl Console 打印信息如下图4-40 所示：
+图4- 42 界面同时对2 个inst 作区域约束打印group 信息
+4）-constraint_site_region：group 模式下区域、逻辑约束。例如界面同时取
+消位置约束及区域约束后点击Undo，Tcl Console 打印信息如下图4-41 所示：
+图4- 43 界面同时取消位置约束及区域约束后点击Undo 打印group 信息
+5）-region_create：group 模式创建区域。例如界面同时删除多个region 后，
+点击Undo，Tcl Console 打印信息如下图4-42 所示：
+
+详细操作
+52 / 61
+图4- 44 界面同时删除多个region 后点击Undo 打印group 信息
+6）-region_delete：group 模式删除区域。例如界面同时删除多个region，Tcl
+Console 打印信息如下图4-42 所示：
+图4- 45 界面同时删除多个region 后打印group 信息
+4.13.8close 相关
+在PCE 中close 用来退出PCE，当pcf 未保存时输入close 则会弹框提示用户
+是否保存pcf 文件，当pcf 文件已保存，输入close 直接关闭PCE。
+4.14
+PCE HighLight 功能
+4.14.1 PCE 中floorplanview 上的device highlight 的操作
+PCE 中floorplanview 上的device highlight 的操作:第1 步：用户在floorplan
+view 选中一个（或多个）device；第2 步：用户在界面上右键弹框选中HighLight
+Device，在HighLight Device 中挑选自己想要设置的颜色；第3 步：颜色选择完，
+设置相应选中的device 的高亮颜色，新设置的颜色会覆盖住之前设置的颜色，；
+第4 步：完成界面显示；
+选中一个floorplanview 上的device,点击右键在右键菜单中，选择Highlight
+Device 来挑选并设置自己所想要高亮的dvice 的颜色（如下图显示）：
+
+详细操作
+53 / 61
+图4- 46 无约束device 高亮
+当其中有位置约束时，对应约束位置Symbol 背景色也会设置为对应的
+HighLight 颜色（如下图显示）：
+图4- 47 有约束device 高亮
+当用户需要将当前设置一个或多个的device 颜色取消时，只需要选中这些
+device 在右键点击UnHighlight device 即可。
+对于已设置的HighLight 我们可以在floorplan view 上右键选择Show
+Highlight Widget 来对我们设置的device hightlight 进行选中、取消highlight、更
+换highlight 颜色等操作。
+4.14.2 PCE 中designbrowser 上的design highlight 的操作
+PCE中designbrowser上的design highlight的操做：第1步：用户在PCE design
+browser选中一个item；第2步：用户在界面上右键弹框选中Highlight Constraint，
+在Highlight Constraint中挑选自己想要设置的颜色；第3步：颜色选择完，会去更
+改floorplan上已做位置约束的design的高亮颜色。如果该design之前已存在相应的
+Highlight 颜色，新设置的颜色会覆盖住之前的颜色；第4步：完成界面显示；
+选中一个designbrowser上的item,点击右键在右键菜单中，选择Highlight
+
+详细操作
+54 / 61
+Constraint来挑选并设置自己所想要高亮的颜色（如下图显示）,将会高亮该design
+在floorplan view上所做的位置约束对应的位置的高亮颜色：
+图4- 48 design 高亮
+当用户需要将当前设置一个design高亮颜色取消时，只需要选中该design在
+floorplan view上对应的item在右键点击UnHighlight即可。
+同时已设置的HighLight我们可以在floorplan view上右键选择Show Highlight
+Widget来对我们设置的hightlight进行选中、取消highlight、更换highlight颜色等操
+作。
+4.15
+Export region 功能
+当PCE 中存在Region 区域时，在floorplan view 上右键菜单，其上有Export
+Region 的选项，单击该选项会弹出Export Region 的悬浮界面，用户可以再该界
+面上设置导出的区域约束中关于APM 以及DRM 的区域约束转换为位置约束的
+相关配置，该配置主要有以下几点：所有region 还是特定的某个region、设置生
+成导出的路径（Create Export Region Dir）、设置从第几个pcf 排列情况开始导出
+（Start Position）、导出的PCF 跨几个PCF 排列组合后在导出（Step）、导出的PCF
+的总数量（File Number）。这些配置将会影响产生的PCF 的内容。当Region 未
+发生变动时，要求关掉PCE 或是PDS 等情况，再来重新相同的操作，导出的PCF
+的内容要以之前一致。
+界面设置：在PCE 的floorplan view 上具有位置约束时，右键菜单中才可以
+选择export region 选项（在floorplan view 上任意位置右键）。该选项是辅助用户
+导出区域中的APM 以及DRM 约束信息组成位置约束到指定的文件夹下生成
+pcf。当区域中未有APM 或DRM 约束时，是导不出对应的pcf 的。相关按钮显
+
+详细操作
+55 / 61
+示如下图所示：
+图4- 49 右键增加export region 按钮
+点击export region 之后会有Export Region 弹框界面出来，该界面是方便用
+户导出pcf 的一些配置选项界面，如下图所示：
+图4- 50 export region 窗口
+
+详细操作
+56 / 61
+【All region】可选择是单个region 导出还是所有region 导出
+【create export region dir】用户新建个文件夹来导出所生成的pcf 文件
+【start position】控制从第种排列组合来开始输出pcf，最小值0
+【step】控制跨几个排列组合情况来导出pcf，最小值1
+【file number】控制输出的pcf 总数量，ps:一种排列组合情况可导出一个pcf
+文件
+在export region 配置界面完成相应的设置后会在子线程中开始对device 进行
+排列组合以及将design inst 约束到device 上，而主线程上则会弹出进度条提示用
+户正在进行export region 的操作来组塞用户的其他操作，如下图所示：
+图4- 51 进度条
+导出完成后在创建的地址可以找到相应的pcf 文件。
+4.16
+PCE Swap Location 功能
+PCE 支持在Design Browser、floorplan view、package view 下交换2 个已约
+束inst/IO 的约束位置，且交换后支持Undo、Redo 操作。
+4.16.1 PCE 中Design Browser 窗口下的Swap Location 的操作
+打开PCE，在Design Browser 窗口下选中2 个已约束的inst（约束的
+grid_dev_inst 类型相同）或选中2 个已约束的IO，右键增加Swap Location 选项。
+
+详细操作
+57 / 61
+图4- 52 右键增加swap location
+点击Swap Location，选中的2 个inst 或IO 约束位置交换成功，Tcl Console
+打印约束位置交换成功信息。
+图4- 53 约束位置交换成功
+Design Browser 下约束位置交换成功的判断规则为：
+1）
+选中两个已做位置约束的inst，且约束的grid_dev_inst 类型相同
+2）
+选中两个已做区域约束的inst，且区域中有足够资源给2 个inst 约束
+
+详细操作
+58 / 61
+3）
+选中一个已做位置约束的inst 以及一个已做区域约束的inst。约束的
+grid_dev_inst 类型相同
+4.16.2 PCE 中floorplan view 窗口的Swap Location 的操作
+floorplanview 窗口选中2 个已约束的inst（约束的grid_dev_inst 类型相同）
+或选中2 个已约束的IO，右键增加Swap Location 选项，如图4-46 所示：
+点击Swap Location，选中的2 个inst 或IO 约束位置交换成功，Tcl Console
+打印约束位置交换成功信息。
+图4- 54 右键增加swap location
+floorplan view 下约束位置交换成功的判断规则为：
+1）
+选中的两个已inst 为位置约束，且约束的grid_dev_inst 类型相同。
+2）
+不可选中两个区域，不可选中一个区域一个inst 位置约束。若是选
+中2 个region 或者选中1 个inst 位置约束，1 个区域约束，右键swap
+
+详细操作
+59 / 61
+location 灰显，如下图4-47 所示：
+图4- 55 右键swap location 灰显
+4.16.3 PCE 中package view 窗口的Swap Location 的操作
+floorplanview 窗口选中2 个已约束的IO，右键增加Swap Location 选项，如
+下图4-48 所示：
+
+详细操作
+60 / 61
+图4- 56 package view 选中2 个IO 右键增加swap location
+点击Swap Location，选中的2 个IO 约束位置交换成功，Tcl Console 打印约
+束位置交换成功信息。
+4.16.4 PCE 中Swap Location 失败的操作
+PCE 中选中2 个已做约束的inst 或者IO 右键Swap Location 失败的操作有以
+下情况：
+1）
+选中1 个inst 位置约束和1 个IO 约束，右键Swap Location 失败
+2）
+选中同一组已做约束的差分IO 的P、N 端，右键Swap Location 失败
+3）
+选中两个已做区域约束的inst，且交换region 后没有资源给inst 约束，
+右键Swap Location 失败
+4）
+选中2 个已作位置约束的inst，且约束grid_dev_inst 类型不同
+5）
+选中同一group 或同一carrychain 下2 个inst，右键Swap Location 失败
+
+详细操作
+61 / 61
+4.17
+Clock Region 显示
+在floorplan view 视图上，根据时钟区域进行划分，标出clock region 的范围，
+并实时绘制在floorplan view 视图上。方便确认位置、编辑区域约束等操作。
+图4- 57 clock region 显示
+Clock Region 画图显示如上图左侧所示。不同Clock Region 有颜色上的区分，
+边框的颜色不一样。每个Clock Region 左下角，会标记出Clock Region 的名字。
+上图右侧的Layers 对应有Clock Region 项，用于过滤左侧floorplan view 中的实
+时绘制。默认状态下是全部勾选，表示实时绘制所有的Clock Region。可通过单
+个或者全部取消勾选的方式，来控制是否实时绘制某个Clock Region 或者全部的
+Clock Region。
+为避免区域重叠等显示问题，画图时只按照CLMA/CLMS 资源类型来进
+行划分，所以Clock Region 的范围有一定的调整。

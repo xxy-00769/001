@@ -1,0 +1,1 @@
+.rtl_screen -top_module {production_io_model_probe} -include_path {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/production_io_model_probe>} -design_files {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/rtl/network/m36_rgmii_interface.v|work><E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/production_io_model_probe/top.v|work>}

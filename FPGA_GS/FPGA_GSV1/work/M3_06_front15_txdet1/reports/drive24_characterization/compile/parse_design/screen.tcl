@@ -1,0 +1,1 @@
+.rtl_screen -top_module {probe} -include_path {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_front15_txdet1/reports/drive24_characterization>} -design_files {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_front15_txdet1/reports/drive24_characterization/probe.v|work>}

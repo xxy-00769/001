@@ -1,0 +1,821 @@
+//
+// Generated (version 2022.2-SP6.4<build 146967>) at Thu Oct 22 17:22:56 2026
+//
+
+module probe_pll
+(
+    input clkin1,
+    output clkout0,
+    output clkout0_ext,
+    output clkout3,
+    output pll_lock
+);
+    wire clkout1;
+    wire clkout2;
+    wire clkout4;
+    wire clkout5;
+    wire clkswitch_flag;
+
+(* PAP_LOC="PLL_158_75" *)    GTP_PLL_E3 /* u_pll_e3 */ #(
+            .CLKIN_FREQ(50), 
+            .PFDEN_EN("FALSE"), 
+            .VCOCLK_DIV2(1'b0), 
+            .DYNAMIC_RATIOI_EN("FALSE"), 
+            .DYNAMIC_RATIOM_EN("FALSE"), 
+            .DYNAMIC_RATIO0_EN("FALSE"), 
+            .DYNAMIC_RATIO1_EN("FALSE"), 
+            .DYNAMIC_RATIO2_EN("FALSE"), 
+            .DYNAMIC_RATIO3_EN("FALSE"), 
+            .DYNAMIC_RATIO4_EN("FALSE"), 
+            .DYNAMIC_RATIOF_EN("FALSE"), 
+            .STATIC_RATIOI(5), 
+            .STATIC_RATIOM(1), 
+            .STATIC_RATIO0(8), 
+            .STATIC_RATIO1(100), 
+            .STATIC_RATIO2(40), 
+            .STATIC_RATIO3(16), 
+            .STATIC_RATIO4(8), 
+            .STATIC_RATIOF(100), 
+            .DYNAMIC_DUTY0_EN("FALSE"), 
+            .DYNAMIC_DUTY1_EN("FALSE"), 
+            .DYNAMIC_DUTY2_EN("FALSE"), 
+            .DYNAMIC_DUTY3_EN("FALSE"), 
+            .DYNAMIC_DUTY4_EN("FALSE"), 
+            .STATIC_DUTY0(8), 
+            .STATIC_DUTY1(100), 
+            .STATIC_DUTY2(40), 
+            .STATIC_DUTY3(16), 
+            .STATIC_DUTY4(8), 
+            .STATIC_PHASE0(0), 
+            .STATIC_PHASE1(0), 
+            .STATIC_PHASE2(0), 
+            .STATIC_PHASE3(0), 
+            .STATIC_PHASE4(0), 
+            .STATIC_PHASEF(0), 
+            .STATIC_CPHASE0(0), 
+            .STATIC_CPHASE1(0), 
+            .STATIC_CPHASE2(0), 
+            .STATIC_CPHASE3(0), 
+            .STATIC_CPHASE4(2), 
+            .STATIC_CPHASEF(0), 
+            .CLK_CAS1_EN("FALSE"), 
+            .CLK_CAS2_EN("FALSE"), 
+            .CLK_CAS3_EN("FALSE"), 
+            .CLK_CAS4_EN("FALSE"), 
+            .CLKOUT5_SEL(0), 
+            .CLKIN_BYPASS_EN("FALSE"), 
+            .CLKOUT0_SYN_EN("FALSE"), 
+            .CLKOUT0_EXT_SYN_EN("FALSE"), 
+            .CLKOUT1_SYN_EN("FALSE"), 
+            .CLKOUT2_SYN_EN("FALSE"), 
+            .CLKOUT3_SYN_EN("FALSE"), 
+            .CLKOUT4_SYN_EN("FALSE"), 
+            .CLKOUT5_SYN_EN("FALSE"), 
+            .INTERNAL_FB("ENABLE"), 
+            .EXTERNAL_FB("DISABLE"), 
+            .DYNAMIC_LOOP_EN("FALSE"), 
+            .LOOP_MAPPING_EN("FALSE"), 
+            .BANDWIDTH("OPTIMIZED"))
+        u_pll_e3 (
+            .DUTY0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .ICP_SEL ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .LPFRES_SEL ({1'b0, 1'b0, 1'b0}),
+            .PHASE_SEL ({1'b0, 1'b0, 1'b0}),
+            .RATIO0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOF ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOM ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .CLKOUT0 (clkout0),
+            .CLKOUT0_EXT (clkout0_ext),
+            .CLKOUT1 (clkout1),
+            .CLKOUT2 (clkout2),
+            .CLKOUT3 (clkout3),
+            .CLKOUT4 (clkout4),
+            .CLKOUT5 (clkout5),
+            .CLKSWITCH_FLAG (clkswitch_flag),
+            .LOCK (pll_lock),
+            .CLKFB (1'b0),
+            .CLKIN1 (clkin1),
+            .CLKIN2 (1'b0),
+            .CLKIN_SEL (1'b0),
+            .CLKIN_SEL_EN (1'b0),
+            .CLKOUT0_EXT_SYN (1'b0),
+            .CLKOUT0_SYN (1'b0),
+            .CLKOUT1_SYN (1'b0),
+            .CLKOUT2_SYN (1'b0),
+            .CLKOUT3_SYN (1'b0),
+            .CLKOUT4_SYN (1'b0),
+            .CLKOUT5_SYN (1'b0),
+            .CRIPPLE_SEL (1'b0),
+            .ICP_BASE (1'b0),
+            .LOAD_PHASE (1'b0),
+            .PFDEN (1'b0),
+            .PHASE_DIR (1'b0),
+            .PHASE_STEP_N (1'b0),
+            .PLL_PWD (1'b0),
+            .RST (1'b0),
+            .RSTODIV (1'b0));
+	// ../probe_pll.v:238
+	// SDC constraint : (object CLKOUT0) (id 1010) (clock sys_clk|u_cfg_pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+	// SDC constraint : (object CLKOUT3) (id 1009) (clock sys_clk|u_cfg_pll/u_pll_e3/CLKOUT3_Inferred) (inferred)
+	// SDC constraint : (object CLKOUT0_EXT) (id 1003) (clock eth2_phy_tx_capture) (30 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object CLKOUT0_EXT) (id 1002) (clock tx_forward_base) (29 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+
+
+endmodule
+
+
+module tx_clock_probe
+(
+    input sys_clk,
+    output [3:0] rgmii2_txd,
+    output rgmii2_tx_ctl,
+    output rgmii2_txc
+);
+	// SDC constraint : (object rgmii2_tx_ctl) (id 1005) (io_dly) (32 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_tx_ctl) (id 1006) (io_dly) (33 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_tx_ctl) (id 1007) (io_dly) (34 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_tx_ctl) (id 1008) (io_dly) (35 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txc) (id 1003) (clock eth2_phy_tx_capture) (30 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[0]) (id 1005) (io_dly) (32 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[0]) (id 1006) (io_dly) (33 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[0]) (id 1007) (io_dly) (34 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[0]) (id 1008) (io_dly) (35 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[1]) (id 1005) (io_dly) (32 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[1]) (id 1006) (io_dly) (33 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[1]) (id 1007) (io_dly) (34 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[1]) (id 1008) (io_dly) (35 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[2]) (id 1005) (io_dly) (32 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[2]) (id 1006) (io_dly) (33 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[2]) (id 1007) (io_dly) (34 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[2]) (id 1008) (io_dly) (35 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[3]) (id 1005) (io_dly) (32 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[3]) (id 1006) (io_dly) (33 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[3]) (id 1007) (io_dly) (34 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object rgmii2_txd[3]) (id 1008) (io_dly) (35 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object sys_clk) (id 1000) (clock sys_clk) (27 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object sys_clk) (id 1002) (clock tx_forward_base) (29 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_ioclk_pll_probe/probe.fdc)
+	// SDC constraint : (object sys_clk) (id 1009) (clock sys_clk|u_cfg_pll/u_pll_e3/CLKOUT3_Inferred) (inferred)
+	// SDC constraint : (object sys_clk) (id 1010) (clock sys_clk|u_cfg_pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+    wire [15:0] N8;
+    wire N15;
+    wire _N1;
+    wire _N2;
+    wire _N3;
+    wire _N4;
+    wire _N5;
+    wire _N6;
+    wire _N7;
+    wire _N8;
+    wire _N9;
+    wire _N10;
+    wire _N11;
+    wire _N12;
+    wire _N13;
+    wire _N14;
+    wire forward_clk;
+    wire half_clk;
+    wire io_clk;
+    wire locked;
+    wire nt_sys_clk;
+    wire [15:0] pattern;
+    wire \pattern[0]_inv ;
+    wire raw_clk;
+    wire [4:0] serial;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+    GTP_LUT5CARRY /* N8_0_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_1 (
+            .COUT (_N1),
+            .Z (N8[1]),
+            .CIN (),
+            .I0 (pattern[0]),
+            .I1 (pattern[1]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_2 (
+            .COUT (_N2),
+            .Z (N8[2]),
+            .CIN (_N1),
+            .I0 (pattern[0]),
+            .I1 (pattern[1]),
+            .I2 (pattern[2]),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_3 (
+            .COUT (_N3),
+            .Z (N8[3]),
+            .CIN (_N2),
+            .I0 (),
+            .I1 (pattern[3]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_4 (
+            .COUT (_N4),
+            .Z (N8[4]),
+            .CIN (_N3),
+            .I0 (),
+            .I1 (pattern[4]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_5 (
+            .COUT (_N5),
+            .Z (N8[5]),
+            .CIN (_N4),
+            .I0 (),
+            .I1 (pattern[5]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_6 (
+            .COUT (_N6),
+            .Z (N8[6]),
+            .CIN (_N5),
+            .I0 (),
+            .I1 (pattern[6]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_7 (
+            .COUT (_N7),
+            .Z (N8[7]),
+            .CIN (_N6),
+            .I0 (),
+            .I1 (pattern[7]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_8 (
+            .COUT (_N8),
+            .Z (N8[8]),
+            .CIN (_N7),
+            .I0 (),
+            .I1 (pattern[8]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_9 (
+            .COUT (_N9),
+            .Z (N8[9]),
+            .CIN (_N8),
+            .I0 (),
+            .I1 (pattern[9]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_10 (
+            .COUT (_N10),
+            .Z (N8[10]),
+            .CIN (_N9),
+            .I0 (),
+            .I1 (pattern[10]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_11 (
+            .COUT (_N11),
+            .Z (N8[11]),
+            .CIN (_N10),
+            .I0 (),
+            .I1 (pattern[11]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_12 (
+            .COUT (_N12),
+            .Z (N8[12]),
+            .CIN (_N11),
+            .I0 (),
+            .I1 (pattern[12]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_13 (
+            .COUT (_N13),
+            .Z (N8[13]),
+            .CIN (_N12),
+            .I0 (),
+            .I1 (pattern[13]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_14 (
+            .COUT (_N14),
+            .Z (N8[14]),
+            .CIN (_N13),
+            .I0 (),
+            .I1 (pattern[14]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT5CARRY /* N8_0_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N8_0_15 (
+            .COUT (),
+            .Z (N8[15]),
+            .CIN (_N14),
+            .I0 (),
+            .I1 (pattern[15]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../top.v:5
+
+    GTP_LUT1 /* N15 */ #(
+            .INIT(2'b01))
+        N15_vname (
+            .Z (N15),
+            .I0 (locked));
+    // defparam N15_vname.orig_name = N15;
+	// LUT = ~I0 ;
+
+    GTP_OUTBUF /* clock_pad */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        clock_pad (
+            .O (rgmii2_txc),
+            .I (forward_clk));
+	// ../top.v:14
+
+    GTP_IOCLKBUF /* iobuf */ #(
+            .GATE_EN("FALSE"))
+        iobuf (
+            .CLKOUT (io_clk),
+            .CLKIN (raw_clk),
+            .DI (1'b1));
+	// ../top.v:4
+
+    GTP_DFF /* \pattern[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[0]  (
+            .Q (pattern[0]),
+            .CLK (half_clk),
+            .D (\pattern[0]_inv ));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[1]  (
+            .Q (pattern[1]),
+            .CLK (half_clk),
+            .D (N8[1]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[2]  (
+            .Q (pattern[2]),
+            .CLK (half_clk),
+            .D (N8[2]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[3]  (
+            .Q (pattern[3]),
+            .CLK (half_clk),
+            .D (N8[3]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[4]  (
+            .Q (pattern[4]),
+            .CLK (half_clk),
+            .D (N8[4]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[5]  (
+            .Q (pattern[5]),
+            .CLK (half_clk),
+            .D (N8[5]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[6]  (
+            .Q (pattern[6]),
+            .CLK (half_clk),
+            .D (N8[6]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[7]  (
+            .Q (pattern[7]),
+            .CLK (half_clk),
+            .D (N8[7]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[8]  (
+            .Q (pattern[8]),
+            .CLK (half_clk),
+            .D (N8[8]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[9]  (
+            .Q (pattern[9]),
+            .CLK (half_clk),
+            .D (N8[9]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[10]  (
+            .Q (pattern[10]),
+            .CLK (half_clk),
+            .D (N8[10]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[11]  (
+            .Q (pattern[11]),
+            .CLK (half_clk),
+            .D (N8[11]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[12]  (
+            .Q (pattern[12]),
+            .CLK (half_clk),
+            .D (N8[12]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[13]  (
+            .Q (pattern[13]),
+            .CLK (half_clk),
+            .D (N8[13]));
+	// ../top.v:5
+
+    GTP_DFF /* \pattern[14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[14]  (
+            .Q (pattern[14]),
+            .CLK (half_clk),
+            .D (N8[14]));
+	// ../top.v:5
+
+    GTP_LUT1 /* \pattern[15:0]_inv  */ #(
+            .INIT(2'b01))
+        \pattern[15:0]_inv  (
+            .Z (\pattern[0]_inv ),
+            .I0 (pattern[0]));
+	// LUT = ~I0 ;
+
+    GTP_DFF /* \pattern[15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \pattern[15]  (
+            .Q (pattern[15]),
+            .CLK (half_clk),
+            .D (N8[15]));
+	// ../top.v:5
+
+    GTP_OUTBUF /* \pins[0].genblk1.pad  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \pins[0].genblk1.pad  (
+            .O (rgmii2_txd[0]),
+            .I (serial[0]));
+	// ../top.v:11
+
+    GTP_OSERDES /* \pins[0].ser  */ #(
+            .OSERDES_MODE("OSER4"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \pins[0].ser  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, pattern[12], pattern[8], pattern[4], pattern[0]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (serial[0]),
+            .TQ (),
+            .OCLK (1'b0),
+            .RCLK (half_clk),
+            .RST (N15),
+            .SERCLK (io_clk));
+	// ../top.v:10
+
+    GTP_OUTBUF /* \pins[1].genblk1.pad  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \pins[1].genblk1.pad  (
+            .O (rgmii2_txd[1]),
+            .I (serial[1]));
+	// ../top.v:11
+
+    GTP_OSERDES /* \pins[1].ser  */ #(
+            .OSERDES_MODE("OSER4"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \pins[1].ser  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, pattern[13], pattern[9], pattern[5], pattern[1]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (serial[1]),
+            .TQ (),
+            .OCLK (1'b0),
+            .RCLK (half_clk),
+            .RST (N15),
+            .SERCLK (io_clk));
+	// ../top.v:10
+
+    GTP_OUTBUF /* \pins[2].genblk1.pad  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \pins[2].genblk1.pad  (
+            .O (rgmii2_txd[2]),
+            .I (serial[2]));
+	// ../top.v:11
+
+    GTP_OSERDES /* \pins[2].ser  */ #(
+            .OSERDES_MODE("OSER4"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \pins[2].ser  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, pattern[14], pattern[10], pattern[6], pattern[2]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (serial[2]),
+            .TQ (),
+            .OCLK (1'b0),
+            .RCLK (half_clk),
+            .RST (N15),
+            .SERCLK (io_clk));
+	// ../top.v:10
+
+    GTP_OUTBUF /* \pins[3].genblk1.pad  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \pins[3].genblk1.pad  (
+            .O (rgmii2_txd[3]),
+            .I (serial[3]));
+	// ../top.v:11
+
+    GTP_OSERDES /* \pins[3].ser  */ #(
+            .OSERDES_MODE("OSER4"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \pins[3].ser  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, pattern[15], pattern[11], pattern[7], pattern[3]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (serial[3]),
+            .TQ (),
+            .OCLK (1'b0),
+            .RCLK (half_clk),
+            .RST (N15),
+            .SERCLK (io_clk));
+	// ../top.v:10
+
+    GTP_OUTBUF /* \pins[4].genblk1.pad  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \pins[4].genblk1.pad  (
+            .O (rgmii2_tx_ctl),
+            .I (serial[4]));
+	// ../top.v:12
+
+    GTP_OSERDES /* \pins[4].ser  */ #(
+            .OSERDES_MODE("OSER4"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \pins[4].ser  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, pattern[3], pattern[2], pattern[1], pattern[0]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (serial[4]),
+            .TQ (),
+            .OCLK (1'b0),
+            .RCLK (half_clk),
+            .RST (N15),
+            .SERCLK (io_clk));
+	// ../top.v:10
+
+(* PAP_IO_LOC="P20", PAP_IO_STANDARD="LVCMOS33", PAP_IO_VCCIO="3.3", PAP_IO_DIRECTION="INPUT" *)    GTP_INBUF /* sys_clk_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        sys_clk_ibuf (
+            .O (nt_sys_clk),
+            .I (sys_clk));
+	// ../top.v:1
+
+    probe_pll u_cfg_pll (
+            .clkout0 (raw_clk),
+            .clkout0_ext (forward_clk),
+            .clkout3 (half_clk),
+            .pll_lock (locked),
+            .clkin1 (nt_sys_clk));
+	// ../top.v:3
+
+
+endmodule
+

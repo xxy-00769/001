@@ -1,0 +1,1 @@
+.rtl_screen -top_module {tx_clock_probe} -include_path {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_clock_probe>} -design_files {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_clock_probe/probe_pll.v|work><E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_fix_3_5_3/reports/tx_clock_probe/top.v|work>}
