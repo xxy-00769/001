@@ -1,0 +1,170 @@
+{
+  "video": "SC_YJ2.mp4",
+  "seconds": 20,
+  "shape": [
+    720,
+    1280,
+    3
+  ],
+  "onnx_objects": [
+    {
+      "class_id": 2,
+      "category": "car",
+      "label": "汽车",
+      "confidence": 0.8624,
+      "box": [
+        0.0,
+        374.7,
+        281.71,
+        628.24
+      ],
+      "source": "detection"
+    },
+    {
+      "class_id": 2,
+      "category": "car",
+      "label": "汽车",
+      "confidence": 0.3315,
+      "box": [
+        655.35,
+        427.23,
+        688.16,
+        445.94
+      ],
+      "source": "detection"
+    }
+  ],
+  "rknn": {
+    "backend": "RKNN/NPU",
+    "model": "YOLOv8n COCO w8a8",
+    "input_size": [
+      640,
+      640
+    ],
+    "threshold": 0.25,
+    "nms_iou": 0.45,
+    "epoch": 0,
+    "frame_id": "jpeg-sha256:de762daa12de42d29dcdf6c69658bc452ce763aaaa5858fc6d09626971a80210",
+    "objects": [
+      {
+        "class_id": 2,
+        "category": "car",
+        "label": "汽车",
+        "confidence": 0.8291,
+        "box": [
+          0.01,
+          376.75,
+          284.54,
+          627.74
+        ],
+        "source": "detection",
+        "track_id": 33,
+        "last_detected_monotonic": 1456.488134343,
+        "missed": 0,
+        "epoch": 0,
+        "detection_frame_id": "jpeg-sha256:de762daa12de42d29dcdf6c69658bc452ce763aaaa5858fc6d09626971a80210"
+      },
+      {
+        "class_id": 2,
+        "category": "car",
+        "label": "汽车",
+        "confidence": 0.2762,
+        "box": [
+          656.42,
+          427.88,
+          687.94,
+          445.4
+        ],
+        "source": "detection",
+        "track_id": 34,
+        "last_detected_monotonic": 1456.488134343,
+        "missed": 0,
+        "epoch": 0,
+        "detection_frame_id": "jpeg-sha256:de762daa12de42d29dcdf6c69658bc452ce763aaaa5858fc6d09626971a80210"
+      }
+    ],
+    "detected_count": 2,
+    "held_count": 0,
+    "count": 2,
+    "detection_fps": 1.39,
+    "stage_ms": {
+      "det_preprocess": 2.226,
+      "det_inference": 22.143,
+      "det_postprocess": 5.235,
+      "det_tracking": 0.058
+    }
+  },
+  "matches": [
+    {
+      "cpu": {
+        "class_id": 2,
+        "category": "car",
+        "label": "汽车",
+        "confidence": 0.8624,
+        "box": [
+          0.0,
+          374.7,
+          281.71,
+          628.24
+        ],
+        "source": "detection"
+      },
+      "npu": {
+        "class_id": 2,
+        "category": "car",
+        "label": "汽车",
+        "confidence": 0.8291,
+        "box": [
+          0.01,
+          376.75,
+          284.54,
+          627.74
+        ],
+        "source": "detection",
+        "track_id": 33,
+        "last_detected_monotonic": 1456.488134343,
+        "missed": 0,
+        "epoch": 0,
+        "detection_frame_id": 600
+      },
+      "iou": 0.9801598252331546
+    },
+    {
+      "cpu": {
+        "class_id": 2,
+        "category": "car",
+        "label": "汽车",
+        "confidence": 0.3315,
+        "box": [
+          655.35,
+          427.23,
+          688.16,
+          445.94
+        ],
+        "source": "detection"
+      },
+      "npu": {
+        "class_id": 2,
+        "category": "car",
+        "label": "汽车",
+        "confidence": 0.2762,
+        "box": [
+          656.42,
+          427.88,
+          687.94,
+          445.4
+        ],
+        "source": "detection",
+        "track_id": 34,
+        "last_detected_monotonic": 1456.488134343,
+        "missed": 0,
+        "epoch": 0,
+        "detection_frame_id": 600
+      },
+      "iou": 0.8995810385532866
+    }
+  ],
+  "onnx_ms": 223.61321300013515,
+  "image_identity": "jpeg-sha256:de762daa12de42d29dcdf6c69658bc452ce763aaaa5858fc6d09626971a80210",
+  "time_note": "Nominal OpenCV seek, not exact VFR PTS. Both models used the same decoded array; JPEG SHA identifies saved evidence."
+}

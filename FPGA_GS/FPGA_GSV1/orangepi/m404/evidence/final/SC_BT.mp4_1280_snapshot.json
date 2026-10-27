@@ -1,0 +1,773 @@
+{
+  "ok": true,
+  "snapshot": "SC_BT_58.167_20261023_185509_1258",
+  "directory": "/home/orangepi/fpga_gs_m401_v0_1_2_20261021/m404/evidence/runtime",
+  "status": {
+    "mode": "FILE_TEST",
+    "vehicle": "SIMULATION",
+    "release": "M4-04-r1",
+    "instance": "583b6e3291daf42e4386e75c",
+    "host_monotonic_ms": 2043562.498131,
+    "video": "SC_BT.mp4",
+    "files": [
+      {
+        "name": "SC_BT.mp4",
+        "duration": 59.882646,
+        "fps": 30.001687177285582,
+        "label": "日间城区"
+      },
+      {
+        "name": "SC_BT2.mp4",
+        "duration": 32.042667,
+        "fps": 30.024968789013734,
+        "label": "黄昏高架"
+      },
+      {
+        "name": "SC_YJ.mp4",
+        "duration": 177.834667,
+        "fps": 30.00214260849744,
+        "label": "夜间城区"
+      },
+      {
+        "name": "SC_YJ2.mp4",
+        "duration": 78.05,
+        "fps": 39.62832425504646,
+        "label": "蓝调高架"
+      }
+    ],
+    "source_fps": 30.001687177285582,
+    "duration": 59.882646,
+    "position": 58.166667,
+    "playing": true,
+    "loop": true,
+    "epoch": 10,
+    "processed": 1258,
+    "processed_fps": 10.466,
+    "skipped_source_frames": 1440,
+    "loop_count": 0,
+    "target_fps": 15,
+    "preview_width": 1280,
+    "frame_id": 1745,
+    "sequence": 1258,
+    "age_ms": 210.5,
+    "driving": {
+      "mode": "intersection",
+      "lane": "straight",
+      "intent": "auto",
+      "forced": false,
+      "motion": "STOPPED",
+      "suggestion": "UNKNOWN",
+      "reason": "未标定相关灯组；不能将任意彩灯归属本车道",
+      "alarm": null,
+      "alarm_remaining_seconds": 0,
+      "command_id": 0,
+      "alarm_policy": "告警锁存5秒；到期取消强制并停车；停车/清除告警立即解除；切视频/跳转/循环重置",
+      "vehicle": "SIMULATED_ONLY"
+    },
+    "perception": {
+      "signal": {
+        "state": "UNKNOWN",
+        "raw_state": "UNKNOWN",
+        "confidence": 0,
+        "actions": [],
+        "candidates": [],
+        "reason": "未标定相关灯组；不能将任意彩灯归属本车道"
+      },
+      "lanes": {
+        "left": {
+          "state": "UNKNOWN",
+          "raw_state": "UNKNOWN",
+          "confidence": 0,
+          "adjacent_lane_confirmed": false,
+          "adjacent_lane_source": "UNCONFIRMED",
+          "coverage": 0,
+          "segments": 0,
+          "gaps": 0,
+          "trace": [],
+          "reason": "未找到稳定的当前车道边界"
+        },
+        "right": {
+          "state": "UNKNOWN",
+          "raw_state": "UNKNOWN",
+          "confidence": 0,
+          "adjacent_lane_confirmed": true,
+          "adjacent_lane_source": "MANUAL_SCENE_CALIBRATION",
+          "coverage": 0,
+          "segments": 0,
+          "gaps": 0,
+          "trace": [],
+          "reason": "未找到稳定的当前车道边界"
+        }
+      },
+      "stage_ms": {
+        "preprocess": 9.839,
+        "signal_roi": 0.014,
+        "lanes": 14.724,
+        "inference": 14.747
+      },
+      "execution": "CPU OpenCV; no pretrained model",
+      "evidence_kind": "REAL_IMAGE_WITH_EXPLICIT_SPATIAL_CALIBRATION",
+      "detection": {
+        "backend": "RKNN/NPU",
+        "model": "YOLOv8n COCO w8a8",
+        "input_size": [
+          640,
+          640
+        ],
+        "threshold": 0.25,
+        "nms_iou": 0.45,
+        "epoch": 10,
+        "frame_id": 1742,
+        "objects": [
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.7914,
+            "box": [
+              2118.28,
+              727.11,
+              2385.26,
+              818.22
+            ],
+            "source": "optical_flow",
+            "track_id": 60,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.7728,
+            "box": [
+              956.48,
+              739.65,
+              1076.74,
+              826.2
+            ],
+            "source": "optical_flow",
+            "track_id": 62,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 0,
+            "category": "person",
+            "label": "行人",
+            "confidence": 0.7666,
+            "box": [
+              1322.28,
+              720.61,
+              1445.75,
+              982.04
+            ],
+            "source": "optical_flow",
+            "track_id": 47,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.7635,
+            "box": [
+              1544.31,
+              737.79,
+              1766.68,
+              823.35
+            ],
+            "source": "optical_flow",
+            "track_id": 88,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 0,
+            "category": "person",
+            "label": "行人",
+            "confidence": 0.744,
+            "box": [
+              1078.65,
+              714.42,
+              1195.42,
+              975.3
+            ],
+            "source": "optical_flow",
+            "track_id": 78,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.72,
+            "box": [
+              456.86,
+              717.51,
+              713.92,
+              868.64
+            ],
+            "source": "optical_flow",
+            "track_id": 94,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.6704,
+            "box": [
+              1204.84,
+              756.85,
+              1277.15,
+              803.01
+            ],
+            "source": "optical_flow",
+            "track_id": 87,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 0,
+            "category": "person",
+            "label": "行人",
+            "confidence": 0.6145,
+            "box": [
+              2507.49,
+              687.51,
+              2556,
+              827.91
+            ],
+            "source": "optical_flow",
+            "track_id": 81,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 7,
+            "category": "truck",
+            "label": "货车",
+            "confidence": 0.5715,
+            "box": [
+              458.24,
+              716.55,
+              710.95,
+              870.4
+            ],
+            "source": "optical_flow",
+            "track_id": 98,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 3,
+            "category": "motorcycle",
+            "label": "摩托车",
+            "confidence": 0.5643,
+            "box": [
+              1309.35,
+              860.65,
+              1466.22,
+              1019.35
+            ],
+            "source": "optical_flow",
+            "track_id": 90,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.5579,
+            "box": [
+              0,
+              1108.49,
+              2402.89,
+              1422.63
+            ],
+            "source": "optical_flow",
+            "track_id": 95,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 0,
+            "category": "person",
+            "label": "行人",
+            "confidence": 0.3724,
+            "box": [
+              212.71,
+              732.71,
+              279.8,
+              851.76
+            ],
+            "source": "optical_flow",
+            "track_id": 99,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 3,
+            "category": "motorcycle",
+            "label": "摩托车",
+            "confidence": 0.3451,
+            "box": [
+              1068.67,
+              840.76,
+              1196.15,
+              997.39
+            ],
+            "source": "optical_flow",
+            "track_id": 80,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 0,
+            "category": "person",
+            "label": "行人",
+            "confidence": 0.2947,
+            "box": [
+              1942.78,
+              737.18,
+              1989.19,
+              797.19
+            ],
+            "source": "optical_flow",
+            "track_id": 100,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          },
+          {
+            "class_id": 0,
+            "category": "person",
+            "label": "行人",
+            "confidence": 0.2545,
+            "box": [
+              1827.71,
+              709.66,
+              1857.01,
+              780.48
+            ],
+            "source": "optical_flow",
+            "track_id": 101,
+            "last_detected_monotonic": 2043.327704308,
+            "missed": 0,
+            "epoch": 10,
+            "detection_frame_id": 1742,
+            "age_ms": 122.6
+          }
+        ],
+        "detected_count": 0,
+        "held_count": 15,
+        "count": 15,
+        "detection_fps": 10.81,
+        "stage_ms": {
+          "det_preprocess": 3.807,
+          "det_inference": 23.275,
+          "det_postprocess": 21.067,
+          "det_tracking": 0.164,
+          "det_display_tracking": 12.761
+        },
+        "inference_age_ms": 122.6,
+        "display_frame_id": 1745
+      }
+    },
+    "detection": {
+      "backend": "RKNN/NPU",
+      "model": "YOLOv8n COCO w8a8",
+      "input_size": [
+        640,
+        640
+      ],
+      "threshold": 0.25,
+      "nms_iou": 0.45,
+      "epoch": 10,
+      "frame_id": 1742,
+      "objects": [
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.7914,
+          "box": [
+            2118.28,
+            727.11,
+            2385.26,
+            818.22
+          ],
+          "source": "optical_flow",
+          "track_id": 60,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.7728,
+          "box": [
+            956.48,
+            739.65,
+            1076.74,
+            826.2
+          ],
+          "source": "optical_flow",
+          "track_id": 62,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 0,
+          "category": "person",
+          "label": "行人",
+          "confidence": 0.7666,
+          "box": [
+            1322.28,
+            720.61,
+            1445.75,
+            982.04
+          ],
+          "source": "optical_flow",
+          "track_id": 47,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.7635,
+          "box": [
+            1544.31,
+            737.79,
+            1766.68,
+            823.35
+          ],
+          "source": "optical_flow",
+          "track_id": 88,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 0,
+          "category": "person",
+          "label": "行人",
+          "confidence": 0.744,
+          "box": [
+            1078.65,
+            714.42,
+            1195.42,
+            975.3
+          ],
+          "source": "optical_flow",
+          "track_id": 78,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.72,
+          "box": [
+            456.86,
+            717.51,
+            713.92,
+            868.64
+          ],
+          "source": "optical_flow",
+          "track_id": 94,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.6704,
+          "box": [
+            1204.84,
+            756.85,
+            1277.15,
+            803.01
+          ],
+          "source": "optical_flow",
+          "track_id": 87,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 0,
+          "category": "person",
+          "label": "行人",
+          "confidence": 0.6145,
+          "box": [
+            2507.49,
+            687.51,
+            2556,
+            827.91
+          ],
+          "source": "optical_flow",
+          "track_id": 81,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 7,
+          "category": "truck",
+          "label": "货车",
+          "confidence": 0.5715,
+          "box": [
+            458.24,
+            716.55,
+            710.95,
+            870.4
+          ],
+          "source": "optical_flow",
+          "track_id": 98,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 3,
+          "category": "motorcycle",
+          "label": "摩托车",
+          "confidence": 0.5643,
+          "box": [
+            1309.35,
+            860.65,
+            1466.22,
+            1019.35
+          ],
+          "source": "optical_flow",
+          "track_id": 90,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.5579,
+          "box": [
+            0,
+            1108.49,
+            2402.89,
+            1422.63
+          ],
+          "source": "optical_flow",
+          "track_id": 95,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 0,
+          "category": "person",
+          "label": "行人",
+          "confidence": 0.3724,
+          "box": [
+            212.71,
+            732.71,
+            279.8,
+            851.76
+          ],
+          "source": "optical_flow",
+          "track_id": 99,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 3,
+          "category": "motorcycle",
+          "label": "摩托车",
+          "confidence": 0.3451,
+          "box": [
+            1068.67,
+            840.76,
+            1196.15,
+            997.39
+          ],
+          "source": "optical_flow",
+          "track_id": 80,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 0,
+          "category": "person",
+          "label": "行人",
+          "confidence": 0.2947,
+          "box": [
+            1942.78,
+            737.18,
+            1989.19,
+            797.19
+          ],
+          "source": "optical_flow",
+          "track_id": 100,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        },
+        {
+          "class_id": 0,
+          "category": "person",
+          "label": "行人",
+          "confidence": 0.2545,
+          "box": [
+            1827.71,
+            709.66,
+            1857.01,
+            780.48
+          ],
+          "source": "optical_flow",
+          "track_id": 101,
+          "last_detected_monotonic": 2043.327704308,
+          "missed": 0,
+          "epoch": 10,
+          "detection_frame_id": 1742,
+          "age_ms": 122.6
+        }
+      ],
+      "detected_count": 0,
+      "held_count": 15,
+      "count": 15,
+      "detection_fps": 10.67,
+      "stage_ms": {
+        "det_preprocess": 3.807,
+        "det_inference": 23.275,
+        "det_postprocess": 21.067,
+        "det_tracking": 0.164,
+        "det_display_tracking": 12.761
+      },
+      "inference_age_ms": 122.6,
+      "display_frame_id": 1745,
+      "detection_runs": 1255
+    },
+    "stage_ms": {
+      "overlay": 37.237,
+      "jpeg": 9.901,
+      "det_preprocess": 3.807,
+      "det_inference": 23.275,
+      "det_postprocess": 21.067,
+      "det_tracking": 0.164,
+      "det_display_tracking": 12.761,
+      "decode": 13.835,
+      "preprocess": 9.839,
+      "signal_roi": 0.014,
+      "lanes": 14.724,
+      "inference": 14.747,
+      "rules": 0.035,
+      "total": 98.496,
+      "timeline_lag_ms": 120.92
+    },
+    "stage_mean_ms": {
+      "overlay": 28,
+      "jpeg": 7.868,
+      "det_preprocess": 4.922,
+      "det_inference": 28.238,
+      "det_postprocess": 10.611,
+      "det_tracking": 0.121,
+      "det_display_tracking": 9.059,
+      "decode": 12.509,
+      "preprocess": 9.308,
+      "signal_roi": 0.014,
+      "lanes": 21.168,
+      "inference": 21.186,
+      "rules": 0.034,
+      "total": 87.992,
+      "timeline_lag_ms": 105.18
+    },
+    "error": null,
+    "note": "模拟车辆与原录像车辆独立；录像运动不因模拟停车而冻结。无UDP、无FPGA事件；图龄从本机解码完成起算。"
+  }
+}

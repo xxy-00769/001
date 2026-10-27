@@ -1,0 +1,235 @@
+Clock Regions-Block Scope:
++--------------------------------------------------------------------------+
+| (X0,Y*): (Xmin,Xmax,Ymin,Ymax)     | (X1,Y*): (Xmin,Xmax,Ymin,Ymax)     
++--------------------------------------------------------------------------+
+| (X0,Y2): (0,79,61,91)              | (X1,Y2): (80,165,61,91)            
+| (X0,Y1): (0,79,31,60)              | (X1,Y1): (80,165,31,60)            
+| (X0,Y0): (0,79,0,30)               | (X1,Y0): (80,165,0,30)             
++--------------------------------------------------------------------------+
+
+Clock Regions-Clock Primitives:
++--------------------------------------------------------------------------------------------------------------------------------------+
+| Clock Region Name     | CLK PAD     | PLL PAD     | RCKB     | IOCKGATE     | IOCKDIV     | CLMA     | CLMS     | DRM     | APM     
++--------------------------------------------------------------------------------------------------------------------------------------+
+| (X0,Y0)               | 2           | 2           | 4        | 4            | 4           | 1120     | 714      | 24      | 10      
+| (X0,Y1)               | 8           | 8           | 4        | 2            | 2           | 1040     | 680      | 21      | 10      
+| (X0,Y2)               | 0           | 0           | 4        | 4            | 4           | 817      | 561      | 19      | 7       
+| (X1,Y0)               | 6           | 6           | 4        | 4            | 4           | 1189     | 783      | 24      | 20      
+| (X1,Y1)               | 8           | 8           | 4        | 2            | 2           | 1230     | 810      | 24      | 20      
+| (X1,Y2)               | 8           | 8           | 4        | 4            | 4           | 1054     | 702      | 22      | 17      
++--------------------------------------------------------------------------------------------------------------------------------------+
+
+Global Clock Buffer Constraint Details:
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source  Name                                        | Source Pin     | Source-Buffer Net                 | Buffer Input Pin     | Buffer  Name                                  | Buffer Output Pin     | Buffer-Load Net               | Clock Region Of Buffer Site     | Buffer Site     | IO Load Clock Region     | Non-IO Load Clock Region     | Clock Loads     | Non-Clock Loads     
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| u_hd_pll/u_pll_e3/goppll                            | CLKOUT0        | nt_pix_clk                        | CLK                  | clkbufg_1/gopclkbufg                          | CLKOUT                | ntclkbufg_1                   |  ---                            |  ---            | (162,164,26,67)          |  ---                         | 1345            | 0                   
+| pixclk_in_ibuf/opit_1                               | INCK           | _N63                              | CLK                  | clkbufg_3/gopclkbufg                          | CLKOUT                | ntclkbufg_3                   |  ---                            |  ---            | (98,156,0,1)             |  ---                         | 434             | 0                   
+| network/pll/u_pll_e3/goppll                         | CLKOUT0        | network/phase                     | CLK                  | network/phy/GTP_CLKBUFG_RXSHFT/gopclkbufg     | CLKOUT                | network/nc                    |  ---                            |  ---            | (36,158,90,91)           |  ---                         | 341             | 0                   
+| u_pll/u_pll_e3/goppll                               | CLKOUT1        | cfg_clk                           | CLK                  | clkbufg_5/gopclkbufg                          | CLKOUT                | ntclkbufg_5                   |  ---                            |  ---            |  ---                     |  ---                         | 237             | 0                   
+| sys_clk_ibuf/opit_1                                 | INCK           | _N64                              | CLK                  | u_DDR3_50H/u_clkbufg/gopclkbufg               | CLKOUT                | u_DDR3_50H/pll_clkin          |  ---                            |  ---            |  ---                     | (79,79,43,47)                | 68              | 0                   
+| cmos1_pclk_ibuf/opit_1                              | INCK           | _N62                              | CLK                  | clkbufg_7/gopclkbufg                          | CLKOUT                | ntclkbufg_7                   |  ---                            |  ---            | (60,92,0,1)              |  ---                         | 58              | 0                   
+| u_pll/u_pll_e3/goppll                               | CLKOUT2        | clk_25M                           | CLK                  | clkbufg_8/gopclkbufg                          | CLKOUT                | ntclkbufg_8                   |  ---                            |  ---            |  ---                     |  ---                         | 7               | 0                   
+| network/pll/u_pll_e3/goppll                         | CLKOUT1        | network/phase_d                   | CLK                  | clkbufg_9/gopclkbufg                          | CLKOUT                | ntclkbufg_9                   |  ---                            |  ---            | (146,146,90,90)          |  ---                         | 4               | 0                   
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT1        | u_DDR3_50H/ioclk_gate_clk_pll     | CLK                  | u_DDR3_50H/u_clkbufg_gate/gopclkbufg          | CLKOUT                | u_DDR3_50H/ioclk_gate_clk     |  ---                            |  ---            |  ---                     | (74,74,46,46)                | 1               | 0                   
+| u_DDR3_50H/I_GTP_CLKDIV/gopclkdiv                   | CLKDIV         | core_clk                          | CLK                  | clkbufg_0/gopclkbufg                          | CLKOUT                | ntclkbufg_0                   |  ---                            |  ---            | (0,4,4,89)               | (4,4,7,84)                   | 10417           | 0                   
+| cmos1_8_16bit/u_GTP_IOCLKDIV/gopclkdiv              | CLKDIV         | cmos1_pclk_16bit                  | CLK                  | clkbufg_2/gopclkbufg                          | CLKOUT                | ntclkbufg_2                   |  ---                            |  ---            |  ---                     |  ---                         | 648             | 0                   
+| cmos2_8_16bit/u_GTP_IOCLKDIV/gopclkdiv              | CLKDIV         | cmos2_pclk_16bit                  | CLK                  | clkbufg_4/gopclkbufg                          | CLKOUT                | ntclkbufg_4                   |  ---                            |  ---            |  ---                     |  ---                         | 426             | 0                   
+| cmos2_pclk_ibuf/opit_1                              | OUT            | nt_cmos2_pclk                     | CLK                  | clkbufg_6/gopclkbufg                          | CLKOUT                | ntclkbufg_6                   |  ---                            |  ---            | (18,64,0,1)              |  ---                         | 58              | 0                   
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Global Clock Source Constraint Details:
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source Name                                         | Source Pin     | Source-Load Net                   | Clock Region Of Source Site     | Source Site     | Clock Buffer Loads     | Non-Clock Buffer Loads     
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| u_hd_pll/u_pll_e3/goppll                            | CLKOUT0        | nt_pix_clk                        | (X0,Y0)                         | PLL_158_55      | 1                      | 1                          
+| pixclk_in_ibuf/opit_1                               | INCK           | _N63                              | (X1,Y0)                         | IOL_163_6       | 2                      | 0                          
+| network/pll/u_pll_e3/goppll                         | CLKOUT0        | network/phase                     | (X0,Y2)                         | PLL_158_303     | 1                      | 0                          
+| u_pll/u_pll_e3/goppll                               | CLKOUT1        | cfg_clk                           | (X0,Y0)                         | PLL_158_75      | 1                      | 0                          
+| sys_clk_ibuf/opit_1                                 | INCK           | _N64                              | (X1,Y1)                         | IOL_327_210     | 1                      | 0                          
+| cmos1_pclk_ibuf/opit_1                              | INCK           | _N62                              | (X1,Y0)                         | IOL_171_6       | 3                      | 0                          
+| u_pll/u_pll_e3/goppll                               | CLKOUT2        | clk_25M                           | (X0,Y0)                         | PLL_158_75      | 1                      | 0                          
+| network/pll/u_pll_e3/goppll                         | CLKOUT1        | network/phase_d                   | (X0,Y2)                         | PLL_158_303     | 1                      | 0                          
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT1        | u_DDR3_50H/ioclk_gate_clk_pll     | (X0,Y1)                         | PLL_158_199     | 1                      | 0                          
+| u_DDR3_50H/I_GTP_CLKDIV/gopclkdiv                   | CLKDIV         | core_clk                          |  ---                            |  ---            | 1                      | 0                          
+| cmos1_8_16bit/u_GTP_IOCLKDIV/gopclkdiv              | CLKDIV         | cmos1_pclk_16bit                  |  ---                            |  ---            | 1                      | 0                          
+| cmos2_8_16bit/u_GTP_IOCLKDIV/gopclkdiv              | CLKDIV         | cmos2_pclk_16bit                  |  ---                            |  ---            | 1                      | 0                          
+| cmos2_pclk_ibuf/opit_1                              | OUT            | nt_cmos2_pclk                     | (X0,Y0)                         | IOL_39_6        | 3                      | 0                          
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+IO Clock Buffer Constraint Details:
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source  Name                                        | Source Pin     | Source-Buffer Net     | Buffer Input Pin     | Buffer  Name                                | Buffer Output Pin     | Buffer-Load Net                 | Clock Region Of Buffer Site     | Buffer Site     | IO Load Clock Region     | Non-IO Load Clock Region     | Clock Loads     | Non-Clock Loads     
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT0_WL     | clkout0_wl_0          | CLK                  | u_DDR3_50H/I_GTP_IOCLKBUF_1/gopclkgate      | OUT                   | u_DDR3_50H/ioclk [1]            |  ---                            |  ---            | (0,4,32,59)              | (4,4,37,54)                  | 28              | 0                   
+| pixclk_in_ibuf/opit_1                               | INCK           | _N63                  | CLK                  | rx_input/pads/local_clock/gopclkgate        | OUT                   | rx_input/pads/ioclk             |  ---                            |  ---            | (98,156,0,1)             |  ---                         | 0               | 19                  
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT0_WL     | clkout0_wl_0          | CLK                  | u_DDR3_50H/I_GTP_IOCLKBUF_0/gopclkgate      | OUT                   | u_DDR3_50H/ioclk [0]            |  ---                            |  ---            | (0,4,62,84)              | (4,4,67,84)                  | 11              | 0                   
+| cmos1_pclk_ibuf/opit_1                              | INCK           | _N62                  | CLK                  | camera1_pads/local_clock/gopclkgate         | OUT                   | camera1_pads/ioclk              |  ---                            |  ---            | (60,92,0,1)              |  ---                         | 0               | 10                  
+| cmos2_pclk_ibuf/opit_1                              | OUT            | nt_cmos2_pclk         | CLK                  | camera2_pads/local_clock/gopclkgate         | OUT                   | camera2_pads/ioclk              |  ---                            |  ---            | (18,64,0,1)              |  ---                         | 0               | 10                  
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_1/u_pll_e3/goppll     | CLKOUT0_WL     | clkout0_wl_1          | CLK                  | u_DDR3_50H/I_GTP_IOCLKBUF_2/gopclkgate      | OUT                   | u_DDR3_50H/ioclk [2]            |  ---                            |  ---            | (4,4,7,24)               | (4,4,7,24)                   | 2               | 0                   
+| cmos1_pclk_ibuf/opit_1                              | INCK           | _N62                  | CLK                  | cmos1_8_16bit/u_GTP_IOCLKBUF/gopclkgate     | OUT                   | cmos1_8_16bit/pclk_IOCLKBUF     |  ---                            |  ---            |  ---                     |  ---                         | 0               | 1                   
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT0_WL     | clkout0_wl_0          | CLK                  | clkgate_10/gopclkgate                       | OUT                   | ntclkgate_0                     |  ---                            |  ---            |  ---                     |  ---                         | 0               | 1                   
+| cmos2_pclk_ibuf/opit_1                              | OUT            | nt_cmos2_pclk         | CLK                  | cmos2_8_16bit/u_GTP_IOCLKBUF/gopclkgate     | OUT                   | cmos2_8_16bit/pclk_IOCLKBUF     |  ---                            |  ---            |  ---                     |  ---                         | 0               | 1                   
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+IO Clock Source Constraint Details:
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source Name                                         | Source Pin     | Source-Load Net     | Clock Region Of Source Site     | Source Site     | Clock Buffer Loads     | Non-Clock Buffer Loads     
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT0_WL     | clkout0_wl_0        | (X0,Y1)                         | PLL_158_199     | 3                      | 0                          
+| pixclk_in_ibuf/opit_1                               | INCK           | _N63                | (X1,Y0)                         | IOL_163_6       | 2                      | 0                          
+| cmos1_pclk_ibuf/opit_1                              | INCK           | _N62                | (X1,Y0)                         | IOL_171_6       | 3                      | 0                          
+| cmos2_pclk_ibuf/opit_1                              | OUT            | nt_cmos2_pclk       | (X0,Y0)                         | IOL_39_6        | 3                      | 0                          
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_1/u_pll_e3/goppll     | CLKOUT0_WL     | clkout0_wl_1        | (X0,Y1)                         | PLL_158_179     | 1                      | 0                          
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Device Cell Placement Summary for Global Clock Buffer:
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source  Name                                        | Source  Pin     | Source-Buffer Net                 | Buffer Input Pin     | Buffer  Name                                  | Buffer Output Pin     | Buffer-Load Net               | Buffer Site     | IO Load Clock Region     | Non-IO Load Clock Region     | Clock Loads     | Non-Clock Loads     
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| u_hd_pll/u_pll_e3/goppll                            | CLKOUT0         | nt_pix_clk                        | CLK                  | clkbufg_1/gopclkbufg                          | CLKOUT                | ntclkbufg_1                   |  ---            | (162,164,26,67)          |  ---                         | 1345            | 0                   
+| pixclk_in_ibuf/opit_1                               | INCK            | _N63                              | CLK                  | clkbufg_3/gopclkbufg                          | CLKOUT                | ntclkbufg_3                   |  ---            | (98,156,0,1)             |  ---                         | 434             | 0                   
+| network/pll/u_pll_e3/goppll                         | CLKOUT0         | network/phase                     | CLK                  | network/phy/GTP_CLKBUFG_RXSHFT/gopclkbufg     | CLKOUT                | network/nc                    |  ---            | (36,158,90,91)           |  ---                         | 341             | 0                   
+| u_pll/u_pll_e3/goppll                               | CLKOUT1         | cfg_clk                           | CLK                  | clkbufg_5/gopclkbufg                          | CLKOUT                | ntclkbufg_5                   |  ---            |  ---                     |  ---                         | 237             | 0                   
+| sys_clk_ibuf/opit_1                                 | INCK            | _N64                              | CLK                  | u_DDR3_50H/u_clkbufg/gopclkbufg               | CLKOUT                | u_DDR3_50H/pll_clkin          |  ---            |  ---                     | (79,79,43,47)                | 68              | 0                   
+| cmos1_pclk_ibuf/opit_1                              | INCK            | _N62                              | CLK                  | clkbufg_7/gopclkbufg                          | CLKOUT                | ntclkbufg_7                   |  ---            | (60,92,0,1)              |  ---                         | 58              | 0                   
+| u_pll/u_pll_e3/goppll                               | CLKOUT2         | clk_25M                           | CLK                  | clkbufg_8/gopclkbufg                          | CLKOUT                | ntclkbufg_8                   |  ---            |  ---                     |  ---                         | 7               | 0                   
+| network/pll/u_pll_e3/goppll                         | CLKOUT1         | network/phase_d                   | CLK                  | clkbufg_9/gopclkbufg                          | CLKOUT                | ntclkbufg_9                   |  ---            | (146,146,90,90)          |  ---                         | 4               | 0                   
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT1         | u_DDR3_50H/ioclk_gate_clk_pll     | CLK                  | u_DDR3_50H/u_clkbufg_gate/gopclkbufg          | CLKOUT                | u_DDR3_50H/ioclk_gate_clk     |  ---            |  ---                     | (74,74,46,46)                | 1               | 0                   
+| u_DDR3_50H/I_GTP_CLKDIV/gopclkdiv                   | CLKDIV          | core_clk                          | CLK                  | clkbufg_0/gopclkbufg                          | CLKOUT                | ntclkbufg_0                   |  ---            | (0,4,4,89)               | (4,4,7,84)                   | 10417           | 0                   
+| cmos1_8_16bit/u_GTP_IOCLKDIV/gopclkdiv              | CLKDIV          | cmos1_pclk_16bit                  | CLK                  | clkbufg_2/gopclkbufg                          | CLKOUT                | ntclkbufg_2                   |  ---            |  ---                     |  ---                         | 648             | 0                   
+| cmos2_8_16bit/u_GTP_IOCLKDIV/gopclkdiv              | CLKDIV          | cmos2_pclk_16bit                  | CLK                  | clkbufg_4/gopclkbufg                          | CLKOUT                | ntclkbufg_4                   |  ---            |  ---                     |  ---                         | 426             | 0                   
+| cmos2_pclk_ibuf/opit_1                              | OUT             | nt_cmos2_pclk                     | CLK                  | clkbufg_6/gopclkbufg                          | CLKOUT                | ntclkbufg_6                   |  ---            | (18,64,0,1)              |  ---                         | 58              | 0                   
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Device Cell Placement Summary for Global Clock Source:
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source Name                                         | Source  Pin     | Source-Load Net                   | Source Site     | Clock Buffer Loads     | Non-Clock Buffer Loads     
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| u_hd_pll/u_pll_e3/goppll                            | CLKOUT0         | nt_pix_clk                        | PLL_158_55      | 1                      | 1                          
+| pixclk_in_ibuf/opit_1                               | INCK            | _N63                              | IOL_163_6       | 2                      | 0                          
+| network/pll/u_pll_e3/goppll                         | CLKOUT0         | network/phase                     | PLL_158_303     | 1                      | 0                          
+| u_pll/u_pll_e3/goppll                               | CLKOUT1         | cfg_clk                           | PLL_158_75      | 1                      | 0                          
+| sys_clk_ibuf/opit_1                                 | INCK            | _N64                              | IOL_327_210     | 1                      | 0                          
+| cmos1_pclk_ibuf/opit_1                              | INCK            | _N62                              | IOL_171_6       | 3                      | 0                          
+| u_pll/u_pll_e3/goppll                               | CLKOUT2         | clk_25M                           | PLL_158_75      | 1                      | 0                          
+| network/pll/u_pll_e3/goppll                         | CLKOUT1         | network/phase_d                   | PLL_158_303     | 1                      | 0                          
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT1         | u_DDR3_50H/ioclk_gate_clk_pll     | PLL_158_199     | 1                      | 0                          
+| u_DDR3_50H/I_GTP_CLKDIV/gopclkdiv                   | CLKDIV          | core_clk                          |  ---            | 1                      | 0                          
+| cmos1_8_16bit/u_GTP_IOCLKDIV/gopclkdiv              | CLKDIV          | cmos1_pclk_16bit                  |  ---            | 1                      | 0                          
+| cmos2_8_16bit/u_GTP_IOCLKDIV/gopclkdiv              | CLKDIV          | cmos2_pclk_16bit                  |  ---            | 1                      | 0                          
+| cmos2_pclk_ibuf/opit_1                              | OUT             | nt_cmos2_pclk                     | IOL_39_6        | 3                      | 0                          
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Device Cell Placement Summary for IO Clock Buffer:
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source  Name                                        | Source  Pin     | Source-Buffer Net     | Buffer Input Pin     | Buffer  Name                                | Buffer Output Pin     | Buffer-Load Net                 | Buffer Site         | IO Load Clock Region     | Non-IO Load Clock Region     | Clock Loads     | Non-Clock Loads     
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT0_WL      | clkout0_wl_0          | CLK                  | u_DDR3_50H/I_GTP_IOCLKBUF_1/gopclkgate      | OUT                   | u_DDR3_50H/ioclk [1]            | IOCKGATE_6_188      | (0,4,32,59)              | (4,4,37,54)                  | 28              | 0                   
+| pixclk_in_ibuf/opit_1                               | INCK            | _N63                  | CLK                  | rx_input/pads/local_clock/gopclkgate        | OUT                   | rx_input/pads/ioclk             | IOCKGATE_237_20     | (98,156,0,1)             |  ---                         | 0               | 19                  
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT0_WL      | clkout0_wl_0          | CLK                  | u_DDR3_50H/I_GTP_IOCLKBUF_0/gopclkgate      | OUT                   | u_DDR3_50H/ioclk [0]            | IOCKGATE_6_312      | (0,4,62,84)              | (4,4,67,84)                  | 11              | 0                   
+| cmos1_pclk_ibuf/opit_1                              | INCK            | _N62                  | CLK                  | camera1_pads/local_clock/gopclkgate         | OUT                   | camera1_pads/ioclk              |  ---                | (60,92,0,1)              |  ---                         | 0               | 10                  
+| cmos2_pclk_ibuf/opit_1                              | OUT             | nt_cmos2_pclk         | CLK                  | camera2_pads/local_clock/gopclkgate         | OUT                   | camera2_pads/ioclk              |  ---                | (18,64,0,1)              |  ---                         | 0               | 10                  
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_1/u_pll_e3/goppll     | CLKOUT0_WL      | clkout0_wl_1          | CLK                  | u_DDR3_50H/I_GTP_IOCLKBUF_2/gopclkgate      | OUT                   | u_DDR3_50H/ioclk [2]            |  ---                | (4,4,7,24)               | (4,4,7,24)                   | 2               | 0                   
+| cmos1_pclk_ibuf/opit_1                              | INCK            | _N62                  | CLK                  | cmos1_8_16bit/u_GTP_IOCLKBUF/gopclkgate     | OUT                   | cmos1_8_16bit/pclk_IOCLKBUF     |  ---                |  ---                     |  ---                         | 0               | 1                   
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT0_WL      | clkout0_wl_0          | CLK                  | clkgate_10/gopclkgate                       | OUT                   | ntclkgate_0                     |  ---                |  ---                     |  ---                         | 0               | 1                   
+| cmos2_pclk_ibuf/opit_1                              | OUT             | nt_cmos2_pclk         | CLK                  | cmos2_8_16bit/u_GTP_IOCLKBUF/gopclkgate     | OUT                   | cmos2_8_16bit/pclk_IOCLKBUF     |  ---                |  ---                     |  ---                         | 0               | 1                   
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Device Cell Placement Summary for IO Clock Source:
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source Name                                         | Source  Pin     | Source-Load Net     | Source Site     | Clock Buffer Loads     | Non-Clock Buffer Loads     
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_0/u_pll_e3/goppll     | CLKOUT0_WL      | clkout0_wl_0        | PLL_158_199     | 3                      | 0                          
+| pixclk_in_ibuf/opit_1                               | INCK            | _N63                | IOL_163_6       | 2                      | 0                          
+| cmos1_pclk_ibuf/opit_1                              | INCK            | _N62                | IOL_171_6       | 3                      | 0                          
+| cmos2_pclk_ibuf/opit_1                              | OUT             | nt_cmos2_pclk       | IOL_39_6        | 3                      | 0                          
+| u_DDR3_50H/u_ipsxb_ddrphy_pll_1/u_pll_e3/goppll     | CLKOUT0_WL      | clkout0_wl_1        | PLL_158_179     | 1                      | 0                          
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Placement Failed Information About The Constraint Details Of Buffer:
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Source  Name               | Source Pin     | Source-Buffer Net     | Buffer Input Pin     | Buffer  Name                            | Buffer Output Pin     | Buffer-Load Net        | Clock Region Of Buffer Site     | Buffer Site     | IO Load Clock Region     | Non-IO Load Clock Region     | Clock Loads     | Non-Clock Loads     
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| cmos1_pclk_ibuf/opit_1     | INCK           | _N62                  | CLK                  | camera1_pads/local_clock/gopclkgate     | OUT                   | camera1_pads/ioclk     |  ---                            |  ---            | (60,92,0,1)              |  ---                         | 0               | 10                  
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Placement Failed Information About The Load Of Source Instance cmos1_pclk_ibuf/opit_1:
++------------------------------------------------------------------------------------------------------------------------------+
+| Source Pin     | Source-Load Net     | Load Instance                               | Load Unit      | Load Clock Region     
++------------------------------------------------------------------------------------------------------------------------------+
+| INCK           | _N62                | camera1_pads/local_clock/gopclkgate         | gopCLKGATE     |  ---                  
+| INCK           | _N62                | clkbufg_7/gopclkbufg                        | gopCLKBUFG     |  ---                  
+| INCK           | _N62                | cmos1_8_16bit/u_GTP_IOCLKBUF/gopclkgate     | gopCLKGATE     |  ---                  
++------------------------------------------------------------------------------------------------------------------------------+
+
+Placement Failed Information About The Load Of Buffer Instance camera1_pads/local_clock/gopclkgate:
++------------------------------------------------------------------------------------------------------------------------------+
+| Buffer Pin     | Buffer-Load Net        | Load Instance                             | Load Unit     | Load Clock Region     
++------------------------------------------------------------------------------------------------------------------------------+
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[0].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[1].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[2].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[3].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[4].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[5].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[6].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[7].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[8].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
+| OUT            | camera1_pads/ioclk     | camera1_pads/pad[9].sample/gateop_IOL     | gopIMDDR      | (0,0,0,0)             
++------------------------------------------------------------------------------------------------------------------------------+
+
+
+Clock Network Type:
+       IO_CLOCK
+
+
+Error Type:
+       The region constraint or location constraint of the loaders driven by camera1_pads/local_clock/gopclkgate is unreasonable.
+
+
+Reason For Placement Error:
+       The non-io loader constrained at (2147483647,-2147483648,2147483647,-2147483648) region is:
+       The io loader constrained at (60,92,0,1) region is:
+       The constraint of the loader is unreasonable.Beyond the driving range of the buffer.
+
+       The Available Resources Location Region:
+              Region 1:
+                      The available resources location region about the io loader is the (0,4,4,29) region.
+
+              Region 2:
+                      The available resources location region about the io loader is the (0,4,32,59) region.
+
+              Region 3:
+                      The available resources location region about the io loader is the (0,4,62,89) region.
+
+              Region 4:
+                      The available resources location region about the io loader is the (6,78,0,1) region.
+
+              Region 5:
+                      The available resources location region about the io loader is the (6,38,90,91) region.
+
+              Region 6:
+                      The available resources location region about the io loader is the (80,158,0,1) region.
+
+              Region 7:
+                      The available resources location region about the io loader is the (108,158,90,91) region.
+
+              Region 8:
+                      The available resources location region about the io loader is the (161,164,6,29) region.
+
+              Region 9:
+                      The available resources location region about the io loader is the (161,164,32,59) region.
+
+              Region 10:
+                      The available resources location region about the io loader is the (161,164,62,89) region.
+
+
+Solution For Placement Error:
+       Solution 1:
+                  First, you need to find a reasonable site or region for design instance in the tool DE to ensure that route is successful. Then, you need to modify the constraint.
+
+       Solution 2:
+                  If you can't find the right place to put it, you need to modify the design file.
+
+

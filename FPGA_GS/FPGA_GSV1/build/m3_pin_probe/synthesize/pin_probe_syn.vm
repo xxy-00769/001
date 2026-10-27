@@ -1,0 +1,601 @@
+//
+// Generated (version 2022.2-SP6.4<build 146967>) at Wed Oct 21 09:06:44 2026
+//
+
+module m3_eth_pll
+(
+    input clkin1,
+    output clkout0,
+    output clkout1,
+    output pll_lock
+);
+    wire clkout0_2pad;
+    wire clkout2;
+    wire clkout3;
+    wire clkout4;
+    wire clkout5;
+    wire clkswitch_flag;
+
+    GTP_PLL_E3 /* u_pll_e3 */ #(
+            .CLKIN_FREQ(125), 
+            .PFDEN_EN("FALSE"), 
+            .VCOCLK_DIV2(1'b0), 
+            .DYNAMIC_RATIOI_EN("FALSE"), 
+            .DYNAMIC_RATIOM_EN("FALSE"), 
+            .DYNAMIC_RATIO0_EN("FALSE"), 
+            .DYNAMIC_RATIO1_EN("FALSE"), 
+            .DYNAMIC_RATIO2_EN("FALSE"), 
+            .DYNAMIC_RATIO3_EN("FALSE"), 
+            .DYNAMIC_RATIO4_EN("FALSE"), 
+            .DYNAMIC_RATIOF_EN("FALSE"), 
+            .STATIC_RATIOI(4), 
+            .STATIC_RATIOM(1), 
+            .STATIC_RATIO0(5), 
+            .STATIC_RATIO1(5), 
+            .STATIC_RATIO2(16), 
+            .STATIC_RATIO3(16), 
+            .STATIC_RATIO4(16), 
+            .STATIC_RATIOF(20), 
+            .DYNAMIC_DUTY0_EN("FALSE"), 
+            .DYNAMIC_DUTY1_EN("FALSE"), 
+            .DYNAMIC_DUTY2_EN("FALSE"), 
+            .DYNAMIC_DUTY3_EN("FALSE"), 
+            .DYNAMIC_DUTY4_EN("FALSE"), 
+            .STATIC_DUTY0(5), 
+            .STATIC_DUTY1(5), 
+            .STATIC_DUTY2(16), 
+            .STATIC_DUTY3(16), 
+            .STATIC_DUTY4(16), 
+            .STATIC_PHASE0(4), 
+            .STATIC_PHASE1(1), 
+            .STATIC_PHASE2(0), 
+            .STATIC_PHASE3(0), 
+            .STATIC_PHASE4(0), 
+            .STATIC_PHASEF(0), 
+            .STATIC_CPHASE0(2), 
+            .STATIC_CPHASE1(3), 
+            .STATIC_CPHASE2(0), 
+            .STATIC_CPHASE3(0), 
+            .STATIC_CPHASE4(0), 
+            .STATIC_CPHASEF(0), 
+            .CLK_CAS1_EN("FALSE"), 
+            .CLK_CAS2_EN("FALSE"), 
+            .CLK_CAS3_EN("FALSE"), 
+            .CLK_CAS4_EN("FALSE"), 
+            .CLKOUT5_SEL(0), 
+            .CLKIN_BYPASS_EN("FALSE"), 
+            .CLKOUT0_SYN_EN("FALSE"), 
+            .CLKOUT0_EXT_SYN_EN("FALSE"), 
+            .CLKOUT1_SYN_EN("FALSE"), 
+            .CLKOUT2_SYN_EN("FALSE"), 
+            .CLKOUT3_SYN_EN("FALSE"), 
+            .CLKOUT4_SYN_EN("FALSE"), 
+            .CLKOUT5_SYN_EN("FALSE"), 
+            .INTERNAL_FB("ENABLE"), 
+            .EXTERNAL_FB("DISABLE"), 
+            .DYNAMIC_LOOP_EN("FALSE"), 
+            .LOOP_MAPPING_EN("FALSE"), 
+            .BANDWIDTH("OPTIMIZED"))
+        u_pll_e3 (
+            .DUTY0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .ICP_SEL ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .LPFRES_SEL ({1'b0, 1'b0, 1'b0}),
+            .PHASE_SEL ({1'b0, 1'b0, 1'b0}),
+            .RATIO0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOF ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOM ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .CLKOUT0 (clkout0),
+            .CLKOUT0_EXT (clkout0_2pad),
+            .CLKOUT1 (clkout1),
+            .CLKOUT2 (clkout2),
+            .CLKOUT3 (clkout3),
+            .CLKOUT4 (clkout4),
+            .CLKOUT5 (clkout5),
+            .CLKSWITCH_FLAG (clkswitch_flag),
+            .LOCK (pll_lock),
+            .CLKFB (1'b0),
+            .CLKIN1 (clkin1),
+            .CLKIN2 (1'b0),
+            .CLKIN_SEL (1'b0),
+            .CLKIN_SEL_EN (1'b0),
+            .CLKOUT0_EXT_SYN (1'b0),
+            .CLKOUT0_SYN (1'b0),
+            .CLKOUT1_SYN (1'b0),
+            .CLKOUT2_SYN (1'b0),
+            .CLKOUT3_SYN (1'b0),
+            .CLKOUT4_SYN (1'b0),
+            .CLKOUT5_SYN (1'b0),
+            .CRIPPLE_SEL (1'b0),
+            .ICP_BASE (1'b0),
+            .LOAD_PHASE (1'b0),
+            .PFDEN (1'b0),
+            .PHASE_DIR (1'b0),
+            .PHASE_STEP_N (1'b0),
+            .PLL_PWD (1'b0),
+            .RST (1'b0),
+            .RSTODIV (1'b0));
+	// ../../../rtl/network/m3_eth_pll.v:232
+	// SDC constraint : (object CLKOUT1) (id 1004) (clock eth_rxc|pll/u_pll_e3/CLKOUT1_Inferred) (inferred)
+	// SDC constraint : (object CLKOUT0) (id 1003) (clock eth_rxc|pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+
+
+endmodule
+
+
+module m3_rgmii_interface
+(
+    input [3:0] rgmii_rxd,
+    input rgmii_clk_90p,
+    input rgmii_rx_ctl,
+    input rgmii_rxc,
+    input rst,
+    output [3:0] rgmii_txd,
+    output rgmii_tx_ctl,
+    output rgmii_txc
+);
+    wire [7:0] N51;
+    wire [7:0] N61;
+    wire [7:0] N72;
+    wire [7:0] N83;
+    wire [7:0] N94;
+    wire gmii_ctl;
+    wire [7:0] gmii_rxd;
+    wire [7:0] mac_rx_data;
+(* PAP_MARK_DEBUG="1" *)    wire mac_rx_data_valid;
+(* PAP_MARK_DEBUG="1" *)    wire rgmii_clk;
+    wire rgmii_rx_ctl_ibuf;
+    wire rgmii_rx_valid_xor_error;
+    wire [3:0] rgmii_rxd_ibuf;
+    wire rgmii_tx_ctl_obuf;
+    wire rgmii_tx_ctl_tbuf;
+    wire rgmii_txc_obuf;
+    wire rgmii_txc_tbuf;
+    wire [3:0] rgmii_txd_obuf;
+    wire [3:0] rgmii_txd_tbuf;
+
+    GTP_CLKBUFG GTP_CLKBUFG_RXSHFT (
+            .CLKOUT (rgmii_clk),
+            .CLKIN (rgmii_rxc));
+	// ../../../rtl/network/m3_rgmii_interface.v:175
+
+    GTP_ISERDES /* gmii_ctl_in */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        gmii_ctl_in (
+            .DO ({rgmii_rx_valid_xor_error, gmii_ctl, N51[5], N51[4], N51[3], N51[2], N51[1], N51[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rx_ctl_ibuf),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m3_rgmii_interface.v:199
+
+    GTP_OUTBUFT /* gtp_outbuft1 */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        gtp_outbuft1 (
+            .O (rgmii_tx_ctl),
+            .I (rgmii_tx_ctl_obuf),
+            .T (rgmii_tx_ctl_tbuf));
+	// ../../../rtl/network/m3_rgmii_interface.v:101
+
+    GTP_OUTBUFT /* gtp_outbuft6 */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        gtp_outbuft6 (
+            .O (rgmii_txc),
+            .I (rgmii_txc_obuf),
+            .T (rgmii_txc_tbuf));
+	// ../../../rtl/network/m3_rgmii_interface.v:124
+
+    GTP_DFF /* \mac_rx_data[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[0]  (
+            .Q (mac_rx_data[0]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[0]));
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_DFF /* \mac_rx_data[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[1]  (
+            .Q (mac_rx_data[1]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[1]));
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_DFF /* \mac_rx_data[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[2]  (
+            .Q (mac_rx_data[2]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[2]));
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_DFF /* \mac_rx_data[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[3]  (
+            .Q (mac_rx_data[3]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[3]));
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_DFF /* \mac_rx_data[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[4]  (
+            .Q (mac_rx_data[4]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[4]));
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_DFF /* \mac_rx_data[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[5]  (
+            .Q (mac_rx_data[5]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[5]));
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_DFF /* \mac_rx_data[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[6]  (
+            .Q (mac_rx_data[6]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[6]));
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_DFF /* \mac_rx_data[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[7]  (
+            .Q (mac_rx_data[7]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[7]));
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_DFF /* mac_rx_data_valid */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        mac_rx_data_valid_vname (
+            .Q (mac_rx_data_valid),
+            .CLK (rgmii_clk),
+            .D (gmii_ctl));
+    // defparam mac_rx_data_valid_vname.orig_name = mac_rx_data_valid;
+	// ../../../rtl/network/m3_rgmii_interface.v:213
+
+    GTP_ISERDES /* \rgmii_rx_data[0].gmii_rxd_in  */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        \rgmii_rx_data[0].gmii_rxd_in  (
+            .DO ({gmii_rxd[4], gmii_rxd[0], N61[5], N61[4], N61[3], N61[2], N61[1], N61[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rxd_ibuf[0]),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m3_rgmii_interface.v:237
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \rgmii_rx_data[0].u_rgmii_rxd_ibuf  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \rgmii_rx_data[0].u_rgmii_rxd_ibuf  (
+            .O (rgmii_rxd_ibuf[0]),
+            .I (rgmii_rxd[0]));
+	// ../../../rtl/network/m3_rgmii_interface.v:228
+
+    GTP_ISERDES /* \rgmii_rx_data[1].gmii_rxd_in  */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        \rgmii_rx_data[1].gmii_rxd_in  (
+            .DO ({gmii_rxd[5], gmii_rxd[1], N72[5], N72[4], N72[3], N72[2], N72[1], N72[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rxd_ibuf[1]),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m3_rgmii_interface.v:237
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \rgmii_rx_data[1].u_rgmii_rxd_ibuf  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \rgmii_rx_data[1].u_rgmii_rxd_ibuf  (
+            .O (rgmii_rxd_ibuf[1]),
+            .I (rgmii_rxd[1]));
+	// ../../../rtl/network/m3_rgmii_interface.v:228
+
+    GTP_ISERDES /* \rgmii_rx_data[2].gmii_rxd_in  */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        \rgmii_rx_data[2].gmii_rxd_in  (
+            .DO ({gmii_rxd[6], gmii_rxd[2], N83[5], N83[4], N83[3], N83[2], N83[1], N83[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rxd_ibuf[2]),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m3_rgmii_interface.v:237
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \rgmii_rx_data[2].u_rgmii_rxd_ibuf  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \rgmii_rx_data[2].u_rgmii_rxd_ibuf  (
+            .O (rgmii_rxd_ibuf[2]),
+            .I (rgmii_rxd[2]));
+	// ../../../rtl/network/m3_rgmii_interface.v:228
+
+    GTP_ISERDES /* \rgmii_rx_data[3].gmii_rxd_in  */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        \rgmii_rx_data[3].gmii_rxd_in  (
+            .DO ({gmii_rxd[7], gmii_rxd[3], N94[5], N94[4], N94[3], N94[2], N94[1], N94[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rxd_ibuf[3]),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m3_rgmii_interface.v:237
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \rgmii_rx_data[3].u_rgmii_rxd_ibuf  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \rgmii_rx_data[3].u_rgmii_rxd_ibuf  (
+            .O (rgmii_rxd_ibuf[3]),
+            .I (rgmii_rxd[3]));
+	// ../../../rtl/network/m3_rgmii_interface.v:228
+
+    GTP_OUTBUFT /* \rgmii_tx_data[0].gtp_outbuft1  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \rgmii_tx_data[0].gtp_outbuft1  (
+            .O (rgmii_txd[0]),
+            .I (rgmii_txd_obuf[0]),
+            .T (rgmii_txd_tbuf[0]));
+	// ../../../rtl/network/m3_rgmii_interface.v:76
+
+    GTP_OSERDES /* \rgmii_tx_data[0].tx_data_oddr  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \rgmii_tx_data[0].tx_data_oddr  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_rx_data[4], mac_rx_data[0]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txd_obuf[0]),
+            .TQ (rgmii_txd_tbuf[0]),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m3_rgmii_interface.v:65
+
+    GTP_OUTBUFT /* \rgmii_tx_data[1].gtp_outbuft1  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \rgmii_tx_data[1].gtp_outbuft1  (
+            .O (rgmii_txd[1]),
+            .I (rgmii_txd_obuf[1]),
+            .T (rgmii_txd_tbuf[1]));
+	// ../../../rtl/network/m3_rgmii_interface.v:76
+
+    GTP_OSERDES /* \rgmii_tx_data[1].tx_data_oddr  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \rgmii_tx_data[1].tx_data_oddr  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_rx_data[5], mac_rx_data[1]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txd_obuf[1]),
+            .TQ (rgmii_txd_tbuf[1]),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m3_rgmii_interface.v:65
+
+    GTP_OUTBUFT /* \rgmii_tx_data[2].gtp_outbuft1  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \rgmii_tx_data[2].gtp_outbuft1  (
+            .O (rgmii_txd[2]),
+            .I (rgmii_txd_obuf[2]),
+            .T (rgmii_txd_tbuf[2]));
+	// ../../../rtl/network/m3_rgmii_interface.v:76
+
+    GTP_OSERDES /* \rgmii_tx_data[2].tx_data_oddr  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \rgmii_tx_data[2].tx_data_oddr  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_rx_data[6], mac_rx_data[2]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txd_obuf[2]),
+            .TQ (rgmii_txd_tbuf[2]),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m3_rgmii_interface.v:65
+
+    GTP_OUTBUFT /* \rgmii_tx_data[3].gtp_outbuft1  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \rgmii_tx_data[3].gtp_outbuft1  (
+            .O (rgmii_txd[3]),
+            .I (rgmii_txd_obuf[3]),
+            .T (rgmii_txd_tbuf[3]));
+	// ../../../rtl/network/m3_rgmii_interface.v:76
+
+    GTP_OSERDES /* \rgmii_tx_data[3].tx_data_oddr  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \rgmii_tx_data[3].tx_data_oddr  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_rx_data[7], mac_rx_data[3]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txd_obuf[3]),
+            .TQ (rgmii_txd_tbuf[3]),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m3_rgmii_interface.v:65
+
+    GTP_OSERDES /* tx_clk_oddr */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        tx_clk_oddr (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b1}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txc_obuf),
+            .TQ (rgmii_txc_tbuf),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk_90p),
+            .RST (rst),
+            .SERCLK (rgmii_clk_90p));
+	// ../../../rtl/network/m3_rgmii_interface.v:114
+
+    GTP_OSERDES /* tx_ctl_oddr */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        tx_ctl_oddr (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_rx_data_valid, mac_rx_data_valid}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_tx_ctl_obuf),
+            .TQ (rgmii_tx_ctl_tbuf),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (rst),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m3_rgmii_interface.v:90
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* u_rgmii_rx_ctl_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        u_rgmii_rx_ctl_ibuf (
+            .O (rgmii_rx_ctl_ibuf),
+            .I (rgmii_rx_ctl));
+	// ../../../rtl/network/m3_rgmii_interface.v:184
+
+
+endmodule
+
+
+module pin_probe
+(
+    input [3:0] rgmii_rxd,
+    input rgmii_rx_ctl,
+    input rgmii_rxc,
+    input sys_clk,
+    output [3:0] rgmii_txd,
+    output phy_rstn,
+    output rgmii_tx_ctl,
+    output rgmii_txc
+);
+	// SDC constraint : (object rgmii_rxc) (id 1000) (clock eth_rxc) (81 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/build/m3_pin_probe/pins.fdc)
+	// SDC constraint : (object rgmii_rxc) (id 1003) (clock eth_rxc|pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+	// SDC constraint : (object rgmii_rxc) (id 1004) (clock eth_rxc|pll/u_pll_e3/CLKOUT1_Inferred) (inferred)
+    wire N3;
+    wire a;
+    wire b;
+    wire nt_phy_rstn;
+    wire nt_rgmii_rxc;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+    GTP_LUT1 /* N3 */ #(
+            .INIT(2'b01))
+        N3_vname (
+            .Z (N3),
+            .I0 (nt_phy_rstn));
+    // defparam N3_vname.orig_name = N3;
+	// LUT = ~I0 ;
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="B20", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* phy_rstn_obuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        phy_rstn_obuf (
+            .O (phy_rstn),
+            .I (nt_phy_rstn));
+	// ../pin_probe.v:1
+
+    m3_eth_pll pll (
+            .clkout0 (a),
+            .clkout1 (b),
+            .pll_lock (nt_phy_rstn),
+            .clkin1 (nt_rgmii_rxc));
+	// ../pin_probe.v:3
+
+    m3_rgmii_interface rg (
+            .rgmii_txd (rgmii_txd),
+            .rgmii_rxd (rgmii_rxd),
+            .rgmii_tx_ctl (rgmii_tx_ctl),
+            .rgmii_txc (rgmii_txc),
+            .rgmii_clk_90p (b),
+            .rgmii_rx_ctl (rgmii_rx_ctl),
+            .rgmii_rxc (a),
+            .rst (N3));
+	// ../pin_probe.v:4
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="F14", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* rgmii_rxc_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        rgmii_rxc_ibuf (
+            .O (nt_rgmii_rxc),
+            .I (rgmii_rxc));
+	// ../pin_probe.v:1
+
+
+endmodule
+

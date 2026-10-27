@@ -1,0 +1,79 @@
+{
+  "version": "v0.1.1",
+  "mode": "FILE_TEST",
+  "base": "http://127.0.0.1:18081",
+  "checks": [
+    "Actual empty server: waiting first frame, image hidden, diagnostics collapsed",
+    "Live homepage: frame ID, blob URL and decoded pixel content changed without reload",
+    "Actual server JPEG unavailable: HTTP 503 shown, broken image hidden, automatic retry",
+    "Restored real FILE_TEST frames: recovered automatically without page reload",
+    "Status fetch failure explicitly shown and automatically recovered"
+  ],
+  "errors": [],
+  "frames": [
+    1,
+    4
+  ],
+  "http": [
+    {
+      "route": "/latest.jpg",
+      "status": 200,
+      "size": [
+        1280,
+        720
+      ],
+      "cache": "no-store, no-cache, must-revalidate, max-age=0",
+      "sha256": "f6a91e70688f1bc745d2e99f55e6d0ae953f36a7aa74aaeb49eb908cca99940b"
+    },
+    {
+      "route": "/latest.jpg?t=arbitrary-123",
+      "status": 200,
+      "size": [
+        1280,
+        720
+      ],
+      "cache": "no-store, no-cache, must-revalidate, max-age=0",
+      "sha256": "f6a91e70688f1bc745d2e99f55e6d0ae953f36a7aa74aaeb49eb908cca99940b"
+    },
+    {
+      "route": "/raw.jpg",
+      "status": 200,
+      "size": [
+        1280,
+        720
+      ],
+      "cache": "no-store, no-cache, must-revalidate, max-age=0",
+      "sha256": "4c386fab6828ccf52d5646dd70a51a4cfe9a904186ea9fc9d46d20a392b53b58"
+    },
+    {
+      "route": "/raw.jpg?t=raw",
+      "status": 200,
+      "size": [
+        1280,
+        720
+      ],
+      "cache": "no-store, no-cache, must-revalidate, max-age=0",
+      "sha256": "4bb90ab578996834d93a615e3d2e345c37424e6dbccebd3ba7b5b8b66fcefcd8"
+    },
+    {
+      "route": "/status.json",
+      "status": 200,
+      "mode": "FILE_TEST",
+      "processed": 8,
+      "cache": "no-store, no-cache, must-revalidate, max-age=0"
+    },
+    {
+      "route": "/status.json?t=status",
+      "status": 200,
+      "mode": "FILE_TEST",
+      "processed": 9,
+      "cache": "no-store, no-cache, must-revalidate, max-age=0"
+    }
+  ],
+  "final": {
+    "frame": 21,
+    "fps": "0.67",
+    "mode": "录像测试（FILE_TEST）",
+    "signal": "未知"
+  }
+}

@@ -1,0 +1,54 @@
+#last_iteration_critical_path_worst_slack: -6.448 ns.
+def_route -prior_net {b_in[3]} -load {b_in_ibuf[3]/opit_0:I;}
+def_route -prior_net {b_in_ibuf[3]/ntD} -load {b_in_ibuf[3]/opit_1:IN;}
+def_route -prior_net {network/core/N825} -load {buffer0/m2_reader.hd.reader/N190[6]_1/gateop:L4;}
+def_route -prior_net {nt_cmos1_data[2]} -load {cmos1_d_d0[2]/opit_0:D;}
+def_route -prior_net {nt_cmos1_data[4]} -load {cmos1_d_d0[4]/opit_0:D;}
+def_route -prior_net {nt_cmos1_data[7]} -load {cmos1_d_d0[7]/opit_0:D;}
+def_route -prior_net {cmos1_data[2]} -load {cmos1_data_ibuf[2]/opit_0:I;}
+def_route -prior_net {cmos1_data_ibuf[2]/ntD} -load {cmos1_data_ibuf[2]/opit_1:IN;}
+def_route -prior_net {cmos1_data[4]} -load {cmos1_data_ibuf[4]/opit_0:I;}
+def_route -prior_net {cmos1_data_ibuf[4]/ntD} -load {cmos1_data_ibuf[4]/opit_1:IN;}
+def_route -prior_net {cmos1_data[7]} -load {cmos1_data_ibuf[7]/opit_0:I;}
+def_route -prior_net {cmos1_data_ibuf[7]/ntD} -load {cmos1_data_ibuf[7]/opit_1:IN;}
+def_route -prior_net {nt_cmos1_href} -load {cmos1_href_d0/opit_0:D;}
+def_route -prior_net {cmos1_href} -load {cmos1_href_ibuf/opit_0:I;}
+def_route -prior_net {cmos1_href_ibuf/ntD} -load {cmos1_href_ibuf/opit_1:IN;}
+def_route -prior_net {nt_cmos2_data[2]} -load {cmos2_d_d0[2]/opit_0:D;}
+def_route -prior_net {nt_cmos2_data[4]} -load {cmos2_d_d0[4]/opit_0:D;}
+def_route -prior_net {cmos2_data[2]} -load {cmos2_data_ibuf[2]/opit_0:I;}
+def_route -prior_net {cmos2_data_ibuf[2]/ntD} -load {cmos2_data_ibuf[2]/opit_1:IN;}
+def_route -prior_net {cmos2_data[4]} -load {cmos2_data_ibuf[4]/opit_0:I;}
+def_route -prior_net {cmos2_data_ibuf[4]/ntD} -load {cmos2_data_ibuf[4]/opit_1:IN;}
+def_route -prior_net {nt_cmos2_href} -load {cmos2_href_d0/opit_0:D;}
+def_route -prior_net {cmos2_href} -load {cmos2_href_ibuf/opit_0:I;}
+def_route -prior_net {cmos2_href_ibuf/ntD} -load {cmos2_href_ibuf/opit_1:IN;}
+def_route -prior_net {nt_cmos2_vsync} -load {cmos2_vsync_d0/opit_0:D;}
+def_route -prior_net {cmos2_vsync} -load {cmos2_vsync_ibuf/opit_0:I;}
+def_route -prior_net {cmos2_vsync_ibuf/ntD} -load {cmos2_vsync_ibuf/opit_1:IN;}
+def_route -prior_net {de_in} -load {de_in_ibuf/opit_0:I;}
+def_route -prior_net {de_in_ibuf/ntD} -load {de_in_ibuf/opit_1:IN;}
+def_route -prior_net {monitor1/N675} -load {monitor1/frame_result_errors[0]/opit_0_inv_L5Q:CE;}
+def_route -prior_net {monitor1/N675} -load {monitor1/frame_result_errors[4]/opit_0_inv_L5Q:CE;}
+def_route -prior_net {monitor1/N675} -load {monitor1/frame_result_id[4]/opit_0_inv:CE;}
+def_route -prior_net {cmos2_vsync_d0} -load {monitor1/frame_result_valid/opit_0_inv_L5Q:L0;}
+def_route -prior_net {network/core/udp_final [0]} -load {network/core/N786_1_1/gateop_A2:I11;}
+def_route -prior_net {network/core/_N11401} -load {network/core/N786_1_3/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N11403} -load {network/core/N786_1_5/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N11405} -load {network/core/N786_1_7/gateop_A2:Cin;}
+def_route -prior_net {network/core/N23381 [7]} -load {network/core/N789_7/gateop_A2:I11;}
+def_route -prior_net {network/core/_N11425} -load {network/core/N789_9/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N11427} -load {network/core/N789_11/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N11429} -load {network/core/N789_13/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N117774} -load {network/core/N793/gateop:L4;}
+def_route -prior_net {network/core/N793} -load {network/core/N825_387/gateop:L4;}
+def_route -prior_net {network/core/N23275 [12]} -load {network/core/N8254_12/gateop:L1;}
+def_route -prior_net {_N108894} -load {network/core/N13076/gateop:I2;}
+def_route -prior_net {network/core/N13076} -load {network/core/bad_packets[2]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {network/core/N13076} -load {network/core/bad_packets[4]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {network/core/N13076} -load {network/core/bad_packets[10]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {nt_de_in} -load {rx_input/pin_de/opit_0:D;}
+def_route -prior_net {nt_b_in[3]} -load {rx_input/pin_rgb[0]/opit_0:D;}
+def_route -prior_net {nt_vs_in} -load {rx_input/pin_vs/opit_0:D;}
+def_route -prior_net {vs_in} -load {vs_in_ibuf/opit_0:I;}
+def_route -prior_net {vs_in_ibuf/ntD} -load {vs_in_ibuf/opit_1:IN;}

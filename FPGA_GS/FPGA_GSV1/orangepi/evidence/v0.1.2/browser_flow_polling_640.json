@@ -1,0 +1,5981 @@
+{
+  "version": "v0.1.2",
+  "mode": "FILE_TEST",
+  "base": "http://127.0.0.1:18080",
+  "checks": [
+    "Browser first-frame HTTP503: waiting text and hidden image, automatic recovery",
+    "Continuous 30s real FILE_TEST: decoded pixels changed, at least two loop boundaries, one image request in flight",
+    "Repeated identical frame sequence adds zero preview new frames; fresh frames recover",
+    "Browser image request failure: explicit message, broken image hidden, automatic recovery"
+  ],
+  "errors": [],
+  "requests": {
+    "images": 405,
+    "status": 38,
+    "active": 0,
+    "maxActive": 1
+  },
+  "samples": [
+    {
+      "browser": {
+        "time": 5385.699999988079,
+        "newFramesTotal": 73,
+        "duplicateResponses": 0,
+        "imageRequests": 75,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "204",
+        "lastFrame": "407",
+        "newFrameFps": 14.243013902052112,
+        "imageAgeUpperMs": 118.18000000000029
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 200,
+        "processed_fps": 14.815,
+        "processed_average_fps": 15.014,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 198,
+          "source_frame_index": 38,
+          "media_lag_ms": 7.29,
+          "source_seconds": 1.2666666666666666
+        },
+        "stage_ms": {
+          "inference": 14.653,
+          "overlay_jpeg": 2.95,
+          "overlay_jpeg_bytes": 29375,
+          "raw_jpeg": 7.47,
+          "process_total": 26.26
+        },
+        "preview_age_ms": 36.7,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "SOLID",
+              "confidence": 0.8,
+              "coverage": 0.992,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.146,
+              "segments": 3
+            }
+          },
+          "inference_ms": 14.304,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 399,
+          "received_monotonic": 5051.818327906,
+          "source_seconds": 1.2666666666666666,
+          "frame_age_at_result_ms": 14.38
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 6394.699999988079,
+        "newFramesTotal": 85,
+        "duplicateResponses": 0,
+        "imageRequests": 87,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "219",
+        "lastFrame": "437",
+        "newFrameFps": 13.564949789472324,
+        "imageAgeUpperMs": 127.67999997615789
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 215,
+        "processed_fps": 14.963,
+        "processed_average_fps": 15.014,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 213,
+          "source_frame_index": 68,
+          "media_lag_ms": 3.94,
+          "source_seconds": 2.2666666666666666
+        },
+        "stage_ms": {
+          "inference": 13.733,
+          "overlay_jpeg": 2.83,
+          "overlay_jpeg_bytes": 29880,
+          "raw_jpeg": 7.77,
+          "process_total": 25.43
+        },
+        "preview_age_ms": 39.3,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.754,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.333,
+              "segments": 3
+            }
+          },
+          "inference_ms": 13.733,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 429,
+          "received_monotonic": 5052.814977716,
+          "source_seconds": 2.2666666666666666,
+          "frame_age_at_result_ms": 13.83
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 7402,
+        "newFramesTotal": 98,
+        "duplicateResponses": 0,
+        "imageRequests": 100,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "234",
+        "lastFrame": "467",
+        "newFrameFps": 13.23122569266624,
+        "imageAgeUpperMs": 154.8800000238416
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 231,
+        "processed_fps": 15.017,
+        "processed_average_fps": 15.02,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 229,
+          "source_frame_index": 100,
+          "media_lag_ms": 3.85,
+          "source_seconds": 3.3333333333333335
+        },
+        "stage_ms": {
+          "inference": 14.871,
+          "overlay_jpeg": 2.84,
+          "overlay_jpeg_bytes": 32889,
+          "raw_jpeg": 7.66,
+          "process_total": 26.46
+        },
+        "preview_age_ms": 31.9,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "SOLID",
+              "confidence": 0.8,
+              "coverage": 0.883,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.533,
+              "segments": 1
+            }
+          },
+          "inference_ms": 14.871,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 461,
+          "received_monotonic": 5053.881560141,
+          "source_seconds": 3.3333333333333335,
+          "frame_age_at_result_ms": 14.96
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 8406.599999964237,
+        "newFramesTotal": 109,
+        "duplicateResponses": 0,
+        "imageRequests": 111,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "248",
+        "lastFrame": "495",
+        "newFrameFps": 12.45955668087517,
+        "imageAgeUpperMs": 206.0699999999997
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 245,
+        "processed_fps": 14.951,
+        "processed_average_fps": 14.997,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 243,
+          "source_frame_index": 128,
+          "media_lag_ms": 13.17,
+          "source_seconds": 4.266666666666667
+        },
+        "stage_ms": {
+          "inference": 19.693,
+          "overlay_jpeg": 2.83,
+          "overlay_jpeg_bytes": 32122,
+          "raw_jpeg": 7.62,
+          "process_total": 31.27
+        },
+        "preview_age_ms": 46.3,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.779,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.592,
+              "segments": 4
+            }
+          },
+          "inference_ms": 19.693,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 489,
+          "received_monotonic": 5054.824206309,
+          "source_seconds": 4.266666666666667,
+          "frame_age_at_result_ms": 19.81
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 9415,
+        "newFramesTotal": 123,
+        "duplicateResponses": 0,
+        "imageRequests": 125,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "264",
+        "lastFrame": "527",
+        "newFrameFps": 12.365199059463919,
+        "imageAgeUpperMs": 141.46000002384244
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 260,
+        "processed_fps": 14.89,
+        "processed_average_fps": 14.992,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 258,
+          "source_frame_index": 158,
+          "media_lag_ms": 9.48,
+          "source_seconds": 5.266666666666667
+        },
+        "stage_ms": {
+          "inference": 19.567,
+          "overlay_jpeg": 3.26,
+          "overlay_jpeg_bytes": 28664,
+          "raw_jpeg": 7.53,
+          "process_total": 31.49
+        },
+        "preview_age_ms": 56.4,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.592,
+              "segments": 4
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.383,
+              "segments": 3
+            }
+          },
+          "inference_ms": 19.567,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 519,
+          "received_monotonic": 5055.820521877,
+          "source_seconds": 5.266666666666667,
+          "frame_age_at_result_ms": 19.68
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 10424.199999988079,
+        "newFramesTotal": 135,
+        "duplicateResponses": 0,
+        "imageRequests": 137,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "277",
+        "lastFrame": "555",
+        "newFrameFps": 12.23865374808771,
+        "imageAgeUpperMs": 224.0899999880785
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 274,
+        "processed_fps": 14.696,
+        "processed_average_fps": 14.94,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 274,
+          "source_frame_index": 188,
+          "media_lag_ms": 3.98,
+          "source_seconds": 6.266666666666667
+        },
+        "stage_ms": {
+          "inference": 15.285,
+          "overlay_jpeg": 3.36,
+          "overlay_jpeg_bytes": 28078,
+          "raw_jpeg": 7.56,
+          "process_total": 27.3
+        },
+        "preview_age_ms": 60,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.479,
+              "segments": 2
+            },
+            "right": {
+              "state": "DASHED",
+              "confidence": 0.7,
+              "coverage": 0.371,
+              "segments": 5
+            }
+          },
+          "inference_ms": 15.285,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 549,
+          "received_monotonic": 5056.81502174,
+          "source_seconds": 6.266666666666667,
+          "frame_age_at_result_ms": 15.38
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 11428.5,
+        "newFramesTotal": 150,
+        "duplicateResponses": 0,
+        "imageRequests": 151,
+        "inFlight": 0,
+        "maxInFlight": 1,
+        "lastSequence": "294",
+        "lastFrame": "589",
+        "newFrameFps": 12.714686471885464,
+        "imageAgeUpperMs": 94.82000001192137
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 289,
+        "processed_fps": 14.661,
+        "processed_average_fps": 14.933,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 290,
+          "source_frame_index": 220,
+          "media_lag_ms": 4.51,
+          "source_seconds": 7.333333333333333
+        },
+        "stage_ms": {
+          "inference": 15.066,
+          "overlay_jpeg": 3.33,
+          "overlay_jpeg_bytes": 28382,
+          "raw_jpeg": 7.47,
+          "process_total": 26.97
+        },
+        "preview_age_ms": 72.2,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.588,
+              "segments": 3
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.575,
+              "segments": 1
+            }
+          },
+          "inference_ms": 15.066,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 579,
+          "received_monotonic": 5057.815011049,
+          "source_seconds": 7.266666666666667,
+          "frame_age_at_result_ms": 15.16
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 12435.199999988079,
+        "newFramesTotal": 163,
+        "duplicateResponses": 0,
+        "imageRequests": 165,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "309",
+        "lastFrame": "619",
+        "newFrameFps": 12.984114747051272,
+        "imageAgeUpperMs": 107.08000001192158
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 304,
+        "processed_fps": 14.653,
+        "processed_average_fps": 14.934,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 304,
+          "source_frame_index": 248,
+          "media_lag_ms": 13,
+          "source_seconds": 8.266666666666667
+        },
+        "stage_ms": {
+          "inference": 20.415,
+          "overlay_jpeg": 2.87,
+          "overlay_jpeg_bytes": 31281,
+          "raw_jpeg": 7.69,
+          "process_total": 32.21
+        },
+        "preview_age_ms": 66.1,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.442,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.608,
+              "segments": 1
+            }
+          },
+          "inference_ms": 20.415,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 609,
+          "received_monotonic": 5058.824040922,
+          "source_seconds": 8.266666666666667,
+          "frame_age_at_result_ms": 20.53
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 13441.300000011921,
+        "newFramesTotal": 177,
+        "duplicateResponses": 0,
+        "imageRequests": 179,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "323",
+        "lastFrame": "647",
+        "newFrameFps": 13.35113484636536,
+        "imageAgeUpperMs": 175.27000001192027
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 319,
+        "processed_fps": 14.704,
+        "processed_average_fps": 14.94,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 320,
+          "source_frame_index": 280,
+          "media_lag_ms": 4.05,
+          "source_seconds": 9.333333333333334
+        },
+        "stage_ms": {
+          "inference": 15.926,
+          "overlay_jpeg": 2.9,
+          "overlay_jpeg_bytes": 30046,
+          "raw_jpeg": 7.76,
+          "process_total": 27.75
+        },
+        "preview_age_ms": 62.2,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.479,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.375,
+              "segments": 1
+            }
+          },
+          "inference_ms": 15.926,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 639,
+          "received_monotonic": 5059.824934375,
+          "source_seconds": 9.266666666666667,
+          "frame_age_at_result_ms": 16.05
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 14443.199999988079,
+        "newFramesTotal": 191,
+        "duplicateResponses": 0,
+        "imageRequests": 193,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "339",
+        "lastFrame": "679",
+        "newFrameFps": 13.420667828423774,
+        "imageAgeUpperMs": 116.35000003576351
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 334,
+        "processed_fps": 14.675,
+        "processed_average_fps": 14.935,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 335,
+          "source_frame_index": 310,
+          "media_lag_ms": 3.95,
+          "source_seconds": 10.333333333333334
+        },
+        "stage_ms": {
+          "inference": 19.647,
+          "overlay_jpeg": 3.07,
+          "overlay_jpeg_bytes": 30143,
+          "raw_jpeg": 7.54,
+          "process_total": 31.53
+        },
+        "preview_age_ms": 82.3,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.408,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.446,
+              "segments": 3
+            }
+          },
+          "inference_ms": 19.647,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 669,
+          "received_monotonic": 5060.815007808,
+          "source_seconds": 10.266666666666667,
+          "frame_age_at_result_ms": 19.74
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 15447.599999964237,
+        "newFramesTotal": 205,
+        "duplicateResponses": 0,
+        "imageRequests": 207,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "353",
+        "lastFrame": "707",
+        "newFrameFps": 13.826477704905242,
+        "imageAgeUpperMs": 188.45999999999913
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 349,
+        "processed_fps": 14.896,
+        "processed_average_fps": 14.941,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 1,
+          "skipped_source_frames": 350,
+          "source_frame_index": 340,
+          "media_lag_ms": 5.02,
+          "source_seconds": 11.333333333333334
+        },
+        "stage_ms": {
+          "inference": 14.015,
+          "overlay_jpeg": 2.94,
+          "overlay_jpeg_bytes": 30837,
+          "raw_jpeg": 7.59,
+          "process_total": 25.68
+        },
+        "preview_age_ms": 78.3,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.383,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.271,
+              "segments": 1
+            }
+          },
+          "inference_ms": 14.015,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 699,
+          "received_monotonic": 5061.815197028,
+          "source_seconds": 11.266666666666667,
+          "frame_age_at_result_ms": 14.08
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 16449.5,
+        "newFramesTotal": 219,
+        "duplicateResponses": 0,
+        "imageRequests": 221,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "368",
+        "lastFrame": "737",
+        "newFrameFps": 13.709677419354838,
+        "imageAgeUpperMs": 185.81999998807805
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 364,
+        "processed_fps": 14.85,
+        "processed_average_fps": 14.943,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 364,
+          "source_frame_index": 10,
+          "media_lag_ms": 5.07,
+          "source_seconds": 0.3333333333333333
+        },
+        "stage_ms": {
+          "inference": 15.489,
+          "overlay_jpeg": 2.84,
+          "overlay_jpeg_bytes": 31095,
+          "raw_jpeg": 7.65,
+          "process_total": 27.11
+        },
+        "preview_age_ms": 78.3,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.808,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.242,
+              "segments": 4
+            }
+          },
+          "inference_ms": 15.489,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 729,
+          "received_monotonic": 5062.814860679,
+          "source_seconds": 0.26666666666666666,
+          "frame_age_at_result_ms": 15.58
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 17454.69999998808,
+        "newFramesTotal": 234,
+        "duplicateResponses": 0,
+        "imageRequests": 235,
+        "inFlight": 0,
+        "maxInFlight": 1,
+        "lastSequence": "384",
+        "lastFrame": "769",
+        "newFrameFps": 14.021593253577077,
+        "imageAgeUpperMs": 122.16000002384317
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 379,
+        "processed_fps": 14.887,
+        "processed_average_fps": 14.947,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 379,
+          "source_frame_index": 40,
+          "media_lag_ms": 3.86,
+          "source_seconds": 1.3333333333333333
+        },
+        "stage_ms": {
+          "inference": 16.612,
+          "overlay_jpeg": 2.85,
+          "overlay_jpeg_bytes": 28983,
+          "raw_jpeg": 7.52,
+          "process_total": 28.1
+        },
+        "preview_age_ms": 65.9,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "SOLID",
+              "confidence": 0.8,
+              "coverage": 0.992,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.146,
+              "segments": 3
+            }
+          },
+          "inference_ms": 16.612,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 759,
+          "received_monotonic": 5063.824589951,
+          "source_seconds": 1.2666666666666666,
+          "frame_age_at_result_ms": 16.72
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 18458.19999998808,
+        "newFramesTotal": 248,
+        "duplicateResponses": 0,
+        "imageRequests": 249,
+        "inFlight": 0,
+        "maxInFlight": 1,
+        "lastSequence": "399",
+        "lastFrame": "799",
+        "newFrameFps": 14.04353495837095,
+        "imageAgeUpperMs": 125.36999998807732
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 394,
+        "processed_fps": 14.866,
+        "processed_average_fps": 14.948,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 394,
+          "source_frame_index": 70,
+          "media_lag_ms": 4.95,
+          "source_seconds": 2.3333333333333335
+        },
+        "stage_ms": {
+          "inference": 15.183,
+          "overlay_jpeg": 2.83,
+          "overlay_jpeg_bytes": 29852,
+          "raw_jpeg": 7.58,
+          "process_total": 27.01
+        },
+        "preview_age_ms": 76.5,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.754,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.333,
+              "segments": 3
+            }
+          },
+          "inference_ms": 15.183,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 789,
+          "received_monotonic": 5064.815253161,
+          "source_seconds": 2.2666666666666666,
+          "frame_age_at_result_ms": 15.27
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 19462.899999976158,
+        "newFramesTotal": 260,
+        "duplicateResponses": 0,
+        "imageRequests": 261,
+        "inFlight": 0,
+        "maxInFlight": 1,
+        "lastSequence": "414",
+        "lastFrame": "829",
+        "newFrameFps": 13.623159370930582,
+        "imageAgeUpperMs": 130.9399999999987
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 410,
+        "processed_fps": 14.916,
+        "processed_average_fps": 14.963,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 409,
+          "source_frame_index": 100,
+          "media_lag_ms": 3.79,
+          "source_seconds": 3.3333333333333335
+        },
+        "stage_ms": {
+          "inference": 13.991,
+          "overlay_jpeg": 2.82,
+          "overlay_jpeg_bytes": 32915,
+          "raw_jpeg": 7.6,
+          "process_total": 25.55
+        },
+        "preview_age_ms": 53.5,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "SOLID",
+              "confidence": 0.8,
+              "coverage": 0.883,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.533,
+              "segments": 1
+            }
+          },
+          "inference_ms": 13.991,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 821,
+          "received_monotonic": 5065.881492595,
+          "source_seconds": 3.3333333333333335,
+          "frame_age_at_result_ms": 14.07
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 20473.899999976158,
+        "newFramesTotal": 271,
+        "duplicateResponses": 0,
+        "imageRequests": 273,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "425",
+        "lastFrame": "851",
+        "newFrameFps": 12.96465106857085,
+        "imageAgeUpperMs": 458.43999996423736
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 424,
+        "processed_fps": 14.908,
+        "processed_average_fps": 14.947,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 424,
+          "source_frame_index": 130,
+          "media_lag_ms": 3.86,
+          "source_seconds": 4.333333333333333
+        },
+        "stage_ms": {
+          "inference": 16.271,
+          "overlay_jpeg": 4.41,
+          "overlay_jpeg_bytes": 32138,
+          "raw_jpeg": 7.73,
+          "process_total": 29.83
+        },
+        "preview_age_ms": 86.2,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.779,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.592,
+              "segments": 4
+            }
+          },
+          "inference_ms": 16.271,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 849,
+          "received_monotonic": 5066.814924828,
+          "source_seconds": 4.266666666666667,
+          "frame_age_at_result_ms": 16.36
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 21486,
+        "newFramesTotal": 275,
+        "duplicateResponses": 0,
+        "imageRequests": 277,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "444",
+        "lastFrame": "889",
+        "newFrameFps": 10.846858428332814,
+        "imageAgeUpperMs": 242.1700000119199
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 441,
+        "processed_fps": 14.899,
+        "processed_average_fps": 14.962,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 440,
+          "source_frame_index": 162,
+          "media_lag_ms": 13.54,
+          "source_seconds": 5.4
+        },
+        "stage_ms": {
+          "inference": 20.466,
+          "overlay_jpeg": 3.23,
+          "overlay_jpeg_bytes": 29542,
+          "raw_jpeg": 7.58,
+          "process_total": 32.4
+        },
+        "preview_age_ms": 50.8,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.542,
+              "segments": 5
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.333,
+              "segments": 4
+            }
+          },
+          "inference_ms": 20.466,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 883,
+          "received_monotonic": 5067.957910499,
+          "source_seconds": 5.4,
+          "frame_age_at_result_ms": 20.59
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 22490.899999976158,
+        "newFramesTotal": 280,
+        "duplicateResponses": 0,
+        "imageRequests": 282,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "452",
+        "lastFrame": "907",
+        "newFrameFps": 9.006304413089163,
+        "imageAgeUpperMs": 547.6199999880773
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 455,
+        "processed_fps": 14.634,
+        "processed_average_fps": 14.919,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 457,
+          "source_frame_index": 194,
+          "media_lag_ms": 3.92,
+          "source_seconds": 6.466666666666667
+        },
+        "stage_ms": {
+          "inference": 14.302,
+          "overlay_jpeg": 2.8,
+          "overlay_jpeg_bytes": 28440,
+          "raw_jpeg": 7.3,
+          "process_total": 25.51
+        },
+        "preview_age_ms": 85,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.483,
+              "segments": 2
+            },
+            "right": {
+              "state": "DASHED",
+              "confidence": 0.7,
+              "coverage": 0.35,
+              "segments": 3
+            }
+          },
+          "inference_ms": 14.302,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 913,
+          "received_monotonic": 5068.948390796,
+          "source_seconds": 6.4,
+          "frame_age_at_result_ms": 14.39
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 23498,
+        "newFramesTotal": 285,
+        "duplicateResponses": 0,
+        "imageRequests": 287,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "471",
+        "lastFrame": "945",
+        "newFrameFps": 7.225868609587868,
+        "imageAgeUpperMs": 471.6899999880807
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 471,
+        "processed_fps": 14.701,
+        "processed_average_fps": 14.934,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 472,
+          "source_frame_index": 224,
+          "media_lag_ms": 13.37,
+          "source_seconds": 7.466666666666667
+        },
+        "stage_ms": {
+          "inference": 17.041,
+          "overlay_jpeg": 2.79,
+          "overlay_jpeg_bytes": 30267,
+          "raw_jpeg": 7.64,
+          "process_total": 28.59
+        },
+        "preview_age_ms": 48,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.621,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.596,
+              "segments": 1
+            }
+          },
+          "inference_ms": 17.041,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 945,
+          "received_monotonic": 5070.024415401,
+          "source_seconds": 7.466666666666667,
+          "frame_age_at_result_ms": 17.16
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 24503.599999964237,
+        "newFramesTotal": 292,
+        "duplicateResponses": 0,
+        "imageRequests": 293,
+        "inFlight": 0,
+        "maxInFlight": 1,
+        "lastSequence": "489",
+        "lastFrame": "981",
+        "newFrameFps": 6.204467216425411,
+        "imageAgeUpperMs": 104.78999997615756
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 486,
+        "processed_fps": 14.732,
+        "processed_average_fps": 14.939,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 487,
+          "source_frame_index": 254,
+          "media_lag_ms": 3.89,
+          "source_seconds": 8.466666666666667
+        },
+        "stage_ms": {
+          "inference": 18.552,
+          "overlay_jpeg": 3.36,
+          "overlay_jpeg_bytes": 31506,
+          "raw_jpeg": 7.55,
+          "process_total": 30.76
+        },
+        "preview_age_ms": 50.8,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.362,
+              "segments": 3
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.633,
+              "segments": 4
+            }
+          },
+          "inference_ms": 18.552,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 975,
+          "received_monotonic": 5071.014927823,
+          "source_seconds": 8.466666666666667,
+          "frame_age_at_result_ms": 18.65
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 25510.30000001192,
+        "newFramesTotal": 296,
+        "duplicateResponses": 0,
+        "imageRequests": 298,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "498",
+        "lastFrame": "999",
+        "newFrameFps": 5.122950819659095,
+        "imageAgeUpperMs": 640.5999999999985
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 499,
+        "processed_fps": 15.049,
+        "processed_average_fps": 14.943,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 500,
+          "source_frame_index": 280,
+          "media_lag_ms": 4.01,
+          "source_seconds": 9.333333333333334
+        },
+        "stage_ms": {
+          "inference": 18.43,
+          "overlay_jpeg": 3.95,
+          "overlay_jpeg_bytes": 29921,
+          "raw_jpeg": 8.22,
+          "process_total": 31.89
+        },
+        "preview_age_ms": 45.8,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.475,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.358,
+              "segments": 1
+            }
+          },
+          "inference_ms": 18.43,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1001,
+          "received_monotonic": 5071.881713732,
+          "source_seconds": 9.333333333333334,
+          "frame_age_at_result_ms": 18.52
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 26514,
+        "newFramesTotal": 300,
+        "duplicateResponses": 0,
+        "imageRequests": 302,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "516",
+        "lastFrame": "1035",
+        "newFrameFps": 4.865588127941449,
+        "imageAgeUpperMs": 504.2900000000009
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 516,
+        "processed_fps": 14.529,
+        "processed_average_fps": 14.915,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 518,
+          "source_frame_index": 316,
+          "media_lag_ms": 9.55,
+          "source_seconds": 10.533333333333333
+        },
+        "stage_ms": {
+          "inference": 20.014,
+          "overlay_jpeg": 2.91,
+          "overlay_jpeg_bytes": 29820,
+          "raw_jpeg": 7.51,
+          "process_total": 31.72
+        },
+        "preview_age_ms": 114.1,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.4,
+              "segments": 2
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.329,
+              "segments": 4
+            }
+          },
+          "inference_ms": 20.014,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1035,
+          "received_monotonic": 5073.016103369,
+          "source_seconds": 10.466666666666667,
+          "frame_age_at_result_ms": 20.15
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 27520.19999998808,
+        "newFramesTotal": 307,
+        "duplicateResponses": 0,
+        "imageRequests": 309,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "531",
+        "lastFrame": "1067",
+        "newFrameFps": 5.362151460141907,
+        "imageAgeUpperMs": 252.7700000119221
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 528,
+        "processed_fps": 14.703,
+        "processed_average_fps": 14.913,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 531,
+          "source_frame_index": 340,
+          "media_lag_ms": 3.9,
+          "source_seconds": 11.333333333333334
+        },
+        "stage_ms": {
+          "inference": 13.708,
+          "overlay_jpeg": 2.84,
+          "overlay_jpeg_bytes": 30792,
+          "raw_jpeg": 7.6,
+          "process_total": 25.26
+        },
+        "preview_age_ms": 57.3,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.3,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.7,
+              "segments": 1
+            }
+          },
+          "inference_ms": 13.708,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1061,
+          "received_monotonic": 5073.881608019,
+          "source_seconds": 11.333333333333334,
+          "frame_age_at_result_ms": 13.79
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 28531.099999964237,
+        "newFramesTotal": 310,
+        "duplicateResponses": 0,
+        "imageRequests": 312,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "538",
+        "lastFrame": "1081",
+        "newFrameFps": 4.90657071597436,
+        "imageAgeUpperMs": 791.48999998808
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 528,
+        "processed_fps": 14.703,
+        "processed_average_fps": 14.913,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 2,
+          "skipped_source_frames": 531,
+          "source_frame_index": 340,
+          "media_lag_ms": 3.9,
+          "source_seconds": 11.333333333333334
+        },
+        "stage_ms": {
+          "inference": 13.708,
+          "overlay_jpeg": 2.84,
+          "overlay_jpeg_bytes": 30792,
+          "raw_jpeg": 7.6,
+          "process_total": 25.26
+        },
+        "preview_age_ms": 57.3,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.3,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.7,
+              "segments": 1
+            }
+          },
+          "inference_ms": 13.708,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1061,
+          "received_monotonic": 5073.881608019,
+          "source_seconds": 11.333333333333334,
+          "frame_age_at_result_ms": 13.79
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 29543.5,
+        "newFramesTotal": 316,
+        "duplicateResponses": 0,
+        "imageRequests": 318,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "562",
+        "lastFrame": "1129",
+        "newFrameFps": 4.7409972584551525,
+        "imageAgeUpperMs": 208.44999998807907
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 559,
+        "processed_fps": 14.771,
+        "processed_average_fps": 14.925,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 3,
+          "skipped_source_frames": 561,
+          "source_frame_index": 42,
+          "media_lag_ms": 3.84,
+          "source_seconds": 1.4
+        },
+        "stage_ms": {
+          "inference": 13.354,
+          "overlay_jpeg": 3.63,
+          "overlay_jpeg_bytes": 28148,
+          "raw_jpeg": 7.58,
+          "process_total": 25.66
+        },
+        "preview_age_ms": 39.7,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "SOLID",
+              "confidence": 0.8,
+              "coverage": 0.992,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0,
+              "segments": 0
+            }
+          },
+          "inference_ms": 13.354,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1123,
+          "received_monotonic": 5075.948210086,
+          "source_seconds": 1.4,
+          "frame_age_at_result_ms": 13.44
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 30559.399999976158,
+        "newFramesTotal": 323,
+        "duplicateResponses": 0,
+        "imageRequests": 325,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "577",
+        "lastFrame": "1159",
+        "newFrameFps": 5.18747535947921,
+        "imageAgeUpperMs": 356.8599999642356
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 574,
+        "processed_fps": 14.898,
+        "processed_average_fps": 14.93,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 3,
+          "skipped_source_frames": 576,
+          "source_frame_index": 72,
+          "media_lag_ms": 3.89,
+          "source_seconds": 2.4
+        },
+        "stage_ms": {
+          "inference": 12.253,
+          "overlay_jpeg": 2.81,
+          "overlay_jpeg_bytes": 29744,
+          "raw_jpeg": 7.4,
+          "process_total": 23.54
+        },
+        "preview_age_ms": 31,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.762,
+              "segments": 3
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0,
+              "segments": 0
+            }
+          },
+          "inference_ms": 12.253,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1153,
+          "received_monotonic": 5076.948264434,
+          "source_seconds": 2.4,
+          "frame_age_at_result_ms": 12.33
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 31565.30000001192,
+        "newFramesTotal": 332,
+        "duplicateResponses": 0,
+        "imageRequests": 334,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "593",
+        "lastFrame": "1191",
+        "newFrameFps": 6.233118637024725,
+        "imageAgeUpperMs": 160.40000001191947
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 588,
+        "processed_fps": 14.53,
+        "processed_average_fps": 14.898,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 3,
+          "skipped_source_frames": 591,
+          "source_frame_index": 102,
+          "media_lag_ms": 9.7,
+          "source_seconds": 3.4
+        },
+        "stage_ms": {
+          "inference": 16.709,
+          "overlay_jpeg": 4.59,
+          "overlay_jpeg_bytes": 32900,
+          "raw_jpeg": 7.69,
+          "process_total": 30.12
+        },
+        "preview_age_ms": 111.6,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "SOLID",
+              "confidence": 0.8,
+              "coverage": 0.883,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.533,
+              "segments": 1
+            }
+          },
+          "inference_ms": 16.709,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1181,
+          "received_monotonic": 5077.89152292,
+          "source_seconds": 3.3333333333333335,
+          "frame_age_at_result_ms": 16.83
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 32568.80000001192,
+        "newFramesTotal": 347,
+        "duplicateResponses": 0,
+        "imageRequests": 348,
+        "inFlight": 0,
+        "maxInFlight": 1,
+        "lastSequence": "609",
+        "lastFrame": "1223",
+        "newFrameFps": 8.04505229276077,
+        "imageAgeUpperMs": 103.91999999999825
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 603,
+        "processed_fps": 14.792,
+        "processed_average_fps": 14.911,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 3,
+          "skipped_source_frames": 606,
+          "source_frame_index": 132,
+          "media_lag_ms": 3.88,
+          "source_seconds": 4.4
+        },
+        "stage_ms": {
+          "inference": 14.983,
+          "overlay_jpeg": 3.83,
+          "overlay_jpeg_bytes": 32357,
+          "raw_jpeg": 7.61,
+          "process_total": 27.54
+        },
+        "preview_age_ms": 93.7,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.838,
+              "segments": 1
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.525,
+              "segments": 6
+            }
+          },
+          "inference_ms": 14.983,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1211,
+          "received_monotonic": 5078.881584437,
+          "source_seconds": 4.333333333333333,
+          "frame_age_at_result_ms": 15.07
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 33580.19999998808,
+        "newFramesTotal": 360,
+        "duplicateResponses": 0,
+        "imageRequests": 362,
+        "inFlight": 1,
+        "maxInFlight": 1,
+        "lastSequence": "623",
+        "lastFrame": "1251",
+        "newFrameFps": 10.210460512606792,
+        "imageAgeUpperMs": 181.55000001192093
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 619,
+        "processed_fps": 14.962,
+        "processed_average_fps": 14.932,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 3,
+          "skipped_source_frames": 621,
+          "source_frame_index": 162,
+          "media_lag_ms": 3.83,
+          "source_seconds": 5.4
+        },
+        "stage_ms": {
+          "inference": 19.734,
+          "overlay_jpeg": 4.53,
+          "overlay_jpeg_bytes": 29531,
+          "raw_jpeg": 7.54,
+          "process_total": 32.93
+        },
+        "preview_age_ms": 39.9,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.542,
+              "segments": 5
+            },
+            "right": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.333,
+              "segments": 4
+            }
+          },
+          "inference_ms": 19.734,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1243,
+          "received_monotonic": 5079.948199236,
+          "source_seconds": 5.4,
+          "frame_age_at_result_ms": 19.82
+        },
+        "link": null
+      }
+    },
+    {
+      "browser": {
+        "time": 34592.09999996424,
+        "newFramesTotal": 375,
+        "duplicateResponses": 0,
+        "imageRequests": 376,
+        "inFlight": 0,
+        "maxInFlight": 1,
+        "lastSequence": "639",
+        "lastFrame": "1283",
+        "newFrameFps": 11.628373230794034,
+        "imageAgeUpperMs": 127.52999997615552
+      },
+      "server": {
+        "mode": "FILE_TEST",
+        "processed": 634,
+        "processed_fps": 14.94,
+        "processed_average_fps": 14.932,
+        "target_preview_fps": 15,
+        "preview_encoding": {
+          "width": 640,
+          "quality": 70
+        },
+        "playback": {
+          "source_fps": 30,
+          "target_process_fps": 15,
+          "media_duration_seconds": 12,
+          "loop_index": 3,
+          "skipped_source_frames": 636,
+          "source_frame_index": 192,
+          "media_lag_ms": 3.9,
+          "source_seconds": 6.4
+        },
+        "stage_ms": {
+          "inference": 14.806,
+          "overlay_jpeg": 4.07,
+          "overlay_jpeg_bytes": 28456,
+          "raw_jpeg": 7.26,
+          "process_total": 27.25
+        },
+        "preview_age_ms": 46.3,
+        "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+        "latest": {
+          "signal": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "actions": [],
+            "candidates": [],
+            "association": "UNASSIGNED"
+          },
+          "lanes": {
+            "left": {
+              "state": "UNKNOWN",
+              "confidence": 0,
+              "coverage": 0.483,
+              "segments": 2
+            },
+            "right": {
+              "state": "DASHED",
+              "confidence": 0.7,
+              "coverage": 0.35,
+              "segments": 3
+            }
+          },
+          "inference_ms": 14.806,
+          "decisions": {
+            "1": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "2": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "3": {
+              "code": 0,
+              "reason": 0,
+              "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+            },
+            "4": {
+              "code": 1,
+              "reason": 0,
+              "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+            }
+          },
+          "frame_id": 1273,
+          "received_monotonic": 5080.948276918,
+          "source_seconds": 6.4,
+          "frame_age_at_result_ms": 14.9
+        },
+        "link": null
+      }
+    }
+  ],
+  "measurement": {
+    "seconds": 30.22119999998808,
+    "newFrames": 315,
+    "previewUniqueFps": 10.423146665258965,
+    "processedFrames": 449,
+    "processedFps": 14.857120167305636,
+    "firstLoop": 1,
+    "lastLoop": 3,
+    "sourceFps": 30,
+    "imageRequests": 314,
+    "statusRequests": 30,
+    "duplicates": 0,
+    "maxInFlight": 1,
+    "imageAgeUpperMs": {
+      "min": 94.82000001192137,
+      "p50": 181.55000001192093,
+      "p95": 640.5999999999985,
+      "max": 791.48999998808
+    },
+    "mediaLagMs": {
+      "min": 3.79,
+      "p50": 3.98,
+      "p95": 13.37,
+      "max": 13.54
+    },
+    "processTotalMs": {
+      "min": 23.54,
+      "p50": 27.54,
+      "p95": 32.4,
+      "max": 32.93
+    }
+  },
+  "http": [
+    {
+      "route": "/latest.jpg",
+      "status": 200,
+      "cache": "no-store, no-cache, must-revalidate, max-age=0",
+      "size": [
+        640,
+        360
+      ]
+    },
+    {
+      "route": "/latest.jpg?t=arbitrary",
+      "status": 200,
+      "cache": "no-store, no-cache, must-revalidate, max-age=0",
+      "size": [
+        640,
+        360
+      ]
+    },
+    {
+      "route": "/raw.jpg",
+      "status": 200,
+      "cache": "no-store, no-cache, must-revalidate, max-age=0",
+      "size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "route": "/raw.jpg?t=raw",
+      "status": 200,
+      "cache": "no-store, no-cache, must-revalidate, max-age=0",
+      "size": [
+        1280,
+        720
+      ]
+    },
+    {
+      "route": "/status.json?t=status",
+      "status": 200,
+      "cache": "no-store, no-cache, must-revalidate, max-age=0"
+    }
+  ],
+  "statusHistory": [
+    {
+      "hostMs": 1792587757635,
+      "mode": "FILE_TEST",
+      "processed": 125,
+      "processed_fps": 14.807,
+      "processed_average_fps": 15.022,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 0,
+        "skipped_source_frames": 124,
+        "source_frame_index": 248,
+        "media_lag_ms": 4.48,
+        "source_seconds": 8.266666666666667
+      },
+      "stage_ms": {
+        "inference": 15.126,
+        "overlay_jpeg": 3.42,
+        "overlay_jpeg_bytes": 31592,
+        "raw_jpeg": 7.62,
+        "process_total": 27.3
+      },
+      "preview_age_ms": 40.2,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.442,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.608,
+            "segments": 1
+          }
+        },
+        "inference_ms": 14.763,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 249,
+        "received_monotonic": 5046.815522809,
+        "source_seconds": 8.266666666666667,
+        "frame_age_at_result_ms": 14.84
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587758609,
+      "mode": "FILE_TEST",
+      "processed": 140,
+      "processed_fps": 14.985,
+      "processed_average_fps": 15.036,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 0,
+        "skipped_source_frames": 139,
+        "source_frame_index": 278,
+        "media_lag_ms": 3.89,
+        "source_seconds": 9.266666666666667
+      },
+      "stage_ms": {
+        "inference": 14.423,
+        "overlay_jpeg": 3.23,
+        "overlay_jpeg_bytes": 30042,
+        "raw_jpeg": 7.5,
+        "process_total": 26.27
+      },
+      "preview_age_ms": 30.7,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.479,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.375,
+            "segments": 1
+          }
+        },
+        "inference_ms": 14.423,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 279,
+        "received_monotonic": 5047.814929091,
+        "source_seconds": 9.266666666666667,
+        "frame_age_at_result_ms": 14.52
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587759610,
+      "mode": "FILE_TEST",
+      "processed": 154,
+      "processed_fps": 14.779,
+      "processed_average_fps": 14.933,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 0,
+        "skipped_source_frames": 154,
+        "source_frame_index": 308,
+        "media_lag_ms": 9.41,
+        "source_seconds": 10.266666666666667
+      },
+      "stage_ms": {
+        "inference": 17.731,
+        "overlay_jpeg": 3.65,
+        "overlay_jpeg_bytes": 30577,
+        "raw_jpeg": 7.58,
+        "process_total": 31.21
+      },
+      "preview_age_ms": 95.3,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.562,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.429,
+            "segments": 3
+          }
+        },
+        "inference_ms": 17.731,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 307,
+        "received_monotonic": 5048.751950317,
+        "source_seconds": 10.2,
+        "frame_age_at_result_ms": 17.82
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587760640,
+      "mode": "FILE_TEST",
+      "processed": 170,
+      "processed_fps": 14.919,
+      "processed_average_fps": 15,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 0,
+        "skipped_source_frames": 169,
+        "source_frame_index": 338,
+        "media_lag_ms": 7.72,
+        "source_seconds": 11.266666666666667
+      },
+      "stage_ms": {
+        "inference": 17.506,
+        "overlay_jpeg": 2.89,
+        "overlay_jpeg_bytes": 30857,
+        "raw_jpeg": 7.59,
+        "process_total": 29.1
+      },
+      "preview_age_ms": 48.6,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.383,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.271,
+            "segments": 1
+          }
+        },
+        "inference_ms": 17.506,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 339,
+        "received_monotonic": 5049.818761403,
+        "source_seconds": 11.266666666666667,
+        "frame_age_at_result_ms": 17.62
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587761645,
+      "mode": "FILE_TEST",
+      "processed": 185,
+      "processed_fps": 14.973,
+      "processed_average_fps": 15.022,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 183,
+        "source_frame_index": 8,
+        "media_lag_ms": 3.81,
+        "source_seconds": 0.26666666666666666
+      },
+      "stage_ms": {
+        "inference": 13.903,
+        "overlay_jpeg": 2.88,
+        "overlay_jpeg_bytes": 31119,
+        "raw_jpeg": 7.69,
+        "process_total": 25.55
+      },
+      "preview_age_ms": 34.7,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.808,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.242,
+            "segments": 4
+          }
+        },
+        "inference_ms": 13.903,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 369,
+        "received_monotonic": 5050.814853852,
+        "source_seconds": 0.26666666666666666,
+        "frame_age_at_result_ms": 13.99
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587762621,
+      "mode": "FILE_TEST",
+      "processed": 200,
+      "processed_fps": 14.815,
+      "processed_average_fps": 15.014,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 198,
+        "source_frame_index": 38,
+        "media_lag_ms": 7.29,
+        "source_seconds": 1.2666666666666666
+      },
+      "stage_ms": {
+        "inference": 14.653,
+        "overlay_jpeg": 2.95,
+        "overlay_jpeg_bytes": 29375,
+        "raw_jpeg": 7.47,
+        "process_total": 26.26
+      },
+      "preview_age_ms": 36.7,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "SOLID",
+            "confidence": 0.8,
+            "coverage": 0.992,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.146,
+            "segments": 3
+          }
+        },
+        "inference_ms": 14.304,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 399,
+        "received_monotonic": 5051.818327906,
+        "source_seconds": 1.2666666666666666,
+        "frame_age_at_result_ms": 14.38
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587763630,
+      "mode": "FILE_TEST",
+      "processed": 215,
+      "processed_fps": 14.963,
+      "processed_average_fps": 15.014,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 213,
+        "source_frame_index": 68,
+        "media_lag_ms": 3.94,
+        "source_seconds": 2.2666666666666666
+      },
+      "stage_ms": {
+        "inference": 13.733,
+        "overlay_jpeg": 2.83,
+        "overlay_jpeg_bytes": 29880,
+        "raw_jpeg": 7.77,
+        "process_total": 25.43
+      },
+      "preview_age_ms": 39.3,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.754,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.333,
+            "segments": 3
+          }
+        },
+        "inference_ms": 13.733,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 429,
+        "received_monotonic": 5052.814977716,
+        "source_seconds": 2.2666666666666666,
+        "frame_age_at_result_ms": 13.83
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587764682,
+      "mode": "FILE_TEST",
+      "processed": 231,
+      "processed_fps": 15.017,
+      "processed_average_fps": 15.02,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 229,
+        "source_frame_index": 100,
+        "media_lag_ms": 3.85,
+        "source_seconds": 3.3333333333333335
+      },
+      "stage_ms": {
+        "inference": 14.871,
+        "overlay_jpeg": 2.84,
+        "overlay_jpeg_bytes": 32889,
+        "raw_jpeg": 7.66,
+        "process_total": 26.46
+      },
+      "preview_age_ms": 31.9,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "SOLID",
+            "confidence": 0.8,
+            "coverage": 0.883,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.533,
+            "segments": 1
+          }
+        },
+        "inference_ms": 14.871,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 461,
+        "received_monotonic": 5053.881560141,
+        "source_seconds": 3.3333333333333335,
+        "frame_age_at_result_ms": 14.96
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587765634,
+      "mode": "FILE_TEST",
+      "processed": 245,
+      "processed_fps": 14.951,
+      "processed_average_fps": 14.997,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 243,
+        "source_frame_index": 128,
+        "media_lag_ms": 13.17,
+        "source_seconds": 4.266666666666667
+      },
+      "stage_ms": {
+        "inference": 19.693,
+        "overlay_jpeg": 2.83,
+        "overlay_jpeg_bytes": 32122,
+        "raw_jpeg": 7.62,
+        "process_total": 31.27
+      },
+      "preview_age_ms": 46.3,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.779,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.592,
+            "segments": 4
+          }
+        },
+        "inference_ms": 19.693,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 489,
+        "received_monotonic": 5054.824206309,
+        "source_seconds": 4.266666666666667,
+        "frame_age_at_result_ms": 19.81
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587766640,
+      "mode": "FILE_TEST",
+      "processed": 260,
+      "processed_fps": 14.89,
+      "processed_average_fps": 14.992,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 258,
+        "source_frame_index": 158,
+        "media_lag_ms": 9.48,
+        "source_seconds": 5.266666666666667
+      },
+      "stage_ms": {
+        "inference": 19.567,
+        "overlay_jpeg": 3.26,
+        "overlay_jpeg_bytes": 28664,
+        "raw_jpeg": 7.53,
+        "process_total": 31.49
+      },
+      "preview_age_ms": 56.4,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.592,
+            "segments": 4
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.383,
+            "segments": 3
+          }
+        },
+        "inference_ms": 19.567,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 519,
+        "received_monotonic": 5055.820521877,
+        "source_seconds": 5.266666666666667,
+        "frame_age_at_result_ms": 19.68
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587767637,
+      "mode": "FILE_TEST",
+      "processed": 274,
+      "processed_fps": 14.696,
+      "processed_average_fps": 14.94,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 274,
+        "source_frame_index": 188,
+        "media_lag_ms": 3.98,
+        "source_seconds": 6.266666666666667
+      },
+      "stage_ms": {
+        "inference": 15.285,
+        "overlay_jpeg": 3.36,
+        "overlay_jpeg_bytes": 28078,
+        "raw_jpeg": 7.56,
+        "process_total": 27.3
+      },
+      "preview_age_ms": 60,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.479,
+            "segments": 2
+          },
+          "right": {
+            "state": "DASHED",
+            "confidence": 0.7,
+            "coverage": 0.371,
+            "segments": 5
+          }
+        },
+        "inference_ms": 15.285,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 549,
+        "received_monotonic": 5056.81502174,
+        "source_seconds": 6.266666666666667,
+        "frame_age_at_result_ms": 15.38
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587768650,
+      "mode": "FILE_TEST",
+      "processed": 289,
+      "processed_fps": 14.661,
+      "processed_average_fps": 14.933,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 290,
+        "source_frame_index": 220,
+        "media_lag_ms": 4.51,
+        "source_seconds": 7.333333333333333
+      },
+      "stage_ms": {
+        "inference": 15.066,
+        "overlay_jpeg": 3.33,
+        "overlay_jpeg_bytes": 28382,
+        "raw_jpeg": 7.47,
+        "process_total": 26.97
+      },
+      "preview_age_ms": 72.2,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.588,
+            "segments": 3
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.575,
+            "segments": 1
+          }
+        },
+        "inference_ms": 15.066,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 579,
+        "received_monotonic": 5057.815011049,
+        "source_seconds": 7.266666666666667,
+        "frame_age_at_result_ms": 15.16
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587769721,
+      "mode": "FILE_TEST",
+      "processed": 304,
+      "processed_fps": 14.653,
+      "processed_average_fps": 14.934,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 304,
+        "source_frame_index": 248,
+        "media_lag_ms": 13,
+        "source_seconds": 8.266666666666667
+      },
+      "stage_ms": {
+        "inference": 20.415,
+        "overlay_jpeg": 2.87,
+        "overlay_jpeg_bytes": 31281,
+        "raw_jpeg": 7.69,
+        "process_total": 32.21
+      },
+      "preview_age_ms": 66.1,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.442,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.608,
+            "segments": 1
+          }
+        },
+        "inference_ms": 20.415,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 609,
+        "received_monotonic": 5058.824040922,
+        "source_seconds": 8.266666666666667,
+        "frame_age_at_result_ms": 20.53
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587770658,
+      "mode": "FILE_TEST",
+      "processed": 319,
+      "processed_fps": 14.704,
+      "processed_average_fps": 14.94,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 320,
+        "source_frame_index": 280,
+        "media_lag_ms": 4.05,
+        "source_seconds": 9.333333333333334
+      },
+      "stage_ms": {
+        "inference": 15.926,
+        "overlay_jpeg": 2.9,
+        "overlay_jpeg_bytes": 30046,
+        "raw_jpeg": 7.76,
+        "process_total": 27.75
+      },
+      "preview_age_ms": 62.2,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.479,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.375,
+            "segments": 1
+          }
+        },
+        "inference_ms": 15.926,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 639,
+        "received_monotonic": 5059.824934375,
+        "source_seconds": 9.266666666666667,
+        "frame_age_at_result_ms": 16.05
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587771679,
+      "mode": "FILE_TEST",
+      "processed": 334,
+      "processed_fps": 14.675,
+      "processed_average_fps": 14.935,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 335,
+        "source_frame_index": 310,
+        "media_lag_ms": 3.95,
+        "source_seconds": 10.333333333333334
+      },
+      "stage_ms": {
+        "inference": 19.647,
+        "overlay_jpeg": 3.07,
+        "overlay_jpeg_bytes": 30143,
+        "raw_jpeg": 7.54,
+        "process_total": 31.53
+      },
+      "preview_age_ms": 82.3,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.408,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.446,
+            "segments": 3
+          }
+        },
+        "inference_ms": 19.647,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 669,
+        "received_monotonic": 5060.815007808,
+        "source_seconds": 10.266666666666667,
+        "frame_age_at_result_ms": 19.74
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587772680,
+      "mode": "FILE_TEST",
+      "processed": 349,
+      "processed_fps": 14.896,
+      "processed_average_fps": 14.941,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 1,
+        "skipped_source_frames": 350,
+        "source_frame_index": 340,
+        "media_lag_ms": 5.02,
+        "source_seconds": 11.333333333333334
+      },
+      "stage_ms": {
+        "inference": 14.015,
+        "overlay_jpeg": 2.94,
+        "overlay_jpeg_bytes": 30837,
+        "raw_jpeg": 7.59,
+        "process_total": 25.68
+      },
+      "preview_age_ms": 78.3,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.383,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.271,
+            "segments": 1
+          }
+        },
+        "inference_ms": 14.015,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 699,
+        "received_monotonic": 5061.815197028,
+        "source_seconds": 11.266666666666667,
+        "frame_age_at_result_ms": 14.08
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587773677,
+      "mode": "FILE_TEST",
+      "processed": 364,
+      "processed_fps": 14.85,
+      "processed_average_fps": 14.943,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 364,
+        "source_frame_index": 10,
+        "media_lag_ms": 5.07,
+        "source_seconds": 0.3333333333333333
+      },
+      "stage_ms": {
+        "inference": 15.489,
+        "overlay_jpeg": 2.84,
+        "overlay_jpeg_bytes": 31095,
+        "raw_jpeg": 7.65,
+        "process_total": 27.11
+      },
+      "preview_age_ms": 78.3,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.808,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.242,
+            "segments": 4
+          }
+        },
+        "inference_ms": 15.489,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 729,
+        "received_monotonic": 5062.814860679,
+        "source_seconds": 0.26666666666666666,
+        "frame_age_at_result_ms": 15.58
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587774655,
+      "mode": "FILE_TEST",
+      "processed": 379,
+      "processed_fps": 14.887,
+      "processed_average_fps": 14.947,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 379,
+        "source_frame_index": 40,
+        "media_lag_ms": 3.86,
+        "source_seconds": 1.3333333333333333
+      },
+      "stage_ms": {
+        "inference": 16.612,
+        "overlay_jpeg": 2.85,
+        "overlay_jpeg_bytes": 28983,
+        "raw_jpeg": 7.52,
+        "process_total": 28.1
+      },
+      "preview_age_ms": 65.9,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "SOLID",
+            "confidence": 0.8,
+            "coverage": 0.992,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.146,
+            "segments": 3
+          }
+        },
+        "inference_ms": 16.612,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 759,
+        "received_monotonic": 5063.824589951,
+        "source_seconds": 1.2666666666666666,
+        "frame_age_at_result_ms": 16.72
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587775655,
+      "mode": "FILE_TEST",
+      "processed": 394,
+      "processed_fps": 14.866,
+      "processed_average_fps": 14.948,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 394,
+        "source_frame_index": 70,
+        "media_lag_ms": 4.95,
+        "source_seconds": 2.3333333333333335
+      },
+      "stage_ms": {
+        "inference": 15.183,
+        "overlay_jpeg": 2.83,
+        "overlay_jpeg_bytes": 29852,
+        "raw_jpeg": 7.58,
+        "process_total": 27.01
+      },
+      "preview_age_ms": 76.5,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.754,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.333,
+            "segments": 3
+          }
+        },
+        "inference_ms": 15.183,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 789,
+        "received_monotonic": 5064.815253161,
+        "source_seconds": 2.2666666666666666,
+        "frame_age_at_result_ms": 15.27
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587776699,
+      "mode": "FILE_TEST",
+      "processed": 410,
+      "processed_fps": 14.916,
+      "processed_average_fps": 14.963,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 409,
+        "source_frame_index": 100,
+        "media_lag_ms": 3.79,
+        "source_seconds": 3.3333333333333335
+      },
+      "stage_ms": {
+        "inference": 13.991,
+        "overlay_jpeg": 2.82,
+        "overlay_jpeg_bytes": 32915,
+        "raw_jpeg": 7.6,
+        "process_total": 25.55
+      },
+      "preview_age_ms": 53.5,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "SOLID",
+            "confidence": 0.8,
+            "coverage": 0.883,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.533,
+            "segments": 1
+          }
+        },
+        "inference_ms": 13.991,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 821,
+        "received_monotonic": 5065.881492595,
+        "source_seconds": 3.3333333333333335,
+        "frame_age_at_result_ms": 14.07
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587777666,
+      "mode": "FILE_TEST",
+      "processed": 424,
+      "processed_fps": 14.908,
+      "processed_average_fps": 14.947,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 424,
+        "source_frame_index": 130,
+        "media_lag_ms": 3.86,
+        "source_seconds": 4.333333333333333
+      },
+      "stage_ms": {
+        "inference": 16.271,
+        "overlay_jpeg": 4.41,
+        "overlay_jpeg_bytes": 32138,
+        "raw_jpeg": 7.73,
+        "process_total": 29.83
+      },
+      "preview_age_ms": 86.2,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.779,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.592,
+            "segments": 4
+          }
+        },
+        "inference_ms": 16.271,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 849,
+        "received_monotonic": 5066.814924828,
+        "source_seconds": 4.266666666666667,
+        "frame_age_at_result_ms": 16.36
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587778785,
+      "mode": "FILE_TEST",
+      "processed": 441,
+      "processed_fps": 14.899,
+      "processed_average_fps": 14.962,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 440,
+        "source_frame_index": 162,
+        "media_lag_ms": 13.54,
+        "source_seconds": 5.4
+      },
+      "stage_ms": {
+        "inference": 20.466,
+        "overlay_jpeg": 3.23,
+        "overlay_jpeg_bytes": 29542,
+        "raw_jpeg": 7.58,
+        "process_total": 32.4
+      },
+      "preview_age_ms": 50.8,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.542,
+            "segments": 5
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.333,
+            "segments": 4
+          }
+        },
+        "inference_ms": 20.466,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 883,
+        "received_monotonic": 5067.957910499,
+        "source_seconds": 5.4,
+        "frame_age_at_result_ms": 20.59
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587779809,
+      "mode": "FILE_TEST",
+      "processed": 455,
+      "processed_fps": 14.634,
+      "processed_average_fps": 14.919,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 457,
+        "source_frame_index": 194,
+        "media_lag_ms": 3.92,
+        "source_seconds": 6.466666666666667
+      },
+      "stage_ms": {
+        "inference": 14.302,
+        "overlay_jpeg": 2.8,
+        "overlay_jpeg_bytes": 28440,
+        "raw_jpeg": 7.3,
+        "process_total": 25.51
+      },
+      "preview_age_ms": 85,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.483,
+            "segments": 2
+          },
+          "right": {
+            "state": "DASHED",
+            "confidence": 0.7,
+            "coverage": 0.35,
+            "segments": 3
+          }
+        },
+        "inference_ms": 14.302,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 913,
+        "received_monotonic": 5068.948390796,
+        "source_seconds": 6.4,
+        "frame_age_at_result_ms": 14.39
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587781040,
+      "mode": "FILE_TEST",
+      "processed": 471,
+      "processed_fps": 14.701,
+      "processed_average_fps": 14.934,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 472,
+        "source_frame_index": 224,
+        "media_lag_ms": 13.37,
+        "source_seconds": 7.466666666666667
+      },
+      "stage_ms": {
+        "inference": 17.041,
+        "overlay_jpeg": 2.79,
+        "overlay_jpeg_bytes": 30267,
+        "raw_jpeg": 7.64,
+        "process_total": 28.59
+      },
+      "preview_age_ms": 48,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.621,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.596,
+            "segments": 1
+          }
+        },
+        "inference_ms": 17.041,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 945,
+        "received_monotonic": 5070.024415401,
+        "source_seconds": 7.466666666666667,
+        "frame_age_at_result_ms": 17.16
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587781843,
+      "mode": "FILE_TEST",
+      "processed": 486,
+      "processed_fps": 14.732,
+      "processed_average_fps": 14.939,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 487,
+        "source_frame_index": 254,
+        "media_lag_ms": 3.89,
+        "source_seconds": 8.466666666666667
+      },
+      "stage_ms": {
+        "inference": 18.552,
+        "overlay_jpeg": 3.36,
+        "overlay_jpeg_bytes": 31506,
+        "raw_jpeg": 7.55,
+        "process_total": 30.76
+      },
+      "preview_age_ms": 50.8,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.362,
+            "segments": 3
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.633,
+            "segments": 4
+          }
+        },
+        "inference_ms": 18.552,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 975,
+        "received_monotonic": 5071.014927823,
+        "source_seconds": 8.466666666666667,
+        "frame_age_at_result_ms": 18.65
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587783030,
+      "mode": "FILE_TEST",
+      "processed": 499,
+      "processed_fps": 15.049,
+      "processed_average_fps": 14.943,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 500,
+        "source_frame_index": 280,
+        "media_lag_ms": 4.01,
+        "source_seconds": 9.333333333333334
+      },
+      "stage_ms": {
+        "inference": 18.43,
+        "overlay_jpeg": 3.95,
+        "overlay_jpeg_bytes": 29921,
+        "raw_jpeg": 8.22,
+        "process_total": 31.89
+      },
+      "preview_age_ms": 45.8,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.475,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.358,
+            "segments": 1
+          }
+        },
+        "inference_ms": 18.43,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1001,
+        "received_monotonic": 5071.881713732,
+        "source_seconds": 9.333333333333334,
+        "frame_age_at_result_ms": 18.52
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587784081,
+      "mode": "FILE_TEST",
+      "processed": 516,
+      "processed_fps": 14.529,
+      "processed_average_fps": 14.915,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 518,
+        "source_frame_index": 316,
+        "media_lag_ms": 9.55,
+        "source_seconds": 10.533333333333333
+      },
+      "stage_ms": {
+        "inference": 20.014,
+        "overlay_jpeg": 2.91,
+        "overlay_jpeg_bytes": 29820,
+        "raw_jpeg": 7.51,
+        "process_total": 31.72
+      },
+      "preview_age_ms": 114.1,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.4,
+            "segments": 2
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.329,
+            "segments": 4
+          }
+        },
+        "inference_ms": 20.014,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1035,
+        "received_monotonic": 5073.016103369,
+        "source_seconds": 10.466666666666667,
+        "frame_age_at_result_ms": 20.15
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587784731,
+      "mode": "FILE_TEST",
+      "processed": 528,
+      "processed_fps": 14.703,
+      "processed_average_fps": 14.913,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 2,
+        "skipped_source_frames": 531,
+        "source_frame_index": 340,
+        "media_lag_ms": 3.9,
+        "source_seconds": 11.333333333333334
+      },
+      "stage_ms": {
+        "inference": 13.708,
+        "overlay_jpeg": 2.84,
+        "overlay_jpeg_bytes": 30792,
+        "raw_jpeg": 7.6,
+        "process_total": 25.26
+      },
+      "preview_age_ms": 57.3,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.3,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.7,
+            "segments": 1
+          }
+        },
+        "inference_ms": 13.708,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1061,
+        "received_monotonic": 5073.881608019,
+        "source_seconds": 11.333333333333334,
+        "frame_age_at_result_ms": 13.79
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587786360,
+      "mode": "FILE_TEST",
+      "processed": 544,
+      "processed_fps": 14.707,
+      "processed_average_fps": 14.911,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 547,
+        "source_frame_index": 14,
+        "media_lag_ms": 3.86,
+        "source_seconds": 0.4666666666666667
+      },
+      "stage_ms": {
+        "inference": 14.662,
+        "overlay_jpeg": 3.68,
+        "overlay_jpeg_bytes": 32522,
+        "raw_jpeg": 7.37,
+        "process_total": 26.82
+      },
+      "preview_age_ms": 68.5,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "SOLID",
+            "confidence": 0.8,
+            "coverage": 0.9,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.217,
+            "segments": 4
+          }
+        },
+        "inference_ms": 14.662,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1093,
+        "received_monotonic": 5074.948220193,
+        "source_seconds": 0.4,
+        "frame_age_at_result_ms": 14.75
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587786757,
+      "mode": "FILE_TEST",
+      "processed": 559,
+      "processed_fps": 14.771,
+      "processed_average_fps": 14.925,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 561,
+        "source_frame_index": 42,
+        "media_lag_ms": 3.84,
+        "source_seconds": 1.4
+      },
+      "stage_ms": {
+        "inference": 13.354,
+        "overlay_jpeg": 3.63,
+        "overlay_jpeg_bytes": 28148,
+        "raw_jpeg": 7.58,
+        "process_total": 25.66
+      },
+      "preview_age_ms": 39.7,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "SOLID",
+            "confidence": 0.8,
+            "coverage": 0.992,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0,
+            "segments": 0
+          }
+        },
+        "inference_ms": 13.354,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1123,
+        "received_monotonic": 5075.948210086,
+        "source_seconds": 1.4,
+        "frame_age_at_result_ms": 13.44
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587787758,
+      "mode": "FILE_TEST",
+      "processed": 574,
+      "processed_fps": 14.898,
+      "processed_average_fps": 14.93,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 576,
+        "source_frame_index": 72,
+        "media_lag_ms": 3.89,
+        "source_seconds": 2.4
+      },
+      "stage_ms": {
+        "inference": 12.253,
+        "overlay_jpeg": 2.81,
+        "overlay_jpeg_bytes": 29744,
+        "raw_jpeg": 7.4,
+        "process_total": 23.54
+      },
+      "preview_age_ms": 31,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.762,
+            "segments": 3
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0,
+            "segments": 0
+          }
+        },
+        "inference_ms": 12.253,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1153,
+        "received_monotonic": 5076.948264434,
+        "source_seconds": 2.4,
+        "frame_age_at_result_ms": 12.33
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587788767,
+      "mode": "FILE_TEST",
+      "processed": 588,
+      "processed_fps": 14.53,
+      "processed_average_fps": 14.898,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 591,
+        "source_frame_index": 102,
+        "media_lag_ms": 9.7,
+        "source_seconds": 3.4
+      },
+      "stage_ms": {
+        "inference": 16.709,
+        "overlay_jpeg": 4.59,
+        "overlay_jpeg_bytes": 32900,
+        "raw_jpeg": 7.69,
+        "process_total": 30.12
+      },
+      "preview_age_ms": 111.6,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "SOLID",
+            "confidence": 0.8,
+            "coverage": 0.883,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.533,
+            "segments": 1
+          }
+        },
+        "inference_ms": 16.709,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1181,
+        "received_monotonic": 5077.89152292,
+        "source_seconds": 3.3333333333333335,
+        "frame_age_at_result_ms": 16.83
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587789741,
+      "mode": "FILE_TEST",
+      "processed": 603,
+      "processed_fps": 14.792,
+      "processed_average_fps": 14.911,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 606,
+        "source_frame_index": 132,
+        "media_lag_ms": 3.88,
+        "source_seconds": 4.4
+      },
+      "stage_ms": {
+        "inference": 14.983,
+        "overlay_jpeg": 3.83,
+        "overlay_jpeg_bytes": 32357,
+        "raw_jpeg": 7.61,
+        "process_total": 27.54
+      },
+      "preview_age_ms": 93.7,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.838,
+            "segments": 1
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.525,
+            "segments": 6
+          }
+        },
+        "inference_ms": 14.983,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1211,
+        "received_monotonic": 5078.881584437,
+        "source_seconds": 4.333333333333333,
+        "frame_age_at_result_ms": 15.07
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587790751,
+      "mode": "FILE_TEST",
+      "processed": 619,
+      "processed_fps": 14.962,
+      "processed_average_fps": 14.932,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 621,
+        "source_frame_index": 162,
+        "media_lag_ms": 3.83,
+        "source_seconds": 5.4
+      },
+      "stage_ms": {
+        "inference": 19.734,
+        "overlay_jpeg": 4.53,
+        "overlay_jpeg_bytes": 29531,
+        "raw_jpeg": 7.54,
+        "process_total": 32.93
+      },
+      "preview_age_ms": 39.9,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.542,
+            "segments": 5
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.333,
+            "segments": 4
+          }
+        },
+        "inference_ms": 19.734,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1243,
+        "received_monotonic": 5079.948199236,
+        "source_seconds": 5.4,
+        "frame_age_at_result_ms": 19.82
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587791759,
+      "mode": "FILE_TEST",
+      "processed": 634,
+      "processed_fps": 14.94,
+      "processed_average_fps": 14.932,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 636,
+        "source_frame_index": 192,
+        "media_lag_ms": 3.9,
+        "source_seconds": 6.4
+      },
+      "stage_ms": {
+        "inference": 14.806,
+        "overlay_jpeg": 4.07,
+        "overlay_jpeg_bytes": 28456,
+        "raw_jpeg": 7.26,
+        "process_total": 27.25
+      },
+      "preview_age_ms": 46.3,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.483,
+            "segments": 2
+          },
+          "right": {
+            "state": "DASHED",
+            "confidence": 0.7,
+            "coverage": 0.35,
+            "segments": 3
+          }
+        },
+        "inference_ms": 14.806,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1273,
+        "received_monotonic": 5080.948276918,
+        "source_seconds": 6.4,
+        "frame_age_at_result_ms": 14.9
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587792877,
+      "mode": "FILE_TEST",
+      "processed": 649,
+      "processed_fps": 14.963,
+      "processed_average_fps": 14.929,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 651,
+        "source_frame_index": 222,
+        "media_lag_ms": 13.86,
+        "source_seconds": 7.4
+      },
+      "stage_ms": {
+        "inference": 19.551,
+        "overlay_jpeg": 4.32,
+        "overlay_jpeg_bytes": 29865,
+        "raw_jpeg": 7.54,
+        "process_total": 32.52
+      },
+      "preview_age_ms": 49,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.671,
+            "segments": 3
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.554,
+            "segments": 1
+          }
+        },
+        "inference_ms": 19.551,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1303,
+        "received_monotonic": 5081.958233059,
+        "source_seconds": 7.4,
+        "frame_age_at_result_ms": 19.67
+      },
+      "link": null
+    },
+    {
+      "hostMs": 1792587793785,
+      "mode": "FILE_TEST",
+      "processed": 664,
+      "processed_fps": 15.081,
+      "processed_average_fps": 14.927,
+      "target_preview_fps": 15,
+      "preview_encoding": {
+        "width": 640,
+        "quality": 70
+      },
+      "playback": {
+        "source_fps": 30,
+        "target_process_fps": 15,
+        "media_duration_seconds": 12,
+        "loop_index": 3,
+        "skipped_source_frames": 667,
+        "source_frame_index": 254,
+        "media_lag_ms": 4.98,
+        "source_seconds": 8.466666666666667
+      },
+      "stage_ms": {
+        "inference": 19.942,
+        "overlay_jpeg": 4.27,
+        "overlay_jpeg_bytes": 31675,
+        "raw_jpeg": 7.4,
+        "process_total": 32.74
+      },
+      "preview_age_ms": 61.1,
+      "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+      "latest": {
+        "signal": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "actions": [],
+          "candidates": [],
+          "association": "UNASSIGNED"
+        },
+        "lanes": {
+          "left": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.412,
+            "segments": 5
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "confidence": 0,
+            "coverage": 0.679,
+            "segments": 3
+          }
+        },
+        "inference_ms": 19.942,
+        "decisions": {
+          "1": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "2": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "3": {
+            "code": 0,
+            "reason": 0,
+            "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+          },
+          "4": {
+            "code": 1,
+            "reason": 0,
+            "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+          }
+        },
+        "frame_id": 1333,
+        "received_monotonic": 5082.957485637,
+        "source_seconds": 8.4,
+        "frame_age_at_result_ms": 20.05
+      },
+      "link": null
+    }
+  ]
+}

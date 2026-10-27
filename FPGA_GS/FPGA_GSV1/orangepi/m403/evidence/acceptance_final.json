@@ -1,0 +1,81 @@
+{
+  "historical_signal_cases": "Earlier browser real-image test retained: signal algorithm unchanged since housing/overexposure fix; later changes concern lane association, VFR seeking, and preview transport",
+  "limitations": [
+    "No generalized day signal detector or turn-group association",
+    "Line evidence is intermittent; current unknown never replaced with a historical dashed label",
+    "1280 preview below 15fps in complex city scenes",
+    "No labeled ground truth, accuracy claim, training or NPU inference"
+  ],
+  "checks": [
+    {
+      "case": "real_red_auto_stop",
+      "video": "SC_YJ.mp4",
+      "time": 70.166667,
+      "pass": true
+    },
+    {
+      "case": "red_ordinary_stays_stopped",
+      "pass": true
+    },
+    {
+      "case": "real_red_forced_alarm",
+      "time": 72.3,
+      "pass": true
+    },
+    {
+      "case": "stop_priority",
+      "pass": true
+    },
+    {
+      "case": "real_green_start",
+      "time": 105.133333,
+      "pass": true
+    },
+    {
+      "case": "unassigned_direction_unknown",
+      "pass": true
+    },
+    {
+      "case": "pause_stale_safe",
+      "pass": true
+    },
+    {
+      "case": "real_solid_keep",
+      "time": 32.366667,
+      "pass": true
+    },
+    {
+      "case": "real_solid_forced_alarm",
+      "time": 34.033333,
+      "pass": true
+    },
+    {
+      "case": "natural_loop_clears_state",
+      "pass": true
+    },
+    {
+      "case": "restart_clears_state",
+      "pass": true
+    },
+    {
+      "neighbor_source": "MANUAL_SCENE_CALIBRATION",
+      "video": "SC_BT.mp4",
+      "pass": true,
+      "case": "real_day_dashed_allow_with_explicit_manual_neighbor",
+      "paired_evidence": "browser/day_dashed_allow_*",
+      "time": 32.433333
+    },
+    {
+      "case": "native_vfr_seek_and_loop_same_instance",
+      "pass": true
+    },
+    {
+      "pass": true,
+      "processed_fps": 14.782061419787953,
+      "case": "latest_jpeg_single_inflight_30seconds",
+      "preview_new_fps": 14.588409960140075
+    }
+  ],
+  "release": "M4-03-demo-r1",
+  "scope": "Real original recordings + explicit spatial calibration; FILE_TEST/SIMULATION; FPGA powered off"
+}

@@ -1,0 +1,41 @@
+usage: main.py [-h] --mode {FILE_TEST,LIVE_FRONT,SIMULATION} [--video VIDEO]
+               [--scene SCENE] [--output OUTPUT] [--web-port WEB_PORT]
+               [--duration DURATION] [--max-frames MAX_FRAMES]
+               [--sample-fps SAMPLE_FPS] [--benchmark] [--loop]
+               [--snapshot-every SNAPSHOT_EVERY] [--bind BIND] [--peer PEER]
+               [--port PORT] [--peer-port PEER_PORT]
+               [--link-config LINK_CONFIG]
+
+M4-01 foreground headless app. FILE_TEST never opens a business UDP socket.
+
+options:
+  -h, --help            show this help message and exit
+  --mode {FILE_TEST,LIVE_FRONT,SIMULATION}
+  --video VIDEO
+  --scene SCENE
+  --output OUTPUT
+  --web-port WEB_PORT
+  --duration DURATION
+  --max-frames MAX_FRAMES
+  --sample-fps SAMPLE_FPS
+  --benchmark
+  --loop                Replay FILE_TEST until Ctrl+C or --duration
+  --snapshot-every SNAPSHOT_EVERY
+  --bind BIND
+  --peer PEER
+  --port PORT
+  --peer-port PEER_PORT
+  --link-config LINK_CONFIG
+                        JSON endpoint values; never changes OS networking
+test_lane_continuity_fixture (test_m401.Rules) ... ok
+test_rules (test_m401.Rules) ... ok
+test_visual_candidates_and_ambiguity (test_m401.Rules) ... ok
+test_drop_whole_frame_and_recover (test_m401.Transport) ... ok
+test_exact_frame_wait_ack_retry_and_stale (test_m401.Transport) ... ok
+test_real_udp_heartbeat_ack_independent_of_inference (test_m401.Transport) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.899s
+
+OK
+SIMULATION UDP ACK ms: 0.699

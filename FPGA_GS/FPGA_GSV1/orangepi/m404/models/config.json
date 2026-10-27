@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "model_id": "RKNNAI/RK3588-CNN-yolov8n",
+  "display_name": "RK3588-CNN-yolov8n",
+  "model_name": "yolov8n",
+  "source_model": "https://github.com/airockchip/ultralytics_yolov8",
+  "source_revision": null,
+  "release_tag": "v2.4.0",
+  "runtime_type": "rknn",
+  "rknn_version": "v2.4.0",
+  "chip_label": "RK3588",
+  "supported_chips": [
+    "RK3588"
+  ],
+  "model_type": "CNN",
+  "deployment": {
+    "card_count": 1
+  },
+  "validated_at": null,
+  "special_config": null,
+  "models": [
+    {
+      "model_name": "model",
+      "model_path": "yolov8n.rknn",
+      "npu_cores": 1,
+      "quantization": "w8a8",
+      "quantization_algorithm": "normal",
+      "resolution": "640x640"
+    }
+  ],
+  "files": [
+    "README.md",
+    "README_CN.md",
+    "SHA256SUMS",
+    "config.json",
+    "yolov8n.rknn"
+  ]
+}

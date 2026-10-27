@@ -1,0 +1,1 @@
+.rtl_screen -top_module {pin_probe} -include_path {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/build/m3_pin_probe>} -design_files {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/build/m3_pin_probe/pin_probe.v|work><E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/rtl/network/m3_rgmii_interface.v|work><E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/rtl/network/m3_eth_pll.v|work>}

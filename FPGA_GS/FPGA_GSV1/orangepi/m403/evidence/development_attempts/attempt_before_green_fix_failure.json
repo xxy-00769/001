@@ -1,0 +1,26 @@
+{
+  "error": "Error: Status predicate timeout: async()=>{let s=await(await fetch('/status.json')).json();return s.perception?.signal.state==='GREEN'&&s.driving.motion==='MOVING';}\n    at poll (E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\m403\\verify_browser.cjs:10:189)\n    at async E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\m403\\verify_browser.cjs:29:3",
+  "checks": [
+    {
+      "case": "real_red_auto_stop",
+      "video": "SC_YJ.mp4",
+      "time": 70.166667,
+      "pass": true
+    },
+    {
+      "case": "red_ordinary_stays_stopped",
+      "pass": true
+    },
+    {
+      "case": "real_red_forced_alarm",
+      "time": 70.7,
+      "pass": true
+    },
+    {
+      "case": "stop_priority",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "performance": []
+}

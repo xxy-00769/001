@@ -1,0 +1,108 @@
+{
+  "baseline": [
+    {
+      "path": "main.py",
+      "backup_sha256": "4f7dc5689bd55192f68db4bce711ee0f06325391f3bcd912e56622a721d3f1f8",
+      "current_sha256": "4f7dc5689bd55192f68db4bce711ee0f06325391f3bcd912e56622a721d3f1f8",
+      "unchanged": true
+    },
+    {
+      "path": "link.py",
+      "backup_sha256": "a9f3f2a33ece23f0753047ae1f605c96ddde446dc1b06e896677b4681ebe8db1",
+      "current_sha256": "a9f3f2a33ece23f0753047ae1f605c96ddde446dc1b06e896677b4681ebe8db1",
+      "unchanged": true
+    },
+    {
+      "path": "feedback.py",
+      "backup_sha256": "dab1838cdeae470294f9ba36e2115deaa3e298199f8de00f6a0079bb0247f7c4",
+      "current_sha256": "dab1838cdeae470294f9ba36e2115deaa3e298199f8de00f6a0079bb0247f7c4",
+      "unchanged": true
+    },
+    {
+      "path": "vision.py",
+      "backup_sha256": "1bd55ebd195ff6897177b36f27403a775151eef5f292641e1db695dfd06352d6",
+      "current_sha256": "1bd55ebd195ff6897177b36f27403a775151eef5f292641e1db695dfd06352d6",
+      "unchanged": true
+    },
+    {
+      "path": "preview.html",
+      "backup_sha256": "5d25c47f72feaa9c674825b4766b1e1a385217fe9ec286bd33a0cd71d5d5a967",
+      "current_sha256": "5d25c47f72feaa9c674825b4766b1e1a385217fe9ec286bd33a0cd71d5d5a967",
+      "unchanged": true
+    },
+    {
+      "path": "vendor/protocol.py",
+      "backup_sha256": "64bb3be5bc1be994e9624626be6077ca7c5ef6e149a79aa60856bfa644af4695",
+      "current_sha256": "64bb3be5bc1be994e9624626be6077ca7c5ef6e149a79aa60856bfa644af4695",
+      "unchanged": true
+    },
+    {
+      "path": "reconnect_release.json",
+      "backup_sha256": "01e011519f1276e43f818393192a498b597cb6164274b92f114552b695d20cb7",
+      "current_sha256": "01e011519f1276e43f818393192a498b597cb6164274b92f114552b695d20cb7",
+      "unchanged": true
+    },
+    {
+      "path": "operator_v1/ops_manager.py",
+      "backup_sha256": "e692f393dcd4957072b054672c1d612f5373ca4c3903dec8e3036e3464748620",
+      "current_sha256": "e692f393dcd4957072b054672c1d612f5373ca4c3903dec8e3036e3464748620",
+      "unchanged": true
+    },
+    {
+      "path": "operator_v1/launcher.ps1",
+      "backup_sha256": "ff5dc0006899e37d434149b355119ef3a3d198a8c958d5433bf3b661d2e6baba",
+      "current_sha256": "ff5dc0006899e37d434149b355119ef3a3d198a8c958d5433bf3b661d2e6baba",
+      "unchanged": true
+    },
+    {
+      "path": "operator_v1/config.json",
+      "backup_sha256": "4fe633aa5ad6639893e5efae00e9e21c92f06ce764fbc3eda4bffa61c020eb7d",
+      "current_sha256": "4fe633aa5ad6639893e5efae00e9e21c92f06ce764fbc3eda4bffa61c020eb7d",
+      "unchanged": true
+    }
+  ],
+  "foreign_port_refused": {
+    "ok": false,
+    "message": "预览端口被其他程序占用；未结束任何进程",
+    "conflicts": [
+      {
+        "protocol": "tcp",
+        "local_hex": "0100007F:1F90",
+        "local_port": 8080,
+        "inode": "297203",
+        "pids": [
+          220770
+        ],
+        "processes": [
+          {
+            "pid": 220770,
+            "start_ticks": "7660082",
+            "cwd": "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+            "argv": [
+              ".venv/bin/python",
+              "m403/verify_release.py"
+            ],
+            "uid": 1000
+          }
+        ]
+      }
+    ]
+  },
+  "rules": {
+    "args": [
+      "/home/orangepi/fpga_gs_m401_v0_1_2_20261021/.venv/bin/python",
+      "/home/orangepi/fpga_gs_m401_v0_1_2_20261021/m403/test_driving.py"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_alarm_latches_and_expires_to_stop (__main__.Rules) ... ok\ntest_lane_independent_of_signal (__main__.Rules) ... ok\ntest_red_ordinary_and_forced_are_separate (__main__.Rules) ... ok\ntest_red_stop_green_start (__main__.Rules) ... ok\ntest_reset_and_clear (__main__.Rules) ... ok\ntest_solid_ordinary_and_forced (__main__.Rules) ... ok\ntest_stop_priority (__main__.Rules) ... ok\ntest_unknown_stale_mismatch_never_allow (__main__.Rules) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nOK\n"
+  },
+  "runtime": {
+    "python": "3.10.12 (main, May 27 2025, 17:12:29) [GCC 11.4.0]",
+    "opencv": "4.5.4",
+    "numpy": "1.21.5",
+    "pillow": "9.0.1",
+    "cpu": "RK3588S CPU",
+    "npu": false
+  }
+}

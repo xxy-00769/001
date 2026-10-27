@@ -1,0 +1,428 @@
+{
+  "ok": true,
+  "snapshot": "SC_YJ_98.000_20261023_184952_3666",
+  "directory": "/home/orangepi/fpga_gs_m401_v0_1_2_20261021/m404/evidence/runtime",
+  "status": {
+    "mode": "FILE_TEST",
+    "vehicle": "SIMULATION",
+    "release": "M4-04-r1",
+    "instance": "43c8bd574bf3e203e03ed96f",
+    "host_monotonic_ms": 1726550.17675,
+    "video": "SC_YJ.mp4",
+    "files": [
+      {
+        "name": "SC_BT.mp4",
+        "duration": 59.882646,
+        "fps": 30.001687177285582,
+        "label": "日间城区"
+      },
+      {
+        "name": "SC_BT2.mp4",
+        "duration": 32.042667,
+        "fps": 30.024968789013734,
+        "label": "黄昏高架"
+      },
+      {
+        "name": "SC_YJ.mp4",
+        "duration": 177.834667,
+        "fps": 30.00214260849744,
+        "label": "夜间城区"
+      },
+      {
+        "name": "SC_YJ2.mp4",
+        "duration": 78.05,
+        "fps": 39.62832425504646,
+        "label": "蓝调高架"
+      }
+    ],
+    "source_fps": 30.00214260849744,
+    "duration": 177.834667,
+    "position": 98,
+    "playing": true,
+    "loop": true,
+    "epoch": 8,
+    "processed": 3666,
+    "processed_fps": 14.306,
+    "skipped_source_frames": 3882,
+    "loop_count": 2,
+    "target_fps": 15,
+    "preview_width": 640,
+    "frame_id": 2940,
+    "sequence": 3666,
+    "age_ms": 161.5,
+    "driving": {
+      "mode": "intersection",
+      "lane": "straight",
+      "intent": "auto",
+      "forced": false,
+      "motion": "STOPPED",
+      "suggestion": "STOP",
+      "reason": "相关红灯：普通请求保持停车",
+      "alarm": null,
+      "alarm_remaining_seconds": 0,
+      "command_id": 0,
+      "alarm_policy": "告警锁存5秒；到期取消强制并停车；停车/清除告警立即解除；切视频/跳转/循环重置",
+      "vehicle": "SIMULATED_ONLY"
+    },
+    "perception": {
+      "signal": {
+        "state": "RED",
+        "raw_state": "RED",
+        "confidence": 0.83,
+        "actions": [
+          "straight"
+        ],
+        "candidates": [
+          {
+            "state": "RED",
+            "box": [
+              1649,
+              639,
+              30,
+              27
+            ],
+            "area": 394.5,
+            "dark_ratio": 0.597
+          }
+        ],
+        "calibration": {
+          "roi": [
+            0.625,
+            0.425,
+            0.68,
+            0.48
+          ],
+          "actions": [
+            "straight"
+          ],
+          "template": "signal_housing.png",
+          "mask": "signal_housing_mask.png",
+          "kind": "MANUAL_GROUP_ASSOCIATION",
+          "note": "人工标定夜间停车路口右侧横向灯组归属直行；只限定空间和外壳模板，不预设灯色。离开或灯组不匹配应未知。"
+        },
+        "housing_match": 0.929,
+        "roi_pixels": [
+          1638,
+          627,
+          1719,
+          668
+        ],
+        "reason": "灯组空间/控制方向为人工标定，灯色来自原图ROI，连续3帧确认"
+      },
+      "lanes": {
+        "left": {
+          "state": "UNKNOWN",
+          "raw_state": "UNKNOWN",
+          "confidence": 0,
+          "adjacent_lane_confirmed": false,
+          "adjacent_lane_source": "UNCONFIRMED",
+          "coverage": 0,
+          "segments": 0,
+          "gaps": 0,
+          "trace": [],
+          "reason": "未找到稳定的当前车道边界"
+        },
+        "right": {
+          "state": "UNKNOWN",
+          "raw_state": "UNKNOWN",
+          "confidence": 0,
+          "adjacent_lane_confirmed": false,
+          "adjacent_lane_source": "UNCONFIRMED",
+          "coverage": 0,
+          "segments": 0,
+          "gaps": 0,
+          "trace": [],
+          "reason": "未找到稳定的当前车道边界"
+        }
+      },
+      "stage_ms": {
+        "preprocess": 9.416,
+        "signal_roi": 1.834,
+        "lanes": 17.086,
+        "inference": 18.927
+      },
+      "execution": "CPU OpenCV; no pretrained model",
+      "evidence_kind": "REAL_IMAGE_WITH_EXPLICIT_SPATIAL_CALIBRATION",
+      "detection": {
+        "backend": "RKNN/NPU",
+        "model": "YOLOv8n COCO w8a8",
+        "input_size": [
+          640,
+          640
+        ],
+        "threshold": 0.25,
+        "nms_iou": 0.45,
+        "epoch": 8,
+        "frame_id": 2938,
+        "objects": [
+          {
+            "class_id": 7,
+            "category": "truck",
+            "label": "货车",
+            "confidence": 0.3817,
+            "box": [
+              2488.24,
+              743.83,
+              2558,
+              903.1
+            ],
+            "source": "optical_flow",
+            "track_id": 1656,
+            "last_detected_monotonic": 1726.38329218,
+            "missed": 0,
+            "epoch": 8,
+            "detection_frame_id": 2938,
+            "age_ms": 93.9
+          },
+          {
+            "class_id": 0,
+            "category": "person",
+            "label": "行人",
+            "confidence": 0.3135,
+            "box": [
+              2132.51,
+              809.51,
+              2196.14,
+              889.77
+            ],
+            "source": "optical_flow",
+            "track_id": 1664,
+            "last_detected_monotonic": 1726.38329218,
+            "missed": 0,
+            "epoch": 8,
+            "detection_frame_id": 2938,
+            "age_ms": 93.9
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.2731,
+            "box": [
+              2300.79,
+              810.16,
+              2449.02,
+              866.73
+            ],
+            "source": "optical_flow",
+            "track_id": 1660,
+            "last_detected_monotonic": 1726.38329218,
+            "missed": 0,
+            "epoch": 8,
+            "detection_frame_id": 2938,
+            "age_ms": 93.9
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.27,
+            "box": [
+              799.27,
+              812.89,
+              893.69,
+              867.62
+            ],
+            "source": "optical_flow",
+            "track_id": 1634,
+            "last_detected_monotonic": 1726.38329218,
+            "missed": 0,
+            "epoch": 8,
+            "detection_frame_id": 2938,
+            "age_ms": 93.9
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.2576,
+            "box": [
+              247.54,
+              839.58,
+              307.3,
+              892.18
+            ],
+            "source": "optical_flow",
+            "track_id": 1665,
+            "last_detected_monotonic": 1726.319698912,
+            "missed": 1,
+            "epoch": 8,
+            "detection_frame_id": 2936,
+            "age_ms": 93.9
+          }
+        ],
+        "detected_count": 0,
+        "held_count": 5,
+        "count": 5,
+        "detection_fps": 14.65,
+        "stage_ms": {
+          "det_preprocess": 3.356,
+          "det_inference": 22.166,
+          "det_postprocess": 5.56,
+          "det_tracking": 0.078,
+          "det_display_tracking": 8.376
+        },
+        "inference_age_ms": 93.9,
+        "display_frame_id": 2940
+      }
+    },
+    "detection": {
+      "backend": "RKNN/NPU",
+      "model": "YOLOv8n COCO w8a8",
+      "input_size": [
+        640,
+        640
+      ],
+      "threshold": 0.25,
+      "nms_iou": 0.45,
+      "epoch": 8,
+      "frame_id": 2938,
+      "objects": [
+        {
+          "class_id": 7,
+          "category": "truck",
+          "label": "货车",
+          "confidence": 0.3817,
+          "box": [
+            2488.24,
+            743.83,
+            2558,
+            903.1
+          ],
+          "source": "optical_flow",
+          "track_id": 1656,
+          "last_detected_monotonic": 1726.38329218,
+          "missed": 0,
+          "epoch": 8,
+          "detection_frame_id": 2938,
+          "age_ms": 93.9
+        },
+        {
+          "class_id": 0,
+          "category": "person",
+          "label": "行人",
+          "confidence": 0.3135,
+          "box": [
+            2132.51,
+            809.51,
+            2196.14,
+            889.77
+          ],
+          "source": "optical_flow",
+          "track_id": 1664,
+          "last_detected_monotonic": 1726.38329218,
+          "missed": 0,
+          "epoch": 8,
+          "detection_frame_id": 2938,
+          "age_ms": 93.9
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.2731,
+          "box": [
+            2300.79,
+            810.16,
+            2449.02,
+            866.73
+          ],
+          "source": "optical_flow",
+          "track_id": 1660,
+          "last_detected_monotonic": 1726.38329218,
+          "missed": 0,
+          "epoch": 8,
+          "detection_frame_id": 2938,
+          "age_ms": 93.9
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.27,
+          "box": [
+            799.27,
+            812.89,
+            893.69,
+            867.62
+          ],
+          "source": "optical_flow",
+          "track_id": 1634,
+          "last_detected_monotonic": 1726.38329218,
+          "missed": 0,
+          "epoch": 8,
+          "detection_frame_id": 2938,
+          "age_ms": 93.9
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.2576,
+          "box": [
+            247.54,
+            839.58,
+            307.3,
+            892.18
+          ],
+          "source": "optical_flow",
+          "track_id": 1665,
+          "last_detected_monotonic": 1726.319698912,
+          "missed": 1,
+          "epoch": 8,
+          "detection_frame_id": 2936,
+          "age_ms": 93.9
+        }
+      ],
+      "detected_count": 0,
+      "held_count": 5,
+      "count": 5,
+      "detection_fps": 14.65,
+      "stage_ms": {
+        "det_preprocess": 3.356,
+        "det_inference": 22.166,
+        "det_postprocess": 5.56,
+        "det_tracking": 0.078,
+        "det_display_tracking": 8.376
+      },
+      "inference_age_ms": 93.9,
+      "display_frame_id": 2940
+    },
+    "stage_ms": {
+      "overlay": 9.608,
+      "jpeg": 1.987,
+      "det_preprocess": 3.356,
+      "det_inference": 22.166,
+      "det_postprocess": 5.56,
+      "det_tracking": 0.078,
+      "det_display_tracking": 8.376,
+      "decode": 11.167,
+      "preprocess": 9.416,
+      "signal_roi": 1.834,
+      "lanes": 17.086,
+      "inference": 18.927,
+      "rules": 0.034,
+      "total": 59.621,
+      "timeline_lag_ms": 91.88
+    },
+    "stage_mean_ms": {
+      "overlay": 11.552,
+      "jpeg": 2.082,
+      "det_preprocess": 3.868,
+      "det_inference": 24.476,
+      "det_postprocess": 6.969,
+      "det_tracking": 0.195,
+      "det_display_tracking": 9.361,
+      "decode": 13.282,
+      "preprocess": 9.223,
+      "signal_roi": 2.046,
+      "lanes": 17.272,
+      "inference": 19.324,
+      "rules": 0.034,
+      "total": 64.988,
+      "timeline_lag_ms": 80.838
+    },
+    "error": null,
+    "note": "模拟车辆与原录像车辆独立；录像运动不因模拟停车而冻结。无UDP、无FPGA事件；图龄从本机解码完成起算。"
+  }
+}
