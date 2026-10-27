@@ -1,0 +1,73 @@
+[
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion_original_case\\20261019_171049_737_2376748f_control",
+    "StartedUtc": "2026-10-19T09:10:50.7583806Z",
+    "FinishedUtc": "2026-10-19T09:10:50.8399485Z",
+    "ExitCode": 0,
+    "Log": "vlog_version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion_original_case\\20261019_171049_737_2376748f_control",
+    "StartedUtc": "2026-10-19T09:10:50.8468929Z",
+    "FinishedUtc": "2026-10-19T09:10:50.9557677Z",
+    "ExitCode": 0,
+    "Log": "vsim_version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion_original_case\\20261019_171049_737_2376748f_control",
+    "StartedUtc": "2026-10-19T09:10:50.9606408Z",
+    "FinishedUtc": "2026-10-19T09:10:51.0529289Z",
+    "ExitCode": 0,
+    "Log": "library.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\wr_cmd_trans.v",
+      "E:\\FPGA drive\\_archive\\experiments\\road_video_ddr_20261017\\tests\\control_tb.sv"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion_original_case\\20261019_171049_737_2376748f_control",
+    "StartedUtc": "2026-10-19T09:10:51.0582454Z",
+    "FinishedUtc": "2026-10-19T09:10:51.1662818Z",
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-c",
+      "-novopt",
+      "-t",
+      "1ps",
+      "-suppress",
+      "12110",
+      "-lib",
+      "work",
+      "control_tb",
+      "-do",
+      "onerror {quit -code 2}; vcd file control.vcd; vcd add -r /control_tb/*; run -all; quit -code 0",
+      "-l",
+      "simulation.log"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion_original_case\\20261019_171049_737_2376748f_control",
+    "StartedUtc": "2026-10-19T09:10:51.1690535Z",
+    "FinishedUtc": "2026-10-19T09:10:53.4714651Z",
+    "ExitCode": 0,
+    "Log": "console.log"
+  }
+]

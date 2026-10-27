@@ -1,0 +1,20 @@
+{
+  "description": "User-supplied evaluation inputs; no pixel ground truth and no model training.",
+  "split_policy": "Fixed before inference. Holdout is not used to select the model or thresholds. This small convenience sample is not a deployment benchmark.",
+  "images": [
+    {"id": "legacy_road_1", "file": "../road_1.png", "road_present": true, "split": "development", "source_kind": "user_stock_photo", "view": "forward", "notes": "Previously supplied original, centered double-yellow divider."},
+    {"id": "legacy_road_2", "file": "../road_2.png", "road_present": true, "split": "development", "source_kind": "user_stock_photo", "view": "forward", "notes": "Previously supplied original, yellow hatched median."},
+    {"id": "legacy_road_3", "file": "../road_3.png", "road_present": true, "split": "holdout", "source_kind": "user_stock_photo", "view": "forward", "notes": "Previously supplied original; provenance not independently verified."},
+    {"id": "road_ai_straight", "file": "road_ai_straight.png", "road_present": true, "split": "development", "source_kind": "ai_generated_label_visible", "view": "forward", "notes": "Visible AI-generated watermark; not a real camera validation image."},
+    {"id": "road_ai_curve", "file": "road_ai_curve.png", "road_present": true, "split": "holdout", "source_kind": "ai_generated_label_visible", "view": "elevated_forward", "notes": "Visible AI-generated watermark; curved road."},
+    {"id": "road_ai_junction_overhead", "file": "road_ai_junction_overhead.png", "road_present": true, "split": "holdout", "source_kind": "ai_generated_label_visible", "view": "overhead", "notes": "Out of vehicle-camera perspective; do not infer an ego lane or control action."},
+    {"id": "negative_shelf_light", "file": "negative_shelf_light.png", "road_present": false, "split": "development", "source_kind": "user_web_image", "view": "indoor", "notes": "Shelf, light wall and plants; no road."},
+    {"id": "negative_shelf_dark", "file": "negative_shelf_dark.png", "road_present": false, "split": "holdout", "source_kind": "user_web_image", "view": "indoor", "notes": "Shelf, books and laptop; no road."},
+    {"id": "negative_mountain_forest", "file": "negative_mountain_forest.png", "road_present": false, "split": "development", "source_kind": "user_web_image", "view": "landscape", "notes": "Mountain, forest and sky; no visible road."},
+    {"id": "negative_shelf_illustration", "file": "negative_shelf_illustration.png", "road_present": false, "split": "holdout", "source_kind": "illustration", "view": "front", "notes": "Vector-style shelf texture; not a real camera image."},
+    {"id": "negative_boxes", "file": "negative_boxes.png", "road_present": false, "split": "development", "source_kind": "user_web_image", "view": "indoor", "notes": "Boxes, shelves and wall; no road."},
+    {"id": "negative_table_window", "file": "negative_table_window.png", "road_present": false, "split": "development", "source_kind": "user_web_image", "view": "indoor", "notes": "Table, floor boards and windows; no road."},
+    {"id": "negative_table_brick", "file": "negative_table_brick.png", "road_present": false, "split": "holdout", "source_kind": "user_web_image", "view": "indoor", "notes": "Table, floor boards and brick wall; no road."},
+    {"id": "negative_desk_window", "file": "negative_desk_window.png", "road_present": false, "split": "holdout", "source_kind": "user_web_image", "view": "indoor_landscape", "notes": "Desk and forest through a window; no visible road."}
+  ]
+}

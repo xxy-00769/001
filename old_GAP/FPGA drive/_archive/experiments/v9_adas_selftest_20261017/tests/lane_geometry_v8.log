@@ -1,0 +1,41 @@
+#-----------------------------------------------------------
+# xsim v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Sat Oct 17 00:24:30 2026
+# Process ID: 29988
+# Current directory: E:/FPGA drive/HDMI_DDR3_OV5640/tests
+# Command line: xsim.exe -log lane_geometry_v8.log -mode tcl -source {xsim.dir/lane_geometry_v8/xsim_script.tcl}
+# Log file: E:/FPGA drive/HDMI_DDR3_OV5640/tests/lane_geometry_v8.log
+# Journal file: E:/FPGA drive/HDMI_DDR3_OV5640/tests\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/lane_geometry_v8/xsim_script.tcl
+# xsim {lane_geometry_v8} -autoloadwcfg -runall
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+run -all
+PASS 1: centered continuous
+PASS 2: camera right first frame
+PASS 3: camera right second frame
+PASS 4: camera right third frame
+PASS 5: centered clears immediately
+PASS 6: camera left first frame
+PASS 7: camera left second frame
+PASS 8: camera left third frame
+PASS 9: left only clears pair and warning
+PASS 10: right only
+PASS 11: blank clears all
+PASS 12: repeated painted segments
+PASS 13: one short segment is not a lane
+PASS 14: missing near band disables offset
+PASS 15: malformed frame
+PASS 16: above ROI
+PASS 17: too many narrow runs
+PASS 18: wide left blob rejected
+PASS 19: implausibly narrow pair
+PASS 20: crosswalk vetoes intersected bands
+PASS 21: reacquire after crosswalk
+PASS: 21 geometry cases plus interruption, blanking and reset
+$finish called at time : 18085110 ns : File "E:/FPGA drive/HDMI_DDR3_OV5640/tests/lane_geometry_tb.v" Line 121
+exit
+INFO: [Common 17-206] Exiting xsim at Sat Oct 17 00:24:36 2026...

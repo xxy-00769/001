@@ -1,0 +1,174 @@
+[
+  {
+    "Tool": "vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953",
+    "StartedUtc": "2026-10-19T11:17:20.9085814Z",
+    "FinishedUtc": "2026-10-19T11:17:20.9917863Z",
+    "ExitCode": 0,
+    "Log": "version.log"
+  },
+  {
+    "Tool": "vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953",
+    "StartedUtc": "2026-10-19T11:17:20.9967831Z",
+    "FinishedUtc": "2026-10-19T11:17:21.0635169Z",
+    "ExitCode": 0,
+    "Log": "library.log"
+  },
+  {
+    "Tool": "vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\img_proc.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\lane_detect.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\zebra_detect.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\zebra_overlay.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\lane_geometry.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\adas_overlay.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s4_clean_video\\clean_video_tb.sv",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tests\\img_proc_frame_tb.v"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953",
+    "StartedUtc": "2026-10-19T11:17:21.0648029Z",
+    "FinishedUtc": "2026-10-19T11:17:21.2171942Z",
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "-c"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\s4_clean_fullframe_tb",
+    "StartedUtc": "2026-10-19T11:17:21.2392120Z",
+    "FinishedUtc": "2026-10-19T11:17:21.3175149Z",
+    "ExitCode": 0,
+    "Log": "s4_clean_fullframe_tb.library_config.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "work",
+      "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\s4_clean_fullframe_tb",
+    "StartedUtc": "2026-10-19T11:17:21.3178906Z",
+    "FinishedUtc": "2026-10-19T11:17:21.4127779Z",
+    "ExitCode": 0,
+    "Log": "s4_clean_fullframe_tb.library_map.log"
+  },
+  {
+    "Tool": "vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "s4_clean_fullframe_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\s4_clean_fullframe_tb\\simulation.log"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\s4_clean_fullframe_tb",
+    "StartedUtc": "2026-10-19T11:17:21.4133156Z",
+    "FinishedUtc": "2026-10-19T11:17:29.7787012Z",
+    "ExitCode": 0,
+    "Log": "s4_clean_fullframe_tb.console.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "-c"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\s4_clean_diagnostics_tb",
+    "StartedUtc": "2026-10-19T11:17:29.8479949Z",
+    "FinishedUtc": "2026-10-19T11:17:29.9763652Z",
+    "ExitCode": 0,
+    "Log": "s4_clean_diagnostics_tb.library_config.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "work",
+      "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\s4_clean_diagnostics_tb",
+    "StartedUtc": "2026-10-19T11:17:29.9767821Z",
+    "FinishedUtc": "2026-10-19T11:17:30.0478832Z",
+    "ExitCode": 0,
+    "Log": "s4_clean_diagnostics_tb.library_map.log"
+  },
+  {
+    "Tool": "vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "s4_clean_diagnostics_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\s4_clean_diagnostics_tb\\simulation.log"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\s4_clean_diagnostics_tb",
+    "StartedUtc": "2026-10-19T11:17:30.0482525Z",
+    "FinishedUtc": "2026-10-19T11:17:33.6212318Z",
+    "ExitCode": 0,
+    "Log": "s4_clean_diagnostics_tb.console.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "-c"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\img_proc_early_sync_tb",
+    "StartedUtc": "2026-10-19T11:17:33.6466187Z",
+    "FinishedUtc": "2026-10-19T11:17:33.7251898Z",
+    "ExitCode": 0,
+    "Log": "img_proc_early_sync_tb.library_config.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "work",
+      "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\img_proc_early_sync_tb",
+    "StartedUtc": "2026-10-19T11:17:33.7256671Z",
+    "FinishedUtc": "2026-10-19T11:17:33.8258499Z",
+    "ExitCode": 0,
+    "Log": "img_proc_early_sync_tb.library_map.log"
+  },
+  {
+    "Tool": "vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "img_proc_early_sync_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\img_proc_early_sync_tb\\simulation.log"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_191720_834_f9020953\\img_proc_early_sync_tb",
+    "StartedUtc": "2026-10-19T11:17:33.8264088Z",
+    "FinishedUtc": "2026-10-19T11:17:36.7501331Z",
+    "ExitCode": 0,
+    "Log": "img_proc_early_sync_tb.console.log"
+  }
+]

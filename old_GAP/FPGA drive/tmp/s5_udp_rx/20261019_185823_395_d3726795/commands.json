@@ -1,0 +1,74 @@
+[
+  {
+    "Tool": "C:\\Users\\19511\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "Arguments": [
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s5_udp_rx\\generate_vectors.py",
+      "E:\\FPGA drive\\tmp\\s5_udp_rx\\20261019_185823_395_d3726795\\vectors"
+    ],
+    "ExitCode": 0,
+    "Log": "vectors.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "ExitCode": 0,
+    "Log": "version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "ExitCode": 0,
+    "Log": "vlib.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vmap.exe",
+    "Arguments": [
+      "-c"
+    ],
+    "ExitCode": 0,
+    "Log": "vmap_config.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vmap.exe",
+    "Arguments": [
+      "work",
+      "E:\\FPGA drive\\tmp\\s5_udp_rx\\20261019_185823_395_d3726795\\work"
+    ],
+    "ExitCode": 0,
+    "Log": "vmap.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "+incdir+E:\\FPGA drive\\tmp\\s5_udp_rx\\20261019_185823_395_d3726795\\vectors",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\net_diag\\mes50hp_udp_rx.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s5_udp_rx\\udp_rx_tb.sv"
+    ],
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "s5_udp_rx_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\s5_udp_rx\\20261019_185823_395_d3726795\\simulation.log"
+    ],
+    "ExitCode": 0,
+    "Log": "simulation_console.log"
+  }
+]

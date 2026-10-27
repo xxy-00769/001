@@ -1,0 +1,55 @@
+深圳市小眼睛科技有限公司 
+ 31 / 38 
+www.meyesemi.com                                微信公众号：小眼睛
+FPGA 
+HD_TX_D16 HDMI 显示图像像素点数据位[16] K17 
+HD_TX_D17 HDMI 显示图像像素点数据位[17] N19 
+HD_TX_D18 HDMI 显示图像像素点数据位[18] J22 
+HD_TX_D19 HDMI 显示图像像素点数据位[19] J20 
+HD_TX_D20 HDMI 显示图像像素点数据位[20] K22 
+HD_TX_D21 HDMI 显示图像像素点数据位[21] H21 
+HD_TX_D22 HDMI 显示图像像素点数据位[22] H22 
+HD_TX_D23 HDMI 显示图像像素点数据位[23] H19 
+HDMI_TX_SCL MS7210 控制通道 IIC 的时钟信号 P17 
+HDMI_TX_SDA MS7210 控制通道 IIC 的数据信号 P18 
+HD_TX_SC_MC MS7210 音频通道 I2S 的时钟信号 W22 
+HD_TX_I2S1 MS7210 音频通道 I2S 的数据通道 1 P21 
+HD_TX_I2S0 MS7210 音频通道 I2S 的数据通道 0 U22 
+HD_TX_WS MS7210 音频通道 I2S 的位时钟 U19 
+HD_TX_RSTN MS7210 硬件复位信号，低电平有效 R17 
+HD_TX_INT MS7210 输出中断 U20 
+3.4 按键/指示灯/存储接口 
+3.4.1 按键 
+MES50HP 扩展底板提供了 8 个用户按键（K1～8）；1 个重加载按键，重加
+载按键通过一个延时复位芯片连接到 PGL50H 的 RSTN 管脚；8 个用户按键都连
+接到 PGL50H 的普通 IO 上，按键低电平有效，但按键按下时，IO 上的输入电压
+为低；当没有按下按键时，IO 上的输入电压为高电平； 
+  
+
+深圳市小眼睛科技有限公司 
+ 32 / 38 
+www.meyesemi.com                                微信公众号：小眼睛
+FPGA 
+图 3-8 用户按键电路图  
+具体管脚分配如下； 
+表 3-8 按键管脚分配 
+信号 PGL50H Pin 
+REST 重新加载固件按键 
+KEY1 K18 
+KEY2 L15 
+KEY3 J17 
+KEY4 K16 
+KEY5 J16 
+KEY6 J19 
+KEY7 H20 
+KEY8 H17 
+3.4.2 Led 灯 
+MES50HP 开发板有 11 个翠绿 LED 灯，其中 1 个是电源指示灯（POWER）；
+2 个是 FPGA 的运行的状态指示灯：INIT 和 DONE； 8 个是用户 LED 灯（LED1～
+8） 。连接在PGL50H BANK 0 的 IO 上，FPGA 输出高电平时对应的 LED 灯亮灯，
+板上 LED 灯功能电路图： 
+ 
+图 3-9 LED 灯电路原理图 
+具体管脚分配请看下表： 
+表 3-9 LED 灯 
+信号 PGL50H Pin 

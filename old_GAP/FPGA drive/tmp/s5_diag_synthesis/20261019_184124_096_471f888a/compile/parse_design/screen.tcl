@@ -1,0 +1,1 @@
+.rtl_screen -top_module {mes50hp_diag} -include_path {<E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a>} -design_files {<E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/mes50hp_diag.v|work>}

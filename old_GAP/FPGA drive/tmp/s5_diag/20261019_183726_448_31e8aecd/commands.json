@@ -1,0 +1,83 @@
+[
+  {
+    "Tool": "C:\\Users\\19511\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "Arguments": [
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s5_diag\\test_link.py",
+      "-v"
+    ],
+    "ExitCode": 0,
+    "Log": "host_tests.log"
+  },
+  {
+    "Tool": "C:\\Users\\19511\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "Arguments": [
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s5_diag\\test_link.py",
+      "--vectors",
+      "E:\\FPGA drive\\tmp\\s5_diag\\20261019_183726_448_31e8aecd\\vectors"
+    ],
+    "ExitCode": 0,
+    "Log": "vectors.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "ExitCode": 0,
+    "Log": "version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "ExitCode": 0,
+    "Log": "vlib.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vmap.exe",
+    "Arguments": [
+      "-c"
+    ],
+    "ExitCode": 0,
+    "Log": "vmap_config.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vmap.exe",
+    "Arguments": [
+      "work",
+      "E:\\FPGA drive\\tmp\\s5_diag\\20261019_183726_448_31e8aecd\\work"
+    ],
+    "ExitCode": 0,
+    "Log": "vmap.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\net_diag\\mes50hp_diag.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s5_diag\\diag_tb.sv"
+    ],
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "s5_diag_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\s5_diag\\20261019_183726_448_31e8aecd\\simulation.log"
+    ],
+    "ExitCode": 0,
+    "Log": "simulation_console.log"
+  }
+]

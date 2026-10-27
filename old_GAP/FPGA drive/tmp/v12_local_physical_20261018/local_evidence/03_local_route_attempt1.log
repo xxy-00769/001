@@ -1,0 +1,78 @@
+W: The report timing ".db" file is empty, some functions may be not supported.
+Loading DB file : E:/FPGA drive/tmp/v12_local_physical_20261018/place_route/hdmi_ddr_ov5640_top_pnr.adf ...
+Compiling verification operator library.
+Compiling common defs.
+Compiling prim grid devices.
+Compiling prim grid device symbols.
+Compiling gate devices.
+Compiling gate operators.
+Building architecture model.
+Loading device packaging model.
+Building architecture floorplan logic view.
+Building architecture schematic structure.
+Building architecture floorplan schematic view.
+Loading the device ...
+Loading the wires...
+Loading wires finished.
+Import Design DB finished.
+W: Flow-4026: timing design DB file is not found.
+Loading Routing result...
+Loading Complete.
+I: Column Clock Check open.
+Read Column Clock Map.
+show -design_net {u_img_proc/u_lane/width_meta[65] [24]}
+Executing : show -design_net {u_img_proc/u_lane/width_meta[65] [24]}
+route for net u_img_proc/u_lane/width_meta[65] [24] :
+  Q3 of CLMA_130_176
+    A_Q3 of SRB_128_176
+      A_AD of SRB_128_176
+        AD of CLMA_130_176
+Executing : show -design_net {u_img_proc/u_lane/width_meta[65] [24]} successfully.
+next -dev_pin:instance {A_Q3:SRB_128_176}
+Executing : next -dev_pin:instance A_Q3:SRB_128_176
+Next available pins for A_Q3:SRB_128_176 :
+A_AD:SRB_128_176  S_C1:SRB_128_176  S_C3:SRB_128_176  S_D2:SRB_128_176  ZDE[5]:SRB_128_176  ZDS[4]:SRB_128_176  ZDS[5]:SRB_128_176  ZDW[4]:SRB_128_176  ZM[11]:SRB_128_176  ZM[17]:SRB_128_176  ZM[23]:SRB_128_176  ZM[5]:SRB_128_176  ZQS[4]:SRB_128_176  ZQS[5]:SRB_128_176  ZQW[4]:SRB_128_176  ZQW[5]:SRB_128_176  ZSNW[4]:SRB_128_176  ZSNW[5]:SRB_128_176  ZSSE[4]:SRB_128_176  ZSSE[5]:SRB_128_176  ZSSW[5]:SRB_128_176  ZSS[3]:SRB_128_176  ZSW[4]:SRB_128_176  
+Executing : next -dev_pin:instance A_Q3:SRB_128_176 successfully.
+next -dev_pin:instance {ZM[11]:SRB_128_176}
+Executing : next -dev_pin:instance {ZM[11]:SRB_128_176}
+W: UiCommand-4201: ZM[11]:SRB_128_176 does not have device net.
+unroute -design_net {u_img_proc/u_lane/width_meta[65] [24]}
+Executing : unroute -design_net {u_img_proc/u_lane/width_meta[65] [24]}
+Executing : unroute -design_net {u_img_proc/u_lane/width_meta[65] [24]} successfully.
+manual_route -net {u_img_proc/u_lane/width_meta[65] [24]} -branch {AD:CLMA_130_176} -pins {A_Q3:SRB_128_176;ZM[11]:SRB_128_176}
+Executing : manual_route -net {u_img_proc/u_lane/width_meta[65] [24]} -branch {AD:CLMA_130_176} -pins {A_Q3:SRB_128_176;ZM[11]:SRB_128_176}
+E: DesignEditor-0029: The number of option "-net", "-branch", "-pins" must be equal.
+manual_route -help
+Executing : manual_route -help
+H: manual_route : manual unroute command (Version 2022.2-SP6.1 build 138931)
+    [ -help  ]
+        Turn on to print this message
+    -net string
+        Specifying the net to manual route
+    -branch string
+        Specifying the branch to manual route
+    -pins string
+        Specifying the route by device pins
+
+Executing : manual_route -help successfully.
+manual_route -net {u_img_proc/u_lane/width_meta[65] [24]} -branch {AD:CLMA_130_176} -pins {A_Q3:SRB_128_176>ZM[11]:SRB_128_176}
+Executing : manual_route -net {u_img_proc/u_lane/width_meta[65] [24]} -branch {AD:CLMA_130_176} -pins {A_Q3:SRB_128_176>ZM[11]:SRB_128_176}
+E: Route-0025: The last selected device pin can not be reflect pin ZM[11]. Please modify.
+manual_route -net {u_img_proc/u_lane/width_meta[65] [24]} -branch {AD:CLMA_130_176} -pins {A_Q3:SRB_128_176>ZM[11]:SRB_128_176>A_AD:SRB_128_176}
+Executing : manual_route -net {u_img_proc/u_lane/width_meta[65] [24]} -branch {AD:CLMA_130_176} -pins {A_Q3:SRB_128_176>ZM[11]:SRB_128_176>A_AD:SRB_128_176}
+E: Route-0024: Driver pin "A_AD" can not be specified.
+Select pin "CLMA_130_176/AD"
+manual_route -net {u_img_proc/u_lane/width_meta[65] [24]} -branch {AD:CLMA_130_176} -pins {A_Q3:SRB_128_176>S_C1:SRB_128_176}
+Executing : manual_route -net {u_img_proc/u_lane/width_meta[65] [24]} -branch {AD:CLMA_130_176} -pins {A_Q3:SRB_128_176>S_C1:SRB_128_176}
+Start to route user path part 1:
+Route User Part 1, iteration = 0.
+Route user path one succeeded.
+Finish route user path part 1, status: succeeded.
+Start to route user path part 2:
+Finish route user path part 2, status: succeeded.
+Start to route user path part 3:
+I: Manual routing is not allowed, can't find load: AD, inst: CLMA_130_176.
+    Unrouted loads 0, Unrouted nets 1 at the end of iteration 0.
+    route iteration 0, CPU time elapsed 0.000000 sec.
+I: Design cannot be routed.
+Finish route user path part 3, status: failed.

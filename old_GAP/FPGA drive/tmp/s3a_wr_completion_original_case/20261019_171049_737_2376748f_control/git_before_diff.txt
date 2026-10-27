@@ -1,0 +1,29 @@
+diff --git a/README.md b/README.md
+index c4af263..23ba0e1 100644
+--- a/README.md
++++ b/README.md
+@@ -3,6 +3,11 @@
+ > 基于 **盘古 50K（PGL50H）** 的实时视频感知流水线
+ > 全国大学生嵌入式芯片与系统设计竞赛 · FPGA 创新设计赛道 · 紫光同创选题三
+ 
++当前开发入口：[项目进程](E:/FPGA drive/HDMI_DDR3_OV5640/reports/项目进程.md)、
++[单路ETH1接线与实施边界](E:/FPGA drive/HDMI_DDR3_OV5640/reports/单路高速互连方案_2026-10-18.md)。
++按比赛功能闭环优先推进；v11仅合成规则四键交互通过，v12手工修复停止。
++下文旧构建/下载命令不是本次执行授权；当前不改RTL、不综合/映射、不烧录。
++
+ ---
+ 
+ ## ⚙️ 硬件
+diff --git a/source/rtl/wr_cmd_trans.v b/source/rtl/wr_cmd_trans.v
+index bdfc0ba..f52a7f3 100644
+--- a/source/rtl/wr_cmd_trans.v
++++ b/source/rtl/wr_cmd_trans.v
+@@ -293,7 +293,7 @@ module wr_cmd_trans #(
+             rd_cmd_done <= 1'd0;
+         else
+         begin
+-            if(rd_data_cnt == rd_trans_len - 1'b1)
++            if(read_en && rd_data_cnt == rd_trans_len - 1'b1)
+                 rd_cmd_done <= 1'd1;
+             else
+                 rd_cmd_done <= 1'd0;

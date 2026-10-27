@@ -1,0 +1,51 @@
+[
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion\\20261019_171119_771_58524eda",
+    "ExitCode": 0,
+    "Log": "version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion\\20261019_171119_771_58524eda",
+    "ExitCode": 0,
+    "Log": "library.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\wr_cmd_trans.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s3a_wr_completion\\regression_tb.sv"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion\\20261019_171119_771_58524eda",
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "s3a_wr_completion_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "simulation.log"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3a_wr_completion\\20261019_171119_771_58524eda",
+    "ExitCode": 0,
+    "Log": "console.log"
+  }
+]

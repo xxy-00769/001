@@ -1,0 +1,1373 @@
+License checkout: fabric_shell from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling architecture definition.
+W: Warning : The license will invalid in 15 days. In order not to affect your usage, please update the license in time.
+
+Analyzing project file 'E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/build.pds'.
+Executing : add_design mes50hp_diag.v
+Executing : add_design mes50hp_diag.v successfully.
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484 successfully.
+
+
+Executing : compile -top_module mes50hp_diag
+
+
+Process "Compile" started.
+Current time: Mon Oct 19 18:41:26 2026
+Compiling architecture definition.
+Analyzing project file 'E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/build.pds'.
+License checkout: fabric_ads from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+I: Enable Verilog2k features and keywords
+Start rtl-analyze.
+Executing : .rtl_analyze -work work -include_path {{E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a}} {E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/mes50hp_diag.v}
+I: Verilog-0001: Analyzing file E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/mes50hp_diag.v
+I: Verilog-0002: [E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/mes50hp_diag.v(line number: 4)] Analyzing module mes50hp_diag (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {{E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a}} {E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/mes50hp_diag.v} successfully.
+I: Module "mes50hp_diag" is set as top module.
+Executing : rtl-analyze successfully. Time elapsed: 2.130s wall, 0.016s user + 0.000s system = 0.016s CPU (0.7%)
+
+Start rtl-elaborate.
+I: Verilog-0003: [E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/mes50hp_diag.v(line number: 4)] Elaborating module mes50hp_diag
+I: Module instance {mes50hp_diag} parameter value:
+    SESSION_MS = 32'b00000000000000000001001110001000
+    MAX_LEASE_MS = 32'b00000000000000000001001110001000
+Executing : rtl-elaborate successfully. Time elapsed: 0.135s wall, 0.109s user + 0.031s system = 0.141s CPU (104.0%)
+
+Start rtl-prep.
+Executing : rtl-prep successfully. Time elapsed: 0.214s wall, 0.203s user + 0.000s system = 0.203s CPU (95.0%)
+
+Start rtl-infer.
+Start DFF-inference.
+Executing : DFF-inference successfully.
+Executing : rtl-infer successfully. Time elapsed: 0.471s wall, 0.406s user + 0.047s system = 0.453s CPU (96.2%)
+
+Start rtl-control-opt.
+Executing : rtl-control-opt successfully. Time elapsed: 0.036s wall, 0.031s user + 0.000s system = 0.031s CPU (87.2%)
+
+Start rtl-data-opt.
+Executing : rtl-data-opt successfully. Time elapsed: 0.505s wall, 0.500s user + 0.000s system = 0.500s CPU (98.9%)
+
+Start FSM inference.
+Executing : FSM inference successfully. Time elapsed: 0.031s wall, 0.031s user + 0.000s system = 0.031s CPU (99.2%)
+
+Start sdm2adm.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+I: Constant propagation done on N14472 (bmsWIDEINV).
+I: Constant propagation done on N49_0 (bmsREDXOR).
+I: Constant propagation done on N49_1 (bmsREDXOR).
+I: Constant propagation done on N49_2 (bmsREDXOR).
+I: Constant propagation done on N49_3 (bmsREDXOR).
+I: Constant propagation done on N49_4 (bmsREDXOR).
+I: Constant propagation done on N49_5 (bmsREDXOR).
+I: Constant propagation done on N49_6 (bmsREDXOR).
+I: Constant propagation done on N49_31 (bmsREDXOR).
+I: Constant propagation done on N59_0 (bmsREDXOR).
+Executing : sdm2adm successfully. Time elapsed: 1.547s wall, 1.438s user + 0.031s system = 1.469s CPU (95.0%)
+
+Saving design to DB.
+Action compile: Real time elapsed is 0h:0m:11s
+Action compile: CPU time elapsed is 0h:0m:7s
+Action compile: Process CPU time elapsed is 0h:0m:7s
+Current time: Mon Oct 19 18:41:36 2026
+Action compile: Peak memory pool usage is 241 MB
+Action from compile to compile: Total Real Time elapsed is 0h:0m:11s
+Action from compile to compile: Total CPU time elapsed is 0h:0m:7s
+Action from compile to compile: Total Process CPU Time elapsed is 0h:0m:7s
+Process "Compile" done.
+Executing : compile -top_module mes50hp_diag successfully.
+
+
+Executing : synthesize -ads -selected_syn_tool_opt 2
+
+
+Process "Synthesize" started.
+Current time: Mon Oct 19 18:41:36 2026
+Compiling architecture definition.
+Analyzing project file 'E:/FPGA drive/tmp/s5_diag_synthesis/20261019_184124_096_471f888a/build.pds'.
+License checkout: fabric_ads from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Reading design from compile DB
+Reading design from compile DB successfully.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Constraint check start.
+W: ConstraintEditor-4019: Port Bus 'accepted_count' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'rejected_count' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'rx_payload' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'tx_payload' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'clk' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'led_requested' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'link_up' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'rst_n' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'rx_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'rx_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'session_active' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'tick_ms' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'tx_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'tx_valid' unspecified I/O constraint.
+Constraint check end.
+
+C: SDC-2025: Clock source 'n:clk' need a clock constraint, please use 'create_clock' or 'create_generate_clock' to generate.
+Executing : get_ports clk
+Executing : get_ports clk successfully.
+Executing : create_clock -name mes50hp_diag|clk [get_ports clk] -period 1000.000 -waveform {0.000 500.000} -add
+Executing : create_clock -name mes50hp_diag|clk [get_ports clk] -period 1000.000 -waveform {0.000 500.000} -add successfully.
+Executing : set_clock_groups -name Inferred_clock_group_0 -asynchronous -group mes50hp_diag|clk
+Executing : set_clock_groups -name Inferred_clock_group_0 -asynchronous -group mes50hp_diag|clk successfully.
+Start pre-mapping.
+I: Removed bmsWIDEMUX inst N4685 that is redundant to N2727
+I: Removed bmsWIDEMUX inst N6629 that is redundant to N2727
+I: Removed bmsWIDEMUX inst N8561 that is redundant to N2727
+I: Removed bmsWIDEMUX inst N10493 that is redundant to N2727
+I: Removed bmsWIDEMUX inst N4695 that is redundant to N2737
+I: Removed bmsWIDEMUX inst N6639 that is redundant to N2737
+I: Removed bmsWIDEMUX inst N8571 that is redundant to N2737
+I: Removed bmsWIDEMUX inst N10503 that is redundant to N2737
+I: Removed bmsWIDEMUX inst N4705 that is redundant to N2747
+I: Removed bmsWIDEMUX inst N6649 that is redundant to N2747
+I: Removed bmsWIDEMUX inst N8581 that is redundant to N2747
+I: Removed bmsWIDEMUX inst N10513 that is redundant to N2747
+I: Removed bmsWIDEMUX inst N4715 that is redundant to N2757
+I: Removed bmsWIDEMUX inst N6659 that is redundant to N2757
+I: Removed bmsWIDEMUX inst N8591 that is redundant to N2757
+I: Removed bmsWIDEMUX inst N10523 that is redundant to N2757
+I: Removed bmsWIDEMUX inst N4725 that is redundant to N2767
+I: Removed bmsWIDEMUX inst N6669 that is redundant to N2767
+I: Removed bmsWIDEMUX inst N8601 that is redundant to N2767
+I: Removed bmsWIDEMUX inst N10533 that is redundant to N2767
+I: Removed bmsWIDEMUX inst N4735 that is redundant to N2777
+I: Removed bmsWIDEMUX inst N6679 that is redundant to N2777
+I: Removed bmsWIDEMUX inst N8611 that is redundant to N2777
+I: Removed bmsWIDEMUX inst N10543 that is redundant to N2777
+I: Removed bmsWIDEMUX inst N4745 that is redundant to N2787
+I: Removed bmsWIDEMUX inst N6689 that is redundant to N2787
+I: Removed bmsWIDEMUX inst N8621 that is redundant to N2787
+I: Removed bmsWIDEMUX inst N10553 that is redundant to N2787
+I: Removed bmsWIDEMUX inst N4755 that is redundant to N2797
+I: Removed bmsWIDEMUX inst N6699 that is redundant to N2797
+I: Removed bmsWIDEMUX inst N8631 that is redundant to N2797
+I: Removed bmsWIDEMUX inst N10563 that is redundant to N2797
+I: Removed bmsWIDEMUX inst N4769 that is redundant to N2811
+I: Removed bmsWIDEMUX inst N6713 that is redundant to N2811
+I: Removed bmsWIDEMUX inst N8645 that is redundant to N2811
+I: Removed bmsWIDEMUX inst N10577 that is redundant to N2811
+I: Removed bmsWIDEMUX inst N4779 that is redundant to N2821
+I: Removed bmsWIDEMUX inst N6723 that is redundant to N2821
+I: Removed bmsWIDEMUX inst N8655 that is redundant to N2821
+I: Removed bmsWIDEMUX inst N10587 that is redundant to N2821
+I: Removed bmsWIDEMUX inst N4789 that is redundant to N2831
+I: Removed bmsWIDEMUX inst N6733 that is redundant to N2831
+I: Removed bmsWIDEMUX inst N8665 that is redundant to N2831
+I: Removed bmsWIDEMUX inst N10597 that is redundant to N2831
+I: Removed bmsWIDEMUX inst N4799 that is redundant to N2841
+I: Removed bmsWIDEMUX inst N6743 that is redundant to N2841
+I: Removed bmsWIDEMUX inst N8675 that is redundant to N2841
+I: Removed bmsWIDEMUX inst N10607 that is redundant to N2841
+I: Removed bmsWIDEMUX inst N4809 that is redundant to N2851
+I: Removed bmsWIDEMUX inst N6753 that is redundant to N2851
+I: Removed bmsWIDEMUX inst N8685 that is redundant to N2851
+I: Removed bmsWIDEMUX inst N10617 that is redundant to N2851
+I: Removed bmsWIDEMUX inst N4819 that is redundant to N2861
+I: Removed bmsWIDEMUX inst N6763 that is redundant to N2861
+I: Removed bmsWIDEMUX inst N8695 that is redundant to N2861
+I: Removed bmsWIDEMUX inst N10627 that is redundant to N2861
+I: Removed bmsWIDEMUX inst N4829 that is redundant to N2871
+I: Removed bmsWIDEMUX inst N6773 that is redundant to N2871
+I: Removed bmsWIDEMUX inst N8705 that is redundant to N2871
+I: Removed bmsWIDEMUX inst N10637 that is redundant to N2871
+I: Removed bmsWIDEMUX inst N4839 that is redundant to N2881
+I: Removed bmsWIDEMUX inst N6783 that is redundant to N2881
+I: Removed bmsWIDEMUX inst N8715 that is redundant to N2881
+I: Removed bmsWIDEMUX inst N10647 that is redundant to N2881
+I: Removed bmsWIDEMUX inst N4853 that is redundant to N2895
+I: Removed bmsWIDEMUX inst N6797 that is redundant to N2895
+I: Removed bmsWIDEMUX inst N8729 that is redundant to N2895
+I: Removed bmsWIDEMUX inst N10661 that is redundant to N2895
+I: Removed bmsWIDEMUX inst N4863 that is redundant to N2905
+I: Removed bmsWIDEMUX inst N6807 that is redundant to N2905
+I: Removed bmsWIDEMUX inst N8739 that is redundant to N2905
+I: Removed bmsWIDEMUX inst N10671 that is redundant to N2905
+I: Removed bmsWIDEMUX inst N4873 that is redundant to N2915
+I: Removed bmsWIDEMUX inst N6817 that is redundant to N2915
+I: Removed bmsWIDEMUX inst N8749 that is redundant to N2915
+I: Removed bmsWIDEMUX inst N10681 that is redundant to N2915
+I: Removed bmsWIDEMUX inst N4883 that is redundant to N2925
+I: Removed bmsWIDEMUX inst N6827 that is redundant to N2925
+I: Removed bmsWIDEMUX inst N8759 that is redundant to N2925
+I: Removed bmsWIDEMUX inst N10691 that is redundant to N2925
+I: Removed bmsWIDEMUX inst N4893 that is redundant to N2935
+I: Removed bmsWIDEMUX inst N6837 that is redundant to N2935
+I: Removed bmsWIDEMUX inst N8769 that is redundant to N2935
+I: Removed bmsWIDEMUX inst N10701 that is redundant to N2935
+I: Removed bmsWIDEMUX inst N4903 that is redundant to N2945
+I: Removed bmsWIDEMUX inst N6847 that is redundant to N2945
+I: Removed bmsWIDEMUX inst N8779 that is redundant to N2945
+I: Removed bmsWIDEMUX inst N10711 that is redundant to N2945
+I: Removed bmsWIDEMUX inst N4913 that is redundant to N2955
+I: Removed bmsWIDEMUX inst N6857 that is redundant to N2955
+I: Removed bmsWIDEMUX inst N8789 that is redundant to N2955
+I: Removed bmsWIDEMUX inst N10721 that is redundant to N2955
+I: Removed bmsWIDEMUX inst N4923 that is redundant to N2965
+I: Removed bmsWIDEMUX inst N6867 that is redundant to N2965
+I: Removed bmsWIDEMUX inst N8799 that is redundant to N2965
+I: Removed bmsWIDEMUX inst N10731 that is redundant to N2965
+I: Removed bmsWIDEMUX inst N4937 that is redundant to N2979
+I: Removed bmsWIDEMUX inst N6881 that is redundant to N2979
+I: Removed bmsWIDEMUX inst N8813 that is redundant to N2979
+I: Removed bmsWIDEMUX inst N10745 that is redundant to N2979
+I: Removed bmsWIDEMUX inst N4947 that is redundant to N2989
+I: Removed bmsWIDEMUX inst N6891 that is redundant to N2989
+I: Removed bmsWIDEMUX inst N8823 that is redundant to N2989
+I: Removed bmsWIDEMUX inst N10755 that is redundant to N2989
+I: Removed bmsWIDEMUX inst N4957 that is redundant to N2999
+I: Removed bmsWIDEMUX inst N6901 that is redundant to N2999
+I: Removed bmsWIDEMUX inst N8833 that is redundant to N2999
+I: Removed bmsWIDEMUX inst N10765 that is redundant to N2999
+I: Removed bmsWIDEMUX inst N4967 that is redundant to N3009
+I: Removed bmsWIDEMUX inst N6911 that is redundant to N3009
+I: Removed bmsWIDEMUX inst N8843 that is redundant to N3009
+I: Removed bmsWIDEMUX inst N10775 that is redundant to N3009
+I: Removed bmsWIDEMUX inst N4977 that is redundant to N3019
+I: Removed bmsWIDEMUX inst N6921 that is redundant to N3019
+I: Removed bmsWIDEMUX inst N8853 that is redundant to N3019
+I: Removed bmsWIDEMUX inst N10785 that is redundant to N3019
+I: Removed bmsWIDEMUX inst N4987 that is redundant to N3029
+I: Removed bmsWIDEMUX inst N6931 that is redundant to N3029
+I: Removed bmsWIDEMUX inst N8863 that is redundant to N3029
+I: Removed bmsWIDEMUX inst N10795 that is redundant to N3029
+I: Removed bmsWIDEMUX inst N4997 that is redundant to N3039
+I: Removed bmsWIDEMUX inst N6941 that is redundant to N3039
+I: Removed bmsWIDEMUX inst N8873 that is redundant to N3039
+I: Removed bmsWIDEMUX inst N10805 that is redundant to N3039
+I: Removed bmsWIDEMUX inst N5007 that is redundant to N3049
+I: Removed bmsWIDEMUX inst N6951 that is redundant to N3049
+I: Removed bmsWIDEMUX inst N8883 that is redundant to N3049
+I: Removed bmsWIDEMUX inst N10815 that is redundant to N3049
+I: Removed bmsWIDEMUX inst N5021 that is redundant to N3063
+I: Removed bmsWIDEMUX inst N6965 that is redundant to N3063
+I: Removed bmsWIDEMUX inst N8897 that is redundant to N3063
+I: Removed bmsWIDEMUX inst N10829 that is redundant to N3063
+I: Removed bmsWIDEMUX inst N5031 that is redundant to N3073
+I: Removed bmsWIDEMUX inst N6975 that is redundant to N3073
+I: Removed bmsWIDEMUX inst N8907 that is redundant to N3073
+I: Removed bmsWIDEMUX inst N10839 that is redundant to N3073
+I: Removed bmsWIDEMUX inst N5041 that is redundant to N3083
+I: Removed bmsWIDEMUX inst N6985 that is redundant to N3083
+I: Removed bmsWIDEMUX inst N8917 that is redundant to N3083
+I: Removed bmsWIDEMUX inst N10849 that is redundant to N3083
+I: Removed bmsWIDEMUX inst N5051 that is redundant to N3093
+I: Removed bmsWIDEMUX inst N6995 that is redundant to N3093
+I: Removed bmsWIDEMUX inst N8927 that is redundant to N3093
+I: Removed bmsWIDEMUX inst N10859 that is redundant to N3093
+I: Removed bmsWIDEMUX inst N5061 that is redundant to N3103
+I: Removed bmsWIDEMUX inst N7005 that is redundant to N3103
+I: Removed bmsWIDEMUX inst N8937 that is redundant to N3103
+I: Removed bmsWIDEMUX inst N10869 that is redundant to N3103
+I: Removed bmsWIDEMUX inst N5071 that is redundant to N3113
+I: Removed bmsWIDEMUX inst N7015 that is redundant to N3113
+I: Removed bmsWIDEMUX inst N8947 that is redundant to N3113
+I: Removed bmsWIDEMUX inst N10879 that is redundant to N3113
+I: Removed bmsWIDEMUX inst N5081 that is redundant to N3123
+I: Removed bmsWIDEMUX inst N7025 that is redundant to N3123
+I: Removed bmsWIDEMUX inst N8957 that is redundant to N3123
+I: Removed bmsWIDEMUX inst N10889 that is redundant to N3123
+I: Removed bmsWIDEMUX inst N5091 that is redundant to N3133
+I: Removed bmsWIDEMUX inst N7035 that is redundant to N3133
+I: Removed bmsWIDEMUX inst N8967 that is redundant to N3133
+I: Removed bmsWIDEMUX inst N10899 that is redundant to N3133
+I: Removed bmsWIDEMUX inst N5105 that is redundant to N3147
+I: Removed bmsWIDEMUX inst N7049 that is redundant to N3147
+I: Removed bmsWIDEMUX inst N8981 that is redundant to N3147
+I: Removed bmsWIDEMUX inst N10913 that is redundant to N3147
+I: Removed bmsWIDEMUX inst N5115 that is redundant to N3157
+I: Removed bmsWIDEMUX inst N7059 that is redundant to N3157
+I: Removed bmsWIDEMUX inst N8991 that is redundant to N3157
+I: Removed bmsWIDEMUX inst N10923 that is redundant to N3157
+I: Removed bmsWIDEMUX inst N5125 that is redundant to N3167
+I: Removed bmsWIDEMUX inst N7069 that is redundant to N3167
+I: Removed bmsWIDEMUX inst N9001 that is redundant to N3167
+I: Removed bmsWIDEMUX inst N10933 that is redundant to N3167
+I: Removed bmsWIDEMUX inst N5135 that is redundant to N3177
+I: Removed bmsWIDEMUX inst N7079 that is redundant to N3177
+I: Removed bmsWIDEMUX inst N9011 that is redundant to N3177
+I: Removed bmsWIDEMUX inst N10943 that is redundant to N3177
+I: Removed bmsWIDEMUX inst N5145 that is redundant to N3187
+I: Removed bmsWIDEMUX inst N7089 that is redundant to N3187
+I: Removed bmsWIDEMUX inst N9021 that is redundant to N3187
+I: Removed bmsWIDEMUX inst N10953 that is redundant to N3187
+I: Removed bmsWIDEMUX inst N5155 that is redundant to N3197
+I: Removed bmsWIDEMUX inst N7099 that is redundant to N3197
+I: Removed bmsWIDEMUX inst N9031 that is redundant to N3197
+I: Removed bmsWIDEMUX inst N10963 that is redundant to N3197
+I: Removed bmsWIDEMUX inst N5165 that is redundant to N3207
+I: Removed bmsWIDEMUX inst N7109 that is redundant to N3207
+I: Removed bmsWIDEMUX inst N9041 that is redundant to N3207
+I: Removed bmsWIDEMUX inst N10973 that is redundant to N3207
+I: Removed bmsWIDEMUX inst N5175 that is redundant to N3217
+I: Removed bmsWIDEMUX inst N7119 that is redundant to N3217
+I: Removed bmsWIDEMUX inst N9051 that is redundant to N3217
+I: Removed bmsWIDEMUX inst N10983 that is redundant to N3217
+I: Removed bmsWIDEMUX inst N5189 that is redundant to N3231
+I: Removed bmsWIDEMUX inst N7133 that is redundant to N3231
+I: Removed bmsWIDEMUX inst N9065 that is redundant to N3231
+I: Removed bmsWIDEMUX inst N10997 that is redundant to N3231
+I: Removed bmsWIDEMUX inst N5199 that is redundant to N3241
+I: Removed bmsWIDEMUX inst N7143 that is redundant to N3241
+I: Removed bmsWIDEMUX inst N9075 that is redundant to N3241
+I: Removed bmsWIDEMUX inst N11007 that is redundant to N3241
+I: Removed bmsWIDEMUX inst N5209 that is redundant to N3251
+I: Removed bmsWIDEMUX inst N7153 that is redundant to N3251
+I: Removed bmsWIDEMUX inst N9085 that is redundant to N3251
+I: Removed bmsWIDEMUX inst N11017 that is redundant to N3251
+I: Removed bmsWIDEMUX inst N5219 that is redundant to N3261
+I: Removed bmsWIDEMUX inst N7163 that is redundant to N3261
+I: Removed bmsWIDEMUX inst N9095 that is redundant to N3261
+I: Removed bmsWIDEMUX inst N11027 that is redundant to N3261
+I: Removed bmsWIDEMUX inst N5229 that is redundant to N3271
+I: Removed bmsWIDEMUX inst N7173 that is redundant to N3271
+I: Removed bmsWIDEMUX inst N9105 that is redundant to N3271
+I: Removed bmsWIDEMUX inst N11037 that is redundant to N3271
+I: Removed bmsWIDEMUX inst N5239 that is redundant to N3281
+I: Removed bmsWIDEMUX inst N7183 that is redundant to N3281
+I: Removed bmsWIDEMUX inst N9115 that is redundant to N3281
+I: Removed bmsWIDEMUX inst N11047 that is redundant to N3281
+I: Removed bmsWIDEMUX inst N5249 that is redundant to N3291
+I: Removed bmsWIDEMUX inst N7193 that is redundant to N3291
+I: Removed bmsWIDEMUX inst N9125 that is redundant to N3291
+I: Removed bmsWIDEMUX inst N11057 that is redundant to N3291
+I: Removed bmsWIDEMUX inst N5259 that is redundant to N3301
+I: Removed bmsWIDEMUX inst N7203 that is redundant to N3301
+I: Removed bmsWIDEMUX inst N9135 that is redundant to N3301
+I: Removed bmsWIDEMUX inst N11067 that is redundant to N3301
+I: Removed bmsWIDEMUX inst N5273 that is redundant to N3315
+I: Removed bmsWIDEMUX inst N7217 that is redundant to N3315
+I: Removed bmsWIDEMUX inst N9149 that is redundant to N3315
+I: Removed bmsWIDEMUX inst N11081 that is redundant to N3315
+I: Removed bmsWIDEMUX inst N5283 that is redundant to N3325
+I: Removed bmsWIDEMUX inst N7227 that is redundant to N3325
+I: Removed bmsWIDEMUX inst N9159 that is redundant to N3325
+I: Removed bmsWIDEMUX inst N11091 that is redundant to N3325
+I: Removed bmsWIDEMUX inst N5293 that is redundant to N3335
+I: Removed bmsWIDEMUX inst N7237 that is redundant to N3335
+I: Removed bmsWIDEMUX inst N9169 that is redundant to N3335
+I: Removed bmsWIDEMUX inst N11101 that is redundant to N3335
+I: Removed bmsWIDEMUX inst N5303 that is redundant to N3345
+I: Removed bmsWIDEMUX inst N7247 that is redundant to N3345
+I: Removed bmsWIDEMUX inst N9179 that is redundant to N3345
+I: Removed bmsWIDEMUX inst N11111 that is redundant to N3345
+I: Removed bmsWIDEMUX inst N5313 that is redundant to N3355
+I: Removed bmsWIDEMUX inst N7257 that is redundant to N3355
+I: Removed bmsWIDEMUX inst N9189 that is redundant to N3355
+I: Removed bmsWIDEMUX inst N11121 that is redundant to N3355
+I: Removed bmsWIDEMUX inst N5323 that is redundant to N3365
+I: Removed bmsWIDEMUX inst N7267 that is redundant to N3365
+I: Removed bmsWIDEMUX inst N9199 that is redundant to N3365
+I: Removed bmsWIDEMUX inst N11131 that is redundant to N3365
+I: Removed bmsWIDEMUX inst N5333 that is redundant to N3375
+I: Removed bmsWIDEMUX inst N7277 that is redundant to N3375
+I: Removed bmsWIDEMUX inst N9209 that is redundant to N3375
+I: Removed bmsWIDEMUX inst N11141 that is redundant to N3375
+I: Removed bmsWIDEMUX inst N5343 that is redundant to N3385
+I: Removed bmsWIDEMUX inst N7287 that is redundant to N3385
+I: Removed bmsWIDEMUX inst N9219 that is redundant to N3385
+I: Removed bmsWIDEMUX inst N11151 that is redundant to N3385
+I: Removed bmsWIDEMUX inst N5358 that is redundant to N3400
+I: Removed bmsWIDEMUX inst N7302 that is redundant to N3400
+I: Removed bmsWIDEMUX inst N11166 that is redundant to N3400
+I: Removed bmsWIDEMUX inst N5368 that is redundant to N3410
+I: Removed bmsWIDEMUX inst N7312 that is redundant to N3410
+I: Removed bmsWIDEMUX inst N11176 that is redundant to N3410
+I: Removed bmsWIDEMUX inst N5378 that is redundant to N3420
+I: Removed bmsWIDEMUX inst N7322 that is redundant to N3420
+I: Removed bmsWIDEMUX inst N11186 that is redundant to N3420
+I: Removed bmsWIDEMUX inst N5388 that is redundant to N3430
+I: Removed bmsWIDEMUX inst N7332 that is redundant to N3430
+I: Removed bmsWIDEMUX inst N11196 that is redundant to N3430
+I: Removed bmsWIDEMUX inst N5398 that is redundant to N3440
+I: Removed bmsWIDEMUX inst N7342 that is redundant to N3440
+I: Removed bmsWIDEMUX inst N11206 that is redundant to N3440
+I: Removed bmsWIDEMUX inst N5408 that is redundant to N3450
+I: Removed bmsWIDEMUX inst N7352 that is redundant to N3450
+I: Removed bmsWIDEMUX inst N11216 that is redundant to N3450
+I: Removed bmsWIDEMUX inst N5418 that is redundant to N3460
+I: Removed bmsWIDEMUX inst N7362 that is redundant to N3460
+I: Removed bmsWIDEMUX inst N11226 that is redundant to N3460
+I: Removed bmsWIDEMUX inst N5428 that is redundant to N3470
+I: Removed bmsWIDEMUX inst N7372 that is redundant to N3470
+I: Removed bmsWIDEMUX inst N11236 that is redundant to N3470
+I: Removed bmsWIDEMUX inst N5443 that is redundant to N3485
+I: Removed bmsWIDEMUX inst N7387 that is redundant to N3485
+I: Removed bmsWIDEMUX inst N11251 that is redundant to N3485
+I: Removed bmsWIDEMUX inst N5453 that is redundant to N3495
+I: Removed bmsWIDEMUX inst N7397 that is redundant to N3495
+I: Removed bmsWIDEMUX inst N11261 that is redundant to N3495
+I: Removed bmsWIDEMUX inst N5463 that is redundant to N3505
+I: Removed bmsWIDEMUX inst N7407 that is redundant to N3505
+I: Removed bmsWIDEMUX inst N11271 that is redundant to N3505
+I: Removed bmsWIDEMUX inst N5473 that is redundant to N3515
+I: Removed bmsWIDEMUX inst N7417 that is redundant to N3515
+I: Removed bmsWIDEMUX inst N11281 that is redundant to N3515
+I: Removed bmsWIDEMUX inst N5483 that is redundant to N3525
+I: Removed bmsWIDEMUX inst N7427 that is redundant to N3525
+I: Removed bmsWIDEMUX inst N11291 that is redundant to N3525
+I: Removed bmsWIDEMUX inst N5493 that is redundant to N3535
+I: Removed bmsWIDEMUX inst N7437 that is redundant to N3535
+I: Removed bmsWIDEMUX inst N11301 that is redundant to N3535
+I: Removed bmsWIDEMUX inst N5503 that is redundant to N3545
+I: Removed bmsWIDEMUX inst N7447 that is redundant to N3545
+I: Removed bmsWIDEMUX inst N11311 that is redundant to N3545
+I: Removed bmsWIDEMUX inst N5513 that is redundant to N3555
+I: Removed bmsWIDEMUX inst N7457 that is redundant to N3555
+I: Removed bmsWIDEMUX inst N11321 that is redundant to N3555
+I: Removed bmsWIDEMUX inst N5528 that is redundant to N3570
+I: Removed bmsWIDEMUX inst N7472 that is redundant to N3570
+I: Removed bmsWIDEMUX inst N11336 that is redundant to N3570
+I: Removed bmsWIDEMUX inst N5538 that is redundant to N3580
+I: Removed bmsWIDEMUX inst N7482 that is redundant to N3580
+I: Removed bmsWIDEMUX inst N11346 that is redundant to N3580
+I: Removed bmsWIDEMUX inst N5548 that is redundant to N3590
+I: Removed bmsWIDEMUX inst N7492 that is redundant to N3590
+I: Removed bmsWIDEMUX inst N11356 that is redundant to N3590
+I: Removed bmsWIDEMUX inst N5558 that is redundant to N3600
+I: Removed bmsWIDEMUX inst N7502 that is redundant to N3600
+I: Removed bmsWIDEMUX inst N11366 that is redundant to N3600
+I: Removed bmsWIDEMUX inst N5568 that is redundant to N3610
+I: Removed bmsWIDEMUX inst N7512 that is redundant to N3610
+I: Removed bmsWIDEMUX inst N11376 that is redundant to N3610
+I: Removed bmsWIDEMUX inst N5578 that is redundant to N3620
+I: Removed bmsWIDEMUX inst N7522 that is redundant to N3620
+I: Removed bmsWIDEMUX inst N11386 that is redundant to N3620
+I: Removed bmsWIDEMUX inst N5588 that is redundant to N3630
+I: Removed bmsWIDEMUX inst N7532 that is redundant to N3630
+I: Removed bmsWIDEMUX inst N11396 that is redundant to N3630
+I: Removed bmsWIDEMUX inst N5598 that is redundant to N3640
+I: Removed bmsWIDEMUX inst N7542 that is redundant to N3640
+I: Removed bmsWIDEMUX inst N11406 that is redundant to N3640
+I: Removed bmsWIDEMUX inst N5613 that is redundant to N3655
+I: Removed bmsWIDEMUX inst N11420 that is redundant to N7556
+I: Removed bmsWIDEMUX inst N5623 that is redundant to N3665
+I: Removed bmsWIDEMUX inst N11430 that is redundant to N7566
+I: Removed bmsWIDEMUX inst N5633 that is redundant to N3675
+I: Removed bmsWIDEMUX inst N11440 that is redundant to N7576
+I: Removed bmsWIDEMUX inst N11450 that is redundant to N7586
+I: Removed bmsWIDEMUX inst N5643 that is redundant to N3685
+I: Removed bmsWIDEMUX inst N11460 that is redundant to N7596
+I: Removed bmsWIDEMUX inst N5653 that is redundant to N3695
+I: Removed bmsWIDEMUX inst N5663 that is redundant to N3705
+I: Removed bmsWIDEMUX inst N11470 that is redundant to N7606
+I: Removed bmsWIDEMUX inst N5673 that is redundant to N3715
+I: Removed bmsWIDEMUX inst N11480 that is redundant to N7616
+I: Removed bmsWIDEMUX inst N11490 that is redundant to N7626
+I: Removed bmsWIDEMUX inst N5683 that is redundant to N3725
+I: Removed bmsWIDEMUX inst N5698 that is redundant to N3740
+I: Removed bmsWIDEMUX inst N11504 that is redundant to N7640
+I: Removed bmsWIDEMUX inst N5708 that is redundant to N3750
+I: Removed bmsWIDEMUX inst N11514 that is redundant to N7650
+I: Removed bmsWIDEMUX inst N5718 that is redundant to N3760
+I: Removed bmsWIDEMUX inst N11524 that is redundant to N7660
+I: Removed bmsWIDEMUX inst N5728 that is redundant to N3770
+I: Removed bmsWIDEMUX inst N11534 that is redundant to N7670
+I: Removed bmsWIDEMUX inst N5738 that is redundant to N3780
+I: Removed bmsWIDEMUX inst N11544 that is redundant to N7680
+I: Removed bmsWIDEMUX inst N5748 that is redundant to N3790
+I: Removed bmsWIDEMUX inst N11554 that is redundant to N7690
+I: Removed bmsWIDEMUX inst N5758 that is redundant to N3800
+I: Removed bmsWIDEMUX inst N11564 that is redundant to N7700
+I: Removed bmsWIDEMUX inst N5768 that is redundant to N3810
+I: Removed bmsWIDEMUX inst N11574 that is redundant to N7710
+I: Removed bmsWIDEMUX inst N5783 that is redundant to N3825
+I: Removed bmsWIDEMUX inst N11588 that is redundant to N7724
+I: Removed bmsWIDEMUX inst N5793 that is redundant to N3835
+I: Removed bmsWIDEMUX inst N5803 that is redundant to N3845
+I: Removed bmsWIDEMUX inst N11598 that is redundant to N7734
+I: Removed bmsWIDEMUX inst N5813 that is redundant to N3855
+I: Removed bmsWIDEMUX inst N11608 that is redundant to N7744
+I: Removed bmsWIDEMUX inst N5823 that is redundant to N3865
+I: Removed bmsWIDEMUX inst N11618 that is redundant to N7754
+I: Removed bmsWIDEMUX inst N5833 that is redundant to N3875
+I: Removed bmsWIDEMUX inst N11628 that is redundant to N7764
+I: Removed bmsWIDEMUX inst N5843 that is redundant to N3885
+I: Removed bmsWIDEMUX inst N11638 that is redundant to N7774
+I: Removed bmsWIDEMUX inst N5853 that is redundant to N3895
+I: Removed bmsWIDEMUX inst N11648 that is redundant to N7784
+I: Removed bmsWIDEMUX inst N5868 that is redundant to N3910
+I: Removed bmsWIDEMUX inst N11658 that is redundant to N7794
+I: Removed bmsWIDEMUX inst N5878 that is redundant to N3920
+I: Removed bmsWIDEMUX inst N11672 that is redundant to N7808
+I: Removed bmsWIDEMUX inst N5888 that is redundant to N3930
+I: Removed bmsWIDEMUX inst N11682 that is redundant to N7818
+I: Removed bmsWIDEMUX inst N5898 that is redundant to N3940
+I: Removed bmsWIDEMUX inst N11692 that is redundant to N7828
+I: Removed bmsWIDEMUX inst N5908 that is redundant to N3950
+I: Removed bmsWIDEMUX inst N11702 that is redundant to N7838
+I: Removed bmsWIDEMUX inst N5918 that is redundant to N3960
+I: Removed bmsWIDEMUX inst N11712 that is redundant to N7848
+I: Removed bmsWIDEMUX inst N5928 that is redundant to N3970
+I: Removed bmsWIDEMUX inst N11722 that is redundant to N7858
+I: Removed bmsWIDEMUX inst N5938 that is redundant to N3980
+I: Removed bmsWIDEMUX inst N11732 that is redundant to N7868
+I: Removed bmsWIDEMUX inst N5953 that is redundant to N3995
+I: Removed bmsWIDEMUX inst N11742 that is redundant to N7878
+I: Removed bmsWIDEMUX inst N5963 that is redundant to N4005
+I: Removed bmsWIDEMUX inst N11756 that is redundant to N7892
+I: Removed bmsWIDEMUX inst N5973 that is redundant to N4015
+I: Removed bmsWIDEMUX inst N11766 that is redundant to N7902
+I: Removed bmsWIDEMUX inst N5983 that is redundant to N4025
+I: Removed bmsWIDEMUX inst N11776 that is redundant to N7912
+I: Removed bmsWIDEMUX inst N5993 that is redundant to N4035
+I: Removed bmsWIDEMUX inst N11786 that is redundant to N7922
+I: Removed bmsWIDEMUX inst N6003 that is redundant to N4045
+I: Removed bmsWIDEMUX inst N11796 that is redundant to N7932
+I: Removed bmsWIDEMUX inst N6013 that is redundant to N4055
+I: Removed bmsWIDEMUX inst N11806 that is redundant to N7942
+I: Removed bmsWIDEMUX inst N6023 that is redundant to N4065
+I: Removed bmsWIDEMUX inst N6037 that is redundant to N4080
+I: Removed bmsWIDEMUX inst N11816 that is redundant to N7952
+I: Removed bmsWIDEMUX inst N6047 that is redundant to N4090
+I: Removed bmsWIDEMUX inst N11826 that is redundant to N7962
+I: Removed bmsWIDEMUX inst N6057 that is redundant to N4100
+I: Removed bmsWIDEMUX inst N11841 that is redundant to N7976
+I: Removed bmsWIDEMUX inst N11851 that is redundant to N7986
+I: Removed bmsWIDEMUX inst N6067 that is redundant to N4110
+I: Removed bmsWIDEMUX inst N6077 that is redundant to N4120
+I: Removed bmsWIDEMUX inst N11861 that is redundant to N7996
+I: Removed bmsWIDEMUX inst N6087 that is redundant to N4130
+I: Removed bmsWIDEMUX inst N11871 that is redundant to N8006
+I: Removed bmsWIDEMUX inst N6097 that is redundant to N4140
+I: Removed bmsWIDEMUX inst N11881 that is redundant to N8016
+I: Removed bmsWIDEMUX inst N6107 that is redundant to N4150
+I: Removed bmsWIDEMUX inst N11891 that is redundant to N8026
+I: Removed bmsWIDEMUX inst N6121 that is redundant to N4165
+I: Removed bmsWIDEMUX inst N11901 that is redundant to N8036
+I: Removed bmsWIDEMUX inst N11911 that is redundant to N8046
+I: Removed bmsWIDEMUX inst N6131 that is redundant to N4175
+I: Removed bmsWIDEMUX inst N6141 that is redundant to N4185
+I: Removed bmsWIDEMUX inst N11926 that is redundant to N8060
+I: Removed bmsWIDEMUX inst N6151 that is redundant to N4195
+I: Removed bmsWIDEMUX inst N11936 that is redundant to N8070
+I: Removed bmsWIDEMUX inst N6161 that is redundant to N4205
+I: Removed bmsWIDEMUX inst N11946 that is redundant to N8080
+I: Removed bmsWIDEMUX inst N6171 that is redundant to N4215
+I: Removed bmsWIDEMUX inst N11956 that is redundant to N8090
+I: Removed bmsWIDEMUX inst N6181 that is redundant to N4225
+I: Removed bmsWIDEMUX inst N11966 that is redundant to N8100
+I: Removed bmsWIDEMUX inst N6191 that is redundant to N4235
+I: Removed bmsWIDEMUX inst N11976 that is redundant to N8110
+I: Removed bmsWIDEMUX inst N6205 that is redundant to N4250
+I: Removed bmsWIDEMUX inst N11986 that is redundant to N8120
+I: Removed bmsWIDEMUX inst N6215 that is redundant to N4260
+I: Removed bmsWIDEMUX inst N11996 that is redundant to N8130
+I: Removed bmsWIDEMUX inst N12011 that is redundant to N8144
+I: Removed bmsWIDEMUX inst N6225 that is redundant to N4270
+I: Removed bmsWIDEMUX inst N6235 that is redundant to N4280
+I: Removed bmsWIDEMUX inst N12021 that is redundant to N8154
+I: Removed bmsWIDEMUX inst N6245 that is redundant to N4290
+I: Removed bmsWIDEMUX inst N12031 that is redundant to N8164
+I: Removed bmsWIDEMUX inst N6255 that is redundant to N4300
+I: Removed bmsWIDEMUX inst N12041 that is redundant to N8174
+I: Removed bmsWIDEMUX inst N6265 that is redundant to N4310
+I: Removed bmsWIDEMUX inst N12051 that is redundant to N8184
+I: Removed bmsWIDEMUX inst N6275 that is redundant to N4320
+I: Removed bmsWIDEMUX inst N12061 that is redundant to N8194
+I: Removed bmsWIDEMUX inst N12071 that is redundant to N8204
+I: Removed bmsWIDEMUX inst N12081 that is redundant to N8214
+I: Removed bmsWIDEMUX inst N6289 that is redundant to N4335
+I: Constant propagation done on tx_valid_e (bmsREDOR).
+I: Constant propagation done on N2454 (bmsWIDEMUX).
+W: Removed bmsWIDEDFFRSE inst tx_payload[255:0] at 192 that is stuck at constant 0.
+I: Constant propagation done on tx_payload[255:0] (bmsWIDEDFFRSE).
+Executing : pre-mapping successfully. Time elapsed: 0.857s wall, 1.047s user + 0.547s system = 1.594s CPU (186.0%)
+
+Start mod-gen.
+I: Constant propagation done on N14828 (bmsREDAND).
+I: Constant propagation done on N14833 (bmsREDAND).
+I: Constant propagation done on out_xor_13 (bmsREDXOR).
+I: Constant propagation done on out_xor_13 (bmsREDXOR).
+I: Constant propagation done on out_xor_13 (bmsREDXOR).
+I: Constant propagation done on out_xor_13 (bmsREDXOR).
+I: Constant propagation done on out_xor_13 (bmsREDXOR).
+Executing : mod-gen successfully. Time elapsed: 2.550s wall, 3.625s user + 1.078s system = 4.703s CPU (184.4%)
+
+Start logic-optimization.
+Executing : logic-optimization successfully. Time elapsed: 12.857s wall, 12.672s user + 0.062s system = 12.734s CPU (99.0%)
+
+Start tech-mapping phase 1.
+W: Public-4008: Instance 'tx_payload[249]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[250]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[251]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[252]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[253]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[254]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[255]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[192]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[193]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[194]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[195]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[196]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[197]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[198]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[199]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[200]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[201]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[202]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[203]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[204]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[205]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[206]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[207]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[209]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[210]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[211]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[212]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[213]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[214]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[216]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[217]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[218]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[219]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[220]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[221]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[222]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[223]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[224]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[225]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[226]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[227]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[228]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[229]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[230]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[231]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[232]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[233]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[234]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[235]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[236]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[237]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[238]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[239]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[240]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[241]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[242]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[243]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[244]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[245]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[246]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[247]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'tx_payload[248]' of 'bmsWIDEDFFRSE' unit is dangling and will be cleaned.
+Executing : tech-mapping phase 1 successfully. Time elapsed: 0.274s wall, 0.266s user + 0.000s system = 0.266s CPU (96.8%)
+
+Start tech-mapping phase 2.
+Executing : tech-mapping phase 2 successfully. Time elapsed: 10.304s wall, 12.047s user + 2.516s system = 14.562s CPU (141.3%)
+
+Start tech-optimization.
+Executing : tech-optimization successfully. Time elapsed: 0.469s wall, 0.719s user + 0.438s system = 1.156s CPU (246.8%)
+
+Start phys-optimization.
+Executing : phys-optimization successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start restore-hierarchy.
+Executing : restore-hierarchy successfully. Time elapsed: 0.004s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+
+Cell Usage:
+GTP_DFF_R                    33 uses
+GTP_DFF_RE                  355 uses
+GTP_GRS                       1 use
+GTP_INV                       1 use
+GTP_LUT1                      4 uses
+GTP_LUT2                    906 uses
+GTP_LUT3                    193 uses
+GTP_LUT4                    535 uses
+GTP_LUT5                   1537 uses
+GTP_LUT5CARRY               190 uses
+GTP_LUT5M                    73 uses
+GTP_MUX2LUT6                 24 uses
+GTP_MUX2LUT7                  6 uses
+
+I/O ports: 586
+GTP_INBUF                 262 uses
+GTP_OUTBUF                324 uses
+
+Mapping Summary:
+Total LUTs: 3438 of 42800 (8.03%)
+	LUTs as dram: 0 of 17000 (0.00%)
+	LUTs as logic: 3438
+Total Registers: 388 of 64200 (0.60%)
+Total Latches: 0
+
+DRM18K:
+Total DRM18K = 0.0 of 134 (0.00%)
+
+APMs:
+Total APMs = 0.00 of 84 (0.00%)
+
+Total I/O ports = 586 of 296 (197.97%)
+
+W: The design has 586 I/O, but only 296 available in the device
+
+Overview of Control Sets:
+
+Number of unique control sets : 9
+
+Histogram:
+**************************************************************
+  Fanout      | Count    | Sync Set/Reset    Async Set/Reset
+--------------------------------------------------------------
+  [0, 2)      | 2        | 2                 0
+  [2, 4)      | 0        | 0                 0
+  [4, 6)      | 0        | 0                 0
+  [6, 8)      | 0        | 0                 0
+  [8, 10)     | 0        | 0                 0
+  [10, 12)    | 0        | 0                 0
+  [12, 14)    | 0        | 0                 0
+  [14, 16)    | 0        | 0                 0
+  [16, Inf)   | 7        | 7                 0
+--------------------------------------------------------------
+  The maximum fanout: 194
+==============================================================
+
+Flip-Flop Distribution:
+************************************************************************
+  Clock Enable    Sync Set/Reset    Async Set/Reset    Total Registers
+------------------------------------------------------------------------
+  NO              NO                NO                 0
+  NO              NO                YES                0
+  NO              YES               NO                 33
+  YES             NO                NO                 0
+  YES             NO                YES                0
+  YES             YES               NO                 355
+========================================================================
+
+Latch Distribution:
+************************************************
+  Gate Enable    Preset/Clear    Total Latches
+************************************************
+  NO             NO              0
+  NO             YES             0
+  YES            NO              0
+  YES            YES             0
+************************************************
+
+Design 'mes50hp_diag' has been successfully synthesized to architecture-specific objects.
+Saving design to DB.
+Saving design to mes50hp_diag_syn.vm
+Constructing timing graph ...
+Timing graph has been constructed successfully
+W: Timing-4087: Port 'accepted_count[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[8]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[9]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[10]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[11]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[12]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[13]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[14]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[15]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[16]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[17]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[18]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[19]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[20]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[21]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[22]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[23]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[24]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[25]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[26]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[27]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[28]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[29]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[30]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'accepted_count[31]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'led_requested' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[8]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[9]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[10]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[11]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[12]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[13]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[14]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[15]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[16]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[17]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[18]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[19]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[20]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[21]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[22]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[23]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[24]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[25]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[26]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[27]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[28]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[29]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[30]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rejected_count[31]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rx_ready' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'session_active' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[8]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[9]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[10]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[11]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[12]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[13]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[14]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[15]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[16]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[17]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[18]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[19]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[20]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[21]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[22]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[23]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[24]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[25]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[26]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[27]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[28]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[29]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[30]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[31]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[32]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[33]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[34]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[35]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[36]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[37]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[38]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[39]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[40]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[41]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[42]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[43]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[44]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[45]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[46]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[47]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[48]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[49]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[50]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[51]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[52]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[53]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[54]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[55]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[56]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[57]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[58]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[59]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[60]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[61]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[62]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[63]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[64]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[65]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[66]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[67]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[68]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[69]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[70]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[71]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[72]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[73]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[74]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[75]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[76]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[77]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[78]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[79]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[80]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[81]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[82]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[83]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[84]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[85]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[86]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[87]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[88]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[89]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[90]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[91]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[92]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[93]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[94]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[95]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[96]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[97]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[98]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[99]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[100]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[101]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[102]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[103]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[104]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[105]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[106]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[107]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[108]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[109]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[110]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[111]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[112]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[113]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[114]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[115]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[116]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[117]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[118]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[119]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[120]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[121]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[122]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[123]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[124]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[125]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[126]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[127]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[128]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[129]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[130]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[131]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[132]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[133]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[134]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[135]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[136]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[137]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[138]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[139]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[140]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[141]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[142]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[143]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[144]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[145]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[146]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[147]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[148]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[149]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[150]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[151]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[152]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[153]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[154]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[155]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[156]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[157]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[158]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[159]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[160]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[161]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[162]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[163]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[164]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[165]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[166]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[167]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[168]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[169]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[170]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[171]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[172]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[173]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[174]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[175]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[176]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[177]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[178]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[179]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[180]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[181]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[182]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[183]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[184]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[185]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[186]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[187]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[188]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[189]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[190]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[191]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[192]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[193]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[194]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[195]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[196]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[197]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[198]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[199]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[200]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[201]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[202]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[203]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[204]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[205]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[206]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[207]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[208]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[209]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[210]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[211]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[212]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[213]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[214]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[215]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[216]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[217]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[218]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[219]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[220]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[221]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[222]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[223]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[224]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[225]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[226]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[227]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[228]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[229]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[230]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[231]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[232]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[233]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[234]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[235]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[236]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[237]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[238]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[239]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[240]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[241]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[242]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[243]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[244]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[245]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[246]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[247]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[248]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[249]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[250]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[251]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[252]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[253]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[254]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_payload[255]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'tx_valid' is not constrained, it is treated as combinational output.
+W: Timing-4086: Port 'link_up' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rst_n' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[7]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[8]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[9]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[10]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[11]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[12]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[13]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[14]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[15]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[16]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[17]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[18]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[19]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[20]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[21]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[22]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[23]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[24]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[25]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[26]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[27]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[28]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[29]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[30]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[31]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[32]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[33]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[34]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[35]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[36]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[37]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[38]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[39]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[40]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[41]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[42]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[43]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[44]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[45]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[46]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[47]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[48]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[49]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[50]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[51]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[52]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[53]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[54]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[55]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[56]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[57]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[58]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[59]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[60]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[61]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[62]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[63]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[64]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[65]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[66]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[67]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[68]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[69]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[70]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[71]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[72]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[73]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[74]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[75]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[76]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[77]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[78]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[79]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[80]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[81]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[82]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[83]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[84]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[85]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[86]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[87]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[88]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[89]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[90]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[91]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[92]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[93]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[94]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[95]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[96]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[97]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[98]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[99]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[100]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[101]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[102]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[103]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[104]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[105]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[106]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[107]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[108]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[109]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[110]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[111]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[112]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[113]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[114]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[115]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[116]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[117]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[118]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[119]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[120]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[121]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[122]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[123]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[124]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[125]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[126]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[127]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[128]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[129]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[130]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[131]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[132]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[133]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[134]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[135]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[136]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[137]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[138]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[139]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[140]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[141]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[142]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[143]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[144]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[145]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[146]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[147]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[148]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[149]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[150]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[151]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[152]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[153]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[154]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[155]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[156]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[157]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[158]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[159]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[160]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[161]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[162]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[163]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[164]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[165]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[166]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[167]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[168]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[169]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[170]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[171]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[172]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[173]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[174]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[175]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[176]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[177]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[178]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[179]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[180]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[181]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[182]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[183]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[184]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[185]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[186]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[187]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[188]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[189]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[190]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[191]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[192]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[193]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[194]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[195]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[196]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[197]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[198]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[199]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[200]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[201]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[202]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[203]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[204]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[205]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[206]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[207]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[208]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[209]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[210]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[211]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[212]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[213]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[214]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[215]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[216]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[217]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[218]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[219]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[220]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[221]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[222]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[223]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[224]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[225]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[226]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[227]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[228]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[229]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[230]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[231]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[232]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[233]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[234]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[235]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[236]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[237]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[238]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[239]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[240]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[241]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[242]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[243]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[244]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[245]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[246]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[247]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[248]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[249]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[250]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[251]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[252]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[253]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[254]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_payload[255]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rx_valid' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'tick_ms' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'tx_ready' is not constrained, it is treated as combinational input.
+Action synthesize: Real time elapsed is 0h:0m:32s
+Action synthesize: CPU time elapsed is 0h:0m:30s
+Action synthesize: Process CPU time elapsed is 0h:0m:33s
+Current time: Mon Oct 19 18:42:08 2026
+Action synthesize: Peak memory pool usage is 313 MB
+Action from compile to synthesize: Total Real Time elapsed is 0h:0m:43s
+Action from compile to synthesize: Total CPU time elapsed is 0h:0m:37s
+Action from compile to synthesize: Total Process CPU Time elapsed is 0h:0m:40s
+Process "Synthesize" done.
+Executing : synthesize -ads -selected_syn_tool_opt 2 successfully.

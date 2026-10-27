@@ -1,0 +1,33 @@
+#-----------------------------------------------------------
+# xsim v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Oct 16 22:21:20 2026
+# Process ID: 36520
+# Current directory: E:/FPGA drive/HDMI_DDR3_OV5640/tests
+# Command line: xsim.exe -log img_proc_frame_before.log -mode tcl -source {xsim.dir/img_proc_frame_before/xsim_script.tcl}
+# Log file: E:/FPGA drive/HDMI_DDR3_OV5640/tests/img_proc_frame_before.log
+# Journal file: E:/FPGA drive/HDMI_DDR3_OV5640/tests\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/img_proc_frame_before/xsim_script.tcl
+# xsim {img_proc_frame_before} -autoloadwcfg -runall
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+run -all
+Frame 0 pixel 14080: got 219d, expected 218c
+Frame 0 pixel 14081: got 2182, expected 2193
+Frame 0 pixel 14082: got 21a3, expected 21b2
+Frame 0 pixel 14083: got 21c0, expected 21d1
+Frame 0 pixel 14084: got 21e1, expected 21f0
+Frame 0 pixel 14085: got 2106, expected 2117
+Frame 0 pixel 14086: got 2127, expected 2136
+Frame 0 pixel 14087: got 2144, expected 2155
+Frame 0: got 20480 pixels, expected 15360
+Frame 1: got 23040 pixels, expected 15360
+Frame 2: got 23040 pixels, expected 15360
+Fatal: Pixels emitted without a new frame: 2560
+Time: 1684210 ns  Iteration: 0  Process: /img_proc_frame_tb/Initial74_19  File: E:/FPGA drive/HDMI_DDR3_OV5640/tests/img_proc_frame_tb.v
+$finish called at time : 1684210 ns
+run: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 217.973 ; gain = 0.000
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Oct 16 22:21:33 2026...

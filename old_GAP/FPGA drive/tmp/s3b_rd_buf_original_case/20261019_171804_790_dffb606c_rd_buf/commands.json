@@ -1,0 +1,78 @@
+[
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3b_rd_buf_original_case\\20261019_171804_790_dffb606c_rd_buf",
+    "StartedUtc": "2026-10-19T09:18:06.0489133Z",
+    "FinishedUtc": "2026-10-19T09:18:06.1408735Z",
+    "ExitCode": 0,
+    "Log": "vlog_version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3b_rd_buf_original_case\\20261019_171804_790_dffb606c_rd_buf",
+    "StartedUtc": "2026-10-19T09:18:06.1576938Z",
+    "FinishedUtc": "2026-10-19T09:18:06.3145588Z",
+    "ExitCode": 0,
+    "Log": "vsim_version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3b_rd_buf_original_case\\20261019_171804_790_dffb606c_rd_buf",
+    "StartedUtc": "2026-10-19T09:18:06.3185962Z",
+    "FinishedUtc": "2026-10-19T09:18:06.4145720Z",
+    "ExitCode": 0,
+    "Log": "library.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\rd_buf.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\rd_fram_buf\\rd_fram_buf.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\rd_fram_buf\\rtl\\ipml_sdpram_v1_6_rd_fram_buf.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s2_ddr_minimal\\rd_buf_full_frame_tb.sv",
+      "-y",
+      "D:\\PDS\\PDS_2022.2-SP6.1\\arch\\vendor\\pango\\verilog\\simulation",
+      "+libext+.v"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3b_rd_buf_original_case\\20261019_171804_790_dffb606c_rd_buf",
+    "StartedUtc": "2026-10-19T09:18:06.4203916Z",
+    "FinishedUtc": "2026-10-19T09:18:06.5732694Z",
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-c",
+      "-novopt",
+      "-t",
+      "1ps",
+      "-suppress",
+      "12110",
+      "-lib",
+      "work",
+      "s2_rd_buf_full_frame_tb",
+      "-do",
+      "onerror {quit -code 2}; vcd file rd_buf_control.vcd; vcd add /s2_rd_buf_full_frame_tb/dut/wr_line /s2_rd_buf_full_frame_tb/ddr_rreq /s2_rd_buf_full_frame_tb/ddr_raddr /s2_rd_buf_full_frame_tb/ddr_rdone /s2_rd_buf_full_frame_tb/rd_fsync; run -all; quit -code 0",
+      "-l",
+      "simulation.log"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s3b_rd_buf_original_case\\20261019_171804_790_dffb606c_rd_buf",
+    "StartedUtc": "2026-10-19T09:18:06.5763420Z",
+    "FinishedUtc": "2026-10-19T09:18:41.1776995Z",
+    "ExitCode": 0,
+    "Log": "console.log"
+  }
+]

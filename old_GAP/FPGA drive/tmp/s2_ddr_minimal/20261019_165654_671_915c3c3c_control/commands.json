@@ -1,0 +1,73 @@
+[
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s2_ddr_minimal\\20261019_165654_671_915c3c3c_control",
+    "StartedUtc": "2026-10-19T08:56:55.8488040Z",
+    "FinishedUtc": "2026-10-19T08:56:56.0585485Z",
+    "ExitCode": 0,
+    "Log": "vlog_version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s2_ddr_minimal\\20261019_165654_671_915c3c3c_control",
+    "StartedUtc": "2026-10-19T08:56:56.0710269Z",
+    "FinishedUtc": "2026-10-19T08:56:56.3161185Z",
+    "ExitCode": 0,
+    "Log": "vsim_version.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s2_ddr_minimal\\20261019_165654_671_915c3c3c_control",
+    "StartedUtc": "2026-10-19T08:56:56.3190712Z",
+    "FinishedUtc": "2026-10-19T08:56:56.4022335Z",
+    "ExitCode": 0,
+    "Log": "library.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\wr_cmd_trans.v",
+      "E:\\FPGA drive\\_archive\\experiments\\road_video_ddr_20261017\\tests\\control_tb.sv"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s2_ddr_minimal\\20261019_165654_671_915c3c3c_control",
+    "StartedUtc": "2026-10-19T08:56:56.4073697Z",
+    "FinishedUtc": "2026-10-19T08:56:56.5680104Z",
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "D:\\PDS\\Modelsim\\win64\\vsim.exe",
+    "Arguments": [
+      "-c",
+      "-novopt",
+      "-t",
+      "1ps",
+      "-suppress",
+      "12110",
+      "-lib",
+      "work",
+      "control_tb",
+      "-do",
+      "onerror {quit -code 2}; vcd file control.vcd; vcd add -r /control_tb/*; run -all; quit -code 0",
+      "-l",
+      "simulation.log"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s2_ddr_minimal\\20261019_165654_671_915c3c3c_control",
+    "StartedUtc": "2026-10-19T08:56:56.5720307Z",
+    "FinishedUtc": "2026-10-19T08:56:59.2366615Z",
+    "ExitCode": 0,
+    "Log": "console.log"
+  }
+]

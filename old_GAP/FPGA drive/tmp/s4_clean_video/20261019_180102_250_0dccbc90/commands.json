@@ -1,0 +1,65 @@
+[
+  {
+    "Tool": "vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_180102_250_0dccbc90",
+    "StartedUtc": "2026-10-19T10:01:02.3372088Z",
+    "FinishedUtc": "2026-10-19T10:01:02.4195890Z",
+    "ExitCode": 0,
+    "Log": "version.log"
+  },
+  {
+    "Tool": "vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_180102_250_0dccbc90",
+    "StartedUtc": "2026-10-19T10:01:02.4250465Z",
+    "FinishedUtc": "2026-10-19T10:01:02.5012496Z",
+    "ExitCode": 0,
+    "Log": "library.log"
+  },
+  {
+    "Tool": "vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\img_proc.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\lane_detect.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\zebra_detect.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\zebra_overlay.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\lane_geometry.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\adas_overlay.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\s4_clean_video\\clean_video_tb.sv",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tests\\img_proc_frame_tb.v"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_180102_250_0dccbc90",
+    "StartedUtc": "2026-10-19T10:01:02.5025667Z",
+    "FinishedUtc": "2026-10-19T10:01:02.6649061Z",
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_180102_250_0dccbc90\\work",
+      "s4_clean_fullframe_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_180102_250_0dccbc90\\s4_clean_fullframe_tb\\simulation.log"
+    ],
+    "WorkingDirectory": "E:\\FPGA drive\\tmp\\s4_clean_video\\20261019_180102_250_0dccbc90\\s4_clean_fullframe_tb",
+    "StartedUtc": "2026-10-19T10:01:02.6885136Z",
+    "FinishedUtc": "2026-10-19T10:01:05.0132196Z",
+    "ExitCode": 12,
+    "Log": "s4_clean_fullframe_tb.console.log"
+  }
+]

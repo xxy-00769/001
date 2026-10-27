@@ -1,0 +1,43 @@
+#-----------------------------------------------------------
+# xsim v2018.3 (64-bit)
+# SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+# IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+# Start of session at: Fri Oct 16 23:35:49 2026
+# Process ID: 29352
+# Current directory: E:/FPGA drive/HDMI_DDR3_OV5640/tests
+# Command line: xsim.exe -log zebra_detect_v7.log -mode tcl -source {xsim.dir/zebra_detect_v7/xsim_script.tcl}
+# Log file: E:/FPGA drive/HDMI_DDR3_OV5640/tests/zebra_detect_v7.log
+# Journal file: E:/FPGA drive/HDMI_DDR3_OV5640/tests\xsim.jou
+#-----------------------------------------------------------
+source xsim.dir/zebra_detect_v7/xsim_script.tcl
+# xsim {zebra_detect_v7} -autoloadwcfg -runall
+Vivado Simulator 2018.3
+Time resolution is 1 ps
+run -all
+PASS case 1: empty
+PASS case 2: first positive
+PASS case 3: second positive
+PASS case 4: yellow rejection and clearing
+PASS case 5: cyan rejection
+PASS case 6: large white surface
+PASS case 7: two lane lines
+PASS case 8: above ROI
+PASS case 9: too narrow bars
+PASS case 10: minimum bar and gap widths
+PASS case 11: minimum widths confirmation
+PASS case 12: too narrow gaps
+PASS case 13: bright gaps without contrast
+PASS case 14: 11 rows insufficient
+PASS case 15: 12 rows sufficient
+PASS case 16: last row included, new location
+PASS case 17: last row confirmation
+PASS case 18: row discontinuity rejection
+PASS case 19: left candidate
+PASS case 20: disjoint candidate does not confirm
+PASS case 21: disjoint candidate next frame
+PASS case 22: malformed short row invalidates frame
+PASS case 23: after bad frame starts fresh
+PASS: zebra detector 23 complete-frame cases plus interrupted-frame, blanking and reset checks
+$finish called at time : 7437740 ns : File "E:/FPGA drive/HDMI_DDR3_OV5640/tests/zebra_detect_tb.v" Line 123
+exit
+INFO: [Common 17-206] Exiting xsim at Fri Oct 16 23:35:52 2026...

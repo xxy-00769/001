@@ -1,0 +1,113 @@
+# ============================================================================
+#  HDMI_DDR3_OV5640  —  Git ignore rules
+#
+#  原则：只把「人写的、能复现的」放进来。
+#  编译器 / 仿真器 / 解释器 / 实验脚本自动产生的中间产物一律排除。
+#
+#  注意：experiments/ 下面每个实验目录里都有 runs/ builds/ work/ output/，
+#        单个实验就能到 862 MB。这些全部靠「按目录名 + 按扩展名」双重拦截。
+# ============================================================================
+
+# ---------- Pango PDS 编译产物（工程根）-------------------------------------
+synthesize/
+place_route/
+report_timing/
+generate_bitstream/
+compile/
+device_map/
+log/
+logbackup/
+constraint_check/
+constraint_backup/
+
+# PDS 自动生成、或含本机绝对路径的脚本
+impl.pds
+impl.pds.lock
+impl.tcl
+multiseed_summary.csv
+flow.log
+run.log
+pds.log
+*.log
+build_*.txt
+cfg_verify_result.sbit
+
+# 注意：bitstreams/ 里人工命名并验证过的 .sbit 是交付物，要保留。
+#       generate_bitstream/ 里的是每次编译的原始输出，必须排除。
+
+# ---------- 实验 / 归档目录里的运行产物 --------------------------------------
+# 这些目录名在任意深度出现都代表「机器生成」，全部排除
+runs/
+builds/
+work/
+vendor_run/
+output/
+xsim.dir/
+.Xil/
+synth/
+impl/
+
+# ---------- 通用的编译 / 仿真 / 综合产物扩展名 -------------------------------
+*.db
+*.adf
+*.prr
+*.prt
+*.netlist
+*.qpg
+*.qpf
+*.qws
+*.jou
+*.pb
+*.hex
+*.ppm
+*.bit
+*.bin
+*.dcp
+*.rpt
+*.sdf
+*.vcd
+*.wdb
+*.trn
+*.twr
+*.backup.log
+*.backup.jou
+*_backup_*.pds
+
+# ---------- Python -----------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---------- Vivado / xsim 仿真产物（工程根 tests/）---------------------------
+tests/xsim.dir/
+tests/.Xil/
+tests/webtalk*
+tests/output/
+tests/*.pb
+
+# ---------- 报告里的大体积截图附件 -------------------------------------------
+# 报告正文（.md / .json）要保留，截图素材太大，按需单独传
+reports/handoff_assets/
+
+# ---------- 编辑器 / 操作系统 ------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*~
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---------- 备份 / 临时 / 诊断 -----------------------------------------------
+*.bak
+*.bak_*
+_diag_frames/
+scan_chain.tcl
+stdout.log
+stderr.log

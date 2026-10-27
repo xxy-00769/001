@@ -1,0 +1,139 @@
+diff --git a/README.md b/README.md
+index c4af263..23ba0e1 100644
+--- a/README.md
++++ b/README.md
+@@ -3,6 +3,11 @@
+ > 基于 **盘古 50K（PGL50H）** 的实时视频感知流水线
+ > 全国大学生嵌入式芯片与系统设计竞赛 · FPGA 创新设计赛道 · 紫光同创选题三
+ 
++当前开发入口：[项目进程](E:/FPGA drive/HDMI_DDR3_OV5640/reports/项目进程.md)、
++[单路ETH1接线与实施边界](E:/FPGA drive/HDMI_DDR3_OV5640/reports/单路高速互连方案_2026-10-18.md)。
++按比赛功能闭环优先推进；v11仅合成规则四键交互通过，v12手工修复停止。
++下文旧构建/下载命令不是本次执行授权；当前不改RTL、不综合/映射、不烧录。
++
+ ---
+ 
+ ## ⚙️ 硬件
+diff --git a/source/rtl/hdmi_ddr_ov5640_top.v b/source/rtl/hdmi_ddr_ov5640_top.v
+index 851b904..4060b20 100644
+--- a/source/rtl/hdmi_ddr_ov5640_top.v
++++ b/source/rtl/hdmi_ddr_ov5640_top.v
+@@ -272,14 +272,23 @@ assign     i_rgb565        =    {cmos2_d_16bit[4:0],cmos2_d_16bit[10:5],cmos2_d_
+ end endgenerate
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////
+-// image pre-processing pipeline (luma / median / sobel).  Define USE_IMG_PROC to enable.
+-// MODE: 0=bypass 1=luma 2=median 3=sobel 4=road markings 5=marking mask
+-`define USE_IMG_PROC
+-`ifdef USE_IMG_PROC
++// V1: DDR stores only buffered, unpainted RGB565. Legacy diagnostics stay
++// available on img_proc's separate outputs, not on the main DDR/HDMI path.
+     wire        proc_de;
+     wire        proc_vs;
+     wire [15:0] proc_rgb;
+-    wire        img_rstn = SELF_TEST ? rstn_out : (cmos_init_done[0] | cmos_init_done[1]);
++    wire        clean_de;
++    wire        clean_vs;
++    wire [15:0] clean_rgb;
++    wire        selected_camera_ready;
++`ifdef CMOS_1
++    assign selected_camera_ready = cmos_init_done[0];
++`elsif CMOS_2
++    assign selected_camera_ready = cmos_init_done[1];
++`else
++    assign selected_camera_ready = 1'b0;
++`endif
++    wire        img_rstn = SELF_TEST ? rstn_out : selected_camera_ready;
+ 
+     img_proc #(
+         .MODE       ( 4    ),
+@@ -294,9 +303,11 @@ end endgenerate
+         .vs_in   (  vs_in_test    ),
+         .rgb_out (  proc_rgb      ),
+         .de_out  (  proc_de       ),
+-        .vs_out  (  proc_vs       )
++        .vs_out  (  proc_vs       ),
++        .clean_rgb_out ( clean_rgb ),
++        .clean_de_out  ( clean_de  ),
++        .clean_vs_out  ( clean_vs  )
+     );
+-`endif
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //修改ddr读写模块v1
+     fram_buf fram_buf(
+@@ -304,9 +315,9 @@ end endgenerate
+         .ddr_rstn       (  ddr_init_done        ),//input                         ddr_rstn,
+         //data_in                                  
+         .vin_clk        (  pclk_in_test         ),//input                         vin_clk,
+-        .wr_fsync       (  proc_vs             ),//input                         wr_fsync,
+-        .wr_en          (  proc_de             ),//input                         wr_en,
+-        .wr_data        (  proc_rgb            ),//input  [15 : 0]  wr_data,
++        .wr_fsync       (  clean_vs            ),//input                         wr_fsync,
++        .wr_en          (  clean_de            ),//input                         wr_en,
++        .wr_data        (  clean_rgb           ),//input  [15 : 0]  wr_data,
+         //data_out
+         .vout_clk       (  pix_clk              ),//input                         vout_clk,
+         .rd_fsync       (  vs_o               ),//input                         rd_fsync,
+diff --git a/source/rtl/img_proc.v b/source/rtl/img_proc.v
+index bc0ee31..036e843 100644
+--- a/source/rtl/img_proc.v
++++ b/source/rtl/img_proc.v
+@@ -38,7 +38,10 @@ module img_proc #(
+     output reg          de_out,
+     output reg          vs_out,
+     output              adas_valid,
+-    output [255:0]      adas_snapshot
++    output [255:0]      adas_snapshot,
++    output reg [15:0]   clean_rgb_out,
++    output reg          clean_de_out,
++    output reg          clean_vs_out
+ );
+ 
+     localparam AW = 11;             // Active columns only; supports up to 2048.
+@@ -248,6 +251,20 @@ module img_proc #(
+         end
+     end
+ 
++    // Keep the buffered color stream independent of all diagnostic drawing.
++    // Its own frame marker precedes pixel zero; never pair it with lane_de/vs.
++    always @(posedge clk) begin
++        if (!rst_n) begin
++            clean_rgb_out <= 0;
++            clean_de_out <= 0;
++            clean_vs_out <= 0;
++        end else begin
++            clean_rgb_out <= c_pix[15:0];
++            clean_de_out <= c_pix[16];
++            clean_vs_out <= window_vs;
++        end
++    end
++
+     //------------------------------------------------------------------------
+     //  6. 3x3 median : sort each column, then take the median of
+     //     {max-of-mins, median-of-medians, min-of-maxes}
+diff --git a/source/rtl/rd_buf.v b/source/rtl/rd_buf.v
+index b41db1b..704337a 100644
+--- a/source/rtl/rd_buf.v
++++ b/source/rtl/rd_buf.v
+@@ -94,7 +94,7 @@ module rd_buf #(
+     always @(posedge ddr_clk)
+     begin
+         if(wr_rst || (~ddr_rstn))
+-            wr_line <= 12'd1;
++            wr_line <= 12'd0;
+         else if(wr_trig)
+             wr_line <= wr_line + 12'd1;
+     end 
+diff --git a/source/rtl/wr_cmd_trans.v b/source/rtl/wr_cmd_trans.v
+index bdfc0ba..f52a7f3 100644
+--- a/source/rtl/wr_cmd_trans.v
++++ b/source/rtl/wr_cmd_trans.v
+@@ -293,7 +293,7 @@ module wr_cmd_trans #(
+             rd_cmd_done <= 1'd0;
+         else
+         begin
+-            if(rd_data_cnt == rd_trans_len - 1'b1)
++            if(read_en && rd_data_cnt == rd_trans_len - 1'b1)
+                 rd_cmd_done <= 1'd1;
+             else
+                 rd_cmd_done <= 1'd0;
