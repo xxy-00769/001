@@ -1,0 +1,14 @@
+#last_iteration_critical_path_worst_slack: -0.214 ns.
+def_route -prior_net {video_output/timing_panel/image} -load {buffer1/m2_reader.hd.reader/N219_3/gateop:L4;}
+def_route -prior_net {buffer1/m2_reader.hd.reader/N219} -load {buffer1/m2_reader.hd.reader/source_x[0]/opit_0_inv_L5Q:CE;}
+def_route -prior_net {buffer1/m2_reader.hd.reader/N219} -load {buffer1/m2_reader.hd.reader/source_x[1]/opit_0_inv_L5Q:CE;}
+def_route -prior_net {buffer1/m2_reader.hd.reader/N219} -load {buffer1/m2_reader.hd.reader/source_x[3]/opit_0_inv_L5Q:CE;}
+def_route -prior_net {network2/e1_io.phy/rgmii_tx_data[0].gtp_outbuft1/ntO} -load {network2/e1_io.phy/rgmii_tx_data[0].gtp_outbuft1/opit_0:I;}
+def_route -prior_net {network2/e1_io.phy/rgmii_tx_data[1].gtp_outbuft1/ntO} -load {network2/e1_io.phy/rgmii_tx_data[1].gtp_outbuft1/opit_0:I;}
+def_route -prior_net {network2/e1_io.phy/rgmii_tx_data[2].gtp_outbuft1/ntO} -load {network2/e1_io.phy/rgmii_tx_data[2].gtp_outbuft1/opit_0:I;}
+def_route -prior_net {video_output/raw_y [6]} -load {video_output/timing_panel/N43_mux4_3/gateop:L4;}
+def_route -prior_net {video_output/timing_panel/_N8127} -load {video_output/timing_panel/N45_3/gateop:L4;}
+def_route -prior_net {video_output/timing_panel/_N134123} -load {video_output/timing_panel/id[0]/opit_0_L5Q:L4;}
+def_route -prior_net {video_output/timing_panel/v [1]} -load {video_output/timing_panel/y1[2]/opit_0_A2Q21:I12;}
+def_route -prior_net {video_output/timing_panel/N24_1.co [2]} -load {video_output/timing_panel/y1[4]/opit_0_A2Q21:Cin;}
+def_route -prior_net {video_output/timing_panel/N24_1.co [4]} -load {video_output/timing_panel/y1[6]/opit_0_A2Q21:Cin;}

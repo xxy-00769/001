@@ -1,0 +1,155 @@
+`timescale 1ns/1ps
+module m364_tx_tb;
+ GTP_GRS GRS_INST(.GRS_N(1'b1));
+ reg c=0,dc=0,source_clk=0,rst=0;
+ always #10 c=~c;always #5 dc=~dc;always #4 source_clk=~source_clk;
+ wire rxc=source_clk;
+ reg dv=0;reg [7:0] byte_in=0;reg [3:0] pins=0;reg ctl=0;
+ always @(posedge source_clk) begin #1; pins=byte_in[3:0];ctl=dv;end
+ always @(negedge source_clk) begin #1; pins=byte_in[7:4];ctl=dv;end
+ reg upload_enable=0,grant=0,held=0,urr=0,urv=0,url=0;
+ reg [255:0] urd=0;wire [27:0] ura;wire [3:0] urlen;wire urav;
+ integer long_replies=0,ifg_checks=0,min_ifg=99999,idles=0;
+ reg had_frame=0;integer streamed=0,observed=0;reg [7:0] stream_bytes[0:32767];
+ always @(posedge dut.nc) if(rst && dut.txv) begin stream_bytes[streamed]=dut.txd;streamed++;end
+ always @(posedge dc) begin
+  grant<=0;if(upload_enable && dut.acquire && !held) begin grant<=1;held<=1;end
+  if(dut.release_frame) held<=0;
+ end
+ function [15:0] pat(input integer pixel);pat=((pixel/1280)*16'h031d)^((pixel%1280)*16'h9e37)^16'h19d7;endfunction
+ integer ba,bn,bj,bk,bursts=0;
+ initial begin
+  wait(rst);
+  forever begin
+   wait(urav);@(negedge dc);ba=ura;bn=urlen+1;urr=1;
+   for(bj=0;bj<bn;bj++) begin
+    if(bj%3==2) repeat(2) @(negedge dc);
+    for(bk=0;bk<16;bk++) urd[bk*16+:16]=pat((ba-28'h2000000)*2+bj*16+bk);
+    urv=1;url=bj==bn-1;@(posedge dc);@(negedge dc);urr=0;urv=0;url=0;
+   end
+   bursts++;
+  end
+ end
+ tri1 mdio;wire mdc,txc,txctl,phy_reset;wire [3:0] txpins;
+ m3_network #(.ENABLE_VIDEO(0),.PHY_INTERNAL_DELAY(1),.E1_PHY(1),.LOCAL_MAC(48'h020047535632),.LOCAL_IP(32'hc0a83c02),.HOST_IP(32'hc0a83c01)) dut(
+ .clk(dc),.rst_n(rst),.sys_clk(c),.phy_reset_n(rst),.rgmii_rxc(rxc),.rgmii_rx_ctl(ctl),.rgmii_rxd(pins),
+ .rgmii_txc(txc),.rgmii_tx_ctl(txctl),.rgmii_txd(txpins),.phy_rstn(phy_reset),.phy_mdc(mdc),.phy_mdio(mdio),
+ .pc(dc),.fs(1'b0),.selected(1'b0),.quarter(1'b0),.request(1'b0),.key_event(1'b0),.key_code(4'd0),.latest_front_id(32'd55),
+ .grant(grant),.held(held),.bank(2'd2),.identity(32'd123),.stamp(32'd456),.awready(1'b0),.wready(1'b0),.wlast(1'b0),
+ .arready(1'b0),.upload_arready(urr),.upload_araddr(ura),.upload_arlen(urlen),.upload_arvalid(urav),.rdata(urd),.rvalid(1'b0),.rlast(1'b0),.upload_rvalid(urv),.upload_rlast(url));
+ defparam dut.e1_phy.manager.START_CYCLES=20;
+ defparam dut.e1_phy.manager.POLL_CYCLES=1000;
+ defparam dut.e1_phy.manager.MDIO_HALF=2;
+ `include "sim/m361_phy_model.vh"
+ reg [7:0] packetmem[0:1499],txmem[0:1499];integer txcount=0,txframes=0,arp_replies=0,hello_replies=0;reg [3:0] lo;reg was_tx=0;reg [31:0] check_crc;
+ function [31:0] crc(input [31:0] v,input [7:0] d);reg [31:0] x;integer j;begin x=v;for(j=0;j<8;j++) x=(x[0]^d[j]) ? (x>>1)^32'hedb88320:x>>1;crc=x;end endfunction
+ // Nonzero fixed skew exercises logic only. STA, not this functional
+ // primitive model, qualifies the electrical rise/fall capture windows.
+ wire tx_sample;assign #0.080 tx_sample=txc;
+ wire [3:0] observed_pins; wire observed_ctl;
+ assign #0.036 observed_pins[0]=txpins[0];
+ assign #0.035 observed_pins[1]=txpins[1];
+ assign #0.031 observed_pins[2]=txpins[2];
+ assign #0.009 observed_pins[3]=txpins[3];
+ assign #0.000 observed_ctl=txctl;
+ reg [7:0] expected_arp[0:59];
+ task check_arp; begin
+  if(txcount!=72) $fatal(1,"ARP wire length %0d",txcount);
+  for(integer j=0;j<7;j++) if(txmem[j]!==8'h55) $fatal(1,"ARP preamble %0d",j);
+  for(integer j=0;j<60;j++) if(txmem[j+8]!==expected_arp[j])
+   $fatal(1,"ARP byte %0d got=%h expected=%h",j,txmem[j+8],expected_arp[j]);
+ end endtask
+ always @(posedge tx_sample) begin lo=observed_pins;was_tx=observed_ctl;end
+ always @(negedge tx_sample) begin
+  if(was_tx) begin
+   if(txcount==0 && had_frame) begin
+    if(idles<12) $fatal(1,"IFG too short %0d",idles);
+    if(idles<min_ifg) min_ifg=idles;ifg_checks++;
+   end
+   idles=0;had_frame=1;
+   if(observed>=streamed || {observed_pins,lo}!==stream_bytes[observed]) $fatal(1,"GMII to pin byte mismatch %0d",observed);
+   observed++;
+   if(!observed_ctl) $fatal(1,"TX_CTL error");txmem[txcount]={observed_pins,lo};txcount++;end
+  else if(txcount!=0) begin
+   if(txcount<72) $fatal(1,"TX runt %0d",txcount);
+   check_crc=32'hffffffff;for(integer k=8;k<txcount;k++) check_crc=crc(check_crc,txmem[k]);
+   if(check_crc!==32'hdebb20e3 || txmem[7]!==8'hd5) $fatal(1,"TX FCS/framing %h %h",check_crc,txmem[7]);
+   if({txmem[20],txmem[21]}==16'h0806 && txmem[29]==2) begin check_arp();arp_replies++;end
+   if({txmem[20],txmem[21]}==16'h0800 && txmem[55]==2) hello_replies++;
+   if({txmem[20],txmem[21]}==16'h0800 && txmem[55]==17) begin
+    if(txcount!=1382 || {txmem[62],txmem[63],txmem[64],txmem[65]}!=123 ||
+       {txmem[80],txmem[81]}!=long_replies ||
+       {txmem[74],txmem[75],txmem[76],txmem[77]}!=long_replies*1280) $fatal(1,"front descriptor/length %0d",txcount);
+    for(integer j=0;j<640;j++) if({txmem[99+j*2],txmem[98+j*2]}!==pat(long_replies*640+j)) $fatal(1,"front payload %0d/%0d got=%h expected=%h",long_replies,j,{txmem[99+j*2],txmem[98+j*2]},pat(long_replies*640+j));
+    long_replies++;
+   end
+   txframes++;txcount=0;idles++;
+  end else begin idles++;
+  end
+ end
+ task put16(input integer o,v);begin packetmem[o]=v>>8;packetmem[o+1]=v;end endtask
+ task put32(input integer o,input [31:0] v);begin packetmem[o]=v>>24;packetmem[o+1]=v>>16;packetmem[o+2]=v>>8;packetmem[o+3]=v;end endtask
+ task send(input integer n,corrupt);reg [31:0] f;begin
+  @(negedge source_clk);#2;dv=1;byte_in=8'h55;
+  repeat(7) begin @(negedge source_clk);#2;end byte_in=8'hd5;
+  @(negedge source_clk);#2;f=32'hffffffff;
+  for(integer k=0;k<(n<60?60:n);k++) begin byte_in=k<n ? packetmem[k]:0;f=crc(f,byte_in);@(negedge source_clk);#2;end
+  f=~f;for(integer k=0;k<4;k++) begin byte_in=(f>>(8*k))^(corrupt && k==0);@(negedge source_clk);#2;end
+  dv=0;byte_in=0;repeat(400) @(negedge source_clk);
+ end endtask
+ task arp;begin
+  for(integer k=0;k<90;k++) packetmem[k]=0;
+  for(integer k=0;k<6;k++) packetmem[k]=255;
+  for(integer k=6;k<12;k++) packetmem[k]=8'hb0+k;
+  put16(12,16'h0806);put16(14,1);put16(16,16'h0800);packetmem[18]=6;packetmem[19]=4;put16(20,1);
+  for(integer k=22;k<28;k++) packetmem[k]=8'hb0+k-16;
+  for(integer k=0;k<60;k++) expected_arp[k]=0;
+  for(integer k=0;k<6;k++) begin expected_arp[k]=8'hb6+k;expected_arp[32+k]=8'hb6+k;end
+  {expected_arp[6],expected_arp[7],expected_arp[8],expected_arp[9],expected_arp[10],expected_arp[11]}=48'h020047535632;
+  {expected_arp[12],expected_arp[13],expected_arp[14],expected_arp[15],expected_arp[16],expected_arp[17],expected_arp[18],expected_arp[19],expected_arp[20],expected_arp[21]}=80'h08060001080006040002;
+  {expected_arp[22],expected_arp[23],expected_arp[24],expected_arp[25],expected_arp[26],expected_arp[27]}=48'h020047535632;
+  {expected_arp[28],expected_arp[29],expected_arp[30],expected_arp[31]}=32'hc0a83c02;
+  {expected_arp[38],expected_arp[39],expected_arp[40],expected_arp[41]}=32'hc0a83c01;
+  put32(28,32'hc0a83c01);put32(38,32'hc0a83c02);send(42,0);
+ end endtask
+ task hello;integer s;begin
+  for(integer k=0;k<90;k++) packetmem[k]=0;
+  packetmem[0]=2;packetmem[2]=8'h47;packetmem[3]=8'h53;packetmem[4]=8'h56;packetmem[5]=8'h32;
+  for(integer k=6;k<12;k++) packetmem[k]=8'hb0+k;
+  put16(12,16'h0800);packetmem[14]=8'h45;put16(16,76);put16(20,16'h4000);packetmem[22]=64;packetmem[23]=17;
+  put32(26,32'hc0a83c01);put32(30,32'hc0a83c02);put16(34,50000);put16(36,50000);put16(38,56);
+  put32(42,32'h47535633);packetmem[46]=1;packetmem[47]=1;packetmem[49]=1;put32(50,32'h12345678);put16(62,1280);put16(64,720);packetmem[89]=5;
+  s=0;for(integer k=14;k<34;k+=2) s=s+{packetmem[k],packetmem[k+1]};s=(s&65535)+(s>>16);put16(24,~s);send(90,0);
+ end endtask
+ initial begin
+  #101;rst=1;@(negedge c);dut.reset_count=1000000-16;
+  wait(dut.queue_rx_ready);repeat(40) @(negedge source_clk);
+  arp();hello();repeat(1500) @(negedge source_clk);
+  if(arp_replies!=1 || hello_replies!=1 || !dut.online) $fatal(1,"link ARP=%0d HELLO=%0d online=%b crc=%0d rx=%0d bad=%0d ready=%b",arp_replies,hello_replies,dut.online,dut.mac.crc_errors,dut.core.rx_packets,dut.core.bad_packets,dut.queue_rx_ready);
+  send(90,1);if(dut.mac.crc_errors!=1) $fatal(1,"corrupt CRC accepted");
+  repeat(200) @(negedge c);
+  if(dut.diag_accept!==32'h00010001) $fatal(1,"accept counters");
+  if(delay_reg!==16'h0123) $fatal(1,"strap delay was modified");
+  phy_status=16'h6c00;wait(!dut.phy_ready);repeat(30) @(negedge source_clk);
+  arp(); // Raw pins remain observable while the real ready gate holds MAC reset.
+  if(dut.queue_rx_ready) $fatal(1,"link-down queue gating");
+  phy_status=16'hac00;wait(dut.queue_rx_ready);repeat(40) @(negedge source_clk);
+  arp();hello();repeat(1500) @(negedge source_clk);
+  if(arp_replies!=2 || hello_replies!=2 || !dut.online || dut.diag_accept!=32'h00020002)
+    $fatal(1,"link recovery ARP=%0d HELLO=%0d accepted=%h",arp_replies,hello_replies,dut.diag_accept);
+  repeat(200) @(negedge c);
+  // Exercise PLL lock loss through the real async reset and release path.
+  force dut.e1_phy.pll.pll_lock=0;
+  #21;if(dut.queue_rx_ready || dut.queue_mac_ready) $fatal(1,"PLL loss reset");
+  #100;release dut.e1_phy.pll.pll_lock;
+  wait(dut.queue_rx_ready);repeat(40) @(negedge source_clk);
+  for(integer j=0;j<8;j++) begin hello();wait(hello_replies==j+3);end
+  upload_enable=1;wait(long_replies==8);repeat(20) @(negedge source_clk);
+  if(ifg_checks<19 || min_ifg<12) $fatal(1,"IFG coverage");
+  if(dut.e1_io.observer.bad!=0 || dut.e1_io.observer.frames!=txframes)
+    $fatal(1,"passive observer mismatch frames=%0d pins=%0d bad=%0d",dut.e1_io.observer.frames,txframes,dut.e1_io.observer.bad);
+  $display("M364_LOAD_PASS ARP=%0d control=%0d front_long=%0d bytes=%0d ifg_checks=%0d min_ifg=%0d DDR_bursts=%0d",arp_replies,hello_replies,long_replies,observed,ifg_checks,min_ifg,bursts);
+  $display("M364_TX_PASS MDIO_scan=%0d ARP=%0d HELLO=%0d CRC_reject=1 TX_pin_FCS=1 production_ready_reset=1 strap_unchanged=1 pll_recovery=1 link_recovery=1",transactions,arp_replies,hello_replies);$finish;
+ end
+ initial begin #3000000;$fatal(1,"timeout addr=%0d step=%0d status=%h ready=%b",dut.e1_phy.manager.address,dut.e1_phy.manager.step,dut.e1_phy.manager.status,dut.phy_ready);end
+endmodule

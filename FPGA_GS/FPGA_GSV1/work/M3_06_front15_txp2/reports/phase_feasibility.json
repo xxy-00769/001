@@ -1,0 +1,22 @@
+{
+  "classification": "nominal same-corner phase feasibility; not OCV/CPR STA or measured PHY eye",
+  "parameters": {
+    "receiver_setup_ns": 1.0,
+    "receiver_hold_ns": 1.0,
+    "root_uncertainty_ns": 0.2,
+    "external_skew_min_ns": -0.004,
+    "external_skew_max_ns": 0.034,
+    "pcb_relative_skew": "unknown; zero for illustration",
+    "effective_internal_TX_delay": "unknown; reg8575 controlbit13=0 means strap-selected"
+  },
+  "illustrative_external_phase_window_no_extra_PHY_delay_ns": [
+    1.204,
+    2.766
+  ],
+  "conservative_3_6ns_short_half_cycle_window_ns": [
+    1.204,
+    2.366
+  ],
+  "selected_external_phase_ns": 2.0,
+  "important": "If PHY adds2ns, phase2ns makes total near4ns transition and is not valid. This is a deliberately discriminating single-variable board test, not a guaranteed repair. No zero-CRC pass without actual frames near15fps and zero assembly/socket drops."
+}
