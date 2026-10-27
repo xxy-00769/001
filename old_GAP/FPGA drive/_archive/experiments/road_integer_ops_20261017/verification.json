@@ -1,0 +1,113 @@
+{
+  "convolution_contracts": 136,
+  "unsupported_convolutions": [
+    {
+      "name": "L0315_Conv2d/WithoutBiases",
+      "reason": "No supported bias/output-quantizer chain (final float classifier)"
+    }
+  ],
+  "rtl_jobs": 3214,
+  "rtl_exact_convolution_outputs": 604920,
+  "rtl_exhaustive_residual_pairs": 65536,
+  "rtl_residual_reconfiguration_outputs": 2,
+  "reconstructed_tensors": [
+    {
+      "layer": "L0002_Conv2d_BN/WithoutBiases",
+      "tiles": 960,
+      "features": 122880
+    },
+    {
+      "layer": "L0004_Conv2d_BN/WithoutBiases",
+      "tiles": 960,
+      "features": 122880
+    },
+    {
+      "layer": "L0006_Conv2d_BN/WithoutBiases",
+      "tiles": 960,
+      "features": 245760
+    }
+  ],
+  "convolution_stall_cycles": 562820,
+  "isolated_native_feature_checks": 80000,
+  "isolated_native_differing_codes": 1,
+  "first_block_vs_native_feature_differences": 22,
+  "first_block_vs_native_feature_checks": 3440640,
+  "precision_audit": {
+    "shift": 36,
+    "checked_accumulator_channel_pairs": 2020142,
+    "affine_mismatches": 0,
+    "residual_channel_pairs": 1048576,
+    "residual_mismatches": 0,
+    "scope": "Compared with float64 formulas, not original fused model bit-equivalence."
+  },
+  "cpu_tail_same_image_decisions": true,
+  "cpu_tail_same_masks": false,
+  "cpu_tail_nonroad_accepted": 0,
+  "cpu_tail_road_accepted": 5,
+  "convolution_resources": {
+    "LUT": 1051.0,
+    "FF": 531.0,
+    "DRM": 21.0,
+    "APM": 11.5,
+    "synthesis_only_target_ns": 10,
+    "synthesis_only_estimated_period_ns": 8.966,
+    "synthesis_only_slack_ns": 1.034,
+    "routed": false,
+    "external_interface_timing_constrained": false
+  },
+  "residual_resources": {
+    "LUT": 287.0,
+    "FF": 276.0,
+    "DRM": 0.0,
+    "APM": 6.0,
+    "synthesis_only_target_ns": 10,
+    "synthesis_only_estimated_period_ns": 5.889,
+    "synthesis_only_slack_ns": 4.111,
+    "routed": false,
+    "external_interface_timing_constrained": false
+  },
+  "serial_136_conv_macs": 295656960,
+  "serial_136_conv_core_cycles_without_transfer_or_stalls": 1546275648,
+  "hypothetical_core_seconds_at_100mhz": 15.46275648,
+  "throughput_warning": "Serial correctness baseline is not real-time. Counts exclude loads, DDR, missing operators and classification. Frequency is not routed/measured.",
+  "main_files_unchanged": 229,
+  "board_programmed_this_step": false,
+  "deployment_approved": false,
+  "scope": "Reusable arithmetic and host-fed tile verification, not an on-chip layer scheduler, full network, DDR integration or new bitstream.",
+  "source_sha256": {
+    "reference.py": "6bb7baff818f9f798403c10ba9b71e084f5f289223bb8b36a6dbce766f93e36c",
+    "source\\conv_tile.v": "9fbb93274e39867743f73e8b2c6a5937281e2c8c6472903f5f64e1b2991bbec3",
+    "source\\residual_requant.v": "5f317274bc8021f82e389efb116d8d5078de17677241c491562ebd9615526aa7",
+    "tests\\generate.py": "bf37e1dde5ba8ae8f07729fb2d4c763f628580216a7170da580ea9f8e6e29e76",
+    "tests\\test_reference.py": "194d09b9a292eae023d13c503589e6e38a469361047d0fbfb4fe43d3fadbd02f",
+    "tests\\conv_tb.v": "f265f170fda929a9552248fdffd31eda9300d4bae5c0a149e8c63bb9514b5f23",
+    "tests\\residual_tb.v": "f7261eb2d7b56dda96738138c222112b3b23f7f7abe1a49d7e0075c272eaf2a6",
+    "tests\\network_check.py": "17ce0fd0a698fca63b2d81ee9d0069f232bdc5ac85ab5419e1c735edf9444bac",
+    "tests\\precision_audit.py": "0b4e35b8b7ae60d088a4430012b94562f5d4dbe7500b4e053913272949e67e68",
+    "tests\\verify.py": "556cdc5b00c13a742dc6a5d73d4c7745cf392f1b9fe7096d96f5bca696b2bfb7",
+    "tests\\run.ps1": "d0f861616e9b7f7d415fab27bb7eb9b8e8b209f77b85a77f722915e742a1e0cb",
+    "build.ps1": "09cca08eebc4e23330d53c10138d38799729634cf2918dbb10610a756c6dbae8",
+    "flow.tcl": "c83b26f51190bbc6f478384d08c8cc0edcf39d150c5062e3fa870e349466fb51",
+    "residual_build\\flow.tcl": "e301f722ed3754d0954a092958a927107b118923a5c4c57a2aa01a2179403d11",
+    "compute.fdc": "56b6c1587768cf163d1ea43024209c7905a3ff588d77f0f827521879fd303fb4"
+  },
+  "evidence_sha256": {
+    "tests\\output\\reference.json": "1c043599222bf0ca2ae84e592d5447c7ec8d4be8f7b552b7658d1b49baa27fe1",
+    "tests\\output\\network_check.json": "8e7fe2e03478328215780628aa6734db71a66bb4b3d09c759d50427c4f848fc4",
+    "tests\\output\\cases.json": "4f1f0990bcd25136311c05803bc8180a10e4bd1ac51e70e9710128c85ecd395e",
+    "tests\\output\\rtl_outputs.txt": "482b0833ac25771c6bd17898b1c54e802fe402ab6d6dad0377a8b2aab46e0b2d",
+    "tests\\output\\rtl_cycles.txt": "f2e60850342a08aa512193fdea34f833bc5fb65202a332d10740386739347d4f",
+    "tests\\output\\rtl_build_inputs.json": "4767fdb1121b86177eba42d1e9ee5c2e949cbdee8643303a244700d5c3c27c28",
+    "tests\\output\\synthesis_inputs.json": "35a5c27af5e6b5e30e9fa481ca9b70f73efabcb0024a60e165ba783a4b012eb4",
+    "operator_inventory.json": "04ead4bea01a9596b79d6bf5b368ab8b5a565f4469ff5c4e43df08650836dfe1",
+    "precision_audit.json": "531d543d77119eeed3fc19335d34842144b2cb965dd515368cc6679813a803cb",
+    "synthesize\\conv_tile.snr": "71507500935eb091fcd5bcae499e16a5f1996dcc4c476dbbdef79d7cb2f57ccc",
+    "device_map\\conv_tile.dmr": "512caeedcddded042f79f0266ee16ab2b441835185faa2177636eb76c31a8662",
+    "synthesis.log": "bb99ccde960bb0b766b2f68b1318bacc5871b28a866d673891605f3b909a6cfa",
+    "tests\\conv.log": "14285e24889a11efa51aad1d19e94c6e699e7bff8fec86190c90077866542db0",
+    "tests\\residual.log": "d057be1222d223ae491bdf4cb004b643187be97405dce3892733dff842abebba",
+    "residual_build\\synthesize\\residual_requant.snr": "a05236aeb02f308b89750d821870e48e5742ea005da081e4c12493e1bb21203f",
+    "residual_build\\device_map\\residual_requant.dmr": "9658335df9191263c569bc34ce062de543f1ebbcf8344509ce8677dc74b1d61c",
+    "residual_build\\synthesis.log": "3c3f726debba565164ded70af8410071bb34d23b6bcf10edc18b2075e89cda71"
+  }
+}

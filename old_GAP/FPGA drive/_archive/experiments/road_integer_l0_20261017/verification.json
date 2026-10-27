@@ -1,0 +1,63 @@
+{
+  "reference_images_and_patterns": 21,
+  "reference_feature_values": 5160960,
+  "reference_vs_model_max_code_error": 1,
+  "reference_vs_model_differing_codes": 2,
+  "rtl_jobs": 576,
+  "rtl_bit_exact_outputs": 589824,
+  "full_frame_first_layer_outputs_reassembled": [
+    "legacy_road_3",
+    "negative_shelf_dark"
+  ],
+  "backpressure_hold_cycles": 535104,
+  "compute_cycles_per_tile_no_stall": 57344,
+  "compute_cycles_per_frame_no_stall": 13762560,
+  "frame_input_read_plan_bytes": 318304,
+  "frame_feature_write_bus_plan_bytes": 983040,
+  "frame_input_payload_bytes": 184320,
+  "frame_feature_output_bytes": 245760,
+  "input_lut_codes_verified": 256,
+  "ddr_plan_replayed_for_tiles": 575,
+  "first_layer_substitution_cpu_regression_images": 14,
+  "first_layer_substitution_same_masks": false,
+  "network_cut_control_same_masks": false,
+  "synthesis_resources": {
+    "LUTs": 383.0,
+    "registers": 90.0,
+    "DRM18K": 1.0,
+    "APMs": 4.5
+  },
+  "device_mapping_resources": {
+    "LUT": 384.0,
+    "FF": 90.0,
+    "DRM": 1.0,
+    "APM": 4.5
+  },
+  "main_files_unchanged": 229,
+  "scope": "First convolution + bias + ReLU + requantization only. Not full model or DDR RTL, no PNR/timing or board test.",
+  "source_sha256": {
+    "reference.py": "92e67493678fdf8d9e3149fa175ef41a4b0df1a28a40bc7cc960be7705ea1e93",
+    "source\\layer0_params.v": "595b813fac23fa7e5c62eed13439980eb92aee3194a0d7f02f8887155ebdd4d2",
+    "source\\layer0_tile.v": "3d9266269e6f8c39d6d6a025f9ac8ff5c976a847230494430133cf43b87fe1a9",
+    "tests\\generate.py": "eddb804fae54d7879ed9f5c2b89f28f230bddaff38dc5d2ff8db4f3ed60153bb",
+    "tests\\test_reference.py": "c0439e8086908dc4aa2b83044dbe853277d0689b6b8bbceb144e00f8c8fb1d58",
+    "tests\\layer0_tb.v": "9a1634befef7ba1b6cae637d400221e3edd9b0375b1aae348ad92ea2e0f6ddf4",
+    "tests\\verify.py": "d7a6ebb602afdb09f8e91dfd946e417122a431551a6a146bdf809354d058698d",
+    "tests\\network_check.py": "222d023d3a544d635ac691d952fbe164bddfb9816076ee57d4da293ded52450c",
+    "tests\\precision_audit.py": "7064f4dd4fe9c183ae479a65a1863d625d1105d6b21accdf82dc37f919622500",
+    "tests\\run.ps1": "8f0fb967ff681ffc4efba6c25a4e88b0a03a077372561b09a5d829e17c5a43ea",
+    "flow.tcl": "31fc7940f02f25e30bd4a7633248979be37627cebb2ec020077e60d35808027a"
+  },
+  "evidence_sha256": {
+    "precision_audit.json": "3871328410aeed64f0d85e905c6559c732a1f90cc9126e11cc54d30565df2b7d",
+    "q30_reference.json": "4557f2df73b93405774cbcd8b645f66e2b085a0a5c3176d05932f10ca90bffed",
+    "q30_network_check.json": "e82900498050f8982826ce9e87838539ff0c189fe008b3bcbc7cab91c6fc6393",
+    "tests\\output\\reference.json": "738e465ed9f1b5ef3fc534b53adfb9550712bf848ffffd6c68a4bf4091bfa78c",
+    "tests\\output\\network_check.json": "6c7920b5f4917cf76ae3447c5897375f8cdfbae55d152bbf8643bd3b5fe4a74c",
+    "tests\\output\\rtl_outputs.txt": "f8afb7e4ff3aa6153d8e1123ed57fd7af50e5874094eb48ea8b18adff75daf59",
+    "tests\\output\\rtl_cycles.txt": "611e3cc3d00732602ddd50d54c35dd3ce4b1462367fd95fd28a7a88519626f3f",
+    "synthesize\\layer0_tile.snr": "5d70cc171263a2260bf504d46a96a41d1a21a04e27bc03d109f80fc6a83a090a",
+    "device_map\\layer0_tile.dmr": "552233226bd42db819f6b802d5077e0de8e1869330fa3cb4d3a954273ae95104",
+    "synthesis.log": "3f4008efb442afa1390833c649740044ad14616eb1082c07c834f05f9ac36321"
+  }
+}

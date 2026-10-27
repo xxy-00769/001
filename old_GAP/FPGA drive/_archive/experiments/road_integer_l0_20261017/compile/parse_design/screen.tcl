@@ -1,0 +1,1 @@
+.rtl_screen -top_module {layer0_tile} -include_path {<E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_l0_20261017>} -design_files {<E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_l0_20261017/source/layer0_params.v|work><E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_l0_20261017/source/layer0_tile.v|work>}

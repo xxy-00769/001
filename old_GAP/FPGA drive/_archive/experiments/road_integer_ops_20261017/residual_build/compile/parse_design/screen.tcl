@@ -1,0 +1,1 @@
+.rtl_screen -top_module {residual_requant} -include_path {<E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/residual_build>} -design_files {<E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/residual_requant.v|work>}

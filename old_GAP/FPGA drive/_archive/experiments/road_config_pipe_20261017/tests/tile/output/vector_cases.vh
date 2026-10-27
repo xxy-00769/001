@@ -1,0 +1,1 @@
+localparam VECTOR_WORDS=210944;

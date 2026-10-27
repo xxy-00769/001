@@ -1,0 +1,80 @@
+--- V5/source/rtl/hdmi_ddr_ov5640_top.v
++++ V5.1/source/rtl/hdmi_ddr_ov5640_top.v
+@@ -403,15 +403,17 @@
+      );
+      // Display-only adapter. Capture, processing and stored frames remain 720p.
+      wire panel_hs, panel_vs, panel_de, panel_image;
++     wire [23:0] panel_diagnostic_rgb;
+      mpi7001_timing u_panel_timing (
+         .clk(pix_clk), .rst_n(rstn_out && ddr_init_done),
+         .frame_sync(vs_o), .read_request(de_re),
+-        .hs(panel_hs), .vs(panel_vs), .de(panel_de), .image_area(panel_image)
++        .hs(panel_hs), .vs(panel_vs), .de(panel_de), .image_area(panel_image),
++        .diagnostic_rgb(panel_diagnostic_rgb)
+      );
+      always @(posedge pix_clk) begin
+-        r_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[15:11],3'b0} : 8'd0;
+-        g_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[10:5],2'b0} : 8'd0;
+-        b_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[4:0],3'b0} : 8'd0;
++        r_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[15:11],3'b0} : panel_diagnostic_rgb[23:16];
++        g_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[10:5],2'b0} : panel_diagnostic_rgb[15:8];
++        b_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[4:0],3'b0} : panel_diagnostic_rgb[7:0];
+         vs_out <= panel_vs;
+         hs_out <= panel_hs;
+         de_out <= panel_de;
+--- V5/source/rtl/mpi7001_timing.v
++++ V5.1/source/rtl/mpi7001_timing.v
+@@ -5,7 +5,8 @@
+ module mpi7001_timing (
+     input wire clk, rst_n,
+     output wire frame_sync, read_request,
+-    output wire hs, vs, de, image_area
++    output wire hs, vs, de, image_area,
++    output wire [23:0] diagnostic_rgb
+ );
+     reg [9:0] h;
+     reg [8:0] v;
+@@ -13,16 +14,34 @@
+     wire image = h >= 256 && h < 896 && v >= 76 && v < 436;
+     // Match rd_buf's two-cycle read enable / data path latency.
+     reg [1:0] hs_d, vs_d, de_d, image_d;
+-    assign frame_sync = v < 3;
++    // A low level during reset guarantees a first SOF edge to rd_buf.
++    assign frame_sync = rst_n && v < 3;
+     assign read_request = rst_n && image;
+     assign hs = hs_d[1];
+     assign vs = vs_d[1];
+     assign de = de_d[1];
+     assign image_area = image_d[1];
++    // Independent display-path probes in the unused margins; no DDR/camera data.
++    reg [23:0] probe, probe_d0, probe_d1;
++    assign diagnostic_rgb = probe_d1;
++    always @(*) begin
++        probe = 24'h000000;
++        if (active && v >= 24 && v < 56) begin
++            if      (h < 276) probe = 24'hffffff;
++            else if (h < 376) probe = 24'hffff00;
++            else if (h < 476) probe = 24'h00ffff;
++            else if (h < 576) probe = 24'h00ff00;
++            else if (h < 676) probe = 24'hff00ff;
++            else if (h < 776) probe = 24'hff0000;
++            else if (h < 876) probe = 24'h0000ff;
++        end else if (active && v >= 456 && v < 488)
++            probe = (h[0] ^ v[0]) ? 24'hffffff : 24'h000000;
++    end
+     always @(posedge clk or negedge rst_n) begin
+         if (!rst_n) begin
+             h <= 0; v <= 0;
+             hs_d <= 0; vs_d <= 3; de_d <= 0; image_d <= 0;
++            probe_d0 <= 0; probe_d1 <= 0;
+         end else begin
+             if (h == 991) begin
+                 h <= 0;
+@@ -32,6 +51,7 @@
+             vs_d <= {vs_d[0], !(v < 3)};
+             de_d <= {de_d[0], active};
+             image_d <= {image_d[0], image};
++            probe_d0 <= probe; probe_d1 <= probe_d0;
+         end
+     end
+ endmodule

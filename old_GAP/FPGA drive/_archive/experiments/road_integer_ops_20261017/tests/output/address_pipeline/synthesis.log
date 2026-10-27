@@ -1,0 +1,621 @@
+License checkout: fabric_shell from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling architecture definition.
+W: Warning : The license will invalid in 17 days. In order not to affect your usage, please update the license in time.
+
+Executing : add_design source/conv_tile.v
+Executing : add_design source/conv_tile.v successfully.
+Executing : add_constraint compute.fdc
+Executing : add_constraint compute.fdc successfully.
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484 successfully.
+
+
+Executing : compile -top_module conv_tile
+
+
+Process "Compile" started.
+Current time: Sat Oct 17 16:33:24 2026
+Compiling architecture definition.
+Analyzing project file 'E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/impl.pds'.
+License checkout: fabric_ads from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+I: Enable Verilog2k features and keywords
+Start rtl-analyze.
+Executing : .rtl_analyze -work work -include_path {{E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017}} {E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/conv_tile.v}
+I: Verilog-0001: Analyzing file E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/conv_tile.v
+I: Verilog-0002: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/conv_tile.v(line number: 4)] Analyzing module conv_tile (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {{E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017}} {E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/conv_tile.v} successfully.
+I: Module "conv_tile" is set as top module.
+Executing : rtl-analyze successfully. Time elapsed: 1.833s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-elaborate.
+I: Verilog-0003: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/conv_tile.v(line number: 4)] Elaborating module conv_tile
+Executing : rtl-elaborate successfully. Time elapsed: 0.009s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-prep.
+Executing : rtl-prep successfully. Time elapsed: 0.014s wall, 0.000s user + 0.016s system = 0.016s CPU (108.2%)
+
+Start rtl-infer.
+Start DFF-inference.
+Executing : DFF-inference successfully.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/conv_tile.v(line number: 79)] Found Ram coefficients, depth=2048, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/conv_tile.v(line number: 79)] Found Ram weights, depth=8192, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/source/conv_tile.v(line number: 79)] Found Ram pixels, depth=32768, width=8.
+Executing : rtl-infer successfully. Time elapsed: 0.241s wall, 0.141s user + 0.094s system = 0.234s CPU (97.1%)
+
+Start rtl-control-opt.
+Executing : rtl-control-opt successfully. Time elapsed: 0.002s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-data-opt.
+Executing : rtl-data-opt successfully. Time elapsed: 0.012s wall, 0.000s user + 0.016s system = 0.016s CPU (135.4%)
+
+Start FSM inference.
+Executing : FSM inference successfully. Time elapsed: 0.006s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start sdm2adm.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+I: Constant propagation done on N9 (bmsWIDEMUX).
+I: Constant propagation done on N429 (bmsWIDEMUX).
+I: Constant propagation done on N538 (bmsWIDEMUX).
+I: Constant propagation done on N594 (bmsWIDEMUX).
+I: Constant propagation done on N641 (bmsWIDEMUX).
+I: Constant propagation done on N434 (bmsWIDEMUX).
+I: Constant propagation done on N611 (bmsWIDEMUX).
+I: Constant propagation done on N699_2 (bmsWIDEMUX).
+Executing : sdm2adm successfully. Time elapsed: 0.059s wall, 0.062s user + 0.000s system = 0.062s CPU (105.9%)
+
+Saving design to DB.
+Action compile: Real time elapsed is 0h:0m:5s
+Action compile: CPU time elapsed is 0h:0m:1s
+Action compile: Process CPU time elapsed is 0h:0m:1s
+Current time: Sat Oct 17 16:33:28 2026
+Action compile: Peak memory pool usage is 160 MB
+Action from compile to compile: Total Real Time elapsed is 0h:0m:5s
+Action from compile to compile: Total CPU time elapsed is 0h:0m:1s
+Action from compile to compile: Total Process CPU Time elapsed is 0h:0m:1s
+Process "Compile" done.
+Executing : compile -top_module conv_tile successfully.
+
+
+Executing : synthesize -ads -selected_syn_tool_opt 2
+
+
+Process "Synthesize" started.
+Current time: Sat Oct 17 16:33:28 2026
+Compiling architecture definition.
+Analyzing project file 'E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/impl.pds'.
+License checkout: fabric_ads from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Reading design from compile DB
+Reading design from compile DB successfully.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Constraint check start.
+Compiling prim grid devices.
+Building architecture model.
+Loading device packaging model.
+Building architecture floorplan logic view.
+Executing : get_ports clk
+Executing : get_ports clk successfully.
+Executing : create_clock -name compute_clk [get_ports clk] -period 10.000 -waveform {0.000 5.000}
+Executing : create_clock -name compute_clk [get_ports clk] -period 10.000 -waveform {0.000 5.000} successfully.
+W: ConstraintEditor-4019: Port Bus 'cfg_ci' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_co' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_dilation' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_ih' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_iw' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_kernel' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_oh' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_ow' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_stride' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_addr' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_data' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_kind' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_acc' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_data' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_index' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'busy' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_depthwise' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'clk' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'done' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'fault' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'load_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'load_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'out_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'out_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'rst_n' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'start_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'start_valid' unspecified I/O constraint.
+Constraint check end.
+
+Start pre-mapping.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 0 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 11 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 12 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 13 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 14 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 15 that is stuck at constant 0.
+I: Constant propagation done on param_size[15:0] (bmsWIDEDFFCPE).
+Executing : pre-mapping successfully. Time elapsed: 0.097s wall, 0.125s user + 0.062s system = 0.188s CPU (192.3%)
+
+Start mod-gen.
+I: Constant propagation done on N853 (bmsREDAND).
+I: Constant propagation done on N855 (bmsREDAND).
+I: Constant propagation done on N1414 (bmsREDAND).
+I: Constant propagation done on N1420 (bmsREDAND).
+I: Constant propagation done on out_xor (bmsREDXOR).
+I: Constant propagation done on out_xor_1 (bmsREDXOR).
+I: Constant propagation done on out_xor_2 (bmsREDXOR).
+I: Constant propagation done on out_xor_3 (bmsREDXOR).
+I: Constant propagation done on out_xor_4 (bmsREDXOR).
+W: Unable to pack N11 with N13 to APM due to incompatible signed/unsigned extension
+Executing : mod-gen successfully. Time elapsed: 0.491s wall, 0.594s user + 0.281s system = 0.875s CPU (178.2%)
+
+Start logic-optimization.
+W: Removed bmsWIDEDFFCPE inst weight_size[15:0] at 14 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst weight_size[15:0] at 15 that is stuck at constant 0.
+Executing : logic-optimization successfully. Time elapsed: 0.329s wall, 0.219s user + 0.094s system = 0.312s CPU (95.0%)
+
+Start tech-mapping phase 1.
+W: Public-4008: Instance 'weight_row[13]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_row[14]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_size[14]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_size[15]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'gain[0]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'gain[1]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'gain[2]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'gain[3]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'gain[4]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'gain[5]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'gain[6]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'gain[7]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[0]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[11]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[12]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[13]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[14]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[15]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_addr[13]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_addr[14]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_addr[15]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+I: Removed GTP_DFF_CE inst param_size[1] that is redundant to co[0]
+Executing : tech-mapping phase 1 successfully. Time elapsed: 0.064s wall, 0.062s user + 0.000s system = 0.062s CPU (97.0%)
+
+Start tech-mapping phase 2.
+Executing : tech-mapping phase 2 successfully. Time elapsed: 0.617s wall, 0.641s user + 0.219s system = 0.859s CPU (139.2%)
+
+Start tech-optimization.
+Executing : tech-optimization successfully. Time elapsed: 0.229s wall, 0.297s user + 0.203s system = 0.500s CPU (218.2%)
+
+Start phys-optimization.
+Executing : phys-optimization successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start restore-hierarchy.
+Executing : restore-hierarchy successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+
+Cell Usage:
+GTP_APM_E1 (SIMD)           5 uses
+GTP_APM_E1                    9 uses
+GTP_DFF_C                     1 use
+GTP_DFF_CE                  529 uses
+GTP_DFF_E                     1 use
+GTP_DRM18K                   21 uses
+GTP_GRS                       1 use
+GTP_INV                       1 use
+GTP_LUT1                      2 uses
+GTP_LUT2                     94 uses
+GTP_LUT3                     50 uses
+GTP_LUT4                     62 uses
+GTP_LUT5                    111 uses
+GTP_LUT5CARRY               755 uses
+GTP_LUT5M                     6 uses
+
+I/O ports: 134
+GTP_INBUF                  71 uses
+GTP_OUTBUF                 63 uses
+
+Mapping Summary:
+Total LUTs: 1080 of 42800 (2.52%)
+	LUTs as dram: 0 of 17000 (0.00%)
+	LUTs as logic: 1080
+Total Registers: 531 of 64200 (0.83%)
+Total Latches: 0
+
+DRM18K:
+Total DRM18K = 21.0 of 134 (15.67%)
+
+APMs:
+Total APMs = 11.50 of 84 (13.69%)
+
+Total I/O ports = 134 of 296 (45.27%)
+
+
+Overview of Control Sets:
+
+Number of unique control sets : 25
+
+Histogram:
+**************************************************************
+  Fanout      | Count    | Sync Set/Reset    Async Set/Reset
+--------------------------------------------------------------
+  [0, 2)      | 4        | 1                 3
+  [2, 4)      | 4        | 0                 4
+  [4, 6)      | 2        | 0                 2
+  [6, 8)      | 2        | 0                 2
+  [8, 10)     | 0        | 0                 0
+  [10, 12)    | 0        | 0                 0
+  [12, 14)    | 2        | 0                 2
+  [14, 16)    | 0        | 0                 0
+  [16, Inf)   | 11       | 0                 11
+--------------------------------------------------------------
+  The maximum fanout: 81
+==============================================================
+
+Flip-Flop Distribution:
+************************************************************************
+  Clock Enable    Sync Set/Reset    Async Set/Reset    Total Registers
+------------------------------------------------------------------------
+  NO              NO                NO                 0
+  NO              NO                YES                1
+  NO              YES               NO                 0
+  YES             NO                NO                 1
+  YES             NO                YES                529
+  YES             YES               NO                 0
+========================================================================
+
+Latch Distribution:
+************************************************
+  Gate Enable    Preset/Clear    Total Latches
+************************************************
+  NO             NO              0
+  NO             YES             0
+  YES            NO              0
+  YES            YES             0
+************************************************
+
+Design 'conv_tile' has been successfully synthesized to architecture-specific objects.
+Saving design to DB.
+Saving design to conv_tile_syn.vm
+Constructing timing graph ...
+Timing graph has been constructed successfully
+W: Timing-4087: Port 'busy' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'cfg_ready' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'done' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'fault' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'load_ready' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[8]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[9]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[10]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[11]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[12]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[13]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[14]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[15]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[16]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[17]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[18]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[19]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[20]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[21]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[22]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[23]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[24]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[25]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[26]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[27]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[28]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[29]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[30]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[31]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[8]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[9]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[10]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[11]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[12]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[13]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[14]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[15]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_valid' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'start_ready' is not constrained, it is treated as combinational output.
+W: Timing-4086: Port 'cfg_ci[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_depthwise' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_dilation[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_dilation[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_dilation[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_dilation[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_kernel[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_kernel[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_oh[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_oh[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_oh[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ow[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ow[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ow[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_stride[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_stride[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_valid' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[7]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[8]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[9]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[10]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[11]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[12]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[13]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[14]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[15]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[7]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_kind[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_kind[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_valid' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'out_ready' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rst_n' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'start_valid' is not constrained, it is treated as combinational input.
+Action synthesize: Real time elapsed is 0h:0m:8s
+Action synthesize: CPU time elapsed is 0h:0m:5s
+Action synthesize: Process CPU time elapsed is 0h:0m:5s
+Current time: Sat Oct 17 16:33:35 2026
+Action synthesize: Peak memory pool usage is 337 MB
+Action from compile to synthesize: Total Real Time elapsed is 0h:0m:13s
+Action from compile to synthesize: Total CPU time elapsed is 0h:0m:6s
+Action from compile to synthesize: Total Process CPU Time elapsed is 0h:0m:6s
+Process "Synthesize" done.
+Executing : synthesize -ads -selected_syn_tool_opt 2 successfully.
+
+
+Executing : dev_map
+
+
+Process "Device Map" started.
+Current time: Sat Oct 17 16:33:35 2026
+Compiling architecture definition.
+Analyzing project file 'E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_integer_ops_20261017/impl.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Compiling operator packing rules.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Compiling tech operator impls.
+Building architecture model.
+Loading device packaging model.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+W: ConstraintEditor-4019: Port Bus 'cfg_ci' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_co' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_dilation' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_ih' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_iw' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_kernel' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_oh' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_ow' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_stride' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_addr' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_data' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_kind' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_acc' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_data' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_index' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'busy' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_depthwise' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'clk' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'done' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'fault' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'load_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'load_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'out_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'out_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'rst_n' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'start_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'start_valid' unspecified I/O constraint.
+Flattening design 'conv_tile'
+Device mapping started.
+Optimizing circuit logic.
+Checking design netlist.
+Processing tech operator.
+I: The instance clkbufg_0(GTP_CLKBUFG) has been inserted on the net nt_clk in design, driver pin O(instance clk_ibuf) -> load pin CLK(instance N436).
+Converting tech operator to gate operator.
+Processing gate operator.
+I: Infer CARRY group, base inst: N13_a1_0/gateop, insts:16.
+I: Infer CARRY group, base inst: N15_a1_0/gateop, insts:18.
+I: Infer CARRY group, base inst: N20_a1_1/gateop, insts:14.
+I: Infer CARRY group, base inst: N20_m1_a1_0/gateop, insts:20.
+I: Infer CARRY group, base inst: N25_a1_1/gateop, insts:14.
+I: Infer CARRY group, base inst: N25_m2_a1_1/gateop, insts:12.
+I: Infer CARRY group, base inst: N26_0/gateop, insts:33.
+I: Infer CARRY group, base inst: N33_a1_1/gateop, insts:14.
+I: Infer CARRY group, base inst: N33_m1_a1_0/gateop, insts:20.
+I: Infer CARRY group, base inst: N39_0/gateop, insts:33.
+I: Infer CARRY group, base inst: N119.eq_0/gateop, insts:10.
+I: Infer CARRY group, base inst: N122.eq_0/gateop, insts:10.
+I: Infer CARRY group, base inst: N133.eq_0/gateop, insts:4.
+I: Infer CARRY group, base inst: N146.eq_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N170.lt_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N175.lt_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N180.lt_0/gateop, insts:7.
+I: Infer CARRY group, base inst: N191.eq_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N193.eq_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N195.eq_0/gateop, insts:7.
+I: Infer CARRY group, base inst: N210_0.fsub_1/gateop, insts:9.
+I: Infer CARRY group, base inst: N212_0_1/gateop, insts:10.
+I: Infer CARRY group, base inst: N220_0_0/gateop, insts:9.
+I: Infer CARRY group, base inst: N319_0.fsub_1/gateop, insts:9.
+I: Infer CARRY group, base inst: N366_0_1/gateop, insts:15.
+I: Infer CARRY group, base inst: N369_0_1/gateop, insts:15.
+I: Infer CARRY group, base inst: N372_0_1/gateop, insts:15.
+I: Infer CARRY group, base inst: N444_a1_0/gateop, insts:6.
+I: Infer CARRY group, base inst: N453_a1_0/gateop, insts:6.
+I: Infer CARRY group, base inst: N454_0/gateop, insts:7.
+I: Infer CARRY group, base inst: N461_1_1/gateop, insts:13.
+I: Infer CARRY group, base inst: N464_a1_0/gateop, insts:13.
+I: Infer CARRY group, base inst: N466_0/gateop, insts:14.
+I: Infer CARRY group, base inst: N476_a1_0/gateop, insts:13.
+I: Infer CARRY group, base inst: N478_0/gateop, insts:14.
+I: Infer CARRY group, base inst: N483_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N511_0.fsub_1/gateop, insts:7.
+I: Infer CARRY group, base inst: N512.eq_0/gateop, insts:4.
+I: Infer CARRY group, base inst: N522_0_1/gateop, insts:6.
+I: Infer CARRY group, base inst: N542_a1_1/gateop, insts:48.
+I: Infer CARRY group, base inst: N542_a2_1/gateop, insts:49.
+I: Infer CARRY group, base inst: N542_a3_1/gateop, insts:44.
+I: Infer CARRY group, base inst: N548_1/gateop, insts:81.
+I: Infer CARRY group, base inst: N558.eq_0/gateop, insts:2.
+I: Infer CARRY group, base inst: N570.eq_0/gateop, insts:2.
+I: Infer CARRY group, base inst: N581_0.fsub_1/gateop, insts:7.
+I: Infer CARRY group, base inst: N582.eq_0/gateop, insts:4.
+I: Infer CARRY group, base inst: N591_0_1/gateop, insts:6.
+I: Infer CARRY group, base inst: N634_0_1/gateop, insts:15.
+I: Infer CARRY group, base inst: N1446_0/gateop, insts:8.
+I: Infer APM group, base inst: N542_m2_m1/gopapm, insts:2.
+I: Infer APM group, base inst: N542_m4_m1/gopapm, insts:2.
+Device Utilization Summary:
++------------------------------------------------------------------------+
+| Logic Utilization     | Used     | Available     | Utilization(%)     
++------------------------------------------------------------------------+
+| APM                   | 11.5     | 84            | 14                 
+| IOCKDLY               | 0        | 40            | 0                  
+| FF                    | 531      | 64200         | 1                  
+| LUT                   | 1081     | 42800         | 3                  
+| Distributed RAM       | 0        | 17000         | 0                  
+| DLL                   | 0        | 10            | 0                  
+| DQSL                  | 0        | 18            | 0                  
+| DRM                   | 21       | 134           | 16                 
+| FUSECODE              | 0        | 1             | 0                  
+| IO                    | 134      | 296           | 46                 
+| IOCKDIV               | 0        | 20            | 0                  
+| IOCKGATE              | 0        | 20            | 0                  
+| IPAL                  | 0        | 1             | 0                  
+| PLL                   | 0        | 5             | 0                  
+| RCKB                  | 0        | 24            | 0                  
+| SCANCHAIN             | 0        | 2             | 0                  
+| START                 | 0        | 1             | 0                  
+| USCM                  | 1        | 30            | 4                  
+| HSST                  | 0        | 1             | 0                  
+| OSC                   | 0        | 1             | 0                  
+| CRYSTAL               | 0        | 2             | 0                  
+| RESCAL                | 0        | 4             | 0                  
+| UDID                  | 0        | 1             | 0                  
+| PCIE                  | 0        | 1             | 0                  
++------------------------------------------------------------------------+
+
+Device mapping done.
+Total device mapping takes 0.14 sec.
+
+Design 'conv_tile' has been successfully mapped to architecture-specific objects.
+Saving design to DB.
+Action dev_map: Real time elapsed is 0h:0m:6s
+Action dev_map: CPU time elapsed is 0h:0m:4s
+Action dev_map: Process CPU time elapsed is 0h:0m:4s
+Current time: Sat Oct 17 16:33:40 2026
+Action dev_map: Peak memory pool usage is 267 MB
+Action from compile to dev_map: Total Real Time elapsed is 0h:0m:19s
+Action from compile to dev_map: Total CPU time elapsed is 0h:0m:10s
+Action from compile to dev_map: Total Process CPU Time elapsed is 0h:0m:10s
+Process "Device Map" done.
+Executing : dev_map successfully.

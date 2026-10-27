@@ -1,0 +1,58 @@
+{
+  "simulation_cases": {
+    "small": {
+      "width": 64,
+      "height": 32,
+      "thumbnail_pixels": 480,
+      "frozen_reads": 416
+    },
+    "extreme": {
+      "width": 64,
+      "height": 32,
+      "thumbnail_pixels": 480,
+      "frozen_reads": 416
+    },
+    "road": {
+      "width": 1280,
+      "height": 720,
+      "thumbnail_pixels": 57600,
+      "frozen_reads": 43200
+    },
+    "shelf": {
+      "width": 1280,
+      "height": 720,
+      "thumbnail_pixels": 57600,
+      "frozen_reads": 43200
+    }
+  },
+  "mapped_resources": {
+    "luts": 309.0,
+    "registers": 310.0,
+    "drm18k": 17.0,
+    "apms": 0.0
+  },
+  "source_sha256": {
+    "source\\road_input_buffer.v": "4cb7f526e6cea0f21f2d96c12e0dec1f485af4e69bc5953028597bb8115a7cd6",
+    "source\\road_thumbnail.v": "541dc4281165f676a46576251f63f3a88fdb755f293817a5d3c41de38efe6e99",
+    "tests\\road_input_tb.v": "0a800fffd8ee897ec07396441555bff86e903e063ddce71b6c936aaa6b5b7ade",
+    "tests\\fixtures.py": "caf970283a5ee8412dfde8e09fbcaf5936e63d11c15ffc6dea62850e14ffef9c",
+    "flow.tcl": "00786f90aa71d7b76355831ea9721c10a67f27a3d36622c89d714aaf25bd84bd"
+  },
+  "protected_sha256": {
+    "source/rtl/lane_detect.v": "6e0df02de7b5ca383bc7293f2141c28a9ab3b506cc908a907b2ed9509e5ca110",
+    "source/rtl/reg_config.v": "3fb595d4000aaaaedf9261551613c7c35d79dd5db69e174ef901ea8c9f1a9469",
+    "source/rtl/cmos_8_16bit.v": "76641afe2520541a75c3d9ebd4950ed683b4c86be7e99227a6b14ece0d037516",
+    "bitstreams/4_road_markings_filtered_cmos1.sbit": "ed53c960f810528bec0a641565a00b1a6fed9c2e6fcfaedac1af64f32d613467",
+    "bitstreams/6_road_framefix_v4_cmos1.sbit": "599c5a26752885da38a8a8ecca0d3fb53f3ca30854753df0f0e20d4c83b942b9",
+    "bitstreams/7_zebra_candidate_v4_cmos1.sbit": "808a9c281b11658d3326008db745d135aaeded0fd26bbf0e17d49e955770cd1a",
+    "bitstreams/8_adas_lane_status_cmos1.sbit": "4714b2f26e2e71de27627a709c23daf98818421613f850f97bbe73c8a8772573",
+    "bitstreams/9_adas_selftest_no_camera.sbit": "912bfb169f0a6205c5c79f494bd04a4b67e110567f2b762b61998d48e7d30843",
+    "bitstreams/10_sensor_colorbar_cmos1.sbit": "b7c53ac342437d4da2f8030f12922f429fe02fc4bacc4edcfb166f3cd79257a3"
+  },
+  "integrated_in_main_top": false,
+  "bitstream_generated": false,
+  "timing_signed_off": false,
+  "hardware_tested": false,
+  "road_model_deployed": false,
+  "limits": "Standalone same-clock preprocessing/buffer only. Resource mapping without PNR or interface timing constraints is not integration signoff."
+}

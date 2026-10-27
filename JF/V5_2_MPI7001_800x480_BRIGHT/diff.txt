@@ -1,0 +1,65 @@
+--- V5.1/source\rtl\hdmi_ddr_ov5640_top.v
++++ V5.2/source\rtl\hdmi_ddr_ov5640_top.v
+@@ -410,10 +410,19 @@
+         .hs(panel_hs), .vs(panel_vs), .de(panel_de), .image_area(panel_image),
+         .diagnostic_rgb(panel_diagnostic_rgb)
+      );
++     // Display-only gain: 9/8 with saturation; black stays black.
++     function [7:0] display_brighten;
++        input [7:0] value;
++        reg [8:0] boosted;
++        begin
++           boosted = {1'b0,value} + {4'b0,value[7:3]};
++           display_brighten = boosted[8] ? 8'hff : boosted[7:0];
++        end
++     endfunction
+      always @(posedge pix_clk) begin
+-        r_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[15:11],3'b0} : panel_diagnostic_rgb[23:16];
+-        g_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[10:5],2'b0} : panel_diagnostic_rgb[15:8];
+-        b_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[4:0],3'b0} : panel_diagnostic_rgb[7:0];
++        r_out <= (panel_image && show_capture_video && de_o) ? display_brighten({o_rgb565[15:11],o_rgb565[15:13]}) : 8'h00;
++        g_out <= (panel_image && show_capture_video && de_o) ? display_brighten({o_rgb565[10:5],o_rgb565[10:9]}) : 8'h00;
++        b_out <= (panel_image && show_capture_video && de_o) ? display_brighten({o_rgb565[4:0],o_rgb565[4:2]}) : 8'h00;
+         vs_out <= panel_vs;
+         hs_out <= panel_hs;
+         de_out <= panel_de;
+--- V5.1/source\rtl\mpi7001_timing.v
++++ V5.2/source\rtl\mpi7001_timing.v
+@@ -21,27 +21,12 @@
+     assign vs = vs_d[1];
+     assign de = de_d[1];
+     assign image_area = image_d[1];
+-    // Independent display-path probes in the unused margins; no DDR/camera data.
+-    reg [23:0] probe, probe_d0, probe_d1;
+-    assign diagnostic_rgb = probe_d1;
+-    always @(*) begin
+-        probe = 24'h000000;
+-        if (active && v >= 24 && v < 56) begin
+-            if      (h < 276) probe = 24'hffffff;
+-            else if (h < 376) probe = 24'hffff00;
+-            else if (h < 476) probe = 24'h00ffff;
+-            else if (h < 576) probe = 24'h00ff00;
+-            else if (h < 676) probe = 24'hff00ff;
+-            else if (h < 776) probe = 24'hff0000;
+-            else if (h < 876) probe = 24'h0000ff;
+-        end else if (active && v >= 456 && v < 488)
+-            probe = (h[0] ^ v[0]) ? 24'hffffff : 24'h000000;
+-    end
++    // Normal display: unused margins stay black.
++    assign diagnostic_rgb = 24'h000000;
+     always @(posedge clk or negedge rst_n) begin
+         if (!rst_n) begin
+             h <= 0; v <= 0;
+             hs_d <= 0; vs_d <= 3; de_d <= 0; image_d <= 0;
+-            probe_d0 <= 0; probe_d1 <= 0;
+         end else begin
+             if (h == 991) begin
+                 h <= 0;
+@@ -51,7 +36,6 @@
+             vs_d <= {vs_d[0], !(v < 3)};
+             de_d <= {de_d[0], active};
+             image_d <= {image_d[0], image};
+-            probe_d0 <= probe; probe_d1 <= probe_d0;
+         end
+     end
+ endmodule
