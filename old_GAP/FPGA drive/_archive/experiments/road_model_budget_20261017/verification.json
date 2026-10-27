@@ -1,0 +1,164 @@
+{
+  "verified_cases": 126,
+  "model_files_verified": true,
+  "protected_file_count": 229,
+  "protected_files_unchanged": true,
+  "results_sha256": "3f3c6a004ea6b4b8cd8797d134d40e0f12a214f4d1739d88b2fbba6fc1832a5f",
+  "settings": {
+    "probability": 0.7,
+    "margin": 0.2,
+    "component_fraction": 0.005,
+    "frame_fraction": 0.02,
+    "erosion": 1,
+    "mask_size": [
+      160,
+      90
+    ],
+    "threads": 4
+  },
+  "scripts_sha256": {
+    "evaluate.py": "2d581f4c23cd6537e4d99f0727048507c576222bfb8bea2ef9ca16c6aa9991ef",
+    "fetch_model.py": "f46ef0ffddd5d89b59299c4dfe49b4062a4fcef775f44bb246bde495539d91e0",
+    "test_evaluate.py": "81ae697b5e3d9ae44774015cff178461e47432c43051ef0e0d8941091abbcb35",
+    "verify_results.py": "66103b37e5c2eb4264058c972e376a558acec3976ff61598853571745f5cb08f"
+  },
+  "summary": [
+    {
+      "variant": "segformer_full",
+      "road_candidate_images": 6,
+      "road_images": 6,
+      "false_road_candidate_images": 0,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 0,
+      "median_cpu_inference_ms": 270.7743499922799,
+      "false_road_images": [],
+      "missed_road_images": [],
+      "positive_mask_agreement_with_segformer_not_accuracy": 1.0
+    },
+    {
+      "variant": "segformer_thumb8_fullcompute",
+      "road_candidate_images": 6,
+      "road_images": 6,
+      "false_road_candidate_images": 0,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 0,
+      "median_cpu_inference_ms": 267.8478500019992,
+      "false_road_images": [],
+      "missed_road_images": [],
+      "positive_mask_agreement_with_segformer_not_accuracy": 0.8733026497764663
+    },
+    {
+      "variant": "omz_fp32_full",
+      "road_candidate_images": 6,
+      "road_images": 6,
+      "false_road_candidate_images": 3,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 2105,
+      "median_cpu_inference_ms": 41.97079999721609,
+      "false_road_images": [
+        "negative_shelf_dark",
+        "negative_boxes",
+        "negative_table_window"
+      ],
+      "missed_road_images": [],
+      "positive_mask_agreement_with_segformer_not_accuracy": 0.83873916208628
+    },
+    {
+      "variant": "omz_fp32_thumb8_fullcompute",
+      "road_candidate_images": 6,
+      "road_images": 6,
+      "false_road_candidate_images": 4,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 19929,
+      "median_cpu_inference_ms": 161.80829999939306,
+      "false_road_images": [
+        "negative_shelf_dark",
+        "negative_boxes",
+        "negative_table_window",
+        "negative_table_brick"
+      ],
+      "missed_road_images": [],
+      "positive_mask_agreement_with_segformer_not_accuracy": 0.745439241216182
+    },
+    {
+      "variant": "omz_fp32_160x96",
+      "road_candidate_images": 2,
+      "road_images": 6,
+      "false_road_candidate_images": 0,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 0,
+      "median_cpu_inference_ms": 8.27949999802513,
+      "false_road_images": [],
+      "missed_road_images": [
+        "legacy_road_1",
+        "road_ai_straight",
+        "road_ai_curve",
+        "road_ai_junction_overhead"
+      ],
+      "positive_mask_agreement_with_segformer_not_accuracy": 0.17276637077789866
+    },
+    {
+      "variant": "omz_fp32_320x192",
+      "road_candidate_images": 5,
+      "road_images": 6,
+      "false_road_candidate_images": 0,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 0,
+      "median_cpu_inference_ms": 17.744849996233825,
+      "false_road_images": [],
+      "missed_road_images": [
+        "road_ai_junction_overhead"
+      ],
+      "positive_mask_agreement_with_segformer_not_accuracy": 0.7519692968335169
+    },
+    {
+      "variant": "omz_int8_full",
+      "road_candidate_images": 6,
+      "road_images": 6,
+      "false_road_candidate_images": 3,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 1713,
+      "median_cpu_inference_ms": 120.25974999414757,
+      "false_road_images": [
+        "negative_shelf_dark",
+        "negative_boxes",
+        "negative_table_window"
+      ],
+      "missed_road_images": [],
+      "positive_mask_agreement_with_segformer_not_accuracy": 0.8392305000730559
+    },
+    {
+      "variant": "omz_int8_160x96",
+      "road_candidate_images": 2,
+      "road_images": 6,
+      "false_road_candidate_images": 0,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 0,
+      "median_cpu_inference_ms": 6.935549994523171,
+      "false_road_images": [],
+      "missed_road_images": [
+        "legacy_road_1",
+        "road_ai_straight",
+        "road_ai_curve",
+        "road_ai_junction_overhead"
+      ],
+      "positive_mask_agreement_with_segformer_not_accuracy": 0.17393977758009185
+    },
+    {
+      "variant": "omz_int8_320x192",
+      "road_candidate_images": 5,
+      "road_images": 6,
+      "false_road_candidate_images": 0,
+      "nonroad_images": 8,
+      "nonroad_false_paint_pixels": 0,
+      "median_cpu_inference_ms": 13.65694999549305,
+      "false_road_images": [],
+      "missed_road_images": [
+        "road_ai_junction_overhead"
+      ],
+      "positive_mask_agreement_with_segformer_not_accuracy": 0.7561522535644204
+    }
+  ],
+  "not_pixel_ground_truth": true,
+  "not_hardware_inference": true
+}

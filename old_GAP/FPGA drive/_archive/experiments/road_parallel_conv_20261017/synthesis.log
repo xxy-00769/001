@@ -1,0 +1,775 @@
+License checkout: fabric_shell from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling architecture definition.
+W: Warning : The license will invalid in 17 days. In order not to affect your usage, please update the license in time.
+
+Executing : add_design source/conv_parallel.v
+Executing : add_design source/conv_parallel.v successfully.
+Executing : add_constraint compute.fdc
+Executing : add_constraint compute.fdc successfully.
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484 successfully.
+
+
+Executing : compile -top_module conv_parallel
+
+
+Process "Compile" started.
+Current time: Sat Oct 17 16:55:58 2026
+Compiling architecture definition.
+Analyzing project file 'E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/impl.pds'.
+License checkout: fabric_ads from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+I: Enable Verilog2k features and keywords
+Start rtl-analyze.
+Executing : .rtl_analyze -work work -include_path {{E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017}} {E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v}
+I: Verilog-0001: Analyzing file E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v
+I: Verilog-0002: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 4)] Analyzing module conv_parallel (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {{E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017}} {E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v} successfully.
+I: Module "conv_parallel" is set as top module.
+Executing : rtl-analyze successfully. Time elapsed: 1.853s wall, 0.016s user + 0.000s system = 0.016s CPU (0.8%)
+
+Start rtl-elaborate.
+I: Verilog-0003: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 4)] Elaborating module conv_parallel
+Executing : rtl-elaborate successfully. Time elapsed: 0.022s wall, 0.031s user + 0.000s system = 0.031s CPU (141.2%)
+
+Start rtl-prep.
+Executing : rtl-prep successfully. Time elapsed: 0.044s wall, 0.047s user + 0.000s system = 0.047s CPU (107.4%)
+
+Start rtl-infer.
+Start DFF-inference.
+Executing : DFF-inference successfully.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[5].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[11].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[5].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[14].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[6].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[11].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[6].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[6].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[12].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[7].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[14].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[7].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[12].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[7].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[8].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[12].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[9].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[2].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[13].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[10].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[15].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[3].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[13].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[3].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[10].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[1].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[8].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[15].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[15].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[3].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[1].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[9].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[4].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[10].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[0].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[4].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[0].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[2].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[14].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[9].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[8].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[4].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[11].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[1].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[5].pixels, depth=4096, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[13].weights, depth=1024, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[0].coefficients, depth=128, width=8.
+I: Sdm-0001: [E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/source/conv_parallel.v(line number: 121)] Found Ram banks[2].pixels, depth=4096, width=8.
+Executing : rtl-infer successfully. Time elapsed: 1.248s wall, 0.719s user + 0.484s system = 1.203s CPU (96.4%)
+
+Start rtl-control-opt.
+Executing : rtl-control-opt successfully. Time elapsed: 0.005s wall, 0.000s user + 0.016s system = 0.016s CPU (317.7%)
+
+Start rtl-data-opt.
+Executing : rtl-data-opt successfully. Time elapsed: 0.035s wall, 0.031s user + 0.000s system = 0.031s CPU (89.1%)
+
+Start FSM inference.
+Executing : FSM inference successfully. Time elapsed: 0.010s wall, 0.016s user + 0.000s system = 0.016s CPU (161.5%)
+
+Start sdm2adm.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+W: Loop was found during constant probe.
+I: Constant propagation done on N5 (bmsWIDEMUX).
+I: Constant propagation done on N2583 (bmsWIDEMUX).
+I: Constant propagation done on N2584 (bmsWIDEMUX).
+I: Constant propagation done on N2585 (bmsWIDEMUX).
+I: Constant propagation done on N2586 (bmsWIDEMUX).
+I: Constant propagation done on N2416 (bmsWIDEMUX).
+I: Constant propagation done on N2560 (bmsWIDEMUX).
+I: Constant propagation done on N2699_2 (bmsWIDEMUX).
+I: Constant propagation done on N2132 (bmsWIDEMUX).
+I: Constant propagation done on N2160 (bmsWIDEMUX).
+Executing : sdm2adm successfully. Time elapsed: 0.145s wall, 0.125s user + 0.000s system = 0.125s CPU (86.0%)
+
+Saving design to DB.
+Action compile: Real time elapsed is 0h:0m:6s
+Action compile: CPU time elapsed is 0h:0m:2s
+Action compile: Process CPU time elapsed is 0h:0m:2s
+Current time: Sat Oct 17 16:56:03 2026
+Action compile: Peak memory pool usage is 154 MB
+Action from compile to compile: Total Real Time elapsed is 0h:0m:6s
+Action from compile to compile: Total CPU time elapsed is 0h:0m:2s
+Action from compile to compile: Total Process CPU Time elapsed is 0h:0m:2s
+Process "Compile" done.
+Executing : compile -top_module conv_parallel successfully.
+
+
+Executing : synthesize -ads -selected_syn_tool_opt 2
+
+
+Process "Synthesize" started.
+Current time: Sat Oct 17 16:56:03 2026
+Compiling architecture definition.
+Analyzing project file 'E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/impl.pds'.
+License checkout: fabric_ads from D:\PDS\PDS_2022.2-SP6.1\Licnse\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Reading design from compile DB
+Reading design from compile DB successfully.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Constraint check start.
+Compiling prim grid devices.
+Building architecture model.
+Loading device packaging model.
+Building architecture floorplan logic view.
+Executing : get_ports clk
+Executing : get_ports clk successfully.
+Executing : create_clock -name compute_clk [get_ports clk] -period 10.000 -waveform {0.000 5.000}
+Executing : create_clock -name compute_clk [get_ports clk] -period 10.000 -waveform {0.000 5.000} successfully.
+W: ConstraintEditor-4019: Port Bus 'cfg_ci' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_co' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_dilation' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_ih' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_iw' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_kernel' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_oh' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_ow' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_stride' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_addr' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_data' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_kind' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_acc' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_data' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_index' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'busy' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_depthwise' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'clk' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'done' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'fault' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'load_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'load_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'out_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'out_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'rst_n' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'start_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'start_valid' unspecified I/O constraint.
+Constraint check end.
+
+Start pre-mapping.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 0 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 11 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 12 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 13 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 14 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst param_size[15:0] at 15 that is stuck at constant 0.
+I: Constant propagation done on param_size[15:0] (bmsWIDEDFFCPE).
+W: Removed bmsWIDEDFFCPE inst qindex_select[15:0] at 15 that is stuck at constant 0.
+I: Constant propagation done on qindex_select[15:0] (bmsWIDEDFFCPE).
+W: Removed bmsWIDEDFFCPE inst qindex0[15:0] at 15 that is stuck at constant 0.
+I: Constant propagation done on qindex0[15:0] (bmsWIDEDFFCPE).
+W: Removed bmsWIDEDFFCPE inst qindex1[15:0] at 15 that is stuck at constant 0.
+I: Constant propagation done on qindex1[15:0] (bmsWIDEDFFCPE).
+W: Removed bmsWIDEDFFCPE inst out_index[15:0] at 15 that is stuck at constant 0.
+I: Constant propagation done on out_index[15:0] (bmsWIDEDFFCPE).
+Executing : pre-mapping successfully. Time elapsed: 0.294s wall, 0.375s user + 0.188s system = 0.562s CPU (191.1%)
+
+Start mod-gen.
+I: Constant propagation done on N3396 (bmsREDAND).
+I: Constant propagation done on N3398 (bmsREDAND).
+I: Constant propagation done on N3402 (bmsREDAND).
+I: Constant propagation done on N4728 (bmsREDAND).
+I: Constant propagation done on N4734 (bmsREDAND).
+Executing : mod-gen successfully. Time elapsed: 0.964s wall, 1.266s user + 0.344s system = 1.609s CPU (166.9%)
+
+Start logic-optimization.
+W: Removed bmsWIDEDFFCPE inst oc_base[6:0] at 0 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst oc_base[6:0] at 1 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst oc_base[6:0] at 2 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst oc_base[6:0] at 3 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst weight_size[15:0] at 14 that is stuck at constant 0.
+W: Removed bmsWIDEDFFCPE inst weight_size[15:0] at 15 that is stuck at constant 0.
+Executing : logic-optimization successfully. Time elapsed: 1.682s wall, 1.562s user + 0.125s system = 1.688s CPU (100.3%)
+
+Start tech-mapping phase 1.
+W: Public-4008: Instance 'weight_row[10]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_row[11]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_size[14]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'weight_size[15]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[0].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[1].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[2].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[3].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[4].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[5].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[6].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[7].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[8].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[9].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[10].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[11].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[12].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[13].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[14].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'banks[15].product[16]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_ic[4]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_ic[5]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_ic[6]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_oc[4]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_oc[5]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_oc[6]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_pc[4]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_pc[5]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'load_pc[6]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'oc_base[0]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'oc_base[1]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'oc_base[2]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'oc_base[3]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'out_index[15]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[0]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[11]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[12]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[13]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[14]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'param_size[15]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'qindex0[15]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+W: Public-4008: Instance 'qindex1[15]' of 'bmsWIDEDFFCPE' unit is dangling and will be cleaned.
+I: Removed GTP_DFF_CE inst param_size[1] that is redundant to co[0]
+W: Removed GTP_DFF_CE inst load_pb[0] that is stuck at constant 0.
+Executing : tech-mapping phase 1 successfully. Time elapsed: 0.278s wall, 0.219s user + 0.016s system = 0.234s CPU (84.4%)
+
+Start tech-mapping phase 2.
+Executing : tech-mapping phase 2 successfully. Time elapsed: 2.398s wall, 2.500s user + 0.422s system = 2.922s CPU (121.8%)
+
+Start tech-optimization.
+Executing : tech-optimization successfully. Time elapsed: 0.548s wall, 0.625s user + 0.453s system = 1.078s CPU (196.7%)
+
+Start phys-optimization.
+Executing : phys-optimization successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start restore-hierarchy.
+Executing : restore-hierarchy successfully. Time elapsed: 0.006s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+
+Cell Usage:
+GTP_APM_E1 (SIMD)          21 uses
+GTP_APM_E1                   13 uses
+GTP_DFF_C                    11 uses
+GTP_DFF_CE                 3304 uses
+GTP_DRM18K                   32 uses
+GTP_DRM9K                    32 uses
+GTP_GRS                       1 use
+GTP_INV                       1 use
+GTP_LUT1                      3 uses
+GTP_LUT2                    535 uses
+GTP_LUT3                    187 uses
+GTP_LUT4                     63 uses
+GTP_LUT5                    148 uses
+GTP_LUT5CARRY              1362 uses
+GTP_LUT5M                   614 uses
+GTP_MUX2LUT6                304 uses
+GTP_MUX2LUT7                152 uses
+
+I/O ports: 134
+GTP_INBUF                  71 uses
+GTP_OUTBUF                 63 uses
+
+Mapping Summary:
+Total LUTs: 2912 of 42800 (6.80%)
+	LUTs as dram: 0 of 17000 (0.00%)
+	LUTs as logic: 2912
+Total Registers: 3315 of 64200 (5.16%)
+Total Latches: 0
+
+DRM18K:
+Total DRM18K = 48.0 of 134 (35.82%)
+
+APMs:
+Total APMs = 23.50 of 84 (27.98%)
+
+Total I/O ports = 134 of 296 (45.27%)
+
+
+Overview of Control Sets:
+
+Number of unique control sets : 34
+
+Histogram:
+**************************************************************
+  Fanout      | Count    | Sync Set/Reset    Async Set/Reset
+--------------------------------------------------------------
+  [0, 2)      | 2        | 0                 2
+  [2, 4)      | 7        | 0                 7
+  [4, 6)      | 6        | 0                 6
+  [6, 8)      | 2        | 0                 2
+  [8, 10)     | 0        | 0                 0
+  [10, 12)    | 2        | 0                 2
+  [12, 14)    | 1        | 0                 1
+  [14, 16)    | 1        | 0                 1
+  [16, Inf)   | 13       | 0                 13
+--------------------------------------------------------------
+  The maximum fanout: 1024
+==============================================================
+
+Flip-Flop Distribution:
+************************************************************************
+  Clock Enable    Sync Set/Reset    Async Set/Reset    Total Registers
+------------------------------------------------------------------------
+  NO              NO                NO                 0
+  NO              NO                YES                11
+  NO              YES               NO                 0
+  YES             NO                NO                 0
+  YES             NO                YES                3304
+  YES             YES               NO                 0
+========================================================================
+
+Latch Distribution:
+************************************************
+  Gate Enable    Preset/Clear    Total Latches
+************************************************
+  NO             NO              0
+  NO             YES             0
+  YES            NO              0
+  YES            YES             0
+************************************************
+
+Design 'conv_parallel' has been successfully synthesized to architecture-specific objects.
+Saving design to DB.
+Saving design to conv_parallel_syn.vm
+Constructing timing graph ...
+Timing graph has been constructed successfully
+W: Timing-4087: Port 'busy' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'cfg_ready' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'done' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'fault' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'load_ready' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[8]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[9]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[10]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[11]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[12]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[13]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[14]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[15]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[16]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[17]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[18]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[19]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[20]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[21]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[22]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[23]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[24]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[25]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[26]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[27]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[28]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[29]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[30]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_acc[31]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_data[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[3]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[4]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[5]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[6]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[7]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[8]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[9]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[10]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[11]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[12]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[13]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[14]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_index[15]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'out_valid' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'start_ready' is not constrained, it is treated as combinational output.
+W: Timing-4086: Port 'cfg_ci[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ci[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_co[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_depthwise' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_dilation[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_dilation[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_dilation[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_dilation[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ih[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_iw[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_kernel[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_kernel[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_oh[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_oh[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_oh[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ow[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ow[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_ow[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_stride[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_stride[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'cfg_valid' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[7]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[8]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[9]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[10]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[11]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[12]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[13]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[14]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_addr[15]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[2]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[3]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[4]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[5]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[6]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_data[7]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_kind[0]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_kind[1]' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'load_valid' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'out_ready' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'rst_n' is not constrained, it is treated as combinational input.
+W: Timing-4086: Port 'start_valid' is not constrained, it is treated as combinational input.
+Action synthesize: Real time elapsed is 0h:0m:15s
+Action synthesize: CPU time elapsed is 0h:0m:10s
+Action synthesize: Process CPU time elapsed is 0h:0m:12s
+Current time: Sat Oct 17 16:56:17 2026
+Action synthesize: Peak memory pool usage is 412 MB
+Action from compile to synthesize: Total Real Time elapsed is 0h:0m:21s
+Action from compile to synthesize: Total CPU time elapsed is 0h:0m:12s
+Action from compile to synthesize: Total Process CPU Time elapsed is 0h:0m:14s
+Process "Synthesize" done.
+Executing : synthesize -ads -selected_syn_tool_opt 2 successfully.
+
+
+Executing : dev_map
+
+
+Process "Device Map" started.
+Current time: Sat Oct 17 16:56:17 2026
+Compiling architecture definition.
+Analyzing project file 'E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_parallel_conv_20261017/impl.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Compiling operator packing rules.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Compiling tech operator impls.
+Building architecture model.
+Loading device packaging model.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+W: ConstraintEditor-4019: Port Bus 'cfg_ci' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_co' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_dilation' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_ih' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_iw' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_kernel' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_oh' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_ow' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'cfg_stride' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_addr' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_data' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'load_kind' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_acc' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_data' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port Bus 'out_index' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'busy' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_depthwise' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'cfg_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'clk' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'done' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'fault' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'load_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'load_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'out_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'out_valid' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'rst_n' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'start_ready' unspecified I/O constraint.
+W: ConstraintEditor-4019: Port 'start_valid' unspecified I/O constraint.
+Flattening design 'conv_parallel'
+Device mapping started.
+Optimizing circuit logic.
+Checking design netlist.
+Processing tech operator.
+I: The instance clkbufg_0(GTP_CLKBUFG) has been inserted on the net nt_clk in design, driver pin O(instance clk_ibuf) -> load pin CLK(instance N2134).
+Converting tech operator to gate operator.
+Processing gate operator.
+I: Infer CARRY group, base inst: N8_a1_0/gateop, insts:9.
+I: Infer CARRY group, base inst: N10_a1_0/gateop, insts:11.
+I: Infer CARRY group, base inst: N19_a1_1/gateop, insts:14.
+I: Infer CARRY group, base inst: N19_m1_a1_0/gateop, insts:20.
+I: Infer CARRY group, base inst: N24_a1_1/gateop, insts:14.
+I: Infer CARRY group, base inst: N24_m2_a1_1/gateop, insts:12.
+I: Infer CARRY group, base inst: N25_0/gateop, insts:33.
+I: Infer CARRY group, base inst: N32_a1_1/gateop, insts:14.
+I: Infer CARRY group, base inst: N32_m1_a1_0/gateop, insts:20.
+I: Infer CARRY group, base inst: N38_0/gateop, insts:33.
+I: Infer CARRY group, base inst: N118.eq_0/gateop, insts:10.
+I: Infer CARRY group, base inst: N121.eq_0/gateop, insts:10.
+I: Infer CARRY group, base inst: N133_0_2/gateop, insts:6.
+I: Infer CARRY group, base inst: N144_0_2/gateop, insts:6.
+I: Infer CARRY group, base inst: N154.eq_0/gateop, insts:4.
+I: Infer CARRY group, base inst: N167.eq_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N191.lt_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N196.lt_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N201.lt_0/gateop, insts:7.
+I: Infer CARRY group, base inst: N212.eq_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N214.eq_0/gateop, insts:8.
+I: Infer CARRY group, base inst: N216.eq_0/gateop, insts:7.
+I: Infer CARRY group, base inst: N231_1/gateop, insts:12.
+I: Infer CARRY group, base inst: N232_1/gateop, insts:10.
+I: Infer CARRY group, base inst: N234_2/gateop, insts:6.
+I: Infer CARRY group, base inst: N240_0_1/gateop, insts:6.
+I: Infer CARRY group, base inst: N243.fsub_3/gateop, insts:6.
+I: Infer CARRY group, base inst: N247.fsub_0/gateop, insts:2.
+I: Infer CARRY group, base inst: N264_0.fsub_1/gateop, insts:7.
+I: Infer CARRY group, base inst: N265.eq_0/gateop, insts:4.
+I: Infer CARRY group, base inst: N280_0_0/gateop, insts:9.
+I: Infer CARRY group, base inst: N385.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N395_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N495.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N505_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N605.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N615_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N715.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N725_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N825.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N835_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N935.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N945_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1045.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1055_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1155.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1165_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1265.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1275_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1375.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1385_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1485.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1495_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1595.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1605_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1705.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1715_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1815.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1825_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N1925.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N1935_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N2035.lt_0/gateop, insts:2.
+I: Infer CARRY group, base inst: N2045_1/gateop, insts:32.
+I: Infer CARRY group, base inst: N2142_a1_0/gateop, insts:6.
+I: Infer CARRY group, base inst: N2151_a1_0/gateop, insts:6.
+I: Infer CARRY group, base inst: N2152_0/gateop, insts:7.
+I: Infer CARRY group, base inst: N2159_1_1/gateop, insts:10.
+I: Infer CARRY group, base inst: N2162_a1_0/gateop, insts:10.
+I: Infer CARRY group, base inst: N2164_0/gateop, insts:11.
+I: Infer CARRY group, base inst: N2176_a1_0/gateop, insts:10.
+I: Infer CARRY group, base inst: N2178_0/gateop, insts:11.
+I: Infer CARRY group, base inst: N2190_0.fsub_1/gateop, insts:9.
+I: Infer CARRY group, base inst: N2268_0_1/gateop, insts:15.
+I: Infer CARRY group, base inst: N2272_0.fsub_1/gateop, insts:10.
+I: Infer CARRY group, base inst: N2273.eq_0/gateop, insts:6.
+I: Infer CARRY group, base inst: N2282_0_1/gateop, insts:3.
+I: Infer CARRY group, base inst: N2288_0/gateop, insts:13.
+I: Infer CARRY group, base inst: N2291_0_0/gateop, insts:10.
+I: Infer CARRY group, base inst: N2297_0_1/gateop, insts:15.
+I: Infer CARRY group, base inst: N2301_0.fsub_1/gateop, insts:10.
+I: Infer CARRY group, base inst: N2302.eq_0/gateop, insts:6.
+I: Infer CARRY group, base inst: N2311_0_1/gateop, insts:3.
+I: Infer CARRY group, base inst: N2316_0/gateop, insts:11.
+I: Infer CARRY group, base inst: N2319_0_0/gateop, insts:10.
+I: Infer CARRY group, base inst: N2325_0_1/gateop, insts:15.
+I: Infer CARRY group, base inst: N2332_0_1/gateop, insts:3.
+I: Infer CARRY group, base inst: N2338_0_1/gateop, insts:5.
+I: Infer CARRY group, base inst: N2446_0_1/gateop, insts:6.
+I: Infer CARRY group, base inst: N2466.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N2493.eq_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N2504_a1_1/gateop, insts:48.
+I: Infer CARRY group, base inst: N2504_a2_1/gateop, insts:49.
+I: Infer CARRY group, base inst: N2504_a3_1/gateop, insts:44.
+I: Infer CARRY group, base inst: N2513_1/gateop, insts:81.
+I: Infer CARRY group, base inst: N2529.eq_0/gateop, insts:2.
+I: Infer CARRY group, base inst: N2541.eq_0/gateop, insts:2.
+I: Infer CARRY group, base inst: N2553.lt_0/gateop, insts:3.
+I: Infer CARRY group, base inst: N4770_1/gateop, insts:7.
+I: Infer CARRY group, base inst: N4784_0/gateop, insts:8.
+I: Infer APM group, base inst: N2504_m2_m1/gopapm, insts:2.
+I: Infer APM group, base inst: N2504_m4_m1/gopapm, insts:2.
+Device Utilization Summary:
++------------------------------------------------------------------------+
+| Logic Utilization     | Used     | Available     | Utilization(%)     
++------------------------------------------------------------------------+
+| APM                   | 23.5     | 84            | 28                 
+| IOCKDLY               | 0        | 40            | 0                  
+| FF                    | 3315     | 64200         | 6                  
+| LUT                   | 2913     | 42800         | 7                  
+| Distributed RAM       | 0        | 17000         | 0                  
+| DLL                   | 0        | 10            | 0                  
+| DQSL                  | 0        | 18            | 0                  
+| DRM                   | 48       | 134           | 36                 
+| FUSECODE              | 0        | 1             | 0                  
+| IO                    | 134      | 296           | 46                 
+| IOCKDIV               | 0        | 20            | 0                  
+| IOCKGATE              | 0        | 20            | 0                  
+| IPAL                  | 0        | 1             | 0                  
+| PLL                   | 0        | 5             | 0                  
+| RCKB                  | 0        | 24            | 0                  
+| SCANCHAIN             | 0        | 2             | 0                  
+| START                 | 0        | 1             | 0                  
+| USCM                  | 1        | 30            | 4                  
+| HSST                  | 0        | 1             | 0                  
+| OSC                   | 0        | 1             | 0                  
+| CRYSTAL               | 0        | 2             | 0                  
+| RESCAL                | 0        | 4             | 0                  
+| UDID                  | 0        | 1             | 0                  
+| PCIE                  | 0        | 1             | 0                  
++------------------------------------------------------------------------+
+
+Device mapping done.
+Total device mapping takes 0.53 sec.
+
+Design 'conv_parallel' has been successfully mapped to architecture-specific objects.
+Saving design to DB.
+Action dev_map: Real time elapsed is 0h:0m:7s
+Action dev_map: CPU time elapsed is 0h:0m:5s
+Action dev_map: Process CPU time elapsed is 0h:0m:6s
+Current time: Sat Oct 17 16:56:24 2026
+Action dev_map: Peak memory pool usage is 319 MB
+Action from compile to dev_map: Total Real Time elapsed is 0h:0m:28s
+Action from compile to dev_map: Total CPU time elapsed is 0h:0m:17s
+Action from compile to dev_map: Total Process CPU Time elapsed is 0h:0m:20s
+Process "Device Map" done.
+Executing : dev_map successfully.

@@ -1,0 +1,69 @@
+{
+  "rtl_jobs": 3281,
+  "exact_accumulator_and_code_outputs": 624572,
+  "inherited_cases": 3214,
+  "new_lane_edge_cases": 67,
+  "output_stall_cycles": 342301,
+  "banking": {
+    "valid_combinations": 3476367,
+    "maximum_input_bytes_per_bank": 2415,
+    "maximum_weight_bytes_per_bank": 954
+  },
+  "resources": {
+    "LUT": 2913.0,
+    "FF": 3315.0,
+    "DRM": 48.0,
+    "APM": 23.5,
+    "synthesis_only_period_ns": 8.966,
+    "synthesis_only_slack_ns": 1.034,
+    "routed": false,
+    "external_io_constrained": false,
+    "integrated_with_video": false
+  },
+  "convolution_contracts": 136,
+  "missing_convolutions": [
+    {
+      "name": "L0315_Conv2d/WithoutBiases",
+      "reason": "No supported bias/output-quantizer chain (final float classifier)"
+    }
+  ],
+  "serial_core_cycles": 1546275648,
+  "parallel_core_cycles": 40883388,
+  "core_cycle_speedup": 37.821612240159745,
+  "tile_count": 32361,
+  "byte_load_cycles_without_stalls": 47777472,
+  "configure_and_start_cycles": 64722,
+  "hypothetical_100mhz_core_seconds": 0.40883388,
+  "hypothetical_100mhz_core_plus_load_seconds": 0.88725582,
+  "excluded": "DDR latency/arbitration, output writes, missing operators/classifier, camera/display, stalls, routed timing",
+  "accuracy_change": "None evaluated; identical arithmetic is not semantic accuracy or a full on-board model",
+  "protected_main_files_unchanged": 229,
+  "board_programmed": false,
+  "new_bitstream": false,
+  "deployment_approved": false,
+  "source_sha256": {
+    "source\\conv_parallel.v": "9920d08bdec610eac603c80a27fc17683d0bd0d677825b20c1cba5551ec312aa",
+    "tests\\parallel_tb.v": "60888ea3f3d99d9ca7c90eef2175ab99b136c6c7cc51b1dcf991fabed73a14b1",
+    "tests\\prepare.py": "78a1c8982dd46f735bbacd40e5c0c30a04bc9ca76a4ebfe11ed57d53a226f09f",
+    "tests\\verify.py": "eb0415ec0e969e84bf8b383069c1447436a83ff42325d11aea844d67ae858d00",
+    "tests\\run.ps1": "bedd14bef18a5c8db2da61f0f6c666455e7cda14a7cbc6ea00cfe859e0ab591f",
+    "build.ps1": "437c0e93bd5996837c9aefa0f9d1ceee8b20c60102644b1b2d414b882f37e91d",
+    "flow.tcl": "1df81df160d1f5af51c480b449151aaaaa996565d6d893bbcb583c1c346f4b10",
+    "compute.fdc": "d0c42beb6fa336b51b4239f4980158ff654674ef025159c266a96fd741da6ae2"
+  },
+  "evidence_sha256": {
+    "tests\\output\\cases.json": "4e169297ee410d202b4cd72fcc98d4d9b47c01f911737e5699a0f7e0d9991882",
+    "tests\\output\\expected.hex": "b040cb598025ec5c6a68a86110fbb48cd82d92121135c8e459b9e3b5ce323b84",
+    "tests\\output\\rtl_outputs.txt": "cd7a09c9e2295c3ec504a1af138d78f55f4b1576c092879c5a89fe004c47e8d8",
+    "tests\\output\\rtl_cycles.txt": "a5a07c8fa6d3fe3314862828361d9f956ee503160c315da011b91e30157507a8",
+    "tests\\output\\rtl_build_inputs.json": "6aa6849e6126441a895da2322aa4c774572274012f59a0e98ec726d2c6d7339d",
+    "tests\\output\\synthesis_inputs.json": "38fc8b8d3299cdce9af16d513f4cf03fdea7b4de0d8a4d21285b04ed40c177ef",
+    "tests\\output\\protected_before.json": "42536eb1e19da81000024a1d9a877d178fa2c42835686b9aad03b9fc662c13bc",
+    "tests\\output\\baseline_inputs.json": "bbf367a482aa6e7d5f61a9a8be332b9e3757380ceaf3034517b86b9b1216c454",
+    "layer_budget.json": "a30bbbc65e698df85172473a2fcf72c263dfb70f060e308d9e6d2fd214619798",
+    "tests\\parallel.log": "551eeed0994d8be266cbd7ab775ebab06a144295195fa6cf9963cabdcfcbea41",
+    "synthesis.log": "c6e4cd750d1f4875d89f63a41a8bcd6170a9fc41457d1a91138e5db4747f1be0",
+    "synthesize\\conv_parallel.snr": "666c7131ad770abe41451cd92b0b7a9a4b87a40b65605ae09725f52c345d93cc",
+    "device_map\\conv_parallel.dmr": "65d1746bda2c3612ce7773b5b243408adaa390d871ab949efb351651b571052d"
+  }
+}

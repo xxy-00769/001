@@ -1,0 +1,1 @@
+.rtl_screen -top_module {conv_stream_probe} -include_path {<E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_tile_stream_20261017>} -design_files {<E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_tile_stream_20261017/source/conv_cached.v|work><E:/FPGA drive/HDMI_DDR3_OV5640/experiments/road_tile_stream_20261017/source/conv_stream_probe.v|work>}

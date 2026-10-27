@@ -1,0 +1,262 @@
+`timescale 1ns/1ps
+// Sixteen output-channel lanes. Host-fed tiles only; no camera/DDR scheduler.
+// Input CHW and weight OIHW loads are internally banked by channel modulo 16.
+module conv_parallel (
+    input clk, rst_n,
+    input cfg_valid, output cfg_ready,
+    input cfg_depthwise,
+    input [6:0] cfg_ci, cfg_co,
+    input [1:0] cfg_kernel, cfg_stride,
+    input [3:0] cfg_dilation,
+    input [4:0] cfg_iw, cfg_ih,
+    input [2:0] cfg_ow, cfg_oh,
+    input load_valid, output load_ready,
+    input [1:0] load_kind,
+    input [15:0] load_addr,
+    input [7:0] load_data,
+    input start_valid, output start_ready,
+    output busy, output reg fault, output reg done,
+    output reg out_valid, input out_ready,
+    output reg [15:0] out_index,
+    output reg [7:0] out_data,
+    output reg signed [31:0] out_acc
+);
+localparam CONFIG=0, LOAD=1, PARAM_READ=2, PARAM_LATCH=3, RUN=4, EMIT=5;
+reg [2:0] state;
+reg depthwise, issuing;
+reg [6:0] ci, co, ic, oc_base;
+reg [1:0] kernel, stride, ky, kx;
+reg [3:0] dilation, param_index;
+reg [4:0] iw, ih;
+reg [2:0] ow, oh, oy, ox;
+reg [15:0] input_count, weight_count, param_count;
+reg [15:0] input_size, weight_size, param_size;
+reg [9:0] input_plane, weight_plane;
+reg [6:0] load_ic, load_oc, load_pc;
+reg [9:0] load_ip, load_wp;
+reg [3:0] load_pp;
+reg [11:0] load_ib;
+reg [9:0] load_wb;
+reg [6:0] load_pb;
+reg [3:0] valid_pipe, last_pipe;
+reg [7:0] pixel_row;
+reg [5:0] pixel_column;
+reg [11:0] weight_row;
+reg [1:0] weight_column;
+reg [11:0] pixel_addr;
+reg [9:0] weight_addr;
+reg [3:0] select_0, select_1, select_2;
+wire [7:0] pixel_read [0:15];
+wire signed [31:0] accumulators [0:15];
+wire signed [47:0] gains [0:15];
+wire signed [63:0] offsets [0:15];
+
+wire [31:0] new_input_plane = cfg_iw * cfg_ih;
+wire [31:0] new_weight_plane = (cfg_depthwise ? 32'd1 : cfg_ci) * cfg_kernel * cfg_kernel;
+wire [31:0] new_input_size = cfg_ci * new_input_plane;
+wire [31:0] new_weight_size = cfg_co * new_weight_plane;
+wire [31:0] required_w = (cfg_ow-32'd1)*cfg_stride + (cfg_kernel-32'd1)*cfg_dilation + 1;
+wire [31:0] required_h = (cfg_oh-32'd1)*cfg_stride + (cfg_kernel-32'd1)*cfg_dilation + 1;
+wire config_ok = cfg_ci>0 && cfg_ci<=80 && cfg_co>0 && cfg_co<=80 &&
+    cfg_kernel>0 && cfg_kernel<=3 && cfg_stride>0 && cfg_stride<=2 &&
+    cfg_dilation>0 && cfg_dilation<=8 && cfg_ow>0 && cfg_ow<=4 && cfg_oh>0 && cfg_oh<=4 &&
+    cfg_iw==required_w && cfg_ih==required_h &&
+    new_input_size<=32768 && new_weight_size<=8192 &&
+    ((cfg_ci+32'd15)>>4)*new_input_plane<=4096 &&
+    ((cfg_co+32'd15)>>4)*new_weight_plane<=1024 &&
+    (!cfg_depthwise || cfg_ci==cfg_co);
+wire [15:0] expected_addr = load_kind==0 ? input_count : load_kind==1 ? weight_count : param_count;
+wire ordered = load_addr==expected_addr && load_kind!=3;
+assign cfg_ready = rst_n && state==CONFIG && !fault;
+assign load_ready = rst_n && state==LOAD && !fault &&
+    (load_kind==0 ? input_count<input_size : load_kind==1 ? weight_count<weight_size :
+     load_kind==2 ? param_count<param_size : 1'b1);
+assign start_ready = rst_n && state==LOAD && !fault && input_count==input_size &&
+    weight_count==weight_size && param_count==param_size &&
+    !(load_valid && load_ready && !ordered);
+assign busy = state!=CONFIG;
+wire write_accept = load_valid && load_ready && ordered;
+wire [11:0] input_write_addr = load_ib + load_ip;
+wire [9:0] weight_write_addr = load_wb + load_wp;
+wire [6:0] param_write_addr = load_pb + load_pp;
+wire [6:0] coefficient_addr = oc_base[6:4]*7'd14 + param_index;
+wire [4:0] active_lanes = co-oc_base>=16 ? 5'd16 : co-oc_base;
+wire last_term = kx==kernel-1 && ky==kernel-1 && (depthwise || ic==ci-1);
+
+reg [4:0] quant_lane;
+reg qvalid0, qvalid1, qlast0, qlast1, out_last;
+reg signed [79:0] qproduct;
+reg signed [63:0] qoffset;
+reg signed [80:0] qsum;
+reg signed [31:0] qacc0, qacc1;
+reg [15:0] qindex0, qindex1;
+wire advance = !out_valid || out_ready;
+wire emit_last = state==EMIT && out_valid && out_ready && out_last;
+wire clear_acc = (start_valid && start_ready) || emit_last;
+wire signed [80:0] rounded = qsum + (81'sd1 <<< 35);
+wire [7:0] quantized = qsum<=0 ? 8'd0 : qsum>=(81'sd255 <<< 36) ? 8'd255 : rounded[43:36];
+
+genvar lane;
+generate for(lane=0; lane<16; lane=lane+1) begin: banks
+    reg [7:0] pixels [0:4095];
+    reg signed [7:0] weights [0:1023];
+    reg [7:0] coefficients [0:127];
+    reg [7:0] pixel_reg, param_byte;
+    reg signed [7:0] weight_reg;
+    reg signed [16:0] product;
+    reg signed [31:0] accumulator;
+    reg signed [47:0] gain;
+    reg signed [63:0] offset;
+    wire signed [8:0] pixel_value = $signed({1'b0,depthwise ? pixel_read[lane] : pixel_read[select_2]});
+    assign pixel_read[lane] = pixel_reg;
+    assign accumulators[lane] = accumulator;
+    assign gains[lane] = gain;
+    assign offsets[lane] = offset;
+    // Unreset synchronous RAM: only a completely loaded descriptor may execute.
+    always @(posedge clk) begin
+        if(write_accept && load_kind==0 && load_ic[3:0]==lane) pixels[input_write_addr]<=load_data;
+        if(write_accept && load_kind==1 && load_oc[3:0]==lane) weights[weight_write_addr]<=load_data;
+        if(write_accept && load_kind==2 && load_pc[3:0]==lane) coefficients[param_write_addr]<=load_data;
+        if(rst_n && valid_pipe[1]) begin
+            pixel_reg<=pixels[pixel_addr];
+            weight_reg<=weights[weight_addr];
+        end
+        if(rst_n && state==PARAM_READ) param_byte<=coefficients[coefficient_addr];
+    end
+    always @(posedge clk or negedge rst_n) begin
+        if(!rst_n) begin product<=0; accumulator<=0; gain<=0; offset<=0; end
+        else begin
+            if(state==PARAM_LATCH) begin
+                if(param_index<6) gain<={param_byte,gain[47:8]};
+                else offset<={param_byte,offset[63:8]};
+            end
+            if(valid_pipe[2]) product<=oc_base+lane<co ? pixel_value*weight_reg : 17'sd0;
+            if(clear_acc) accumulator<=0;
+            else if(valid_pipe[3]) accumulator<=accumulator+{{15{product[16]}},product};
+        end
+    end
+end endgenerate
+
+always @(posedge clk or negedge rst_n) begin
+    if(!rst_n) begin
+        state<=CONFIG; fault<=0; done<=0; out_valid<=0; out_index<=0; out_data<=0; out_acc<=0;
+        depthwise<=0; ci<=0; co<=0; kernel<=0; stride<=0; dilation<=0;
+        iw<=0; ih<=0; ow<=0; oh<=0; ic<=0; oc_base<=0; kx<=0; ky<=0; ox<=0; oy<=0;
+        input_size<=0; weight_size<=0; param_size<=0; input_count<=0; weight_count<=0; param_count<=0;
+        input_plane<=0; weight_plane<=0; load_ic<=0; load_oc<=0; load_pc<=0;
+        load_ip<=0; load_wp<=0; load_pp<=0; load_ib<=0; load_wb<=0; load_pb<=0;
+        param_index<=0; valid_pipe<=0; last_pipe<=0; issuing<=0;
+        pixel_row<=0; pixel_column<=0; weight_row<=0; weight_column<=0; pixel_addr<=0; weight_addr<=0;
+        select_0<=0; select_1<=0; select_2<=0;
+        quant_lane<=0; qvalid0<=0; qvalid1<=0; qlast0<=0; qlast1<=0; out_last<=0;
+        qproduct<=0; qoffset<=0; qsum<=0; qacc0<=0; qacc1<=0; qindex0<=0; qindex1<=0;
+    end else begin
+        done<=0;
+        // Address, RAM read, multiply, accumulate: one term/lane each clock.
+        valid_pipe<={valid_pipe[2:0],state==RUN && issuing};
+        last_pipe<={last_pipe[2:0],state==RUN && issuing && last_term};
+        if(state==RUN && issuing) begin
+            pixel_row<=(depthwise ? oc_base[6:4] : ic[6:4])*ih + oy*stride + ky*dilation;
+            pixel_column<=ox*stride + kx*dilation;
+            weight_row<=(depthwise ? oc_base[6:4] : oc_base[6:4]*ci+ic)*kernel + ky;
+            weight_column<=kx; select_0<=ic[3:0];
+        end
+        if(valid_pipe[0]) begin
+            pixel_addr<=pixel_row*iw + pixel_column;
+            weight_addr<=weight_row*kernel + weight_column; select_1<=select_0;
+        end
+        if(valid_pipe[1]) select_2<=select_1;
+        case(state)
+        CONFIG: if(cfg_valid && cfg_ready) begin
+            if(!config_ok) fault<=1;
+            else begin
+                depthwise<=cfg_depthwise; ci<=cfg_ci; co<=cfg_co; kernel<=cfg_kernel;
+                stride<=cfg_stride; dilation<=cfg_dilation; iw<=cfg_iw; ih<=cfg_ih; ow<=cfg_ow; oh<=cfg_oh;
+                input_size<=new_input_size[15:0]; weight_size<=new_weight_size[15:0]; param_size<=cfg_co*16'd14;
+                input_plane<=new_input_plane[9:0]; weight_plane<=new_weight_plane[9:0];
+                input_count<=0; weight_count<=0; param_count<=0;
+                load_ic<=0; load_oc<=0; load_pc<=0; load_ip<=0; load_wp<=0; load_pp<=0;
+                load_ib<=0; load_wb<=0; load_pb<=0; state<=LOAD;
+            end
+        end
+        LOAD: begin
+            if(load_valid && load_ready) begin
+                if(!ordered) fault<=1;
+                else case(load_kind)
+                0: begin
+                    input_count<=input_count+1'b1;
+                    if(load_ip==input_plane-1) begin
+                        load_ip<=0; load_ic<=load_ic+1'b1;
+                        if(load_ic[3:0]==15) load_ib<=load_ib+input_plane;
+                    end else load_ip<=load_ip+1'b1;
+                end
+                1: begin
+                    weight_count<=weight_count+1'b1;
+                    if(load_wp==weight_plane-1) begin
+                        load_wp<=0; load_oc<=load_oc+1'b1;
+                        if(load_oc[3:0]==15) load_wb<=load_wb+weight_plane;
+                    end else load_wp<=load_wp+1'b1;
+                end
+                2: begin
+                    param_count<=param_count+1'b1;
+                    if(load_pp==13) begin
+                        load_pp<=0; load_pc<=load_pc+1'b1;
+                        if(load_pc[3:0]==15) load_pb<=load_pb+7'd14;
+                    end else load_pp<=load_pp+1'b1;
+                end
+                endcase
+            end
+            if(start_valid && start_ready) begin
+                oc_base<=0; ox<=0; oy<=0; ic<=0; ky<=0; kx<=0;
+                param_index<=0; state<=PARAM_READ;
+            end
+        end
+        PARAM_READ: state<=PARAM_LATCH;
+        PARAM_LATCH: begin
+            if(param_index==13) begin state<=RUN; issuing<=1; end
+            else begin param_index<=param_index+1'b1; state<=PARAM_READ; end
+        end
+        RUN: begin
+            if(issuing) begin
+                if(last_term) issuing<=0;
+                if(kx==kernel-1) begin
+                    kx<=0;
+                    if(ky==kernel-1) begin ky<=0; ic<=ic+1'b1; end
+                    else ky<=ky+1'b1;
+                end else kx<=kx+1'b1;
+            end
+            if(valid_pipe[3] && last_pipe[3]) begin state<=EMIT; quant_lane<=0; end
+        end
+        EMIT: if(advance) begin
+            // One shared wide quantizer; freeze every stage on output backpressure.
+            qvalid0<=quant_lane<active_lanes;
+            if(quant_lane<active_lanes) begin
+                qproduct<=accumulators[quant_lane[3:0]]*gains[quant_lane[3:0]];
+                qoffset<=offsets[quant_lane[3:0]]; qacc0<=accumulators[quant_lane[3:0]];
+                qindex0<=(oc_base+quant_lane)*ow*oh + oy*ow + ox;
+                qlast0<=quant_lane==active_lanes-1; quant_lane<=quant_lane+1'b1;
+            end
+            qvalid1<=qvalid0;
+            if(qvalid0) begin
+                qsum<={qproduct[79],qproduct}+{{17{qoffset[63]}},qoffset};
+                qacc1<=qacc0; qindex1<=qindex0; qlast1<=qlast0;
+            end
+            out_valid<=qvalid1;
+            if(qvalid1) begin out_data<=quantized; out_acc<=qacc1; out_index<=qindex1; out_last<=qlast1; end
+            if(emit_last) begin
+                qvalid0<=0; qvalid1<=0; out_valid<=0; ic<=0; ky<=0; kx<=0;
+                if(ox==ow-1) begin
+                    ox<=0;
+                    if(oy==oh-1) begin
+                        oy<=0;
+                        if(oc_base+16>=co) begin state<=CONFIG; done<=1; end
+                        else begin oc_base<=oc_base+7'd16; param_index<=0; state<=PARAM_READ; end
+                    end else begin oy<=oy+1'b1; state<=RUN; issuing<=1; end
+                end else begin ox<=ox+1'b1; state<=RUN; issuing<=1; end
+            end
+        end
+        default: begin state<=CONFIG; fault<=1; out_valid<=0; end
+        endcase
+    end
+end
+endmodule

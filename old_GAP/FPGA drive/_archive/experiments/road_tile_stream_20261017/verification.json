@@ -1,0 +1,87 @@
+{
+  "rtl_jobs": 9855,
+  "exact_accumulator_and_code_outputs": 1874628,
+  "fixed_cases": 3285,
+  "inherited_cases": 3281,
+  "added_geometry_cases": 4,
+  "verified_vector_words": 210944,
+  "cache_reuse_jobs": 3037,
+  "output_stall_cycles": 1027260,
+  "probe_cycle_equivalent": true,
+  "resources": {
+    "LUT": 3609.0,
+    "FF": 3455.0,
+    "DRM": 48.0,
+    "APM": 23.5,
+    "IO": 266.0,
+    "synthesis_only_period_ns": 8.884,
+    "synthesis_only_slack_ns": 1.116,
+    "scope": "Core plus shared-payload resource probe; not production pinout",
+    "routed": false,
+    "external_io_constrained": false,
+    "integrated_with_video": false
+  },
+  "convolution_budget": {
+    "tiles": 32361,
+    "core_cycles": 40883388,
+    "input_bytes": 18950400,
+    "input_vector_beats": 1456260,
+    "one_layer_weight_coefficient_bytes": 249216,
+    "one_layer_weight_coefficient_beats": 16741,
+    "byte_fresh_load_cycles": 47777472,
+    "byte_cached_load_cycles": 19199616,
+    "vector_fresh_load_cycles": 3500382,
+    "vector_cached_load_cycles": 1473001,
+    "configure_and_start_cycles": 64722,
+    "hypothetical_100mhz_seconds": {
+      "byte_fresh": 0.88725582,
+      "byte_cached": 0.60147726,
+      "vector_fresh": 0.44448492,
+      "vector_cached": 0.42421111
+    },
+    "hypothetical_vector_cached_bus_bytes": 23568016,
+    "load_cycle_reduction": 32.43546474170758
+  },
+  "unsupported_convolutions": [
+    {
+      "name": "L0315_Conv2d/WithoutBiases",
+      "reason": "No supported bias/output-quantizer chain (final float classifier)"
+    }
+  ],
+  "protected_main_files_unchanged": 229,
+  "board_programmed": false,
+  "new_bitstream": false,
+  "deployment_approved": false,
+  "scope": "Host-fed operators, no layer scheduler, DDR request/arbitration, full network or camera integration",
+  "excluded_from_latency": "DDR and layout conversion, output writeback, missing operators/classifier, stalls, routed frequency",
+  "accuracy_change": "No semantic evaluation or improvements claimed",
+  "source_sha256": {
+    "source\\conv_cached.v": "f21bf337ad413416c7eae2fedea793f9f9158f4f3993cf09836890451e3de3ab",
+    "source\\conv_stream_probe.v": "a7e05cd4ac0145bd580f8b7beaa405c29b7a38c2149880be8939a121b9ef7e94",
+    "tests\\stream_tb.v": "d27569d48de40aca0e3dc0b8ce31a403d7930b851c3a52b06b26f14ddba4299c",
+    "tests\\prepare.py": "0fc5dea5af3bd03a854735e597246d17b2c852d9b38f42eb701dd54529e8c084",
+    "tests\\verify.py": "4d1ed4f5f48203aaae5d57048354c8efb649d7bd978092888fb0be26a5989f8a",
+    "tests\\run.ps1": "1946c9486fb53fd748d5383ebac30b38fa446cf5cbc0e79d7e64d0062e36461c",
+    "build.ps1": "8761b76c60d99d266cdb64a9d145b8007a97ab35a5d86417b737cd8659c3d0c4",
+    "flow.tcl": "fd3dfa31bc9c3710407bde9ddb1fbef88d7544b97894fe040cb9d36db7d6de3f",
+    "compute.fdc": "e1514ec4a01fd282588690663e10b3c67ad33a56046eac1710f507d14aaa9f64"
+  },
+  "evidence_sha256": {
+    "tests\\output\\cases.json": "a30eabb9df1812a7767d03bbb07a78e01c8a0d9d2b083f86e476bfe65b39b55b",
+    "tests\\output\\vector_cases.json": "b2b7518c6dc9794152fab90d8d67611c05c5091f564f140602f3b74fd2ffc142",
+    "tests\\output\\expected.hex": "01bec3392317c567073c9a244dbf633ea9fbac59a05deeb01f2f772a72c55815",
+    "tests\\output\\vectors.hex": "834102124d5782043ad5ed7ad098554015371198f7bd3a3fab6cd43cf6cd8554",
+    "tests\\output\\rtl_outputs.txt": "0d41dd71f671b250fec22257cfe78840ffc8b76bb94aa21254d85e9bf9b8ba0a",
+    "tests\\output\\rtl_cycles.txt": "d1a5dee0f1213b268a52dfcf93291133992307bae212cef50385379047531627",
+    "tests\\output\\rtl_transfers.txt": "4cb7dd6908bb86a2b6e16475244bde2a9221dfa05fb12fd5edbd34b3a3a46dc4",
+    "tests\\output\\rtl_build_inputs.json": "2ab899d5df7bc1638da63514a93ef02d4b8fd1574de99ac238f2cb011cc75da5",
+    "tests\\output\\synthesis_inputs.json": "640aceb09381ecd88452d2acd8dbc958f2f31a4762cad36c0fc0205f58b4877c",
+    "tests\\output\\protected_before.json": "42536eb1e19da81000024a1d9a877d178fa2c42835686b9aad03b9fc662c13bc",
+    "tests\\output\\previous_inputs.json": "447715f222ff3430bbeb29b1f349008a7d1c45951ce82d7a43a9e1d3283bbd04",
+    "tests\\stream.log": "b79ca8de5e3c744727d0e592f51079c4f629052d8e7975215695737208cae759",
+    "synthesis.log": "d0521d49e7add5d2c6f023f98b3f8e8714a196210d2293161a31900c5e543700",
+    "synthesize\\conv_stream_probe.snr": "a2d6f36db5d34e73583b9657ae316af05afd74e936311f3a70d94c4f7f8a1f4e",
+    "device_map\\conv_stream_probe.dmr": "8f28ee0f99311fd6a57617e0fa8e6ada0d58bebee0694469adbd37340e97d9c5",
+    "layer_budget.json": "6a8e26e09f6105f84c88e4c035a8206136d37aba15c1c17c231b77eebdbd1c90"
+  }
+}
