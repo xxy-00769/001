@@ -1,0 +1,92 @@
+{
+  "all_existing_constraints_met": true,
+  "corner_type_summaries": [
+    {
+      "summary": "Setup Summary(Slow Corner):",
+      "rows": 16,
+      "worst_slack_ns": 0.022,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Hold Summary(Slow Corner):",
+      "rows": 16,
+      "worst_slack_ns": 0.096,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Recovery Summary(Slow Corner):",
+      "rows": 9,
+      "worst_slack_ns": 4.002,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Removal Summary(Slow Corner):",
+      "rows": 9,
+      "worst_slack_ns": 0.406,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Pulse Width Summary(Slow Corner):",
+      "rows": 18,
+      "worst_slack_ns": 0.397,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Setup Summary(Fast Corner):",
+      "rows": 16,
+      "worst_slack_ns": 0.312,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Hold Summary(Fast Corner):",
+      "rows": 16,
+      "worst_slack_ns": 0.137,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Recovery Summary(Fast Corner):",
+      "rows": 9,
+      "worst_slack_ns": 5.101,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Removal Summary(Fast Corner):",
+      "rows": 9,
+      "worst_slack_ns": 0.297,
+      "failing_endpoints": 0
+    },
+    {
+      "summary": "Pulse Width Summary(Fast Corner):",
+      "rows": 18,
+      "worst_slack_ns": 0.568,
+      "failing_endpoints": 0
+    }
+  ],
+  "resources": {
+    "LUT": 22401,
+    "FF": 23820,
+    "DRM": 94.5,
+    "PLL": 5.0,
+    "CLMA": 4681.0,
+    "CLMS": 2940.0
+  },
+  "baseline_358": {
+    "LUT": 20774,
+    "FF": 21372,
+    "DRM": 93.5,
+    "PLL": 5
+  },
+  "readback_R0": {
+    "LUT": 22123,
+    "FF": 23638,
+    "DRM": 94.5,
+    "PLL": 5
+  },
+  "constraints_changed": false,
+  "board_verified": false,
+  "limitations": [
+    "Existing external PHY PVT/PCB and camera pad electrical model limits inherited; no new electrical signoff.",
+    "STA passes existing model; optimized exposure/visual motion require actual readback and same-scene test.",
+    "Local DDR/display15fps remains separate from capture30fps and upload request15fps."
+  ]
+}
