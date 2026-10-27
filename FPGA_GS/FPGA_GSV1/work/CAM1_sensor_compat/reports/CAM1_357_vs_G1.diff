@@ -1,0 +1,22 @@
+--- G1/rtl/capture/cam_ov3660_config.v
++++ 3.5.7/rtl/capture/cam_ov3660_config.v
+@@ -33,7 +33,7 @@
+       0:expected=24'h380805;1:expected=24'h380900;
+       2:expected=24'h380a02;3:expected=24'h380bd0;
+       4:expected=24'h501f01;5:expected=24'h430061;
+-      6:expected=24'h474023;7:expected=24'h303a00;
++      6:expected=24'h474020;7:expected=24'h303a00;
+       8:expected=24'h303b18;9:expected=24'h303c12;
+       10:expected=24'h303d20;11:expected=24'h382401;
+       12:expected=24'h460c22;13:expected=24'h382040;
+--- G1/rtl/capture/cam_ov3660_table.v
++++ 3.5.7/rtl/capture/cam_ov3660_table.v
+@@ -237,7 +237,7 @@
+     9'd229:entry=24'h303d20; // OV3660 datasheet figure 2-7/tables 2-8,2-9; 24MHz XCLK
+     9'd230:entry=24'h382401; // OV3660 datasheet figure 2-7/tables 2-8,2-9; 24MHz XCLK
+     9'd231:entry=24'h460c22; // OV3660 datasheet figure 2-7/tables 2-8,2-9; 24MHz XCLK
+-    9'd232:entry=24'h474023; // datasheet table 5-2: positive PCLK/HREF/VS, ungated PCLK
++    9'd232:entry=24'h474020; // datasheet table 5-2 default sync profile; G1 4344/1/03 signature; PCLK unchanged
+     9'd233:entry=24'h300802; // exit software standby after complete configuration
+     9'd234:entry=24'hffff64; // settle after enabling output, then verify critical registers
+     default:entry=24'h000000;
