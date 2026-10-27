@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M4-02 前摄、真实按键与反馈</title>
+<style>
+body{margin:16px auto;padding:0 12px;max-width:1280px;background:#15202b;color:#ecf1f5;font:16px system-ui,sans-serif}
+h1{font-size:20px}#viewer{aspect-ratio:16/9;background:#0b121a;display:grid;place-items:center;overflow:hidden}
+#image{width:100%;display:block}#image[hidden],#placeholder[hidden]{display:none}
+#placeholder{padding:20px;text-align:center;color:#cbd5df}#image-state,#data-state{font-size:14px;color:#b8d5e8}
+.summary{display:flex;flex-wrap:wrap;gap:10px 28px;margin:12px 0}.summary span{white-space:nowrap}
+details{margin-top:20px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}small{color:#b8c2cc}
+.panel{border:1px solid #456074;border-radius:8px;padding:16px;margin:18px 0;background:#1b2b39}
+h2{font-size:18px;margin:0 0 12px}.event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px}
+.event-grid p{margin:0;overflow-wrap:anywhere}.event-grid b{display:block;color:#a7cfe8;font-size:13px;margin-bottom:5px}
+select,button{font:inherit;padding:6px;margin:4px 8px 4px 0;background:#102231;color:#ecf1f5;border:1px solid #7995a9;border-radius:4px}
+button{cursor:pointer}button:disabled{opacity:.5}.warning{color:#ffe097;border:2px solid #edb850;padding:10px;font-weight:600}
+.history{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px}td,th{text-align:left;padding:8px;border-bottom:1px solid #456074}
+@media(max-width:680px){.event-grid{grid-template-columns:1fr}}
+</style>
+<h1>M4-02 · 前摄、真实按键与反馈</h1>
+<div id="viewer"><img id="image" alt="当前输入的识别叠加画面" hidden><div id="placeholder">等待首帧，正在自动重试…</div></div>
+<p id="image-state" role="status" aria-live="polite">等待首帧</p>
+<p id="connection-state" role="status">等待连接状态</p>
+<div class="summary"><span>模式：<b id="mode">—</b></span><span>画面帧号：<b id="frame">—</b></span><span>源文件：<b id="source-fps">—</b> fps</span><span>预览：<b id="preview-size">—</b></span></div>
+<div class="summary"><span>实际处理：<b id="fps">—</b> fps</span><span>预览新帧：<b id="preview-fps">—</b> fps</span><span>图龄上界估计：<b id="image-age">—</b> ms</span></div>
+<div class="summary"><span>前摄上传请求：<b id="front-request">—</b> fps</span><span>完整接收：<b id="receive-fps">—</b> fps</span><span>处理目标：<b id="process-target">—</b> fps</span><span>预览目标：<b id="preview-target">—</b> fps</span><span>主动跳过完整帧：<b id="app-skips">0</b></span></div>
+<div class="summary"><span>交通灯：<b id="signal">未知</b></span><span>左边界：<b id="left">未知</b></span><span>右边界：<b id="right">未知</b></span></div>
+<p id="decisions">驾驶意图判定：等待数据</p><p id="data-state" role="status"></p>
+<small>FILE_TEST 为录像测试；SIMULATION 为人工模拟；LIVE_FRONT 为前摄输入。场景配置可能含模拟假设，未知状态保留为未知。</small>
+<p><small>帧率使用近 5 秒窗口，预览只统计成功解码且帧序号改变的图像。LIVE处理仅保留最新待处理完整帧，不积累队列；主动跳过不等同网络缺片。图龄起算于香橙派收齐完整帧，含后续处理、传输和浏览器停留的上界估计，不能代表摄像头到网页的端到端延迟。</small></p>
+<section class="panel" aria-labelledby="feedback-title">
+<h2 id="feedback-title">板上驾驶按键 → 香橙派 → FPGA反馈</h2>
+<p id="feedback-mode">真实识别模式 · 等待服务状态</p>
+<p id="simulation-warning" class="warning" hidden>模拟判定，未使用图像识别。仅验证通信，不代表算法识别成功。</p>
+<label for="feedback-mode-select">判定来源</label>
+<select id="feedback-mode-select"><option value="REAL">真实识别（默认）</option><option value="SELF_TEST">通信自测（模拟判定）</option></select>
+<label for="feedback-selection">自测结果</label>
+<select id="feedback-selection"><option value="unknown">未知</option><option value="allow">允许</option><option value="deny">拒绝</option><option value="red">红灯告警</option><option value="solid">实线告警</option></select>
+<button id="apply-feedback" disabled>应用到下一个真实按键</button>
+<p id="control-state" role="status">仅LIVE_FRONT可用。此页面不能生成驾驶EVENT；更改后需按真实板上KEY1～4。</p>
+<div class="event-grid">
+<p><b>最近真实按键</b><span id="event-action">尚未收到真实驾驶EVENT</span></p>
+<p><b>事件身份</b><span id="event-identity">—</span></p>
+<p><b>EVENT_ACK（仅代表收到事件）</b><span id="event-receipt">—</span></p>
+<p><b>事件原帧与识别</b><span id="event-frame-state">—</span></p>
+<p><b>RESULT判定</b><span id="event-result">—</span></p>
+<p><b>RESULT_ACK（板端是否接受）</b><span id="event-result-ack">—</span></p>
+<p><b>有效期</b><span id="event-ttl">—</span></p>
+<p><b>主机侧耗时</b><span id="event-timing">—</span></p>
+</div>
+<p id="event-explanation">等待真实按键；当前画面的识别结果不会冒充另一事件的原帧结果。</p>
+<p id="event-matches">真实事件帧命中：尚无记录</p>
+<small>EVENT_ACK不等于判定接受；RESULT_ACK接受不等于已人工确认屏幕。板端TTL正常到期回未知，不是通信故障。LED仍表示驾驶意图；KEY5视角、KEY6滤镜保持原功能。</small>
+<p><small>下列耗时只从香橙派收到EVENT起算，不是物理按键到FPGA屏幕的端到端延迟。主机预算不能代表未同步的板端剩余TTL。</small></p>
+<details><summary>最近真实事件记录（最多保留32条，表中显示最近10条）</summary><div class="history"><table><thead><tr><th>按键 / event</th><th>事件帧</th><th>帧命中</th><th>判定来源 / 结果</th><th>板端ACK</th></tr></thead><tbody id="event-history"></tbody></table></div></details>
+</section>
+<details id="diagnostic"><summary>展开诊断 JSON</summary><pre id="diagnostics">等待状态数据</pre></details>
+<script>
+(() => {
+  const el = id => document.getElementById(id);
+  const label = {UNKNOWN:'未知',RED:'红灯',GREEN:'绿灯',AMBER:'黄灯',SOLID:'实线',DASHED:'虚线'};
+  const modes = {FILE_TEST:'录像测试（FILE_TEST）',LIVE_FRONT:'前摄输入（LIVE_FRONT）',SIMULATION:'人工模拟（SIMULATION）'};
+  let hadImage = false, previousUrl = null, lastSequence = null, lastFrame = '—', previewTarget = 15;
+  let lastReceivedMs = null, clockOffsetLower = null, lastStatus = null;
+  let lastSession=null, liveCutoffMs=0, connectionNotice='';
+  let controlDirty=false, controlBusy=false;
+  const resultNames={0:'未知',1:'允许',2:'拒绝'};
+  const explanationNames={
+    EVENT_FRAME_NOT_RECEIVED:'事件对应帧未收到；未使用附近帧替代',
+    EVENT_FRAME_INFERENCE_UNAVAILABLE:'事件对应帧已收到，但识别未完成或结果已不在有效历史中',
+    EVENT_FRAME_INFERENCE_STALE:'事件对应帧的识别结果已过期',
+    SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN:'灯色、灯组归属或动作关联证据不足',
+    BOUNDARY_UNCERTAIN:'对应侧车道边界线型或置信度不足',
+    STOP_INTENT_NO_RED_VIOLATION:'停车意图，不作为闯红灯',
+    GREEN_AND_REQUIRED_BOUNDARY_CLEAR:'相关绿灯明确，所需边界条件满足',
+    RED_LIGHT_SIMULATED_ACTION_WARNING:'相关红灯下的行驶意图：红灯模拟告警',
+    LEFT_SOLID_SIMULATED_ACTION_WARNING:'左侧实线：实线模拟告警',
+    RIGHT_SOLID_SIMULATED_ACTION_WARNING:'右侧实线：实线模拟告警',
+    SELF_TEST_ALLOW:'通信自测：模拟允许，未使用图像识别',SELF_TEST_DENY:'通信自测：模拟拒绝，未使用图像识别',
+    SELF_TEST_RED_WARNING:'通信自测：模拟红灯告警，未使用图像识别',SELF_TEST_SOLID_WARNING:'通信自测：模拟实线告警，未使用图像识别',
+    SELF_TEST_UNKNOWN:'通信自测：模拟未知，未使用图像识别',INVALID_INTENT:'无效驾驶意图'};
+  const resultText=r=>!r?'等待判定':r.reason===1?'红灯告警（拒绝）':r.reason===2?'实线告警（拒绝）':resultNames[r.code]||'未知';
+  const ackText=e=>e.result_ack?(e.result_ack.accepted?'已接受':'拒绝（板端未提供细分原因）'):
+    !e.result?'尚未发送判定':e.cancel_reason?'已停止旧事件重试':e.host_budget_expired?'未收到ACK，主机等待预算已结束':'等待RESULT_ACK';
+  const ms=v=>Number.isFinite(v)?v.toFixed(1)+' ms':'—';
+  function renderFeedback(status){
+    const feedback=status.link?.feedback, controls=feedback?.controls;
+    const enabled=status.mode==='LIVE_FRONT'&&!!controls;
+    el('apply-feedback').disabled=!enabled||controlBusy;
+    if(!controls){el('feedback-mode').textContent='此输入模式不能绑定真实FPGA按键';return;}
+    const simulated=controls.mode==='SELF_TEST';
+    el('feedback-mode').textContent=simulated?'当前生效：通信自测 · 仅响应下一个真实驾驶EVENT':'当前生效：真实识别 · 严格匹配EVENT原始帧';
+    el('simulation-warning').hidden=!simulated;
+    if(!controlDirty&&!controlBusy){el('feedback-mode-select').value=controls.mode;el('feedback-selection').value=controls.selection;}
+    const events=feedback.recent_events||[], current=events.at(-1), counts=feedback.counts||{};
+    el('event-matches').textContent='本次服务收到真实逻辑事件 '+(counts.events||0)+'；对应完整帧命中 '+(counts.exact_frame_received||0)+
+      '（其中事件后到达 '+(counts.exact_frame_received_later||0)+'）；对应帧完成识别 '+(counts.exact_frame_inferred||0)+'。通信自测的结果不计作识别成功。';
+    if(!current){
+      el('event-action').textContent='本会话尚未收到真实驾驶EVENT';
+      for(const id of ['event-identity','event-receipt','event-frame-state','event-result','event-result-ack','event-ttl','event-timing'])el(id).textContent='—';
+      el('event-explanation').textContent='等待本会话真实按键；旧会话事件与判定已清理。';
+      el('event-history').replaceChildren();return;
+    }
+    el('event-action').textContent=current.action_label+(current.duplicates?'（重发 '+current.duplicates+' 次，已去重）':'');
+    el('event-identity').textContent='event_id='+current.event_id+' · frame_id='+current.event_frame_id;
+    el('event-receipt').textContent=(current.event_ack.sent?'已交给本机socket发送':'本机发送失败')+' · 尝试 '+current.event_ack.attempts+' 次';
+    el('event-frame-state').textContent=!current.frame_received?'事件对应帧未收到':
+      '事件对应完整帧已收到；'+(current.inference_complete?'识别已完成':'识别未完成 / 等待精确帧结果')+
+      (current.frame_received_before_host_deadline===false?'（帧到达时主机预算已结束）':'');
+    const result=current.result;
+    el('event-result').textContent=result?(current.simulated?'【模拟】':'【真实识别】')+resultText(result)+' · sequence='+result.sequence+
+      (result.sent?' · 已发送':' · 发送失败')+' · 尝试 '+result.attempts+' 次':current.not_sent_reason?'主机预算耗尽，未发送过期RESULT':'等待事件原帧及识别';
+    el('event-result-ack').textContent=ackText(current);
+    el('event-ttl').textContent='板端事件TTL '+current.ttl_ms+' ms；RESULT TTL '+(result?.ttl_ms??'—')+' ms；'+
+      (current.host_budget_expired?'主机预算已结束，板端按事件TTL正常回未知':'主机等待余量约 '+current.host_budget_remaining_ms+' ms');
+    el('event-timing').textContent='EVENT→ACK发送 '+ms(current.event_ack.event_to_ack_send_ms)+'；EVENT→RESULT '+ms(result?.event_to_result_ms)+
+      '；EVENT→RESULT_ACK '+ms(current.result_ack?.event_to_ack_ms);
+    let reason=result?(explanationNames[result.explanation]||result.explanation):'有限等待精确事件帧；不会使用当前预览帧替代';
+    if(current.evidence?.signal&&result?.code===0){const s=current.evidence.signal;
+      reason+='；灯色='+ (label[s.state]||s.state)+'，灯组归属='+ (s.association==='UNASSIGNED'?'未分配':s.association)+
+        '，关联动作='+JSON.stringify(s.actions||[]);}
+    if(current.cancel_reason)reason+='；'+(current.cancel_reason==='NEW_EVENT'?'新动作已取消旧等待/重试':'模式切换已取消旧等待/重试，仅对下次真实按键生效');
+    el('event-explanation').textContent=reason;
+    const tbody=el('event-history');tbody.replaceChildren();
+    for(const e of events.slice(-10).reverse()){
+      const tr=document.createElement('tr');
+      for(const text of [e.action_label+' / '+e.event_id,e.event_frame_id,e.frame_received?(e.inference_complete?'已收到 / 已识别':'已收到 / 未识别'):'未收到',
+        (e.simulated?'模拟 / ':'真实 / ')+resultText(e.result),ackText(e)]){const td=document.createElement('td');td.textContent=text;tr.append(td);}
+      tbody.append(tr);
+    }
+  }
+  for(const id of ['feedback-mode-select','feedback-selection'])el(id).addEventListener('change',()=>{
+    controlDirty=true;el('control-state').textContent='选择尚未应用，请点击“应用到下一个真实按键”。';
+  });
+  el('apply-feedback').addEventListener('click',async()=>{
+    controlBusy=true;el('apply-feedback').disabled=true;
+    const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),4000);
+    try{
+      const response=await fetch('/feedback/control?t='+Date.now(),{method:'POST',cache:'no-store',signal:controller.signal,
+        headers:{'Content-Type':'application/json','X-M4-Control-Token':lastStatus?.control_token||''},
+        body:JSON.stringify({mode:el('feedback-mode-select').value,selection:el('feedback-selection').value})});
+      const reply=await response.json();if(!response.ok||!reply.ok)throw new Error(reply.message||'HTTP '+response.status);
+      controlDirty=false;el('control-state').textContent=reply.message;
+      if(lastStatus?.link?.feedback){lastStatus.link.feedback.controls=reply.controls;renderFeedback(lastStatus);}
+    }catch(error){el('control-state').textContent='设置失败或确认超时：'+error.message+'；请查看“当前生效”状态后再按键。';}
+    finally{clearTimeout(timeout);controlBusy=false;el('apply-feedback').disabled=false;}
+  });
+  const arrivals = [], metrics = {newFramesTotal:0,duplicateResponses:0,imageRequests:0,inFlight:0,maxInFlight:0};
+  function browserMetrics() {
+    const now=performance.now();
+    while (arrivals.length && now-arrivals[0]>5000) arrivals.shift();
+    return {...metrics,lastSequence,lastFrame,
+      newFrameFps:arrivals.length>1?(arrivals.length-1)/((now-arrivals[0])/1000):0,
+      imageAgeUpperMs:hadImage&&clockOffsetLower!==null?Math.max(0,now-lastReceivedMs-clockOffsetLower):null};
+  }
+  window.m401PreviewMetrics=browserMetrics;
+  function diagnostics() {
+    if (el('diagnostic').open) el('diagnostics').textContent=JSON.stringify({server:lastStatus,browser:browserMetrics()},null,2);
+  }
+  el('diagnostic').addEventListener('toggle',diagnostics);
+  async function request(path) {
+    const started=performance.now();
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 4000);
+    try {
+      const response = await fetch(path, {cache:'no-store',signal:controller.signal});
+      if (!response.ok) {const error = new Error('HTTP ' + response.status);error.status=response.status;throw error;}
+      const data=path.startsWith('/status.json') ? await response.json() : await response.blob();
+      return {data,response,started};
+    } finally {clearTimeout(timeout);}
+  }
+  async function updateImage() {
+    let url = null;
+    const controller=new AbortController();let watchdog;
+    function arm(){clearTimeout(watchdog);watchdog=setTimeout(()=>controller.abort(),4000);}
+    metrics.inFlight++;metrics.imageRequests++;metrics.maxInFlight=Math.max(metrics.maxInFlight,metrics.inFlight);
+    try {
+      arm();
+      const response=await fetch('/stream.mjpg?t='+Date.now(),{cache:'no-store',signal:controller.signal});
+      if(!response.ok){const error=new Error('HTTP '+response.status);error.status=response.status;throw error;}
+      const reader=response.body.getReader(), decoder=new TextDecoder('ascii');
+      let buffer=new Uint8Array(0);
+      while(true){
+        const {value,done}=await reader.read();if(done)throw new Error('视频流已断开');
+        const combined=new Uint8Array(buffer.length+value.length);combined.set(buffer);combined.set(value,buffer.length);buffer=combined;
+        if(buffer.length>2*1024*1024)throw new Error('视频数据超过缓冲上限');
+        let packet=null;
+        // Retain only the newest complete JPEG if a network read contains several frames.
+        while(buffer.length){
+          let end=-1;
+          for(let i=0;i+3<Math.min(buffer.length,2048);i++){
+            if(buffer[i]===13&&buffer[i+1]===10&&buffer[i+2]===13&&buffer[i+3]===10){end=i;break;}
+          }
+          if(end<0){if(buffer.length>2048)throw new Error('视频头无效');break;}
+          const headers=decoder.decode(buffer.subarray(0,end));
+          const get=name=>headers.match(new RegExp('^'+name+':\\s*([^\\r\\n]+)','mi'))?.[1];
+          const length=Number(get('Content-Length')), total=end+4+length+2;
+          if(!Number.isInteger(length)||length<=0||length>2*1024*1024)throw new Error('视频帧长度无效');
+          if(buffer.length<total)break;
+          packet={sequence:get('X-Frame-Sequence'),frame:get('X-Frame-ID'),received:Number(get('X-Frame-Received-Ms')),
+            data:buffer.slice(end+4,end+4+length)};
+          buffer=buffer.slice(total);
+        }
+        if(!packet)continue;
+        arm();
+        if(!packet.sequence||!Number.isFinite(packet.received))throw new Error('视频缺少帧信息');
+        if(lastStatus?.mode==='LIVE_FRONT'&&(packet.received<liveCutoffMs||connectionNotice))continue;
+        if(packet.sequence===lastSequence){metrics.duplicateResponses++;continue;}
+        url=URL.createObjectURL(new Blob([packet.data],{type:'image/jpeg'}));
+        const candidate=new Image();candidate.src=url;await candidate.decode();
+        el('image').src=url;el('image').hidden=false;el('placeholder').hidden=true;
+        if(previousUrl)URL.revokeObjectURL(previousUrl);
+        previousUrl=url;url=null;hadImage=true;
+        lastSequence=packet.sequence;lastFrame=packet.frame;lastReceivedMs=packet.received;
+        arrivals.push(performance.now());metrics.newFramesTotal++;
+        window.dispatchEvent(new CustomEvent('m401-preview-frame',{detail:{sequence:lastSequence,frame:lastFrame,receivedMonotonicMs:lastReceivedMs,decodedAtMs:performance.now()}}));
+        el('image-state').textContent='MJPEG 连续刷新 · 目标 '+previewTarget+' fps · 单个视频连接';
+      }
+    } catch (error) {
+      if (url) URL.revokeObjectURL(url);
+      const message = connectionNotice || (error.status===503 && !hadImage ? '等待首帧，正在自动重试…' :
+        '画面获取失败（' + (error.name==='AbortError'?'请求超时':error.message) + '），正在自动重试…');
+      el('image').hidden=true;el('placeholder').hidden=false;
+      el('placeholder').textContent=message;el('image-state').textContent=message;
+      return false;
+    } finally {clearTimeout(watchdog);controller.abort();metrics.inFlight--;}
+  }
+  async function updateStatus() {
+    try {
+      const reply=await request('/status.json?t=' + Date.now()), status=reply.data;
+      // Server status generation occurs after the browser request start. This lower
+      // clock-offset bound gives an age upper estimate without synchronized clocks.
+      clockOffsetLower=reply.started-status.host_monotonic_ms;
+      lastStatus=status;previewTarget=status.target_preview_fps || 15;
+      connectionNotice='';
+      if(status.mode==='LIVE_FRONT'){
+        const link=status.link||{}, state=link.connection_state;
+        liveCutoffMs=status.live_reset_monotonic_ms||0;
+        if(lastSession!==null&&lastSession!==link.session){
+          arrivals.length=0;lastSequence=null;lastFrame='—';hadImage=false;lastReceivedMs=null;
+        }
+        lastSession=link.session;
+        const states={WAITING_RECONNECT:'等待重连：已清理旧画面与事件，静默3秒等待FPGA旧会话超时',
+          CONNECTING:'等待重连：固定新session，正在握手',WAITING_FRONT_FRAME:'会话在线，等待前摄首帧',
+          FRAGMENTS_NO_COMPLETE:'收到分片但无新的完整帧：不会显示旧图冒充当前画面',STREAMING:'真实前摄完整帧持续到达'};
+        connectionNotice=state!=='STREAMING'?(states[state]||'等待前摄连接'):
+          status.preview_age_ms===null||status.preview_age_ms>=2000?'完整帧尚未形成新处理画面，等待更新':'';
+        el('connection-state').textContent=(states[state]||'等待连接状态')+' · session='+link.session+' · 自动重连 '+(link.reconnects||0)+' 次';
+        if(connectionNotice){
+          el('image').hidden=true;el('placeholder').hidden=false;el('placeholder').textContent=connectionNotice;
+          el('image-state').textContent=connectionNotice;lastFrame='—';
+        }
+      }else el('connection-state').textContent='文件/模拟输入，不使用真实前摄重连状态';
+      renderFeedback(status);
+      const latest=status.latest || {}, lanes=latest.lanes || {};
+      const received=browserMetrics();
+      el('mode').textContent=modes[status.mode] || status.mode || '—';
+      el('frame').textContent=lastFrame;
+      el('fps').textContent=Number.isFinite(status.processed_fps)?status.processed_fps.toFixed(2):'—';
+      el('front-request').textContent=Number.isFinite(status.requested_front_fps)?status.requested_front_fps:'—';
+      el('receive-fps').textContent=Number.isFinite((status.link || {}).recent_complete_fps)?status.link.recent_complete_fps.toFixed(2):'—';
+      el('process-target').textContent=status.target_process_fps ?? '—';
+      el('preview-target').textContent=status.target_preview_fps ?? '—';
+      el('app-skips').textContent=status.skipped_complete_frames ?? 0;
+      el('source-fps').textContent=Number.isFinite((status.playback || {}).source_fps)?status.playback.source_fps.toFixed(3):'—';
+      const encoding=status.preview_encoding || {};
+      el('preview-size').textContent=encoding.width?encoding.width+'宽 / JPEG '+encoding.quality:'—';
+      el('preview-fps').textContent=received.newFrameFps.toFixed(2);
+      el('image-age').textContent=received.imageAgeUpperMs===null?'—':Math.round(received.imageAgeUpperMs);
+      el('signal').textContent=label[(latest.signal || {}).state] || '未知';
+      el('left').textContent=label[(lanes.left || {}).state] || '未知';
+      el('right').textContent=label[(lanes.right || {}).state] || '未知';
+      const decisions=latest.decisions || {};
+      el('decisions').textContent='驾驶意图判定：' + ['左','右','直','停'].map((name,index) =>
+        name + ' ' + ({0:'未知',1:'允许',2:'拒绝'}[(decisions[String(index+1)] || {}).code] || '未知')).join(' · ');
+      diagnostics();
+      el('data-state').textContent='已处理 '+status.processed+' 帧；循环 '+((status.playback || {}).loop_index ?? '—')+'；网页状态每秒更新';
+    } catch (error) {
+      el('data-state').textContent='状态获取失败，正在自动重试；当前文字可能为上次数据。';
+    }
+  }
+  async function refreshImages() {
+    await updateImage();setTimeout(refreshImages,250);
+  }
+  async function refreshStatus() {
+    const started=performance.now();await updateStatus();
+    setTimeout(refreshStatus,Math.max(0,1000-(performance.now()-started)));
+  }
+  refreshImages();refreshStatus();
+})();
+</script>
+</html>

@@ -1,0 +1,39 @@
+{
+  "Verdict": "PASS",
+  "EDIDPreferred": {
+    "PixelHz": 148500000,
+    "HFront": 88,
+    "HSync": 44,
+    "HBack": 148,
+    "VFront": 4,
+    "VSync": 5,
+    "VBack": 36,
+    "HSPositive": true,
+    "VSPositive": true
+  },
+  "PLLParameters": {
+    "STATIC_RATIOI": 10,
+    "STATIC_RATIOF": 297,
+    "STATIC_RATIO0": 10,
+    "STATIC_DUTY0": 10
+  },
+  "GeneratedClockConstraint": "create_generated_clock -name {pix_clk} -source [get_ports {sys_clk}] [get_nets {u_hd_pll.clkout0}] -master_clock [get_clocks {sys_clk}] -multiply_by {297} -divide_by {100}",
+  "PixelPeriodNs": 6.734006734006734,
+  "AVI_VIC": 16,
+  "AVI_Checksum": 246,
+  "MS7210PAInvert": 4,
+  "DisplayReadMBps": {
+    "Single": 110.592,
+    "Quad": 331.776
+  },
+  "Four720p30WritePlusFront5ReadPlusQuadMBps": 562.176,
+  "BoardSignalMeasured": false,
+  "ExternalIoTimingSignoff": false,
+  "Inputs": {
+    "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\reports\\M3_03_EDID\\27B1.bin": "e36a132305ba111a3f1baf7f2dc6d6ff897a63c924fd8b03655acf2c606c7974",
+    "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\rtl\\display\\m31_pixel_pll.v": "b653d1efcdc1425903a453ac50d95b672e918374ea9cb561eb6b51956cdcd9fa",
+    "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\constraints\\mes50hp.fdc": "8b0858ebe17a9b04d0c2700530c80d311042e9fdad394cdd4d3d3da735ae998d",
+    "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\rtl\\board\\fpga_gsv1_top.v": "2195431520f88fb3e9849e36b5be392d12d0018291a27cd8814aee3cb707324d",
+    "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\rtl\\reuse\\ms7210_ctl.v": "4b70eb55848c6e04ba9f35246d6ede4326298fcbfa11cb91065a350455c49e50"
+  }
+}

@@ -1,0 +1,13 @@
+--- official/rgmii_interface.v
++++ experiment/rgmii_interface.v
+@@ -41,6 +41,10 @@
+     output       rgmii_tx_ctl/*synthesis PAP_MARK_DEBUG="1"*/,
+     output [3:0] rgmii_txd/*synthesis PAP_MARK_DEBUG="1"*/ 
+ );
++
++    // E1: original demo left tx_reset_sync undriven. Explicit GRS-only reset,
++    // matching its data ODDR RST=0; MAC remains reset until both PLLs lock.
++    wire tx_reset_sync = 1'b0;
+ 
+     //=============================================================
+     //  RGMII TX 

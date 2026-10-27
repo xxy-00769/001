@@ -1,0 +1,25 @@
+{
+  "Verdict": "PASS",
+  "InputsUnchanged": false,
+  "Cases": {
+    "phy": {
+      "Verdict": "PASS",
+      "Output": "M36_PHY_PASS transactions=101 writes=10 scan_wrong_id=1 reserved_bits=1 gigabit_only=1 clock_stop_recover=1 reset=1",
+      "Evidence": "Previously executed Icarus tool output in this task; transcribed without rerunning unchanged tests."
+    },
+    "roles": {
+      "Verdict": "PASS",
+      "Output": "M36_ROLES_PASS endpoint_mac_ip=1 session_isolation=1 wrong_role=1 key_binding=1 stale_result=1 timeout=1 PHY_epoch=1 writes=40/0",
+      "Evidence": "Previously executed Icarus tool output in this task; transcribed without rerunning unchanged tests."
+    },
+    "rgmii": {
+      "Verdict": "PASS",
+      "Output": "M36_RGMII_PASS bytes=4096 pin_skew=2ns IO_insertion=1.6ns fabric_insertion=5.7ns gray_buffer_wrap=512",
+      "Evidence": "Previously executed Icarus tool output in this task; transcribed without rerunning unchanged tests.",
+      "Superseded": true,
+      "Note": "Historical IMDDR functional test; physical implementation abandoned. Final IDES4 test is reports/m36_reproduce_rgmii/run.log."
+    }
+  },
+  "BoardMeasured": false,
+  "Note": "Historical logs retained as executed, PHY and roles RTL unchanged. RGMII superseded; do not treat historical aggregate as final signoff."
+}

@@ -1,0 +1,24 @@
+{
+  "pins": {
+    "TXC": "C20",
+    "TX_CTL": "F22",
+    "TXD3": "F21",
+    "TXD2": "E22",
+    "TXD1": "E20",
+    "TXD0": "C22"
+  },
+  "sources": [
+    "MES50HP hardware manual table3-2",
+    "11_ethernet_test.rar/ethernet_test.fdc commented port2 pin set",
+    "published 3.5.1 mapped netlist"
+  ],
+  "mac_core_changed": false,
+  "phy_management_changed": false,
+  "rgmii_serializer_changed": false,
+  "net1_changed": false,
+  "PLL_or_phase_changed": false,
+  "TX_delay_readback": "BD75",
+  "TX_internal_delay": "Enabled (page7/extA4/reg1C bits13:11 all1); datasheet TXDLY nominal2ns",
+  "CLK_PLL_difference": "Official example and port1 use local PLL; port2 uses RXC BUFG with PHY internal delay. No cross-port clock borrowing.",
+  "warning": "Matched-polarity IO datasheet differences of 2..38ps do not bound opposite-polarity transitions. No board electrical signoff is claimed."
+}

@@ -1,0 +1,88 @@
+//
+// Generated (version 2022.2-SP6.4<build 146967>) at Wed Oct 21 18:23:41 2026
+//
+
+module m34_input_capture
+(
+    input [0:0] data,
+    input clk,
+    output [0:0] captured
+);
+(* PAP_KEEP="TRUE" *)    wire ioclk;
+    wire \pad[0].din ;
+    wire [7:0] \pad[0].samples ;
+
+(* PAP_PRESERVE="TRUE" *)    GTP_IOCLKBUF /* local_clock */ #(
+            .GATE_EN("FALSE"))
+        local_clock (
+            .CLKOUT (ioclk),
+            .CLKIN (clk),
+            .DI (1'b1));
+	// ../probe.v:5
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \pad[0].input_buffer  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \pad[0].input_buffer  (
+            .O (\pad[0].din ),
+            .I (data[0]));
+	// ../probe.v:9
+
+    GTP_ISERDES /* \pad[0].sample  */ #(
+            .ISERDES_MODE("IMDDR"), 
+            .GRS_EN("FALSE"), 
+            .LRS_EN("FALSE"))
+        \pad[0].sample  (
+            .DO ({\pad[0].samples [7] , captured[0], \pad[0].samples [5] , \pad[0].samples [4] , \pad[0].samples [3] , \pad[0].samples [2] , \pad[0].samples [1] , \pad[0].samples [0] }),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (clk),
+            .DI (\pad[0].din ),
+            .ICLK (ioclk),
+            .RCLK (clk),
+            .RST (1'b0));
+	// ../probe.v:10
+
+
+endmodule
+
+
+module probe
+(
+    input cmos1_pclk,
+    input d,
+    output q
+);
+	// SDC constraint : (object cmos1_pclk) (id 1000) (clock cmos1_pclk) (5 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_single_P/probe.fdc)
+    wire nt_cmos1_pclk;
+    wire nt_q;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+(* PAP_IO_LOC="T12", PAP_IO_STANDARD="LVCMOS12", PAP_IO_VCCIO="3.3" *)    GTP_INBUF /* cmos1_pclk_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        cmos1_pclk_ibuf (
+            .O (nt_cmos1_pclk),
+            .I (cmos1_pclk));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* q_obuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        q_obuf (
+            .O (q),
+            .I (nt_q));
+	// ../probe.v:1
+
+    m34_input_capture u (
+            .captured ({nt_q}),
+            .data ({d}),
+            .clk (nt_cmos1_pclk));
+	// ../probe.v:1
+
+
+endmodule
+

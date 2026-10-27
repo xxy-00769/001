@@ -1,0 +1,176 @@
+{
+  "version": "M4-02-r2-reconnect",
+  "real_user_restart_and_key3": true,
+  "pid": 190067,
+  "start_ticks": "5555472",
+  "old_session": 3888027107,
+  "new_session": 3335979546,
+  "last_old_complete_frame": 10506,
+  "first_new_logged_complete_frame": 48,
+  "first_new_complete_after_confirmed_timeout_seconds": 3.1312000329999137,
+  "browser_first_sampled_image_after_timeout_seconds": 4.288910263,
+  "browser_max_inflight": 1,
+  "browser_errors": [],
+  "key3": {
+    "session": 3335979546,
+    "event_id": 1,
+    "event_frame_id": 212,
+    "action": 3,
+    "action_label": "KEY3 直",
+    "board_timestamp_ms": 8642,
+    "ttl_ms": 2000,
+    "received_monotonic": 55701.293127621,
+    "host_deadline_monotonic": 55703.193127621,
+    "wait_until_monotonic": 55702.093127621,
+    "decision_mode": "REAL",
+    "simulated": false,
+    "selection": "unknown",
+    "control_revision": 1,
+    "event_ack": {
+      "sent": true,
+      "attempts": 1,
+      "event_to_ack_send_ms": 0.076
+    },
+    "frame_received": true,
+    "inference_complete": true,
+    "result": {
+      "code": 0,
+      "reason": 0,
+      "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN",
+      "sequence": 1,
+      "ttl_ms": 2000,
+      "sent": true,
+      "attempts": 1,
+      "sent_monotonic": 55701.420012964,
+      "event_to_result_ms": 126.885,
+      "simulated": false
+    },
+    "result_ack": {
+      "accepted": true,
+      "code": 1,
+      "received_monotonic": 55701.420402915,
+      "event_to_ack_ms": 127.275,
+      "result_to_ack_ms": 0.39,
+      "after_host_deadline": false
+    },
+    "duplicates": 0,
+    "cancel_reason": null,
+    "frame_received_monotonic": 55701.368857267,
+    "frame_received_before_host_deadline": true,
+    "frame_at_decision": {
+      "received": true,
+      "inference_complete": true
+    },
+    "evidence": {
+      "signal": {
+        "state": "UNKNOWN",
+        "confidence": 0,
+        "actions": [],
+        "candidates": [],
+        "association": "UNASSIGNED"
+      },
+      "lanes": {
+        "left": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "coverage": 0,
+          "segments": 0
+        },
+        "right": {
+          "state": "UNKNOWN",
+          "confidence": 0,
+          "coverage": 0.138,
+          "segments": 3
+        }
+      }
+    },
+    "host_budget_remaining_ms": 1571.6,
+    "host_budget_expired": false
+  },
+  "reconnect_log": [
+    {
+      "type": "session_reconnect",
+      "mode": "LIVE_FRONT",
+      "host_elapsed_ms": 137486.43,
+      "old_session": 3888027107,
+      "session": 3335979546,
+      "epoch": 1,
+      "reason": "PEER_TIMEOUT",
+      "quiet_seconds": 3,
+      "handshake_after_monotonic": 55695.764888402
+    },
+    {
+      "type": "session_reconnect",
+      "mode": "LIVE_FRONT",
+      "host_elapsed_ms": 390199.6,
+      "old_session": 3335979546,
+      "session": 3163775510,
+      "epoch": 2,
+      "reason": "PEER_TIMEOUT",
+      "quiet_seconds": 3,
+      "handshake_after_monotonic": 55948.478688954
+    }
+  ],
+  "directed_checks_passed": 8,
+  "after_recovery_window": {
+    "seconds": 5.00087822900241,
+    "carrier_start": 0,
+    "carrier_end": 1,
+    "link_delta": {
+      "heartbeat_tx": 19,
+      "heartbeat_or_welcome": 25,
+      "telemetry_packets": 8,
+      "rx_packets": 77015,
+      "front_fragments": 76982,
+      "complete_frames": 39,
+      "bad_packets": 0,
+      "wrong_session": 0,
+      "wrong_peer": 0,
+      "send_errors": 0,
+      "receive_errors": 0,
+      "assembly_dropped": 14,
+      "assembly_duplicates": 0
+    },
+    "socket_drops": {
+      "223210": 0
+    },
+    "hardware_crc_delta": 18,
+    "sysfs_crc_delta": 0,
+    "note": "Window crosses second link recovery; not steady fps acceptance"
+  },
+  "later_check": {
+    "seconds": 4.040186364996771,
+    "carrier_start": 1,
+    "carrier_end": 1,
+    "link_delta": {
+      "heartbeat_tx": 16,
+      "rx_packets": 87059,
+      "heartbeat_or_welcome": 24,
+      "telemetry_packets": 8,
+      "front_fragments": 87027,
+      "complete_frames": 30,
+      "assembly_dropped": 30,
+      "assembly_duplicates": 0,
+      "bad_packets": 0,
+      "wrong_peer": 0,
+      "wrong_session": 0,
+      "send_errors": 0,
+      "receive_errors": 0
+    },
+    "socket_drops": {
+      "223210": 0
+    },
+    "hardware_crc_delta": 38,
+    "sysfs_crc_delta": 0
+  },
+  "acceptance": {
+    "automatic_recovery": true,
+    "real_exact_frame_key3_result_ack": true,
+    "new_loss_free_15fps_acceptance": false,
+    "physical_led_and_screen_confirmation": false,
+    "dual_port": false
+  },
+  "deployment_check": "deployment_check.json",
+  "reuse_start_report": "start_20261023_110233_464.json",
+  "rollback_check": "rollback_safety_check.txt; archive --check passed; actual restore not executed on live service"
+}

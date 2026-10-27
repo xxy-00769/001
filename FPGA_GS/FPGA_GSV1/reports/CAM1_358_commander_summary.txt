@@ -1,0 +1,12 @@
+3.5.8 CAM1旋转/原生720p提速完整功能候选已交付，未自动烧录。
+3.5.7用户已确认画面正常，保持可用回退基线。
+CAM1旋转46/06/BB，参数CAM1_ROTATE_180=1；原生中心720p（视野较3.5.7窄），HTS1800/VTS800，SYSCLK36/PCLK72MHz不变，理论25fps；曝光上限796行，夜间不延帧。
+CAM1独立三槽与VS消隐期授权，保留完整判定及读者保护；增加C1R8采集/DDR/可见新帧统计及实际PCLK测量。
+SCCB两方向/失败处理、完整720p生产路径6帧、25fps发布、坏行恢复、单/田字格、被动统计检查通过。只做相关检查，未重复算法或历史全套验证。
+一次完整PNR/双角STA通过，约束未放宽；CAM1原始setup/hold=8.265/0.267ns，DDR setup0.116ns，像素setup0.521ns。
+LUT20774/FF21372/DRM93.5/PLL5，CLMA4158/6450、CLMS2609/4250。
+位流：E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/release/FPGA_GSV1_CAM1_OV3660_3_5_8_ROTATE25_CANDIDATE/FPGA_GSV1_CAM1_OV3660_3_5_8_ROTATE25_CANDIDATE_HDMI_1080P60.sbit
+SHA256：e89ef7785f00ddfb569eb0d3754ca92b1a49a558483609ada051b3bab3c7d36a
+生成：2026-10-24 10:22:17 +08:00。
+待用户下载后COM23短窗、一次60秒实测：921600/720/错误0，完整采集、DDR发布、可见新帧率各>=20，坏帧增量0；方向/暗处表现待验收。
+网口2及网口1生产逻辑保持；前摄上传15fps与CAM0本地速率分开，四路20fps未完成，不自动推进网络提速。

@@ -1,0 +1,30 @@
+{
+  "hardware_measurement": false,
+  "tests": [
+    {
+      "name": "cam0_readback_tb",
+      "result": "PASS",
+      "coverage": "Production read16 waveform,44 addresses,0x78/79,repeated START,atomic sweep,all-byte packing,address NACK,timeout,valid invalidation,recovery,reset,legacy SCL handoff"
+    },
+    {
+      "name": "cam0_row_tb",
+      "result": "PASS",
+      "coverage": "720 active rows,256 consecutive HREF intervals,2252/2500 reference ticks,VS blanking excluded,reset; passive measurement only, not a full camera capture simulation"
+    },
+    {
+      "name": "cam0_rate_status_tb",
+      "result": "PASS",
+      "coverage": "CAM0 nominal84MHz byte PCLK versus50MHz reference,independent100MHzDDR/148.5MHz display clock ratios,CDC/mailboxes,counter wrap,hidden/repeated images,clock stop/restart"
+    },
+    {
+      "name": "cam0_decoder_test.py",
+      "result": "PASS",
+      "coverage": "SYNTHETIC ONLY: measured line-time conversion,1/16-line exposure,gain units,band ms,30fps capture vs15fps publish/display,counter wrap,invalid/torn/missing/stale readings"
+    },
+    {
+      "name": "check_cam0.ps1 parser",
+      "result": "PASS",
+      "coverage": "Windows PowerShell entry syntax; actual C0O9 hardware execution pending manual download"
+    }
+  ]
+}

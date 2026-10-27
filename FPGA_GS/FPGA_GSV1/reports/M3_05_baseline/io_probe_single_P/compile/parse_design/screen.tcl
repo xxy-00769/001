@@ -1,0 +1,1 @@
+.rtl_screen -top_module {probe} -include_path {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_single_P>} -design_files {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_single_P/probe.v|work>}

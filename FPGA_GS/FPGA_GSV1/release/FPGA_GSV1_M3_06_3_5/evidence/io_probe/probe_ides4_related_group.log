@@ -1,0 +1,803 @@
+License checkout: fabric_shell from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling architecture definition.
+W: Warning : The license will invalid in 13 days. In order not to affect your usage, please update the license in time.
+
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+Executing : add_design top.v
+Executing : add_design top.v successfully.
+Executing : add_design io.v
+Executing : add_design io.v successfully.
+Executing : add_constraint io.fdc
+Executing : add_constraint io.fdc successfully.
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484 successfully.
+
+
+Executing : compile -top_module io_probe
+
+
+Process "Compile" started.
+Current time: Wed Oct 21 20:56:05 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+License checkout: fabric_ads from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+I: Enable Verilog2k features and keywords
+Start rtl-analyze.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v
+I: Verilog-0001: Analyzing file E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v
+I: Verilog-0002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v(line number: 1)] Analyzing module io_probe (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v successfully.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v
+I: Verilog-0001: Analyzing file E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v
+I: Verilog-0002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 23)] Analyzing module m36_rgmii_probe (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v successfully.
+I: Module "io_probe" is set as top module.
+Executing : rtl-analyze successfully. Time elapsed: 1.221s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-elaborate.
+I: Verilog-0003: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v(line number: 1)] Elaborating module io_probe
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v(line number: 6)] Elaborating instance io
+I: Verilog-0003: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 23)] Elaborating module m36_rgmii_probe
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 66)] Elaborating instance tx_data_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 77)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 66)] Elaborating instance tx_data_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 77)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 66)] Elaborating instance tx_data_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 77)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 66)] Elaborating instance tx_data_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 77)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 91)] Elaborating instance tx_ctl_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 102)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 115)] Elaborating instance tx_clk_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 125)] Elaborating instance gtp_outbuft6
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 137)] Elaborating instance gb
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 138)] Elaborating instance ib
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 139)] Elaborating instance div
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 140)] Elaborating instance hb
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 146)] Elaborating instance id
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 146)] Elaborating instance id
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 146)] Elaborating instance id
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 146)] Elaborating instance id
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 146)] Elaborating instance id
+Executing : rtl-elaborate successfully. Time elapsed: 0.001s wall, 0.000s user + 0.016s system = 0.016s CPU (1138.6%)
+
+Start rtl-prep.
+Executing : rtl-prep successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-infer.
+Start DFF-inference.
+Executing : DFF-inference successfully.
+Executing : rtl-infer successfully. Time elapsed: 0.005s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-control-opt.
+Executing : rtl-control-opt successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-data-opt.
+Executing : rtl-data-opt successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start FSM inference.
+Executing : FSM inference successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start sdm2adm.
+W: Loop was found during constant probe.
+Executing : sdm2adm successfully. Time elapsed: 0.004s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Saving design to DB.
+Action compile: Real time elapsed is 0h:0m:3s
+Action compile: CPU time elapsed is 0h:0m:0s
+Action compile: Process CPU time elapsed is 0h:0m:0s
+Current time: Wed Oct 21 20:56:07 2026
+Action compile: Peak memory pool usage is 140 MB
+Action from compile to compile: Total Real Time elapsed is 0h:0m:3s
+Action from compile to compile: Total CPU time elapsed is 0h:0m:0s
+Action from compile to compile: Total Process CPU Time elapsed is 0h:0m:0s
+Process "Compile" done.
+Executing : compile -top_module io_probe successfully.
+
+
+Executing : synthesize -ads -selected_syn_tool_opt 2
+
+
+Process "Synthesize" started.
+Current time: Wed Oct 21 20:56:07 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+License checkout: fabric_ads from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Reading design from compile DB
+Reading design from compile DB successfully.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Constraint check start.
+Compiling prim grid devices.
+Building architecture model.
+Loading device packaging model.
+Building architecture floorplan logic view.
+Executing : get_ports sys_clk
+Executing : get_ports sys_clk successfully.
+Executing : create_clock -name sys_clk [get_ports sys_clk] -period 20
+Executing : create_clock -name sys_clk [get_ports sys_clk] -period 20 successfully.
+Executing : get_ports rgmii2_rxc
+Executing : get_ports rgmii2_rxc successfully.
+Executing : create_clock -name eth2_rxc [get_ports rgmii2_rxc] -period 8
+Executing : create_clock -name eth2_rxc [get_ports rgmii2_rxc] -period 8 successfully.
+Executing : get_clocks sys_clk
+Executing : get_clocks sys_clk successfully.
+Executing : set_clock_groups -asynchronous -group [get_clocks sys_clk]
+Executing : set_clock_groups -asynchronous -group [get_clocks sys_clk] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}
+I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+I: port rgmii2_rxd[0]
+I: port rgmii2_rxd[1]
+I: port rgmii2_rxd[2]
+I: port rgmii2_rxd[3]
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl} successfully.
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}
+I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+I: port rgmii2_rxd[0]
+I: port rgmii2_rxd[1]
+I: port rgmii2_rxd[2]
+I: port rgmii2_rxd[3]
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl} successfully.
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}
+I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+I: port rgmii2_rxd[0]
+I: port rgmii2_rxd[1]
+I: port rgmii2_rxd[2]
+I: port rgmii2_rxd[3]
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl} successfully.
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -clock_fall -add_delay -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -clock_fall -add_delay -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}
+I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+I: port rgmii2_rxd[0]
+I: port rgmii2_rxd[1]
+I: port rgmii2_rxd[2]
+I: port rgmii2_rxd[3]
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl} successfully.
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -clock_fall -add_delay -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -clock_fall -add_delay -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : set_clock_uncertainty 0.200 [get_clocks eth2_rxc] -setup -hold
+Executing : set_clock_uncertainty 0.200 [get_clocks eth2_rxc] -setup -hold successfully.
+Executing : get_clocks -include_generated_clocks eth2_rxc
+Executing : get_clocks -include_generated_clocks eth2_rxc successfully.
+Executing : set_clock_groups -name eth2_async -asynchronous -group [get_clocks -include_generated_clocks eth2_rxc]
+Executing : set_clock_groups -name eth2_async -asynchronous -group [get_clocks -include_generated_clocks eth2_rxc] successfully.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 32)] | Port rgmii2_rxd[3] has been placed at location F18, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 46)] | Port rgmii2_tx_ctl has been placed at location F22, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 62)] | Port rgmii2_txd[1] has been placed at location E20, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 70)] | Port rgmii2_txd[2] has been placed at location E22, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 78)] | Port rgmii2_txd[3] has been placed at location F21, whose type is share pin.
+Constraint check end.
+
+C: SDC-2025: Clock source 'n:io/rx_half_raw' need a clock constraint, please use 'create_clock' or 'create_generate_clock' to generate.
+Executing : get_ports rgmii2_rxc
+Executing : get_ports rgmii2_rxc successfully.
+Executing : get_pins io/div:CLKDIVOUT
+Executing : get_pins io/div:CLKDIVOUT successfully.
+Executing : create_generated_clock -name eth2_rxc|io/div/CLKDIVOUT_Inferred -source [get_ports rgmii2_rxc] [get_pins io/div:CLKDIVOUT] -master_clock eth2_rxc -edges {1 2 3} -edge_shift {0.000000 4.000000 8.000000} -add
+Executing : create_generated_clock -name eth2_rxc|io/div/CLKDIVOUT_Inferred -source [get_ports rgmii2_rxc] [get_pins io/div:CLKDIVOUT] -master_clock eth2_rxc -edges {1 2 3} -edge_shift {0.000000 4.000000 8.000000} -add successfully.
+Start pre-mapping.
+Executing : pre-mapping successfully. Time elapsed: 0.025s wall, 0.016s user + 0.031s system = 0.047s CPU (188.4%)
+
+Start mod-gen.
+I: Constant propagation done on N6_sum0 (bmsREDXOR).
+I: Constant propagation done on N6_ab0 (bmsREDAND).
+I: Constant propagation done on N6_bc0 (bmsREDAND).
+I: Constant propagation done on N6_ac0 (bmsREDAND).
+I: Constant propagation done on N6_sum1 (bmsREDXOR).
+I: Constant propagation done on N6_ab1 (bmsREDAND).
+I: Constant propagation done on N6_bc1 (bmsREDAND).
+I: Constant propagation done on N6_sum2 (bmsREDXOR).
+I: Constant propagation done on N6_ab2 (bmsREDAND).
+I: Constant propagation done on N6_bc2 (bmsREDAND).
+Executing : mod-gen successfully. Time elapsed: 0.011s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start logic-optimization.
+Executing : logic-optimization successfully. Time elapsed: 0.012s wall, 0.000s user + 0.016s system = 0.016s CPU (135.5%)
+
+Start tech-mapping phase 1.
+I: Removed GTP_DFF inst io/mac_rx_error that is redundant to io/mac_rx_data[6]
+I: Removed GTP_DFF inst io/mac_rx_data_valid that is redundant to io/mac_rx_data[7]
+Executing : tech-mapping phase 1 successfully. Time elapsed: 0.002s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start tech-mapping phase 2.
+Executing : tech-mapping phase 2 successfully. Time elapsed: 0.027s wall, 0.016s user + 0.000s system = 0.016s CPU (58.4%)
+
+Start tech-optimization.
+Executing : tech-optimization successfully. Time elapsed: 0.008s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start phys-optimization.
+Executing : phys-optimization successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start restore-hierarchy.
+Executing : restore-hierarchy successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+
+Cell Usage:
+GTP_CLKBUFG                   2 uses
+GTP_DFF                      24 uses
+GTP_DFF_E                     4 uses
+GTP_GRS                       1 use
+GTP_IOCLKBUF                  1 use
+GTP_IOCLKDIV                  1 use
+GTP_ISERDES                   5 uses
+GTP_LUT1                      1 use
+GTP_LUT2                      1 use
+GTP_LUT3                      1 use
+GTP_LUT4                      3 uses
+GTP_LUT5                      8 uses
+GTP_LUT5CARRY                 9 uses
+GTP_OSERDES                   6 uses
+
+I/O ports: 13
+GTP_INBUF                   7 uses
+GTP_OUTBUFT                 6 uses
+
+Mapping Summary:
+Total LUTs: 23 of 42800 (0.05%)
+	LUTs as dram: 0 of 17000 (0.00%)
+	LUTs as logic: 23
+Total Registers: 28 of 64200 (0.04%)
+Total Latches: 0
+
+DRM18K:
+Total DRM18K = 0.0 of 134 (0.00%)
+
+APMs:
+Total APMs = 0.00 of 84 (0.00%)
+
+Total I/O ports = 13 of 296 (4.39%)
+
+
+Overview of Control Sets:
+
+Number of unique control sets : 3
+
+Histogram:
+**************************************************************
+  Fanout      | Count    | Sync Set/Reset    Async Set/Reset
+--------------------------------------------------------------
+  [0, 2)      | 0        | 0                 0
+  [2, 4)      | 0        | 0                 0
+  [4, 6)      | 1        | 1                 0
+  [6, 8)      | 0        | 0                 0
+  [8, 10)     | 1        | 1                 0
+  [10, 12)    | 0        | 0                 0
+  [12, 14)    | 0        | 0                 0
+  [14, 16)    | 0        | 0                 0
+  [16, Inf)   | 1        | 1                 0
+--------------------------------------------------------------
+  The maximum fanout: 16
+==============================================================
+
+Flip-Flop Distribution:
+************************************************************************
+  Clock Enable    Sync Set/Reset    Async Set/Reset    Total Registers
+------------------------------------------------------------------------
+  NO              NO                NO                 24
+  NO              NO                YES                0
+  NO              YES               NO                 0
+  YES             NO                NO                 4
+  YES             NO                YES                0
+  YES             YES               NO                 0
+========================================================================
+
+Latch Distribution:
+************************************************
+  Gate Enable    Preset/Clear    Total Latches
+************************************************
+  NO             NO              0
+  NO             YES             0
+  YES            NO              0
+  YES            YES             0
+************************************************
+
+Design 'io_probe' has been successfully synthesized to architecture-specific objects.
+Saving design to DB.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND2'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND3'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[0]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND5'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[1]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND7'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[2]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND9'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[3]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND4[0]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND4[1]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND4[2]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND4[3]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND4[4]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND4[5]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND4[6]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND4[7]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6[0]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6[1]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6[2]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6[3]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6[4]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6[5]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6[6]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6[7]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[0]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[1]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[2]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[3]'.
+Saving design to io_probe_syn.vm
+Constructing timing graph ...
+Timing graph has been constructed successfully
+W: Timing-4087: Port 'rgmii2_tx_ctl' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txc' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[3]' is not constrained, it is treated as combinational output.
+Action synthesize: Real time elapsed is 0h:0m:4s
+Action synthesize: CPU time elapsed is 0h:0m:2s
+Action synthesize: Process CPU time elapsed is 0h:0m:2s
+Current time: Wed Oct 21 20:56:10 2026
+Action synthesize: Peak memory pool usage is 268 MB
+Action from compile to synthesize: Total Real Time elapsed is 0h:0m:7s
+Action from compile to synthesize: Total CPU time elapsed is 0h:0m:2s
+Action from compile to synthesize: Total Process CPU Time elapsed is 0h:0m:2s
+Process "Synthesize" done.
+Executing : synthesize -ads -selected_syn_tool_opt 2 successfully.
+
+
+Executing : dev_map
+
+
+Process "Device Map" started.
+Current time: Wed Oct 21 20:56:10 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Compiling operator packing rules.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Compiling tech operator impls.
+Building architecture model.
+Loading device packaging model.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Flattening design 'io_probe'
+Device mapping started.
+Optimizing circuit logic.
+Checking design netlist.
+Processing tech operator.
+I: The instance clkbufg_0(GTP_CLKBUFG) has been inserted on the net nt_sys_clk in design, driver pin O(instance sys_clk_ibuf) -> load pin CLK(instance reset_count[0]).
+Converting tech operator to gate operator.
+Processing gate operator.
+I: Infer CARRY group, base inst: N8_0/gateop, insts:9.
+Device Utilization Summary:
++------------------------------------------------------------------------+
+| Logic Utilization     | Used     | Available     | Utilization(%)     
++------------------------------------------------------------------------+
+| APM                   | 0        | 84            | 0                  
+| IOCKDLY               | 0        | 40            | 0                  
+| FF                    | 28       | 64200         | 1                  
+| LUT                   | 23       | 42800         | 1                  
+| Distributed RAM       | 0        | 17000         | 0                  
+| DLL                   | 0        | 10            | 0                  
+| DQSL                  | 0        | 18            | 0                  
+| DRM                   | 0        | 134           | 0                  
+| FUSECODE              | 0        | 1             | 0                  
+| IO                    | 13       | 296           | 5                  
+| IOCKDIV               | 1        | 20            | 5                  
+| IOCKGATE              | 1        | 20            | 5                  
+| IPAL                  | 0        | 1             | 0                  
+| PLL                   | 0        | 5             | 0                  
+| RCKB                  | 0        | 24            | 0                  
+| SCANCHAIN             | 0        | 2             | 0                  
+| START                 | 0        | 1             | 0                  
+| USCM                  | 3        | 30            | 10                 
+| HSST                  | 0        | 1             | 0                  
+| OSC                   | 0        | 1             | 0                  
+| CRYSTAL               | 0        | 2             | 0                  
+| RESCAL                | 0        | 4             | 0                  
+| UDID                  | 0        | 1             | 0                  
+| PCIE                  | 0        | 1             | 0                  
++------------------------------------------------------------------------+
+
+Device mapping done.
+Total device mapping takes 0.00 sec.
+
+Design 'io_probe' has been successfully mapped to architecture-specific objects.
+Saving design to DB.
+Action dev_map: Real time elapsed is 0h:0m:4s
+Action dev_map: CPU time elapsed is 0h:0m:2s
+Action dev_map: Process CPU time elapsed is 0h:0m:2s
+Current time: Wed Oct 21 20:56:13 2026
+Action dev_map: Peak memory pool usage is 235 MB
+Action from compile to dev_map: Total Real Time elapsed is 0h:0m:11s
+Action from compile to dev_map: Total CPU time elapsed is 0h:0m:4s
+Action from compile to dev_map: Total Process CPU Time elapsed is 0h:0m:4s
+Process "Device Map" done.
+Executing : dev_map successfully.
+
+
+Executing : pnr -gplace_seed 5 -fix_hold_violation -fix_hold_violation_iterations 4 -fix_hold_violation_in_route TRUE
+
+
+Process "Place & Route" started.
+Current time: Wed Oct 21 20:56:13 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Building architecture model.
+Loading device packaging model.
+pnr strategy configuration : 
+strategy name : 0
+Building architecture floorplan logic view.
+Constraint check start.
+Executing : def_port {rgmii2_tx_ctl} LOC=F22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 3)] | Port rgmii2_tx_ctl has been placed at location F22, whose type is share pin.
+Executing : def_port {rgmii2_tx_ctl} LOC=F22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txc} LOC=C20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+Executing : def_port {rgmii2_txc} LOC=C20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txd[0]} LOC=C22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+Executing : def_port {rgmii2_txd[0]} LOC=C22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txd[1]} LOC=E20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 6)] | Port rgmii2_txd[1] has been placed at location E20, whose type is share pin.
+Executing : def_port {rgmii2_txd[1]} LOC=E20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txd[2]} LOC=E22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 7)] | Port rgmii2_txd[2] has been placed at location E22, whose type is share pin.
+Executing : def_port {rgmii2_txd[2]} LOC=E22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txd[3]} LOC=F21 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 8)] | Port rgmii2_txd[3] has been placed at location F21, whose type is share pin.
+Executing : def_port {rgmii2_txd[3]} LOC=F21 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_rx_ctl} LOC=B21 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE
+Executing : def_port {rgmii2_rx_ctl} LOC=B21 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxc} LOC=M19 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE
+Executing : def_port {rgmii2_rxc} LOC=M19 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxd[0]} LOC=B22 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE
+Executing : def_port {rgmii2_rxd[0]} LOC=B22 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxd[1]} LOC=D21 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE
+Executing : def_port {rgmii2_rxd[1]} LOC=D21 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxd[2]} LOC=D22 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE
+Executing : def_port {rgmii2_rxd[2]} LOC=D22 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxd[3]} LOC=F18 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 14)] | Port rgmii2_rxd[3] has been placed at location F18, whose type is share pin.
+Executing : def_port {rgmii2_rxd[3]} LOC=F18 VCCIO=3.3 IOSTANDARD=LVCMOS33 IN_DELAY=15 NONE=TRUE successfully
+Executing : def_port {sys_clk} LOC=P20 VCCIO=3.3 IOSTANDARD=LVCMOS33
+Executing : def_port {sys_clk} LOC=P20 VCCIO=3.3 IOSTANDARD=LVCMOS33 successfully
+Constraint check end.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 5993935
+
+I: Column Clock Check open.
+Read Column Clock Map.
+
+Placement started.
+Phase 1 Pre global placement started.
+Phase 1.1 1st GP placement started.
+Design Utilization : 1%.
+First map gop timing takes 0.05 sec
+Worst slack after clock region global placement is -215
+Wirelength after clock region global placement is 7212 and checksum is B91D472B8893C144.
+1st GP placement takes 1.52 sec.
+
+Phase 1.2 Clock placement started.
+Mapping instance io/div/gopclkdiv to IOCKDIV_326_323.
+Mapping instance io/hb/gopclkbufg to USCM_84_110.
+Mapping instance io/ib/gopclkgate to IOCKGATE_326_322.
+Mapping instance io/gb/gopclkbufg to USCM_84_108.
+Mapping instance clkbufg_0/gopclkbufg to USCM_84_109.
+Clock placement takes 0.22 sec.
+
+Wirelength after Pre Global Placement is 7212 and checksum is B91D472B8893C144.
+Pre global placement takes 1.81 sec.
+
+Phase 2 Global placement started.
+Phase 2.1 Fixed placement started.
+Placed fixed group with base inst io/gtp_outbuft1/opit_1_IOL on IOL_327_269.
+Placed fixed group with base inst io/gtp_outbuft6/opit_1_IOL on IOL_327_294.
+Placed fixed group with base inst io/rgmii_tx_data[0].gtp_outbuft1/opit_1_IOL on IOL_327_293.
+Placed fixed group with base inst io/rgmii_tx_data[1].gtp_outbuft1/opit_1_IOL on IOL_327_266.
+Placed fixed group with base inst io/rgmii_tx_data[2].gtp_outbuft1/opit_1_IOL on IOL_327_265.
+Placed fixed group with base inst io/rgmii_tx_data[3].gtp_outbuft1/opit_1_IOL on IOL_327_270.
+Placed fixed group with base inst io/rx[1].id/gateigdes4_IOL_del on IOL_327_290.
+Placed fixed group with base inst io/rx[2].id/gateigdes4_IOL_del on IOL_327_289.
+Placed fixed group with base inst io/rx[3].id/gateigdes4_IOL_del on IOL_327_370.
+Placed fixed group with base inst io/rx[0].id/gateigdes4_IOL_del on IOL_327_361.
+Placed fixed group with base inst rgmii2_rxc_ibuf/opit_1 on IOL_327_217.
+Placed fixed group with base inst sys_clk_ibuf/opit_1 on IOL_327_210.
+Placed fixed group with base inst io/rx[4].id/gateigdes4_IOL_del on IOL_327_362.
+Placed fixed instance clkbufg_0/gopclkbufg on USCM_84_109.
+Placed fixed instance io/div/gopclkdiv on IOCKDIV_326_323.
+Placed fixed instance io/gb/gopclkbufg on USCM_84_108.
+Placed fixed instance io/hb/gopclkbufg on USCM_84_110.
+Placed fixed instance io/ib/gopclkgate on IOCKGATE_326_322.
+Placed fixed instance BKCL_auto_0 on BKCL_328_184.
+Fixed placement takes 0.00 sec.
+
+Phase 2.2 Process placement started.
+Process placement takes 0.00 sec.
+
+Phase 2.3 IO placement started.
+IO placement takes 0.02 sec.
+
+Phase 2.4 2nd GP placement started.
+Run super clustering :
+	Initial slack -22.
+	1 iterations finished.
+	Final slack -22.
+Super clustering done.
+Design Utilization : 1%.
+Worst slack after global placement is -22
+2nd GP placement takes 0.28 sec.
+
+Wirelength after global placement is 702 and checksum is 9AD6BBC3DEA2BC6B.
+Global placement takes 0.30 sec.
+
+Phase 3 Post global placement started.
+Phase 3.1 Macro cell placement started.
+I: Process macros using "Greedy".
+Wirelength after macro cell placement is 702 and checksum is 9AD6BBC3DEA2BC6B.
+Macro cell placement takes 0.00 sec.
+
+Phase 3.2 3rd GP placement started.
+Run super clustering :
+	Initial slack -22.
+	1 iterations finished.
+	Final slack -22.
+Super clustering done.
+Design Utilization : 1%.
+Worst slack after post global placement is -22
+3rd GP placement takes 0.33 sec.
+
+Wirelength after post global placement is 702 and checksum is 9AD6BBC3DEA2BC6B.
+Post global placement takes 0.33 sec.
+
+Phase 4 Legalization started.
+The average distance in LP is 1.557692.
+Wirelength after legalization is 786 and checksum is 1B97EFEB1154AE70.
+Legalization takes 0.02 sec.
+
+Phase 5 Timing-driven detailed placement started.
+Phase 5.1 Replication placement started.
+Worst slack before Replication Place is -22.
+Replication placement takes 0.00 sec.
+
+Wirelength after replication placement is 786 and checksum is 1B97EFEB1154AE70.
+Phase 5.2 DP placement started.
+Legalized cost -22.000000.
+The detailed placement ends at 11th iteration.
+DP placement takes 0.02 sec.
+
+Wirelength after detailed placement is 786 and checksum is 1B97EFEB1154AE70.
+Timing-driven detailed placement takes 0.02 sec.
+
+Worst slack is -22, TNS after placement is -110.
+Placement done.
+Total placement takes 2.52 sec.
+Finished placement.
+
+Routing started.
+Building routing graph takes 1.14 sec.
+Worst slack is -22, TNS before global route is -110.
+Processing design graph takes 0.20 sec.
+Total memory for routing:
+	115.222506 M.
+Total nets for routing : 90.
+Global Routing step 1 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 1 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 2 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 3 processed 0 nets, it takes 0.00 sec.
+Unrouted nets 0 at the end of iteration 0.
+Global Routing step 1 processed 14 nets, it takes 0.00 sec.
+Unrouted nets 28 at the end of iteration 0.
+Unrouted nets 19 at the end of iteration 1.
+Unrouted nets 17 at the end of iteration 2.
+Unrouted nets 10 at the end of iteration 3.
+Unrouted nets 6 at the end of iteration 4.
+Unrouted nets 5 at the end of iteration 5.
+Unrouted nets 2 at the end of iteration 6.
+Unrouted nets 0 at the end of iteration 7.
+Global Routing step 2 processed 50 nets, it takes 0.12 sec.
+Unrouted nets 0 at the end of iteration 0.
+Global Routing step 3 processed 1 nets, it takes 0.00 sec.
+Global routing takes 0.14 sec.
+Total 93 subnets.
+    forward max bucket size 513 , backward 10.
+        Unrouted nets 9 at the end of iteration 0.
+    route iteration 0, CPU time elapsed 0.015625 sec.
+    forward max bucket size 493 , backward 7.
+        Unrouted nets 5 at the end of iteration 1.
+    route iteration 1, CPU time elapsed 0.000000 sec.
+    forward max bucket size 389 , backward 4.
+        Unrouted nets 2 at the end of iteration 2.
+    route iteration 2, CPU time elapsed 0.000000 sec.
+    forward max bucket size 9 , backward 7.
+        Unrouted nets 2 at the end of iteration 3.
+    route iteration 3, CPU time elapsed 0.000000 sec.
+    forward max bucket size 11 , backward 12.
+        Unrouted nets 0 at the end of iteration 4.
+    route iteration 4, CPU time elapsed 0.000000 sec.
+Detailed routing takes 4 iterations
+Detailed routing takes 0.03 sec.
+Start fix hold violation.
+Build tmp routing results takes 0.00 sec.
+Timing analysis takes 0.02 sec.
+No hold violation.
+Hold Violation Fix in router takes 0 iterations.
+Fix hold violation Finished.
+Hold Violation Fix in router takes 0.06 sec.
+
+Dispose routing result:
+    Collect routing result.
+    Delete unused device instances.
+    Annotate routing result.
+    Change LUT configuration.
+    Dispose misc instances.
+    Annotate routing result again.
+Finish routing takes 0.00 sec.
+No timing paths have hold violation.
+Hold fix iterated 1 times
+Hold violation fix takes 0.06 sec.
+Used SRB routing arc is 352.
+Cleanup routing takes 0.02 sec.
+Routing done.
+Total routing takes 1.98 sec.
+
+
+Device Utilization Summary :
++---------------------------------------------------------------------------+
+| Logic Utilization        | Used     | Available     | Utilization(%)     
++---------------------------------------------------------------------------+
+| Use of APM               | 0        | 84            | 0                  
+| Use of BKCL              | 1        | 4             | 25                 
+| Use of CLMA              | 4        | 6450          | 1                  
+|   FF                     | 8        | 38700         | 1                  
+|   LUT                    | 9        | 25800         | 1                  
+|   LUT-FF pairs           | 8        | 25800         | 1                  
+| Use of CLMS              | 10       | 4250          | 1                  
+|   FF                     | 20       | 25500         | 1                  
+|   LUT                    | 14       | 17000         | 1                  
+|   LUT-FF pairs           | 5        | 17000         | 1                  
+|   Distributed RAM        | 0        | 17000         | 0                  
+| Use of CRYSTAL           | 0        | 2             | 0                  
+| Use of DLL               | 0        | 10            | 0                  
+| Use of DQSL              | 0        | 18            | 0                  
+| Use of DRM               | 0        | 134           | 0                  
+| Use of FUSECODE          | 0        | 1             | 0                  
+| Use of HARD0N1           | 4        | 6672          | 1                  
+| Use of HSST              | 0        | 1             | 0                  
+| Use of IO                | 13       | 296           | 5                  
+|   IOBD                   | 0        | 64            | 0                  
+|   IOBR_LR                | 1        | 7             | 15                 
+|   IOBR_TB                | 0        | 8             | 0                  
+|   IOBS_LR                | 12       | 161           | 8                  
+|   IOBS_TB                | 0        | 56            | 0                  
+| Use of IOCKDIV           | 1        | 20            | 5                  
+| Use of IOCKDLY           | 0        | 40            | 0                  
+| Use of IOCKGATE          | 1        | 20            | 5                  
+| Use of IOCKGMUX_TEST     | 0        | 20            | 0                  
+| Use of IOL               | 13       | 400           | 4                  
+| Use of IPAL              | 0        | 1             | 0                  
+| Use of LDO               | 0        | 4             | 0                  
+| Use of MFG_TEST          | 0        | 1             | 0                  
+| Use of OSC               | 0        | 1             | 0                  
+| Use of PCIE              | 0        | 1             | 0                  
+| Use of PIOMUX_TEST       | 0        | 10            | 0                  
+| Use of PLL               | 0        | 5             | 0                  
+| Use of PREGMUX_TEST      | 0        | 6             | 0                  
+| Use of RCKB              | 0        | 24            | 0                  
+|  RCKB dataused           | 0        | 24            | 0                  
+| Use of RCKBMUX_TEST      | 0        | 12            | 0                  
+| Use of RESCAL            | 0        | 4             | 0                  
+| Use of SCANCHAIN         | 0        | 2             | 0                  
+| Use of START             | 1        | 1             | 100                
+| Use of UDID              | 0        | 1             | 0                  
+| Use of USCM              | 3        | 30            | 10                 
+|  USCM dataused           | 0        | 30            | 0                  
+| Use of USCMMUX_TEST      | 0        | 30            | 0                  
+| Use of VCKBMUX_TEST      | 0        | 12            | 0                  
++---------------------------------------------------------------------------+
+
+Finished routing.
+Design 'io_probe' has been placed and routed successfully.
+Saving design to DB.
+Finished placement and routing.
+Action pnr: Real time elapsed is 0h:0m:11s
+Action pnr: CPU time elapsed is 0h:0m:8s
+Action pnr: Process CPU time elapsed is 0h:0m:8s
+Current time: Wed Oct 21 20:56:23 2026
+Action pnr: Peak memory pool usage is 881 MB
+Action from compile to pnr: Total Real Time elapsed is 0h:0m:22s
+Action from compile to pnr: Total CPU time elapsed is 0h:0m:12s
+Action from compile to pnr: Total Process CPU Time elapsed is 0h:0m:12s
+Process "Place & Route" done.
+Executing : pnr -gplace_seed 5 -fix_hold_violation -fix_hold_violation_iterations 4 -fix_hold_violation_in_route TRUE successfully.
+
+
+Executing : report_timing
+
+
+Process "Report Timing" started.
+Current time: Wed Oct 21 20:56:23 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Building architecture model.
+Loading device packaging model.
+Reading design from pnr DB.
+Start Report Post-PnR timing.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 5993935
+
+Constructing timing graph ...
+Timing graph has been constructed successfully
+W: Timing-4087: Port 'rgmii2_tx_ctl' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txc' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[3]' is not constrained, it is treated as combinational output.
+Report timing is finished successfully.
+Action report_timing: Real time elapsed is 0h:0m:5s
+Action report_timing: CPU time elapsed is 0h:0m:3s
+Action report_timing: Process CPU time elapsed is 0h:0m:3s
+Current time: Wed Oct 21 20:56:27 2026
+Action report_timing: Peak memory pool usage is 878 MB
+Action from compile to report_timing: Total Real Time elapsed is 0h:0m:27s
+Action from compile to report_timing: Total CPU time elapsed is 0h:0m:15s
+Action from compile to report_timing: Total Process CPU Time elapsed is 0h:0m:15s
+Process "Report Timing" done.
+Executing : report_timing successfully.

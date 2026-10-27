@@ -1,0 +1,712 @@
+﻿本地入口：E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\orangepi\oneclick
+目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021
+通过SSH执行 stop；需要认证时请在终端输入密码（不保存）。
+前摄服务已正常停止
+已停止本入口创建并核对身份的SSH转发。
+
+结构化详情：
+{
+    "tool_version":  "M4-02-operator-r1",
+    "action":  "Stop",
+    "computer_time":  "2026-10-23T10:44:50.2305574+08:00",
+    "ok":  true,
+    "config":  {
+                   "ssh_host":  "10.168.29.122",
+                   "ssh_user":  "orangepi",
+                   "ssh_port":  22,
+                   "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "remote_tool":  "operator_v1/ops_manager.py",
+                   "interface":  "eth0",
+                   "business_cidr":  "192.168.60.1/24",
+                   "fpga_ip":  "192.168.60.2",
+                   "fpga_mac":  "02:00:47:53:56:32",
+                   "udp_port":  50000,
+                   "peer_port":  50000,
+                   "web_port":  8080,
+                   "local_port":  18080,
+                   "scene":  "scene.example.json",
+                   "preview_fps":  15,
+                   "preview_width":  640,
+                   "preview_quality":  70,
+                   "output":  "runs/live_dual_eth",
+                   "diagnostic_seconds":  4,
+                   "startup_timeout_seconds":  35,
+                   "front_fps":  15
+               },
+    "local_before":  {
+                         "listeners":  [
+                                           {
+                                               "address":  "127.0.0.1",
+                                               "port":  18080,
+                                               "pid":  6188,
+                                               "name":  "ssh.exe",
+                                               "command_line":  "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 22 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ConnectionAttempts=1 -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:8080 orangepi@10.168.29.122 ",
+                                               "creation_date":  "10/23/2026 10:36:17"
+                                           }
+                                       ],
+                         "http":  {
+                                      "ok":  true,
+                                      "status":  200,
+                                      "data":  {
+                                                   "mode":  "LIVE_FRONT",
+                                                   "processed":  6419,
+                                                   "release":  "M4-02-r1",
+                                                   "control_token":  "ufbHp0VaZkyXnHfOVTIuuguF87lt-uuy",
+                                                   "requested_front_fps":  15,
+                                                   "target_process_fps":  15,
+                                                   "processing_policy":  "latest complete frame, no artificial throttle",
+                                                   "skipped_complete_frames":  0,
+                                                   "host_monotonic_ms":  55204284.54727,
+                                                   "processed_fps":  0,
+                                                   "processed_average_fps":  2.541,
+                                                   "target_preview_fps":  15.0,
+                                                   "preview_encoding":  {
+                                                                            "width":  640,
+                                                                            "quality":  70
+                                                                        },
+                                                   "playback":  {
+
+                                                                },
+                                                   "stage_ms":  {
+                                                                    "inference":  16.746,
+                                                                    "overlay_jpeg":  2.9,
+                                                                    "overlay_jpeg_bytes":  23372,
+                                                                    "raw_jpeg":  8.11,
+                                                                    "process_total":  41.84
+                                                                },
+                                                   "preview_age_ms":  2096566.8,
+                                                   "effective_feedback":  "UNKNOWN_STALE",
+                                                   "latest":  {
+                                                                  "signal":  {
+                                                                                 "state":  "UNKNOWN",
+                                                                                 "confidence":  0,
+                                                                                 "actions":  [
+
+                                                                                             ],
+                                                                                 "candidates":  [
+
+                                                                                                ],
+                                                                                 "association":  "UNASSIGNED"
+                                                                             },
+                                                                  "lanes":  {
+                                                                                "left":  {
+                                                                                             "state":  "UNKNOWN",
+                                                                                             "confidence":  0.0,
+                                                                                             "coverage":  0.696,
+                                                                                             "segments":  4
+                                                                                         },
+                                                                                "right":  {
+                                                                                              "state":  "UNKNOWN",
+                                                                                              "confidence":  0.0,
+                                                                                              "coverage":  0.329,
+                                                                                              "segments":  1
+                                                                                          }
+                                                                            },
+                                                                  "inference_ms":  16.746,
+                                                                  "decisions":  {
+                                                                                    "1":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "2":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "3":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "4":  {
+                                                                                              "code":  1,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "STOP_INTENT_NO_RED_VIOLATION"
+                                                                                          }
+                                                                                },
+                                                                  "frame_id":  74448,
+                                                                  "received_monotonic":  53107.717740954,
+                                                                  "source_seconds":  null,
+                                                                  "complete_to_process_wait_ms":  0.58,
+                                                                  "frame_age_at_result_ms":  30.51
+                                                              },
+                                                   "link":  {
+                                                                "heartbeat_tx":  9922,
+                                                                "rx_packets":  22675120,
+                                                                "heartbeat_or_welcome":  6319,
+                                                                "telemetry_packets":  2112,
+                                                                "front_fragments":  22666671,
+                                                                "complete_frames":  6419,
+                                                                "event_ack":  12,
+                                                                "events":  11,
+                                                                "results":  6,
+                                                                "result_accepted":  6,
+                                                                "disconnects":  2,
+                                                                "duplicate_or_old_event":  1,
+                                                                "session":  674663647,
+                                                                "online":  true,
+                                                                "requested_front_fps":  15,
+                                                                "recent_complete_fps":  0,
+                                                                "telemetry":  {
+                                                                                  "mac_crc":  0,
+                                                                                  "mac_overrun":  0,
+                                                                                  "reject_format":  0,
+                                                                                  "reject_checksum":  2,
+                                                                                  "reject_session":  0,
+                                                                                  "reject_profile":  0,
+                                                                                  "sequence_errors":  0,
+                                                                                  "duplicate_packets":  0,
+                                                                                  "begin_wait_cycles":  0,
+                                                                                  "begin_requests":  0,
+                                                                                  "assembly_timeouts":  0,
+                                                                                  "assembly_aborts":  0,
+                                                                                  "ddr_beats":  0,
+                                                                                  "published":  0,
+                                                                                  "displayed_new":  0,
+                                                                                  "rx_packets":  5014
+                                                                              },
+                                                                "feedback":  {
+                                                                                 "controls":  {
+                                                                                                  "mode":  "REAL",
+                                                                                                  "selection":  "unknown",
+                                                                                                  "revision":  8,
+                                                                                                  "applies_to":  "NEXT_REAL_EVENT_ONLY",
+                                                                                                  "default":  "REAL"
+                                                                                              },
+                                                                                 "recent_events":  [
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  1,
+                                                                                                           "event_frame_id":  72592,
+                                                                                                           "action":  1,
+                                                                                                           "action_label":  "KEY1 左",
+                                                                                                           "board_timestamp_ms":  2421415,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  53045.780411486,
+                                                                                                           "host_deadline_monotonic":  53047.680411486,
+                                                                                                           "wait_until_monotonic":  53046.580411486,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  6,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  2,
+                                                                                                                             "event_to_ack_send_ms":  0.193
+                                                                                                                         },
+                                                                                                           "frame_received":  true,
+                                                                                                           "inference_complete":  true,
+                                                                                                           "result":  {
+                                                                                                                          "code":  0,
+                                                                                                                          "reason":  0,
+                                                                                                                          "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN",
+                                                                                                                          "sequence":  1,
+                                                                                                                          "ttl_ms":  2000,
+                                                                                                                          "sent":  true,
+                                                                                                                          "attempts":  1,
+                                                                                                                          "sent_monotonic":  53045.924652443,
+                                                                                                                          "event_to_result_ms":  144.241,
+                                                                                                                          "simulated":  false
+                                                                                                                      },
+                                                                                                           "result_ack":  {
+                                                                                                                              "accepted":  true,
+                                                                                                                              "code":  1,
+                                                                                                                              "received_monotonic":  53045.924936232,
+                                                                                                                              "event_to_ack_ms":  144.525,
+                                                                                                                              "result_to_ack_ms":  0.284,
+                                                                                                                              "after_host_deadline":  false
+                                                                                                                          },
+                                                                                                           "duplicates":  1,
+                                                                                                           "cancel_reason":  null,
+                                                                                                           "frame_received_monotonic":  53045.873806183,
+                                                                                                           "frame_received_before_host_deadline":  true,
+                                                                                                           "frame_at_decision":  {
+                                                                                                                                     "received":  true,
+                                                                                                                                     "inference_complete":  true
+                                                                                                                                 },
+                                                                                                           "evidence":  {
+                                                                                                                            "signal":  {
+                                                                                                                                           "state":  "UNKNOWN",
+                                                                                                                                           "confidence":  0,
+                                                                                                                                           "actions":  [
+
+                                                                                                                                                       ],
+                                                                                                                                           "candidates":  [
+
+                                                                                                                                                          ],
+                                                                                                                                           "association":  "UNASSIGNED"
+                                                                                                                                       },
+                                                                                                                            "lanes":  {
+                                                                                                                                          "left":  {
+                                                                                                                                                       "state":  "UNKNOWN",
+                                                                                                                                                       "confidence":  0.0,
+                                                                                                                                                       "coverage":  0.138,
+                                                                                                                                                       "segments":  2
+                                                                                                                                                   },
+                                                                                                                                          "right":  {
+                                                                                                                                                        "state":  "UNKNOWN",
+                                                                                                                                                        "confidence":  0.0,
+                                                                                                                                                        "coverage":  0.0,
+                                                                                                                                                        "segments":  0
+                                                                                                                                                    }
+                                                                                                                                      }
+                                                                                                                        },
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  2,
+                                                                                                           "event_frame_id":  7304,
+                                                                                                           "action":  3,
+                                                                                                           "action_label":  "KEY3 直",
+                                                                                                           "board_timestamp_ms":  245118,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54822.841393961,
+                                                                                                           "host_deadline_monotonic":  54824.741393961005,
+                                                                                                           "wait_until_monotonic":  54823.64139396101,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.064
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  {
+                                                                                                                          "code":  0,
+                                                                                                                          "reason":  0,
+                                                                                                                          "explanation":  "EVENT_FRAME_NOT_RECEIVED",
+                                                                                                                          "sequence":  1,
+                                                                                                                          "ttl_ms":  2000,
+                                                                                                                          "sent":  true,
+                                                                                                                          "attempts":  1,
+                                                                                                                          "sent_monotonic":  54823.64147444099,
+                                                                                                                          "event_to_result_ms":  800.08,
+                                                                                                                          "simulated":  false
+                                                                                                                      },
+                                                                                                           "result_ack":  {
+                                                                                                                              "accepted":  true,
+                                                                                                                              "code":  1,
+                                                                                                                              "received_monotonic":  54823.641752395,
+                                                                                                                              "event_to_ack_ms":  800.358,
+                                                                                                                              "result_to_ack_ms":  0.278,
+                                                                                                                              "after_host_deadline":  false
+                                                                                                                          },
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  null,
+                                                                                                           "frame_at_decision":  {
+                                                                                                                                     "received":  false,
+                                                                                                                                     "inference_complete":  false
+                                                                                                                                 },
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  3,
+                                                                                                           "event_frame_id":  7370,
+                                                                                                           "action":  4,
+                                                                                                           "action_label":  "KEY4 停",
+                                                                                                           "board_timestamp_ms":  247252,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54825.002399183,
+                                                                                                           "host_deadline_monotonic":  54826.902399183,
+                                                                                                           "wait_until_monotonic":  54825.802399183005,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.13
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  {
+                                                                                                                          "code":  0,
+                                                                                                                          "reason":  0,
+                                                                                                                          "explanation":  "EVENT_FRAME_NOT_RECEIVED",
+                                                                                                                          "sequence":  1,
+                                                                                                                          "ttl_ms":  2000,
+                                                                                                                          "sent":  true,
+                                                                                                                          "attempts":  1,
+                                                                                                                          "sent_monotonic":  54825.80558324101,
+                                                                                                                          "event_to_result_ms":  803.184,
+                                                                                                                          "simulated":  false
+                                                                                                                      },
+                                                                                                           "result_ack":  {
+                                                                                                                              "accepted":  true,
+                                                                                                                              "code":  1,
+                                                                                                                              "received_monotonic":  54825.805905236,
+                                                                                                                              "event_to_ack_ms":  803.506,
+                                                                                                                              "result_to_ack_ms":  0.322,
+                                                                                                                              "after_host_deadline":  false
+                                                                                                                          },
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  null,
+                                                                                                           "frame_at_decision":  {
+                                                                                                                                     "received":  false,
+                                                                                                                                     "inference_complete":  false
+                                                                                                                                 },
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  4,
+                                                                                                           "event_frame_id":  7694,
+                                                                                                           "action":  1,
+                                                                                                           "action_label":  "KEY1 左",
+                                                                                                           "board_timestamp_ms":  258052,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54835.802469169,
+                                                                                                           "host_deadline_monotonic":  54837.702469169,
+                                                                                                           "wait_until_monotonic":  54836.602469169,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.072
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  null,
+                                                                                                           "result_ack":  null,
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  "NEW_EVENT",
+                                                                                                           "cancelled_monotonic":  54836.484942468,
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  5,
+                                                                                                           "event_frame_id":  7714,
+                                                                                                           "action":  1,
+                                                                                                           "action_label":  "KEY1 左",
+                                                                                                           "board_timestamp_ms":  258719,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54836.484942468,
+                                                                                                           "host_deadline_monotonic":  54838.384942468,
+                                                                                                           "wait_until_monotonic":  54837.284942468,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.071
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  {
+                                                                                                                          "code":  0,
+                                                                                                                          "reason":  0,
+                                                                                                                          "explanation":  "EVENT_FRAME_NOT_RECEIVED",
+                                                                                                                          "sequence":  1,
+                                                                                                                          "ttl_ms":  2000,
+                                                                                                                          "sent":  true,
+                                                                                                                          "attempts":  1,
+                                                                                                                          "sent_monotonic":  54837.29451256501,
+                                                                                                                          "event_to_result_ms":  809.57,
+                                                                                                                          "simulated":  false
+                                                                                                                      },
+                                                                                                           "result_ack":  {
+                                                                                                                              "accepted":  true,
+                                                                                                                              "code":  1,
+                                                                                                                              "received_monotonic":  54837.294836017,
+                                                                                                                              "event_to_ack_ms":  809.894,
+                                                                                                                              "result_to_ack_ms":  0.323,
+                                                                                                                              "after_host_deadline":  false
+                                                                                                                          },
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  null,
+                                                                                                           "frame_at_decision":  {
+                                                                                                                                     "received":  false,
+                                                                                                                                     "inference_complete":  false
+                                                                                                                                 },
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  6,
+                                                                                                           "event_frame_id":  7742,
+                                                                                                           "action":  2,
+                                                                                                           "action_label":  "KEY2 右",
+                                                                                                           "board_timestamp_ms":  259652,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54837.425911079,
+                                                                                                           "host_deadline_monotonic":  54839.325911079,
+                                                                                                           "wait_until_monotonic":  54838.225911079004,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.059
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  null,
+                                                                                                           "result_ack":  null,
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  "NEW_EVENT",
+                                                                                                           "cancelled_monotonic":  54838.059777512,
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  7,
+                                                                                                           "event_frame_id":  7760,
+                                                                                                           "action":  2,
+                                                                                                           "action_label":  "KEY2 右",
+                                                                                                           "board_timestamp_ms":  260319,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54838.059777512,
+                                                                                                           "host_deadline_monotonic":  54839.959777512,
+                                                                                                           "wait_until_monotonic":  54838.859777512,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.114
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  {
+                                                                                                                          "code":  0,
+                                                                                                                          "reason":  0,
+                                                                                                                          "explanation":  "EVENT_FRAME_NOT_RECEIVED",
+                                                                                                                          "sequence":  1,
+                                                                                                                          "ttl_ms":  2000,
+                                                                                                                          "sent":  true,
+                                                                                                                          "attempts":  1,
+                                                                                                                          "sent_monotonic":  54838.86079384,
+                                                                                                                          "event_to_result_ms":  801.016,
+                                                                                                                          "simulated":  false
+                                                                                                                      },
+                                                                                                           "result_ack":  {
+                                                                                                                              "accepted":  true,
+                                                                                                                              "code":  1,
+                                                                                                                              "received_monotonic":  54838.861127792,
+                                                                                                                              "event_to_ack_ms":  801.35,
+                                                                                                                              "result_to_ack_ms":  0.334,
+                                                                                                                              "after_host_deadline":  false
+                                                                                                                          },
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  null,
+                                                                                                           "frame_at_decision":  {
+                                                                                                                                     "received":  false,
+                                                                                                                                     "inference_complete":  false
+                                                                                                                                 },
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  8,
+                                                                                                           "event_frame_id":  7788,
+                                                                                                           "action":  3,
+                                                                                                           "action_label":  "KEY3 直",
+                                                                                                           "board_timestamp_ms":  261186,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54838.947539836,
+                                                                                                           "host_deadline_monotonic":  54840.847539836,
+                                                                                                           "wait_until_monotonic":  54839.747539836004,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.048
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  null,
+                                                                                                           "result_ack":  null,
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  "NEW_EVENT",
+                                                                                                           "cancelled_monotonic":  54839.679512194,
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  9,
+                                                                                                           "event_frame_id":  7810,
+                                                                                                           "action":  3,
+                                                                                                           "action_label":  "KEY3 直",
+                                                                                                           "board_timestamp_ms":  261919,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54839.679512194,
+                                                                                                           "host_deadline_monotonic":  54841.579512194,
+                                                                                                           "wait_until_monotonic":  54840.479512194004,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.044
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  null,
+                                                                                                           "result_ack":  null,
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  "NEW_EVENT",
+                                                                                                           "cancelled_monotonic":  54840.230799016,
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  10,
+                                                                                                           "event_frame_id":  7826,
+                                                                                                           "action":  4,
+                                                                                                           "action_label":  "KEY4 停",
+                                                                                                           "board_timestamp_ms":  262452,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54840.230799016,
+                                                                                                           "host_deadline_monotonic":  54842.130799016,
+                                                                                                           "wait_until_monotonic":  54841.030799016,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.193
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  null,
+                                                                                                           "result_ack":  null,
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  "NEW_EVENT",
+                                                                                                           "cancelled_monotonic":  54840.661549093,
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       },
+                                                                                                       {
+                                                                                                           "session":  674663647,
+                                                                                                           "event_id":  11,
+                                                                                                           "event_frame_id":  7838,
+                                                                                                           "action":  4,
+                                                                                                           "action_label":  "KEY4 停",
+                                                                                                           "board_timestamp_ms":  263007,
+                                                                                                           "ttl_ms":  2000,
+                                                                                                           "received_monotonic":  54840.661549093,
+                                                                                                           "host_deadline_monotonic":  54842.561549093,
+                                                                                                           "wait_until_monotonic":  54841.461549093,
+                                                                                                           "decision_mode":  "REAL",
+                                                                                                           "simulated":  false,
+                                                                                                           "selection":  "unknown",
+                                                                                                           "control_revision":  8,
+                                                                                                           "event_ack":  {
+                                                                                                                             "sent":  true,
+                                                                                                                             "attempts":  1,
+                                                                                                                             "event_to_ack_send_ms":  0.097
+                                                                                                                         },
+                                                                                                           "frame_received":  false,
+                                                                                                           "inference_complete":  false,
+                                                                                                           "result":  {
+                                                                                                                          "code":  0,
+                                                                                                                          "reason":  0,
+                                                                                                                          "explanation":  "EVENT_FRAME_NOT_RECEIVED",
+                                                                                                                          "sequence":  1,
+                                                                                                                          "ttl_ms":  2000,
+                                                                                                                          "sent":  true,
+                                                                                                                          "attempts":  1,
+                                                                                                                          "sent_monotonic":  54841.46546037099,
+                                                                                                                          "event_to_result_ms":  803.911,
+                                                                                                                          "simulated":  false
+                                                                                                                      },
+                                                                                                           "result_ack":  {
+                                                                                                                              "accepted":  true,
+                                                                                                                              "code":  1,
+                                                                                                                              "received_monotonic":  54841.466506853,
+                                                                                                                              "event_to_ack_ms":  804.958,
+                                                                                                                              "result_to_ack_ms":  1.046,
+                                                                                                                              "after_host_deadline":  false
+                                                                                                                          },
+                                                                                                           "duplicates":  0,
+                                                                                                           "cancel_reason":  null,
+                                                                                                           "frame_at_decision":  {
+                                                                                                                                     "received":  false,
+                                                                                                                                     "inference_complete":  false
+                                                                                                                                 },
+                                                                                                           "host_budget_remaining_ms":  0,
+                                                                                                           "host_budget_expired":  true
+                                                                                                       }
+                                                                                                   ],
+                                                                                 "counts":  {
+                                                                                                "events":  11,
+                                                                                                "exact_frame_received":  1,
+                                                                                                "exact_frame_received_later":  1,
+                                                                                                "exact_frame_inferred":  1,
+                                                                                                "results":  6,
+                                                                                                "real_results":  6,
+                                                                                                "real_exact_frame_results":  1,
+                                                                                                "real_missing_inference_results":  5
+                                                                                            },
+                                                                                 "history_limit":  32,
+                                                                                 "ttl_note":  "板端按事件时刻计算TTL；主机预算从首次收到EVENT起算并保留100ms余量，不能测得板端剩余TTL。",
+                                                                                 "latency_note":  "耗时仅从主机收到EVENT起算，不是物理按键到FPGA屏幕的端到端延迟。"
+                                                                             },
+                                                                "host_elapsed_seconds":  2526.637,
+                                                                "front_receive_fps":  2.541,
+                                                                "socket_receive_buffer_bytes":  8388608,
+                                                                "current_frame_fragments":  363,
+                                                                "assembly_dropped":  2,
+                                                                "assembly_duplicates":  0,
+                                                                "hardware_validation":  "网口2已有真实前摄验收；按键及双口条件请见本轮验收报告"
+                                                            }
+                                               }
+                                  }
+                     },
+    "remote":  {
+                   "ok":  true,
+                   "message":  "前摄服务已正常停止",
+                   "ports":  [
+
+                             ]
+               },
+    "local_after":  {
+                        "listeners":  [
+
+                                      ],
+                        "http":  {
+                                     "ok":  false,
+                                     "error":  "The operation has timed out."
+                                 }
+                    },
+    "summary":  [
+                    "本地入口：E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\oneclick",
+                    "目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                    "通过SSH执行 stop；需要认证时请在终端输入密码（不保存）。",
+                    "前摄服务已正常停止",
+                    "已停止本入口创建并核对身份的SSH转发。"
+                ]
+}

@@ -1,0 +1,21 @@
+--- 3.5.6/rtl/board/fpga_gsv1_top.v
++++ G1/rtl/board/fpga_gsv1_top.v
+@@ -198,11 +198,13 @@
+         cam1_raw_vs<={cam1_raw_vs[0],cmos2_vsync};
+         cam1_raw_href<={cam1_raw_href[0],cmos2_href};
+       end
+-    // Existing UART words 12..15 only. This data never controls networking.
+-    wire [127:0] camera_diagnostics={32'h4f563336, // OV36: final config layout, distinct from ID1
+-      cam1_sensor_id,cam1_confirmation_id,
+-      cam1_last_register,cam1_config_error,4'd0,cam1_config_failed,cmos_init_done[1],cam1_id_finished,cam1_identified,
+-      status1[175:160],status1[143:128]}; // geometry bad/good counters, low 16 each
++    // C1G1: reuse the original four camera UART words, without extending
++    // any bus/serializer or adding capture logic. ID3660/readbacks are archived.
++    // W13 pixels; W14 config-error/flags/geometry-errors/rows; W15 bad/good.
++    wire [127:0] camera_diagnostics={32'h43314731,
++      status1[95:64],cam1_config_error[3:0],
++      cam1_config_failed,cmos_init_done[1],cam1_id_finished,cam1_identified,
++      status1[119:96],status1[175:160],status1[143:128]};
+ //CMOS 8bit转16bit///////////////////////////////////////////////////////////////////////////////////
+ //CMOS1
+     always@(posedge cmos1_pclk)

@@ -1,0 +1,290 @@
+--- TXDET1/rtl\board\fpga_gsv1_top.v
++++ CAM1_ID1/rtl\board\fpga_gsv1_top.v
+@@ -180,17 +180,28 @@
+     	.clock_20k               (                   ) //output reg
+     );
+ 
+-//CMOS2 Camera 
+-    reg_config	coms2_reg_config(
+-    	.clk_25M                 (clk_25M            ),//input
+-    	.camera_rstn             (cmos2_reset        ),//input
+-    	.initial_en              (initial_en         ),//input		
+-    	.i2c_sclk                (cmos2_scl          ),//output
+-    	.i2c_sdat                (cmos2_sda          ),//inout
+-    	.reg_conf_done           (cmos_init_done[1]  ),//output config_finished
+-    	.reg_index               (                   ),//output reg [8:0]
+-    	.clock_20k               (                   ) //output reg
+-    );
++// CAM1 ID-only checkpoint: no unverified register table is sent to this sensor.
++// Keep its frame publication disabled until the actual model is confirmed.
++    wire cam1_id_finished,cam1_identified,cam1_id_timeout;
++    wire [15:0] cam1_sensor_id,cam1_confirmation_id,cam1_nack_masks;
++    cam_sensor_id cam1_identification(.clk(sys_clk),.rst_n(cmos2_reset),
++      .enable(initial_en),.scl(cmos2_scl),.sda(cmos2_sda),
++      .finished(cam1_id_finished),.identified(cam1_identified),
++      .sensor_id(cam1_sensor_id),.confirmation_id(cam1_confirmation_id),
++      .nack_masks(cam1_nack_masks),.timeout_error(cam1_id_timeout));
++    assign cmos_init_done[1]=1'b0;
++    reg [1:0] cam1_raw_vs,cam1_raw_href;
++    always @(posedge sys_clk or negedge rstn_out)
++      if(!rstn_out) begin cam1_raw_vs<=0;cam1_raw_href<=0;end
++      else begin
++        cam1_raw_vs<={cam1_raw_vs[0],cmos2_vsync};
++        cam1_raw_href<={cam1_raw_href[0],cmos2_href};
++      end
++    // Existing UART words 12..15 only. This data never controls networking.
++    wire [127:0] camera_diagnostics={32'h43414d31,
++      cam1_sensor_id,cam1_confirmation_id,
++      cam1_nack_masks,12'd0,cam1_id_timeout,cam1_identified,cam1_id_finished,initial_en,
++      28'd0,cmos2_reset,initial_en,cam1_raw_href[1],cam1_raw_vs[1]};
+ //CMOS 8bit转16bit///////////////////////////////////////////////////////////////////////////////////
+ //CMOS1
+     always@(posedge cmos1_pclk)
+@@ -389,6 +400,7 @@
+     assign s_wdata[1024+:256]=0;assign s_wstrb[128+:32]=0;
+     assign source_ready[3]=source_healthy[3];
+     m3_network #(.HD_DISPLAY(1),.ENABLE_CONTROL(0),.ENABLE_UPLOAD(0),.LOCAL_MAC(`M31_LOCAL_MAC),.LOCAL_IP(`M31_LOCAL_IP),.HOST_IP(`M31_HOST_IP),.PORT(`M31_PORT)) network(.clk(core_clk),.rst_n(ddr_init_done),.sys_clk(sys_clk),.phy_reset_n(rstn_out),
++      .camera_diagnostics(128'd0),
+       .rgmii_rxc(rgmii_rxc),.rgmii_rx_ctl(rgmii_rx_ctl),.rgmii_rxd(rgmii_rxd),
+       .rgmii_txc(rgmii_txc),.rgmii_tx_ctl(rgmii_tx_ctl),.rgmii_txd(rgmii_txd),.phy_rstn(phy_rstn),
+       .pc(pix_clk),.fs(frame_sync),.selected(source_selected[3]),.quarter(quad),.request(source_request[3]),
+@@ -401,6 +413,7 @@
+       .upload_araddr(),.upload_arlen(),.upload_arvalid(),.upload_arready(1'b0),
+       .rdata(axi_rdata),.rvalid(s_rvalid[3]),.rlast(s_rlast[3]),.upload_rvalid(1'b0),.upload_rlast(1'b0));
+     m3_network #(.ENABLE_VIDEO(0),.PHY_INTERNAL_DELAY(1),.E1_PHY(1),.LOCAL_MAC(`M36_P2_MAC),.LOCAL_IP(`M36_P2_IP),.HOST_IP(`M36_P2_HOST),.PORT(`M36_P2_PORT)) network2(.clk(core_clk),.rst_n(ddr_init_done),.sys_clk(sys_clk),.phy_reset_n(rstn_out),
++      .camera_diagnostics(camera_diagnostics),
+       .rgmii_rxc(rgmii2_rxc),.rgmii_rx_ctl(rgmii2_rx_ctl),.rgmii_rxd(rgmii2_rxd),
+       .rgmii_txc(rgmii2_txc),.rgmii_tx_ctl(rgmii2_tx_ctl),.rgmii_txd(rgmii2_txd),.phy_rstn(phy2_rstn),.phy_mdc(phy2_mdc),.phy_mdio(phy2_mdio),.diagnostic_tx(diagnostic_uart_tx),
+       .pc(pix_clk),.fs(frame_sync),.selected(1'b0),.quarter(1'b0),.request(1'b0),.de(),.pixel(),.healthy(),
+--- TXDET1/rtl\network\m365_tx_observer.v
++++ CAM1_ID1/rtl\network\m365_tx_observer.v
+@@ -40,7 +40,8 @@
+ endmodule
+ 
+ module m365_tx_observer(input sc,nc,rst_n,input [127:0] phy,
+- input pll_lock,phy_ready,txv,input [7:0] txd,output uart_tx);
++ input pll_lock,phy_ready,txv,input [7:0] txd,
++ input [127:0] camera_diagnostics,output uart_tx);
+  wire [31:0] frames,bad,last_id,last_residue;
+  wire [15:0] last_length;
+  m365_gmii_crc crc_monitor(.clk(nc),.rst_n(rst_n),.valid(txv),.data(txd),
+@@ -61,8 +62,9 @@
+  // Existing N2 serial encoding: 40 words, 115200 8N1, one atomic line/sec.
+  // W0..3 PHY; W4 total frames; W5 bad GMII FCS/framing; W6 last bad ID;
+  // W7 last residue; W8 last length; W9 PLL falls; W10 ready falls;
+- // W11 status (bit1 PLL, bit0 ready); W12..39 reserved zero.
++ // W11 status (bit1 PLL, bit0 ready); W12..15 passive camera status;
++ // W16..39 reserved zero. Camera data is in sc and cannot affect GMII/PHY.
+  m361_uart_hex #(.REVISION_ASCII("O")) serial(.clk(sc),.rst_n(rst_n),
+-  .values({phy,nsnap,lock_falls,ready_falls,30'd0,lock_sync[2],ready_sync[2],896'd0}),
++  .values({phy,nsnap,lock_falls,ready_falls,30'd0,lock_sync[2],ready_sync[2],camera_diagnostics,768'd0}),
+   .tx(uart_tx));
+ endmodule
+--- TXDET1/rtl\network\m3_network.v
++++ CAM1_ID1/rtl\network\m3_network.v
+@@ -11,7 +11,8 @@
+  output [255:0] wdata,output [31:0] wstrb,input wready,wlast,
+  output [27:0] araddr,upload_araddr,output [3:0] arlen,upload_arlen,
+  output arvalid,upload_arvalid,input arready,upload_arready,
+- input [255:0] rdata,input rvalid,rlast,upload_rvalid,upload_rlast);
++ input [255:0] rdata,input rvalid,rlast,upload_rvalid,upload_rlast,
++ input [127:0] camera_diagnostics);
+  wire phase,phase_d,pll_lock,nc;
+  wire phy_ready;wire [127:0] phy_diagnostics;
+  generate if(!PHY_INTERNAL_DELAY) begin: original_phy
+@@ -52,7 +53,7 @@
+  else begin tx_data<=txd;tx_valid<=txv;end
+  m365_tx_observer observer(.sc(sys_clk),.nc(nc),.rst_n(phy_reset_n),
+  .phy(phy_diagnostics),.pll_lock(pll_lock),.phy_ready(phy_ready),
+- .txv(tx_valid),.txd(tx_data),.uart_tx(diagnostic_tx));
++ .txv(tx_valid),.txd(tx_data),.camera_diagnostics(camera_diagnostics),.uart_tx(diagnostic_tx));
+  // Deterministic RGMII-ID: same global launch clock; PHY supplies TX delay.
+  m364_e1_rgmii phy(.rst(!nr[2]),.rgmii_rxc_phase_d(nc),.rgmii_clk(nc),.rgmii_clk_90p(phase_d),
+  .mac_tx_data_valid(tx_valid),.mac_tx_data(tx_data),.mac_rx_error(rxe),.mac_rx_data_valid(rxv),.mac_rx_data(rxd),
+--- TXDET1/rtl\capture\cam_sccb_read16.v
++++ CAM1_ID1/rtl\capture\cam_sccb_read16.v
+@@ -0,0 +1,124 @@
++`timescale 1ns/1ps
++// Read-only sensor identification transport. 7-bit address is explicit;
++// address bytes are MSB first. Repeated START follows OV3660 v1.3 section
++// 6.3/figure 6-2. No sensor register DATA byte is ever written by this module.
++module cam_sccb_read16 #(
++    parameter CLOCK_HZ=50000000,
++    parameter SCCB_HZ=100000,
++    parameter WAIT_TICKS=400
++)(
++    input clk,rst_n,start,
++    input [6:0] address,
++    input [15:0] register_address,
++    inout scl,sda,
++    output reg busy,done,
++    output reg [7:0] data,
++    output reg [3:0] nack_mask,
++    output reg bus_timeout
++);
++    localparam DIV=CLOCK_HZ/(4*SCCB_HZ);
++    localparam IDLE=0,START_IDLE=1,START_SDA=2,START_LOW=3,
++      SEND_LOW=4,SEND_RISE=5,SEND_HIGH=6,SEND_FALL=7,
++      ACK_LOW=8,ACK_RISE=9,ACK_HIGH=10,ACK_FALL=11,
++      READ_LOW=12,READ_RISE=13,READ_HIGH=14,READ_FALL=15,
++      NACK_LOW=16,NACK_RISE=17,NACK_HIGH=18,NACK_FALL=19,
++      STOP_LOW=20,STOP_RISE=21,STOP_RELEASE=22,STOP_GAP=23,
++      RESTART_LOW=24,RESTART_RISE=25,RESTART_HIGH=26;
++    reg [4:0] state;
++    reg [15:0] divider,wait_count;
++    reg scl_low,sda_low;
++    reg [1:0] byte_index;
++    reg [2:0] bit_index;
++    reg [7:0] send_byte;
++    reg [6:0] held_address;
++    reg [15:0] held_register;
++    reg [1:0] scl_sync,sda_sync;
++    assign scl=scl_low ? 1'b0:1'bz;
++    assign sda=sda_low ? 1'b0:1'bz;
++    always @(posedge clk or negedge rst_n)
++      if(!rst_n) begin scl_sync<=3; sda_sync<=3; end
++      else begin scl_sync<={scl_sync[0],scl};sda_sync<={sda_sync[0],sda};end
++    wire tick=divider==DIV-1;
++    always @(posedge clk or negedge rst_n)
++      if(!rst_n) divider<=0;
++      else if(tick) divider<=0;
++      else divider<=divider+1'b1;
++    wire waiting=(state==START_IDLE && (!scl_sync[1] || !sda_sync[1]))
++      || ((state==SEND_RISE || state==ACK_RISE || state==READ_RISE
++          || state==NACK_RISE || state==STOP_RISE || state==RESTART_RISE) && !scl_sync[1]);
++    always @(posedge clk or negedge rst_n) begin
++      if(!rst_n) begin
++        state<=IDLE;scl_low<=0;sda_low<=0;busy<=0;done<=0;
++        data<=0;nack_mask<=15;bus_timeout<=0;wait_count<=0;
++        byte_index<=0;bit_index<=7;send_byte<=0;
++        held_address<=0;held_register<=0;
++      end else begin
++        done<=0;
++        if(state==IDLE && start) begin
++          held_address<=address;held_register<=register_address;
++          send_byte<={address,1'b0};byte_index<=0;bit_index<=7;
++          data<=0;nack_mask<=15;bus_timeout<=0;busy<=1;
++          wait_count<=0;state<=START_IDLE;
++        end else if(tick && state!=IDLE) begin
++          if(waiting && wait_count==WAIT_TICKS-1) begin
++            // Release both pins on timeout; never report an ACKed result.
++            scl_low<=0;sda_low<=0;bus_timeout<=1;
++            busy<=0;done<=1;state<=IDLE;wait_count<=0;
++          end else begin
++            if(waiting) wait_count<=wait_count+1'b1;
++            else wait_count<=0;
++            case(state)
++              START_IDLE:if(scl_sync[1] && sda_sync[1]) state<=START_SDA;
++              START_SDA:begin sda_low<=1;state<=START_LOW;end
++              START_LOW:begin scl_low<=1;state<=SEND_LOW;end
++              SEND_LOW:begin sda_low<=!send_byte[bit_index];state<=SEND_RISE;end
++              SEND_RISE:begin scl_low<=0;if(scl_sync[1]) state<=SEND_HIGH;end
++              SEND_HIGH:state<=SEND_FALL;
++              SEND_FALL:begin
++                scl_low<=1;
++                if(bit_index==0) state<=ACK_LOW;
++                else begin bit_index<=bit_index-1'b1;state<=SEND_LOW;end
++              end
++              ACK_LOW:begin sda_low<=0;state<=ACK_RISE;end
++              ACK_RISE:begin scl_low<=0;if(scl_sync[1]) state<=ACK_HIGH;end
++              ACK_HIGH:begin nack_mask[byte_index]<=sda_sync[1];state<=ACK_FALL;end
++              ACK_FALL:begin
++                scl_low<=1;bit_index<=7;
++                if(nack_mask[byte_index]) state<=STOP_LOW;
++                else case(byte_index)
++                  0:begin byte_index<=1;send_byte<=held_register[15:8];state<=SEND_LOW;end
++                  1:begin byte_index<=2;send_byte<=held_register[7:0];state<=SEND_LOW;end
++                  2:begin
++                    byte_index<=3;send_byte<={held_address,1'b1};state<=RESTART_LOW;
++                  end
++                  3:state<=READ_LOW;
++                endcase
++              end
++              RESTART_LOW:begin sda_low<=0;state<=RESTART_RISE;end
++              RESTART_RISE:begin scl_low<=0;if(scl_sync[1]) state<=RESTART_HIGH;end
++              RESTART_HIGH:state<=START_SDA;
++              READ_LOW:begin sda_low<=0;state<=READ_RISE;end
++              READ_RISE:begin scl_low<=0;if(scl_sync[1]) state<=READ_HIGH;end
++              READ_HIGH:begin data[bit_index]<=sda_sync[1];state<=READ_FALL;end
++              READ_FALL:begin
++                scl_low<=1;
++                if(bit_index==0) state<=NACK_LOW;
++                else begin bit_index<=bit_index-1'b1;state<=READ_LOW;end
++              end
++              NACK_LOW:begin sda_low<=0;state<=NACK_RISE;end
++              NACK_RISE:begin scl_low<=0;if(scl_sync[1]) state<=NACK_HIGH;end
++              NACK_HIGH:state<=NACK_FALL;
++              NACK_FALL:begin scl_low<=1;state<=STOP_LOW;end
++              STOP_LOW:begin sda_low<=1;state<=STOP_RISE;end
++              STOP_RISE:begin scl_low<=0;if(scl_sync[1]) state<=STOP_RELEASE;end
++              STOP_RELEASE:begin sda_low<=0;state<=STOP_GAP;end
++              STOP_GAP:begin
++                busy<=0;done<=1;state<=IDLE;
++              end
++              default:state<=IDLE;
++            endcase
++          end
++        end
++      end
++    end
++endmodule
+--- TXDET1/rtl\capture\cam_sensor_id.v
++++ CAM1_ID1/rtl\capture\cam_sensor_id.v
+@@ -0,0 +1,57 @@
++`timescale 1ns/1ps
++// CAM1-only, fixed-address identification. Complete two independent reads of
++// both ID bytes before accepting the sensor. This does not configure a sensor
++// or publish video. CAM0's released controller remains unchanged.
++module cam_sensor_id #(
++    parameter CLOCK_HZ=50000000,
++    parameter SCCB_HZ=100000,
++    parameter WAIT_TICKS=400,
++    parameter EXPECTED_ID=16'h3660
++)(
++    input clk,rst_n,enable,
++    inout scl,sda,
++    output reg finished,identified,
++    output reg [15:0] sensor_id,confirmation_id,
++    output reg [15:0] nack_masks,
++    output reg timeout_error
++);
++    reg [1:0] enable_sync;
++    reg [2:0] step;
++    reg active,read_start;
++    wire busy,done,timeout;
++    wire [7:0] octet;
++    wire [3:0] nacks;
++    cam_sccb_read16 #(.CLOCK_HZ(CLOCK_HZ),.SCCB_HZ(SCCB_HZ),
++      .WAIT_TICKS(WAIT_TICKS)) reader(
++      .clk(clk),.rst_n(rst_n),.start(read_start),.address(7'h3c),
++      .register_address(step[0] ? 16'h300b:16'h300a),.scl(scl),.sda(sda),
++      .busy(busy),.done(done),.data(octet),.nack_mask(nacks),.bus_timeout(timeout));
++    always @(posedge clk or negedge rst_n) begin
++      if(!rst_n) begin
++        enable_sync<=0;step<=0;active<=0;read_start<=0;
++        finished<=0;identified<=0;sensor_id<=0;confirmation_id<=0;
++        nack_masks<=16'hffff;timeout_error<=0;
++      end else begin
++        enable_sync<={enable_sync[0],enable};read_start<=0;
++        if(enable_sync[1] && !finished) begin
++          if(!active && !busy && !read_start) begin active<=1;read_start<=1;end
++          if(done) begin
++            active<=0;
++            case(step)
++              0:begin sensor_id[15:8]<=octet;nack_masks[3:0]<=nacks;end
++              1:begin sensor_id[7:0]<=octet;nack_masks[7:4]<=nacks;end
++              2:begin confirmation_id[15:8]<=octet;nack_masks[11:8]<=nacks;end
++              3:begin confirmation_id[7:0]<=octet;nack_masks[15:12]<=nacks;end
++            endcase
++            if(timeout || nacks!=0) begin
++              finished<=1;identified<=0;timeout_error<=timeout;
++            end else if(step==3) begin
++              finished<=1;
++              identified<=sensor_id==EXPECTED_ID && confirmation_id[15:8]==sensor_id[15:8]
++                && octet==sensor_id[7:0];
++            end else step<=step+1'b1;
++          end
++        end
++      end
++    end
++endmodule

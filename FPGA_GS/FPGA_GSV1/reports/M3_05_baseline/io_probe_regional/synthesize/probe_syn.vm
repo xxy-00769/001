@@ -1,0 +1,567 @@
+//
+// Generated (version 2022.2-SP6.4<build 146967>) at Wed Oct 21 18:29:05 2026
+//
+
+module m34_input_capture_1
+(
+    input [3:0] data,
+    input clk,
+    output [3:0] captured
+);
+    wire N3;
+    wire global_clk;
+    wire [3:0] handoff;
+(* PAP_KEEP="TRUE" *)    wire local_clk;
+    wire [3:0] sample;
+
+    GTP_INV N3_vname (
+            .Z (N3),
+            .I (local_clk));
+    // defparam N3_vname.orig_name = N3;
+
+    GTP_DFF /* \captured[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[0]  (
+            .Q (captured[0]),
+            .CLK (global_clk),
+            .D (handoff[0]));
+	// ../probe.v:13
+
+    GTP_DFF /* \captured[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[1]  (
+            .Q (captured[1]),
+            .CLK (global_clk),
+            .D (handoff[1]));
+	// ../probe.v:13
+
+    GTP_DFF /* \captured[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[2]  (
+            .Q (captured[2]),
+            .CLK (global_clk),
+            .D (handoff[2]));
+	// ../probe.v:13
+
+    GTP_DFF /* \captured[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[3]  (
+            .Q (captured[3]),
+            .CLK (global_clk),
+            .D (handoff[3]));
+	// ../probe.v:13
+
+    GTP_CLKBUFG global_clock (
+            .CLKOUT (global_clk),
+            .CLKIN (clk));
+	// ../probe.v:8
+
+    GTP_DFF /* \handoff[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[0]  (
+            .Q (handoff[0]),
+            .CLK (N3),
+            .D (sample[0]));
+	// ../probe.v:12
+
+    GTP_DFF /* \handoff[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[1]  (
+            .Q (handoff[1]),
+            .CLK (N3),
+            .D (sample[1]));
+	// ../probe.v:12
+
+    GTP_DFF /* \handoff[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[2]  (
+            .Q (handoff[2]),
+            .CLK (N3),
+            .D (sample[2]));
+	// ../probe.v:12
+
+    GTP_DFF /* \handoff[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[3]  (
+            .Q (handoff[3]),
+            .CLK (N3),
+            .D (sample[3]));
+	// ../probe.v:12
+
+(* PAP_PRESERVE="TRUE" *)    GTP_CLKBUFR region_clock (
+            .CLKOUT (local_clk),
+            .CLKIN (clk));
+	// ../probe.v:7
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[0]  (
+            .Q (sample[0]),
+            .CLK (local_clk),
+            .D (data[0]));
+	// ../probe.v:11
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[1]  (
+            .Q (sample[1]),
+            .CLK (local_clk),
+            .D (data[1]));
+	// ../probe.v:11
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[2]  (
+            .Q (sample[2]),
+            .CLK (local_clk),
+            .D (data[2]));
+	// ../probe.v:11
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[3]  (
+            .Q (sample[3]),
+            .CLK (local_clk),
+            .D (data[3]));
+	// ../probe.v:11
+
+
+endmodule
+
+
+module m34_input_capture
+(
+    input [5:0] data,
+    input clk,
+    output [5:0] captured
+);
+    wire N3;
+    wire global_clk;
+    wire [5:0] handoff;
+(* PAP_KEEP="TRUE" *)    wire local_clk;
+    wire [5:0] sample;
+
+    GTP_INV N3_vname (
+            .Z (N3),
+            .I (local_clk));
+    // defparam N3_vname.orig_name = N3;
+
+    GTP_DFF /* \captured[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[0]  (
+            .Q (captured[0]),
+            .CLK (global_clk),
+            .D (handoff[0]));
+	// ../probe.v:13
+
+    GTP_DFF /* \captured[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[1]  (
+            .Q (captured[1]),
+            .CLK (global_clk),
+            .D (handoff[1]));
+	// ../probe.v:13
+
+    GTP_DFF /* \captured[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[2]  (
+            .Q (captured[2]),
+            .CLK (global_clk),
+            .D (handoff[2]));
+	// ../probe.v:13
+
+    GTP_DFF /* \captured[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[3]  (
+            .Q (captured[3]),
+            .CLK (global_clk),
+            .D (handoff[3]));
+	// ../probe.v:13
+
+    GTP_DFF /* \captured[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[4]  (
+            .Q (captured[4]),
+            .CLK (global_clk),
+            .D (handoff[4]));
+	// ../probe.v:13
+
+    GTP_DFF /* \captured[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \captured[5]  (
+            .Q (captured[5]),
+            .CLK (global_clk),
+            .D (handoff[5]));
+	// ../probe.v:13
+
+    GTP_CLKBUFG global_clock (
+            .CLKOUT (global_clk),
+            .CLKIN (clk));
+	// ../probe.v:8
+
+    GTP_DFF /* \handoff[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[0]  (
+            .Q (handoff[0]),
+            .CLK (N3),
+            .D (sample[0]));
+	// ../probe.v:12
+
+    GTP_DFF /* \handoff[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[1]  (
+            .Q (handoff[1]),
+            .CLK (N3),
+            .D (sample[1]));
+	// ../probe.v:12
+
+    GTP_DFF /* \handoff[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[2]  (
+            .Q (handoff[2]),
+            .CLK (N3),
+            .D (sample[2]));
+	// ../probe.v:12
+
+    GTP_DFF /* \handoff[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[3]  (
+            .Q (handoff[3]),
+            .CLK (N3),
+            .D (sample[3]));
+	// ../probe.v:12
+
+    GTP_DFF /* \handoff[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[4]  (
+            .Q (handoff[4]),
+            .CLK (N3),
+            .D (sample[4]));
+	// ../probe.v:12
+
+    GTP_DFF /* \handoff[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \handoff[5]  (
+            .Q (handoff[5]),
+            .CLK (N3),
+            .D (sample[5]));
+	// ../probe.v:12
+
+(* PAP_PRESERVE="TRUE" *)    GTP_CLKBUFR region_clock (
+            .CLKOUT (local_clk),
+            .CLKIN (clk));
+	// ../probe.v:7
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[0]  (
+            .Q (sample[0]),
+            .CLK (local_clk),
+            .D (data[0]));
+	// ../probe.v:11
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[1]  (
+            .Q (sample[1]),
+            .CLK (local_clk),
+            .D (data[1]));
+	// ../probe.v:11
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[2]  (
+            .Q (sample[2]),
+            .CLK (local_clk),
+            .D (data[2]));
+	// ../probe.v:11
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[3]  (
+            .Q (sample[3]),
+            .CLK (local_clk),
+            .D (data[3]));
+	// ../probe.v:11
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[4]  (
+            .Q (sample[4]),
+            .CLK (local_clk),
+            .D (data[4]));
+	// ../probe.v:11
+
+(* PAP_IO_REGISTER="FALSE" *)    GTP_DFF /* \sample[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \sample[5]  (
+            .Q (sample[5]),
+            .CLK (local_clk),
+            .D (data[5]));
+	// ../probe.v:11
+
+
+endmodule
+
+
+module probe
+(
+    input [7:0] cmos1_data,
+    input cmos1_href,
+    input cmos1_pclk,
+    input cmos1_vsync,
+    output [9:0] q
+);
+	// SDC constraint : (object cmos1_data[0]) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[0]) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[1]) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[1]) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[2]) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[2]) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[3]) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[3]) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[4]) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[4]) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[5]) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[5]) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[6]) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[6]) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[7]) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_data[7]) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_href) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_href) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_pclk) (id 1000) (clock cmos1_pclk) (56 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_vsync) (id 1001) (io_dly) (57 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+	// SDC constraint : (object cmos1_vsync) (id 1002) (io_dly) (58 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc)
+    wire [7:0] nt_cmos1_data;
+    wire nt_cmos1_href;
+(* PAP_CLOCK_DEDICATED_ROUTE="FALSE" *)    wire nt_cmos1_pclk;
+    wire nt_cmos1_vsync;
+    wire [9:0] nt_q;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="V11", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS12", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \cmos1_data_ibuf[0]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \cmos1_data_ibuf[0]  (
+            .O (nt_cmos1_data[0]),
+            .I (cmos1_data[0]));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="Y10", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS12", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \cmos1_data_ibuf[1]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \cmos1_data_ibuf[1]  (
+            .O (nt_cmos1_data[1]),
+            .I (cmos1_data[1]));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="T11", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS12", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \cmos1_data_ibuf[2]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \cmos1_data_ibuf[2]  (
+            .O (nt_cmos1_data[2]),
+            .I (cmos1_data[2]));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="R11", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS12", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \cmos1_data_ibuf[3]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \cmos1_data_ibuf[3]  (
+            .O (nt_cmos1_data[3]),
+            .I (cmos1_data[3]));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="W11", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS12", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \cmos1_data_ibuf[4]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \cmos1_data_ibuf[4]  (
+            .O (nt_cmos1_data[4]),
+            .I (cmos1_data[4]));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="AB11", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS12", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \cmos1_data_ibuf[5]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \cmos1_data_ibuf[5]  (
+            .O (nt_cmos1_data[5]),
+            .I (cmos1_data[5]));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="AA10", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS12", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \cmos1_data_ibuf[6]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \cmos1_data_ibuf[6]  (
+            .O (nt_cmos1_data[6]),
+            .I (cmos1_data[6]));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="AB13", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS12", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \cmos1_data_ibuf[7]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \cmos1_data_ibuf[7]  (
+            .O (nt_cmos1_data[7]),
+            .I (cmos1_data[7]));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="AB10", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* cmos1_href_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        cmos1_href_ibuf (
+            .O (nt_cmos1_href),
+            .I (cmos1_href));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="T12", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* cmos1_pclk_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        cmos1_pclk_ibuf (
+            .O (nt_cmos1_pclk),
+            .I (cmos1_pclk));
+	// ../probe.v:1
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="U12", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* cmos1_vsync_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        cmos1_vsync_ibuf (
+            .O (nt_cmos1_vsync),
+            .I (cmos1_vsync));
+	// ../probe.v:1
+
+    m34_input_capture_1 hi (
+            .captured ({nt_q[9], nt_q[7], nt_q[3], nt_q[2]}),
+            .data ({nt_cmos1_vsync, nt_cmos1_data[7], nt_cmos1_data[3], nt_cmos1_data[2]}),
+            .clk (nt_cmos1_pclk));
+	// ../probe.v:3
+
+    m34_input_capture lo (
+            .captured ({nt_q[8], nt_q[6], nt_q[5], nt_q[4], nt_q[1], nt_q[0]}),
+            .data ({nt_cmos1_href, nt_cmos1_data[6], nt_cmos1_data[5], nt_cmos1_data[4], nt_cmos1_data[1], nt_cmos1_data[0]}),
+            .clk (nt_cmos1_pclk));
+	// ../probe.v:2
+
+    GTP_OUTBUF /* \q_obuf[0]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[0]  (
+            .O (q[0]),
+            .I (nt_q[0]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[1]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[1]  (
+            .O (q[1]),
+            .I (nt_q[1]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[2]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[2]  (
+            .O (q[2]),
+            .I (nt_q[2]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[3]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[3]  (
+            .O (q[3]),
+            .I (nt_q[3]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[4]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[4]  (
+            .O (q[4]),
+            .I (nt_q[4]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[5]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[5]  (
+            .O (q[5]),
+            .I (nt_q[5]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[6]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[6]  (
+            .O (q[6]),
+            .I (nt_q[6]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[7]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[7]  (
+            .O (q[7]),
+            .I (nt_q[7]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[8]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[8]  (
+            .O (q[8]),
+            .I (nt_q[8]));
+	// ../probe.v:1
+
+    GTP_OUTBUF /* \q_obuf[9]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \q_obuf[9]  (
+            .O (q[9]),
+            .I (nt_q[9]));
+	// ../probe.v:1
+
+
+endmodule
+

@@ -1,0 +1,874 @@
+{
+  "version": "3.5.6-G1",
+  "classification": "passive_geometry_observation_not_camera_fix",
+  "bitstream": "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\release\\FPGA_GSV1_CAM1_OV3660_3_5_6_G1_OBSERVATION\\FPGA_GSV1_CAM1_OV3660_3_5_6_G1_OBSERVATION_HDMI_1080P60.sbit",
+  "sha256": "36ebccc84ebcac607221f193ac3c7f8afbd200d78888546fbc2772cdfba3e305",
+  "generated_utc": "2026-10-23T13:20:48.6220298Z",
+  "generated_Asia_Shanghai": "2026-10-23T21:20:48.622029+08:00",
+  "resources": {
+    "LUT": 20282,
+    "FF": 20531,
+    "DRM": 93.0,
+    "PLL": 5,
+    "CLMA": {
+      "used": 3998,
+      "available": 6450
+    },
+    "CLMS": {
+      "used": 2564,
+      "available": 4250
+    }
+  },
+  "STA_summaries": {
+    "Setup_Slow": [
+      {
+        "clocks": "sys_clk                sys_clk",
+        "slack_ns": 11.408,
+        "failing_endpoints": 0,
+        "endpoints": 6719
+      },
+      {
+        "clocks": "ddrphy_clkin           ddrphy_clkin",
+        "slack_ns": 0.122,
+        "failing_endpoints": 0,
+        "endpoints": 49584
+      },
+      {
+        "clocks": "ioclk0                 ioclk0",
+        "slack_ns": 1.692,
+        "failing_endpoints": 0,
+        "endpoints": 24
+      },
+      {
+        "clocks": "ioclk1                 ioclk1",
+        "slack_ns": 1.692,
+        "failing_endpoints": 0,
+        "endpoints": 72
+      },
+      {
+        "clocks": "cmos1_pclk             cmos1_pclk",
+        "slack_ns": 8.457,
+        "failing_endpoints": 0,
+        "endpoints": 64
+      },
+      {
+        "clocks": "cmos2_pclk             cmos2_pclk",
+        "slack_ns": 8.38,
+        "failing_endpoints": 0,
+        "endpoints": 184
+      },
+      {
+        "clocks": "cmos1_pclk_16bit       cmos1_pclk_16bit",
+        "slack_ns": 15.757,
+        "failing_endpoints": 0,
+        "endpoints": 1460
+      },
+      {
+        "clocks": "cmos2_pclk_16bit       cmos2_pclk_16bit",
+        "slack_ns": 16.13,
+        "failing_endpoints": 0,
+        "endpoints": 1430
+      },
+      {
+        "clocks": "pix_clk                pix_clk",
+        "slack_ns": 0.168,
+        "failing_endpoints": 0,
+        "endpoints": 3547
+      },
+      {
+        "clocks": "cfg_clk                cfg_clk",
+        "slack_ns": 93.777,
+        "failing_endpoints": 0,
+        "endpoints": 1099
+      },
+      {
+        "clocks": "clk_25M                clk_25M",
+        "slack_ns": 36.969,
+        "failing_endpoints": 0,
+        "endpoints": 31
+      },
+      {
+        "clocks": "hdmi_rx_clk            hdmi_rx_clk",
+        "slack_ns": 7.573,
+        "failing_endpoints": 0,
+        "endpoints": 1156
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_phy_tx_capture",
+        "slack_ns": 0.07,
+        "failing_endpoints": 0,
+        "endpoints": 5
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 1.028,
+        "failing_endpoints": 0,
+        "endpoints": 2327
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 6.675,
+        "failing_endpoints": 0,
+        "endpoints": 2
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 1.175,
+        "failing_endpoints": 0,
+        "endpoints": 1370
+      }
+    ],
+    "Hold_Slow": [
+      {
+        "clocks": "sys_clk                sys_clk",
+        "slack_ns": 0.184,
+        "failing_endpoints": 0,
+        "endpoints": 6719
+      },
+      {
+        "clocks": "ddrphy_clkin           ddrphy_clkin",
+        "slack_ns": 0.207,
+        "failing_endpoints": 0,
+        "endpoints": 49584
+      },
+      {
+        "clocks": "ioclk0                 ioclk0",
+        "slack_ns": 0.45,
+        "failing_endpoints": 0,
+        "endpoints": 24
+      },
+      {
+        "clocks": "ioclk1                 ioclk1",
+        "slack_ns": 0.45,
+        "failing_endpoints": 0,
+        "endpoints": 72
+      },
+      {
+        "clocks": "cmos1_pclk             cmos1_pclk",
+        "slack_ns": 0.347,
+        "failing_endpoints": 0,
+        "endpoints": 64
+      },
+      {
+        "clocks": "cmos2_pclk             cmos2_pclk",
+        "slack_ns": 0.424,
+        "failing_endpoints": 0,
+        "endpoints": 184
+      },
+      {
+        "clocks": "cmos1_pclk_16bit       cmos1_pclk_16bit",
+        "slack_ns": 0.298,
+        "failing_endpoints": 0,
+        "endpoints": 1460
+      },
+      {
+        "clocks": "cmos2_pclk_16bit       cmos2_pclk_16bit",
+        "slack_ns": 0.422,
+        "failing_endpoints": 0,
+        "endpoints": 1430
+      },
+      {
+        "clocks": "pix_clk                pix_clk",
+        "slack_ns": 0.348,
+        "failing_endpoints": 0,
+        "endpoints": 3547
+      },
+      {
+        "clocks": "cfg_clk                cfg_clk",
+        "slack_ns": 0.33,
+        "failing_endpoints": 0,
+        "endpoints": 1099
+      },
+      {
+        "clocks": "clk_25M                clk_25M",
+        "slack_ns": 0.428,
+        "failing_endpoints": 0,
+        "endpoints": 31
+      },
+      {
+        "clocks": "hdmi_rx_clk            hdmi_rx_clk",
+        "slack_ns": 0.331,
+        "failing_endpoints": 0,
+        "endpoints": 1156
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_phy_tx_capture",
+        "slack_ns": 0.096,
+        "failing_endpoints": 0,
+        "endpoints": 5
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 0.311,
+        "failing_endpoints": 0,
+        "endpoints": 2327
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 0.576,
+        "failing_endpoints": 0,
+        "endpoints": 2
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 0.314,
+        "failing_endpoints": 0,
+        "endpoints": 1370
+      }
+    ],
+    "Recovery_Slow": [
+      {
+        "clocks": "sys_clk                sys_clk",
+        "slack_ns": 13.952,
+        "failing_endpoints": 0,
+        "endpoints": 444
+      },
+      {
+        "clocks": "ddrphy_clkin           ddrphy_clkin",
+        "slack_ns": 4.496,
+        "failing_endpoints": 0,
+        "endpoints": 9873
+      },
+      {
+        "clocks": "cmos1_pclk_16bit       cmos1_pclk_16bit",
+        "slack_ns": 20.474,
+        "failing_endpoints": 0,
+        "endpoints": 156
+      },
+      {
+        "clocks": "cmos2_pclk_16bit       cmos2_pclk_16bit",
+        "slack_ns": 21.147,
+        "failing_endpoints": 0,
+        "endpoints": 92
+      },
+      {
+        "clocks": "cfg_clk                cfg_clk",
+        "slack_ns": 94.476,
+        "failing_endpoints": 0,
+        "endpoints": 3
+      },
+      {
+        "clocks": "hdmi_rx_clk            hdmi_rx_clk",
+        "slack_ns": 10.054,
+        "failing_endpoints": 0,
+        "endpoints": 94
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 5.079,
+        "failing_endpoints": 0,
+        "endpoints": 313
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 5.56,
+        "failing_endpoints": 0,
+        "endpoints": 1
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 4.23,
+        "failing_endpoints": 0,
+        "endpoints": 311
+      }
+    ],
+    "Removal_Slow": [
+      {
+        "clocks": "sys_clk                sys_clk",
+        "slack_ns": 0.725,
+        "failing_endpoints": 0,
+        "endpoints": 444
+      },
+      {
+        "clocks": "ddrphy_clkin           ddrphy_clkin",
+        "slack_ns": 0.463,
+        "failing_endpoints": 0,
+        "endpoints": 9873
+      },
+      {
+        "clocks": "cmos1_pclk_16bit       cmos1_pclk_16bit",
+        "slack_ns": 0.686,
+        "failing_endpoints": 0,
+        "endpoints": 156
+      },
+      {
+        "clocks": "cmos2_pclk_16bit       cmos2_pclk_16bit",
+        "slack_ns": 0.618,
+        "failing_endpoints": 0,
+        "endpoints": 92
+      },
+      {
+        "clocks": "cfg_clk                cfg_clk",
+        "slack_ns": 2.096,
+        "failing_endpoints": 0,
+        "endpoints": 3
+      },
+      {
+        "clocks": "hdmi_rx_clk            hdmi_rx_clk",
+        "slack_ns": 0.625,
+        "failing_endpoints": 0,
+        "endpoints": 94
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 0.966,
+        "failing_endpoints": 0,
+        "endpoints": 313
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 1.499,
+        "failing_endpoints": 0,
+        "endpoints": 1
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 0.834,
+        "failing_endpoints": 0,
+        "endpoints": 311
+      }
+    ],
+    "Minimum Pulse Width_Slow": [
+      {
+        "clocks": "sys_clk",
+        "slack_ns": 9.38,
+        "failing_endpoints": 0,
+        "endpoints": 1773
+      },
+      {
+        "clocks": "ddrphy_clkin",
+        "slack_ns": 3.1,
+        "failing_endpoints": 0,
+        "endpoints": 12931
+      },
+      {
+        "clocks": "ioclk0",
+        "slack_ns": 0.397,
+        "failing_endpoints": 0,
+        "endpoints": 11
+      },
+      {
+        "clocks": "ioclk1",
+        "slack_ns": 0.397,
+        "failing_endpoints": 0,
+        "endpoints": 27
+      },
+      {
+        "clocks": "ioclk2",
+        "slack_ns": 0.397,
+        "failing_endpoints": 0,
+        "endpoints": 2
+      },
+      {
+        "clocks": "ioclk_gate_clk",
+        "slack_ns": 4.58,
+        "failing_endpoints": 0,
+        "endpoints": 1
+      },
+      {
+        "clocks": "cmos1_pclk",
+        "slack_ns": 5.33,
+        "failing_endpoints": 0,
+        "endpoints": 41
+      },
+      {
+        "clocks": "cmos2_pclk",
+        "slack_ns": 4.05,
+        "failing_endpoints": 0,
+        "endpoints": 59
+      },
+      {
+        "clocks": "cmos1_pclk_16bit",
+        "slack_ns": 11.002,
+        "failing_endpoints": 0,
+        "endpoints": 643
+      },
+      {
+        "clocks": "cmos2_pclk_16bit",
+        "slack_ns": 11.002,
+        "failing_endpoints": 0,
+        "endpoints": 488
+      },
+      {
+        "clocks": "pix_clk",
+        "slack_ns": 1.85,
+        "failing_endpoints": 0,
+        "endpoints": 1334
+      },
+      {
+        "clocks": "cfg_clk",
+        "slack_ns": 39.102,
+        "failing_endpoints": 0,
+        "endpoints": 237
+      },
+      {
+        "clocks": "clk_25M",
+        "slack_ns": 19.38,
+        "failing_endpoints": 0,
+        "endpoints": 7
+      },
+      {
+        "clocks": "hdmi_rx_clk",
+        "slack_ns": 5.836,
+        "failing_endpoints": 0,
+        "endpoints": 405
+      },
+      {
+        "clocks": "eth2_rxc",
+        "slack_ns": 2.483,
+        "failing_endpoints": 0,
+        "endpoints": 1
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 2.483,
+        "failing_endpoints": 0,
+        "endpoints": 691
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 2.483,
+        "failing_endpoints": 0,
+        "endpoints": 4
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 2.483,
+        "failing_endpoints": 0,
+        "endpoints": 338
+      }
+    ],
+    "Setup_Fast": [
+      {
+        "clocks": "sys_clk                sys_clk",
+        "slack_ns": 13.83,
+        "failing_endpoints": 0,
+        "endpoints": 6719
+      },
+      {
+        "clocks": "ddrphy_clkin           ddrphy_clkin",
+        "slack_ns": 2.777,
+        "failing_endpoints": 0,
+        "endpoints": 49584
+      },
+      {
+        "clocks": "ioclk0                 ioclk0",
+        "slack_ns": 1.834,
+        "failing_endpoints": 0,
+        "endpoints": 24
+      },
+      {
+        "clocks": "ioclk1                 ioclk1",
+        "slack_ns": 1.834,
+        "failing_endpoints": 0,
+        "endpoints": 72
+      },
+      {
+        "clocks": "cmos1_pclk             cmos1_pclk",
+        "slack_ns": 9.397,
+        "failing_endpoints": 0,
+        "endpoints": 64
+      },
+      {
+        "clocks": "cmos2_pclk             cmos2_pclk",
+        "slack_ns": 9.439,
+        "failing_endpoints": 0,
+        "endpoints": 184
+      },
+      {
+        "clocks": "cmos1_pclk_16bit       cmos1_pclk_16bit",
+        "slack_ns": 18.183,
+        "failing_endpoints": 0,
+        "endpoints": 1460
+      },
+      {
+        "clocks": "cmos2_pclk_16bit       cmos2_pclk_16bit",
+        "slack_ns": 18.201,
+        "failing_endpoints": 0,
+        "endpoints": 1430
+      },
+      {
+        "clocks": "pix_clk                pix_clk",
+        "slack_ns": 1.888,
+        "failing_endpoints": 0,
+        "endpoints": 3547
+      },
+      {
+        "clocks": "cfg_clk                cfg_clk",
+        "slack_ns": 95.701,
+        "failing_endpoints": 0,
+        "endpoints": 1099
+      },
+      {
+        "clocks": "clk_25M                clk_25M",
+        "slack_ns": 37.809,
+        "failing_endpoints": 0,
+        "endpoints": 31
+      },
+      {
+        "clocks": "hdmi_rx_clk            hdmi_rx_clk",
+        "slack_ns": 9.196,
+        "failing_endpoints": 0,
+        "endpoints": 1156
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_phy_tx_capture",
+        "slack_ns": 0.312,
+        "failing_endpoints": 0,
+        "endpoints": 5
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 3.009,
+        "failing_endpoints": 0,
+        "endpoints": 2327
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 7.048,
+        "failing_endpoints": 0,
+        "endpoints": 2
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 3.164,
+        "failing_endpoints": 0,
+        "endpoints": 1370
+      }
+    ],
+    "Hold_Fast": [
+      {
+        "clocks": "sys_clk                sys_clk",
+        "slack_ns": 0.23,
+        "failing_endpoints": 0,
+        "endpoints": 6719
+      },
+      {
+        "clocks": "ddrphy_clkin           ddrphy_clkin",
+        "slack_ns": 0.119,
+        "failing_endpoints": 0,
+        "endpoints": 49584
+      },
+      {
+        "clocks": "ioclk0                 ioclk0",
+        "slack_ns": 0.383,
+        "failing_endpoints": 0,
+        "endpoints": 24
+      },
+      {
+        "clocks": "ioclk1                 ioclk1",
+        "slack_ns": 0.383,
+        "failing_endpoints": 0,
+        "endpoints": 72
+      },
+      {
+        "clocks": "cmos1_pclk             cmos1_pclk",
+        "slack_ns": 0.209,
+        "failing_endpoints": 0,
+        "endpoints": 64
+      },
+      {
+        "clocks": "cmos2_pclk             cmos2_pclk",
+        "slack_ns": 0.266,
+        "failing_endpoints": 0,
+        "endpoints": 184
+      },
+      {
+        "clocks": "cmos1_pclk_16bit       cmos1_pclk_16bit",
+        "slack_ns": 0.203,
+        "failing_endpoints": 0,
+        "endpoints": 1460
+      },
+      {
+        "clocks": "cmos2_pclk_16bit       cmos2_pclk_16bit",
+        "slack_ns": 0.256,
+        "failing_endpoints": 0,
+        "endpoints": 1430
+      },
+      {
+        "clocks": "pix_clk                pix_clk",
+        "slack_ns": 0.267,
+        "failing_endpoints": 0,
+        "endpoints": 3547
+      },
+      {
+        "clocks": "cfg_clk                cfg_clk",
+        "slack_ns": 0.259,
+        "failing_endpoints": 0,
+        "endpoints": 1099
+      },
+      {
+        "clocks": "clk_25M                clk_25M",
+        "slack_ns": 0.335,
+        "failing_endpoints": 0,
+        "endpoints": 31
+      },
+      {
+        "clocks": "hdmi_rx_clk            hdmi_rx_clk",
+        "slack_ns": 0.201,
+        "failing_endpoints": 0,
+        "endpoints": 1156
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_phy_tx_capture",
+        "slack_ns": 0.334,
+        "failing_endpoints": 0,
+        "endpoints": 5
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 0.236,
+        "failing_endpoints": 0,
+        "endpoints": 2327
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 0.408,
+        "failing_endpoints": 0,
+        "endpoints": 2
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 0.243,
+        "failing_endpoints": 0,
+        "endpoints": 1370
+      }
+    ],
+    "Recovery_Fast": [
+      {
+        "clocks": "sys_clk                sys_clk",
+        "slack_ns": 15.763,
+        "failing_endpoints": 0,
+        "endpoints": 444
+      },
+      {
+        "clocks": "ddrphy_clkin           ddrphy_clkin",
+        "slack_ns": 6.017,
+        "failing_endpoints": 0,
+        "endpoints": 9873
+      },
+      {
+        "clocks": "cmos1_pclk_16bit       cmos1_pclk_16bit",
+        "slack_ns": 21.348,
+        "failing_endpoints": 0,
+        "endpoints": 156
+      },
+      {
+        "clocks": "cmos2_pclk_16bit       cmos2_pclk_16bit",
+        "slack_ns": 21.819,
+        "failing_endpoints": 0,
+        "endpoints": 92
+      },
+      {
+        "clocks": "cfg_clk                cfg_clk",
+        "slack_ns": 96.133,
+        "failing_endpoints": 0,
+        "endpoints": 3
+      },
+      {
+        "clocks": "hdmi_rx_clk            hdmi_rx_clk",
+        "slack_ns": 10.954,
+        "failing_endpoints": 0,
+        "endpoints": 94
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 5.868,
+        "failing_endpoints": 0,
+        "endpoints": 313
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 6.274,
+        "failing_endpoints": 0,
+        "endpoints": 1
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 5.235,
+        "failing_endpoints": 0,
+        "endpoints": 311
+      }
+    ],
+    "Removal_Fast": [
+      {
+        "clocks": "sys_clk                sys_clk",
+        "slack_ns": 0.554,
+        "failing_endpoints": 0,
+        "endpoints": 444
+      },
+      {
+        "clocks": "ddrphy_clkin           ddrphy_clkin",
+        "slack_ns": 0.288,
+        "failing_endpoints": 0,
+        "endpoints": 9873
+      },
+      {
+        "clocks": "cmos1_pclk_16bit       cmos1_pclk_16bit",
+        "slack_ns": 0.446,
+        "failing_endpoints": 0,
+        "endpoints": 156
+      },
+      {
+        "clocks": "cmos2_pclk_16bit       cmos2_pclk_16bit",
+        "slack_ns": 0.391,
+        "failing_endpoints": 0,
+        "endpoints": 92
+      },
+      {
+        "clocks": "cfg_clk                cfg_clk",
+        "slack_ns": 1.482,
+        "failing_endpoints": 0,
+        "endpoints": 3
+      },
+      {
+        "clocks": "hdmi_rx_clk            hdmi_rx_clk",
+        "slack_ns": 0.365,
+        "failing_endpoints": 0,
+        "endpoints": 94
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 0.682,
+        "failing_endpoints": 0,
+        "endpoints": 313
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 1.006,
+        "failing_endpoints": 0,
+        "endpoints": 1
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 0.594,
+        "failing_endpoints": 0,
+        "endpoints": 311
+      }
+    ],
+    "Minimum Pulse Width_Fast": [
+      {
+        "clocks": "sys_clk",
+        "slack_ns": 9.504,
+        "failing_endpoints": 0,
+        "endpoints": 1773
+      },
+      {
+        "clocks": "ddrphy_clkin",
+        "slack_ns": 3.48,
+        "failing_endpoints": 0,
+        "endpoints": 12931
+      },
+      {
+        "clocks": "ioclk0",
+        "slack_ns": 0.568,
+        "failing_endpoints": 0,
+        "endpoints": 11
+      },
+      {
+        "clocks": "ioclk1",
+        "slack_ns": 0.568,
+        "failing_endpoints": 0,
+        "endpoints": 27
+      },
+      {
+        "clocks": "ioclk2",
+        "slack_ns": 0.568,
+        "failing_endpoints": 0,
+        "endpoints": 2
+      },
+      {
+        "clocks": "ioclk_gate_clk",
+        "slack_ns": 4.664,
+        "failing_endpoints": 0,
+        "endpoints": 1
+      },
+      {
+        "clocks": "cmos1_pclk",
+        "slack_ns": 5.454,
+        "failing_endpoints": 0,
+        "endpoints": 41
+      },
+      {
+        "clocks": "cmos2_pclk",
+        "slack_ns": 4.43,
+        "failing_endpoints": 0,
+        "endpoints": 59
+      },
+      {
+        "clocks": "cmos1_pclk_16bit",
+        "slack_ns": 11.182,
+        "failing_endpoints": 0,
+        "endpoints": 643
+      },
+      {
+        "clocks": "cmos2_pclk_16bit",
+        "slack_ns": 11.182,
+        "failing_endpoints": 0,
+        "endpoints": 488
+      },
+      {
+        "clocks": "pix_clk",
+        "slack_ns": 2.154,
+        "failing_endpoints": 0,
+        "endpoints": 1334
+      },
+      {
+        "clocks": "cfg_clk",
+        "slack_ns": 39.282,
+        "failing_endpoints": 0,
+        "endpoints": 237
+      },
+      {
+        "clocks": "clk_25M",
+        "slack_ns": 19.504,
+        "failing_endpoints": 0,
+        "endpoints": 7
+      },
+      {
+        "clocks": "hdmi_rx_clk",
+        "slack_ns": 6.016,
+        "failing_endpoints": 0,
+        "endpoints": 405
+      },
+      {
+        "clocks": "eth2_rxc",
+        "slack_ns": 2.787,
+        "failing_endpoints": 0,
+        "endpoints": 1
+      },
+      {
+        "clocks": "eth2_rxc|network2/e1_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 2.787,
+        "failing_endpoints": 0,
+        "endpoints": 691
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT1_Inferred",
+        "slack_ns": 2.787,
+        "failing_endpoints": 0,
+        "endpoints": 4
+      },
+      {
+        "clocks": "eth_rxc|network/original_phy.pll/u_pll_e3/CLKOUT0_Inferred",
+        "slack_ns": 2.787,
+        "failing_endpoints": 0,
+        "endpoints": 338
+      }
+    ]
+  },
+  "declared_constraints_met": true,
+  "external_sensor_skew_measured": false,
+  "external_PHY_PVT_PCB_signed_off": false,
+  "board_verified": false,
+  "programmed_by_agent": false,
+  "changed_vs_356": [
+    "rtl/board/fpga_gsv1_top.v"
+  ],
+  "sensor_and_capture_equal_356": true,
+  "rollback": "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\release\\FPGA_GSV1_CAM1_OV3660_3_5_6_CANDIDATE\\FPGA_GSV1_CAM1_OV3660_3_5_6_CANDIDATE_HDMI_1080P60.sbit",
+  "rollback_sha256": "b8b79ddf763d362d408aa5557a1ab6055dd35d830b2b7d949ac74dcac7cc3bb3",
+  "previous_board_result": "3.5.6: ID 3660 twice, configured true, error 0; 100 bad / 0 good frames in 8 seconds",
+  "new_function": "top only: original four camera UART words reused for existing geometry fields",
+  "excluded_failed_build": "20261023_205957_974: DDR setup -0.200ns, 13 endpoints; not published"
+}

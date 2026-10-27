@@ -1,0 +1,2619 @@
+OV5640 自动对焦成像模组应用指南
+OV5640 自动对焦摄像模组应用指南
+(DVP 接口)
+修改日期: Nov. 4th, 2011
+文档版本号: 2.13
+OmniVision T echnologies, Inc. 保留对此文件的修改权。为提高相关产品可靠性，功能或设
+计所进行的修改，恕不另行通知。在任何实际应用，项目以及电路描述中出现的问题 ，
+OmniVision 不承担任何责任；并且此文档并未包含对OmniVision 所拥有专利或其他权利的
+任何许可。
+此文档包含版权信息，只能提供给OmniVision Technologies, Inc. 内部有此权限的员工，或经
+由OmniVision Technologies, Inc. 授权许可的组织或个人。
+1   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+内容目录
+1. OV5640 应用指南...........................................................................................................................4
+2. 硬件设计..........................................................................................................................................5
+2.1 OV5640 照相模组原理图参考设计.........................................................................................5
+2.2 主机接口...................................................................................................................................6
+2.1.1 引脚定义............................................................................................................................6
+2.2 供电设计...................................................................................................................................6
+2.2.1 主机使用1.8V IO ，OV5640 使用1.8V IO....................................................................7
+2.2.2 主机使用 2.8V IO，OV5640 使用 1.8V IO...................................................................7
+2.2.3 主机使用 2.8V IO  OV5640 使用 2.8V IO.....................................................................8
+2.3 与镜头相关参数.......................................................................................................................9
+2.3.1 边角失光............................................................................................................................9
+2.3.2 暗角....................................................................................................................................9
+2.3.3 分辨率................................................................................................................................9
+2.3.4 光学对比度........................................................................................................................9
+2.3.5 保护玻璃............................................................................................................................9
+2.3.6 Lens补偿（镜头均匀性补偿）.......................................................................................9
+2.3.6.1 Lens 补偿:..................................................................................................................9
+2.3.6.2 Lens 补偿: .................................................................................................................9
+3. 硬件操作........................................................................................................................................10
+3.1 操作模式.................................................................................................................................10
+3.1.1 上电（Power Up）..........................................................................................................10
+3.1.2 节电模式(Power Down)..................................................................................................11
+3.1.3 由节电模式唤醒..............................................................................................................11
+3.1.4 断电..................................................................................................................................11
+3.1.5 硬件复位..........................................................................................................................12
+3.2 操作流程.................................................................................................................................12
+3.2.1 OV5640 单摄像头, 不使用时断电。.............................................................................12
+3.2.2 OV5640 单摄像头, 不使用时处于节电模式.................................................................12
+3.2.3 OV5640 与其它摄像头共享DVP, 不使用时断电.........................................................12
+3.2.4 OV5640 与其它摄像头共享DVP, 不使用时进入节电模式.........................................13
+3.2.5 OV5640与其他设备共用I2C总线................................................................................13
+4. 软件指南........................................................................................................................................14
+4.1 YCbCr/压缩信号参考设置.....................................................................................................14
+4.1.1 初始设置..........................................................................................................................14
+4.1.2 VGA 预览........................................................................................................................19
+4.1.3 800x480 预览...................................................................................................................20
+4.1.4 854x480 预览...................................................................................................................21
+4.1.5 720p 视频.........................................................................................................................23
+4.1.6 5百万 YCbCr 拍照........................................................................................................24
+4.1.7 5百万 压缩格式 拍照...................................................................................................26
+4.2 信号极性.............................................................................................................................27
+2   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+4.3 驱动能力.................................................................................................................................27
+4.4 I/O 控制...................................................................................................................................27
+4.5 YUV 序列................................................................................................................................28
+4.6 镜像和翻转.............................................................................................................................28
+4.7 测试图案.................................................................................................................................30
+4.8 去除灯光条纹.........................................................................................................................30
+4.9 用户界面功能.........................................................................................................................32
+4.9.1 亮度..................................................................................................................................32
+4.9.2 对比度..............................................................................................................................33
+4.9.3 色彩饱和度......................................................................................................................34
+4.9.4 EV  曝光补偿..................................................................................................................37
+4.9.5 环境光模式......................................................................................................................38
+4.9.6 特效..................................................................................................................................39
+4.9.7 夜景模式..........................................................................................................................41
+4.7.8 去除灯光条纹..................................................................................................................41
+4.10 Auto Focus自动对焦............................................................................................................42
+4.10.1  内置自动对焦...............................................................................................................42
+4.10.2  I2C自动对焦命令........................................................................................................42
+4.10.3 AF自动对焦过程..........................................................................................................43
+4.10.4  下载固件（download firmware）...............................................................................43
+4.10.5  自动对焦.......................................................................................................................43
+4.10.6  释放马达至初始状态 （对焦为无穷远处）.............................................................44
+4.11 拍照流程................................................................................................................................44
+4.11.1 Shutter  快门时间..........................................................................................................44
+4.11.2 Gain  增益......................................................................................................................44
+  增益值设置在寄存器0x350a 和 0x350b中。..................................................................44
+4.11.3 虚拟曝光行（Dummy Lines）及虚拟像素（Dummy Pixels）.................................44
+4.11.4 拍照流程........................................................................................................................44
+4.11.4.1 自动对焦................................................................................................................44
+4.11.4.2 读取预览参数........................................................................................................44
+4.11.4.3 改变为拍照图像分辨率........................................................................................45
+4.11.4.4 读取拍照设置参数................................................................................................45
+4.11.4.5 转换预览增益和曝光值为拍照增益和曝光值....................................................45
+4.11.4.6 增益值转换为曝光值，拍照参数下灯光条纹过滤............................................45
+4.11.4.7 写入增益（gain）/曝光值（shutter）.................................................................46
+4.11.4.8 拍照........................................................................................................................46
+4.11.4.9 返回预览模式........................................................................................................46
+4.12 Scale and Zoom 缩放和变焦................................................................................................46
+4.12.1 Scale 缩放......................................................................................................................46
+4.12.2 DIGITAL ZOOM 数码变焦..........................................................................................47
+附录 I 摄像头驱动程序示例      ................................................................................................49
+文档版本历史....................................................................................................................................63
+3   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+1. OV5640 应用指南
+  OV5640 是一款 1/4 英寸 5百万像素的高性能图像传感器，支持DVP 和MIPI 接口。 此
+文档内容为DVP接口的应用指南。MIPI 接口的文档为“OV5640自动对焦模组应用指南
+（MIPI接口）”
+    OV5640 传感器可用于：
+手机5百万像素主摄像头
+平板电脑5百万像素主摄像头
+4   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+2. 硬件设计
+2.1 OV5640 照相模组原理图参考设计
+说明:
+1. PWND引脚，高电平有效。当上拉至和DOVDD电压一致的高电平时，使OV5640进
+入节电模式, 不使用时需在模组外部接地。
+2. RESETB，低点平有效。置低时复位OV5640, 不使用时需在模组外部与DOVDD连接。
+3. AVDD为传感器模拟电源引脚，电压范围为2.6-3.0V (纹波小)。推荐接入2.8V电压。
+在OTP写入状态时，AVDD 必须接入2.5V+-5%，但是OPT读取状态无此要求。
+4. DVDD是传感器数字电源引脚，电压1.5V±5% (纹波小)。强烈建议使用内部DVDD
+稳压器。
+5. DOVDD是传感器数字IO电源引脚，电压范围1.7V-3.0V(clean)，建议为1.8V。
+6. AGND与DGND 引脚应在模组内分开，在模组外PCB单点连接，不要在模组内连接。
+7. 电容器的位置需靠近其相应的OV5640引脚。
+8. D[9:0] 为OV5640传感器10 bit RGB RAW 输出，D[9:2] 为传感器8-bit YUV/RGB/压
+缩信号输出。
+5   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+2.2 主机接口
+2.1.1 引脚定义
+    OV5640的视频输出接口共有10位，D[9:0]。当输出为10-bit RGB raw  格式时,  使用
+D[9:0]  。当输出格式为8-bit YCbCr  或8-bit RGB raw 和8-bit RGB 565 时, 使用D[9:2]。
+    同步信号Href  和Hsync  使用同一引脚Href。通过SCCB 设置可选择此引脚为Href或
+Hsync信号。
+    SIO_C  以及SIO_D 总线需外接上拉电阻,  标准上拉电阻阻值为5.1K欧姆。
+    RESETB引脚低有效，且内置上拉电阻。RESETB引脚需由后端芯片控制以得到合适的上
+电顺序。
+    PWDN  引脚高有效，且内置下拉电阻。PWDN 引脚需由后端芯片控制以得到合适的上电
+顺序。
+2.2 供电设计
+    当DOVDD 引脚电压为1.8V时，DVDD引脚的电压由OV5640传感器内部的稳压器生成。
+所以需要2组稳压器来为OV5640供电。如下图：
+6   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+2.2.1 主机使用1.8V IO ，OV5640 使用1.8V IO
+2.2.2 主机使用 2.8V IO，OV5640 使用 1.8V IO
+  然而，某些较老的手机或基带芯片只接受2.8V 的IO信号，在这种情况下，我们建议
+OV5640使用1.8V 电压，并且在主机和OV5640之间所有的视频信号传输中增加电平转换器。
+OV5640工作在1.8V IO, 主机工作在2.8V IO。对于这种情况:
+1) 当OV5640处于待机模式（PWDN引脚在高位）时，输出引脚(HREF/HSYNC, 
+VSYNC, DATA0~9, PCLK, FREX, STROBE, GPIO1~2) 处在三态。请确认此时不会因
+为漏电流等可能存在的原因而影响到其他设备的输入。如果对电平转换器和主机芯片
+产生影响，可在所有三态引脚接10k欧姆的下拉电阻。
+7   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+2)  所有视频信号引脚加电平转换器-- HREF/HSYNC, VSYNC, DATA0~9, PCLK.
+3) 传感器的SCL  和SDA 可以忍受较高电压。所以OV5640使用1.8V IO 并且I2C上拉
+电阻接入2.8V电压是没有问题的。
+4)  传感器PWDN  和XCLK 可以在2.8V 信号电压下工作，PWDN 可以直接接2.8V电压
+使传感器处于节电模式（power down）。如果有额外的电平转换引脚，将这两个引脚
+也接入电平转换器。
+5) 对RESETB 请不要接入2.8V的信号电压，因为OV5640在此引脚已内置上拉电阻到
+IO 电源。如接入2.8V电压，会导致漏电（从2.8V信号通过上拉电阻和二极管到传感
+器1.8V IO  电源）。以下为两种替代解决办法：
+a) 主机先驱动RESETB为低电平（复位模式），然后在操作模式时再改变其为浮动或者
+输入状态，并使传感器内部上拉电阻到高位（1.8V）。
+b) 为RESETB 引脚接入电平转换器。
+  如果DOVDD  为2.8V,  那么DVDD 由外部电源供电，所以需使用3套稳压器供电，此时
+Power down 模式并不能用作省电。
+2.2.3  主机使用2.8V IO  OV5640  使用2.8V IO
+    OV5640  同样支持2.8V IO  。在使用2.8V IO时, 1.5V DVDD 引脚必须由外接电源供电。并
+且建议使用断电模式（power off模式）以省电。注意此时节电模式（power down模式）并
+不能起到省电的作用。
+8   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+2.3 与镜头相关参数
+2.3.1 边角失光
+  边角失光是指图像的周边（四个角）亮度比中心暗，这种现象是由镜头造成的。可开启
+OV5640的镜头均匀性补偿功能来对图片周边的亮度进行补偿，使得整个图片的亮度看上去
+保持一致。 
+2.3.2 暗角
+  有些镜头可能会有暗角存在。暗角表示图像的周边（四个角）亮度很暗，看起来几乎是黑
+的。这种状况是无法用芯片的镜头均匀性补偿功能来矫正的，所以这样的镜头模组不合格，
+请不要采用。
+2.3.3 分辨率
+  摄像模组的分辨率取决于镜头的设计以及模组的调焦质量，同时和图像传感器的分辨率也
+有关系 。其中调焦质量是摄像模组组装时非常重要的指标。
+2.3.4 光学对比度
+  就影响成像质量来讲，镜头的光学对比度也是非常重要的。如果光学对比度较低的话，会
+使图片看起来好像雾蒙蒙的。虽然可以通过增加传感器的对比度来使得图片显得更加锐利，
+但是较高的传感器成像对比度会导致图片在较暗的部分丢失细节。
+2.3.5 保护玻璃
+  虽然保护玻璃是镜头里最便宜的部件，但是它依然对镜头的成像质量有很大的影响。保护
+玻璃必须由光学玻璃制造并且双面镀增透膜（AR coating）。否则会导致灵敏度损失或者严
+重的光学耀斑（flare）。
+2.3.6 Lens补偿（镜头均匀性补偿）
+  所有模组都必须做镜头均匀性补偿补偿，请联络OVT取得由OVT  FAE工程师为不同镜
+头优化过的Lens补偿设置的详细参数。 
+2.3.6.1 Lens 补偿:
+2.3.6.2 Lens 补偿: 
+注:
+  请联络OVT FAE工程师取得模组Lens设置的参数。
+9   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+3. 硬件操作
+3.1 操作模式
+3.1.1 上电（Power Up）
+t0: >= 0毫秒. 从DOVDD  稳定到AVDD  稳定之间的时间。
+t2: >= 5毫秒. 从AVDD稳定到传感器上电稳定之间的时间。
+t3: >= 1毫秒. 传感器上电稳定到ResetB拉高之间的延迟。
+t4: >=20毫秒. ResetB拉高到SCCB 初始化之间的延迟。
+ 步骤1:
+    ResetB拉低，复位OV5640  。PWDN引脚拉高。
+ 步骤2:
+    DOVDD  和AVDD 上电。这两路最好同时上电，如果不能同时上电，那么必须使DOVDD 
+上电在先，AVDD上电在后。
+步骤 3:
+    等AVDD 稳定5毫秒后，拉低PWDN  。
+步骤 4:
+    PWDN 置低1毫秒后,  拉高ResetB。
+ 步骤5:
+    20毫秒后, 初始化OV5640的SCCB寄存器设置。寄存器设置可参考第四章的OV5640软
+件应用指南。
+10   OmniVision公司机密
+Reset#
+PWDN
+SIO_C
+SIO_D
+DOVDD
+AVDD
+XCLK
+t2
+t4
+t0
+t3
+OV5640 自动对焦成像模组应用指南
+3.1.2 节电模式(Power Down)
+ 步骤1:
+     拉高PWDN 引脚。
+ 步骤2:
+    0.1毫秒后拉低XCLK 。在PWDN  拉高以后XCLK 必须至少保持0.1毫秒高电平。
+3.1.3 由节电模式唤醒
+ 步骤1:
+    加上XCLK时钟。
+ 步骤2:
+    0.1毫秒后, 拉低PWDN。
+ 可选步骤3:
+    初始化SCCB 寄存器。寄存器参数请见第四章。
+3.1.4 断电
+ 步骤1.
+    拉低XCLK。
+ 步骤2.
+    切断AVDD, DVDD  和DOVDD  。这三路电源应同时切断，如无法同时切断，则必须做到
+DVDD为先，AVDD第二，DOVDD最后。
+11   OmniVision公司机密
+PWDN
+SIO_C
+SIO_D
+XCLK
+PWDN
+SIO_C
+SIO_D
+XCLK
+OV5640 自动对焦成像模组应用指南
+ 步骤3.
+    拉低PWDN  和RESETB。
+3.1.5 硬件复位
+    OV5640 传感器的RESETB 引脚在拉低时（接地）可以实现硬件复位。此时OV5640 清
+空所有寄存器并使其恢复到初始值。通过SCCB接口向寄存器0x12的[7]位写“1”，同样可以
+使传感器复位。
+    上电时整个芯片都会做复位，但即使这样，也建议在上电后手动进行硬件复位。硬件复位
+低位有效且基于异步设计，复位的脉冲时间必须等于1毫秒或更长。
+3.2 操作流程
+3.2.1 OV5640 单摄像头, 不使用时断电。
+模式 操作流程
+连接电池 无
+打开相机 上电
+硬件复位
+初始化
+退出相机 断电
+3.2.2 OV5640 单摄像头, 不使用时处于节电模式
+模式 操作流程
+连接电池 上电
+硬件复位
+节电模式
+打开相机 从节电模式唤醒
+初始化
+退出相机 回到节电模式
+3.2.3 OV5640 与其它摄像头共享DVP, 不使用时断电
+模式 操作流程
+连接电池 无
+打开OV5640 全部上电, 保持其它摄像头的PWDN 为高, 而OV5640 PWDN为低 
+12   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+硬件复位
+初始化OV5640
+打开其他camera 全部上电, 保持OV5640 PWDN 为高, 而其它camera的PWDN为低 
+硬件复位
+初始化其它摄像头
+从OV5640切换到其它摄像
+头
+OV5640进入节电模式
+唤醒其它摄像头
+初始化其它摄像头
+从其它涉摄像头切换到
+OV5640
+其它摄像头进入节电模式
+唤醒 OV5640
+初始化OV5640
+退出相机 全部断电
+3.2.4 OV5640 与其它摄像头共享DVP, 不使用时进入节电模式
+模式 操作流程
+连接电池 全部上电, 保持OV5640 PWDN 为高, 而其它摄像头的PWDN为低
+硬件复位
+初始化其它摄像头
+拉高其它摄像头的PWDN 引脚, 拉低OV5640 PWDN 引脚
+初始化 OV5640
+拉高 OV5640 PWND引脚
+打开 OV5640 唤醒 OV5640
+初始化 OV5640
+关闭 OV5640 OV5640进入节电模式
+打开其它摄像头 唤醒其它摄像头
+初始化其它摄像头
+关闭其它摄像头 其它涉摄像头进入节电模式
+3.2.5 OV5640与其他设备共用I2C总线
+其他设备接入 I2C 其他设备无法接入 I2C 总线
+断电
+进入节电模式 
+从节电模式唤醒
+上电
+无
+13   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+4. 软件指南
+4.1 YCbCr/压缩信号参考设置
+4.1.1 初始设置
+//15fps VGA YUV output 
+// 24MHz input clock, 24MHz PCLK
+write_i2c(0x3103, 0x11); // system clock from pad, bit[1]
+write_i2c(0x3008, 0x82); // software reset, bit[7]
+// delay 5ms
+write_i2c(0x3008, 0x42); // software power down, bit[6]
+write_i2c(0x3103, 0x03); // system clock from PLL, bit[1]
+write_i2c(0x3017, 0xff); // FREX, Vsync, HREF, PCLK, D[9:6] output enable
+write_i2c(0x3018, 0xff); // D[5:0], GPIO[1:0] output enable
+write_i2c(0x3034, 0x1a); // MIPI 10-bit
+write_i2c(0x3037, 0x13); // PLL root divider, bit[4], PLL pre-divider, bit[3:0]
+write_i2c(0x3108, 0x01); // PCLK root divider, bit[5:4], SCLK2x root divider, bit[3:2]
+// SCLK root divider, bit[1:0]
+write_i2c(0x3630, 0x36);
+write_i2c(0x3631, 0x0e);
+write_i2c(0x3632, 0xe2);
+write_i2c(0x3633, 0x12);
+write_i2c(0x3621, 0xe0);
+write_i2c(0x3704, 0xa0);
+write_i2c(0x3703, 0x5a);
+write_i2c(0x3715, 0x78);
+write_i2c(0x3717, 0x01);
+write_i2c(0x370b, 0x60);
+write_i2c(0x3705, 0x1a);
+write_i2c(0x3905, 0x02);
+write_i2c(0x3906, 0x10);
+write_i2c(0x3901, 0x0a);
+write_i2c(0x3731, 0x12);
+write_i2c(0x3600, 0x08); // VCM control
+write_i2c(0x3601, 0x33); // VCM control
+write_i2c(0x302d, 0x60); // system control
+write_i2c(0x3620, 0x52);
+write_i2c(0x371b, 0x20);
+write_i2c(0x471c, 0x50);
+write_i2c(0x3a13, 0x43); // pre-gain = 1.047x
+write_i2c(0x3a18, 0x00); // gain ceiling
+write_i2c(0x3a19, 0xf8); // gain ceiling = 15.5x
+write_i2c(0x3635, 0x13);
+write_i2c(0x3636, 0x03);
+write_i2c(0x3634, 0x40);
+14   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x3622, 0x01);
+// 50/60Hz detection     50/60Hz 灯光条纹过滤
+write_i2c(0x3c01, 0x34); // Band auto, bit[7]
+write_i2c(0x3c04, 0x28); // threshold low sum
+write_i2c(0x3c05, 0x98); // threshold high sum
+write_i2c(0x3c06, 0x00); // light meter 1 threshold[15:8]
+write_i2c(0x3c07, 0x08); // light meter 1 threshold[7:0]
+write_i2c(0x3c08, 0x00); // light meter 2 threshold[15:8]
+write_i2c(0x3c09, 0x1c); // light meter 2 threshold[7:0]
+write_i2c(0x3c0a, 0x9c); // sample number[15:8]
+write_i2c(0x3c0b, 0x40); // sample number[7:0]
+write_i2c(0x3810, 0x00); // Timing Hoffset[11:8]
+write_i2c(0x3811, 0x10); // Timing Hoffset[7:0]
+write_i2c(0x3812, 0x00); // Timing Voffset[10:8]
+write_i2c(0x3708, 0x64);
+write_i2c(0x4001, 0x02); // BLC start from line 2
+write_i2c(0x4005, 0x1a); // BLC always update
+write_i2c(0x3000, 0x00); // enable blocks
+write_i2c(0x3004, 0xff); // enable clocks
+write_i2c(0x300e, 0x58); // MIPI power down, DVP enable
+write_i2c(0x302e, 0x00);
+write_i2c(0x4300, 0x30); // YUV 422, YUYV
+write_i2c(0x501f, 0x00); // YUV 422
+write_i2c(0x440e, 0x00);
+write_i2c(0x5000, 0xa7); // Lenc on, raw gamma on, BPC on, WPC on, CIP on
+// AEC target    自动曝光控制
+write_i2c(0x3a0f, 0x30); // stable range in high
+write_i2c(0x3a10, 0x28); // stable range in low
+write_i2c(0x3a1b, 0x30); // stable range out high
+write_i2c(0x3a1e, 0x26); // stable range out low
+write_i2c(0x3a11, 0x60); // fast zone high
+write_i2c(0x3a1f, 0x14); // fast zone low
+// Lens correction for ?   镜头补偿
+write_i2c(0x5800, 0x23);
+write_i2c(0x5801, 0x14);
+write_i2c(0x5802, 0x0f);
+write_i2c(0x5803, 0x0f);
+write_i2c(0x5804, 0x12);
+write_i2c(0x5805, 0x26);
+write_i2c(0x5806, 0x0c);
+write_i2c(0x5807, 0x08);
+write_i2c(0x5808, 0x05);
+write_i2c(0x5809, 0x05);
+write_i2c(0x580a, 0x08);
+15   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x580b, 0x0d);
+write_i2c(0x580c, 0x08);
+write_i2c(0x580d, 0x03);
+write_i2c(0x580e, 0x00);
+write_i2c(0x580f, 0x00);
+write_i2c(0x5810, 0x03);
+write_i2c(0x5811, 0x09);
+write_i2c(0x5812, 0x07);
+write_i2c(0x5813, 0x03);
+write_i2c(0x5814, 0x00);
+write_i2c(0x5815, 0x01);
+write_i2c(0x5816, 0x03);
+write_i2c(0x5817, 0x08);
+write_i2c(0x5818, 0x0d);
+write_i2c(0x5819, 0x08);
+write_i2c(0x581a, 0x05);
+write_i2c(0x581b, 0x06);
+write_i2c(0x581c, 0x08);
+write_i2c(0x581d, 0x0e);
+write_i2c(0x581e, 0x29);
+write_i2c(0x581f, 0x17);
+write_i2c(0x5820, 0x11);
+write_i2c(0x5821, 0x11);
+write_i2c(0x5822, 0x15);
+write_i2c(0x5823, 0x28);
+write_i2c(0x5824, 0x46);
+write_i2c(0x5825, 0x26);
+write_i2c(0x5826, 0x08);
+write_i2c(0x5827, 0x26);
+write_i2c(0x5828, 0x64);
+write_i2c(0x5829, 0x26);
+write_i2c(0x582a, 0x24);
+write_i2c(0x582b, 0x22);
+write_i2c(0x582c, 0x24);
+write_i2c(0x582d, 0x24);
+write_i2c(0x582e, 0x06);
+write_i2c(0x582f, 0x22);
+write_i2c(0x5830, 0x40);
+write_i2c(0x5831, 0x42);
+write_i2c(0x5832, 0x24);
+write_i2c(0x5833, 0x26);
+write_i2c(0x5834, 0x24);
+write_i2c(0x5835, 0x22);
+write_i2c(0x5836, 0x22);
+write_i2c(0x5837, 0x26);
+write_i2c(0x5838, 0x44);
+write_i2c(0x5839, 0x24);
+write_i2c(0x583a, 0x26);
+16   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x583b, 0x28);
+write_i2c(0x583c, 0x42);
+write_i2c(0x583d, 0xce); // lenc BR offset
+// AWB   自动白平衡
+write_i2c(0x5180, 0xff); // AWB B block
+write_i2c(0x5181, 0xf2); // AWB control
+write_i2c(0x5182, 0x00); // [7:4] max local counter, [3:0] max fast counter
+write_i2c(0x5183, 0x14); // AWB advanced
+write_i2c(0x5184, 0x25);
+write_i2c(0x5185, 0x24);
+write_i2c(0x5186, 0x09);
+write_i2c(0x5187, 0x09);
+write_i2c(0x5188, 0x09);
+write_i2c(0x5189, 0x75);
+write_i2c(0x518a, 0x54);
+write_i2c(0x518b, 0xe0);
+write_i2c(0x518c, 0xb2);
+write_i2c(0x518d, 0x42);
+write_i2c(0x518e, 0x3d);
+write_i2c(0x518f, 0x56);
+write_i2c(0x5190, 0x46);
+write_i2c(0x5191, 0xf8); // AWB top limit
+write_i2c(0x5192, 0x04); // AWB bottom limit
+write_i2c(0x5193, 0x70); // red limit
+write_i2c(0x5194, 0xf0); // green limit
+write_i2c(0x5195, 0xf0); // blue limit
+write_i2c(0x5196, 0x03); // AWB control
+write_i2c(0x5197, 0x01); // local limit
+write_i2c(0x5198, 0x04);
+write_i2c(0x5199, 0x12);
+write_i2c(0x519a, 0x04);
+write_i2c(0x519b, 0x00);
+write_i2c(0x519c, 0x06);
+write_i2c(0x519d, 0x82);
+write_i2c(0x519e, 0x38); // AWB control
+// Gamma    伽玛曲线
+write_i2c(0x5480, 0x01); // Gamma bias plus on, bit[0]
+write_i2c(0x5481, 0x08);
+write_i2c(0x5482, 0x14);
+write_i2c(0x5483, 0x28);
+write_i2c(0x5484, 0x51);
+write_i2c(0x5485, 0x65);
+write_i2c(0x5486, 0x71);
+write_i2c(0x5487, 0x7d);
+write_i2c(0x5488, 0x87);
+write_i2c(0x5489, 0x91);
+17   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x548a, 0x9a);
+write_i2c(0x548b, 0xaa);
+write_i2c(0x548c, 0xb8);
+write_i2c(0x548d, 0xcd);
+write_i2c(0x548e, 0xdd);
+write_i2c(0x548f, 0xea);
+write_i2c(0x5490, 0x1d);
+// color matrix   色彩矩阵
+write_i2c(0x5381, 0x1e); // CMX1 for Y
+write_i2c(0x5382, 0x5b); // CMX2 for Y
+write_i2c(0x5383, 0x08); // CMX3 for Y
+write_i2c(0x5384, 0x0a); // CMX4 for U
+write_i2c(0x5385, 0x7e); // CMX5 for U
+write_i2c(0x5386, 0x88); // CMX6 for U
+write_i2c(0x5387, 0x7c); // CMX7 for V
+write_i2c(0x5388, 0x6c); // CMX8 for V
+write_i2c(0x5389, 0x10); // CMX9 for V
+write_i2c(0x538a, 0x01); // sign[9]
+write_i2c(0x538b, 0x98); // sign[8:1]
+// UV adjust   UV色彩饱和度调整
+write_i2c(0x5580, 0x06); // saturation on, bit[1]
+write_i2c(0x5583, 0x40);
+write_i2c(0x5584, 0x10);
+write_i2c(0x5589, 0x10);
+write_i2c(0x558a, 0x00);
+write_i2c(0x558b, 0xf8);
+write_i2c(0x501d, 0x40); // enable manual offset of contrast
+// CIP  锐化和降噪
+write_i2c(0x5300, 0x08); // CIP sharpen MT threshold 1
+write_i2c(0x5301, 0x30); // CIP sharpen MT threshold 2
+write_i2c(0x5302, 0x10); // CIP sharpen MT offset 1
+write_i2c(0x5303, 0x00); // CIP sharpen MT offset 2
+write_i2c(0x5304, 0x08); // CIP DNS threshold 1
+write_i2c(0x5305, 0x30); // CIP DNS threshold 2
+write_i2c(0x5306, 0x08); // CIP DNS offset 1
+write_i2c(0x5307, 0x16); // CIP DNS offset 2
+write_i2c(0x5309, 0x08); // CIP sharpen TH threshold 1
+write_i2c(0x530a, 0x30); // CIP sharpen TH threshold 2
+write_i2c(0x530b, 0x04); // CIP sharpen TH offset 1
+write_i2c(0x530c, 0x06); // CIP sharpen TH offset 2
+write_i2c(0x5025, 0x00);
+write_i2c(0x3008, 0x02); // wake up from standby, bit[6]
+18   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+4.1.2 VGA 预览
+VGA 30帧/秒
+// YUV VGA 30fps, night mode 5fps
+// Input Clock = 24Mhz, PCLK = 56MHz
+write_i2c(0x3035, 0x11); // PLL
+write_i2c(0x3036, 0x46); // PLL
+write_i2c(0x3c07, 0x08); // light meter 1 threshold [7:0]
+write_i2c(0x3820, 0x41); // Sensor flip off, ISP flip on
+write_i2c(0x3821, 0x07); // Sensor mirror on, ISP mirror on, H binning on
+write_i2c(0x3814, 0x31); // X INC
+write_i2c(0x3815, 0x31); // Y INC
+write_i2c(0x3800, 0x00); // HS
+write_i2c(0x3801, 0x00); // HS
+write_i2c(0x3802, 0x00); // VS
+write_i2c(0x3803, 0x04); // VS
+write_i2c(0x3804, 0x0a); // HW (HE)
+write_i2c(0x3805, 0x3f); // HW (HE)
+write_i2c(0x3806, 0x07); // VH (VE)
+write_i2c(0x3807, 0x9b); // VH (VE)
+write_i2c(0x3808, 0x02); // DVPHO
+write_i2c(0x3809, 0x80); // DVPHO
+write_i2c(0x380a, 0x01); // DVPVO
+write_i2c(0x380b, 0xe0); // DVPVO
+write_i2c(0x380c, 0x07); // HTS
+write_i2c(0x380d, 0x68); // HTS
+write_i2c(0x380e, 0x03); // VTS
+write_i2c(0x380f, 0xd8); // VTS
+write_i2c(0x3813, 0x06); // Timing Voffset
+write_i2c(0x3618, 0x00);
+write_i2c(0x3612, 0x29);
+write_i2c(0x3709, 0x52);
+write_i2c(0x370c, 0x03);
+write_i2c(0x3a02, 0x17); // 60Hz max exposure, night mode 5fps
+write_i2c(0x3a03, 0x10); // 60Hz max exposure
+// banding filters are calculated automatically in camera driver
+//write_i2c(0x3a08, 0x01); // B50 step
+//write_i2c(0x3a09, 0x27); // B50 step
+//write_i2c(0x3a0a, 0x00); // B60 step
+//write_i2c(0x3a0b, 0xf6); // B60 step
+//write_i2c(0x3a0e, 0x03); // 50Hz max band
+//write_i2c(0x3a0d, 0x04); // 60Hz max band
+write_i2c(0x3a14, 0x17); // 50Hz max exposure, night mode 5fps
+write_i2c(0x3a15, 0x10); // 50Hz max exposure
+19   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x4004, 0x02); // BLC 2 lines
+write_i2c(0x3002, 0x1c); // reset JFIFO, SFIFO, JPEG
+write_i2c(0x3006, 0xc3); // disable clock of JPEG2x, JPEG
+write_i2c(0x4713, 0x03); // JPEG mode 3
+write_i2c(0x4407, 0x04); // Quantization scale
+write_i2c(0x460b, 0x35);
+write_i2c(0x460c, 0x22);
+write_i2c(0x4837, 0x22); // DVP CLK divider
+write_i2c(0x3824, 0x02); // DVP CLK divider
+write_i2c(0x5001, 0xa3); // SDE on, scale on, UV average off, color matrix on, AWB on
+write_i2c(0x3503, 0x00); // AEC/AGC on
+VGA 15帧/秒
+// YUV VGA 15fps, night mode 5fps
+// Input Clock = 24Mhz, PCLK = 28MHz
+//same settings as VGA 30fps, except the following settings
+write_i2c(0x3035, 0x21); // PLL
+write_i2c(0x3a02, 0x0b); // 60Hz max exposure, night mode 5fps
+write_i2c(0x3a03, 0x88); // 60Hz max exposure
+write_i2c(0x3a14, 0x0b); // 50Hz max exposure, night mode 5fps
+write_i2c(0x3a15, 0x88); // 50Hz max exposure
+4.1.3 800x480 预览
+800x480 15帧/秒
+// 800x480 15fps, night mode 5fps
+// input clock 24Mhz, PCLK 45.6Mhz
+write_i2c(0x3035, 0x41); // PLL 
+write_i2c(0x3036, 0x72); // PLL 
+write_i2c(0x3c07, 0x08); // light meter 1 threshold[7:0]  
+write_i2c(0x3820, 0x41); // flip
+write_i2c(0x3821, 0x07); // mirror 
+write_i2c(0x3814, 0x31); // timing X inc 
+write_i2c(0x3815, 0x31); // timing Y inc 
+write_i2c(0x3800, 0x00); // HS  
+write_i2c(0x3801, 0x00); // HS  
+write_i2c(0x3802, 0x00); // VS  
+write_i2c(0x3803, 0xbe); // VS  
+write_i2c(0x3804, 0x0a); // HW (HE)
+write_i2c(0x3805, 0x3f); // HW (HE)
+write_i2c(0x3806, 0x06); // VH (VE)
+write_i2c(0x3807, 0xe4); // VH (VE)
+write_i2c(0x3808, 0x03); // DVPHO  
+write_i2c(0x3809, 0x20); // DVPHO  
+write_i2c(0x380a, 0x01); // DVPVO  
+write_i2c(0x380b, 0xe0); // DVPVO  
+write_i2c(0x380c, 0x07); // HTS 
+20   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x380d, 0x69); // HTS 
+write_i2c(0x380e, 0x03); // VTS 
+write_i2c(0x380f, 0x21); // VTS 
+write_i2c(0x3813, 0x06); // timing V offset 
+write_i2c(0x3618, 0x00);
+write_i2c(0x3612, 0x29);
+write_i2c(0x3709, 0x52);
+write_i2c(0x370c, 0x03);
+write_i2c(0x3a02, 0x09); // 60Hz max exposure, night mode 5fps
+write_i2c(0x3a03, 0x63); // 60Hz max exposure
+// banding filters are calculated automatically in camera driver
+//write_i2c(0x3a08, 0x00); // B50 step  
+//write_i2c(0x3a09, 0x78); // B50 step  
+//write_i2c(0x3a0a, 0x00); // B60 step  
+//write_i2c(0x3a0b, 0x64); // B60 step  
+//write_i2c(0x3a0e, 0x06); // 50Hz max band
+//write_i2c(0x3a0d, 0x08); // 60Hz max band
+write_i2c(0x3a14, 0x09); // 50Hz max exposure, night mode 5fps
+write_i2c(0x3a15, 0x63); // 50Hz max exposure   
+write_i2c(0x4004, 0x02); // BLC line number 
+write_i2c(0x3002, 0x1c); // reset JFIFO, SFIFO, JPG   
+write_i2c(0x3006, 0xc3); // disable clock of JPEG2x, JPEG
+write_i2c(0x4713, 0x03); // JPEG mode 3  
+write_i2c(0x4407, 0x04); // Quantization sacle  
+write_i2c(0x460b, 0x35);
+write_i2c(0x460c, 0x22);
+write_i2c(0x4837, 0x22); // MIPI global timing  
+write_i2c(0x3824, 0x02); // PCLK manual divider
+write_i2c(0x5001, 0xa3); // SDE on, CMX on, AWB on
+write_i2c(0x3503, 0x00); // AEC/AGC on
+800x480 30帧/秒
+// YUV 800x480 30fps, night mode 5fps
+// Input Clock = 24Mhz, PCLK = 91.2MHz
+//same settings as 800x480 15fps, except the following settings
+write_i2c(0x3035, 0x21); // PLL
+write_i2c(0x3a02, 0x12); // 60Hz max exposure, night mode 5fps
+write_i2c(0x3a03, 0xc6); // 60Hz max exposure
+write_i2c(0x3a14, 0x12); // 50Hz max exposure, night mode 5fps
+write_i2c(0x3a15, 0xc6); // 50Hz max exposure
+4.1.4 854x480 预览
+854x480 15帧/秒
+// 854x480 15fps, night mode 5fps
+// input clock 24Mhz, PCLK 42Mhz
+write_i2c(0x3035, 0x41); // PLL 
+21   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x3036, 0x69); // PLL 
+write_i2c(0x3c07, 0x07); // light meter 1 threshold[7:0]  
+write_i2c(0x3820, 0x41); // flip
+write_i2c(0x3821, 0x07); // mirror 
+write_i2c(0x3814, 0x31); // timing X inc 
+write_i2c(0x3815, 0x31); // timing Y inc 
+write_i2c(0x3800, 0x00); // HS  
+write_i2c(0x3801, 0x00); // HS  
+write_i2c(0x3802, 0x00); // VS  
+write_i2c(0x3803, 0xfa); // VS  
+write_i2c(0x3804, 0x0a); // HW (HE)
+write_i2c(0x3805, 0x3f); // HW (HE)
+write_i2c(0x3806, 0x06); // VH (VE)
+write_i2c(0x3807, 0xa9); // VH (VE)
+write_i2c(0x3808, 0x03); // DVPHO  
+write_i2c(0x3809, 0x56); // DVPHO  
+write_i2c(0x380a, 0x01); // DVPVO  
+write_i2c(0x380b, 0xe0); // DVPVO  
+write_i2c(0x380c, 0x07); // HTS 
+write_i2c(0x380d, 0x64); // HTS 
+write_i2c(0x380e, 0x02); // VTS 
+write_i2c(0x380f, 0xe4); // VTS 
+write_i2c(0x3813, 0x04); // timing V offset 
+write_i2c(0x3618, 0x00);
+write_i2c(0x3612, 0x29);
+write_i2c(0x3709, 0x52);
+write_i2c(0x370c, 0x03);
+write_i2c(0x3a02, 0x08); // 60Hz max exposure, night mode 5fps
+write_i2c(0x3a03, 0xac); // 60Hz max exposure   
+// banding filters are calculated automatically in camera driver
+//write_i2c(0x3a08, 0x00); // B50 step  
+//write_i2c(0x3a09, 0x6f); // B50 step  
+//write_i2c(0x3a0a, 0x00); // B60 step  
+//write_i2c(0x3a0b, 0x5c); // B60 step  
+//write_i2c(0x3a0e, 0x06); // 50Hz max band
+//write_i2c(0x3a0d, 0x08); // 60Hz max band
+write_i2c(0x3a14, 0x08); // 50Hz max exposure, night mode 5fps
+write_i2c(0x3a15, 0xac); // 50Hz max exposure   
+write_i2c(0x4004, 0x02); // BLC line number 
+write_i2c(0x3002, 0x1c); // reset JFIFO, SFIFO, JPG   
+write_i2c(0x3006, 0xc3); // disable clock of JPEG2x, JPEG
+write_i2c(0x4713, 0x03); // JPEG mode 3  
+write_i2c(0x4407, 0x04); // Quantization sacle  
+write_i2c(0x460b, 0x37);
+write_i2c(0x460c, 0x20);
+write_i2c(0x4837, 0x16); // MIPI global timing  
+write_i2c(0x3824, 0x04); // PCLK manual divider
+write_i2c(0x5001, 0xa3); // SDE on, scale on, CMX on, AWB on
+22   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x3503, 0x00); // AEC/AGC on
+854x480 30帧/秒
+// YUV 854x480 30fps, night mode 5fps
+// Input Clock = 24Mhz, PCLK = 84MHz
+//same settings as 854x480 15fps, except the following settings
+write_i2c(0x3035, 0x21); // PLL
+write_i2c(0x3a02, 0x11); // 60Hz max exposure, night mode 5fps
+write_i2c(0x3a03, 0x58); // 60Hz max exposure
+write_i2c(0x3a14, 0x11); // 50Hz max exposure, night mode 5fps
+write_i2c(0x3a15, 0x58); // 50Hz max exposure
+4.1.5 720p 视频
+720p 15帧/秒
+// 1280x720, 15fps
+// input clock 24Mhz, PCLK 42Mhz
+write_i2c(0x3035, 0x41); // PLL 
+write_i2c(0x3036, 0x69); // PLL 
+write_i2c(0x3c07, 0x07); // lightmeter 1 threshold[7:0]  
+write_i2c(0x3820, 0x41); // flip
+write_i2c(0x3821, 0x07); // mirror 
+write_i2c(0x3814, 0x31); // timing X inc 
+write_i2c(0x3815, 0x31); // timing Y inc 
+write_i2c(0x3800, 0x00); // HS  
+write_i2c(0x3801, 0x00); // HS  
+write_i2c(0x3802, 0x00); // VS  
+write_i2c(0x3803, 0xfa); // VS  
+write_i2c(0x3804, 0x0a); // HW (HE)
+write_i2c(0x3805, 0x3f); // HW (HE)
+write_i2c(0x3806, 0x06); // VH (VE)
+write_i2c(0x3807, 0xa9); // VH (VE)
+write_i2c(0x3808, 0x05); // DVPHO  
+write_i2c(0x3809, 0x00); // DVPHO  
+write_i2c(0x380a, 0x02); // DVPVO  
+write_i2c(0x380b, 0xd0); // DVPVO  
+write_i2c(0x380c, 0x07); // HTS 
+write_i2c(0x380d, 0x64); // HTS 
+write_i2c(0x380e, 0x02); // VTS 
+write_i2c(0x380f, 0xe4); // VTS 
+write_i2c(0x3813, 0x04); // timing V offset 
+write_i2c(0x3618, 0x00);
+write_i2c(0x3612, 0x29);
+write_i2c(0x3709, 0x52);
+write_i2c(0x370c, 0x03);
+write_i2c(0x3a02, 0x02); // 60Hz max exposure   
+write_i2c(0x3a03, 0xe0); // 60Hz max exposure   
+23   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+// banding filters are calculated automatically in camera driver
+//write_i2c(0x3a08, 0x00); // B50 step  
+//write_i2c(0x3a09, 0x6f); // B50 step  
+//write_i2c(0x3a0a, 0x00); // B60 step  
+//write_i2c(0x3a0b, 0x5c); // B60 step  
+//write_i2c(0x3a0e, 0x06); // 50Hz max band
+//write_i2c(0x3a0d, 0x08); // 60Hz max band
+write_i2c(0x3a14, 0x02); // 50Hz max exposure   
+write_i2c(0x3a15, 0xe0); // 50Hz max exposure   
+write_i2c(0x4004, 0x02); // BLC line number 
+write_i2c(0x3002, 0x1c); // reset JFIFO, SFIFO, JPG   
+write_i2c(0x3006, 0xc3); // disable clock of JPEG2x, JPEG
+write_i2c(0x4713, 0x03); // JPEG mode 3  
+write_i2c(0x4407, 0x04); // Quantization scale  
+write_i2c(0x460b, 0x37);   
+write_i2c(0x460c, 0x20);
+write_i2c(0x4837, 0x16); // MIPI global timing  
+write_i2c(0x3824, 0x04); // PCLK manual divider
+write_i2c(0x5001, 0x83); // SDE on, CMX on, AWB on
+write_i2c(0x3503, 0x00); // AEC/AGC on
+720p 30帧/秒
+// YUV 1280x720 30fps
+// Input Clock = 24Mhz, PCLK = 84MHz
+//same settings as 1280x720 15fps, except the following settings
+write_i2c(0x3035, 0x21); // PLL
+4.1.6 5百万 YCbCr 拍照
+YUV 5M 3.75帧/秒
+// YUV 2592x1944, 3.75fps
+// input clock 24Mhz, PCLK 42Mhz
+write_i2c(0x3035, 0x41); // PLL 
+write_i2c(0x3036, 0x69); // PLL 
+write_i2c(0x3c07, 0x07); // lightm eter 1 threshold[7:0]  
+write_i2c(0x3820, 0x40); // flip
+write_i2c(0x3821, 0x06); // mirror 
+write_i2c(0x3814, 0x11); // timing X inc 
+write_i2c(0x3815, 0x11); // timing Y inc 
+write_i2c(0x3800, 0x00); // HS  
+write_i2c(0x3801, 0x00); // HS  
+write_i2c(0x3802, 0x00); // VS  
+write_i2c(0x3803, 0x00); // VS  
+write_i2c(0x3804, 0x0a); // HW (HE)
+write_i2c(0x3805, 0x3f); // HW (HE)
+write_i2c(0x3806, 0x07); // VH (VE)
+write_i2c(0x3807, 0x9f); // VH (VE)
+24   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x3808, 0x0a); // DVPHO  
+write_i2c(0x3809, 0x20); // DVPHO  
+write_i2c(0x380a, 0x07); // DVPVO  
+write_i2c(0x380b, 0x98); // DVPVO  
+write_i2c(0x380c, 0x0b); // HTS 
+write_i2c(0x380d, 0x1c); // HTS 
+write_i2c(0x380e, 0x07); // VTS 
+write_i2c(0x380f, 0xb0); // VTS 
+write_i2c(0x3813, 0x04); // timing V offset 
+write_i2c(0x3618, 0x04);
+write_i2c(0x3612, 0x2b);
+write_i2c(0x3709, 0x12);
+write_i2c(0x370c, 0x00);
+// banding filters are calculated automatically in camera driver
+//write_i2c(0x3a02, 0x07); // 60Hz max exposure   
+//write_i2c(0x3a03, 0xae); // 60Hz max exposure   
+//write_i2c(0x3a08, 0x01); // B50 step  
+//write_i2c(0x3a09, 0x27); // B50 step  
+//write_i2c(0x3a0a, 0x00); // B60 step  
+//write_i2c(0x3a0b, 0xf6); // B60 step  
+//write_i2c(0x3a0e, 0x06); // 50Hz max band
+//write_i2c(0x3a0d, 0x08); // 60Hz max band
+//write_i2c(0x3a14, 0x07); // 50Hz max exposure   
+//write_i2c(0x3a15, 0xae); // 50Hz max exposure   
+write_i2c(0x4004, 0x06); // BLC line number 
+write_i2c(0x3002, 0x1c); // reset JFIFO, SFIFO, JPG   
+write_i2c(0x3006, 0xc3); // disable clock of JPEG2x, JPEG
+write_i2c(0x4713, 0x02); // JPEG mode 3  
+write_i2c(0x4407, 0x0c); // Quantization sacle  
+write_i2c(0x460b, 0x37);
+write_i2c(0x460c, 0x20);
+write_i2c(0x4837, 0x2c); // MIPI global timing  
+write_i2c(0x3824, 0x01); // PCLK manual divider
+write_i2c(0x5001, 0x83); // SDE on, CMX on, AWB on
+write_i2c(0x3503, 0x03);  
+YUV 5M 5帧/秒
+// YUV 2592x1944 5fps
+// Input Clock = 24Mhz, PCLK = 56MHz
+//same settings as 2592x1944 3.75fps, except the following settings
+write_i2c(0x3035, 0x21); // PLL
+write_i2c(0x3036, 0x46); // PLL
+YUV 5M 7.5帧/秒
+// YUV 2592x1944 7.5fps
+// Input Clock = 24Mhz, PCLK = 84MHz
+//same settings as 2592x1944 3.75fps, except the following settings
+write_i2c(0x3035, 0x21); // PLL
+25   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x3036, 0x69); // PLL
+4.1.7 5百万 压缩格式 拍照
+// JPEG, 2592x1944 fixed size, 15fps
+// Input clock = 24Mhz, PCLK = 42 MHz
+write_i2c(0x3035, 0x11); // PLL 
+write_i2c(0x3036, 0x69); // PLL 
+write_i2c(0x3c07, 0x07); // lightmeter 1 threshold[7:0]  
+write_i2c(0x3820, 0x40); // flip
+write_i2c(0x3821, 0x26); // mirror 
+write_i2c(0x3814, 0x11); // timing X inc 
+write_i2c(0x3815, 0x11); // timing Y inc 
+write_i2c(0x3800, 0x00); // HS  
+write_i2c(0x3801, 0x00); // HS  
+write_i2c(0x3802, 0x00); // VS  
+write_i2c(0x3803, 0x00); // VS  
+write_i2c(0x3804, 0x0a); // HW (HE)
+write_i2c(0x3805, 0x3f); // HW (HE)
+write_i2c(0x3806, 0x07); // VH (VE)
+write_i2c(0x3807, 0x9f); // VH (VE)
+write_i2c(0x3808, 0x0a); // DVPHO  
+write_i2c(0x3809, 0x20); // DVPHO  
+write_i2c(0x380a, 0x07); // DVPVO  
+write_i2c(0x380b, 0x98); // DVPVO  
+write_i2c(0x380c, 0x0b); // HTS 
+write_i2c(0x380d, 0x1c); // HTS 
+write_i2c(0x380e, 0x07); // VTS 
+write_i2c(0x380f, 0xb0); // VTS 
+write_i2c(0x3813, 0x04); // timing V offset 
+write_i2c(0x3618, 0x04);
+write_i2c(0x3612, 0x2b);
+write_i2c(0x3709, 0x12);
+write_i2c(0x370c, 0x00);
+/// banding filters are calculated automatically in camera driver
+/write_i2c(0x3a02, 0x07); // 60Hz max exposure   
+//write_i2c(0x3a03, 0xae); // 60Hz max exposure   
+//write_i2c(0x3a08, 0x01); // B50 step  
+//write_i2c(0x3a09, 0x27); // B50 step  
+//write_i2c(0x3a0a, 0x00); // B60 step  
+//write_i2c(0x3a0b, 0xf6); // B60 step  
+//write_i2c(0x3a0e, 0x06); // 50Hz max band
+//write_i2c(0x3a0d, 0x08); // 60Hz max band
+//write_i2c(0x3a14, 0x07); // 50Hz max exposure   
+//write_i2c(0x3a15, 0xae); // 50Hz max exposure   
+write_i2c(0x4004, 0x06); // BLC line number 
+write_i2c(0x3002, 0x00); // reset JFIFO, SFIFO, JPG   
+write_i2c(0x3006, 0xff); // disable clock of JPEG2x, JPEG
+26   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x4713, 0x02); // JPEG mode 2
+write_i2c(0x4407, 0x04); // Quantization sacle  
+write_i2c(0x460b, 0x35);
+write_i2c(0x460c, 0x22);
+write_i2c(0x4837, 0x16); // MIPI global timing  
+write_i2c(0x3824, 0x04); // PCLK manual divider
+write_i2c(0x5001, 0x83); // SDE on, CMX on, AWB on  
+write_i2c(0x3503, 0x03);  
+4.2 信号极性
+  为得到正确的图像，OV5640传感器的视频信号极性与基带芯片或ISP 必须设置成一致。
+信号 寄存器 功能
+VSYNC 0x4740[0] 1 – Vsync为高时输出数据有效
+0 – Vsync为低时输出数据有效
+PCLK 0x4740[5] 1 – 数据在下降沿输出
+0 – 数据在上升沿输出
+HREF 0x4740[1] 0 – Href为高时输出数据有效
+1 – Href为低时输出数据有效
+4.3 驱动能力
+寄存器 功能
+0x302c[7:6] 00 – 1x
+01 – 2x
+10 – 3x
+11 – 4x
+4.4 I/O 控制
+信号 输入/高阻态 输出数据路径 输出 - 0 输出 - 1
+D[9:0] 0x3017[3:0]=0x0
+0x3018[7:2]=0x0
+0x3017[3:0]=0xf
+0x3018[7:2]=0x3f
+0x301d[3:0]=0x0
+0x301e[7:2]=0x0
+0x3017[3:0]=0xf
+0x3018[7:2]=0x3f
+0x301d[3:0]=0xf
+0x301e[7:2]=0x3f
+0x301a[3:0]=0x0
+0x301b[7:2]=0x0
+0x3017[3:0]=0xf
+0x3018[7:2]=0x3f
+0x301d[3:0]=0xf
+0x301e[7:2]=0x3f
+0x301a[3:0]=0xf
+0x301b[7:2]=0x3f
+Vsync 0x3017[6]=0 0x3017[6]=1
+0x301d[6]=0
+0x3017[6]=1
+0x301d[6]=1
+0x301a[6]=0
+0x3017[6]=1
+0x301d[6]=1
+0x301a[6]=1
+Href 0x3017[5]=0 0x3017[5]=1
+0x301d[5]=0
+0x3017[5]=1
+0x301d[5]=1
+0x301a[5]=0
+0x3017[5]=1
+0x301d[5]=1
+0x301a[5]=1
+27   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+PCLK 0x3017[4]=0 0x3017[4]=1
+0x301d[4]=0
+0x3017[4]=1
+0x301d[4]=1
+0x301a[4]=0
+0x3017[4]=1
+0x301d[4]=1
+0x301a[4]=1
+Strobe 0x3016[1]=0 0x3016[1]=1
+0x301c[1]=0
+0x3016[1]=1
+0x301c[1]=1
+0x3019[1]=0
+0x3016[1]=1
+0x301c[1]=1
+0x3019[1]=1
+FREX 0x3017[7]=0 0x3017[7]=1
+0x301d[7]=0
+0x3017[7]=1
+0x301d[7]=1
+0x301a[7]=0
+0x3017[7]=1
+0x301d[7]=1
+0x301a[7]=1
+GPIO1 0x3018[1]=0 0x3018[1]=1
+0x301e[1]=0
+0x3018[1]=1
+0x301e[1]=1
+0x301b[1]= 0
+0x3018[1]=1
+0x301e[1]=1
+0x301b[1]= 0
+GPIO0 0x3018[0]=0 0x3018[0]=1
+0x301e[0]=0
+0x3018[0]=1
+0x301e[0]=1
+0x301b[0]= 0
+0x3018[0]=1
+0x301e[0]=1
+0x301b[0]= 0
+注:
+  1. 如果任引脚在模组或系统中开路，引脚状态须设置为输出。
+  2. 如果任何引脚与其他设备共用总线，当OV5640处于低功耗状态而由其他设备控制总线
+时，引脚须设置为输入/高阻态；当OV5640和其他设备都处于低功耗状态时，其中须有一个
+引脚状态设置为输出以控制总线，而其他共用引脚设置为输入/高阻态。
+4.5 YUV 序列
+  为得到正确的图像，OV5640输出图像的YUV 序列必须与基带芯片或ISP匹配。
+0x4300[0:1] 控制 YUV 输出顺序
+//Y U Y V
+write_i2c(0x4300, 0x30); 
+//Y V Y U
+write_i2c(0x4300, 0x31);
+//V Y U Y
+write_i2c(0x4300, 0x33);
+//U Y V Y
+write_i2c(0x4300, 0x32);
+4.6 镜像和翻转
+  因为OV5640 是一款BSI 图像传感器, 成像光线是从芯片背面射入的，所以原始生成的图
+像看起来是左右相反的，故此需要对图像做镜像处理使其显示正常。
+28   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+i2c_salve_Address = 0x78;
+MIRROR (default)   镜像（默认）
+reg3820 = read_i2c(0x3820);
+reg3820 = reg3820 & 0xf9; // flip off
+write_i2c(0x3820, reg3820);
+reg3821 = read_i2c(0x3821);
+reg3821 = reg3821 | 0x06; // mirror on
+write_i2c(0x3821, reg3821);
+FLIP   翻转
+reg3820 = read_i2c(0x3820);
+reg3820 = reg3820 | 0x06; // flip on
+write_i2c(0x3820, reg3820);
+reg3821 = read_i2c(0x3821);
+reg3821 = reg3821 & 0xf9; // mirror off
+write_i2c(0x3821, reg3821);
+MIRROR&FLIP  镜像加翻转
+reg3820 = read_i2c(0x3820);
+reg3820 = reg3820 | 0x06; // flip on
+write_i2c(0x3820, reg3820);
+reg3821 = read_i2c(0x3821);
+reg3821 = reg3821 | 0x06; // mirror on
+write_i2c(0x3821, reg3821)
+Normal  正常
+reg3820 = read_i2c(0x3820);
+reg3820 = reg3820 & 0xf9; // flip off
+write_i2c(0x3820, reg3820);
+reg3821 = read_i2c(0x3821);
+reg3821 = reg3821 & 0xf9; // mirror off
+write_i2c(0x3821, reg3821);
+29   OmniVision公司机密
+MIRROR
+FLIP
+MIRROR&FLIP
+NORML 
+OV5640 自动对焦成像模组应用指南
+4.7 测试图案
+Color bar  彩色条
+write_i2c(0x503d, 0x80);
+write_i2c(0x4741, 0x00);
+ 
+Color square   彩色四方形
+write_i2c(0x503d, 0x82);
+write_i2c(0x4741, 0x0);
+4.8 去除灯光条纹
+  OV5640_set_bandingfilter() 功能可在camera驱动中自动设置banding filters（灯光条纹过
+滤）。
+  去除灯光条纹是通过将OV5640曝光时间设置为 n
+100  ( n
+120  当交流电频率为60Hz时) 
+秒来实现的。banding filter 数值明确了OV5640为得到 n
+100  ( n
+120  60Hz) 秒的曝光时间
+所对应的曝光行数。
+Banding _filter _50hz=
+1
+100
+line _period =
+1
+100
+HTS×sysclk = sysclk
+HTS ×100
+Banding _filter _60hz=
+1
+120
+line _period =
+1
+120
+HTS×sysclk = sysclk
+HTS×120
+  HTS = register {0x380c, 0x380d}
+30   OmniVision公司机密
+Color bar
+Color square
+OV5640 自动对焦成像模组应用指南
+  sysclk 需由OV5640_get_sysclk() 功能算得。
+31   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+4.9 用户界面功能
+4.9.1 亮度
+亮度 +4
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x40);  
+write_i2c(0x5588, 0x01);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+亮度 +3 
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x30);  
+write_i2c(0x5588, 0x01);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+亮度 +2
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x20);  
+write_i2c(0x5588, 0x01);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+亮度 +1 
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x10);  
+write_i2c(0x5588, 0x01);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+缺省亮度 
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x00);  
+write_i2c(0x5588, 0x01);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+亮度 -1
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x10);  
+write_i2c(0x5588, 0x09);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+ 
+32   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+亮度 -2
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x20);  
+write_i2c(0x5588, 0x09);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+亮度 -3
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x30);  
+write_i2c(0x5588, 0x09);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+亮度 -4
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5587, 0x40);  
+write_i2c(0x5588, 0x09);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+4.9.2 对比度
+对比度  +3
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5586, 0x2c); 
+write_i2c(0x5585, 0x1c); 
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+对比度  +2
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5586, 0x28); 
+write_i2c(0x5585, 0x18); 
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+对比度  +1
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5586, 0x24);
+write_i2c(0x5585, 0x10);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+33   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+缺省对比度 
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5586, 0x20);
+write_i2c(0x5585, 0x00);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+对比度  -1
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5586, 0x1c);
+write_i2c(0x5585, 0x1c);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+对比度  -2
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5586, 0x18);
+write_i2c(0x5585, 0x18);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+对比度  -3
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5586, 0x14);
+write_i2c(0x5585, 0x14);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+4.9.3 色彩饱和度
+色彩饱和度  +3
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5381, 0x1c); 
+write_i2c(0x5382, 0x5a); 
+write_i2c(0x5383, 0x06);  
+write_i2c(0x5384, 0x2b); 
+write_i2c(0x5385, 0xab); 
+write_i2c(0x5386, 0xd6); 
+write_i2c(0x5387, 0xda); 
+write_i2c(0x5388, 0xd6); 
+write_i2c(0x5389, 0x04); 
+write_i2c(0x538b, 0x98); 
+write_i2c(0x538a, 0x01); 
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+34   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+色彩饱和度  +2
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5381, 0x1c); 
+write_i2c(0x5382, 0x5a); 
+write_i2c(0x5383, 0x06);  
+write_i2c(0x5384, 0x24); 
+write_i2c(0x5385, 0x8f); 
+write_i2c(0x5386, 0xb3); 
+write_i2c(0x5387, 0xb6); 
+write_i2c(0x5388, 0xb3); 
+write_i2c(0x5389, 0x03); 
+write_i2c(0x538b, 0x98); 
+write_i2c(0x538a, 0x01); 
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+色彩饱和度  +1
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5381, 0x1c); 
+write_i2c(0x5382, 0x5a); 
+write_i2c(0x5383, 0x06);  
+write_i2c(0x5384, 0x1f); 
+write_i2c(0x5385, 0x7a); 
+write_i2c(0x5386, 0x9a); 
+write_i2c(0x5387, 0x9c); 
+write_i2c(0x5388, 0x9a); 
+write_i2c(0x5389, 0x02); 
+write_i2c(0x538b, 0x98); 
+write_i2c(0x538a, 0x01);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+缺省色彩饱和度
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5381, 0x1c); 
+write_i2c(0x5382, 0x5a); 
+write_i2c(0x5383, 0x06); 
+write_i2c(0x5384, 0x1a); 
+write_i2c(0x5385, 0x66); 
+write_i2c(0x5386, 0x80); 
+write_i2c(0x5387, 0x82); 
+write_i2c(0x5388, 0x80); 
+write_i2c(0x5389, 0x02); 
+write_i2c(0x538b, 0x98); 
+write_i2c(0x538a, 0x01); 
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+35   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+色彩饱和度  -1
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5381, 0x1c); 
+write_i2c(0x5382, 0x5a); 
+write_i2c(0x5383, 0x06); 
+write_i2c(0x5384, 0x15); 
+write_i2c(0x5385, 0x52); 
+write_i2c(0x5386, 0x66); 
+write_i2c(0x5387, 0x68); 
+write_i2c(0x5388, 0x66); 
+write_i2c(0x5389, 0x02); 
+write_i2c(0x538b, 0x98); 
+write_i2c(0x538a, 0x01); 
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+色彩饱和度  -2
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5381, 0x1c); 
+write_i2c(0x5382, 0x5a); 
+write_i2c(0x5383, 0x06); 
+write_i2c(0x5384, 0x10); 
+write_i2c(0x5385, 0x3d); 
+write_i2c(0x5386, 0x4d); 
+write_i2c(0x5387, 0x4e); 
+write_i2c(0x5388, 0x4d); 
+write_i2c(0x5389, 0x01); 
+write_i2c(0x538b, 0x98); 
+write_i2c(0x538a, 0x01);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+色彩饱和度  -3
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5381, 0x1c); 
+write_i2c(0x5382, 0x5a); 
+write_i2c(0x5383, 0x06); 
+write_i2c(0x5384, 0x0c); 
+write_i2c(0x5385, 0x30); 
+write_i2c(0x5386, 0x3d); 
+write_i2c(0x5387, 0x3e); 
+write_i2c(0x5388, 0x3d); 
+write_i2c(0x5389, 0x01); 
+write_i2c(0x538b, 0x98); 
+write_i2c(0x538a, 0x01);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+36   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+4.9.4 EV  曝光补偿
+EV  +3
+write_i2c(0x3a0f, 0x60);
+write_i2c(0x3a10, 0x58);
+write_i2c(0x3a11, 0xa0);
+write_i2c(0x3a1b, 0x60);
+write_i2c(0x3a1e, 0x58);
+write_i2c(0x3a1f, 0x20);
+EV  +2
+write_i2c(0x3a0f, 0x50);
+write_i2c(0x3a10, 0x48);
+write_i2c(0x3a11, 0x90);
+write_i2c(0x3a1b, 0x50);
+write_i2c(0x3a1e, 0x48);
+write_i2c(0x3a1f, 0x20);
+EV  +1
+write_i2c(0x3a0f, 0x40);
+write_i2c(0x3a10, 0x38);
+write_i2c(0x3a11, 0x71);
+write_i2c(0x3a1b, 0x40);
+write_i2c(0x3a1e, 0x38);
+write_i2c(0x3a1f, 0x10);
+EV  Standard
+write_i2c(0x3a0f, 0x38);
+write_i2c(0x3a10, 0x30);
+write_i2c(0x3a11, 0x61);
+write_i2c(0x3a1b, 0x38); 
+write_i2c(0x3a1e, 0x30);
+write_i2c(0x3a1f, 0x10);
+EV  -1
+write_i2c(0x3a0f, 0x30);
+write_i2c(0x3a10, 0x28);
+write_i2c(0x3a11, 0x61);
+write_i2c(0x3a1b, 0x30);
+write_i2c(0x3a1e, 0x28);
+write_i2c(0x3a1f, 0x10);
+EV  -2
+write_i2c(0x3a0f, 0x20);
+write_i2c(0x3a10, 0x18);
+write_i2c(0x3a11, 0x41);
+write_i2c(0x3a1b, 0x20);
+write_i2c(0x3a1e, 0x18);
+37   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x3a1f, 0x10);
+EV  -3
+write_i2c(0x3a0f, 0x10);
+write_i2c(0x3a10, 0x08);
+write_i2c(0x3a1b, 0x10);
+write_i2c(0x3a1e, 0x08);
+write_i2c(0x3a11, 0x20);
+write_i2c(0x3a1f, 0x10);
+4.9.5 环境光模式
+Auto  自动
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x3406, 0x00); 
+write_i2c(0x3400, 0x04); 
+write_i2c(0x3401, 0x00);
+write_i2c(0x3402, 0x04); 
+write_i2c(0x3403, 0x00); 
+write_i2c(0x3404, 0x04); 
+write_i2c(0x3405, 0x00);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // lanuch group 3
+Sunny  日光
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x3406, 0x01); 
+write_i2c(0x3400, 0x06); 
+write_i2c(0x3401, 0x1c);
+write_i2c(0x3402, 0x04); 
+write_i2c(0x3403, 0x00); 
+write_i2c(0x3404, 0x04); 
+write_i2c(0x3405, 0xf3);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // lanuch group 3
+Office  办公室
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x3406, 0x01); 
+write_i2c(0x3400, 0x05); 
+write_i2c(0x3401, 0x48);
+write_i2c(0x3402, 0x04); 
+write_i2c(0x3403, 0x00); 
+write_i2c(0x3404, 0x07); 
+write_i2c(0x3405, 0xcf);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // lanuch group 3
+38   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+Cloudy  阴天
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x3406, 0x01); 
+write_i2c(0x3400, 0x06); 
+write_i2c(0x3401, 0x48);
+write_i2c(0x3402, 0x04); 
+write_i2c(0x3403, 0x00); 
+write_i2c(0x3404, 0x04); 
+write_i2c(0x3405, 0xd3);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // lanuch group 3
+Home  室内
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x3406, 0x01); 
+write_i2c(0x3400, 0x04); 
+write_i2c(0x3401, 0x10);
+write_i2c(0x3402, 0x04); 
+write_i2c(0x3403, 0x00); 
+write_i2c(0x3404, 0x08); 
+write_i2c(0x3405, 0x40);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // lanuch group 3
+4.9.6 特效
+Normal (off)   正常
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5580, 0x06);
+write_i2c(0x5583, 0x40);// sat U
+write_i2c(0x5584, 0x10);// sat V
+write_i2c(0x5003, 0x08);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+Blueish (cool light)  冷色
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5580, 0x1e);
+write_i2c(0x5583, 0xa0);
+write_i2c(0x5584, 0x40);
+write_i2c(0x5003, 0x08);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+39   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+Redish (warm)  暖色
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5580, 0x1e);
+write_i2c(0x5583, 0x80);
+write_i2c(0x5584, 0xc0);
+write_i2c(0x5003, 0x08);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+Black and white  黑白
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5580, 0x1e);
+write_i2c(0x5583, 0x80);
+write_i2c(0x5584, 0x80);
+write_i2c(0x5003, 0x08);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+Sepia  泛黄
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5580, 0x1e);
+write_i2c(0x5583, 0x40);
+write_i2c(0x5584, 0xa0);
+write_i2c(0x5003, 0x08);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+Negative  反色
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5580, 0x40);
+write_i2c(0x5003, 0x08);
+write_i2c(0x5583, 0x40);// sat U
+write_i2c(0x5584, 0x10);// sat V
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+Greenish  偏绿
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5580, 0x1e);
+write_i2c(0x5583, 0x60);
+write_i2c(0x5584, 0x60);
+write_i2c(0x5003, 0x08);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+Overexposure  过曝
+write_i2c(0x3212, 0x03);// start group 3
+40   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x5580, 0x1e);
+write_i2c(0x5583, 0xf0);
+write_i2c(0x5584, 0xf0);
+write_i2c(0x5003, 0x08);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+Solarize  正负片叠加
+write_i2c(0x3212, 0x03);// start group 3
+write_i2c(0x5580, 0x06);
+write_i2c(0x5583, 0x40);// sat U
+write_i2c(0x5584, 0x10);// sat V
+write_i2c(0x5003, 0x09);
+write_i2c(0x3212, 0x13);// end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+4.9.7 夜景模式
+  进入夜景模式时，将自动加入dummy lines（虚拟曝光行）以降低帧率。插入dummy 
+line（虚拟曝光行）的总行数根据光源不同分别由以下寄存器控制：0x3a02, 0x3a03（60hz 光
+源），0x3a14, 0x3a15（50hz 光源）。寄存器0x3a00 bit[2] 用来控制夜景模式的开/关切换。
+开启夜景模式
+temp = read_i2c(0x3a00);
+temp = temp | 0x04;
+write_i2c(0x3a00, temp);
+关闭夜景模式
+temp = read_i2c(0x3a00);
+temp = temp & 0xfb;
+write_i2c(0x3a00, temp);
+4.7.8 去除灯光条纹
+  OV5640相机驱动支持自动计算灯光条纹过滤参数（banding filter），所以不用再进行手动
+设置。有以下四种设置可供选择：
+Off   关闭
+temp = read_i2c(0x3a00);
+temp = temp & 0xdf; // turn off banding filter
+write_i2c(0x3a00, temp);
+Manual 50Hz   手动设置50Hz光源
+write_i2c(0x3c00, 04); // set to 50Hz
+write_i2c(0x3c01, 80); // manual banding filter
+41   OmniVision公司机密
+
+OV5640 自动对焦成像模组应用指南
+temp = read_i2c(0x3a00);
+temp = temp | 0x20; // turn on banding filter
+write_i2c(0x3a00, temp);
+Manual 60Hz 手动设置60Hz光源
+write_i2c(0x3c00, 00); // set to 60Hz
+write_i2c(0x3c01, 80); // manual banding filter
+temp = read_i2c(0x3a00);
+temp = temp | 0x20; // turn on banding filter
+write_i2c(0x3a00, temp);
+Auto Detection自动侦测
+write_i2c(0x3c01, 00); // auto banding filter
+temp = read_i2c(0x3a00);
+temp = temp & 0xdf; // turn off banding filter
+write_i2c(0x3a00, temp);
+  自动侦测功能参数与输入时钟相关，如果输入时钟不是24Mhz，请联络OmniVision 当地
+的FAE取得正确的设置参数。
+4.10 Auto Focus自动对焦
+4.10.1  内置自动对焦
+  OV5640由内置微型控制器完成自动对焦，并且VCM驱动器也已集成在传感器内部。微
+型控制器的控制固件（firmware）从主机下载。当固件运行后，内置微型控制器从OV5640
+传感器读得自动对焦所需的信息，计算并驱动VCM马达带动镜头到达正确的对焦位置。主
+机可以通过I2C命令控制微型控制器的各种功能。
+4.10.2  I2C自动对焦命令
+寄存器名 地址 描述 值
+CMD_MAIN 0x3022 AF主命令寄存器 0x03 - 触发自动对焦过程
+0x06 - 暂停对焦过程
+0x08 - 释放马达回初始状态
+0x12 - 重设对焦区域
+0x00 – 命令完成
+CMD_ACK 0x3023 ACK of command
+命令确认
+0x00 - 命令完成
+0x01 - 命令运行中
+FW_STATUS 0x3029 Status of focus
+对焦状态
+0x7F - S_FIRWARE  
+固件已下载完毕但未运行 可能由以下
+两个原因
+42   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+微控制器关闭
+固件错误
+0x7E - S_STARTUP  
+固件初始化中
+0x70 - S_IDLEIdle 状态, 
+释放马达，镜头回到初始（对焦为无穷
+远处）位置
+0x00 - S_FOCUSING
+自动对焦中 
+0x10 S_FOCUSED 
+自动对焦完毕
+注: 微程序控制器（MCU)收到自动对焦命令后会自动将CMD_MAIN（0x3022）寄存器数据
+清零。当命令完成后会将CMD_ACK（0x3023）寄存器数据清零。
+4.10.3 AF自动对焦过程
+当使用OV5640自动对焦固件进行操作的流程，寄存器读写。 
+自动对焦流程如下:
+1. 第一次进入图像预览时 下载固件（firmware） 
+2. 拍照时 自动对焦 
+3. 拍照完毕并回到图像预览时 释放马达至初始状态（对焦为无穷远处）
+4.10.4  下载固件（download firmware）
+  OV5640初始化完成后，就可以下载AF自动对焦固件了，其操作和下载初始化参数是一
+样的。建议使用I2C多字节写入来加快固件的下载速度。
+  固件下载完成后，请检查以下寄存器：
+MCU on:0x3000 BIT6=0 BIT5=0   0x3004 BIT6=1 BIT5=1 
+AFC  on :0x3001 BIT6=0  0x3005 BIT6=1 
+4.10.5  自动对焦
+在拍摄图片流程开始之前，自动对焦必须已经完成，才能得到清晰的图像。
+1. 将0x3022寄存器写为0x03，开始单点对焦过程。
+2. 读取寄存器0x3029的状态，如果返回值为0x10，代表对焦已完成。
+3. 写寄存器0x3022为0x06，暂停对焦过程，使镜头将保持在此对焦位置。
+43   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+4.10.6  释放马达至初始状态 （对焦为无穷远处）
+拍照完毕以后，写寄存器0x3022为0x08，释放马达，镜头回到初始状态（对焦无穷远处）。
+4.11 拍照流程
+4.11.1 Shutter  快门时间
+  OV5640传感器快门时间用来控制曝光时间，其单位为行频周期（line period），在每一种
+分辨率下曝光行都是有限制的，最大能达到的快门时间值为VTS(0x380e, 0x380f) - 4  。
+快门时间对应寄存器的值为实际曝光行数的16倍，寄存器为：0x3500，0x3501，0x3502。
+快门时间 = (reg0x3500<<12) + (reg0x3501<<4) + (reg3502>>4);
+4.11.2 Gain  增益
+  增益值设置在寄存器0x350a 和 0x350b 中。
+增益 = ((reg0x350a & 03)<<4) + (reg0x350b>>4);
+4.11.3 虚拟曝光行（Dummy Lines）及虚拟像素（Dummy Pixels）
+  如果自动夜景模式开启，OV5640会自动增加虚拟曝光行。插入dummy line（虚拟曝光
+行）的总行数根据光源不同分别由以下寄存器控制：0x3a02[3:0], 0x3a03（60hz 光源），
+0x3a14[3:0], 0x3a15（50hz 光源）。
+  Dummy pixel（虚拟像素）用来调整时序，调整HTS寄存器0x380c, 0x380d可增加dummy 
+pixel（虚拟像素）。
+4.11.4 拍照流程
+4.11.4.1 自动对焦
+  触发单点自动对焦
+  暂停自动对焦过程 (保持镜头处在正确的对焦位置)
+4.11.4.2 读取预览参数
+  Read preview_shutter  读取预览_shutter
+  Read preview_gain  读取预览_gain
+44   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+  Read preview_HTS  读取预览_HTS
+  Read preview_sysclk  读取预览_sysclk
+  Read preview_binning_factor B  读取预览_binning_factor B
+4.11.4.3 改变为拍照图像分辨率
+  下载拍照设置参数。关闭AGC/AEC(自动增益控制/自动曝光控制)。
+4.11.4.4 读取拍照设置参数
+  Read capture _HTS  读取拍照_HTS
+  Read capture _VTS  读取拍照_VTS
+  Read capture_banding_filter  读取拍照_banding filter
+  Read capture SYSCLK  读取拍照 SYSCLK
+4.11.4.5 转换预览增益和曝光值为拍照增益和曝光值
+ 预览和拍照的快门曝光时间必须一致。换算公式如下：
+拍照_快门时间=预览_快门时间× 拍照_PCLK
+预览_PCLK × 预览_HTS
+拍照_HTS ×B
+拍照_增益 =预览_增益
+  其中B 是像和并参数。OV5640 中B值为1。
+  在光照较强的情况下，'当预览_快门时间'为1，由于整数计算的误差，会得到'拍照_快门
+时间'等于0。为避免这种情况，可以用以下公式计算：
+拍照_快门时间=预览_快门时间  
+拍照_增益 =预览_增益 × 拍照_PCLK
+预览_PCLK × 预览_HTS
+拍照_HTS ×B
+4.11.4.6 增益值转换为曝光值，拍照参数下灯光条纹过滤
+  gain_exposure = capture_shutter*capture_gain;  
+  If ( gain_exposure < capture_banding_filter) {
+// capture_shutter < 1/100
+capture_shutter = gain_exposure;
+capture_gain = gain_exposure/capture_shutter;
+  }
+  else {
+if ( gain_exposure > (capture_VTS -4)) {
+// exposure reach maximum
+capture_shutter = capture_VTS -4;
+capture_gain = gain_exposure/capture_shutter;
+}
+45   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+else {
+// 1/100 < exposure < max, capture_shutter = N * capture_banding_filter
+capture_shutter = int (gain_exposure/capture_banding_filter) * capture_banding_filter;
+capture_gain = gain_exposure/capture_shutter;
+}
+  }
+4.11.4.7 写入增益（gain）/曝光值（shutter）
+  Write capture_gain  写入拍照_gain
+  Write capture_shutter  写入拍照_shutter
+4.11.4.8 拍照
+等待两个Vsync 后。
+抓取第三帧图像。
+4.11.4.9 返回预览模式
+// 释放马达，使镜头回到初始状态（对焦无穷远处）。
+//写入预览设置参数，返回预览状态。
+//开启AGC/AEC。
+write_i2c(0x3503, 0);       写寄存器0x3503为0。
+4.12 Scale and Zoom 缩放和变焦
+使用缩放和变焦功能，OV5640 ISP寄存器 0x5001[5] 必须设置为 '1'。为保证缩放/变焦
+过程比较平滑，建议使用I2C群写入指令。 
+4.12.1 Scale 缩放
+  OV5640 ISP 支持图像缩小，可以得到任何小于2592x1944像素的图像尺寸。如果是按照
+与全尺寸图像宽高比（4:3）相同的比例进行缩小，那么调整寄存器DVPHO 和 DVPVO 即
+可得到想要的尺寸。例如，要想得到分辨率为2048x1536的输出，其设置如下：
+DVPHO = 2048
+DVPVO = 1536
+H offset = 16
+Y offset = 4
+write_i2c(0x3212, 0x03); // start group 3
+write_i2c(0x3808, 0x08); // DVPHO = 2048
+write_i2c(0x3809, 0x00); // DVP HO
+46   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x380a, 0x06); // DVPVO = 1536
+write_i2c(0x380b, 0x00); // DVPVO
+write_i2c(0x3810, 0x00); // H offset = 16
+write_i2c(0x3811, 0x10); // H offset
+write_i2c(0x3812, 0x00); // V offset = 4
+write_i2c(0x3813, 0x04); // V offset
+write_i2c(0x3212, 0x13); // end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+  如果缩小尺寸与全尺寸图像宽高比（4:3）不同，那么还需调整X offset 和Y offset ，对初
+始图像进行修剪以得到想要的图像尺寸。比如，要得到分辨率为1280x1024 的输出：
+DVPHO = 1280
+DVPVO = 1024
+input image height = 1944
+input image width = 1944 * 1280/1024 = 2430
+X offset = 16
+Y offset = 4 + (2592 - 2430)/2 = 85
+write_i2c(0x3212, 0x03); // start group 3
+write_i2c(0x3808, 0x05); // DVPHO = 1280
+write_i2c(0x3809, 0x00); // DVP HO
+write_i2c(0x380a, 0x04); // DVPVO = 1024
+write_i2c(0x380b, 0x00); // DVPVO
+write_i2c(0x3810, 0x00); // H offset = 16
+write_i2c(0x3811, 0x10); // H offset
+write_i2c(0x3812, 0x00); // V offset = 85
+write_i2c(0x3813, 0x55); // V offset
+write_i2c(0x3212, 0x13); // end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+4.12.2 DIGITAL ZOOM 数码变焦
+  对于任何小于2592x1944尺寸的图像，在保持图像宽高比与当前一致的情况下增加X 
+offset 和Y offset，即可得到数码变焦的效果。比如当输出图像尺寸为1600x1200像素时：
+Digital Zoom 1x （1倍）
+DVPHO = 1600
+DVPVO = 1200
+X offset = 16
+Y offset = 4
+write_i2c(0x3212, 0x03); // start group 3
+write_i2c(0x3808, 0x06); // DVPHO = 1600
+write_i2c(0x3809, 0x40); // DVP HO
+write_i2c(0x380a, 0x04); // DVPVO = 1200
+47   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+write_i2c(0x380b, 0xb0); // DVPVO
+write_i2c(0x3810, 0x00); // H offset = 16
+write_i2c(0x3811, 0x10); // H offset
+write_i2c(0x3812, 0x00); // V offset = 4
+write_i2c(0x3813, 0x04); // V offset
+write_i2c(0x3212, 0x13); // end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+Digital Zoom 1.5x  (1.5倍）
+DVPHO = 1600
+DVPVO = 1200
+input image width = 2592/1.5 = 1728 > 1600
+input image height = 1944/1.5 = 1296 > 1200
+X offset = 16 + (2592 – 1728)/2 = 448 
+Y offset =  4 + (1944 – 1296)/2 = 328
+write_i2c(0x3212, 0x03); // start group 3
+write_i2c(0x3808, 0x06); // DVPHO = 1600
+write_i2c(0x3809, 0x40); // DVP HO
+write_i2c(0x380a, 0x04); // DVPVO = 1200
+write_i2c(0x380b, 0xb0); // DVPVO
+write_i2c(0x3810, 0x01); // H offset = 448
+write_i2c(0x3811, 0xc0); // H offset
+write_i2c(0x3812, 0x01); // V offset = 328
+write_i2c(0x3813, 0x48); // V offset
+write_i2c(0x3212, 0x13); // end group 3
+write_i2c(0x3212, 0xa3); // launch group 3
+48   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+附录 I 摄像头驱动程序示例      
+int m_iCombo_NightMode = 0;
+int XVCLK = 2400; // real clock/10000
+int preview_sysclk, preview_HTS, preview_VTS;
+int AE_Target = 52;
+int AE_high, AE_low;
+int OV5640_init_setting()
+{
+ // initialize OV5640
+ int regInit[] = 
+ {
+//
+//OV5640 setting Version History
+//dated 04/08/2010 A02
+//--Based on v08 release
+//
+//dated 04/20/2010 A03
+//--Based on V10 release
+//
+//dated 04/22/2010 A04
+//--Based on V10 release
+//--updated ccr & awb setting
+//
+//dated 04/22/2010 A06
+//--Based on A05 release
+//--Add pg setting
+//
+//dated 05/19/2011 A09
+//--changed pchg 3708 setting
+0x3008, 0x42, // software power down
+0x3103, 0x03, // sysclk from pll
+0x3017, 0xff, // Frex, Vsync, Href, PCLK, D[9:6] output
+0x3018, 0xff, // D[5:0], GPIO[1:0] output
+0x3034, 0x1a, // PLL, MIPI 10-bit
+0x3037, 0x13, // PLL
+0x3108, 0x01, // clock divider
+0x3630, 0x36,
+0x3631, 0x0e,
+0x3632, 0xe2,
+0x3633, 0x12,
+0x3621, 0xe0,
+0x3704, 0xa0,
+0x3703, 0x5a,
+0x3715, 0x78,
+0x3717, 0x01,
+0x370b, 0x60,
+0x3705, 0x1a,
+0x3905, 0x02,
+0x3906, 0x10,
+0x3901, 0x0a,
+0x3731, 0x12,
+0x3600, 0x08, // VCM debug
+0x3601, 0x33, // VCM debug
+0x302d, 0x60, // system control
+0x3620, 0x52,
+0x371b, 0x20,
+0x471c, 0x50,
+49   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+0x3a13, 0x43, // pre-gain = 1.05x
+0x3a18, 0x00, // AEC gain ceiling = 7.75x
+0x3a19, 0x7c, // AEC gain ceiling
+0x3635, 0x13,
+0x3636, 0x03,
+0x3634, 0x40,
+0x3622, 0x01,
+//50/60Hz detection
+0x3c01, 0x34, // sum auto, band counter enable, threshold = 4
+0x3c04, 0x28, // threshold low sum
+0x3c05, 0x98, // threshold high sum
+0x3c06, 0x00, // light meter 1 threshold H
+0x3c07, 0x07, // light meter 1 threshold L
+0x3c08, 0x00, // light meter 2 threshold H
+0x3c09, 0x1c, // light meter 2 threshold L
+0x3c0a, 0x9c, // sample number H
+0x3c0b, 0x40, // sample number L
+0x3810, 0x00, // X offset
+0x3811, 0x10, // X offset
+0x3812, 0x00, // Y offset
+0x3708, 0x64,
+0x4001, 0x02, // BLC start line
+0x4005, 0x1a, // BLC always update
+0x3000, 0x00, // enable MCU, OTP
+0x3004, 0xff, // enable BIST, MCU memory, MCU, OTP, STROBE, D5060, timing, array clock
+0x300e, 0x58, // MIPI 2 lane? power down PHY HS TX, PHY LP RX, DVP enable
+0x302e, 0x00,
+0x4300, 0x30, // YUV 422, YUYV
+0x501f, 0x00, // ISP YUV 422
+0x440e, 0x00,
+0x5000, 0xa7, // LENC on, raw gamma on, BPC on, WPC on, CIP on
+//AEC target
+0x3a0f, 0x30, // stable in high
+0x3a10, 0x28, // stable in low
+0x3a1b, 0x30, // stable out high
+0x3a1e, 0x26, // stable out low
+0x3a11, 0x60, // fast zone high
+0x3a1f, 0x14, // fast zone low
+//LENC
+0x5800, 0x23,
+0x5801, 0x14,
+0x5802, 0x0f,
+0x5803, 0x0f,
+0x5804, 0x12,
+0x5805, 0x26,
+0x5806, 0x0c,
+0x5807, 0x08,
+0x5808, 0x05,
+0x5809, 0x05,
+0x580a, 0x08,
+0x580b, 0x0d,
+0x580c, 0x08,
+0x580d, 0x03,
+0x580e, 0x00,
+0x580f, 0x00,
+0x5810, 0x03,
+0x5811, 0x09,
+0x5812, 0x07,
+0x5813, 0x03,
+0x5814, 0x00,
+0x5815, 0x01,
+50   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+0x5816, 0x03,
+0x5817, 0x08,
+0x5818, 0x0d,
+0x5819, 0x08,
+0x581a, 0x05,
+0x581b, 0x06,
+0x581c, 0x08,
+0x581d, 0x0e,
+0x581e, 0x29,
+0x581f, 0x17,
+0x5820, 0x11,
+0x5821, 0x11,
+0x5822, 0x15,
+0x5823, 0x28,
+0x5824, 0x46,
+0x5825, 0x26,
+0x5826, 0x08,
+0x5827, 0x26,
+0x5828, 0x64,
+0x5829, 0x26,
+0x582a, 0x24,
+0x582b, 0x22,
+0x582c, 0x24,
+0x582d, 0x24,
+0x582e, 0x06,
+0x582f, 0x22,
+0x5830, 0x40,
+0x5831, 0x42,
+0x5832, 0x24,
+0x5833, 0x26,
+0x5834, 0x24,
+0x5835, 0x22,
+0x5836, 0x22,
+0x5837, 0x26,
+0x5838, 0x44,
+0x5839, 0x24,
+0x583a, 0x26,
+0x583b, 0x28,
+0x583c, 0x42,
+0x583d, 0xce, // LENC BR offset
+//AWB
+0x5180, 0xff, // AWB B block
+0x5181, 0xf2, // AWB control
+0x5182, 0x00, // [7:4] max local counter, [3:0] max fast counter
+0x5183, 0x14, // AWB advance
+0x5184, 0x25,
+0x5185, 0x24,
+0x5186, 0x09,
+0x5187, 0x09,
+0x5188, 0x09,
+0x5189, 0x75,
+0x518a, 0x54,
+0x518b, 0xe0,
+0x518c, 0xb2,
+0x518d, 0x42,
+0x518e, 0x3d,
+0x518f, 0x56,
+0x5190, 0x46,
+0x5191, 0xf8, // AWB top limit
+0x5192, 0x04, // AWB botton limit
+0x5193, 0x70, // Red limit
+0x5194, 0xf0, // Green Limit
+0x5195, 0xf0, // Blue limit
+51   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+0x5196, 0x03, // AWB control
+0x5197, 0x01, // local limit
+0x5198, 0x04,
+0x5199, 0x12,
+0x519a, 0x04,
+0x519b, 0x00,
+0x519c, 0x06,
+0x519d, 0x82,
+0x519e, 0x38, // AWB control
+//Gamma
+0x5480, 0x01, // BIAS plus on
+0x5481, 0x08,
+0x5482, 0x14,
+0x5483, 0x28,
+0x5484, 0x51,
+0x5485, 0x65,
+0x5486, 0x71,
+0x5487, 0x7d,
+0x5488, 0x87,
+0x5489, 0x91,
+0x548a, 0x9a,
+0x548b, 0xaa,
+0x548c, 0xb8,
+0x548d, 0xcd,
+0x548e, 0xdd,
+0x548f, 0xea,
+0x5490, 0x1d,
+//color matrix
+0x5381, 0x1e, // CMX1 for Y
+0x5382, 0x5b, // CMX2 for Y
+0x5383, 0x08, // CMX3 for Y
+0x5384, 0x0a, // CMX4 for U
+0x5385, 0x7e, // CMX5 for U
+0x5386, 0x88, // CMX6 for U
+0x5387, 0x7c, // CMX7 for V
+0x5388, 0x6c, // CMX8 for V
+0x5389, 0x10, // CMX9 for V
+0x538a, 0x01, // sign[9]
+0x538b, 0x98, // sign[8:1]
+//UV adjust
+0x5580, 0x06, // brightness on, saturation on
+0x5583, 0x40, // Sat U
+0x5584, 0x10, // Sat V
+0x5589, 0x10, // UV adjust th1
+0x558a, 0x00, // UV adjust th2[8]
+0x558b, 0xf8, // UV adjust th2[7:0]
+0x501d, 0x40, // enable manual offset in contrast
+//CIP
+0x5300, 0x08, // sharpen-MT th1
+0x5301, 0x30, // sharpen-MT th2
+0x5302, 0x10, // sharpen-MT off1
+0x5303, 0x00, // sharpen-MT off2
+0x5304, 0x08, // De-noise th1
+0x5305, 0x30, // De-noise th2
+0x5306, 0x08, // De-noise off1
+0x5307, 0x16, // De-noise off2
+0x5309, 0x08, // sharpen-TH th1
+0x530a, 0x30, // sharpen-TH th2
+0x530b, 0x04, // sharpen-TH off1
+0x530c, 0x06, // sharpen-TH off2
+52   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+0x5025, 0x00,
+0x3008, 0x02, // wake up from software power down
+ };
+ OV5640_write_i2c(0x3103, 0x11); // sysclk from pad
+ OV5640_write_i2c(0x3008, 0x82); // software reset
+ // delay 5ms
+ Delay(5);
+ // Write initialization table
+ for (int i=0; i<sizeof(regInit)/sizeof(int); i+=2)
+ {
+OV5640_write_i2c(regInit[i], regInit[i+1]);
+ }
+ return 0;
+}
+int OV5640_preview_setting()
+{
+ // set OV5640 to preview mode
+ int regPreview[] =
+ {
+// 640x480 15fps, night mode 5fps
+// Input CLock = 24Mhz
+// PCLK = 17Mhz
+0x3035, 0x21, // PLL
+0x3036, 0x46, // PLL
+0x3c07, 0x08, // lightmeter 1 threshold[7:0]
+0x3820, 0x41, // flip
+0x3821, 0x07, // mirror
+0x3814, 0x31, // timing X inc
+0x3815, 0x31, // timing Y inc
+0x3800, 0x00, // HS
+0x3801, 0x00, // HS
+0x3802, 0x00, // VS
+0x3803, 0x04, // VS
+0x3804, 0x0a, // HW (HE)
+0x3805, 0x3f, // HW (HE)
+0x3806, 0x07, // VH (VE)
+0x3807, 0x9b, // VH (VE)
+0x3808, 0x02, // DVPHO
+0x3809, 0x80, // DVPHO
+0x380a, 0x01, // DVPVO
+0x380b, 0xe0, // DVPVO
+0x380c, 0x07, // HTS
+0x380d, 0x68, // HTS
+0x380e, 0x03, // VTS
+0x380f, 0xd8, // VTS
+0x3813, 0x06, // timing V offset
+0x3618, 0x00,
+0x3612, 0x29,
+0x3709, 0x52,
+0x370c, 0x03,
+0x3a02, 0x0b, // 60Hz max exposure, night mode 5fps
+0x3a03, 0x88, // 60Hz max exposure
+0x3a14, 0x0b, // 50Hz max exposure, night mode 5fps
+0x3a15, 0x88, // 50Hz max exposure
+0x4004, 0x02, // BLC line number
+0x3002, 0x1c, // reset JFIFO, SFIFO, JPG
+0x3006, 0xc3, // disable clock of JPEG2x, JPEG
+0x4713, 0x03, // JPEG mode 3
+53   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+0x4407, 0x04, // Quantization sacle
+0x460b, 0x35,
+0x460c, 0x22,
+0x4837, 0x22, // MIPI global timing
+0x3824, 0x02, // PCLK manual divider
+0x5001, 0xa3, // SDE on, CMX on, AWB on
+0x3503, 0x00,  // AEC/AGC on
+ };
+ // Write preview table
+ for (int i=0; i<sizeof(regPreview)/sizeof(int); i+=2)
+ {
+OV5640_write_i2c(regPreview[i], regPreview[i+1]);
+ }
+ return 0;
+}
+int OV5640_video_setting()
+{
+ // set OV5640 to video mode
+ int regVideo[] =
+ {
+// input clock 24Mhz
+// PCLK 42Mhz
+0x3035, 0x41, // PLL                          
+0x3036, 0x69, // PLL                          
+0x3c07, 0x07, // lightmeter 1 threshold[7:0]  
+0x3820, 0x41, // flip                         
+0x3821, 0x07, // mirror                       
+0x3814, 0x31, // timing X inc                 
+0x3815, 0x31, // timing Y inc                 
+0x3800, 0x00, // HS                           
+0x3801, 0x00, // HS                           
+0x3802, 0x00, // VS                           
+0x3803, 0xfa, // VS                           
+0x3804, 0x0a, // HW (HE)                      
+0x3805, 0x3f, // HW (HE)                      
+0x3806, 0x06, // VH (VE)                      
+0x3807, 0xa9, // VH (VE)                      
+0x3808, 0x05, // DVPHO                        
+0x3809, 0x00, // DVPHO                        
+0x380a, 0x02, // DVPVO                        
+0x380b, 0xd0, // DVPVO                        
+0x380c, 0x07, // HTS                          
+0x380d, 0x64, // HTS                          
+0x380e, 0x02, // VTS                          
+0x380f, 0xe4, // VTS                          
+0x3813, 0x04, // timing V offset              
+0x3618, 0x00,                                
+0x3612, 0x29,                                
+0x3709, 0x52,                                
+0x370c, 0x03,                                
+0x3a02, 0x02, // 60Hz max exposure            
+0x3a03, 0xe0, // 60Hz max exposure            
+0x3a08, 0x00, // B50 step                     
+0x3a09, 0x6f, // B50 step                     
+0x3a0a, 0x00, // B60 step                     
+0x3a0b, 0x5c, // B60 step                     
+0x3a0e, 0x06, // 50Hz max band                
+0x3a0d, 0x08, // 60Hz max band                
+0x3a14, 0x02, // 50Hz max exposure            
+0x3a15, 0xe0, // 50Hz max exposure            
+0x4004, 0x02, // BLC line number              
+54   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+0x3002, 0x1c, // reset JFIFO, SFIFO, JPG      
+0x3006, 0xc3, // disable clock of JPEG2x, JPEG
+0x4713, 0x03, // JPEG mode 3                  
+0x4407, 0x04, // Quantization sacle           
+0x460b, 0x37,                               
+0x460c, 0x20,                                
+0x4837, 0x16, // MIPI global timing           
+0x3824, 0x04, // PCLK manual divider          
+0x5001, 0x83, // SDE on, CMX on, AWB on
+0x3503, 0x00, // AEC/AGC on       
+ };
+ // Write preview table
+ for (int i=0; i<sizeof(regVideo)/sizeof(int); i+=2)
+ {
+OV5640_write_i2c(regVideo[i], regVideo[i+1]);
+ }
+ return 0;
+}
+int OV5640_capture_setting()
+{
+ // set OV5640 to capture mode
+ int regCapture[] =
+ {
+// YUV Capture
+// 2592 x 1944 3.75fps
+// 24 MHz input clock, 42Mhz PCLK
+0x3035, 0x71, // PLL
+0x3036, 0x69, // PLL
+0x3c07, 0x07, // lightmeter 1 threshold[7:0]
+0x3820, 0x40, // flip
+0x3821, 0x06, // mirror
+0x3814, 0x11, // timing X inc
+0x3815, 0x11, // timing Y inc
+0x3800, 0x00, // HS
+0x3801, 0x00, // HS
+0x3802, 0x00, // VS
+0x3803, 0x00, // VS
+0x3804, 0x0a, // HW (HE)
+0x3805, 0x3f, // HW (HE)
+0x3806, 0x07, // VH (VE)
+0x3807, 0x9f, // VH (VE)
+0x3808, 0x0a, // DVPHO
+0x3809, 0x20, // DVPHO
+0x380a, 0x07, // DVPVO
+0x380b, 0x98, // DVPVO
+0x380c, 0x0b, // HTS
+0x380d, 0x1c, // HTS
+0x380e, 0x07, // VTS
+0x380f, 0xb0, // VTS
+0x3813, 0x04, // timing V offset
+0x3618, 0x04,
+0x3612, 0x2b,
+0x3709, 0x12,
+0x370c, 0x00,
+0x4004, 0x06, // BLC line number
+0x3002, 0x1c, // reset JFIFO, SFIFO, JPG
+0x3006, 0xc3, // disable clock of JPEG2x, JPEG
+0x4713, 0x02, // JPEG mode 2
+0x4407, 0x0c, // Quantization sacle
+0x460b, 0x37,
+0x460c, 0x20,
+55   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+0x4837, 0x2c, // MIPI global timing
+0x3824, 0x01, // PCLK manual divider
+0x5001, 0x83, // SDE on, CMX on, AWB on, scale off
+0x3503, 0x03,  // AEC/AGC off
+ };
+ // Write capture table
+ for (int i=0; i<sizeof(regCapture)/sizeof(int); i+=2)
+ {
+OV5640_write_i2c(regCapture[i], regCapture[i+1]);
+ }
+ return 0;
+}
+int  OV5640_af_init()
+{
+ // download firmware
+ // if supported, multiple bytes I2C writes are highly recommended.
+ for (int i=0; i<sizeof(af_firmware)/sizeof(int); i+=2)
+ {
+OVPantherDemo::WriteSCCB(0x78, af_firmware[i], af_firmware[i+1]);
+ }
+ return 0;
+}
+int  OV5640_auto_focus()
+{
+ int temp;
+ // focus
+  OV5640_write_i2c(0x3022, 0x03);
+ while(1)
+ {
+ // check status
+ temp = OV5640_read_i2c(0x3029);
+ if (temp ==0x10) return 0; // focus completed
+ }
+  return 1;
+ Delay(100);
+}
+int OV5640_get_sysclk()
+{
+ // calculate sysclk
+ int temp1, temp2;
+ int Multiplier, PreDiv, VCO, SysDiv, Pll_rdiv, Bit_div2x, sclk_rdiv, sysclk;
+ int sclk_rdiv_map[] = {
+ 1, 2, 4, 8};
+ temp1 = OV5640_read_i2c(0x3034);
+ temp2 = temp1 & 0x0f;
+ if (temp2 == 8 || temp2 == 10) {
+ Bit_div2x = temp2 / 2;
+ }
+ temp1 = OV5640_read_i2c(0x3035);
+ SysDiv = temp1>>4;
+ if(SysDiv == 0) {
+ SysDiv = 16;
+56   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+ }
+ temp1 = OV5640_read_i2c(0x3036);
+ Multiplier = temp1;
+ temp1 = OV5640_read_i2c(0x3037);
+ PreDiv = temp1 & 0x0f;
+ Pll_rdiv = ((temp1 >> 4) & 0x01) + 1;
+ temp1 = OV5640_read_i2c(0x3108);
+ temp2 = temp1 & 0x03;
+ sclk_rdiv = sclk_rdiv_map[temp2]; 
+ VCO = XVCLK * Multiplier / PreDiv;
+ sysclk = VCO / SysDiv / Pll_rdiv * 2 / Bit_div2x / sclk_rdiv;
+ return sysclk;
+}
+int OV5640_get_HTS()
+{
+ // read HTS from register settings
+ int HTS;
+ HTS = OV5640_read_i2c(0x380c);
+ HTS = (HTS<<8) + OV5640_read_i2c(0x380d);
+ return HTS;
+}
+int OV5640_get_VTS()
+{
+ // read VTS from register settings
+ int VTS;
+ VTS = OV5640_read_i2c(0x380e);
+ VTS = (VTS<<8) + OV5640_read_i2c(0x380f);
+ return VTS;
+}
+int OV5640_set_VTS(int VTS)
+{
+ // write VTS to registers
+ int temp;
+ temp = VTS & 0xff;
+ OV5640_write_i2c(0x380f, temp);
+ temp = VTS>>8;
+ OV5640_write_i2c(0x380e, temp);
+ return 0;
+}
+int OV5640_get_shutter()
+{
+ // read shutter, in number of line period
+ int shutter;
+ shutter = (OV5640_read_i2c(0x03500) & 0x0f);
+ shutter = (shutter<<8) + OV5640_read_i2c(0x3501);
+ shutter = (shutter<<4) + (OV5640_read_i2c(0x3502)>>4);
+57   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+ return shutter;
+}
+int OV5640_set_shutter(int shutter)
+{
+ // write shutter, in number of line period
+ int temp;
+ 
+ shutter = shutter & 0xffff;
+ temp = shutter & 0x0f;
+ temp = temp<<4;
+ OV5640_write_i2c(0x3502, temp);
+ temp = shutter & 0xfff;
+ temp = temp>>4;
+ OV5640_write_i2c(0x3501, temp);
+ temp = shutter>>12;
+ OV5640_write_i2c(0x3500, temp);
+ return 0;
+}
+int OV5640_get_gain16()
+{
+ // read gain, 16 = 1x
+ int gain16;
+ gain16 = OV5640_read_i2c(0x350a) & 0x03;
+ gain16 = (gain16<<8) + OV5640_read_i2c(0x350b);
+ return gain16;
+}
+int OV5640_set_gain16(int gain16)
+{
+ // write gain, 16 = 1x
+ int temp;
+ gain16 = gain16 & 0x3ff;
+ temp = gain16 & 0xff;
+ OV5640_write_i2c(0x350b, temp);
+ temp = gain16>>8;
+ OV5640_write_i2c(0x350a, temp);
+ return 0;
+}
+int OV5640_get_light_frequency()
+{
+ // get banding filter value
+ int temp, temp1, light_frequency;
+ temp = OV5640_read_i2c(0x3c01);
+ if (temp & 0x80) {
+ // manual
+ temp1 = OV5640_read_i2c(0x3c00);
+ if (temp1 & 0x04) {
+ // 50Hz
+ light_frequency = 50;
+58   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+ }
+ else {
+ // 60Hz
+ light_frequency = 60;
+ }
+ }
+ else {
+ // auto
+ temp1 = OV5640_read_i2c(0x3c0c);
+ if (temp1 & 0x01) {
+ // 50Hz
+ light_frequency = 50;
+ }
+ else {
+ // 60Hz
+ }
+ }
+ return light_frequency;
+}
+void OV5640_set_bandingfilter()
+{
+ int preview_VTS;
+ int band_step60, max_band60, band_step50, max_band50;
+ // read preview PCLK
+ preview_sysclk = OV5640_get_sysclk();
+ // read preview HTS
+ preview_HTS = OV5640_get_HTS();
+ // read preview VTS
+ preview_VTS = OV5640_get_VTS();
+ // calculate banding filter
+ // 60Hz
+ band_step60 = preview_sysclk * 100/preview_HTS * 100/120;
+ OV5640_write_i2c(0x3a0a, (band_step60 >> 8));
+ OV5640_write_i2c(0x3a0b, (band_step60 & 0xff));
+ max_band60 = int((preview_VTS-4)/band_step60);
+ OV5640_write_i2c(0x3a0d, max_band60);
+ // 50Hz
+ band_step50 = preview_sysclk * 100/preview_HTS; 
+ OV5640_write_i2c(0x3a08, (band_step50 >> 8));
+ OV5640_write_i2c(0x3a09, (band_step50 & 0xff));
+ max_band50 = int((preview_VTS-4)/band_step50);
+ OV5640_write_i2c(0x3a0e, max_band50);
+}
+int OV5640_set_AE_target(int target)
+{
+ // stable in high
+ int fast_high, fast_low;
+ AE_low = target * 23 / 25; // 0.92
+ AE_high = target * 27 / 25; // 1.08
+ fast_high = AE_high<<1;
+ if(fast_high>255)
+ fast_high = 255;
+ fast_low = AE_low>>1;
+59   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+ OV5640_write_i2c(0x3a0f, AE_high);
+ OV5640_write_i2c(0x3a10, AE_low);
+ OV5640_write_i2c(0x3a1b, AE_high);
+ OV5640_write_i2c(0x3a1e, AE_low);
+ OV5640_write_i2c(0x3a11, fast_high);
+ OV5640_write_i2c(0x3a1f, fast_low);
+ return 0;
+}
+int OV5640_init()
+{
+ // initialize OV5640
+ OV5640_init_setting();
+ return 0;
+}
+int OV5640_preview()
+{
+ // set OV5640 to preview mode
+ OV5640_preview_setting();
+ // calculate banding filter
+ OV5640_set_bandingfilter();
+ // set ae_target
+ OV5640_set_AE_target(AE_Target);
+ // update night mode setting
+ OV5640_set_night_mode(m_iCombo_NightMode);
+ // download auto focus firmware
+ OV5640_af_init();
+ return 0;
+}
+int OV5640_return_to_preview()
+{
+ // release focus
+ OV5640_write_i2c(0x3022, 0x08);
+ // set OV5640 to preview mode
+ OV5640_preview_setting();
+ // calculate banding filter
+ OV5640_set_bandingfilter();
+ // set ae_target
+ OV5640_set_AE_target(AE_Target);
+ // update night mode setting
+ OV5640_set_night_mode(m_iCombo_NightMode);
+ // re-launch auto focus zones
+ OV5640_write_i2c(0x3022, 0x12);
+ return 0;
+}
+int OV5640_video()
+{
+60   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+ // set OV5640 to video mode
+ OV5640_video_setting();
+ // calculate banding filter
+ OV5640_set_bandingfilter();
+ // set ae_target
+ OV5640_set_AE_target(AE_Target);
+ // turn off night mmode
+ OV5640_set_night_mode(0);
+ return 0;
+}
+int OV5640_capture()
+{
+ // set OV5640 to capture mode
+ int preview_shutter, preview_gain16, average;
+ int capture_shutter, capture_gain16;
+ int capture_sysclk, capture_HTS, capture_VTS;
+ int light_frequency, capture_bandingfilter, capture_max_band;
+ long capture_gain16_shutter;
+ 
+ //auto focus
+ OV5640_auto_focus();
+ // read preview shutter
+ preview_shutter = OV5640_get_shutter();
+ // read preview gain
+ preview_gain16 = OV5640_get_gain16();
+ // get average
+ average = OV5640_read_i2c(0x56a1);
+ // turn off night mode for capture
+ OV5640_set_night_mode(0);
+ // turn off overlay
+  OV5640_write_i2c(0x3022, 0x06);
+ // Write capture setting
+ OV5640_capture_setting();
+ // read capture VTS
+ capture_VTS = OV5640_get_VTS();
+ capture_HTS = OV5640_get_HTS();
+ capture_sysclk = OV5640_get_sysclk();
+ // calculate capture banding filter
+ light_frequency = OV5640_get_light_frequency();
+ if (light_frequency == 60) {
+ // 60Hz
+ capture_bandingfilter = capture_sysclk * 100 / capture_HTS * 100 / 120;
+ }
+ else {
+ // 50Hz
+ capture_bandingfilter = capture_sysclk * 100 / capture_HTS;
+ }
+ capture_max_band = int((capture_VTS - 4)/capture_bandingfilter);
+ // calculate capture shutter/gain16
+61   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+ if (average > AE_low && average < AE_high) {
+ // in stable range
+ capture_gain16_shutter = preview_gain16 * preview_shutter * capture_sysclk/preview_sysclk * 
+preview_HTS/capture_HTS * AE_Target / average;
+ }
+ else {
+ capture_gain16_shutter = preview_gain16 * preview_shutter * capture_sysclk/preview_sysclk * 
+preview_HTS/capture_HTS;
+ }
+ // gain to shutter
+ if(capture_gain16_shutter < (capture_bandingfilter * 16)) {
+ // shutter < 1/100
+ capture_shutter = capture_gain16_shutter/16;
+ if(capture_shutter <1)
+ capture_shutter = 1;
+ capture_gain16 = capture_gain16_shutter/capture_shutter;
+ if(capture_gain16 < 16)
+ capture_gain16 = 16;
+ }
+ else {
+ if(capture_gain16_shutter > (capture_bandingfilter*capture_max_band*16)) {
+ // exposure reach max
+ capture_shutter = capture_bandingfilter*capture_max_band;
+ capture_gain16 = capture_gain16_shutter / capture_shutter;
+ }
+ else {
+ // 1/100 < capture_shutter =< max, capture_shutter = n/100
+ capture_shutter = (int (capture_gain16_shutter/16/capture_bandingfilter)) * capture_bandingfilter;
+ capture_gain16 = capture_gain16_shutter / capture_shutter;
+ }
+ }
+ // write capture gain
+ OV5640_set_gain16(capture_gain16);
+ // write capture shutter
+ if (capture_shutter > (capture_VTS - 4)) {
+ capture_VTS = capture_shutter + 4;
+ OV5640_set_VTS(capture_VTS);
+ }
+ OV5640_set_shutter(capture_shutter);
+ // skip 2 vysnc
+ // start capture at 3rd vsync
+ return 0;
+}
+62   OmniVision公司机密
+OV5640 自动对焦成像模组应用指南
+文档版本历史
+Rev 2.01
+  合并“OV5640 模组软件应用指南”和“OV5640 模组硬件应用指南”。
+Rev 2.10
+  加入自动对焦支持。
+Rev 2.11
+  更新对比度设置参数 (基于DB文件A10或者AM10)。
+  增加 “4.10 自动对焦”章节。
+  升级演示驱动。将驱动代码从“Form1.h” 移动至“PantherDemo.cpp”。
+R 2.12
+  修正驱动代码中拍照曝光部分的程序bug。
+  在初始化参数中加入“write_i2c(0x4005, 0x1a); // BLC总是更新”。
+  初始化参数更新。
+R2.13
+  增加“4.3 驱动能力”和“4.4 I/O 控制”。
+63   OmniVision公司机密

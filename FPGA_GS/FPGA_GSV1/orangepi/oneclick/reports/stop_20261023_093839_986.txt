@@ -1,0 +1,195 @@
+﻿本地入口：E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\orangepi\oneclick
+目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021
+通过SSH执行 stop；需要认证时请在终端输入密码（不保存）。
+前摄服务已正常停止
+已停止本入口创建并核对身份的SSH转发。
+
+结构化详情：
+{
+    "tool_version":  "M4-01-operator-v1",
+    "action":  "Stop",
+    "computer_time":  "2026-10-23T09:38:39.9877086+08:00",
+    "ok":  true,
+    "config":  {
+                   "ssh_host":  "10.168.29.122",
+                   "ssh_user":  "orangepi",
+                   "ssh_port":  22,
+                   "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "remote_tool":  "operator_v1/ops_manager.py",
+                   "interface":  "eth0",
+                   "business_cidr":  "192.168.60.1/24",
+                   "fpga_ip":  "192.168.60.2",
+                   "fpga_mac":  "02:00:47:53:56:32",
+                   "udp_port":  50000,
+                   "peer_port":  50000,
+                   "web_port":  8080,
+                   "local_port":  18080,
+                   "scene":  "scene.example.json",
+                   "front_fps":  15,
+                   "preview_fps":  15,
+                   "preview_width":  640,
+                   "preview_quality":  70,
+                   "output":  "runs/live_dual_eth",
+                   "diagnostic_seconds":  4,
+                   "startup_timeout_seconds":  35
+               },
+    "local_before":  {
+                         "listeners":  [
+                                           {
+                                               "address":  "127.0.0.1",
+                                               "port":  18080,
+                                               "pid":  26080,
+                                               "name":  "ssh.exe",
+                                               "command_line":  "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 22 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ConnectionAttempts=1 -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:8080 orangepi@10.168.29.122 ",
+                                               "creation_date":  "10/23/2026 09:33:00"
+                                           }
+                                       ],
+                         "http":  {
+                                      "ok":  true,
+                                      "status":  200,
+                                      "data":  {
+                                                   "mode":  "LIVE_FRONT",
+                                                   "processed":  5085,
+                                                   "requested_front_fps":  15,
+                                                   "target_process_fps":  15,
+                                                   "processing_policy":  "latest complete frame, no artificial throttle",
+                                                   "skipped_complete_frames":  0,
+                                                   "host_monotonic_ms":  51231864.292559005,
+                                                   "processed_fps":  14.858,
+                                                   "processed_average_fps":  14.922,
+                                                   "target_preview_fps":  15.0,
+                                                   "preview_encoding":  {
+                                                                            "width":  640,
+                                                                            "quality":  70
+                                                                        },
+                                                   "playback":  {
+
+                                                                },
+                                                   "stage_ms":  {
+                                                                    "inference":  13.239,
+                                                                    "overlay_jpeg":  2.92,
+                                                                    "overlay_jpeg_bytes":  24309,
+                                                                    "raw_jpeg":  7.95,
+                                                                    "process_total":  38.68
+                                                                },
+                                                   "preview_age_ms":  62.8,
+                                                   "effective_feedback":  "SEE_EXACT_FRAME_DECISIONS",
+                                                   "latest":  {
+                                                                  "signal":  {
+                                                                                 "state":  "UNKNOWN",
+                                                                                 "confidence":  0,
+                                                                                 "actions":  [
+
+                                                                                             ],
+                                                                                 "candidates":  [
+
+                                                                                                ],
+                                                                                 "association":  "UNASSIGNED"
+                                                                             },
+                                                                  "lanes":  {
+                                                                                "left":  {
+                                                                                             "state":  "UNKNOWN",
+                                                                                             "confidence":  0.0,
+                                                                                             "coverage":  0.242,
+                                                                                             "segments":  2
+                                                                                         },
+                                                                                "right":  {
+                                                                                              "state":  "UNKNOWN",
+                                                                                              "confidence":  0.0,
+                                                                                              "coverage":  0.0,
+                                                                                              "segments":  0
+                                                                                          }
+                                                                            },
+                                                                  "inference_ms":  13.239,
+                                                                  "decisions":  {
+                                                                                    "1":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "2":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "3":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "4":  {
+                                                                                              "code":  1,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "STOP_INTENT_NO_RED_VIOLATION"
+                                                                                          }
+                                                                                },
+                                                                  "frame_id":  18174,
+                                                                  "received_monotonic":  51231.801496542,
+                                                                  "source_seconds":  null,
+                                                                  "complete_to_process_wait_ms":  1.608,
+                                                                  "frame_age_at_result_ms":  28.27
+                                                              },
+                                                   "link":  {
+                                                                "heartbeat_tx":  1357,
+                                                                "rx_packets":  7326436,
+                                                                "heartbeat_or_welcome":  2039,
+                                                                "telemetry_packets":  682,
+                                                                "front_fragments":  7323715,
+                                                                "complete_frames":  5085,
+                                                                "session":  813073898,
+                                                                "online":  true,
+                                                                "requested_front_fps":  15,
+                                                                "recent_complete_fps":  14.735,
+                                                                "telemetry":  {
+                                                                                  "mac_crc":  0,
+                                                                                  "mac_overrun":  0,
+                                                                                  "reject_format":  7,
+                                                                                  "reject_checksum":  0,
+                                                                                  "reject_session":  0,
+                                                                                  "reject_profile":  0,
+                                                                                  "sequence_errors":  0,
+                                                                                  "duplicate_packets":  0,
+                                                                                  "begin_wait_cycles":  0,
+                                                                                  "begin_requests":  0,
+                                                                                  "assembly_timeouts":  0,
+                                                                                  "assembly_aborts":  0,
+                                                                                  "ddr_beats":  0,
+                                                                                  "published":  0,
+                                                                                  "displayed_new":  0,
+                                                                                  "rx_packets":  4772
+                                                                              },
+                                                                "host_elapsed_seconds":  340.751,
+                                                                "front_receive_fps":  14.923,
+                                                                "socket_receive_buffer_bytes":  8388608,
+                                                                "current_frame_fragments":  1315,
+                                                                "assembly_dropped":  0,
+                                                                "assembly_duplicates":  0,
+                                                                "hardware_validation":  "网口2尚未实物联调"
+                                                            }
+                                               }
+                                  }
+                     },
+    "remote":  {
+                   "ok":  true,
+                   "message":  "前摄服务已正常停止",
+                   "ports":  [
+
+                             ]
+               },
+    "local_after":  {
+                        "listeners":  [
+
+                                      ],
+                        "http":  {
+                                     "ok":  false,
+                                     "error":  "The operation has timed out."
+                                 }
+                    },
+    "summary":  [
+                    "本地入口：E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\oneclick",
+                    "目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                    "通过SSH执行 stop；需要认证时请在终端输入密码（不保存）。",
+                    "前摄服务已正常停止",
+                    "已停止本入口创建并核对身份的SSH转发。"
+                ]
+}

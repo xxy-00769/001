@@ -1,0 +1,1982 @@
+ 
+  
+ 
+ 
+Page - 1 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+ 
+ 
+ 
+ 
+ 
+MS7200 
+HDMI to Digital out 
+Register Map 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 2 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+Note:  
+1. 
+MS7200 registers not in the following list should not be written. 
+2. 
+MS7200 HDMI controller should be accessed through i2c burst mode. 
+Example:  
+VOID mculib_i2c_burstread _16bidx8bval(UINT8 u8_address, UINT16 u16_index, UINT16 u16_length, UINT8 *pu8_value) 
+{ 
+UINT16 i; 
+_i2c_start(); 
+if (!_i2c_write_byte(u8_address)) 
+goto STOP; 
+if (!_i2c_write_byte( (UINT8)(u16_index) )) 
+goto STOP; 
+if (!_i2c_write_byte( (UINT8)(u16_index >> 8) )) 
+goto STOP; 
+_i2c_start(); 
+if (!_i2c_write_byte(u8_address | 0x01)) 
+goto STOP; 
+for (i = 0; i < (u16_length-1); i ++) 
+{ 
+*pu8_value++ = _i2c_read_byte(FALSE); 
+} 
+*pu8_value = _i2c_read_byte(TRUE); 
+_i2c_stop(); 
+} 
+ 
+Comment 
+u8_address: chip slave address, either 0x56 or 0xb2: 
+I2C Read/Write slave address 
+SA 
+Bit 7 
+Bit 6  
+Bit 5 
+Bit 4 
+Bit 3 
+Bit 2 
+Bit 1 
+Bit 0 
+0 
+0 
+1 
+0 
+1 
+0 
+1 
+1 
+0 
+1 
+1 
+0 
+1 
+1 
+0 
+0 
+1 
+0 
+u16_index: register address, the value should be 0x2000+4* (INT8) N 
+u16_length: The value is always 4. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 3 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+Top MISC 
+BASE Address：0x0000 
+Offset 
+Register name 
+BIT 
+Description 
+Type 
+Default value 
+0xc2 
+i2s_mclk_sel 
+[7..6] 
+i2s mclk output divide: 
+00:awalys 1 
+01:divide 2 
+10:divide 4 
+11:divide 8 
+R/W 
+0x0 
+i2s_mclk_inv 
+[5] 
+1:i2s mclk invert 
+R/W 
+0x0 
+i2s_mclk_en 
+[4] 
+1:i2s mclk enable 
+R/W 
+0x0 
+audio_out_en 
+[2] 
+1:RX audio clock enable 
+R/W 
+0x0 
+0xa4 
+3dr_pad 
+[4] 
+1:3dr signal to i2sd1 
+R/W 
+0x0 
+0xa5 
+mclk_sclk 
+[2] 
+1: mclk_sclk I/O use to mclk 
+0: mclk_sclk I/O use to sclk 
+R/W 
+0x0 
+spdif_ws 
+[0] 
+1:ws_spdif I/O output spdif 
+0:ws_spdif I/O output i2s_ws 
+R/W 
+0x0 
+0xa8 
+pclk_drv 
+[1..0] 
+3.3V Power: 
+00->11:6mA,12mA,18mA,24mA 
+2.5V Power 
+00->11:4mA,9mA,13mA,18mA 
+1.8V Power 
+00->11:3mA,6mA,9mA,12mA 
+R/W 
+0x3 
+0xb0 
+pattern_sel 
+[4..3] 
+test pattern select: 
+00:Gray pattern 
+01:Point interlace pattern 
+10:Horizontal interlace pattern 
+11:Vertical interlace pattern 
+R/W 
+0x0 
+test_pattern_en 
+[0] 
+1:test pattern enable 
+R/W 
+0x0 
+0xb1 
+r_val_en 
+[6] 
+1:R channel value program enable 
+R/W 
+0x0 
+b_val_en 
+[5] 
+1:B channel value program enable 
+R/W 
+0x0 
+g_val_en 
+[4] 
+1:G channel value program enable 
+R/W 
+0x0 
+0xb8 
+g_val 
+[7..0] G channel value program 
+R/W 
+0x0 
+0xb9 
+b_val 
+[7..0] B channel value program 
+R/W 
+0x0 
+0xba 
+r_val 
+[7..0] R channel value program 
+R/W 
+0x0 
+0xf0 
+yg_blank_sel 
+[5] 
+Y/G blank data select if blank data cut is enable 
+0:blank data is  0 for 8 bit 
+1:blank data is 16 for 8 bit 
+R/W 
+0x0 
+csc_blank_cut 
+[4] 
+1:enable(blank data set to a fixed value) 
+0:disable 
+R/W 
+0x0 
+dst_csc 
+[3..2] 
+output color space conversion 
+00:RGB 
+01:YUV444 
+10:YUV422 
+R/W 
+0x0 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 4 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+Top MISC 
+BASE Address：0x0000 
+Offset 
+Register name 
+BIT 
+Description 
+Type 
+Default value 
+11:Not used 
+src_csc 
+[1..0] 
+input color space conversion 
+00:RGB 
+01:YUV444 
+10:YUV422 
+11:Not used 
+R/W 
+0x0 
+ 
+ 
+DVOUT 
+BASE Address：0x0000 
+Offset 
+Register name 
+BIT 
+Description 
+Type 
+Default value 
+0x09 
+dvout_rstb 
+[1] 
+1:digital out module reset 
+R/W 
+0x0 
+0x16 
+dvout_en 
+[1] 
+1:d[0..23],HS,VS,DE,PCLK output enable 
+R/W 
+0x0 
+0xc0 
+dvout_div 
+[7:4] 
+dvout video divider for pixel repeat 
+0000:no divide 
+0001:divide 2 
+0010:divide 3 
+… 
+1111:divide 16 
+R/W 
+0x0 
+dvout_clk_div 
+[3] 
+1:8-bit and 16-bit DDR mode clock 
+R/W 
+0x0 
+dvout_clk_sel 
+[2] 
+1:8-bit SDR and DDR mode clock 
+R/W 
+0x0 
+0xc1 
+dvout_lat_div 
+[3..0] 
+dvout video lat clock divider 
+0000:no divide 
+0001:divide 2 
+0010:divide 3 
+… 
+1111:divide 16 
+R/W 
+0x0 
+0xe0 
+fid_in_flip 
+[7] 
+1:DVOUT field signal polarity flip 
+R/W 
+0x0 
+vs_in_flip 
+[6] 
+1:DVOUT VS signal polarity flip 
+R/W 
+0x0 
+hs_in_flip 
+[5] 
+1:DVOUT HS signal polarity flip 
+R/W 
+0x0 
+dvo_bit_remap2 
+[4] 
+1:Digital output bit 23~16 remap 
+R/W 
+0x0 
+dvo_bit_remap1 
+[3] 
+1:Digital output bit 15~18 remap 
+R/W 
+0x0 
+dvo_bit_remap0 
+[2] 
+1:Digital output bit 7~0 remap 
+R/W 
+0x0 
+0xe1 
+dvo_blk_clip_off 
+[5] 
+0:turn on clipping for blanking data, clip to 0 
+in RGB out, in YUV out, Y clip to 0, UV clip 
+to 0x80 
+1:disable blanking data clipping 
+R/W 
+0x1 
+dvo_yuv_out 
+[4] 
+0: DVO ouput RGB,blanking data clip to 0 
+1:DVO output is YUV, Yclip to 0, UV clip to 
+0x80 
+R/W 
+0x0 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 5 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+DVOUT 
+BASE Address：0x0000 
+Offset 
+Register name 
+BIT 
+Description 
+Type 
+Default value 
+0xe2 
+dvo_bit_remap 
+[7] 
+1:digital output bit 23~0  remap 
+R/W 
+0x0 
+dvo_y_uv_flip 
+[6] 
+1:digital output Y_UV flip 
+R/W 
+0x0 
+dvo_uv_flip 
+[5] 
+1:digital output UV flip 
+R/W 
+0x0 
+dvo_2xembedded_en 
+[4] 
+1:digital output 2x embedded SYNC enable 
+R/W 
+0x0 
+dvo_embedded_en 
+[3] 
+1:digital output embedded SYNC enable 
+R/W 
+0x0 
+dvo_8b_en 
+[2] 
+1:digital output 8bit mode enable 
+R/W 
+0x0 
+dvo_16b_en 
+[1] 
+1:digital output 16bit mode enable 
+R/W 
+0x0 
+dvo_en 
+[0] 
+1:digital output enable 
+R/W 
+0x0 
+0xe3 
+dvo_byte_sel 
+[5..4] 
+00:dvo_byte_remap[23:16] = 
+dvo_temp[23:16] 
+01:dvo_byte_remap[23:16] = dvo_temp[15:8] 
+10:dvo_byte_remap[23:16] = dvo_temp[7:0] 
+R/W 
+0x0 
+dvo_byte_sel 
+[3..2] 
+00:dvo_byte_remap[15:8] = dvo_temp[23:16] 
+01:dvo_byte_remap[15:8] = dvo_temp[15:8] 
+10:dvo_byte_remap[15:8] = dvo_temp[7:0] 
+R/W 
+0x1 
+dvo_byte_sel 
+[1..0] 
+00: dvo_byte_remap[7:0] = dvo_temp[23:16] 
+01: dvo_byte_remap[7:0] = dvo_temp[15:8] 
+10: dvo_byte_remap[7:0] = dvo_temp[7:0] 
+R/W 
+0x2 
+0xe4 
+dvo_yuv444_yuv422 
+[4] 
+1: two cycles as one pixel U or V. used for 
+the case that clock rate is double of data 
+0: one cycle as one pixel U or V. used for the 
+case that clock rate is 1x of data. 
+R/W 
+0x0 
+0xe5 
+12bit_en 
+[1] 
+12bit YUV/RGB 444 ddr mode enable 
+R/W 
+0x0 
+16bit_bt1004_en 
+[0] 
+16bit BTA1004 format enable 
+R/W 
+0x0 
+0x1281 
+pa_s 
+[2] 
+clock invert 
+R/W 
+0x0 
+[1..0] 
+phase control bits :  
+00:bypass 
+01:1ns 
+10:2ns 
+11:3ns  
+R/W 
+0x0 
+ 
+HDMI RX MISC 
+BASE Address：0x0000 
+Offset 
+Register name 
+BIT 
+Description 
+Type 
+Default value 
+0x03 
+rx_pll_cali_clk_en 
+[7] 
+RX PLL DIG calibration clock enable 
+R/W 
+0x0 
+rx_bus_clk_en 
+[6] 
+RX bus clock enable 
+R/W 
+0x0 
+rx_pixel _clk_en 
+[1] 
+rx pixel clock enable control 
+1:enable 
+0:disable 
+R/W 
+0x0 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 6 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX MISC 
+BASE Address：0x0000 
+Offset 
+Register name 
+BIT 
+Description 
+Type 
+Default value 
+rx_tmds_clk_en 
+[0] 
+rx tmds clock enable control 
+1: enable 
+0:disable 
+R/W 
+0x0 
+0x04 
+rx_tmds_clk_sel 
+[3..2] 
+RX tmds clock select 
+00: tmds clock from channel 0 PLL tmds 
+clock 
+01: tmds clock from channel 1 PLL tmds 
+clock 
+10: tmds clock from channel 2 PLL tmds 
+clock  
+11: tmds clock from tmds link bus clock 
+R/W 
+0x0 
+rx_audio_clk_en 
+[0] 
+RX audio clock enable 
+0:reset 
+R/W 
+0x0 
+0x09 
+audll_sw_rstb 
+[7] 
+audio DLL clock generation logic reset 
+0:reset 
+R/W 
+0x0 
+aupll_ctrl_sw_rstb 
+[6] 
+audio PLL control logic reset 
+0:reset 
+R/W 
+0x0 
+phy_pllcali_sw_rstb 
+[5] 
+PI RX PLL calibration logic reset 
+0:reset 
+R/W 
+0x0 
+phy_rx_rcv_sw_rstb 
+[2] 
+PI RX receiver logic reset 
+0:reset 
+R/W 
+0x0 
+dvout_sw_rstb 
+[1] 
+Digital video output module reset 
+0:reset 
+R/W 
+0x0 
+0x0a 
+rx_edid_sw_rstb 
+[2] 
+RX EDID reset 
+0:reset 
+R/W 
+0x0 
+0x0c 
+mcu_access_edid 
+[7] 
+MCU access edid enable 
+1:MCU can read/write edid ram 
+0:DDC can read edid ram(if edid software 
+reset is released) 
+R/W 
+0x01 
+rx_audll_div4_en 
+[6] 
+RX audio dll output clock divide 4 enable 
+R/W 
+0x0 
+rx_audll_div2_en 
+[5] 
+RX audio dll output clock divide 2 
+enable(64*fs) 
+R/W 
+0x0 
+rx_audll_4xen 
+[4] 
+RX audio dll output clock 4X enable 
+R/W 
+0x0 
+rx_aupll_sel[1:0] 
+[3..2] 
+RX audio pll select : 
+00: use AUDIO PLL 
+01: use AUDIO DLL + AUDIO PLL 
+10: use AUDIO DLL 
+11: use AUDIO PLL(XTAL input) 
+R/W 
+0x0 
+rx_audio_clk_div2_en 
+[1] 
+1:rx_audio_clk divide 2 enable 
+R/W 
+0x0 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 7 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX MISC 
+BASE Address：0x0000 
+Offset 
+Register name 
+BIT 
+Description 
+Type 
+Default value 
+0x15 
+5v_det_deb_ctrl 
+[7..4] 
+RX 5V input debounce control :  
+0: no debounce 
+else debounced glitch width is 
+2^(5v_det_deb_ctrl[3:0]) bclk cycles 
+R/W 
+0x0 
+5v_plug_intr 
+[3] 
+RX 5V connect interrupt status(from unplug 
+to plug) 
+RO 
+0x0 
+5v_unplug_intr 
+[2] 
+RX 5V connect interrupt status(from plug 
+toun plug) 
+RO 
+0x0 
+5v_det_intr_clr 
+[1] 
+RX 5V connect interrupt clear, write 1 to 
+clear the interrupt status 
+WO 
+0x0 
+5v_det 
+[0] 
+RX detect 5V power from HDMI TX or not 
+1: HDMI TX 5V power is connect 
+0: HDMI TX 5V power is not connect 
+RO 
+0x0 
+0x18 
+into_en 
+[5] 
+interrupt to pad enable, 
+0: output enable 
+1: disable, output signal is always 1(before 
+invert) 
+R/W 
+0x0 
+into_inv 
+[4] 
+interrupt to pad_int_out invert, 
+0: interrupt active low  
+1: interrupt active high 
+R/W 
+0x0 
+0x36 
+rx_hs_width 
+[7..0] rx_hs_width[7..0] 
+RO 
+0x0 
+0x37 
+rx_hs_width 
+[7..0] rx_hs_width[15..8] 
+RO 
+0x0 
+0x3e 
+rx_vs_width 
+[7..0] rx_vs_width[7..0] 
+RO 
+0x0 
+0x3f 
+rx_vs_width 
+[7..0] rx_vs_width[15..8] 
+RO 
+0x0 
+0x40 
+rx_vback 
+[7..0] rx_vback_width[7..0] 
+RO 
+/ 
+0x41 
+rx_vback 
+[7..0] rx_vback_width[15..8] 
+RO 
+/ 
+0x50 
+rx_aud_ch_status 
+[7..0] audio channel status bit[7..0] 
+RO 
+/ 
+0x52 
+rx_aud_ch_status 
+[7..0] audio channel status bit[23..16] 
+RO 
+/ 
+0x53 
+rx_aud_ch_status 
+[7..0] audio channel status bit[31..24] 
+RO 
+/ 
+0x54 
+rx_aud_ch_status 
+[7..0] audio channel status bit[39..32] 
+RO 
+/ 
+0x77 
+rx_audio_drv 
+[3..2] 
+IO output drive strength select for audio 
+pads: 
+00: 2mA 
+01: 4mA 
+10: 6mA 
+11: 8mA 
+R/W 
+0x1 
+ 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 8 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+ 
+HDMI RX RCV 
+BASE Address：0x0200 
+Offset 
+Register name 
+BIT 
+Description 
+Type 
+Default value 
+0x00 
+pi_rx_cdr_rstn 
+[2..0] 
+RX receiver CDR reset for tmds channel 
+0/1/2 
+0:CDR reset 
+1:CDR normal work 
+R/W 
+0x0 
+0x04 
+pi_dcm_flt_byps 
+[4] 
+1:CDR decimation bypass 
+R/W 
+0x0 
+pi_dcm_sel 
+[1..0] 
+CDR decimation filter select 
+00:no decimation  
+01:half decimation  
+10:1/4 decimation 
+11:no decimation 
+R/W 
+0x0 
+pi_det_th 
+[2..0] PI phase detection threshold 
+R/W 
+0x4 
+0x15 
+rx_fifo_rst 
+[0] 
+tmds data fifo reset 
+1: reset fifo 
+0: fifo normal work 
+R/W 
+0x0 
+ 
+ 
+HDMI RX PHY 
+BASE Address：0x1000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+0x00 
+rxpll_ichp_sel 
+[7..4] 
+RXPLL charge pump current select: 
+4'b0000: 0 
+4'b0001: 2.5u 
+4'b0010: 5u 
+.... 
+4'b1111: 37.5u 
+R/W 
+0x2 
+rxpll_rst_vco 
+[3] 
+RXPLL VCO reset: 
+0: normal work 
+1: reset 
+R/W 
+0x0 
+rxpll_vreg_pd 
+[2] 
+RXPLL ldo power down 
+0: normal work 
+1: power down 
+R/W 
+0x1 
+rxpll_bias_pd 
+[1] 
+RXPLL bias power down 
+0: normal work 
+1: power down 
+R/W 
+0x1 
+rxpll_pd 
+[0] 
+RXPLL power down 
+0: normal work 
+1: power down 
+R/W 
+0x1 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 9 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX PHY 
+BASE Address：0x1000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+0x03 
+rxpll_bp 
+[6..4] 
+RXPLL filter cap select 
+bit0: 125f 
+bit1: 250f 
+bit2: 250f 
+R/W 
+0x6 
+rxpll_br 
+[3..2] 
+RXPLL filter cap select 
+2'b00: 90Kohm 
+2'b01: 60Kohm 
+2'b1x: 30Kohm 
+R/W 
+0x1 
+rxpll_prediv 
+[1..0] 
+RXPLL pre-division 
+2'b00: /1 
+2'b01: /2 
+2'b10: /4 
+2'b10: /8 
+R/W 
+0x0 
+0x04 
+rxpll_freq_set 
+[1..0] 
+RXPLL output clock divider 
+2'b00: when TMDS clock＞150MHz  
+2'b01: when 50MHz≤TMDS clock≤150MHz 
+2'b11: when TMDS clock＜50MHz 
+R/W 
+0x1 
+0x05 
+rx_pll_kbank_div2_en 
+[2] 
+Calibration div2 function enable 
+0:disable 
+1.:enable 
+R/W 
+0x1 
+0x0f 
+rxpll_lut_sw_set_en 
+[2] 
+RXPLL look up table select, 
+=1: set by software 
+=0: set by hardware build in look up table 
+related register: 
+RG_PLLx_BR[1:0],  RG_PLLx_BP[2:0],   
+RG_PLLx_ICHP_SEL[3:0], 
+RG_PLLx_FREQ_SET[3:0], 
+RG_PLLx_PRE_DIV[1:0], 
+R/W 
+0x1 
+0x10 
+rxpll_cal_trig 
+[0] 
+RXPLL auto calibration trigger in auto 
+calibration mode, write 1 to this register will 
+trigger RXPLL power on and calibration flow 
+W1T 
+/ 
+0x16 
+rxpll_lock 
+[1] 
+RXPLL lock status 
+1:lock 
+0:unlock 
+RO 
+/ 
+rxpll_cal_done 
+[0] 
+RXPLL auto calibration done flag 
+1:done 
+0:not ready 
+RO 
+/ 
+0x18 
+cal_ref_freq 
+[5..0] PLL calibration reference clock frequency 
+RO 
+/ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 10 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX PHY 
+BASE Address：0x1000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+result bit[13..8] 
+0x20 
+rg_pi_mix_res 
+[5..4] PI mixer termination resistor control 
+R/W 
+0x0 
+rg_pi_mix_cap 
+[2..0] PI mixer loading control 
+R/W 
+0x0 
+0x21 
+rg_pi_mix_isel 
+[3..0] PI mixer current control 
+R/W 
+0x0 
+0x22 
+rg_pi_mux_res 
+[5..4] PI mux termination resistor control 
+R/W 
+0x0 
+rg_pi_mux_cap 
+[2..0] PI mux loading control 
+R/W 
+0x0 
+0x23 
+rg_pi_mux_isel 
+[3..0] PI mux current control 
+R/W 
+0x0 
+0x24 
+rg_pi_rst_n 
+[6..4] 
+PI reset 
+000: reset 
+111: normal work 
+R/W 
+0x0 
+rg_pi_pwd 
+[2..0] 
+PI power down 
+000: reset 
+111: power down 
+R/W 
+0x7 
+0x26 
+rg_rx_ofs_dec_ch0 
+[7..4] CH0 offset decrease control, 10mv/step 
+R/W 
+0x0 
+rg_rx_ofs_inc_ch0 
+[3..0] CH0 offset increase control, 10mv/step 
+R/W 
+0x0 
+0x27 
+rg_rx_ofs_dec_ch1 
+[7..4] CH1 offset decrease control, 10mv/step 
+R/W 
+0x0 
+rg_rx_ofs_inc_ch1 
+[3..0] CH1 offset increase control, 10mv/step 
+R/W 
+0x0 
+0x28 
+rg_rx_ofs_dec_ch2 
+[7..4] CH2 offset decrease control, 10mv/step 
+R/W 
+0x0 
+rg_rx_ofs_inc_ch2 
+[3..0] CH2 offset increase control, 10mv/step 
+R/W 
+0x0 
+0x29 
+rg_rx_ofs_dec_ck 
+[7..4] Clock offset decrease control, 10mv/step 
+R/W 
+0x0 
+rg_rx_ofs_inc_ck 
+[3..0] Clock offset increase control, 10mv/step 
+R/W 
+0x0 
+0x2a 
+rg_rx_ofs_cal_en_ch2 
+[2] 
+CH2 offset calibration enable 
+0: disable 
+1: enable 
+R/W 
+0x0 
+rg_rx_ofs_cal_en_ch1 
+[1] 
+CH1 offset calibration enable 
+0: disable 
+1: enable 
+R/W 
+0x0 
+rg_rx_ofs_cal_en_ch0 
+[0] 
+CH0 offset calibration enable 
+0: disable 
+1: enable 
+R/W 
+0x0 
+0x2b 
+rg_rx_eq_ch1 
+[6..4] 
+CH1 EQ control 
+3'b000: minimum EQ gain  
+3'b111: maximum EQ gain 
+R/W 
+0x4 
+rg_rx_eq_ch0 
+[2..0] 
+CH0 EQ control 
+3'b000: minimum EQ gain  
+3'b111: maximum EQ gain 
+R/W 
+0x4 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 11 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX PHY 
+BASE Address：0x1000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+0x2c 
+rg_rx_gain_buf 
+[5] 
+Buffer gain control 
+0: low gain  
+1: high gain 
+R/W 
+0x0 
+rg_rx_gain_boost 
+[4] 
+EQ DC gain control 
+0: datarate> 1.5Gbps  
+1: datarate<=1.5Gbps 
+R/W 
+0x0 
+rg_rx_eq_ch2 
+[2..0] 
+CH0 EQ control 
+000: minimum EQ gain  
+111: maximum EQ gain 
+R/W 
+0x4 
+0x2d 
+rg_rx_vga 
+[7..6] 
+VGA gain control 
+00: minimum  
+11: maximum 
+R/W 
+0x2 
+rg_rx_dc_byp_en 
+[5] 
+DC test bypass 
+0: not bypass 
+1: bypass 
+R/W 
+0x0 
+rg_rx_rst_n_dc_div 
+[4] 
+deep color divider reset 
+0: reset 
+1: not reset 
+R/W 
+0x0 
+rg_rx_ctle_cap_en 
+[3..2] 
+EQ cap control 
+00:≥2.25Gbps  
+01: 2.25Gbps＞DR≥1.5Gbps 
+10: 1.5Gbps＞DR≥750Mbps 
+11: DR＜750Mbps 
+R/W 
+0x0 
+rg_rx_rst_n_div 
+[1] 
+DIV5 reset 
+0: reset 
+1: normal work 
+R/W 
+0x1 
+rg_rx_en 
+[0] 
+RX enable 
+0: power down 
+1: normal work 
+R/W 
+0x0 
+0x2e 
+rx_ovl_port_dis 
+[0] 
+RX termination protect disable 
+0: protect if single ended voltage [VCC-1.2V. 
+1: not protect 
+R/W 
+0x0 
+0x30 
+rxcn_ovl 
+[7] 
+Clock channel negative input overload 
+RO 
+/ 
+rxcp_ovl 
+[6] 
+Clock channel positive input overload 
+RO 
+/ 
+rx2n_ovl 
+[5] 
+Data channel negative input overload 
+RO 
+/ 
+rx2p_ovl 
+[4] 
+Data channel positive input overload 
+RO 
+/ 
+rx1n_ovl 
+[3] 
+Data channel negative input overload 
+RO 
+/ 
+rx1p_ovl 
+[2] 
+Data channel positive input overload 
+RO 
+/ 
+rx0n_ovl 
+[1] 
+Data channel negative input overload 
+RO 
+/ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 12 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX PHY 
+BASE Address：0x1000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+rx0p_ovl 
+[0] 
+Data channel positive input overload 
+RO 
+/ 
+0x3b 
+rg_rxpll_4xdiv_rstn 
+[1] 
+RXPLL 4x clock divider reset 
+0:reset 
+1:normal work 
+R/W 
+0x0 
+ 
+HDMI RX Controller 
+BASE Address：0x2000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+0x000 
+hot_plug_detect 
+[0] 
+0: receiver not ready 
+1: receiver ready 
+R/W 
+0x0 
+0x090 
+vs_pol_adj_mode 
+[4..3] 
+VS polarity adjustment 
+0: Manual. Inverted VSYNC 
+01: Manual, No VSYNC inversion 
+10: Automatic 
+11: Same as 1, Manual, No VSYNC 
+inversion 
+R/W 
+0x2 
+hs_pol_adj_mode 
+[2..1] 
+HS polarity adjustment 
+00: Manual. Inverted HSYNC 
+01: Manual, No HSYNC inversion 
+10: Automatic 
+11: Same as 1, Manual, No HSYNC 
+inversion 
+R/W 
+0x2 
+0x0bc 
+dcm_current_mode_sts 
+[7..4] 
+Current deep color mode depth indicator 
+0000: Deep color mode not indicated 
+0001-0011: reserved 
+0100: 24 bit 
+0101: 30 bit 
+0110: 36 bit 
+0111: 48 bit 
+1000-1111: reserved 
+RO 
+/ 
+0x0bd 
+vs_pol_adj_sts 
+[1] 
+VS polarity adjust status 
+0: not active 
+1: active 
+RO 
+/ 
+hs_pol_adj_sts 
+[0] 
+HS polarity adjust status 
+0: not active 
+1: active 
+RO 
+/ 
+0x148 
+hs_clk 
+[7..0] 
+Total time in horizontal imodetclk clock 
+accumulated over 32 lines 
+RO 
+/ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 13 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX Controller 
+BASE Address：0x2000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+0x149 
+hs_clk 
+[15..8] 
+Total time in horizontal imodetclk clock 
+accumulated over 32 lines 
+16*xtal_freq/md_ht(u32_value) 
+RO 
+/ 
+0x14c 
+hofs_pix 
+[7..0] 
+Horizontal offset time in pixel clocks 
+RO 
+/ 
+0x14d 
+hofs_pix 
+[15..8] Horizontal offset time in pixel clocks 
+RO 
+/ 
+0x14e 
+htot_pix 
+[7..0] 
+Total horizontal sync time in pixel clocks 
+RO 
+/ 
+0x14f 
+htot_pix 
+[15..8] Total horizontal sync time in pixel clocks 
+RO 
+/ 
+0x150 
+hact_pix 
+[7..0] 
+horizontal active line 
+RO 
+/ 
+0x151 
+hact_pix 
+[15..8] horizontal active line 
+RO 
+/ 
+0x168 
+vact_lin 
+[7..0] 
+Vertical active line 
+RO 
+/ 
+0x169 
+vact_lin 
+[15..8] Vertical active line 
+RO 
+/ 
+0x170 
+vtot_lin 
+[7..0] 
+Vertical total line 
+RO 
+/ 
+0x171 
+vtot_lin 
+[15..8] Vertical total line 
+RO 
+/ 
+0x180 
+ilace_sts 
+[3] 
+Video interlace or progressive active status  
+0: progressive  
+1: interlace 
+RO 
+/ 
+de_act_sts 
+[2] 
+Active DE status  
+0: inactive  
+1: active 
+RO 
+/ 
+vs_act_sts 
+[1] 
+Active VSYNC status  
+0: inactive  
+1: active 
+RO 
+/ 
+hs_act_sts 
+[0] 
+Active HSYNC status  
+0: inactive  
+1: active 
+RO 
+/ 
+0x181 
+rx_stb_sts 
+[6] 
+rx timing stable status: 
+1: vs width is stable 
+0: vs width is unstable 
+RO 
+/ 
+[5] 
+rx timing stable status: 
+1: vblank is stable 
+0: vblank is unstable 
+RO 
+/ 
+[4] 
+rx timing stable status: 
+1: vactive is stable 
+0: vactive is unstable 
+RO 
+/ 
+[3] 
+rx timing stable status: 
+1: hfront is stable 
+0: hfront is unstable 
+RO 
+/ 
+[2] 
+rx timing stable status: 
+1: hs width is stable 
+0: hs width is unstable 
+RO 
+/ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 14 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX Controller 
+BASE Address：0x2000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+[1] 
+rx timing stable status: 
+1: hblank is stable 
+0: hblank is unstable 
+RO 
+/ 
+[0] 
+rx timing stable status: 
+1: hactive is stable 
+0: hactive is unstable 
+RO 
+/ 
+0x240 
+afif_init 
+[0] 
+Clear audio FIFO by resetting the write and 
+read pointer  
+0: no clear  
+1: clear  
+R/W 
+0x0 
+0x258 
+aud_mute_sel 
+[6..5] 
+Manual/automatic audio mute control  
+0: force unmute (overrules all except when 
+underflow condition occurs)  
+1: automatic mute when exceeding, FIFO 
+thresholds afif_th_max/min  
+2: automatic mute enable for FIFO over- 
+underflow  
+3: force mute (overrules all) 
+R/W 
+0x2 
+0x260 
+i2s_disable 
+[7..5] 
+Disable i2s[2:0] outputs  
+0: audio enabled  
+1: audio disabled  
+Note: Shadowing is synchronized, as defined 
+in aport_shdw_ctrl. 
+R/W 
+0x0 
+spdif_disable 
+[4..1] 
+Disable spdif[3:0] outputs  
+bit = 0, audio enabled  
+bit = 1, audio disabled 
+ Note: Shadowing is synchronized, as 
+defined in aport_shdw_ctrl. 
+R/W 
+0x0 
+i2s_32_16 
+[0] 
+Select 32 or 16 bit I2S output  
+0: 16 bit (I2S clock frequency is 32fs)  
+1: 32 bit (I2S clock frequency is doubled: 
+64fs)  
+Select I2S clock frequency if hbr_mode is 
+enabled and receiving HBR or NL-PCM 
+audio  
+0: 32 bit, I2S clock frequency is 128fs  
+1: 32 bit, I2S clock frequency is 256fs 
+R/W 
+0x1 
+0x261 
+3d_en 
+[7] 
+0:3dr output disable 
+1:3dr output enable 
+active when 3d mode enable 
+R/W 
+0x0 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日
+ 
+  
+ 
+ 
+Page - 15 - of 15 
+Tel: (86-551)65317870 Fax: (86-551)65314133 Web:www.macrosilicon.com Add: 9F, Building B1, Innovation Industrial Park, No.800 Wang 
+Jiang Xi Road, Hi-Tech Zone, Hefei, Anhui, China 
+MacroSilicon Technology Co., Ltd. 
+Register Map 
+Document level: Confidence 
+Document No.: HJ-BMJL-PD-037 
+Version/Revision: B/0 
+ 
+HDMI RX Controller 
+BASE Address：0x2000 
+Offset 
+Register name 
+BIT 
+Description 
+Type Default value 
+3d_2d_mode 
+[6] 
+0:3D timing output (active when 3D mode 
+enable) 
+1:3D to 2D timing output (active when 3D 
+mode enable) 
+R/W 
+0x0 
+i2s_mode 
+[5..4] 
+00 and 11: left justified, delay 0T 
+01 : right justified, delay 0T 
+10 : i2s mode (has a 1T delay) 
+R/W 
+0x2 
+0x368 
+vsi_payload_0 
+[7..0] 
+Packet VSI Vendor Specific Payload byte 0 
+RO 
+/ 
+0x369 
+vsi_payload_1 
+[7..0] 
+Packet VSI Vendor Specific Payload byte 1 
+RO 
+/ 
+0x36a 
+vsi_payload_2 
+[7..0] 
+Packet VSI Vendor Specific Payload byte 2 
+RO 
+/ 
+0x36b 
+vsi_payload_3 
+[7..0] 
+Packet VSI Vendor Specific Payload byte 3 
+RO 
+/ 
+0x380 
+pktdec_avmute 
+[1] 
+Set_AVMUTE, set audio video mute  
+0: disabled  
+1: enable 
+RO 
+/ 
+0x390 
+pktdec_acr_cts 
+[7..0] 
+CTS_decode[7..0] 
+RO 
+/ 
+0x391 
+pktdec_acr_cts 
+[7..0] 
+CTS_decode[15..8] 
+RO 
+/ 
+0x394 
+pktdec_acr_n 
+[7..0] 
+N_decode[7..0] 
+RO 
+/ 
+0x395 
+pktdec_acr_n 
+[7..0] 
+N_decode[15..8] 
+RO 
+/ 
+0x3a3 
+pix_rep_factor 
+[3..0] 
+PR3 PR2 PR1 PR0, pixel repetition factor  
+0000: no repetition, pixel sent once  
+0001: pixel sent 2 times  
+0010: pixel sent 3 times  
+0011: pixel sent 4 times  
+0100: pixel sent 5 times  
+0101: pixel sent 6 times  
+0110: pixel sent 7 times  
+0111: pixel sent 8 times  
+1000: pixel sent 9 times  
+1001: pixel sent 10 times  
+1010-1111: reserved 
+RO 
+/ 
+0x403 
+ceavid_rst 
+[7] 
+Synchronous clear for CEA video interface, 
+active high 
+R/W 
+0x0 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日 
+ 
+ 
+MacroSilicon Release For 
+ 
+深圳市视品数字技术有限公司 
+ 
+Internal Use Only 
+ 
+2023年03月13日

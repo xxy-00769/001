@@ -1,0 +1,275 @@
+﻿{
+    "tool_version":  "M4-01-operator-v1",
+    "action":  "Start",
+    "computer_time":  "2026-10-23T08:56:53.8437343+08:00",
+    "ok":  true,
+    "config":  {
+                   "ssh_host":  "10.168.29.122",
+                   "ssh_user":  "orangepi",
+                   "ssh_port":  22,
+                   "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "remote_tool":  "operator_v1/ops_manager.py",
+                   "interface":  "eth0",
+                   "business_cidr":  "192.168.60.1/24",
+                   "fpga_ip":  "192.168.60.2",
+                   "fpga_mac":  "02:00:47:53:56:32",
+                   "udp_port":  50000,
+                   "peer_port":  50000,
+                   "web_port":  8080,
+                   "local_port":  18080,
+                   "scene":  "scene.example.json",
+                   "preview_fps":  15,
+                   "preview_width":  640,
+                   "preview_quality":  70,
+                   "output":  "runs/live_dual_eth",
+                   "diagnostic_seconds":  4,
+                   "startup_timeout_seconds":  35
+               },
+    "local_before":  {
+                         "listeners":  [
+
+                                       ],
+                         "http":  {
+                                      "ok":  false,
+                                      "error":  "无法连接到远程服务器"
+                                  }
+                     },
+    "preflight":  {
+                      "ok":  true,
+                      "directory":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                      "missing":  [
+
+                                  ],
+                      "addresses":  {
+                                        "ok":  true,
+                                        "code":  0,
+                                        "stdout":  "[{\"ifindex\":2,\"ifname\":\"eth0\",\"flags\":[\"NO-CARRIER\",\"BROADCAST\",\"MULTICAST\",\"UP\"],\"mtu\":1500,\"qdisc\":\"mq\",\"operstate\":\"DOWN\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"00:00:a4:b5:5f:ef\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"192.168.60.1\",\"prefixlen\":24,\"scope\":\"global\",\"label\":\"eth0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]",
+                                        "stderr":  "",
+                                        "data":  [
+                                                     {
+                                                         "ifindex":  2,
+                                                         "ifname":  "eth0",
+                                                         "flags":  [
+                                                                       "NO-CARRIER",
+                                                                       "BROADCAST",
+                                                                       "MULTICAST",
+                                                                       "UP"
+                                                                   ],
+                                                         "mtu":  1500,
+                                                         "qdisc":  "mq",
+                                                         "operstate":  "DOWN",
+                                                         "group":  "default",
+                                                         "txqlen":  1000,
+                                                         "link_type":  "ether",
+                                                         "address":  "00:00:a4:b5:5f:ef",
+                                                         "broadcast":  "ff:ff:ff:ff:ff:ff",
+                                                         "addr_info":  [
+                                                                           {
+                                                                               "family":  "inet",
+                                                                               "local":  "192.168.60.1",
+                                                                               "prefixlen":  24,
+                                                                               "scope":  "global",
+                                                                               "label":  "eth0",
+                                                                               "valid_life_time":  4294967295,
+                                                                               "preferred_life_time":  4294967295
+                                                                           }
+                                                                       ]
+                                                     }
+                                                 ]
+                                    },
+                      "business_address_present":  true,
+                      "carrier":  0,
+                      "route":  {
+                                    "ok":  true,
+                                    "code":  0,
+                                    "stdout":  "[{\"dst\":\"192.168.60.2\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.60.1\",\"flags\":[],\"uid\":1000,\"cache\":[]}]",
+                                    "stderr":  "",
+                                    "data":  [
+                                                 {
+                                                     "dst":  "192.168.60.2",
+                                                     "dev":  "eth0",
+                                                     "prefsrc":  "192.168.60.1",
+                                                     "flags":  [
+
+                                                               ],
+                                                     "uid":  1000,
+                                                     "cache":  [
+
+                                                               ]
+                                                 }
+                                             ]
+                                },
+                      "route_ok":  true,
+                      "receive_buffer":  {
+                                             "kernel_max":  8388608,
+                                             "kernel_target":  8388608,
+                                             "socket_requested":  4194304,
+                                             "socket_minimum":  8388608,
+                                             "socket_actual":  null,
+                                             "kernel_ready":  true,
+                                             "socket_ready":  null
+                                         },
+                      "errors":  [
+                                     "物理链路未建立或状态未知"
+                                 ],
+                      "processes":  [
+
+                                    ],
+                      "ports":  [
+
+                                ]
+                  },
+    "remote":  {
+                   "ok":  true,
+                   "message":  "已启动本项目服务",
+                   "process":  {
+                                   "pid":  171342,
+                                   "start_ticks":  "4873030",
+                                   "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                   "argv":  [
+                                                ".venv/bin/python",
+                                                "main.py",
+                                                "--mode",
+                                                "LIVE_FRONT",
+                                                "--bind",
+                                                "192.168.60.1",
+                                                "--peer",
+                                                "192.168.60.2",
+                                                "--port",
+                                                "50000",
+                                                "--peer-port",
+                                                "50000",
+                                                "--scene",
+                                                "scene.example.json",
+                                                "--preview-fps",
+                                                "15",
+                                                "--preview-width",
+                                                "640",
+                                                "--preview-quality",
+                                                "70",
+                                                "--output",
+                                                "runs/live_dual_eth",
+                                                "--web-port",
+                                                "8080"
+                                            ],
+                                   "uid":  1000
+                               },
+                   "status":  {
+                                  "ok":  true,
+                                  "data":  {
+                                               "mode":  "LIVE_FRONT",
+                                               "processed":  0,
+                                               "host_monotonic_ms":  48730981.220779,
+                                               "processed_fps":  0,
+                                               "processed_average_fps":  0.0,
+                                               "target_preview_fps":  15.0,
+                                               "preview_encoding":  {
+                                                                        "width":  640,
+                                                                        "quality":  70
+                                                                    },
+                                               "playback":  {
+
+                                                            },
+                                               "stage_ms":  {
+
+                                                            },
+                                               "preview_age_ms":  null,
+                                               "effective_feedback":  "UNKNOWN_STALE",
+                                               "latest":  {
+
+                                                          },
+                                               "link":  {
+                                                            "heartbeat_tx":  1,
+                                                            "session":  3177385654,
+                                                            "online":  false,
+                                                            "host_elapsed_seconds":  0.135,
+                                                            "front_receive_fps":  0.0,
+                                                            "socket_receive_buffer_bytes":  8388608,
+                                                            "current_frame_fragments":  0,
+                                                            "assembly_dropped":  0,
+                                                            "assembly_duplicates":  0,
+                                                            "hardware_validation":  "网口2尚未实物联调"
+                                                        }
+                                           }
+                              },
+                   "receive_buffer":  {
+                                          "kernel_max":  8388608,
+                                          "kernel_target":  8388608,
+                                          "socket_requested":  4194304,
+                                          "socket_minimum":  8388608,
+                                          "socket_actual":  8388608,
+                                          "kernel_ready":  true,
+                                          "socket_ready":  true
+                                      },
+                   "lifetime":  "关闭电脑入口窗口后远端继续运行；请使用停止前摄服务"
+               },
+    "local_after":  {
+                        "listeners":  [
+                                          {
+                                              "address":  "127.0.0.1",
+                                              "port":  18080,
+                                              "pid":  32936,
+                                              "name":  "ssh.exe",
+                                              "command_line":  "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 22 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ConnectionAttempts=1 -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:8080 orangepi@10.168.29.122 ",
+                                              "creation_date":  "10/23/2026 08:57:00"
+                                          }
+                                      ],
+                        "http":  {
+                                     "ok":  true,
+                                     "status":  200,
+                                     "data":  {
+                                                  "mode":  "LIVE_FRONT",
+                                                  "processed":  0,
+                                                  "host_monotonic_ms":  48731951.332794,
+                                                  "processed_fps":  0,
+                                                  "processed_average_fps":  0.0,
+                                                  "target_preview_fps":  15.0,
+                                                  "preview_encoding":  {
+                                                                           "width":  640,
+                                                                           "quality":  70
+                                                                       },
+                                                  "playback":  {
+
+                                                               },
+                                                  "stage_ms":  {
+
+                                                               },
+                                                  "preview_age_ms":  null,
+                                                  "effective_feedback":  "UNKNOWN_STALE",
+                                                  "latest":  {
+
+                                                             },
+                                                  "link":  {
+                                                               "heartbeat_tx":  5,
+                                                               "session":  3177385654,
+                                                               "online":  false,
+                                                               "host_elapsed_seconds":  1.105,
+                                                               "front_receive_fps":  0.0,
+                                                               "socket_receive_buffer_bytes":  8388608,
+                                                               "current_frame_fragments":  0,
+                                                               "assembly_dropped":  0,
+                                                               "assembly_duplicates":  0,
+                                                               "hardware_validation":  "网口2尚未实物联调"
+                                                           }
+                                              }
+                                 }
+                    },
+    "dashboard":  "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\oneclick\\reports\\startup_20261023_085653_843.html",
+    "summary":  [
+                    "本地入口：E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\oneclick",
+                    "目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                    "通过SSH执行 preflight；需要认证时请在终端输入密码（不保存）。",
+                    "物理链路未建立或状态未知",
+                    "物理链路未建立或未知；仍可运行服务并打开诊断页面，不视为通信通过。",
+                    "通过SSH执行 preflight；需要认证时请在终端输入密码（不保存）。",
+                    "通过SSH执行 start；需要认证时请在终端输入密码（不保存）。",
+                    "已启动本项目服务",
+                    "新开SSH转发窗口；密码登录时请在该窗口输入SSH密码，勿关闭该窗口。",
+                    "服务：运行；SSH转发及HTTP：正常。",
+                    "接收缓冲：内核上限=8388608，请求=4194304，实际=8388608字节。",
+                    "服务正常，FPGA尚未连接（online=false）",
+                    "完整前摄帧累计：0；前摄请求5fps，预览目标15fps不代表实际前摄接收率。",
+                    "预览：http://127.0.0.1:18080/",
+                    "关闭启动窗口后远端继续运行；停止请双击“停止前摄服务”。已有的外部转发不会被工具结束。"
+                ]
+}

@@ -1,0 +1,2797 @@
+ 
+UG020004(V1.8)                                                     Logos 系列 FPGA 时钟资源 （Clock） 用户指南 
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Logos 系列 FPGA 时钟资源（Clock）用户
+指南 
+ 
+(UG020004, Version 1.8) 
+(2022.07.18) 
+ 
+ 
+ 
+ 
+ 
+深圳市紫光同创电子有限公司 
+版权所有   侵权必究 
+ 
+ 
+ 
+ 
+                                                    文档版本修订记录 
+UG020004(V1.8)                                    1 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+文档版本修订记录 
+版本号 发布日期 修订记录 
+V1.0 2019/07/24 初始版本 
+V1.1 2019/10/08 新增PGL25G相关信息 
+V1.2 2020/03/27 新增附录一，对PGL22G  PLL 外部反馈场景的使用说明 
+V1.3 2020/07/27 新增PGL50H相关信息 
+V1.4 2020/09/10 更新IO时钟驱动的IO差分对范围；修正支持动态相移的器件名称 
+V1.5 2020/11/24 新增PGL50G相关信息 
+V1.6 2021/01/05 修正动态相位调整说明 
+V1.7 2021/02/24 新增PGL100H相关信息 
+V1.8 2022/07/18 
+1. 新增GTP_CLKBUFGMUX同步切换时两路时钟源必须正常说明 
+2. 新增PLL输入时钟不稳定和无输入时钟情况下要求 
+3. 删除表 2-19参数默认值，删除表 2-20参数类型和默认值 ，删除表 2-23
+默认值 
+4. 新增表2-4端口CE描述 
+5. 修正2.3小节的图 2-16备注第2点，第3点  
+6. 修正表2-11端口描述 
+7. 新增表2-12 IOCLKBUF端口DI描述 
+8. 新增表2-14 RST_N端口描述  
+9. 新增表2-16端口CLKIN_SEL描述 
+10. 新增2.5.4小节PLL的外部反馈时钟源描述 
+ 
+                                                                目录 
+UG020004(V1.8)                                    2 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+目 录 
+文档版本修订记录 ................................................................................................................................................... 1 
+目 录 ......................................................................................................................................................................... 2 
+表目录 ....................................................................................................................................................................... 3 
+图目录 ....................................................................................................................................................................... 4 
+名词术语解释 ........................................................................................................................................................... 6 
+1 总体介绍 ............................................................................................................................................................... 7 
+2 详细介绍 ............................................................................................................................................................... 8 
+2.1 时钟输入 ........................................................................................................................................................ 8 
+2.2 全局时钟 ...................................................................................................................................................... 12 
+2.3 区域时钟 ...................................................................................................................................................... 16 
+2.4 I/O 时钟 ........................................................................................................................................................ 20 
+2.5 PLL ................................................................................................................................................................ 30 
+2.5.1 PLL 顶层框图 ......................................................................................................................................... 34 
+2.5.2 端口列表 ................................................................................................................................................ 36 
+2.5.3 参数列表 ................................................................................................................................................ 39 
+2.5.4 PLL 时钟输入 ......................................................................................................................................... 43 
+2.5.5 输入时钟切换 ........................................................................................................................................ 43 
+2.5.6 PLL 输出时钟频率编程 ......................................................................................................................... 44 
+2.5.7 PLL 相位位移功能 ................................................................................................................................. 45 
+2.5.8 PLL 可编程 Duty cycle .......................................................................................................................... 47 
+2.5.9 PLL 输出时钟 gate 功能 ........................................................................................................................ 48 
+2.5.10 Divider 输出级联 .................................................................................................................................. 48 
+2.6 内部振荡器(OSC) ........................................................................................................................................ 49 
+附录一 ..................................................................................................................................................................... 51 
+免责声明 ................................................................................................................................................................. 52 
+                                                              表目录 
+UG020004(V1.8)                                    3 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+表目录 
+表 1-1 Logos 系列产品时钟资源 ............................................................................................................................ 7 
+表 2-1 GTP_IOCLKDELAY 端口说明 ................................................................................................................. 10 
+表 2-2 GTP_IOCLKDELAY 参数说明 ................................................................................................................. 10 
+表 2-3 Logos 系列产品的全局时钟输入源 .......................................................................................................... 12 
+表 2-4 GTP_CLKBUFGCE 端口说明 ................................................................................................................... 13 
+表 2-5 GTP_CLKBUFGCE 参数说明 ................................................................................................................... 13 
+表 2-6 GTP_CLKBUFG 的端口说明 .................................................................................................................... 14 
+表 2-7 GTP_CLKBUFGMUX 端口说明 ............................................................................................................... 15 
+表 2-8 GTP_CLKBUFGMUX 参数说明 ............................................................................................................... 15 
+表 2-9 Logos 区域时钟来源 .................................................................................................................................. 18 
+表 2-10 GTP_CLKBUFR 的端口说明 .................................................................................................................. 19 
+表 2-11 Logos 的 I/O 时钟网络输入源 ................................................................................................................. 26 
+表 2-12 GTP_IOCLKBUF 端口描述..................................................................................................................... 27 
+表 2-13 GTP_IOCLKBUF 参数描述..................................................................................................................... 27 
+表 2-14 GTP_IOCLKDIV 端口说明 ..................................................................................................................... 29 
+表 2-15 GTP_IOCLKDIV 端口说明 ..................................................................................................................... 29 
+表 2-16 GTP_PLL_E3 端口描述 ........................................................................................................................... 36 
+表 2-17 GTP_PLL_E1 端口描述 ........................................................................................................................... 37 
+表 2-18 GTP_PLL_E3 参数描述 ........................................................................................................................... 39 
+表 2-19 GTP_PLL_E1 参数描述 ........................................................................................................................... 41 
+表 2-20 PLL 输入输出频率和 divider 可用范围 .................................................................................................. 45 
+表 2-21 静态相位调整参数配置 ........................................................................................................................... 46 
+表 2-22 GTP_OSC_E3 端口说明 .......................................................................................................................... 49 
+表 2-23 GTP_OSC_E3 参数说明 .......................................................................................................................... 50 
+表 2-24 时钟频率配置 ........................................................................................................................................... 50 
+                                                              图目录 
+UG020004(V1.8)                                    4 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+图目录 
+图 2-1 Logos 系列 PGL12G,PGL22G 时钟输入分布示意图 ................................................................................ 8 
+图 2-2 Logos 系列 PGL25G,PGL50H,PGL50G,PGL100H 时钟输入分布示意图 ................................................ 9 
+图 2-3 GTP_ IOCLKDELAY 的示意图 .................................................................................................................. 9 
+图 2-4 GTP_IOCLKDELAY 的静态配置时序图 ..................................................................................................11 
+图 2-5 GTP_IOCLKDELAY 手动延时示例时序图 ..............................................................................................11 
+图 2-6 GTP_IOCLKDELAY 信号 DELAY_OB 跳转高电平示例时序图 ........................................................... 12 
+图 2-7 GTP_IOCLKDELAY 信号 DELAY_OB 跳转高电平示例时序图 ........................................................... 12 
+图 2-8 Logos 系列产品的全局时钟来源路径示意图 .......................................................................................... 12 
+图 2-9 GTP_CLKBUFGCE 的框图 ....................................................................................................................... 13 
+图 2-10 GTP_CLKBUFGCE 的时序图 ................................................................................................................. 14 
+图 2-11 GTP_CLKBUFG 的框图 .......................................................................................................................... 14 
+图 2-12 GTP_CLKBUFG 的时序图 ...................................................................................................................... 15 
+图 2-13 GTP_CLKBUFGMUX 的框图................................................................................................................. 15 
+图 2-14 USCM 的 CLKBUFGMUX 模式时序示意图（TRIGGER_MODE="NORMAL"） ........................... 16 
+图 2-15 USCM 的 CLKBUFGMUX 模式时序示意图（TRIGGER_MODE="NEGEDGE"） .......................... 16 
+图 2-16 Logos 系列区域分布示意图 .................................................................................................................... 17 
+图 2-17 区域时钟来源路径示意图 ....................................................................................................................... 18 
+图 2-18 GTP_CLKBUFR 的框图 .......................................................................................................................... 19 
+图 2-19 GTP_CLKBUFR 的时序图 ...................................................................................................................... 20 
+图 2-20 Logos 系列 PGL12G I/O 时钟分布示意图 ............................................................................................. 21 
+图 2-21 Logos 系列 PGL22G I/O 时钟分布示意图 ............................................................................................. 22 
+图 2-22Logos 系列 PGL25G I/O 时钟分布示意图 .............................................................................................. 23 
+图 2-23 Logos 系列 PGL50H、PGL50G I/O 时钟分布示意图 ........................................................................... 24 
+图 2-24 Logos 系列 PGL100H I/O 时钟分布示意图 ........................................................................................... 25 
+图 2-25 进入 I/O 时钟网络的路径示意图 ............................................................................................................ 26 
+图 2-26 GTP_IOCLKBUF 框图 ........................................................................................................................... 27 
+图 2-27 GATEN="FALSE"的 GTP_IOCLKBUF 时序图 ..................................................................................... 28 
+                                                              图目录 
+UG020004(V1.8)                                    5 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+图 2-28 GATEN="TRUE"的 GTP_IOCLKBUF 时序图 ....................................................................................... 28 
+图 2-29 Logos 系列 PGL12G，PGL22G，PGL25G 器件 PLL 位置分布示意图 .............................................. 30 
+图 2-30 Logos 系列 PGL50H、PGL50G 器件 PLL 位置分布示意图 ................................................................ 31 
+图 2-31 Logos 系列 PGL100H 器件 PLL 位置分布示意图 ................................................................................. 32 
+图 2-32 PGL12G,PGL25G,PGL50H,PGL50G，PGL100H 器件 PLL 模型框图 ................................................ 34 
+图 2-33 PGL22G GTP_PLL_E1 模型框图 ............................................................................................................ 35 
+图 2-34 PLL 参考时钟选择示意图 ....................................................................................................................... 43 
+图 2-35 PLL 外部反馈时钟选择示意图 ............................................................................................................... 43 
+图 2-36 时钟自动切换时序 ................................................................................................................................... 44 
+图 2-37 Logos 系列产品的 PLL 结构示意图 ....................................................................................................... 44 
+图 2-38 PLL 静态相位调整 ................................................................................................................................... 46 
+图 2-39 动态相位细调时序要求 ........................................................................................................................... 47 
+图 2-40 输出时钟 GATE 时序图 ........................................................................................................................... 48 
+图 2-41 PLL 分频输出级联 ................................................................................................................................... 49 
+图 2-42 GTP_OSC_E3 框图 .................................................................................................................................. 49 
+图 2-43 GTP_ OSC_E3 时序图 ............................................................................................................................. 50 
+                                                        名词术语解释 
+UG020004(V1.8)                                    6 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+名词术语解释 
+Abbreviations 缩略语 Full Spelling  英文全拼 Chinese Explanation 中文解释 
+USCM User Select Clock Module 全局时钟缓冲器 
+SRB Signal Relay Block 信号互连模块 
+GTP General Technology Primitive 通用原语 
+                                                     第一章 总体介绍 
+UG020004(V1.8)                                    7 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+1 总体介绍 
+Logos 系列产品被划分为不同数量的 Region 区域， 提供了丰富的片上时钟资源， 包含PLL
+和三类时钟网络：全局时钟、区域时钟、I/O 时钟。其中 IO 时钟相比其他时钟具有频率高、
+时钟偏移小以及延时时间小的特点。时钟资源详见下表所示： 
+表 1-1 Logos 系列产品时钟资源 
+特性 PGL12G PGL22G PGL25G PGL50H/ PGL50G PGL100H 
+区域数量 4 6 4 6 10 
+全局时钟数 20 20 20 30 30 
+每个区域支持全局时钟
+数 16 12 16 16 16 
+每个区域支持区域时钟
+数 4 4 4 4 4 
+IO BANK数 4 6 4 4 6 
+每个 IO BANK 支持 IO
+时钟数 2 2 4 
+上下 BANK 各 支 持4
+个 IO 时钟；左右
+BANK 各 支 持6 个 IO
+时钟 
+上下 BANK 各 支 持4
+个 IO 时钟；左右
+BANK各支持 10个IO
+时钟 
+总IO时钟数 8 12 16 20 28 
+PLL数量 4 6 4 5 8 
+ 
+此外，为了提高时钟的性能，Logos 系列产品还提供了时钟相关的特殊 IO，包括三类：
+时钟输入管脚，PLL 参考时钟输入管脚以及 PLL 反馈输入时钟管脚。和普通 I/O 相比，使用
+这些时钟输入管脚会使用 FPGA 专用的时钟网络，从而得到较好的时钟性能。当不作为时钟
+输入时，这些时钟输入管脚可配置为普通 I/O 使用。 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    8 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+2  详细介绍 
+2.1 时钟输入 
+时钟输入管脚可以使用专用时钟走线直接输入到内部时钟网络，包括全局时钟，区域时
+钟或 I/O 时钟，能减少干扰，提高时钟质量。时钟输入管脚可以是一对差分输入端口，也可
+以是一个单端输入端口，P 端和 N 端都可以作为单端使用。 专用时钟管脚不作为时钟输入时，
+仍可作为普通 I/O 使用。下图所示显示的是作为差分时输入的示意图。 
+                               IO BANK
+                               IO BANK                               IO BANK
+                               IO BANK                               IO BANK
+                               IO BANK
+PGL22G独有PGL22G独有
+Region_L0
+Region_L1
+Region_L2
+Region_R0
+Region_R1
+Region_R2
+ 
+图 2-1 Logos 系列 PGL12G,PGL22G 时钟输入分布示意图 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    9 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+ IO BANK
+IO BANK
+IO BANK
+IO BANK 
+Region
+Region
+Region
+Region
+…
+…
+ 
+图 2-2 Logos 系列 PGL25G,PGL50H,PGL50G,PGL100H 时钟输入分布示意图 
+为满足一些应用中调整输入时钟相位的需求，Logos 系列产品的时钟输入管脚提供了可
+选的时间延迟功能。输入时钟的时间延迟是直接通过 GTP_IOCLKDELAY 来实现，其
+GTP_IOCLKDELAY 对应的示意图如下图所示，其端口和参数说明如下表。 
+用户可以静态配置 delay step（调节延迟链的数量， 每个step 的延迟为 25ps，最小的延迟
+数量为 0，最大的延迟数量为 127（8’b0~8’b0111_1111） ，也可以利用片上DLL 获得动态的
+delay step， 更可以在动/静态配置的基础上通过用户控制逻辑， 动态微调delay step。在静态配
+置调整模式下，MOVE 及 DIRECTION 不起作用。 
+CLKOUTDELAY_STEP[7:0]
+DIRECTION
+LOAD
+MOVE
+DELAY_OB
+CLKIN
+ 
+图 2-3 GTP_ IOCLKDELAY 的示意图 
+ 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    10 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+表 2-1 GTP_IOCLKDELAY 端口说明 
+端口信号 输入/输出 描述 
+CLKIN 输入 来自管脚的时钟输入 
+DELAY_STEP [7:0] 输入 来自DLL的delay step 
+DIRECTION 输入 置0为动态增加delay step，置1为动态减少delay step 
+LOAD 输入 高有效，加载静态参数配置或来自 DLL的delay step 值，当
+LOAD=1’b0，可动态调节延时时间 
+MOVE 输入 下降沿触发动态微调，根据 DIRECTION 不同增加一个step或
+减小一个step。 
+CLKOUT 输出 延迟后的时钟输出 
+DELAY_OB 输出 
+delay step 动 态 微 调 溢出标 志 ， 当DIRECTION置 0时 ， 内部
+DELAY STEP 为127时变高；当DIRECTION置1时，内部delay 
+step为0时变高 
+表 2-2 GTP_IOCLKDELAY 参数说明 
+参数名 描述 
+DELAY_STEP_VALUE 静态delay step，当DELAY_STEP_SEL为“PARAMETER”时有效 
+DELAY_STEP_SEL “PORT”选择来自DLL的delay step； 
+“PARAMETER”选择静态参数配置的delay step 
+GTP_IOCLKDELAY 的使用可以直接用源代码例化，以 Verilog 例化为例： 
+GTP_IOCLKDELAY 
+#( 
+.DELAY_STEP_V ALUE  (8'd10       ),  //Used for static DELAY STEP setting, 
+0~127 
+.DELAY_STEP_SEL    ("PARAMETER")  // "PARAMETER" or "PORT" 
+) 
+I_IOCLKDELAY ( 
+.CLKIN           (CLKIN   ), 
+.DELAY_STEP     (DELAY_STEP ), 
+.CLKOUT          (CLKOUT     ), 
+.DIRECTION    (DIRECTION  ), 
+.LOAD      (LOAD   ), 
+.MOVE           (MOVE   ), 
+.DELAY_OB    (DELAY_OB  ) 
+); 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    11 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+上例中，对应时钟 CLKIN 周期为 2000ps，CLKDLY_STEP_V ALUE参数设为 10，则 
+CLKOUT 比 CLKIN 延迟 250ps。时序图如下。LOAD 为 1，DIRECTION 和 MOVE 为 0。  
+ 
+图 2-4 GTP_IOCLKDELAY 的静态配置时序图 
+当在手动模式下调节时，LOAD=1’b0,  MOVE 作为手动模式的触发时钟，通过下降沿
+触发。每触发一次，输入时钟增加一个或减少一个 step。DIRECTION 控制 step 的方向，当
+DIRECTION=1’b1，减少 step; 当 DIRECTION=1’b0，增加 step，对应的时序图如下，每增加
+或减少一次的时间为 T1。 
+ 
+图 2-5 GTP_IOCLKDELAY 手动延时示例时序图 
+ 
+对于DELAY_OB，如下图描述，在t0时刻后 DIRECTION=1’b0，MOVE下降沿出现的次
+数M与DELAY_STEP_VALUE设置的值或来自DLL的 DELAY_STEP 值 x 相加达到127，则
+DELAY_OB跳转成高电平，表示已达到可调整的最大DELAY TIME ，不能再增加step；当设
+置DELAY_STEP_VALUE 或 DELAY_STEP 为8’d0 ，如DIRECTION=1’b1，则DELAY_OB
+跳转成高电平，表示已达到可调整的最小DELAY TIME，不能再减少step。 
+8'd10
+1'b0
+1'b1
+1'b0
+DELAY_STEP_VALUE/DELAY_STEP[7:0]
+CLKIN
+CLKOUT
+DRICTION
+MOVE
+LOAD
+T_DELAY t t
+T_DELAY-T1
+T_DELAY-2T1
+T_DELAY-3T1
+T_DELAY-2T1
+T_DELAY-T1
+1'b1
+1'b0
+1'b0
+1'b1
+DELAY_STEP
+CLKIN
+CLKOUT
+MOVE
+DRICTION
+LOAD
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    12 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+ 
+ 
+图 2-6 GTP_IOCLKDELAY 信号 DELAY_OB 跳转高电平示例时序图 
+ 
+ 
+图 2-7 GTP_IOCLKDELAY 信号 DELAY_OB 跳转高电平示例时序图 
+2.2 全局时钟 
+Logos 系列产品的全局时钟输入源如下表所示，输入路径示意图如下图： 
+pregmux
+postgmux
+USCM GLOBAL CLK
+分布到Logos系列产品内部
+GLOBAL CLK
+分布到Logos系列产品内部
+时钟输入管脚
+PLL输出
+IOCLKDIV输出
+内部逻辑信号
+OSC输出
+HSST输出时钟
+ 
+图 2-8 Logos 系列产品的全局时钟来源路径示意图 
+ 
+表 2-3 Logos 系列产品的全局时钟输入源 
+全局时钟输入源 描述 
+时钟输入管脚 从时钟输入管脚输入的时钟 
+PLL输出 PLL 的 输 出 时 钟 ， 对 应 于 PLL 输出时钟 CLKOUT0/CLKOUT1/ 
+CLKOUT2/CLKOUT3/ CLKOUT4/ CLKOUT5 
+IOCLKDIV输出 IOCLKDIV输出的分频时钟 
+OSC输出 内部振荡器输出的时钟 
+内部逻辑信号 内部逻辑信号，一般不建议使用，容易影响输入时钟质量 
+1'b1
+1'b0
+1'b0
+1'b0
+1'b1
+8'dx
+1'b1
+t0
+DELAY_STEP_VALUE/DELAY_STEP[7:0]
+LOAD
+MOVE
+DRICTION
+DELAY_OB
+1'b1
+1'b0
+1'b0
+1'b0
+1'b1
+8'dx
+1'b1
+t0
+1'b1
+DELAY_STEP_VALUE/DELAY_STEP[7:0]
+LOAD
+MOVE
+DRICTION
+DELAY_OB
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    13 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+全局时钟输入源 描述 
+HSST输出（带HSST的器件） 
+HSST的10个输出时钟（ RCLK2FABRIC[3:0]、TCLK2FABRIC[3:0]、
+REFCK2CORE_0、REFCK2CORE_1），PGL50H有一个HSST, PGL100H
+有两个HSST 
+ 
+USCM 是一个智能的 2 选 1 时钟信号选择器， 控制选择信号不管在时钟的任何地方触发，
+输出可以选择需要输出的信号，且没有毛刺。它为全局时钟提供使能和选择的功能，它支持
+CLKBUFG，CLKBUFGCE 以及 CLKBUFGMUX 三种模式。CLKBUFG 提供了简单的时钟
+BUFFER 功能，通常由软件自动插入；CLKBUFGCE 属于带时钟使能的时钟 BUFFER，它的
+使用通过直接在 RTL 中例化 GTP 来实现；CLKBUFGMUX 是带有选择功能的时钟选择器。 
+其 GTP_CLKBUFGCE 的示意图如下图所示，对应的端口说明参数说明如下表： 
+CLKIN
+CE
+CLKOUT
+ 
+图 2-9 GTP_CLKBUFGCE 的框图 
+ 
+表 2-4 GTP_CLKBUFGCE 端口说明 
+端口信号 输入/输出 描述 
+CLK 输入 输入时钟 
+CE 输入 同步使能信号，必须CLKIN有时钟时CE才有作用。CE=1’b1时，
+CLKOUT=CLKIN; CE=1’b0时, CLKOUT=1’b0  
+CLKOUT 输出 输出时钟 
+ 
+表 2-5 GTP_CLKBUFGCE 参数说明 
+参数名 描述 
+DEFAULT_VALUE CE=0时，输出DEFAULT_VALUE； 
+CE=1时，输出CLKIN； 
+ 
+以 Verilog 为例，GTP_CLKBUFGCE 的例化： 
+GTP_CLKBUFGCE 
+#( 
+.DEFAULT_V ALUE  (1'b0   ) //1'b0;  
+) I_GTP_CLKBUFGCE ( 
+.CLKIN          (CLKIN  ), 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    14 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+.CE             (CE    ), 
+.CLKOUT       (CLKOUT   )); 
+当 CE 为高电平时其 CLKOUT=CLKIN，当 CE 为低电平时，CLKOUT 输出为低电平，
+其时序图如下图所示： 
+ 
+图 2-10 GTP_CLKBUFGCE 的时序图 
+ 
+GTP_CLKBUFG 的示意图如下图，其端口说明如下表： 
+CLKIN CLKOUT
+ 
+图 2-11 GTP_CLKBUFG 的框图 
+ 
+表 2-6 GTP_CLKBUFG 的端口说明 
+端口信号 输入/输出 描述 
+CLKIN 输入 输入时钟 
+CLKOUT 输出 输出时钟 
+ 
+GTP_CLKBUFG 的使用可以直接例化模块，以 Verilog 例化为例： 
+GTP_CLKBUFG 
+ I_ GTP_CLKBUFG ( 
+ .CLKOUT       (CLKOUT), 
+ .CLKIN   (CLKIN  )); 
+  
+ 
+ 
+ 
+1'b1
+1'b0
+1'b1
+1'b0
+CLKIN
+CE
+CLKOUT
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    15 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+GTP_CLKBUFG 的时序图如下图所示： 
+ 
+图 2-12 GTP_CLKBUFG 的时序图 
+GTP_CLKBUFGMUX 可用于两个时钟源之间的动态切换， 用户可以根据需要选择强制切
+换（对应 TRIGGER_MODE="NORMAL"），强制切换可能会引入毛刺；由时钟下降沿触发的
+去毛刺同步切换（对应 TRIGGER_MODE=" NEGEDGE "），同步切换必须保证两路输入时钟
+正常，不允许两路时钟输入为常 0 和常 1。 
+CLKIN0
+CLKIN1
+CLKOUTSEL
+ 
+图 2-13 GTP_CLKBUFGMUX 的框图 
+ 
+表 2-7 GTP_CLKBUFGMUX 端口说明 
+端口信号 输入/输出 描述 
+CLKIN0 输入 输入时钟0 
+CLKIN1 输入 输入时钟1 
+SEL 输入 时钟选择信号，0选择CLK0；1选择CLK1； 
+CLKOUT 输出 输出时钟 
+ 
+表 2-8 GTP_CLKBUFGMUX 参数说明 
+参数名 描述 
+TRIGGER_MODE 模式"NEGEDGE"、"NORMAL" 
+ 
+GTP_CLKBUFGMUX 的使用可以直接例化模块，以 Verilog 例化为例： 
+GTP_CLKBUFGMUX 
+#( 
+.TRIGGER_MODE  ("NEGEDGE"  ) //  "NEGEDGE",  
+) I_CLKBUFGMUX ( 
+   .CLKIN0       (CLK0    ), 
+CLKIN
+CLKOUT
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    16 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+   .CLKIN1        (CLK1    ), 
+   .SEL           (SEL    ), 
+   .CLKOUT       (CLKOUT   )) 
+其时序图如下所示： 
+ 
+图 2-14 USCM 的 CLKBUFGMUX 模式时序示意图（TRIGGER_MODE="NORMAL"） 
+ 
+ 
+图 2-15 USCM 的 CLKBUFGMUX 模式时序示意图（TRIGGER_MODE="NEGEDGE"） 
+2.3 区域时钟 
+Logos 系列产品的内部逻辑资源按区域分布，由多个区域构成，如下图所示。每个区域
+由不固定数量的 CLM、DRM、ADC、IO 及 APM 列组成。 
+glitch glitch
+CLK0
+CLK1
+SEL
+CLKOUT
+CLK0
+CLK1
+SEL
+CLKOUT
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    17 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region_L0 Region_R0
+APM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+Region_L1 Region_R1
+APM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+Region_L2 Region_R2
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM IPAPM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+Region_L3 Region_R3
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+Region_L4 Region_R4
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IP
+ 
+图 2-16 Logos 系列区域分布示意图 
+注1：图中IP指ADC（PGL12G、PGL22G）或者HSST（PGL50H、PGL100H） 
+注2：图中虚线圈住的区域 Region_L2和Region_R2为PGL22G、PGL50H、PGL50G特有 
+注3：图中虚线圈住的区域 Region_L3、Region_R3、Region_L4和Region_R4 为PGL100H特有 
+ 
+ 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    18 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+每个区域支持 4 个区域时钟，与全局时钟相比，区域时钟的优点是延迟小，skew 小，但
+它分布范围有限。区域时钟的来源路径如下图，区域时钟的输入源如下表： 
+vckbmux/
+rckbmux
+时钟输入管脚
+PLL输出时钟CLKOUT0/CLKOUT5
+vckbmux_out/
+rckbmux_out
+RCKB 区域时钟区域时钟IOCLKDIV输出
+内部逻辑信号
+HSST输出时钟
+ 
+图 2-17 区域时钟来源路径示意图 
+ 
+表 2-9 Logos 区域时钟来源 
+区域时钟输入源 描述 
+时钟输入管脚 每个区域内的时钟管脚输入的时钟只能作为该区域时钟的输入源 
+PLL 输出
+CLKOUT0/CLKOUT5 
+PGL12G： 
+PLL0的CLKOUT5能驱动区域L0，R0的Region CLOCK。 
+PLL1的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK。 
+PLL2的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK 
+PLL3的CLKOUT5能驱动区域L2，R2的Region CLOCK 
+PGL22G： 
+PLL0的CLKOUT5能驱动区域L0，R0的Region CLOCK。 
+PLL1的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK。 
+PLL2的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK 
+PLL3的CLKOUT5能驱动区域L1，R1，L2，R2的Region CLOCK 
+PLL4的CLKOUT5能驱动区域L1，R1，L2，R2的Region CLOCK 
+PLL5的CLKOUT5能驱动区域L2，R2的Region CLOCK 
+PGL25G： 
+PLL0的CLKOUT5能驱动区域L0，R0的Region CLOCK。 
+PLL1的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK。 
+PLL2的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK 
+PLL3的CLKOUT5能驱动区域L1，R1的Region CLOCK 
+PGL50H/ PGL50G： 
+PLL0的CLKOUT0能驱动区域L0，R0的Region CLOCK。 
+PLL0的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK 
+PLL1的CLKOUT0能驱动区域L1，R1的Region CLOCK。 
+PLL1的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK。 
+PLL2的CLKOUT0能驱动区域L1，R1的Region CLOCK 
+PLL2的CLKOUT5能驱动区域L1，R1，L2，R2的Region CLOCK 
+PLL3的CLKOUT0能驱动区域L2，R2的Region CLOCK 
+PLL3的CLKOUT5能驱动区域L1，R1，L2，R2的Region CLOCK 
+PLL4的CLKOUT0/CLKOUT5能驱动区域L2，R2的Region CLOCK 
+PGL100H： 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    19 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+区域时钟输入源 描述 
+PLL0的CLKOUT0能驱动区域L0，R0的Region CLOCK。 
+PLL0的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK 
+PLL1的CLKOUT0能驱动区域L1，R1的Region CLOCK。 
+PLL1的CLKOUT5能驱动区域L0，R0，L1，R1的Region CLOCK。 
+PLL2的CLKOUT0能驱动区域L1，R1的Region CLOCK 
+PLL2的CLKOUT5能驱动区域L1，R1，L2，R2的Region CLOCK 
+PLL3的CLKOUT0能驱动区域L2，R2的Region CLOCK 
+PLL3的CLKOUT5能驱动区域L1，R1，L2，R2的Region CLOCK 
+PLL4的CLKOUT0能驱动区域L2，R2的Region CLOCK 
+PLL4的CLKOUT5能驱动区域L2，R2，L3，R3的Region CLOCK 
+PLL5的CLKOUT0能驱动区域L3，R3的Region CLOCK 
+PLL5的CLKOUT5能驱动区域L2，R2，L3，R3的Region CLOCK 
+PLL6的CLKOUT0能驱动区域L3，R3的Region CLOCK 
+PLL6的CLKOUT5能驱动区域L3，R3，L4，R4的Region CLOCK 
+PLL7的CLKOUT0能驱动区域L4，R4的Region CLOCK 
+PLL7的CLKOUT5能驱动区域L3，R3，L4，R4的Region CLOCK 
+ 
+IOCLKDIV输出 每个区域内的IOCLKDIV输出的分频时钟只能作为该区域时钟的输入源 
+内部逻辑信号 内部逻辑信号，一般不建议使用，容易影响输入时钟质量 
+HSST输出（带HSST的器件） 
+PGL50H的HSST的输出时钟 RCLK2FABRIC[1]、RCLK2FABRIC[3]可驱动
+L0，R0的Region CLOCK  
+PGL100H上面的HSST的输出时钟RCLK2FABRIC[1]、RCLK2FABRIC[3]可
+驱动L0，R0的Region CLOCK，下面的HSST的输出时钟RCLK2FABRIC[1]、
+RCLK2FABRIC[3]可驱动L4,R4的Region CLOCK 
+ 
+用户可以通过例化 GTP_CLKBUFR 驱动区域内的逻辑单元，其 GTP_CLKBUFR 的示意
+图如下图，其端口说明如下表： 
+CLKIN CLKOUT
+ 
+图 2-18 GTP_CLKBUFR 的框图 
+ 
+表 2-10 GTP_CLKBUFR 的端口说明 
+端口信号 输入/输出 描述 
+CLKIN 输入 输入时钟 
+CLKOUT 输出 输出时钟 
+GTP_CLKBUFR 的使用可以直接例化模块，以 Verilog 例化为例： 
+GTP_CLKBUFR 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    20 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+ I_ GTP_CLKBUFR ( 
+ .CLKOUT       (CLKOUT  ), 
+ .CLKIN   (CLKIN   )) 
+ GTP_CLKBUFR 的时序图如下图所示： 
+ 
+图 2-19 GTP_CLKBUFR 的时序图 
+2.4 I/O 时钟 
+I/O 时钟提供高速及较低的 skew 时钟给 I/O 逻辑，每个区域的 I/O 时钟只能直接驱动该
+区域的 I/O 逻辑资源，通过使用全局时钟网络则能驱动所有 FPGA 资源，Logos 系列 FPGA
+的 IO 时钟分布如下图所示： 
+CLKIN
+CLKOUT
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    21 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+IOCLKBUF
+IOCLKDIV
+I/O时钟
+全局时钟、
+区域时钟
+输入源
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+IO
+Region_L1 Region_R1
+DRM
+CLM
+IO
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+2 2
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+IO
+Region_L0 Region_R0
+IO
+CLM
+CLM ADC
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+2 2
+DIFFIO_L0_0N
+DIFFIO_L0_0P
+DIFFIO_L0_19N
+DIFFIO_L0_19P
+…
+DIFFIO_L1_0N
+DIFFIO_L1_0P
+DIFFIO_L1_19N
+DIFFIO_L1_19P
+…
+DIFFIO_R0_0N
+DIFFIO_R0_0P
+DIFFIO_R0_19N
+DIFFIO_R0_19P
+…
+DIFFIO_R1_0N
+DIFFIO_R1_0P
+DIFFIO_R1_19N
+DIFFIO_R1_19P
+…
+ 
+图 2-20 Logos 系列 PGL12G I/O 时钟分布示意图 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    22 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+IO
+Region_L2 Region_R2
+DRM
+CLM
+IO
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+2 2
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+IO
+Region_L1 Region_R1
+DRM
+CLM
+IO
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+2 2
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+IO
+Region_L0 Region_R0
+IO
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO
+2 2
+DIFFIO_L0_0N
+DIFFIO_L0_0P
+DIFFIO_L0_19N
+DIFFIO_L0_19P
+…
+DIFFIO_L1_0N
+DIFFIO_L1_0P
+DIFFIO_L1_19N
+DIFFIO_L1_19P
+…
+DIFFIO_R0_0N
+DIFFIO_R0_0P
+DIFFIO_R0_19N
+DIFFIO_R0_19P
+…
+DIFFIO_R1_0N
+DIFFIO_R1_0P
+DIFFIO_R1_19N
+DIFFIO_R1_19P
+…
+DIFFIO_L2_0N
+DIFFIO_L2_0P
+DIFFIO_L2_19N
+DIFFIO_L2_19P
+…
+DIFFIO_R2_0N
+DIFFIO_R2_0P
+DIFFIO_R2_19N
+DIFFIO_R2_19P
+…
+ADC
+ 
+图 2-21 Logos 系列 PGL22G I/O 时钟分布示意图 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    23 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO IO
+2
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IOIO
+2
+IO
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO IO
+2
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+IOIO
+2
+IOIO
+2
+DIFFIO_B0_0P
+DIFFIO_B0_0N
+DIFFIO_B0_16P
+DIFFIO_B0_16N
+...
+DIFFIO_B0_17P
+DIFFIO_B0_17N
+DIFFIO_B0_33P
+DIFFIO_B0_33N
+...
+DIFFIO_B1_39N
+DIFFIO_B1_39P
+DIFFIO_B1_20N
+DIFFIO_B1_20P
+...
+DIFFIO_B1_19N
+DIFFIO_B1_19P
+DIFFIO_B1_0N
+DIFFIO_B1_0P
+...
+DIFFIO_B3_39P
+DIFFIO_B3_39N
+DIFFIO_B3_20P
+DIFFIO_B3_20N
+...
+DIFFIO_B3_19P
+DIFFIO_B3_19N
+DIFFIO_B3_0P
+DIFFIO_B3_0N
+...
+DIFFIO_B2_0N
+DIFFIO_B2_0P
+DIFFIO_B2_19N
+DIFFIO_B2_19P
+...
+DIFFIO_B2_20N
+DIFFIO_B2_20P
+DIFFIO_B2_39N
+DIFFIO_B2_39P
+...
+ 
+图 2-22Logos 系列 PGL25G I/O 时钟分布示意图 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    24 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO IO
+2
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IOIO
+2
+IO
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO IO
+2
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+IOIO
+2
+IOIO
+2
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+IO IO
+2
+DIFFIO_B0_0P
+DIFFIO_B0_0N
+DIFFIO_B0_11P
+DIFFIO_B0_11N
+DIFFIO_B0_12P
+DIFFIO_B0_12N
+DIFFIO_B0_30P
+DIFFIO_B0_30N
+...
+DIFFIO_B3_19P
+DIFFIO_B3_19N
+DIFFIO_B3_0P
+DIFFIO_B3_0N
+...
+DIFFIO_B3_39P
+DIFFIO_B3_39N
+DIFFIO_B3_20P
+DIFFIO_B3_20N
+...
+DIFFIO_B3_57P
+DIFFIO_B3_57N
+DIFFIO_B3_40P
+DIFFIO_B3_40N
+...
+DIFFIO_B2_24N
+DIFFIO_B2_24P
+DIFFIO_B2_0N
+DIFFIO_B2_0P
+...
+DIFFIO_B2_54N
+DIFFIO_B2_54P
+DIFFIO_B2_25N
+DIFFIO_B2_25P
+...
+DIFFIO_B1_55N
+DIFFIO_B1_55P
+DIFFIO_B1_40N
+DIFFIO_B1_40P
+...
+DIFFIO_B1_39N
+DIFFIO_B1_39P
+DIFFIO_B1_20N
+DIFFIO_B1_20P
+...
+DIFFIO_B1_19N
+DIFFIO_B1_19P
+DIFFIO_B1_0N
+DIFFIO_B1_0P
+...
+...
+HSST
+ 
+图 2-23 Logos 系列 PGL50H、PGL50G I/O 时钟分布示意图 
+注：PGL50G器件无图中所示的 HSST 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    25 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO IO
+2
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+IO IO
+2
+DIFFIO_B4_25N
+DIFFIO_B4_25P
+DIFFIO_B4_14N
+DIFFIO_B4_14P
+...
+DIFFIO_B3_16N
+DIFFIO_B3_16P
+DIFFIO_B3_0N
+DIFFIO_B3_0P
+...
+DIFFIO_B1_13N
+DIFFIO_B1_13P
+DIFFIO_B1_0N
+DIFFIO_B1_0P
+...
+DIFFIO_B5_26N
+DIFFIO_B5_26P
+DIFFIO_B5_14N
+DIFFIO_B5_14P
+...
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO IO
+2
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+IO IO
+2
+DIFFIO_B3_36N
+DIFFIO_B3_36P
+DIFFIO_B3_17N
+DIFFIO_B3_17P
+...
+DIFFIO_B3_56N
+DIFFIO_B3_56P
+DIFFIO_B3_37N
+DIFFIO_B3_37P
+...
+DIFFIO_B1_46N
+DIFFIO_B1_46P
+DIFFIO_B1_31N
+DIFFIO_B1_32P
+...
+DIFFIO_B1_31N
+DIFFIO_B1_31P
+DIFFIO_B1_14N
+DIFFIO_B1_14P
+...
+CLM
+CLM
+DRM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+Region Region
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+IO IO
+2
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+CLM
+IO
+2
+IO
+IOIO
+2
+IOIO
+2
+DIFFIO_B0_0P
+DIFFIO_B0_0N
+DIFFIO_B0_20P
+DIFFIO_B0_20N
+DIFFIO_B0_21P
+DIFFIO_B0_21N
+DIFFIO_B0_45P
+DIFFIO_B0_45N
+...
+DIFFIO_B4_13N
+DIFFIO_B4_13P
+DIFFIO_B4_0N
+DIFFIO_B4_0P
+...
+DIFFIO_B5_13N
+DIFFIO_B5_13P
+DIFFIO_B5_0N
+DIFFIO_B5_0P
+...
+...
+HSST
+CLM
+DRM
+CLM
+IO
+2
+IO
+DIFFIO_B2_0P
+DIFFIO_B2_0N
+DIFFIO_B2_20P
+DIFFIO_B2_20N
+IO
+2
+IO
+DIFFIO_B2_21P
+DIFFIO_B2_21N
+DIFFIO_B2_45P
+DIFFIO_B2_45N
+HSST
+ 
+图 2-24 Logos 系列 PGL100H I/O 时钟分布示意图 
+ 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    26 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+PGL25G、PGL50H、PGL50G、PGL100H 架构中，上下 IO BANK 的时钟 IO 管脚不能直
+接驱动所在 REGION 的区域时钟，但是可以通过全局时钟网络去驱动区域时钟网络。 
+每个区域内 I/O 时钟的输入源有该区域内时钟管脚输入的时钟、PLL 输出时钟 CLKOUT0、
+CLKOUT5 以及内部逻辑信号，如下图所示，其具体的 I/O 时钟具体的输入源如下表所示： 
+内部逻辑信号 I/O时钟
+分布到Logos系列产品内部IO部分
+时钟输入管脚
+IOCLKBUF
+IOCLKDIV 全局时钟、区域时钟
+PLL输出CLKOUT0 CLKOUT5
+ 
+图 2-25 进入 I/O 时钟网络的路径示意图 
+ 
+表 2-11 Logos 的 I/O 时钟网络输入源 
+IO 时钟输入源 描述 
+时钟输入管脚 
+每个区域内的时钟管脚输入的时钟只能作为该区域 I/O时钟的输入源，
+PGL12G和PGL22G的N端不能作为I/O时钟的输入源 
+PLL 输出
+CLKOUT0/CLKOUT5 
+PGL12G： 
+PLL0的CLKOUT0/CLKOUT5能驱动区域L0，R0的IO CLOCK。 
+PLL1的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK。 
+PLL2的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK 
+PLL3的CLKOUT0/CLKOUT5能驱动区域L2，R2的IO CLOCK 
+PGL22G： 
+PLL0的CLKOUT0/CLKOUT5能驱动区域L0，R0的IO CLOCK。 
+PLL1的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK。 
+PLL2的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK 
+PLL3的CLKOUT0/CLKOUT5能驱动区域L1，R1，L2，R2的IO CLOCK 
+PLL4的CLKOUT0/CLKOUT5能驱动区域L1，R1，L2，R2的IO CLOCK 
+PLL5的CLKOUT0/CLKOUT5能驱动区域L2，R2的IO CLOCK 
+PGL25G： 
+PLL0的CLKOUT0/CLKOUT5能驱动区域L0，R0的IO CLOCK。 
+PLL1的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK。 
+PLL2的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK 
+PLL3的CLKOUT0/CLKOUT5能驱动区域L1，R1的IO CLOCK 
+PGL50H/PGL50G： 
+PLL0的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK。 
+PLL1的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK。 
+PLL2的CLKOUT0/CLKOUT5能驱动区域L1，R1，L2，R2的IO CLOCK 
+PLL3的CLKOUT0/CLKOUT5能驱动区域L1，R1，L2，R2的IO CLOCK 
+PLL4的CLKOUT0/CLKOUT5能驱动区域L2，R2的IO CLOCK 
+PGL100H： 
+PLL0的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK。 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    27 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+IO 时钟输入源 描述 
+PLL1的CLKOUT0/CLKOUT5能驱动区域L0，R0，L1，R1的IO CLOCK。 
+PLL2的CLKOUT0/CLKOUT5能驱动区域L1，R1，L2，R2的IO CLOCK 
+PLL3的CLKOUT0/CLKOUT5能驱动区域L1，R1，L2，R2的IO CLOCK 
+PLL4的CLKOUT0/CLKOUT5能驱动区域L2，R2，L3，R3的IO CLOCK 
+PLL5的CLKOUT0/CLKOUT5能驱动区域L2，R2，L3，R3的IO CLOCK 
+PLL6的CLKOUT0/CLKOUT5能驱动区域L3，R3，L4，R4的IO CLOCK 
+PLL7的CLKOUT0/CLKOUT5能驱动区域L3，R3，L4，R4的IO CLOCK 
+内部逻辑信号 内部逻辑信号，一般不建议使用，容易影响输入时钟质量 
+ 
+IOCLKBUF的使用可以通过例化GTP_IOCLKBUF来实现，其对应的示意图如下图所示，
+端口及参数的描述如下表： 
+CLKIN
+CLKOUT
+DI
+ 
+图 2-26 GTP_IOCLKBUF 框图 
+ 
+ 
+表 2-12 GTP_IOCLKBUF 端口描述 
+端口信号 输入/输出 描述 
+CLKIN 输入 输入时钟 
+DI 输入 同步使能信号，下降沿同步，需要同步两拍输入时钟 
+CLKOUT 输出 输出时钟 
+ 
+表 2-13 GTP_IOCLKBUF 参数描述 
+参数名 描述 
+GATE_EN "TRUE" 时使能信号DI有效；"FALSE" 时使能信号DI无效； 
+ 
+GTP_IOCLKBUF的例化，以Verilog例化为例： 
+GTP_IOCLKBUF 
+#( 
+   .GATE_EN   ("FALSE"  )   //FALSE; TRUE  
+) I_GTP_IOCLKBUF ( 
+.CLKOUT  (CLKOUT   ), 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    28 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+.CLKIN   (CLIN    ), 
+.DI    (DI       ));     
+ 
+当参数GATE_EN为 "TRUE" 或 "FALSE" 时，其对应的时序图如下： 
+ 
+图 2-27 GATEN="FALSE"的 GTP_IOCLKBUF 时序图 
+ 
+ 
+图 2-28 GATEN="TRUE"的 GTP_IOCLKBUF 时序图 
+ 
+IOCLKDIV 对来自于 IOCLKBUF 的时钟进行分频， 分频之后的时钟可以作为全局时钟和
+区域时钟的输入源。IOCLKDIV 的使用通过直接在 RTL 中例化对应的 GTP 来实现， 以Verilog
+例化为例： 
+GTP_IOCLKDIV #( 
+.DIV_FACTOR  ("2"    ), //"2"; "3.5"; "4"; "5";  
+.GRS_EN       ("FALSE"   ) //"TRUE"; "FALSE" 
+)I_IOCLKDIV( 
+.CLKIN         (CLKIN   ), 
+.RST_N         (RST_N   ), 
+.CLKDIVOUT  (CLKDIVOUT )); 
+ 
+1'b1
+1'b0
+"FALSE"
+CLKIN
+DI
+CLKOUT
+GATE_EN
+1'b1
+1'b0
+"TRUE"
+CLKIN
+DI
+CLKOUT
+GATE_EN
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    29 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+表 2-14 GTP_IOCLKDIV 端口说明 
+端口信号 输入/输出 描述 
+CLKIN 输入 输入时钟 
+RST_N 输入 
+低电平有效。该端口内部电路采用异步复位同步释放，当输入从1
+变成0时，CLKDIVOUT端口可能输出一个时钟毛刺；当输入从 0
+变成1时，CLKDIVOUT端口不会输出时钟毛刺。   
+CLKDIVOUT 输出 分频输出时钟 
+ 
+表 2-15 GTP_IOCLKDIV 端口说明 
+参数名 描述 
+DIV_FACTOR 为分频比值为"2"、"3.5"、"4"、"5" 
+GRS_EN 全局使能信号，"TRUE"，全局使能信号有效；"FALSE"，全局使能信号无效 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    30 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+2.5 PLL 
+Logos 系列产品具有不同数量的 PLL，如下图所示： 
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+ADC
+Region_L0 Region_R0
+APM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+Region_L1 Region_R1
+APM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+Region_L2 Region_R2
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+PGL22G独有PGL22G独有
+PGL25G
+没有
+PGL25G
+没有
+CLM
+PLL0PLL1PLL2PLL3PLL4PLL5
+               
+  图 2-29 Logos 系列 PGL12G，PGL22G，PGL25G 器件 PLL 位置分布示意图 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    31 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+Region_L0 Region_R0
+APM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+Region_L1 Region_R1
+APM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+Region_L2 Region_R2
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+PLL0PLL1PLL2PLL3PLL4
+CLM HSST
+ 
+图 2-30 Logos 系列 PGL50H、PGL50G 器件 PLL 位置分布示意图 
+ 
+注：PGL50G器件无图中所示的 HSST 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    32 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+Region_L0 Region_R0
+APM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+Region_L1 Region_R1
+APM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+APM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+Region_L2 Region_R2
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+PLL0PLL1PLL2PLL3PLL4
+CLM HSST
+APM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+CLM
+Region_L3 Region_R3
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+PLL5PLL6
+CLM
+CLM
+CLM
+CLM
+DRM
+CLM
+CLM
+CLM
+Region_L4 Region_R4
+DRM
+CLM
+CLM
+CLM
+CLM
+CLM
+APM
+CLM
+CLM
+APM
+CLM
+DRM
+CLM
+CLM
+PLL7
+HSST
+ 
+图 2-31 Logos 系列 PGL100H 器件 PLL 位置分布示意图 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    33 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+Logos 系列产品的 PLL 的分布示意图如上图所示，PLL 主要特性如下： 
+ 频率综合，相位调整； 
+ 可选的输入时钟动态选择； 
+ 支持外部反馈和内部反馈两种反馈模式； 
+ 支持 PLL 的动态配置； 
+ 可选的输出时钟 gate 功能； 
+ 可选的可编程的 phase shift； 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    34 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+2.5.1 PLL 顶层框图 
+Logos 系列 PGL12G, PGL25G，PGL50H，PGL50G，PGL100H 产品的 PLL 模型框图如下
+所示： 
+GTP_PLL_E3
+CLKIN1
+CLKIN2
+CLKIN_SEL_EN
+CLKFB
+CLKOUT0
+CLKOUT0_EXT
+CLKOUT1
+CLKOUT2
+CLKOUT3
+CLKOUT4
+CLKIN_SEL
+PFDEN
+CLKOUT5
+CLKSWITCH_FLAG
+CLKOUT0_SYN
+CLKOUT0_EXT_SYN
+CLKOUT1_SYN
+CLKOUT2_SYN
+CLKOUT3_SYN
+CLKOUT4_SYN
+CLKOUT5_SYN
+RATIOI[9:0]
+RATIO0[9:0]
+RATIO1[9:0]
+RATIO2[9:0]
+RATIO3[9:0]
+RATIO4[9:0]
+RATIOF[9:0]
+DUTY0[9:0]
+DUTY1[9:0]
+DUTY2[9:0]
+DUTY3[9:0]
+DUTY4[9:0]
+PLL_PWD
+RST
+RSTODIV
+LOCK
+PHASE_SEL[2:0]
+PHASE_STEP_N
+PHASE_DIR
+LOAD_PHASE
+ICP_BASE
+ICP_SEL[3:0]
+LPFRES_SEL[2:0]
+CRIPPLE_SEL
+RATIOM[6:0]
+ 
+图 2-32 PGL12G,PGL25G,PGL50H,PGL50G，PGL100H 器件 PLL 模型框图 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    35 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+Logos 系列 PGL22G 产品的 PLL 模型框图如下图所示： 
+GTP_PLL_E1
+CLKIN1
+CLKIN2
+CLKIN_DSEL_EN
+CLKFB
+CLKOUT0
+CLKOUT0_EXT
+CLKOUT1
+CLKOUT2
+CLKOUT3
+CLKOUT4
+CLKIN_DSEL
+PFDEN
+CLKOUT5
+CLKSWITCH_FLAG
+CLKOUT0_SYN
+CLKOUT0_EXT_SYN
+CLKOUT1_SYN
+CLKOUT2_SYN
+CLKOUT3_SYN
+CLKOUT4_SYN
+CLKOUT5_SYN
+RATIOI
+RATIO0
+RATIO1
+RATIO2
+RATIO3
+RATIO4
+RATIOF
+DUTY0
+DUTY1
+DUTY2
+DUTY3
+DUTY4
+DUTYF
+PHASE0
+PHASE1
+PHASE2
+PHASE3
+PHASE4
+PHASEF
+PLL_PWD
+RST
+RSTODIV_PHASE
+LOCK
+CPHASE0
+CPHASE1
+CPHASE2
+CPHASE3
+CPHASE4
+CPHASEF
+ 
+图 2-33 PGL22G GTP_PLL_E1 模型框图 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    36 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+2.5.2 端口列表 
+Logos 系列 PGL12G，PGL25G，PGL50H，PGL50G，PGL100H 产品的 PLL 端口信号如
+下表所示： 
+表 2-16 GTP_PLL_E3 端口描述 
+Port 方向 功能描述 
+CLKOUT0 输出 输出divider0分频输出时钟； 
+CLKOUT0_EXT 输出 输出divider0分频输出时钟，与CLKOUT0为同源时钟； 
+CLKOUT1 输出 输出divider1分频输出时钟； 
+CLKOUT2 输出 输出divider2分频输出时钟； 
+CLKOUT3 输出 输出divider3分频输出时钟； 
+CLKOUT4 输出 输出divider4分频输出时钟或输入时钟bypass输出； 
+CLKOUT5 输出 输出divider0~4分频输出5选1后时钟，由静态配置CLKOUT5_SEL选择； 
+CLKSWITCH_FLAG 输出 
+时钟自动切换标识，在时钟动态选择的自动模式下： 
+为0时，表示选择CLKIN1作为PLL基准时钟； 
+为1时，表示选择CLKIN2作为PLL基准时钟； 
+LOCK 输出 PLL锁定输出信号；为0时，PLL未锁定；为1时，PLL已锁定； 
+CLKIN1 输入 输入时钟1； 
+CLKIN2 输入 输入时钟2； 
+CLKFB 输入 反馈时钟； 
+CLKIN_SEL 输入 输入时钟选择端口 ，异步控制信号 。为0时，选择 CLKIN1；为1时，
+CLKIN2； 
+CLKIN_SEL_EN 输入 
+CLKIN_SEL端口使能： 
+为0时，CLKIN_SEL端口输入无效，自动模式； 
+为1时，CLKIN_SEL端口输入有效，由CLKIN_SEL选择输入时钟； 
+PFDEN 输入 PLL PFD使能，高电平有效； 
+ICP_BASE 输入 Charge Pump电流基准设置 
+ICP_SEL[3:0] 输入 Charge Pump电流动态设置 
+LPFRES_SEL[2:0] 输入 Loop Filter电阻动态设置 
+CRIPPLE_SEL 输入 Loop Filter电阻动态设置 
+PHASE_SEL[2:0] 输入 
+选择PLL相应输出时钟进行相位调整； 
+3’b000：选择CLKOUT0， 
+3’b001：选择CLKOUT1， 
+3’b010：选择CLKOUT2， 
+3’b011：选择CLKOUT3； 
+3’b100：选择CLKOUT4； 
+3’b101：选择内部反馈时钟； 
+PHASE_DIR 输入 选择动态相位细调调整方向；1’b0：滞后，1’b1：超前； 
+PHASE_STEP_N 输入 动态相位细调调整toggle信号； 
+每toggle一次，输出时钟相位调整1/8Tvco； 
+LOAD_PHASE 输入 所选通道的当前相位细调值加载信号，脉冲信号，高电平有效； 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    37 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+Port 方向 功能描述 
+RATIOI[9:0] 输入 输入divider divider ratio动态设置； 
+RATIOM[6:0] 输入 反馈M divider divider ratio动态设置； 
+RATIO0[9:0] 输入 输出divider0 divider ratio动态设置； 
+RATIO1[9:0] 输入 输出divider1 divider ratio动态设置； 
+RATIO2[9:0] 输入 输出divider2 divider ratio动态设置； 
+RATIO3[9:0] 输入 输出divider3 divider ratio动态设置； 
+RATIO4[9:0] 输入 输出divider4 divider ratio动态设置； 
+RATIOF[9:0] 输入 反馈F divider divider ratio动态设置； 
+DUTY0[9:0] 输入 输出divider0 duty cycle动态设置； 
+DUTY1[9:0] 输入 输出divider1 duty cycle动态设置； 
+DUTY2[9:0] 输入 输出divider2 duty cycle动态设置； 
+DUTY3[9:0] 输入 输出divider3 duty cycle动态设置； 
+DUTY4[9:0] 输入 输出divider4 duty cycle动态设置； 
+CLKOUT0_SYN 输入 输出时钟CLKOUT0 GATE控制，高电平有效； 
+CLKOUT0_EXT_SYN 输入 输出时钟CLKOUT0_EXT GATE控制，高电平有效； 
+CLKOUT1_SYN 输入 输出时钟CLKOUT1 GATE控制，高电平有效； 
+CLKOUT2_SYN 输入 输出时钟CLKOUT2 GATE控制，高电平有效； 
+CLKOUT3_SYN 输入 输出时钟CLKOUT3 GATE控制，高电平有效； 
+CLKOUT4_SYN 输入 输出时钟CLKOUT4 GATE控制，高电平有效； 
+CLKOUT5_SYN 输入 输出时钟CLKOUT5 GATE控制，高电平有效； 
+PLL_PWD 输入 Power Down，高电平有效；当PLL不使用时，PLL可以被关闭以便节省
+电源。 
+RST 输入 全局复位信号，高电平有效； 
+RSTODIV 输入 输出divider0~4和FDIV复位信号，高电平有效； 
+ 
+Logos 系列 PGL22G 产品的 PLL 端口信号如下表所示： 
+表 2-17 GTP_PLL_E1 端口描述 
+Port 方向 功能描述 
+CLKOUT0 O 输出divider0分频输出时钟； 
+CLKOUT0_EXT O 输出divider0分频输出时钟，与CLKOUT0为同源时钟； 
+CLKOUT1 O 输出divider1分频输出时钟； 
+CLKOUT2 O 输出divider2分频输出时钟； 
+CLKOUT3 O 输出divider3分频输出时钟； 
+CLKOUT4 O 输出divider4分频输出时钟或输入时钟bypass输出； 
+CLKOUT5 O 输出divider0~4分频输出5选1后时钟，由静态配置CLKOUT5_SEL选择； 
+CLKSWITCH_FLAG O 
+时钟自动切换标识，在时钟动态选择的自动模式下： 
+为0时，表示选择CLKIN1作为PLL基准时钟； 
+为1时，表示选择CLKIN2作为PLL基准时钟； 
+LOCK O PLL锁定输出信号；为0时，PLL未锁定；为1时，PLL已锁定； 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    38 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+Port 方向 功能描述 
+CLKIN1 I 输入时钟1； 
+CLKIN2 I 输入时钟2； 
+CLKFB I 反馈时钟； 
+CLKIN_DSEL I 输入时钟动态选择的手动选择端口； 
+CLKIN_DSEL_EN I 
+CLKIN_DSEL端口使能： 
+为0时，CLKIN_DSEL端口输入无效，动态选择的自动模式； 
+为1时，CLKIN_DSEL端口输入有效，动态选择的手动模式； 
+PFDEN I PLL PFD使能，高电平有效； 
+CLKOUT0_SYN I 输出时钟CLKOUT0 GATE控制，高电平有效； 
+CLKOUT0_EXT_SYN I 输出时钟CLKOUT0_EXT GATE控制，高电平有效； 
+CLKOUT1_SYN I 输出时钟CLKOUT1 GATE控制，高电平有效； 
+CLKOUT2_SYN I 输出时钟CLKOUT2 GATE控制，高电平有效； 
+CLKOUT3_SYN I 输出时钟CLKOUT3 GATE控制，高电平有效； 
+CLKOUT4_SYN I 输出时钟CLKOUT4 GATE控制，高电平有效； 
+CLKOUT5_SYN I 输出时钟CLKOUT5 GATE控制，高电平有效； 
+RATIOI I 输入divider divider ratio动态设置； 
+RATIO0 I 输出divider0 divider ratio动态设置； 
+RATIO1 I 输出divider1 divider ratio动态设置； 
+RATIO2 I 输出divider2 divider ratio动态设置； 
+RATIO3 I 输出divider3 divider ratio动态设置； 
+RATIO4 I 输出divider4 divider ratio动态设置； 
+RATIOF I 反馈divider divider ratio动态设置； 
+DUTY0 I 输出divider0 duty cycle动态设置； 
+DUTY1 I 输出divider1 duty cycle动态设置； 
+DUTY2 I 输出divider2 duty cycle动态设置； 
+DUTY3 I 输出divider3 duty cycle动态设置； 
+DUTY4 I 输出divider4 duty cycle动态设置； 
+DUTYF I 反馈divider duty cycle动态设置； 
+PHASE0 I 输出divider0 fine phase动态设置； 
+PHASE1 I 输出divider1 fine phase动态设置； 
+PHASE2 I 输出divider2 fine phase动态设置； 
+PHASE3 I 输出divider3 fine phase动态设置； 
+PHASE4 I 输出divider4 fine phase动态设置； 
+PHASEF I 反馈divider fine phase动态设置； 
+CPHASE0 I 输出divider0 coarse phase动态设置； 
+CPHASE1 I 输出divider1 coarse phase动态设置； 
+CPHASE2 I 输出divider2 coarse phase动态设置； 
+CPHASE3 I 输出divider3 coarse phase动态设置； 
+CPHASE4 I 输出divider4 coarse phase动态设置； 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    39 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+Port 方向 功能描述 
+CPHASEF I 反馈divider coarse phase动态设置； 
+PLL_PWD I Power Down，高电平有效； 
+RST I 全局复位信号，高电平有效； 
+RSTODIV_PHASE I 相位调整功能使能时，输出divider0~4复位信号，高电平有效； 
+相位调整功能关闭时，输出divider0~4受RST复位信号控制； 
+ 
+2.5.3 参数列表 
+Logos 系列 PGL12G，PGL25G，PGL50H，PGL50G，PGL100H 产品的 PLL 参数如下表
+所示： 
+表 2-18 GTP_PLL_E3 参数描述 
+参数名称 有效值 功能描述 
+CLKIN_FREQ 5~625 输入时钟频率 
+PFDEN_EN “FALSE”,“TRUE” PLL PFDEN信号使能； 
+VCOCLK_DIV2 1’b0-1’b1 PLL VCO输出时钟2分频使能； 
+DYNAMIC_RATIOI_EN “FALSE”,“TRUE” 输入divider分频动态控制使能； 
+DYNAMIC_RATIOM_EN “FALSE”,“TRUE” 反馈M divider分频动态控制使能； 
+DYNAMIC_RATIO0_EN “FALSE”,“TRUE” 输出divider0分频动态控制使能； 
+DYNAMIC_RATIO1_EN “FALSE”,“TRUE” 输出divider1分频动态控制使能； 
+DYNAMIC_RATIO2_EN “FALSE”,“TRUE” 输出divider2分频动态控制使能； 
+DYNAMIC_RATIO3_EN “FALSE”,“TRUE” 输出divider3分频动态控制使能； 
+DYNAMIC_RATIO4_EN “FALSE”,“TRUE” 输出divider4分频动态控制使能； 
+DYNAMIC_RATIOF_EN “FALSE”,“TRUE” 反馈F divider分频动态控制使能； 
+STATIC_RATIOI 1~512 输入divider分频静态设置； 
+STATIC_RATIOM 1~64 反馈M divider分频静态设置； 
+STATIC_RATIO0 1~512 输出divider0分频静态设置； 
+STATIC_RATIO1 1~512 输出divider1分频静态设置； 
+STATIC_RATIO2 1~512 输出divider2分频静态设置； 
+STATIC_RATIO3 1~512 输出divider3分频静态设置； 
+STATIC_RATIO4 1~512 输出divider4分频静态设置； 
+STATIC_RATIOF 1~512 反馈F divider分频静态设置； 
+DYNAMIC_DUTY0_EN “FALSE”,“TRUE” 输出divider0 duty动态控制使能； 
+DYNAMIC_DUTY1_EN “FALSE”,“TRUE” 输出divider1 duty动态控制使能； 
+DYNAMIC_DUTY2_EN “FALSE”,“TRUE” 输出divider2 duty动态控制使能； 
+DYNAMIC_DUTY3_EN “FALSE”,“TRUE” 输出divider3 duty动态控制使能； 
+DYNAMIC_DUTY4_EN “FALSE”,“TRUE” 输出divider4 duty动态控制使能； 
+STATIC_DUTY0 2~1022 输出divider0 duty静态设置； 
+STATIC_DUTY1 2~1022 输出divider1 duty静态设置； 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    40 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+参数名称 有效值 功能描述 
+STATIC_DUTY2 2~1022 输出divider2 duty静态设置； 
+STATIC_DUTY3 2~1022 输出divider3 duty静态设置； 
+STATIC_DUTY4 2~1022 输出divider4 duty静态设置； 
+STATIC_PHASE0 0~7 输出divider0 fine phase静态设置； 
+STATIC_PHASE1 0~7 输出divider1 fine phase静态设置； 
+STATIC_PHASE2 0~7 输出divider2 fine phase静态设置； 
+STATIC_PHASE3 0~7 输出divider3 fine phase静态设置； 
+STATIC_PHASE4 0~7 输出divider4 fine phase静态设置； 
+STATIC_PHASEF 0~7 反馈divider fine phase静态设置； 
+STATIC_CPHASE0 0~511 输出divider0 coarse phase静态设置； 
+STATIC_CPHASE1 0~511 输出divider1 coarse phase静态设置； 
+STATIC_CPHASE2 0~511 输出divider2 coarse phase静态设置； 
+STATIC_CPHASE3 0~511 输出divider3 coarse phase静态设置； 
+STATIC_CPHASE4 0~511 输出divider4 coarse phase静态设置； 
+STATIC_CPHASEF 0~511 反馈divider coarse phase静态设置； 
+CLK_CAS1_EN “FALSE”,“TRUE” 输出divider1时钟级联使能； 
+CLK_CAS2_EN “FALSE”,“TRUE” 输出divider2时钟级联使能； 
+CLK_CAS3_EN “FALSE”,“TRUE” 输出divider3时钟级联使能； 
+CLK_CAS4_EN “FALSE”,“TRUE” 输出divider4时钟级联使能； 
+CLKOUT5_SEL 0~4 输出时钟CLKOUT5选择设置； 
+CLKIN_BYPASS_EN “FALSE”,“TRUE” 输入时钟bypass使能； 
+CLKOUT0_SYN_EN “FALSE”,”TRUE” CLKOUT0_SYN端口使能； 
+CLKOUT0_EXT_SYN_EN “FALSE”,”TRUE” CLKOUT0_EXT_SYN端口使能； 
+CLKOUT1_SYN_EN “FALSE”,”TRUE” CLKOUT1_SYN端口使能； 
+CLKOUT2_SYN_EN “FALSE”,”TRUE” CLKOUT2_SYN端口使能； 
+CLKOUT3_SYN_EN “FALSE”,”TRUE” CLKOUT3_SYN端口使能； 
+CLKOUT4_SYN_EN “FALSE”,”TRUE” CLKOUT4_SYN端口使能； 
+CLKOUT5_SYN_EN “FALSE”,”TRUE” CLKOUT5_SYN端口使能； 
+INTERNAL_FB “DISABLE”,“ENABLE” 内部反馈divider选择设置； 
+EXTERNAL_FB 
+“CLKOUT0”,“CLKOUT1” 
+“CLKOUT2”,“CLKOUT3” 
+“CLKOUT4”,“DISABLE” 
+外部反馈divider选择设置； 
+DYNAMIC_LOOP_EN “FALSE”,”TRUE” PLL环路带宽参数动态使能； 
+LOOP_MAPPING_EN “FALSE”,”TRUE” PLL环路带宽参数自动映射使能； 
+BANDWIDTH “LOW”, “HIGH” 
+“OPTIMIZED” 带宽选择设置； 
+ 
+ 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    41 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+Logos 系列 PGL22G 产品的 PLL 参数如下表所示： 
+表 2-19 GTP_PLL_E1 参数描述 
+参数名称 有效值 功能描述 
+DYNAMIC_CLKIN_EN “FALSE”,“TRUE” 输入时钟动态选择使能； 
+CLKIN_SSEL 1’b0-1’b1 输入时钟静态选择设置； 
+DYNAMIC_RATIOI_EN “FALSE”,“TRUE” 输入divider分频动态控制使能； 
+STATIC_RATIOI 1~512 输入divider分频静态设置； 
+PFDEN_EN “FALSE”,“TRUE” PLL PFDEN信号设置 
+VCOCLK_DIV2 1’b0-1’b1 PLL VCO输出时钟2分频使能； 
+DYNAMIC_RATIO0_EN “FALSE”,“TRUE” 输出divider0分频动态控制使能； 
+DYNAMIC_RATIO1_EN “FALSE”,“TRUE” 输出divider1分频动态控制使能； 
+DYNAMIC_RATIO2_EN “FALSE”,“TRUE” 输出divider2分频动态控制使能； 
+DYNAMIC_RATIO3_EN “FALSE”,“TRUE” 输出divider3分频动态控制使能； 
+DYNAMIC_RATIO4_EN “FALSE”,“TRUE” 输出divider4分频动态控制使能； 
+DYNAMIC_RATIOF_EN “FALSE”,“TRUE” 反馈divider分频动态控制使能； 
+STATIC_RATIO0 1~512 输出divider0分频静态设置； 
+STATIC_RATIO1 1~512 输出divider1分频静态设置； 
+STATIC_RATIO2 1~512 输出divider2分频静态设置； 
+STATIC_RATIO3 1~512 输出divider3分频静态设置； 
+STATIC_RATIO4 1~512 输出divider4分频静态设置； 
+STATIC_RATIOF 1~512 反馈divider分频静态设置； 
+DYNAMIC_DUTY0_EN “FALSE”,“TRUE” 输出divider0 duty动态控制使能； 
+DYNAMIC_DUTY1_EN “FALSE”,“TRUE” 输出divider1 duty动态控制使能； 
+DYNAMIC_DUTY2_EN “FALSE”,“TRUE” 输出divider2 duty动态控制使能； 
+DYNAMIC_DUTY3_EN “FALSE”,“TRUE” 输出divider3 duty动态控制使能； 
+DYNAMIC_DUTY4_EN “FALSE”,“TRUE” 输出divider4 duty动态控制使能； 
+DYNAMIC_DUTYF_EN “FALSE”,“TRUE” 反馈divider duty动态控制使能； 
+STATIC_DUTY0 1~1022 输出divider0 duty静态设置； 
+STATIC_DUTY1 1~1022 输出divider1 duty静态设置； 
+STATIC_DUTY2 1~1022 输出divider2 duty静态设置； 
+STATIC_DUTY3 1~1022 输出divider3 duty静态设置； 
+STATIC_DUTY4 1~1022 输出divider4 duty静态设置； 
+STATIC_DUTYF 1~1022 反馈divider duty静态设置； 
+PHASE_ADJUST0_EN “FALSE”,“TRUE” 输出divider0 phase调整使能； 
+PHASE_ADJUST1_EN “FALSE”,“TRUE” 输出divider1 phase调整使能； 
+PHASE_ADJUST2_EN “FALSE”,“TRUE” 输出divider2 phase调整使能； 
+PHASE_ADJUST3_EN “FALSE”,“TRUE” 输出divider3 phase调整使能； 
+PHASE_ADJUST4_EN “FALSE”,“TRUE” 输出divider4 phase调整使能； 
+DYNAMIC_PHASE0_EN “FALSE”,“TRUE” 输出divider0 phase动态控制使能； 
+DYNAMIC_PHASE1_EN “FALSE”,“TRUE” 输出divider1 phase动态控制使能； 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    42 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+参数名称 有效值 功能描述 
+DYNAMIC_PHASE2_EN “FALSE”,“TRUE” 输出divider2 phase动态控制使能； 
+DYNAMIC_PHASE3_EN “FALSE”,“TRUE” 输出divider3 phase动态控制使能； 
+DYNAMIC_PHASE4_EN “FALSE”,“TRUE” 输出divider4 phase动态控制使能； 
+DYNAMIC_PHASEF_EN “FALSE”,“TRUE” 反馈divider phase动态控制使能； 
+STATIC_PHASE0 0~7 输出divider0 fine phase静态设置； 
+STATIC_PHASE1 0~7 输出divider1 fine phase静态设置； 
+STATIC_PHASE2 0~7 输出divider2 fine phase静态设置； 
+STATIC_PHASE3 0~7 输出divider3 fine phase静态设置； 
+STATIC_PHASE4 0~7 输出divider4 fine phase静态设置； 
+STATIC_PHASEF 0~7 反馈divider fine phase静态设置； 
+STATIC_CPHASE0 2~513 输出divider0 coarse phase静态设置； 
+STATIC_CPHASE1 2~513 输出divider1 coarse phase静态设置； 
+STATIC_CPHASE2 2~513 输出divider2 coarse phase静态设置； 
+STATIC_CPHASE3 2~513 输出divider3 coarse phase静态设置； 
+STATIC_CPHASE4 2~513 输出divider4 coarse phase静态设置； 
+STATIC_CPHASEF 2~513 反馈divider coarse phase静态设置； 
+CLK_CAS0_EN “FALSE”,“TRUE” 输出divider0时钟级联使能； 
+CLK_CAS1_EN “FALSE”,“TRUE” 输出divider1时钟级联使能； 
+CLK_CAS2_EN “FALSE”,“TRUE” 输出divider2时钟级联使能； 
+CLK_CAS3_EN “FALSE”,“TRUE” 输出divider3时钟级联使能； 
+CLK_CAS4_EN “FALSE”,“TRUE” 输出divider4时钟级联使能； 
+INTERNAL_FB “FALSE”,“TRUE” 内部反馈divider选择设置； 
+EXTERNAL_FB 
+“ODIV0”,“ODIV1” 
+“ODIV2”,“ODIV3” 
+“ODIV4”,“FALSE” 
+外部反馈divider选择设置； 
+BANDWIDTH “LOW”, “HIGH” 
+“OPTIMIZED” 带宽选择设置； 
+CLKOUT5_SEL 0~4 输出时钟CLKOUT5选择设置； 
+CLKIN_BYPASS_EN “FALSE”,“TRUE” 输入时钟bypass使能； 
+CLKOUT0_SYN_EN “FALSE”,”TRUE” CLKOUT0_SYN端口使能； 
+CLKOUT0_EXT_SYN_EN “FALSE”,”TRUE” CLKOUT0_EXT_SYN端口使能； 
+CLKOUT1_SYN_EN “FALSE”,”TRUE” CLKOUT1_SYN端口使能； 
+CLKOUT2_SYN_EN “FALSE”,”TRUE” CLKOUT2_SYN端口使能； 
+CLKOUT3_SYN_EN “FALSE”,”TRUE” CLKOUT3_SYN端口使能； 
+CLKOUT4_SYN_EN “FALSE”,”TRUE” CLKOUT4_SYN端口使能； 
+CLKOUT5_SYN_EN “FALSE”,”TRUE” CLKOUT5_SYN端口使能； 
+RST_INNER_EN “FALSE”,”TRUE” RST复位信号使能； 
+RSTODIV_PHASE_EN “FALSE”,”TRUE” RSTODIV_PHASE复位信号使能； 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    43 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+2.5.4 PLL 时钟输入 
+PLL 的参考时钟输入源包括：时钟输入管脚输入的时钟、PLL 的参考时钟输入管脚输入
+的时钟，全局时钟，区域时钟或 I/O 时钟以及来自内部逻辑的信号。其中 PLL 的参考时钟输
+入管脚可以让 PLL 获得最好的性能，强烈推荐用户使用。而来自内部逻辑的信号则容易受到
+内部其它信号的干扰，建议用户谨慎使用。 
+PLL专用参考时钟输入PLL专用参考时钟输入
+全局时钟全局时钟
+内部逻辑信号内部逻辑信号
+区域时钟区域时钟
+I/O时钟I/O时钟
+PLL参考时钟PLL参考时钟
+时钟输入管脚输入的时钟时钟输入管脚输入的时钟
+ 
+图 2-34 PLL 参考时钟选择示意图 
+PLL 的反馈时钟输入源可以分为 PLL 内部反馈和 PLL 外部反馈两种，其中 PLL 内部反
+馈时钟源是由专用的内部时钟构成。 
+对于 PGL12G 和 PGL22G 的 PLL 的外部反馈时钟源包括： 时钟输入管脚输入的时钟、PLL
+反馈时钟管脚输入、全局时钟、区域时钟，以及来自内部逻辑的信号；其它器件 PLL 的外部
+反馈时钟源包括： 时钟输入管脚输入的时钟、PLL 反馈时钟管脚输入、 全局时钟、区域时钟、 
+I/O 时钟，以及来自内部逻辑的信号。 
+其中来内部逻辑信号则容易受到内部其它信号的干扰， 建议用户使用PLL 专用反馈时钟。 
+PLL反馈时钟管脚输入PLL反馈时钟管脚输入
+全局时钟全局时钟
+内部逻辑信号内部逻辑信号
+区域时钟区域时钟
+I/O时钟I/O时钟
+PLL外部反馈时钟PLL外部反馈时钟
+时钟输入管脚输入的时钟时钟输入管脚输入的时钟
+ 
+图 2-35 PLL 外部反馈时钟选择示意图 
+对于PLL输入时钟需要注意以下几点：  
+ 输入时钟丢失再恢复或者输入时钟不稳定导致PLL失锁需要对PLL复位； 
+ 当无时钟源时，PLL可能会输出一个无效的时钟信号，此时LOCK信号是低电平，如果想
+让PLL不输出时钟信号，可以将PLL的门控信号或者将PLL_PWD信号配置为1。 
+ 
+2.5.5 输入时钟切换 
+在时钟自动切换模式时，PLL 有 2 个时钟输入（CLKIN1，CLKIN2） 。 在自动模式下， 默
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    44 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+认选择 CLKIN1 作为输入，如果 CLKIN1 时钟不再翻转时，会自动切换到 CLKIN2；在手动
+模式下，用户可以使用逻辑去切换 CLKIN1 或者 CLKIN2。注意，自动切换两个时钟输入的
+频率差不超过 5%，自动切换的最高频率为 320MHz。时钟自动切换时序图如下： 
+ 
+图 2-36 时钟自动切换时序 
+ 时钟切换时，lock 信号拉低，PLL 重新锁定后，需要复位 PLL。 
+2.5.6 PLL 输出时钟频率编程 
+CLKIN1
+CLKIN2 /2
+CLKFB
+GATE CLKOUT0
+VCO
+BYPASS
+VCOCLK_DIV2
+ODIV0
+GATE CLKOUT0_EXT
+GATE CLKOUT1ODIV1
+GATE CLKOUT2ODIV2
+GATE CLKOUT3ODIV3
+GATE CLKOUT4
+ODIV4
+GATE CLKOUT5
+IDIV
+MDIV
+FDIV
+PFD CP
+Internal feedback
+LPF
+PGL22G使用路径除PGL22G外的其它器
+件使用路径
+ 
+图 2-37 Logos 系列产品的 PLL 结构示意图 
+PLL 的主要功能之一为频率综合，上图所示，输入时钟和反馈时钟在经过频率鉴相器
+（PFD, Phase Frequencies Detector）和充电泵(CP, Charge Pump)之后，环路滤波器（LPF, Loop 
+Filter） ，压控振荡器（VCO, V oltage Controlled Oscillator）频率及输出时钟的频率的计算公式
+如下，参数＂VCOCLK_DIV2＂为 0 时 N=1；为 1 时 N=2。 
+ 
+内反馈： 
+FVCO= Fref*FDIV*MDIV*N/IDIV 
+CLKIN1
+CLKIN2
+CLKOUT
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    45 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+Fclkout0~4= Fref*FDIV*MDIV/(IDIV*ODIVx) 
+外反馈： 
+FVCO= Fref*MDIV*ODIVF*N/IDIV 
+Fclkout0~4= Fref* MDIV*ODIVF/(IDIV*ODIVx) 
+表 2-20 PLL 输入输出频率和 divider 可用范围 
+参数 说明 
+FVCO VCO频率 
+Fclkout0~4 PLL输出时钟CLKOUT0~4的频率 
+Fref 参考输入时钟的频率 
+FDIV 反馈路径上分频器FDIV的分频比，只在内反馈路径上 
+MDIV 反馈路径上的分频器MDIV的分频比 
+IDIV 输入分频器IDIV分频比 
+ODIVx 输出分频器ODIVx的分频比x为0~4 
+ODIVF 反馈路径上的输出分频器的分频比，为ODIVx其中的一个 
+2.5.7 PLL 相位位移功能 
+ 相位调整包含相位细调和相位粗调两种方式，相位细调有静态配置与动态调整两种控
+制模式，而相位粗调只有静态配置，最终的相位调整由相位细调和相位粗调共同决定。 
+相位调整方式： 
+ 相位细调 
+相对于输入的 VCO 时钟，输出时钟 CLKOUT0/1/2/3/4 相位细调的最小 step 为
+TVCO/8，调整范围为 0~7/8Tvco。 
+ 相位粗调 
+ 相 对 于 输 入 的 VCO 时钟， 参数 VCOCLK_DIV2 = 1’b0 时， 输 出 时 钟
+CLKOUT0/1/2/3/4 粗调的最小 step 为 TVCO，调整范围为 [0~ODIVX-1]*TVCO；参数
+VCOCLK_DIV2 = 1’b1 时，输出时钟 CLKOUT0/1/2/3/4 粗调的最小 step 为 2*TVCO，调
+整范围为[0~ODIVX-1]*2*TVCO。 
+ 
+相位调整模式： 
+  静态相位调整 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    46 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+PLL 输出时钟的相位位移功能包含细调和粗调两种方式。输出时钟 CLKOUT0/1/2/3/4 相
+位细调静态配置分别由参数 STATIC_PHASE0/1/2/3/4 控制；相位粗调静态配置分别由
+STATIC_CPHASE0/1/2/3/4 控制。下图是按照如下表格配置参数所得到的时序图。 
+ 
+图 2-38 PLL 静态相位调整 
+ 
+表 2-21 静态相位调整参数配置 
+相位参数 配置值 
+STATIC_PHASE0 0 
+STATIC_PHASE1 2 
+STATIC_PHASE2 0 
+STATIC_PHASE3 2 
+STATIC_PHASE4 4 
+STATIC_CPHASE0 0 
+STATIC_CPHASE1 0 
+STATIC_CPHASE2 1 
+STATIC_CPHASE3 1 
+STATIC_CPHASE4 1 
+VCOCLK_DIV2 0 
+ 动态相位调整 
+Logos 系列产品支持动态相位调整功能，PGL22G 动态相位调整方式与其它型号产品不一
+样。 
+VCO<0>-0°
+VCO<1>-45°
+VCO<2>-90°
+VCO<3>-135°
+VCO<4>-180°
+VCO<5>-225°
+VCO<6>-270°
+VCO<7>-315°
+CLKOUT0
+CLKOUT1
+CLKOUT2
+CLKOUT3
+CLKOUT4
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    47 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+PGL22G 动态调相功能： 
+PGL22G 动态调相端口是 dyn_phase0/1/2/3/4，每一路对应一个时钟输出端口，时钟输出
+CLKOUT0/1/2/3/4 可同时进行动态调相； 
+支 持 相 位 细 调 和 相 位 粗 调 ，dyn_phase[2:0] 是 相 位 细 调 控 制 位 ， 参 数 范 围0~7 ，
+dyn_phase[12:3]是相位粗调控制位， 参数范围2~513， 相位调节最小step 和范围参考本节相位
+调整方式说明，调相后需要复位 PLL。 
+其它产品动态调相功能： 
+Logos 系 列 其 它 产 品 动 态 相 位 调 整 的 端 口 包 含 PHASE_SEL 、 PHASE_DIR 、
+PHASE_STEP_N、LOAD_PHASE。输出时钟 CLKOUT0 /CLKOUT1/ CLKOUT2/ CLKOUT3/ 
+CLKOUT4 都具有动态相位调整的特性，但是每次仅有一个输出时钟可进行相位调整。 
+PHASE_SEL 和 PHASE_DIR 必须在 LOAD_PHASE 信号触发之前保持配置稳定，
+LOAD_PHASE 在 PHASE_STEP_N 信号触发前要释放，通过触发 PHASE_STEP_N 实现相位
+调整， 每触发一次相位调整一个step（TVCO/8）。PHASE_STEP_N 信号必须从逻辑 1 起始， 在
+上升沿开始相位调整。切换相位调整通道或方向时，需用 LOAD_PHASE 信号加载所选通道
+的当前相位细调值，时序要求如下图所示： 
+ 
+图 2-39 动态相位细调时序要求 
+ 
+2.5.8 PLL 可编程 Duty cycle  
+PLL 支持可编程的 duty cycle，最小 step 为 50%/ODIVX，ODIVX 为输出分频器的分频系
+数。duty 为 duty cycle 配置值，可以来源于静态参数 STATIC_DUTY0、STATIC_DUTY1、
+STATIC_DUTY2、STATIC_DUTY3、STATIC_DUTY4 也可以来源于端口 DUTY0、DUTY1、
+DUTY2、DUTY3、DUTY0。Duty 的有效值的范围为 2~1022，同时也受到输出分频器分频比
+  1ns
+min step
+  1ns
+min width
+    1ns
+min recovery  2*Tvco
+min width
+ 1*Tvco
+min hold
+4*Tvco+Tclkox max
+Tvco/8
+Tvco:The period of VCO
+Tclkox:The period of CLKOUT0/1/2/3/4
+PHASE_STEP_N
+LOAD_PHASE
+PHASE_SEL
+PHASE_DIR
+CLKOUT0
+CLKOUT1
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    48 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+的限制。 
+duty cycle = (50%/odiv)*duty 
+duty 的设置值受到 ODIVX 值（分频）限制，表达式如下， 
+ODIVX>1    2=< duty <= 2* ODIV X -2。 
+ODIVX=1    duty 无效，不起作用，默认 50%输出。 
+2.5.9 PLL 输出时钟 gate 功能 
+时钟CLKOUT0/0_EXT/1/2/3/4/5输出之前会经过GATE模块，功能由静态参数控制。 
+当CLKOUT0/0_EXT/1/2/3/4/5_SYN_EN = ＂TRUE＂时，时钟GATE功能开启； 
+当CLKOUT0/0_EXT/1/2/3/4_SYN_EN = ＂FALSE＂时， 时钟GATE功能关闭， 时钟直通； 
+时钟CLKOUT0/0_EXT/1/2/3/4的GATE功能开启后， 时钟的输出由相应的动态控制信号控
+制，以CLKOUT0为例，时序关系如下： 
+ 
+图 2-40 输出时钟 GATE 时序图 
+2.5.10 Divider 输出级联 
+PLL 静态配置分频级联原理图如下所示，CLK_CAS_EN（x 取值为 1、2、3、4）分别控
+制 divider0~4 的时钟选择，当静态配置为“TRUE”时，选择级联时钟，当静态配置为“FALSE”
+时，选择 VCO 的输出时钟。 
+CLKOUT0_SYN_EN="FALSE"
+CLKOUT0_SYN_EN="TRUE"
+CLK_0
+CLKOUT0
+CLK_0 
+CLKOUT0_SYN
+CLKOUT0 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    49 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+1/…/512
+odiv0
+odiv1
+1/…/512 odiv2
+1/…/512 odiv3
+1/…/512 odiv4
+vcoclk[7:0]
+divider0
+divider1
+divider2
+divider3
+divider4
+CLK_CAS0_EN
+CLK_CAS1_EN
+CLK_CAS2_EN
+CLK_CAS3_EN
+CLK_CAS4_EN
+1/…/512
+ 
+图 2-41 PLL 分频输出级联 
+ 
+2.6 内部振荡器(OSC) 
+Logos 系列芯片提供了一个内部振荡器 OSC，可以作为时钟源使用，但是其精度较差。
+内部振荡器输出的时钟可以作为全局时钟的输入源， 不能作为区域时钟和I/O 时钟的输入源。
+OSC 的使用可以直接例化 GTP_OSC_E3，其 GTP_OSC_E3 的结构图下图所示，端口及参数
+的描述如下表： 
+EN_N
+CLKOUT
+RST_N
+ 
+图 2-42 GTP_OSC_E3 框图 
+ 
+表 2-22 GTP_OSC_E3 端口说明 
+端口名 类型 描述 
+CLKOUT 输出 输出时钟，频率可以随着参数值得设置而改变 。 
+EN_N 输入 OSC关闭信号，高电平关闭OSC，低电平开启OSC。 
+RST_N 输入 OSC复位信号，低电平有效 
+ 
+                                                     第二章 详细介绍 
+UG020004(V1.8)                                    50 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+表 2-23 GTP_OSC_E3 参数说明 
+参数名 描述 
+CLK_DIV 时钟分频比设置，有效值为0~127 
+ 
+其中 CLK_DIV 取值为 0 时实现了 128 分频，其余其他值的对应关系如下表所述： 
+表 2-24 时钟频率配置 
+CLK_DIV CLKOUT(MHz) 
+0 200/128 
+1 200/1 
+2 200/2 
+3 200/3 
+… … 
+125 200/125 
+126 200/126 
+127 200/127 
+ 
+GTP_OSC_E3的例化，以Verilog例化为例： 
+GTP_ OSC_E3 
+#( 
+ . CLK_DIV    (2    )//0-127 
+) u_OSC_E3 ( 
+.CLKOUT    (CLKOUT  ), 
+.RST_N     (RST_N  ), 
+.EN_N     (EN_N   ));   
+当参数 CLK_DIV 为 2 时，时序图如下图所示： 
+ 
+图 2-43 GTP_ OSC_E3 时序图 
+ 
+1'b0
+1'b1
+1'b1
+RST_N
+EN_N
+CLKOUT
+                                                              附录一  
+UG020004(V1.8)                                    51 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+附录一 
+附录一主要描述 PGL22G PLL 在使用反馈时钟来自 FPGA 反馈时钟专用输入引脚场景
+（外部反馈）时，出现时钟相位不同步问题的一种解决方法。 
+问题说明： 
+在使用 PGL22G 外部反馈时，PLL 输出多个时钟，每次复位后输出时钟（除反馈时钟外
+的其它输出时钟）的相位不固定。 
+PGL22G 是 Logos 系列最早的一款产品，设计时只支持环路外的所有输出 divider 之间做
+相位同步，PLL 环路内反馈 divider 与环路外输出 divider 在设计上没做 phase bonding ；因为
+环路外 divider 与环路内的 divider 的同步复位信号来源不同，无法做到 phase 同步。比如，开
+发者在 IP Compiler 设置 CLKOUT0 作为外部反馈时钟， 期望使用ODIV0 作为反馈 divider 来
+做源同步，那么 CLKOUT1 与 CLKOUT0 之间的 phase 就没法同步了，如上述解释，ODIV0
+在环路内 ODIV1 在环路外，它们的复位信号来源不同。 
+使用外部反馈模式的方案： 
+如果要求环路内 divider 和环路外 divider 之间 phase bonding，那就必须把反馈 divider 与
+环路外 divider 的复位来源选择成一致。 可以采用如下方案： 使用IP Compiler 例化 PGL22G PLL
+时设置 CLKOUT2 作为外部反馈时钟，如此 ODIV0 与 ODIV1 都算是环路外的 divider；在使
+用 PLL 时，PLL 的外部反馈时钟输入实际还是与 CLKOUT0 相连。这样就实现了 ODIV0 与
+ODIV1 的复位信号同源，从而实现相位同步。
+                                                            免责声明  
+UG020004(V1.8)                                    52 / 52           Logos 系列 FPGA 时钟资源（Clock）用户指南 
+免责声明 
+版权声明 
+本文档版权归深圳市紫光同创电子有限公司所有，并保留一切权利。未经书面许可，任
+何公司和个人不得将此文档中的任何部分公开、转载或以其他方式披露、散发给第三方。否
+则，公司必将追究其法律责任。 
+ 
+免责声明 
+1、本文档仅提供阶段性信息， 所含内容可根据产品的实际情况随时更新， 恕不另行通知。
+如因本文档使用不当造成的直接或间接损失，本公司不承担任何法律责任。 
+2、本文档按现状提供， 不负任何担保责任， 包括对适销性、 适用于特定用途或非侵权性
+的任何担保，和任何提案、规格或样品在他处提到的任何担保。本文档在此未以禁止反言或
+其他方式授予任何知识产权使用许可，不管是明示许可还是暗示许可。 
+3、公司保留任何时候在不事先声明的情况下对公司系列产品相关文档的修改权利。 
+ 

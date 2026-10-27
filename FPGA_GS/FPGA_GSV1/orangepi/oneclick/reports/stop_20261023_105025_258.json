@@ -1,0 +1,58 @@
+﻿{
+    "tool_version":  "M4-02-operator-r2-reconnect",
+    "action":  "Stop",
+    "computer_time":  "2026-10-23T10:50:25.2600756+08:00",
+    "ok":  true,
+    "config":  {
+                   "ssh_host":  "10.168.29.122",
+                   "ssh_user":  "orangepi",
+                   "ssh_port":  22,
+                   "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "remote_tool":  "operator_v1/ops_manager.py",
+                   "interface":  "eth0",
+                   "business_cidr":  "192.168.60.1/24",
+                   "fpga_ip":  "192.168.60.2",
+                   "fpga_mac":  "02:00:47:53:56:32",
+                   "udp_port":  50000,
+                   "peer_port":  50000,
+                   "web_port":  8080,
+                   "local_port":  18080,
+                   "scene":  "scene.example.json",
+                   "preview_fps":  15,
+                   "preview_width":  640,
+                   "preview_quality":  70,
+                   "output":  "runs/live_dual_eth",
+                   "diagnostic_seconds":  4,
+                   "startup_timeout_seconds":  35,
+                   "front_fps":  15
+               },
+    "local_before":  {
+                         "listeners":  [
+
+                                       ],
+                         "http":  {
+                                      "ok":  false,
+                                      "error":  "无法连接到远程服务器"
+                                  }
+                     },
+    "remote":  {
+                   "ok":  true,
+                   "message":  "已经停止"
+               },
+    "local_after":  {
+                        "listeners":  [
+
+                                      ],
+                        "http":  {
+                                     "ok":  false,
+                                     "error":  "无法连接到远程服务器"
+                                 }
+                    },
+    "summary":  [
+                    "本地入口：E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\oneclick",
+                    "目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                    "通过SSH执行 stop；需要认证时请在终端输入密码（不保存）。",
+                    "已经停止",
+                    "本入口没有运行中的SSH转发；现有外部转发不会被停止，可在其原窗口Ctrl+C。"
+                ]
+}

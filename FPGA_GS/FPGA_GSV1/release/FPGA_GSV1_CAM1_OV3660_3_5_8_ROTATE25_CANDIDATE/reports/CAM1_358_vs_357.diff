@@ -1,0 +1,521 @@
+--- 3.5.7/rtl/board/fpga_gsv1_top.v
++++ 3.5.8/rtl/board/fpga_gsv1_top.v
+@@ -8,7 +8,8 @@
+ 	parameter MEM_DQS_WIDTH        =  32/8,
+     parameter SELF_TEST           = 0,
+     parameter DISPLAY_GAIN_ENABLE = 1,
+-    parameter PROCESSING_ENABLE = 1
++    parameter PROCESSING_ENABLE = 1,
++    parameter CAM1_ROTATE_180 = 1 //0 normal mounting;1 upside-down mounting
+ )(
+ 	input                                sys_clk              ,//50Mhz
+     input [5:0] key_n,output diagnostic_uart_tx,
+@@ -184,7 +185,7 @@
+     wire cam1_id_finished,cam1_identified,cam1_id_timeout;
+     wire [15:0] cam1_sensor_id,cam1_confirmation_id,cam1_nack_masks;
+     wire cam1_config_failed;wire [15:0] cam1_last_register;wire [7:0] cam1_config_error;
+-    cam_ov3660_config cam1_configuration(.clk(sys_clk),.rst_n(cmos2_reset),
++    cam_ov3660_config #(.ROTATE_180(CAM1_ROTATE_180)) cam1_configuration(.clk(sys_clk),.rst_n(cmos2_reset),
+       .enable(initial_en),.scl(cmos2_scl),.sda(cmos2_sda),
+       .id_finished(cam1_id_finished),.identified(cam1_identified),
+       .sensor_id(cam1_sensor_id),.confirmation_id(cam1_confirmation_id),
+@@ -198,13 +199,18 @@
+         cam1_raw_vs<={cam1_raw_vs[0],cmos2_vsync};
+         cam1_raw_href<={cam1_raw_href[0],cmos2_href};
+       end
+-    // C1G1: reuse the original four camera UART words, without extending
+-    // any bus/serializer or adding capture logic. ID3660/readbacks are archived.
+-    // W13 pixels; W14 config-error/flags/geometry-errors/rows; W15 bad/good.
+-    wire [127:0] camera_diagnostics={32'h43314731,
++    wire [31:0] cam1_published,cam1_displayed,cam1_rate_counts,cam1_ms,cam1_pclk_hz;
++    cam1_rate_status cam1_rates(.sc(sys_clk),.pclk(cmos2_pclk),.dc(core_clk),.vc(pix_clk),
++      .rst_n(rstn_out && ddr_init_done),.visible(show_video[1]),
++      .published(cam1_published),.displayed(cam1_displayed),
++      .counts(cam1_rate_counts),.milliseconds(cam1_ms),.pclk_hz(cam1_pclk_hz));
++    // C1R8: W12 tag;13 pixels;14 config/geometry/rows;15 bad/good16;
++    //16 capture frame-start ms;17 published16/displayed16;18 ref ms;19 PCLKHz.
++    wire [255:0] camera_diagnostics={32'h43315238,
+       status1[95:64],cam1_config_error[3:0],
+       cam1_config_failed,cmos_init_done[1],cam1_id_finished,cam1_identified,
+-      status1[119:96],status1[175:160],status1[143:128]};
++      status1[119:96],status1[175:160],status1[143:128],
++      status1[63:32],cam1_rate_counts,cam1_ms,cam1_pclk_hz};
+ //CMOS 8bit转16bit///////////////////////////////////////////////////////////////////////////////////
+ //CMOS1
+     always@(posedge cmos1_pclk)
+@@ -325,10 +331,10 @@
+         cam1_vs_previous<=cmos2_vs_16bit;
+         if(cmos2_vs_16bit && !cam1_vs_previous) cam1_verdict_byte_error<=cam1_closed_frame_bad;
+       end
+-    video_capture_status #(.SOURCE_ID(1)) monitor1(
++    video_capture_status #(.SOURCE_ID(1),.CHECK_BYTE_ERRORS(1)) monitor1(
+         .ref_clk(sys_clk),.video_clk(cmos2_pclk_16bit),.rst_n(rstn_out),
+         .source_ready(cmos_init_done[1]),.video_vs(cmos2_vs_16bit),
+-        .video_de(cmos2_href_16bit),.pipeline_rst_n(pipe_rst1),
++        .video_de(cmos2_href_16bit),.byte_frame_error(cam1_closed_frame_bad),.pipeline_rst_n(pipe_rst1),
+         .healthy(source_healthy[1]),.timed_out(),.timeout_count(),
+         .snapshot_valid(),.snapshot(status1),.frame_open_id(open_id1),
+         .frame_open_time(open_time1),.frame_result_valid(verdict_valid1),
+@@ -339,7 +345,8 @@
+         .frame_id(open_id1),.frame_time(open_time1),
+         .out_vs(cap_vs1),.out_de(cap_de1),.out_rgb(cap_rgb1),
+         .out_id(cap_id1),.out_time(cap_time1));
+-    fram_buf #(.HD_DISPLAY(1),.M2_READER(1),.DISPLAY_HALF(1),.SOURCE_ID(1)) buffer1(
++    fram_buf #(.CAM1_CONTINUOUS(1),.HD_DISPLAY(1),.M2_READER(1),.DISPLAY_HALF(1),.SOURCE_ID(1)) buffer1(
++        .capture_published(cam1_published),.display_new_frames(cam1_displayed),
+         .ddr_clk(core_clk),.ddr_rstn(ddr_init_done),
+         .vin_clk(cmos2_pclk_16bit),.wr_fsync(cap_vs1),.wr_en(cap_de1),
+         .wr_data(cap_rgb1),.pipeline_running(pipe_rst1),
+@@ -413,7 +420,7 @@
+     assign s_wdata[1024+:256]=0;assign s_wstrb[128+:32]=0;
+     assign source_ready[3]=source_healthy[3];
+     m3_network #(.HD_DISPLAY(1),.ENABLE_CONTROL(0),.ENABLE_UPLOAD(0),.LOCAL_MAC(`M31_LOCAL_MAC),.LOCAL_IP(`M31_LOCAL_IP),.HOST_IP(`M31_HOST_IP),.PORT(`M31_PORT)) network(.clk(core_clk),.rst_n(ddr_init_done),.sys_clk(sys_clk),.phy_reset_n(rstn_out),
+-      .camera_diagnostics(128'd0),
++      .camera_diagnostics(256'd0),
+       .rgmii_rxc(rgmii_rxc),.rgmii_rx_ctl(rgmii_rx_ctl),.rgmii_rxd(rgmii_rxd),
+       .rgmii_txc(rgmii_txc),.rgmii_tx_ctl(rgmii_tx_ctl),.rgmii_txd(rgmii_txd),.phy_rstn(phy_rstn),
+       .pc(pix_clk),.fs(frame_sync),.selected(source_selected[3]),.quarter(quad),.request(source_request[3]),
+--- 3.5.7/rtl/capture/cam1_rate_status.v
++++ 3.5.8/rtl/capture/cam1_rate_status.v
+@@ -0,0 +1,53 @@
++`timescale 1ns/1ps
++// Passive CAM1-only frequency/rate observation. No output controls capture,
++// clocking, ownership or network. Prescaled count measures actual sensor PCLK
++// against the existing 50MHz board reference; it is not an XCLK measurement.
++module cam1_rate_status #(parameter REF_HZ=50000000)(
++ input sc,pclk,dc,vc,rst_n,visible,input [31:0] published,displayed,
++ output [31:0] counts,output reg [31:0] milliseconds,pclk_hz);
++ reg [7:0] byte_count;
++ always @(posedge pclk or negedge rst_n)
++  if(!rst_n) byte_count<=0;
++  else byte_count<=byte_count+1'b1;
++ // Single-bit /256 envelope; each half lasts128 PCLK cycles (~1.78us),
++ // safely sampled at50MHz. No asynchronous multi-bit counter bus.
++ (* ASYNC_REG="TRUE" *) reg [1:0] prescale_sync;
++ reg prescale_old;
++ reg [19:0] pulse_count;
++ wire pulse=prescale_sync[1] && !prescale_old;
++ reg [25:0] second_tick;
++ reg [15:0] millisecond_tick;
++ reg valid_window;
++ always @(posedge sc or negedge rst_n)
++  if(!rst_n) begin
++   prescale_sync<=0;prescale_old<=0;pulse_count<=0;
++   second_tick<=0;millisecond_tick<=0;
++   milliseconds<=0;pclk_hz<=0;valid_window<=0;
++  end else begin
++   prescale_sync<={prescale_sync[0],byte_count[7]};
++   prescale_old<=prescale_sync[1];
++   if(pulse) pulse_count<=pulse_count+1'b1;
++   if(millisecond_tick==REF_HZ/1000-1) begin
++    millisecond_tick<=0;milliseconds<=milliseconds+1'b1;
++   end else millisecond_tick<=millisecond_tick+1'b1;
++   if(second_tick==REF_HZ-1) begin
++    second_tick<=0;pulse_count<=0;valid_window<=1;
++    if(valid_window) pclk_hz<={4'd0,(pulse_count+{19'd0,pulse}),8'd0};
++   end else second_tick<=second_tick+1'b1;
++  end
++ reg [15:0] last_display,visible_count;
++ always @(posedge vc or negedge rst_n)
++  if(!rst_n) begin last_display<=0;visible_count<=0;end
++  else begin
++   last_display<=displayed[15:0];
++   // The source counter already checks distinct ID, full rows and underflow.
++   // Exclude images hidden by the existing final health/presentation guard.
++   if(visible && displayed[15:0]!=last_display) visible_count<=visible_count+1'b1;
++  end
++ wire [15:0] p,d;
++ m361_snapshot #(.W(16)) pub(.sc(dc),.dc(sc),.rst_n(rst_n),
++  .value(published[15:0]),.snapshot(p));
++ m361_snapshot #(.W(16)) disp(.sc(vc),.dc(sc),.rst_n(rst_n),
++  .value(visible_count),.snapshot(d));
++ assign counts={p,d};
++endmodule
+--- 3.5.7/rtl/capture/cam_ov3660_config.v
++++ 3.5.8/rtl/capture/cam_ov3660_config.v
+@@ -2,16 +2,16 @@
+ // Fixed CAM1 OV3660: two physical ID reads, ACK-checked dedicated table,
+ // mandatory waits, then critical register readback. Failure never raises ready.
+ module cam_ov3660_config #(
+-  parameter CLOCK_HZ=50000000,SCCB_HZ=100000,WAIT_TICKS=400
++  parameter CLOCK_HZ=50000000,SCCB_HZ=100000,WAIT_TICKS=400,ROTATE_180=1
+ )(input clk,rst_n,enable,inout scl,sda,
+   output id_finished,identified,output [15:0] sensor_id,confirmation_id,nack_masks,
+   output id_timeout,output reg configured,failed,
+   output reg [15:0] last_register,output reg [7:0] error_code);
+   localparam WAIT_ID=0,ENTRY=1,WRITE_WAIT=2,DELAY=3,VERIFY=4,READ_WAIT=5,STOP=6;
+-  localparam LAST_ENTRY=234, LAST_CHECK=18;
++  localparam LAST_ENTRY=247, LAST_CHECK=44;
+   reg [2:0] state;
+   reg [8:0] index;
+-  reg [4:0] check_index;
++  reg [5:0] check_index;
+   reg [31:0] wait_count;
+   reg write_start,read_start;
+   wire [23:0] entry;
+@@ -22,13 +22,13 @@
+     .clk(clk),.rst_n(rst_n),.enable(enable),.scl(scl),.sda(sda),
+     .finished(id_finished),.identified(identified),.sensor_id(sensor_id),
+     .confirmation_id(confirmation_id),.nack_masks(nack_masks),.timeout_error(id_timeout));
+-  cam_ov3660_table table_rom(.index(index),.entry(entry));
++  cam_ov3660_table #(.ROTATE_180(ROTATE_180)) table_rom(.index(index),.entry(entry));
+   cam_sccb_write16 #(.CLOCK_HZ(CLOCK_HZ),.SCCB_HZ(SCCB_HZ),.WAIT_TICKS(WAIT_TICKS)) writer(
+     .clk(clk),.rst_n(rst_n),.start(write_start),.address(7'h3c),
+     .register_address(entry[23:8]),.value(entry[7:0]),.scl(scl),.sda(sda),
+     .busy(write_busy),.done(write_done),.nack_mask(write_nacks),.bus_timeout(write_timeout));
+   function [23:0] expected;
+-    input [4:0] n;
++    input [5:0] n;
+     begin case(n)
+       0:expected=24'h380805;1:expected=24'h380900;
+       2:expected=24'h380a02;3:expected=24'h380bd0;
+@@ -36,9 +36,23 @@
+       6:expected=24'h474020;7:expected=24'h303a00;
+       8:expected=24'h303b18;9:expected=24'h303c12;
+       10:expected=24'h303d20;11:expected=24'h382401;
+-      12:expected=24'h460c22;13:expected=24'h382040;
+-      14:expected=24'h382100;15:expected=24'h381411;
+-      16:expected=24'h381511;17:expected=24'h5001a3;
++      12:expected=24'h460c22;13:expected=ROTATE_180 ? 24'h382046:24'h382040;
++      14:expected=ROTATE_180 ? 24'h382106:24'h382100;15:expected=24'h381411;
++      16:expected=24'h381511;17:expected=24'h500183;
++      18:expected=ROTATE_180 ? 24'h4514bb:24'h451488;
++      19:expected=24'h380c07;20:expected=24'h380d08;
++      21:expected=24'h380e03;22:expected=24'h380f20;
++      23:expected=24'h3a003a;24:expected=24'h3a0530;
++      25:expected=24'h3a0203;26:expected=24'h3a031c;
++      27:expected=24'h3a1403;28:expected=24'h3a151c;
++      29:expected=24'h3a0800;30:expected=24'h3a09c8;
++      31:expected=24'h3a0a00;32:expected=24'h3a0ba6;
++      33:expected=24'h3a0e03;34:expected=24'h3a0d04;
++      35:expected=24'h350300;
++      36:expected=24'h380001;37:expected=24'h380180;
++      38:expected=24'h380201;39:expected=24'h380398;
++      40:expected=24'h380406;41:expected=24'h38059f;
++      42:expected=24'h380604;43:expected=24'h380773;
+       default:expected=24'h300802;
+     endcase end
+   endfunction
+--- 3.5.7/rtl/capture/cam_ov3660_table.v
++++ 3.5.8/rtl/capture/cam_ov3660_table.v
+@@ -2,7 +2,8 @@
+ // Derived OV3660-only table. Espressif/OpenMV attribution and licenses
+ // and archived source hashes in reports/sources. Regenerate with
+ // scripts/generate_ov3660_table.py. No OV5640 table is used.
+-module cam_ov3660_table(input [8:0] index,output reg [23:0] entry);
++module cam_ov3660_table #(parameter ROTATE_180=1)
++(input [8:0] index,output reg [23:0] entry);
+ always @* begin
+   case(index)
+     9'd0:entry=24'h300882; // OV3660 sensor_default_regs
+@@ -202,30 +203,30 @@
+     9'd194:entry=24'h558340; // OV3660 sensor_default_regs
+     9'd195:entry=24'h55842c; // OV3660 sensor_default_regs
+     9'd196:entry=24'h500183; // OV3660 sensor_default_regs
+-    9'd197:entry=24'h380000; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd198:entry=24'h380140; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd199:entry=24'h380200; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd200:entry=24'h3803f2; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd201:entry=24'h380407; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd202:entry=24'h3805df; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd203:entry=24'h380605; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd204:entry=24'h380735; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd205:entry=24'h380805; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd206:entry=24'h380900; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd207:entry=24'h380a02; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd208:entry=24'h380bd0; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd209:entry=24'h380c08; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd210:entry=24'h380d7c; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd211:entry=24'h380e05; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd212:entry=24'h380f2a; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd213:entry=24'h381000; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd214:entry=24'h381110; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd215:entry=24'h381200; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd216:entry=24'h381306; // OV3660 set_framesize HD/16x9, non-binned
+-    9'd217:entry=24'h5001a3; // OV3660 set_framesize/set_image_options normal/non-binned
+-    9'd218:entry=24'h382040; // OV3660 set_framesize/set_image_options normal/non-binned
+-    9'd219:entry=24'h382100; // OV3660 set_framesize/set_image_options normal/non-binned
+-    9'd220:entry=24'h451488; // OV3660 set_framesize/set_image_options normal/non-binned
++    9'd197:entry=24'h380001; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd198:entry=24'h380180; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd199:entry=24'h380201; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd200:entry=24'h380398; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd201:entry=24'h380406; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd202:entry=24'h38059f; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd203:entry=24'h380604; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd204:entry=24'h380773; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd205:entry=24'h380805; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd206:entry=24'h380900; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd207:entry=24'h380a02; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd208:entry=24'h380bd0; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd209:entry=24'h380c07; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd210:entry=24'h380d08; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd211:entry=24'h380e03; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd212:entry=24'h380f20; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd213:entry=24'h381000; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd214:entry=24'h381110; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd215:entry=24'h381200; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd216:entry=24'h381306; // OV3660 native720 centered window, HTS1800/VTS800
++    9'd217:entry=24'h500183; // OV3660 set_framesize/set_image_options normal/non-binned
++    9'd218:entry=ROTATE_180 ? 24'h382046 : 24'h382040; // OV3660 set_framesize/set_image_options normal/non-binned
++    9'd219:entry=ROTATE_180 ? 24'h382106 : 24'h382100; // OV3660 set_framesize/set_image_options normal/non-binned
++    9'd220:entry=ROTATE_180 ? 24'h4514bb : 24'h451488; // OV3660 set_framesize/set_image_options normal/non-binned
+     9'd221:entry=24'h4520b0; // OV3660 set_framesize/set_image_options normal/non-binned
+     9'd222:entry=24'h381411; // OV3660 set_framesize/set_image_options normal/non-binned
+     9'd223:entry=24'h381511; // OV3660 set_framesize/set_image_options normal/non-binned
+@@ -237,9 +238,22 @@
+     9'd229:entry=24'h303d20; // OV3660 datasheet figure 2-7/tables 2-8,2-9; 24MHz XCLK
+     9'd230:entry=24'h382401; // OV3660 datasheet figure 2-7/tables 2-8,2-9; 24MHz XCLK
+     9'd231:entry=24'h460c22; // OV3660 datasheet figure 2-7/tables 2-8,2-9; 24MHz XCLK
+-    9'd232:entry=24'h474020; // datasheet table 5-2 default sync profile; G1 4344/1/03 signature; PCLK unchanged
+-    9'd233:entry=24'h300802; // exit software standby after complete configuration
+-    9'd234:entry=24'hffff64; // settle after enabling output, then verify critical registers
++    9'd232:entry=24'h3a003a; // auto exposure/gain, night bit2=0, frame-insert bit6=0
++    9'd233:entry=24'h3a0530; // auto exposure/gain, night bit2=0, frame-insert bit6=0
++    9'd234:entry=24'h350300; // auto exposure/gain, night bit2=0, frame-insert bit6=0
++    9'd235:entry=24'h3a0203; // fixed-frame exposure/banding at SYSCLK36MHz, HTS1800
++    9'd236:entry=24'h3a031c; // fixed-frame exposure/banding at SYSCLK36MHz, HTS1800
++    9'd237:entry=24'h3a1403; // fixed-frame exposure/banding at SYSCLK36MHz, HTS1800
++    9'd238:entry=24'h3a151c; // fixed-frame exposure/banding at SYSCLK36MHz, HTS1800
++    9'd239:entry=24'h3a0800; // fixed-frame exposure/banding at SYSCLK36MHz, HTS1800
++    9'd240:entry=24'h3a09c8; // fixed-frame exposure/banding at SYSCLK36MHz, HTS1800
++    9'd241:entry=24'h3a0a00; // fixed-frame exposure/banding at SYSCLK36MHz, HTS1800
++    9'd242:entry=24'h3a0ba6; // fixed-frame exposure/banding at SYSCLK36MHz, HTS1800
++    9'd243:entry=24'h3a0e03; // 50Hz max bands: floor(796/200)
++    9'd244:entry=24'h3a0d04; // 60Hz max bands: floor(796/166)
++    9'd245:entry=24'h474020; // datasheet table 5-2 default sync profile; G1 4344/1/03 signature; PCLK unchanged
++    9'd246:entry=24'h300802; // exit software standby after complete configuration
++    9'd247:entry=24'hffff64; // settle after enabling output, then verify critical registers
+     default:entry=24'h000000;
+   endcase
+ end
+--- 3.5.7/rtl/frame/m3_front_owner.v
++++ 3.5.8/rtl/frame/m3_front_owner.v
+@@ -4,7 +4,11 @@
+ // unpinned pending descriptors when both readers occupy different slots.
+ module m3_front_owner #(
+     parameter H_NUM = 1280,
+-    parameter V_NUM = 720
++    parameter V_NUM = 720,
++    // CAM1 only: a new grant can arrive during the two-line VS blanking
++    // interval after the previous frame's complete geometry verdict. Other
++    // clients retain the accepted SOF-only behavior (default0).
++    parameter BLANKING_GRANT = 0
+ ) (
+     input wire clk, rst_n,
+     input wire video_clk, pipeline_running,
+@@ -68,7 +72,10 @@
+     reg [31:0] dropped_count /* synthesis syn_keep = 1 */;
+     reg [31:0] end_id, end_time;
+     wire sof = video_vs && !vs_d;
+-    wire accept = sof && !active && grant_v[1] != used_grant
++    reg blank_open;
++    reg [31:0] opening_id,opening_time;
++    wire accept = (sof || (BLANKING_GRANT && blank_open && video_vs && !video_de))
++        && !active && grant_v[1] != used_grant
+         && pipeline_running;
+     wire matching_result = result_valid && result_id == active_id;
+     wire saved_result = verdict_valid && verdict_id == active_id;
+@@ -86,18 +93,23 @@
+             verdict_valid <= 0; verdict_id <= 0; verdict_errors <= 0;
+             end_toggle <= 0; end_good <= 0; end_id <= 0; end_time <= 0;
+             dropped_count <= 0;
++            blank_open<=0;opening_id<=0;opening_time<=0;
+         end else begin
+             grant_v <= {grant_v[0], grant};
+             vs_d <= video_vs;
+             de_d <= writer_de;
+-            if(sof && !accept) dropped_count <= dropped_count + 1'b1;
++            if(sof) begin blank_open<=1;opening_id<=video_id;opening_time<=video_time;end
++            if(!video_vs || accept) blank_open<=0;
++            if(BLANKING_GRANT ? (!video_vs && vs_d && blank_open) : (sof && !accept))
++                dropped_count <= dropped_count + 1'b1;
+             if (result_valid) begin
+                 verdict_valid <= 1; verdict_id <= result_id;
+                 verdict_errors <= result_errors;
+             end
+             if (accept) begin
+                 used_grant <= grant_v[1]; active <= 1;
+-                active_id <= video_id; active_time <= video_time;
++                active_id <= BLANKING_GRANT && !sof ? opening_id:video_id;
++                active_time <= BLANKING_GRANT && !sof ? opening_time:video_time;
+                 columns <= 0; rows <= 0; clean_bad <= video_de;
+             end else if (active) begin
+                 if (writer_de) columns <= columns + 1'b1;
+--- 3.5.7/rtl/network/m365_tx_observer.v
++++ 3.5.8/rtl/network/m365_tx_observer.v
+@@ -41,7 +41,7 @@
+ 
+ module m365_tx_observer(input sc,nc,rst_n,input [127:0] phy,
+  input pll_lock,phy_ready,txv,input [7:0] txd,
+- input [127:0] camera_diagnostics,output uart_tx);
++ input [255:0] camera_diagnostics,output uart_tx);
+  wire [31:0] frames,bad,last_id,last_residue;
+  wire [15:0] last_length;
+  m365_gmii_crc crc_monitor(.clk(nc),.rst_n(rst_n),.valid(txv),.data(txd),
+@@ -63,8 +63,8 @@
+  // W0..3 PHY; W4 total frames; W5 bad GMII FCS/framing; W6 last bad ID;
+  // W7 last residue; W8 last length; W9 PLL falls; W10 ready falls;
+  // W11 status (bit1 PLL, bit0 ready); W12..15 passive camera status;
+- // W16..39 reserved zero. Camera data is in sc and cannot affect GMII/PHY.
++ // W16..19 camera rates;W20..39 reserved. Camera bus stays passive in sc.
+  m361_uart_hex #(.REVISION_ASCII("O")) serial(.clk(sc),.rst_n(rst_n),
+-  .values({phy,nsnap,lock_falls,ready_falls,30'd0,lock_sync[2],ready_sync[2],camera_diagnostics,768'd0}),
++  .values({phy,nsnap,lock_falls,ready_falls,30'd0,lock_sync[2],ready_sync[2],camera_diagnostics,640'd0}),
+   .tx(uart_tx));
+ endmodule
+--- 3.5.7/rtl/network/m3_network.v
++++ 3.5.8/rtl/network/m3_network.v
+@@ -12,7 +12,7 @@
+  output [27:0] araddr,upload_araddr,output [3:0] arlen,upload_arlen,
+  output arvalid,upload_arvalid,input arready,upload_arready,
+  input [255:0] rdata,input rvalid,rlast,upload_rvalid,upload_rlast,
+- input [127:0] camera_diagnostics);
++ input [255:0] camera_diagnostics);
+  wire phase,phase_d,pll_lock,nc;
+  wire phy_ready;wire [127:0] phy_diagnostics;
+  generate if(!PHY_INTERNAL_DELAY) begin: original_phy
+--- 3.5.7/rtl/reuse/fram_buf.v
++++ 3.5.8/rtl/reuse/fram_buf.v
+@@ -23,6 +23,7 @@
+     parameter M2_READER = 0,
+     parameter HD_DISPLAY = 0,
+     parameter M3_FRONT = 0,
++    parameter CAM1_CONTINUOUS = 0,
+     parameter SOURCE_ID = 0, // 0 FRONT, 1 REAR, 2 LEFT, 3 RIGHT
+     parameter DISPLAY_HALF = 0, // display-only 2x nearest-neighbour reduction
+     parameter                     MEM_ROW_WIDTH        = 15    ,
+@@ -34,6 +35,7 @@
+     parameter                     V_NUM                = 12'd720,//12'd1080,//12'd106,//
+     parameter                     PIX_WIDTH            = 16//24 
+ )(
++    output [31:0] capture_published,display_new_frames,
+     input net_acquire,net_release,output net_grant,net_held,
+     output [1:0] net_bank,output [31:0] net_id,net_time,latest_frame_id,
+     input                         vin_clk,
+@@ -111,15 +113,17 @@
+     wire                        ddr_wr_bac;
+     wire writer_rst_n, writer_vs, writer_de, line_event, output_sof;
+     wire write_issue, read_issue, read_enabled, has_frame;
+-    wire [(M3_FRONT ? 2:1)-1:0] write_bank,read_bank;
++    wire [((M3_FRONT || CAM1_CONTINUOUS) ? 2:1)-1:0] write_bank,read_bank;
+     wire [11:0] read_completed_gray;
+     wire [PIX_WIDTH-1:0] raw_vout_data;
+-    wire [CTRL_ADDR_WIDTH-1:0] owned_waddr = M3_FRONT && write_bank==2 ?
+-        28'h2000000 | ddr_waddr[21:0] :
++    // Existing front and right third slots occupy 0x2000000 and0x2400000.
++    // CAM1's third slot is disjoint at0x2800000 (32-bit DDR address units).
++    wire [CTRL_ADDR_WIDTH-1:0] owned_waddr = (M3_FRONT || CAM1_CONTINUOUS) && write_bank==2 ?
++        (CAM1_CONTINUOUS ? 28'h2800000:28'h2000000) | ddr_waddr[21:0] :
+         {{(CTRL_ADDR_WIDTH-LINE_ADDR_WIDTH-3){1'b0}}, SOURCE_ID[1:0], write_bank[0],
+         ddr_waddr[LINE_ADDR_WIDTH-1:0]};
+-    wire [CTRL_ADDR_WIDTH-1:0] owned_raddr = M3_FRONT && read_bank==2 ?
+-        28'h2000000 | rd_cmd_addr[21:0] :
++    wire [CTRL_ADDR_WIDTH-1:0] owned_raddr = (M3_FRONT || CAM1_CONTINUOUS) && read_bank==2 ?
++        (CAM1_CONTINUOUS ? 28'h2800000:28'h2000000) | rd_cmd_addr[21:0] :
+         {{(CTRL_ADDR_WIDTH-LINE_ADDR_WIDTH-3){1'b0}}, SOURCE_ID[1:0], read_bank[0],
+         rd_cmd_addr[LINE_ADDR_WIDTH-1:0]};
+     wire [31:0] published_count /* synthesis syn_keep = 1 */;
+@@ -131,8 +135,9 @@
+     always @(posedge ddr_clk or negedge ddr_rstn)
+         if(!ddr_rstn) selected_d <= 0;
+         else selected_d <= {selected_d[0],display_selected};
+-    generate if(M3_FRONT) begin: front_three_slots
+-    m3_front_owner #(.H_NUM(H_NUM), .V_NUM(V_NUM)) owner (
++    assign capture_published=published_count;
++    generate if(M3_FRONT || CAM1_CONTINUOUS) begin: front_three_slots
++    m3_front_owner #(.H_NUM(H_NUM), .V_NUM(V_NUM),.BLANKING_GRANT(CAM1_CONTINUOUS)) owner (
+         .clk(ddr_clk), .rst_n(ddr_rstn), .video_clk(vin_clk),
+         .pipeline_running(pipeline_running), .video_vs(wr_fsync), .video_de(wr_en),
+         .video_id(wr_frame_id), .video_time(wr_frame_time),
+@@ -148,7 +153,7 @@
+         .has_frame(has_frame), .read_completed_gray(read_completed_gray),
+         .published_count(published_count), .rejected_count(rejected_count),
+         .read_fault_count(read_fault_count), .display_id(display_id), .display_time(display_time)
+-        ,.net_acquire(net_acquire),.net_release(net_release),.net_grant(net_grant),.net_held(net_held),
++        ,.net_acquire(M3_FRONT ? net_acquire:1'b0),.net_release(M3_FRONT ? net_release:1'b0),.net_grant(net_grant),.net_held(net_held),
+         .net_bank(net_bank),.net_id(net_id),.net_time(net_time),.latest_id(latest_frame_id)
+     );
+     end else begin: two_slots
+@@ -239,6 +244,30 @@
+         end
+     end
+     assign vout_data = enabled_v[1] && !output_bad ? raw_vout_data : {PIX_WIDTH{1'b0}};
++
++    generate if(CAM1_CONTINUOUS) begin: rear_fps
++        wire [31:0] identity_v;
++        m361_snapshot identity(.sc(ddr_clk),.dc(vout_clk),.rst_n(ddr_rstn),
++            .value(display_id),.snapshot(identity_v));
++        reg [31:0] current_id,last_id,count;
++        reg seen;
++        always @(posedge vout_clk or negedge ddr_rstn)
++          if(!ddr_rstn) begin current_id<=0;last_id<=0;count<=0;seen<=0;end
++          else begin
++            // Identity is stable from the frame boundary through all rows.
++            if(rd_en && !output_de_d && output_rows==0) current_id<=identity_v;
++            // Count only complete, selected, non-underflow source images.
++            // 1080p quad is540 rows; single view is native720 rows.
++            if(output_de_d && !rd_en && !output_bad && enabled_v[1]
++              && display_selected && output_rows==(display_quarter ? 540:V_NUM)
++              && (!seen || current_id!=last_id)) begin
++                count<=count+1'b1;last_id<=current_id;seen<=1;
++            end
++          end
++        assign display_new_frames=count;
++    end else begin: no_rear_fps
++        assign display_new_frames=0;
++    end endgenerate
+     
+     generate if(M2_READER) begin: m2_reader
+         if(HD_DISPLAY) begin: hd
+--- 3.5.7/rtl/reuse/video_capture_status.v
++++ 3.5.8/rtl/reuse/video_capture_status.v
+@@ -7,7 +7,8 @@
+     parameter V_ACTIVE = 720,
+     parameter SOURCE_ID = 0,
+     parameter REF_HZ = 50000000,
+-    parameter TIMEOUT_MS = 250
++    parameter TIMEOUT_MS = 250,
++    parameter CHECK_BYTE_ERRORS = 0
+ ) (
+     input wire ref_clk,
+     input wire video_clk,
+@@ -15,6 +16,7 @@
+     input wire source_ready,
+     input wire video_vs,
+     input wire video_de,
++    input wire byte_frame_error,
+     output wire pipeline_rst_n,
+     output reg healthy,
+     output reg timed_out,
+@@ -93,6 +95,8 @@
+         | (video_de ? 8'h04 : 8'h00)
+         | (final_rows[16] ? 8'h08 : 8'h00)
+         | (timeout_video[1] ? 8'h10 : 8'h00);
++    wire [7:0] complete_errors=final_errors
++        | ((CHECK_BYTE_ERRORS && byte_frame_error) ? 8'h20:8'h00);
+     // Sample opening tags only on the input VS edge, in video_clk.
+     assign frame_open_id = frame_id + (have_frame ? 32'd1 : 32'd0);
+     assign frame_open_time = gray_to_binary(time_v2);
+@@ -118,16 +122,16 @@
+                 if (have_frame) begin
+                     frame_result_valid <= 1;
+                     frame_result_id <= frame_id;
+-                    frame_result_errors <= final_errors;
+-                    if (final_errors == 0) good_frames <= good_frames + 1'b1;
++                    frame_result_errors <= complete_errors;
++                    if (complete_errors == 0) good_frames <= good_frames + 1'b1;
+                     else bad_frames <= bad_frames + 1'b1;
+                     if (request == ack_v2) begin
+                         // Bundled data stays unchanged until the reference
+                         // domain acknowledges the synchronized request.
+                         mailbox <= {32'd0, mailbox_drops,
+-                            bad_frames + ((final_errors != 0) ? 32'd1 : 32'd0),
+-                            good_frames + ((final_errors == 0) ? 32'd1 : 32'd0),
+-                            SOURCE_TAG, final_errors, reported_rows,
++                            bad_frames + ((complete_errors != 0) ? 32'd1 : 32'd0),
++                            good_frames + ((complete_errors == 0) ? 32'd1 : 32'd0),
++                            SOURCE_TAG, complete_errors, reported_rows,
+                             pixels, frame_time, frame_id};
+                         request <= ~request;
+                     end else mailbox_drops <= mailbox_drops + 1'b1;

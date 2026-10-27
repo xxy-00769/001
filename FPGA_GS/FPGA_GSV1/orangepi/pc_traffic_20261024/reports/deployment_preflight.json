@@ -1,0 +1,187 @@
+{
+  "passed": true,
+  "trained": false,
+  "scope": "Torch/ONNX CPU only. RKNN Linux build and board NPU are still pending.",
+  "onnx_path": "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\pc_traffic_20261024\\artifacts\\yolov8n_2class_640_UNTRAINED_raw6_rknn_preflight.onnx",
+  "onnx_sha256": "5cb102190d135e7019f8ced291d853121b060de5995f0943da58611ee0898201",
+  "opset": 12,
+  "ops": {
+    "Conv": 63,
+    "Sigmoid": 60,
+    "Mul": 57,
+    "Slice": 16,
+    "Add": 6,
+    "Concat": 13,
+    "MaxPool": 3,
+    "Resize": 2
+  },
+  "outputs": [
+    {
+      "name": "box_s8",
+      "shape": [
+        1,
+        64,
+        80,
+        80
+      ]
+    },
+    {
+      "name": "score_s8",
+      "shape": [
+        1,
+        2,
+        80,
+        80
+      ]
+    },
+    {
+      "name": "box_s16",
+      "shape": [
+        1,
+        64,
+        40,
+        40
+      ]
+    },
+    {
+      "name": "score_s16",
+      "shape": [
+        1,
+        2,
+        40,
+        40
+      ]
+    },
+    {
+      "name": "box_s32",
+      "shape": [
+        1,
+        64,
+        20,
+        20
+      ]
+    },
+    {
+      "name": "score_s32",
+      "shape": [
+        1,
+        2,
+        20,
+        20
+      ]
+    }
+  ],
+  "resize_changes": [
+    {
+      "node": "/model.10/Resize",
+      "old": {
+        "coordinate_transformation_mode": "b'asymmetric'",
+        "cubic_coeff_a": "-0.75",
+        "mode": "b'nearest'",
+        "nearest_mode": "b'floor'"
+      },
+      "new": {
+        "mode": "nearest",
+        "coordinate_transformation_mode": "half_pixel",
+        "nearest_mode": "round_prefer_floor(default)"
+      },
+      "scale": [
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "node": "/model.13/Resize",
+      "old": {
+        "coordinate_transformation_mode": "b'asymmetric'",
+        "cubic_coeff_a": "-0.75",
+        "mode": "b'nearest'",
+        "nearest_mode": "b'floor'"
+      },
+      "new": {
+        "mode": "nearest",
+        "coordinate_transformation_mode": "half_pixel",
+        "nearest_mode": "round_prefer_floor(default)"
+      },
+      "scale": [
+        1,
+        1,
+        2,
+        2
+      ]
+    }
+  ],
+  "resize_equivalence_checks": [
+    {
+      "input": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "exact_equal": true
+    },
+    {
+      "input": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "exact_equal": true
+    },
+    {
+      "input": [
+        1,
+        3,
+        20,
+        20
+      ],
+      "exact_equal": true
+    },
+    {
+      "input": [
+        1,
+        2,
+        40,
+        40
+      ],
+      "exact_equal": true
+    }
+  ],
+  "comparisons": [
+    {
+      "image": "RED",
+      "mode": "full",
+      "raw_max_abs_error": 7.152557373046875e-07,
+      "decoded_box_max_abs_error_input_pixels": 3.0517578125e-05,
+      "decoded_score_max_abs_error": 4.0978193283081055e-08
+    },
+    {
+      "image": "RED",
+      "mode": "left_half",
+      "raw_max_abs_error": 7.152557373046875e-07,
+      "decoded_box_max_abs_error_input_pixels": 3.0517578125e-05,
+      "decoded_score_max_abs_error": 4.0978193283081055e-08
+    },
+    {
+      "image": "GREEN",
+      "mode": "full",
+      "raw_max_abs_error": 5.960464477539062e-07,
+      "decoded_box_max_abs_error_input_pixels": 3.0517578125e-05,
+      "decoded_score_max_abs_error": 4.0978193283081055e-08
+    },
+    {
+      "image": "GREEN",
+      "mode": "left_half",
+      "raw_max_abs_error": 8.940696716308594e-07,
+      "decoded_box_max_abs_error_input_pixels": 3.0517578125e-05,
+      "decoded_score_max_abs_error": 4.0978193283081055e-08
+    }
+  ],
+  "postprocessing": "CPU DFL decode with reg_max16, strides8/16/32, sigmoid scores already applied, then class-aware NMS; do not apply a second sigmoid",
+  "sdk_document_revision": "2c723177a94fac65cbc036d722907ddbc91980cf",
+  "rknn_build_passed": false
+}

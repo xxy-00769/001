@@ -1,0 +1,8 @@
+define_attribute {p:cmos1_pclk} {PAP_IO_LOC} {T12}
+define_attribute {p:cmos1_pclk} {PAP_IO_STANDARD} {LVCMOS12}
+define_attribute {p:d} {PAP_IO_LOC} {R11}
+define_attribute {p:d} {PAP_IO_STANDARD} {LVCMOS12}
+create_clock -name cmos1_pclk [get_ports cmos1_pclk] -period 11.9
+
+define_attribute {p:cmos1_pclk} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:d} {PAP_IO_VCCIO} {3.3}

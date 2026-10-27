@@ -1,0 +1,258 @@
+﻿{
+    "tool_version":  "M4-02-operator-r2-reconnect",
+    "action":  "Start",
+    "computer_time":  "2026-10-23T19:01:21.9949533+08:00",
+    "ok":  false,
+    "config":  {
+                   "ssh_host":  "192.168.0.4",
+                   "ssh_user":  "orangepi",
+                   "ssh_port":  22,
+                   "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "remote_tool":  "operator_v1/ops_manager.py",
+                   "interface":  "eth0",
+                   "business_cidr":  "192.168.60.1/24",
+                   "fpga_ip":  "192.168.60.2",
+                   "fpga_mac":  "02:00:47:53:56:32",
+                   "udp_port":  50000,
+                   "peer_port":  50000,
+                   "web_port":  8080,
+                   "local_port":  18080,
+                   "scene":  "scene.example.json",
+                   "preview_fps":  15,
+                   "preview_width":  640,
+                   "preview_quality":  70,
+                   "output":  "runs/live_dual_eth",
+                   "diagnostic_seconds":  4,
+                   "startup_timeout_seconds":  35,
+                   "front_fps":  15,
+                   "demo_ops":  "m404/demo_ops.py",
+                   "demo_preview_width":  640
+               },
+    "local_before":  {
+                         "listeners":  [
+                                           {
+                                               "address":  "127.0.0.1",
+                                               "port":  18080,
+                                               "pid":  28524,
+                                               "name":  "ssh.exe",
+                                               "command_line":  "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 22 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:8080 orangepi@192.168.0.4 ",
+                                               "creation_date":  "10/23/2026 18:56:23"
+                                           }
+                                       ],
+                         "http":  {
+                                      "ok":  true,
+                                      "status":  200,
+                                      "data":  {
+                                                   "mode":  "FILE_TEST",
+                                                   "vehicle":  "SIMULATION",
+                                                   "release":  "M4-04-r1",
+                                                   "instance":  "7bce033b38188ae2c608f326",
+                                                   "control_token":  "mm82o5hskYepIaJs7W5EjKX1mb_Conxb",
+                                                   "host_monotonic_ms":  2418183.376819,
+                                                   "video":  "SC_BT.mp4",
+                                                   "files":  [
+                                                                 {
+                                                                     "name":  "SC_BT.mp4",
+                                                                     "duration":  59.882646,
+                                                                     "fps":  30.001687177285582,
+                                                                     "label":  "日间城区"
+                                                                 },
+                                                                 {
+                                                                     "name":  "SC_BT2.mp4",
+                                                                     "duration":  32.042667,
+                                                                     "fps":  30.024968789013734,
+                                                                     "label":  "黄昏高架"
+                                                                 },
+                                                                 {
+                                                                     "name":  "SC_YJ.mp4",
+                                                                     "duration":  177.834667,
+                                                                     "fps":  30.00214260849744,
+                                                                     "label":  "夜间城区"
+                                                                 },
+                                                                 {
+                                                                     "name":  "SC_YJ2.mp4",
+                                                                     "duration":  78.05,
+                                                                     "fps":  39.62832425504646,
+                                                                     "label":  "蓝调高架"
+                                                                 }
+                                                             ],
+                                                   "source_fps":  30.001687177285582,
+                                                   "duration":  59.882646,
+                                                   "position":  0.0,
+                                                   "playing":  true,
+                                                   "loop":  true,
+                                                   "epoch":  23,
+                                                   "processed":  4145,
+                                                   "processed_fps":  0,
+                                                   "skipped_source_frames":  4426,
+                                                   "loop_count":  3,
+                                                   "target_fps":  15,
+                                                   "preview_width":  640,
+                                                   "frame_id":  null,
+                                                   "sequence":  4149,
+                                                   "age_ms":  null,
+                                                   "driving":  {
+                                                                   "mode":  "intersection",
+                                                                   "lane":  "straight",
+                                                                   "intent":  "auto",
+                                                                   "forced":  false,
+                                                                   "motion":  "STOPPED",
+                                                                   "suggestion":  "UNKNOWN",
+                                                                   "reason":  "等待新图像证据",
+                                                                   "alarm":  null,
+                                                                   "alarm_remaining_seconds":  0,
+                                                                   "command_id":  0,
+                                                                   "alarm_policy":  "告警锁存5秒；到期取消强制并停车；停车/清除告警立即解除；切视频/跳转/循环重置",
+                                                                   "vehicle":  "SIMULATED_ONLY"
+                                                               },
+                                                   "perception":  null,
+                                                   "detection":  {
+                                                                     "detection_runs":  4140,
+                                                                     "detection_fps":  0
+                                                                 },
+                                                   "stage_ms":  {
+
+                                                                },
+                                                   "stage_mean_ms":  {
+
+                                                                     },
+                                                   "error":  null,
+                                                   "note":  "模拟车辆与原录像车辆独立；录像运动不因模拟停车而冻结。无UDP、无FPGA事件；图龄从本机解码完成起算。"
+                                               }
+                                  }
+                     },
+    "preflight":  {
+                      "ok":  true,
+                      "directory":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                      "missing":  [
+
+                                  ],
+                      "addresses":  {
+                                        "ok":  true,
+                                        "code":  0,
+                                        "stdout":  "[{\"ifindex\":2,\"ifname\":\"eth0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"mq\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"00:00:a4:b5:5f:ef\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"192.168.60.1\",\"prefixlen\":24,\"scope\":\"global\",\"label\":\"eth0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]",
+                                        "stderr":  "",
+                                        "data":  [
+                                                     {
+                                                         "ifindex":  2,
+                                                         "ifname":  "eth0",
+                                                         "flags":  [
+                                                                       "BROADCAST",
+                                                                       "MULTICAST",
+                                                                       "UP",
+                                                                       "LOWER_UP"
+                                                                   ],
+                                                         "mtu":  1500,
+                                                         "qdisc":  "mq",
+                                                         "operstate":  "UP",
+                                                         "group":  "default",
+                                                         "txqlen":  1000,
+                                                         "link_type":  "ether",
+                                                         "address":  "00:00:a4:b5:5f:ef",
+                                                         "broadcast":  "ff:ff:ff:ff:ff:ff",
+                                                         "addr_info":  [
+                                                                           {
+                                                                               "family":  "inet",
+                                                                               "local":  "192.168.60.1",
+                                                                               "prefixlen":  24,
+                                                                               "scope":  "global",
+                                                                               "label":  "eth0",
+                                                                               "valid_life_time":  4294967295,
+                                                                               "preferred_life_time":  4294967295
+                                                                           }
+                                                                       ]
+                                                     }
+                                                 ]
+                                    },
+                      "business_address_present":  true,
+                      "carrier":  1,
+                      "route":  {
+                                    "ok":  true,
+                                    "code":  0,
+                                    "stdout":  "[{\"dst\":\"192.168.60.2\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.60.1\",\"flags\":[],\"uid\":1000,\"cache\":[]}]",
+                                    "stderr":  "",
+                                    "data":  [
+                                                 {
+                                                     "dst":  "192.168.60.2",
+                                                     "dev":  "eth0",
+                                                     "prefsrc":  "192.168.60.1",
+                                                     "flags":  [
+
+                                                               ],
+                                                     "uid":  1000,
+                                                     "cache":  [
+
+                                                               ]
+                                                 }
+                                             ]
+                                },
+                      "route_ok":  true,
+                      "receive_buffer":  {
+                                             "kernel_max":  8388608,
+                                             "kernel_target":  8388608,
+                                             "socket_requested":  4194304,
+                                             "socket_minimum":  8388608,
+                                             "socket_actual":  null,
+                                             "kernel_ready":  true,
+                                             "socket_ready":  null
+                                         },
+                      "errors":  [
+
+                                 ],
+                      "processes":  [
+
+                                    ],
+                      "ports":  [
+                                    {
+                                        "protocol":  "tcp",
+                                        "local_hex":  "0100007F:1F90",
+                                        "local_port":  8080,
+                                        "inode":  "67116",
+                                        "pids":  [
+                                                     20951
+                                                 ],
+                                        "processes":  [
+                                                          {
+                                                              "pid":  20951,
+                                                              "start_ticks":  "211754",
+                                                              "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                              "argv":  [
+                                                                           ".venv404/bin/python",
+                                                                           "m404/demo.py",
+                                                                           "--port",
+                                                                           "8080",
+                                                                           "--preview-width",
+                                                                           "640"
+                                                                       ],
+                                                              "uid":  1000
+                                                          }
+                                                      ]
+                                    }
+                                ]
+                  },
+    "local_conflict":  [
+                           {
+                               "address":  "127.0.0.1",
+                               "port":  18080,
+                               "pid":  28524,
+                               "name":  "ssh.exe",
+                               "command_line":  "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 22 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:8080 orangepi@192.168.0.4 ",
+                               "creation_date":  "10/23/2026 18:56:23"
+                           }
+                       ],
+    "error":  "本地18080被其他程序或无法确认的转发占用，未停止任何进程。",
+    "summary":  [
+                    "本地入口：E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\oneclick",
+                    "目标：orangepi@192.168.0.4；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                    "通过SSH执行 preflight；需要认证时请在终端输入密码（不保存）。",
+                    "接收缓冲上限不足：通过sudo临时设置rmem_max=8MiB，保留原值，不写永久配置。请在终端认证。",
+                    "通过SSH执行 preflight；需要认证时请在终端输入密码（不保存）。",
+                    "eth0缺少业务地址 192.168.60.1/24",
+                    "到FPGA的业务路由不是配置的eth0/源IPv4；未修改路由",
+                    "可选操作仅sudo临时启用eth0并添加业务地址；不删其他地址，不改路由/DNS/持久配置。",
+                    "通过SSH执行 preflight；需要认证时请在终端输入密码（不保存）。",
+                    "通过SSH执行 diagnose；需要认证时请在终端输入密码（不保存）。",
+                    "\r\n\r\naddress       : 127.0.0.1\r\nport          : 18080\r\npid           : 28524\r\nname          : ssh.exe\r\ncommand_line  : \"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 22 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ServerA\r\n                liveInterval=10 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:80\r\n                80 orangepi@192.168.0.4 \r\ncreation_date : 10/23/2026 18:56:23\r\n\r\n\r\n\r\n",
+                    "操作未完成：本地18080被其他程序或无法确认的转发占用，未停止任何进程。"
+                ]
+}

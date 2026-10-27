@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M4-01 v0.1.1 识别预览</title>
+<style>
+body{margin:16px auto;padding:0 12px;max-width:1280px;background:#15202b;color:#ecf1f5;font:16px system-ui,sans-serif}
+h1{font-size:20px}#viewer{aspect-ratio:16/9;background:#0b121a;display:grid;place-items:center;overflow:hidden}
+#image{width:100%;display:block}#image[hidden],#placeholder[hidden]{display:none}
+#placeholder{padding:20px;text-align:center;color:#cbd5df}#image-state,#data-state{font-size:14px;color:#b8d5e8}
+.summary{display:flex;flex-wrap:wrap;gap:10px 28px;margin:12px 0}.summary span{white-space:nowrap}
+details{margin-top:20px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}small{color:#b8c2cc}
+</style>
+<h1>M4-01 v0.1.1 · 录像与识别预览</h1>
+<div id="viewer"><img id="image" alt="当前输入的识别叠加画面" hidden><div id="placeholder">等待首帧，正在自动重试…</div></div>
+<p id="image-state" role="status" aria-live="polite">等待首帧</p>
+<div class="summary"><span>模式：<b id="mode">—</b></span><span>帧号：<b id="frame">—</b></span><span>处理：<b id="fps">—</b> fps</span></div>
+<div class="summary"><span>交通灯：<b id="signal">未知</b></span><span>左边界：<b id="left">未知</b></span><span>右边界：<b id="right">未知</b></span></div>
+<p id="decisions">驾驶意图判定：等待数据</p><p id="data-state" role="status"></p>
+<small>FILE_TEST 为录像测试；SIMULATION 为人工模拟；LIVE_FRONT 为前摄输入。场景配置可能含模拟假设，未知状态保留为未知。</small>
+<details id="diagnostic"><summary>展开诊断 JSON</summary><pre id="diagnostics">等待状态数据</pre></details>
+<script>
+(() => {
+  const el = id => document.getElementById(id);
+  const label = {UNKNOWN:'未知',RED:'红灯',GREEN:'绿灯',AMBER:'黄灯',SOLID:'实线',DASHED:'虚线'};
+  const modes = {FILE_TEST:'录像测试（FILE_TEST）',LIVE_FRONT:'前摄输入（LIVE_FRONT）',SIMULATION:'人工模拟（SIMULATION）'};
+  let hadImage = false, previousUrl = null;
+  async function request(path) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 4000);
+    try {
+      const response = await fetch(path, {cache:'no-store',signal:controller.signal});
+      if (!response.ok) {const error = new Error('HTTP ' + response.status);error.status=response.status;throw error;}
+      return path.startsWith('/status.json') ? await response.json() : await response.blob();
+    } finally {clearTimeout(timeout);}
+  }
+  async function updateImage() {
+    let url = null;
+    try {
+      const blob = await request('/latest.jpg?t=' + Date.now());
+      url = URL.createObjectURL(blob);
+      const candidate = new Image();candidate.src=url;await candidate.decode();
+      el('image').src=url;el('image').hidden=false;el('placeholder').hidden=true;
+      if (previousUrl) URL.revokeObjectURL(previousUrl);
+      previousUrl=url;url=null;hadImage=true;
+      el('image-state').textContent='画面已更新（每 0.5 秒自动刷新）';
+    } catch (error) {
+      if (url) URL.revokeObjectURL(url);
+      const message = error.status===503 && !hadImage ? '等待首帧，正在自动重试…' :
+        '画面获取失败（' + (error.name==='AbortError'?'请求超时':error.message) + '），正在自动重试…';
+      el('image').hidden=true;el('placeholder').hidden=false;
+      el('placeholder').textContent=message;el('image-state').textContent=message;
+    }
+  }
+  async function updateStatus() {
+    try {
+      const status = await request('/status.json?t=' + Date.now());
+      const latest=status.latest || {}, lanes=latest.lanes || {};
+      el('mode').textContent=modes[status.mode] || status.mode || '—';
+      el('frame').textContent=latest.frame_id ?? '—';
+      el('fps').textContent=Number.isFinite(status.processed_fps)?status.processed_fps.toFixed(2):'—';
+      el('signal').textContent=label[(latest.signal || {}).state] || '未知';
+      el('left').textContent=label[(lanes.left || {}).state] || '未知';
+      el('right').textContent=label[(lanes.right || {}).state] || '未知';
+      const decisions=latest.decisions || {};
+      el('decisions').textContent='驾驶意图判定：' + ['左','右','直','停'].map((name,index) =>
+        name + ' ' + ({0:'未知',1:'允许',2:'拒绝'}[(decisions[String(index+1)] || {}).code] || '未知')).join(' · ');
+      el('diagnostics').textContent=JSON.stringify(status,null,2);
+      el('data-state').textContent='已处理 ' + status.processed + ' 帧；图龄 ' + (status.preview_age_ms ?? '—') + ' ms';
+    } catch (error) {
+      el('data-state').textContent='状态获取失败，正在自动重试；当前文字可能为上次数据。';
+    }
+  }
+  async function refresh() {
+    await Promise.allSettled([updateImage(),updateStatus()]);
+    setTimeout(refresh,500);
+  }
+  refresh();
+})();
+</script>
+</html>

@@ -1,0 +1,17 @@
+{
+  "completed": false,
+  "tag": "C0O9",
+  "records": 0,
+  "snapshots": [],
+  "notes": [
+    "Exposure ms = 3500..3502 /16 * measured physical row interval.",
+    "Row interval averages256 consecutive HREF intervals against50MHz; excludes VS gap.",
+    "HTS/row time infers sensor timing clock; PCLK is measured separately, not assumed equal.",
+    "Registers are a successful sequential read sweep, not a frame-latched ISP snapshot.",
+    "Exposure high bytes are re-read; a torn update has exposure_ms=null.",
+    "Display count requires CAM0 visible, full output rows, no underflow, distinct source ID.",
+    "Local CAM0 fps is separate from unchanged network2 upload request15fps.",
+    "This readback build changes no exposure, gain, ISP, sensor PLL or frame ownership."
+  ],
+  "error": "采样未完成：缺少两条完整C0O9记录；3.5.8不包含CAM0读回。"
+}

@@ -1,0 +1,65 @@
+##### Written on 2026/10/21 18:29:05 ###############################
+
+
+##### INFO ##################################################
+
+Current device : 
+	PGL50H-6FBG484
+
+Top Module : 
+	probe
+
+Constraint File(s) : 
+	E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc
+
+##### SUMMARY ######################################################
+
+Found 0 error(s), 1 critical warning(s), 1 warning(s), out of 59 constraint(s)
+
+
+Inapplicable constraints(except overwritten constraints):
+********************************************
+
+define_attribute {p:cmos1_data[7]} {PAP_IO_LOC} {AB13}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/M3_05_baseline/io_probe_regional/probe.fdc(line number: 2)] | Port cmos1_data[7] has been placed at location AB13, whose type is share pin.
+
+
+Constraints with issues:
+********************************************
+
+
+Issues without commands:
+********************************************
+
+
+Unconstrained ports:
+********************************************
+
+W: ConstraintEditor-4019: Port Bus 'q' unspecified I/O constraint.
+
+Constraints with matching wildcard expressions:
+********************************************
+
+set_input_delay -clock cmos1_pclk -max 10.900 [get_ports {cmos1_data[*] cmos1_href cmos1_vsync}]
+	I: The pattern 'cmos1_data[*]' in command 'get_ports {cmos1_data[*] cmos1_href cmos1_vsync}' match 8 objects below:
+	I: port cmos1_data[0]
+	I: port cmos1_data[1]
+	I: port cmos1_data[2]
+	I: port cmos1_data[3]
+	I: port cmos1_data[4]
+	I: port cmos1_data[5]
+	I: port cmos1_data[6]
+	I: port cmos1_data[7]
+
+set_input_delay -clock cmos1_pclk -min 1.000 [get_ports {cmos1_data[*] cmos1_href cmos1_vsync}]
+	I: The pattern 'cmos1_data[*]' in command 'get_ports {cmos1_data[*] cmos1_href cmos1_vsync}' match 8 objects below:
+	I: port cmos1_data[0]
+	I: port cmos1_data[1]
+	I: port cmos1_data[2]
+	I: port cmos1_data[3]
+	I: port cmos1_data[4]
+	I: port cmos1_data[5]
+	I: port cmos1_data[6]
+	I: port cmos1_data[7]
+
+

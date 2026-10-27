@@ -1,0 +1,140 @@
+{
+  "mode": "LIVE_FRONT",
+  "processed": 203,
+  "release": "M4-02-r2-reconnect",
+  "live_epoch": 0,
+  "live_reset_monotonic_ms": 0.0,
+  "requested_front_fps": 15,
+  "target_process_fps": 15,
+  "processing_policy": "latest complete frame, no artificial throttle",
+  "skipped_complete_frames": 0,
+  "host_monotonic_ms": 55570580.918622,
+  "processed_fps": 13.37,
+  "processed_average_fps": 13.268,
+  "target_preview_fps": 15.0,
+  "preview_encoding": {
+    "width": 640,
+    "quality": 70
+  },
+  "playback": {},
+  "stage_ms": {
+    "inference": 14.573,
+    "overlay_jpeg": 4.8,
+    "overlay_jpeg_bytes": 27447,
+    "raw_jpeg": 8.06,
+    "process_total": 41.69
+  },
+  "preview_age_ms": 89.8,
+  "effective_feedback": "SEE_EXACT_FRAME_DECISIONS",
+  "latest": {
+    "signal": {
+      "state": "UNKNOWN",
+      "confidence": 0,
+      "actions": [],
+      "candidates": [],
+      "association": "UNASSIGNED"
+    },
+    "lanes": {
+      "left": {
+        "state": "UNKNOWN",
+        "confidence": 0.0,
+        "coverage": 0.0,
+        "segments": 0
+      },
+      "right": {
+        "state": "UNKNOWN",
+        "confidence": 0.0,
+        "coverage": 0.479,
+        "segments": 4
+      }
+    },
+    "inference_ms": 14.573,
+    "decisions": {
+      "1": {
+        "code": 0,
+        "reason": 0,
+        "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+      },
+      "2": {
+        "code": 0,
+        "reason": 0,
+        "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+      },
+      "3": {
+        "code": 0,
+        "reason": 0,
+        "explanation": "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+      },
+      "4": {
+        "code": 1,
+        "reason": 0,
+        "explanation": "STOP_INTENT_NO_RED_VIOLATION"
+      }
+    },
+    "frame_id": 6898,
+    "received_monotonic": 55570.491116012,
+    "source_seconds": null,
+    "complete_to_process_wait_ms": 1.648,
+    "frame_age_at_result_ms": 29.49
+  },
+  "link": {
+    "heartbeat_tx": 61,
+    "rx_packets": 328696,
+    "heartbeat_or_welcome": 92,
+    "telemetry_packets": 31,
+    "front_fragments": 328573,
+    "complete_frames": 203,
+    "session": 3888027107,
+    "online": true,
+    "connection_state": "STREAMING",
+    "session_epoch": 0,
+    "reconnects": 0,
+    "reconnect_reason": null,
+    "reconnect_quiet_remaining_ms": 0,
+    "session_started_monotonic": 55555.292324008,
+    "last_video_frame_id": 6902,
+    "assembly_frame_id": 6902,
+    "last_complete_monotonic": 55570.491116012,
+    "requested_front_fps": 15,
+    "recent_complete_fps": 13.25,
+    "telemetry": {
+      "mac_crc": 0,
+      "mac_overrun": 0,
+      "reject_format": 0,
+      "reject_checksum": 0,
+      "reject_session": 0,
+      "reject_profile": 0,
+      "sequence_errors": 0,
+      "duplicate_packets": 0,
+      "begin_wait_cycles": 0,
+      "begin_requests": 0,
+      "assembly_timeouts": 0,
+      "assembly_aborts": 0,
+      "ddr_beats": 0,
+      "published": 0,
+      "displayed_new": 0,
+      "rx_packets": 121
+    },
+    "feedback": {
+      "controls": {
+        "mode": "REAL",
+        "selection": "unknown",
+        "revision": 0,
+        "applies_to": "NEXT_REAL_EVENT_ONLY",
+        "default": "REAL"
+      },
+      "recent_events": [],
+      "counts": {},
+      "history_limit": 32,
+      "ttl_note": "板端按事件时刻计算TTL；主机预算从首次收到EVENT起算并保留100ms余量，不能测得板端剩余TTL。",
+      "latency_note": "耗时仅从主机收到EVENT起算，不是物理按键到FPGA屏幕的端到端延迟。"
+    },
+    "host_elapsed_seconds": 15.289,
+    "front_receive_fps": 13.278,
+    "socket_receive_buffer_bytes": 8388608,
+    "current_frame_fragments": 280,
+    "assembly_dropped": 25,
+    "assembly_duplicates": 0,
+    "hardware_validation": "网口2已有真实前摄验收；按键及双口条件请见本轮验收报告"
+  }
+}

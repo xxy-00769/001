@@ -1,0 +1,6 @@
+# Supplemental post-route coverage for the two existing camera I2C clocks.
+# reg_config toggles clock_20k every 1250 camera-reference cycles: /2500,
+# i.e. actual 10kHz at 25MHz (the historical signal name is not frequency).
+# This ADDS internal checks; it does not relax/exclude a data path.
+create_generated_clock -name camera1_i2c -source [get_nets {u_ref_div.camera_clk}] -master_clock [get_clocks {clk_25M}] -divide_by 2500 [get_nets {coms1_reg_config.clock_20k}]
+create_generated_clock -name camera2_i2c -source [get_nets {u_ref_div.camera_clk}] -master_clock [get_clocks {clk_25M}] -divide_by 2500 [get_nets {coms2_reg_config.clock_20k}]
