@@ -1,0 +1,6152 @@
+//
+// Generated (version 2022.2-SP6.4<build 146967>) at Thu Feb 27 15:29:52 2025
+//
+
+module btn_deb
+(
+    input [6:0] btn_in,
+    input clk,
+    output [6:0] btn_deb
+);
+    wire [19:0] N13;
+    wire [19:0] N35;
+    wire [19:0] N57;
+    wire [19:0] N79;
+    wire [19:0] N101;
+    wire [19:0] N123;
+    wire [19:0] N145;
+    wire N162;
+    wire N172;
+    wire N182;
+    wire N192;
+    wire N202;
+    wire N212;
+    wire N222;
+    wire N224_1;
+    wire N226_1;
+    wire N231_1;
+    wire N233_1;
+    wire N236_1;
+    wire N240_1;
+    wire N244_1;
+    wire _N235;
+    wire _N236;
+    wire _N237;
+    wire _N238;
+    wire _N239;
+    wire _N240;
+    wire _N241;
+    wire _N242;
+    wire _N243;
+    wire _N244;
+    wire _N245;
+    wire _N246;
+    wire _N247;
+    wire _N248;
+    wire _N249;
+    wire _N250;
+    wire _N251;
+    wire _N252;
+    wire _N273;
+    wire _N274;
+    wire _N275;
+    wire _N276;
+    wire _N277;
+    wire _N278;
+    wire _N279;
+    wire _N280;
+    wire _N281;
+    wire _N282;
+    wire _N283;
+    wire _N284;
+    wire _N285;
+    wire _N286;
+    wire _N287;
+    wire _N288;
+    wire _N289;
+    wire _N290;
+    wire _N293;
+    wire _N294;
+    wire _N295;
+    wire _N296;
+    wire _N297;
+    wire _N298;
+    wire _N299;
+    wire _N300;
+    wire _N301;
+    wire _N302;
+    wire _N303;
+    wire _N304;
+    wire _N305;
+    wire _N306;
+    wire _N307;
+    wire _N308;
+    wire _N309;
+    wire _N310;
+    wire _N313;
+    wire _N314;
+    wire _N315;
+    wire _N316;
+    wire _N317;
+    wire _N318;
+    wire _N319;
+    wire _N320;
+    wire _N321;
+    wire _N322;
+    wire _N323;
+    wire _N324;
+    wire _N325;
+    wire _N326;
+    wire _N327;
+    wire _N328;
+    wire _N329;
+    wire _N330;
+    wire _N333;
+    wire _N334;
+    wire _N335;
+    wire _N336;
+    wire _N337;
+    wire _N338;
+    wire _N339;
+    wire _N340;
+    wire _N341;
+    wire _N342;
+    wire _N343;
+    wire _N344;
+    wire _N345;
+    wire _N346;
+    wire _N347;
+    wire _N348;
+    wire _N349;
+    wire _N350;
+    wire _N353;
+    wire _N354;
+    wire _N355;
+    wire _N356;
+    wire _N357;
+    wire _N358;
+    wire _N359;
+    wire _N360;
+    wire _N361;
+    wire _N362;
+    wire _N363;
+    wire _N364;
+    wire _N365;
+    wire _N366;
+    wire _N367;
+    wire _N368;
+    wire _N369;
+    wire _N370;
+    wire _N373;
+    wire _N374;
+    wire _N375;
+    wire _N376;
+    wire _N377;
+    wire _N378;
+    wire _N379;
+    wire _N380;
+    wire _N381;
+    wire _N382;
+    wire _N383;
+    wire _N384;
+    wire _N385;
+    wire _N386;
+    wire _N387;
+    wire _N388;
+    wire _N389;
+    wire _N390;
+    wire _N591;
+    wire _N593;
+    wire _N595;
+    wire _N597;
+    wire _N599;
+    wire _N601;
+    wire _N603;
+    wire _N610;
+    wire _N614;
+    wire _N618;
+    wire _N619;
+    wire _N629;
+    wire _N633;
+    wire _N637;
+    wire _N638;
+    wire _N648;
+    wire _N652;
+    wire _N656;
+    wire _N657;
+    wire _N667;
+    wire _N671;
+    wire _N675;
+    wire _N676;
+    wire _N686;
+    wire _N690;
+    wire _N694;
+    wire _N695;
+    wire _N705;
+    wire _N709;
+    wire _N713;
+    wire _N714;
+    wire _N724;
+    wire _N728;
+    wire _N732;
+    wire _N733;
+    wire [6:0] btn_in_reg;
+    wire [19:0] \cnt[0] ;
+    wire \cnt[0][0]_inv ;
+    wire \cnt[0][19:0]_or ;
+    wire [19:0] \cnt[1] ;
+    wire \cnt[1][0]_inv ;
+    wire \cnt[1][19:0]_or ;
+    wire [19:0] \cnt[2] ;
+    wire \cnt[2][0]_inv ;
+    wire \cnt[2][19:0]_or ;
+    wire [19:0] \cnt[3] ;
+    wire \cnt[3][0]_inv ;
+    wire \cnt[3][19:0]_or ;
+    wire [19:0] \cnt[4] ;
+    wire \cnt[4][0]_inv ;
+    wire \cnt[4][19:0]_or ;
+    wire [19:0] \cnt[5] ;
+    wire \cnt[5][0]_inv ;
+    wire \cnt[5][19:0]_or ;
+    wire [19:0] \cnt[6] ;
+    wire \cnt[6][0]_inv ;
+    wire \cnt[6][19:0]_or ;
+    wire [6:0] flag;
+
+    GTP_LUT5CARRY /* N13_1_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_1 (
+            .COUT (_N273),
+            .Z (N13[1]),
+            .CIN (),
+            .I0 (\cnt[0] [0] ),
+            .I1 (\cnt[0] [1] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_2 (
+            .COUT (_N274),
+            .Z (N13[2]),
+            .CIN (_N273),
+            .I0 (\cnt[0] [0] ),
+            .I1 (\cnt[0] [1] ),
+            .I2 (\cnt[0] [2] ),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_3 (
+            .COUT (_N275),
+            .Z (N13[3]),
+            .CIN (_N274),
+            .I0 (),
+            .I1 (\cnt[0] [3] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_4 (
+            .COUT (_N276),
+            .Z (N13[4]),
+            .CIN (_N275),
+            .I0 (),
+            .I1 (\cnt[0] [4] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_5 (
+            .COUT (_N277),
+            .Z (N13[5]),
+            .CIN (_N276),
+            .I0 (),
+            .I1 (\cnt[0] [5] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_6 (
+            .COUT (_N278),
+            .Z (N13[6]),
+            .CIN (_N277),
+            .I0 (),
+            .I1 (\cnt[0] [6] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_7 (
+            .COUT (_N279),
+            .Z (N13[7]),
+            .CIN (_N278),
+            .I0 (),
+            .I1 (\cnt[0] [7] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_8 (
+            .COUT (_N280),
+            .Z (N13[8]),
+            .CIN (_N279),
+            .I0 (),
+            .I1 (\cnt[0] [8] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_9 (
+            .COUT (_N281),
+            .Z (N13[9]),
+            .CIN (_N280),
+            .I0 (),
+            .I1 (\cnt[0] [9] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_10 (
+            .COUT (_N282),
+            .Z (N13[10]),
+            .CIN (_N281),
+            .I0 (),
+            .I1 (\cnt[0] [10] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_11 (
+            .COUT (_N283),
+            .Z (N13[11]),
+            .CIN (_N282),
+            .I0 (),
+            .I1 (\cnt[0] [11] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_12 (
+            .COUT (_N284),
+            .Z (N13[12]),
+            .CIN (_N283),
+            .I0 (),
+            .I1 (\cnt[0] [12] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_13 (
+            .COUT (_N285),
+            .Z (N13[13]),
+            .CIN (_N284),
+            .I0 (),
+            .I1 (\cnt[0] [13] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_14 (
+            .COUT (_N286),
+            .Z (N13[14]),
+            .CIN (_N285),
+            .I0 (),
+            .I1 (\cnt[0] [14] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_15 (
+            .COUT (_N287),
+            .Z (N13[15]),
+            .CIN (_N286),
+            .I0 (),
+            .I1 (\cnt[0] [15] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_16 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_16 (
+            .COUT (_N288),
+            .Z (N13[16]),
+            .CIN (_N287),
+            .I0 (),
+            .I1 (\cnt[0] [16] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_17 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_17 (
+            .COUT (_N289),
+            .Z (N13[17]),
+            .CIN (_N288),
+            .I0 (),
+            .I1 (\cnt[0] [17] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_18 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_18 (
+            .COUT (_N290),
+            .Z (N13[18]),
+            .CIN (_N289),
+            .I0 (),
+            .I1 (\cnt[0] [18] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N13_1_19 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_1_19 (
+            .COUT (),
+            .Z (N13[19]),
+            .CIN (_N290),
+            .I0 (),
+            .I1 (\cnt[0] [19] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_1 (
+            .COUT (_N293),
+            .Z (N35[1]),
+            .CIN (),
+            .I0 (\cnt[1] [0] ),
+            .I1 (\cnt[1] [1] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_2 (
+            .COUT (_N294),
+            .Z (N35[2]),
+            .CIN (_N293),
+            .I0 (\cnt[1] [0] ),
+            .I1 (\cnt[1] [1] ),
+            .I2 (\cnt[1] [2] ),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_3 (
+            .COUT (_N295),
+            .Z (N35[3]),
+            .CIN (_N294),
+            .I0 (),
+            .I1 (\cnt[1] [3] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_4 (
+            .COUT (_N296),
+            .Z (N35[4]),
+            .CIN (_N295),
+            .I0 (),
+            .I1 (\cnt[1] [4] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_5 (
+            .COUT (_N297),
+            .Z (N35[5]),
+            .CIN (_N296),
+            .I0 (),
+            .I1 (\cnt[1] [5] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_6 (
+            .COUT (_N298),
+            .Z (N35[6]),
+            .CIN (_N297),
+            .I0 (),
+            .I1 (\cnt[1] [6] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_7 (
+            .COUT (_N299),
+            .Z (N35[7]),
+            .CIN (_N298),
+            .I0 (),
+            .I1 (\cnt[1] [7] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_8 (
+            .COUT (_N300),
+            .Z (N35[8]),
+            .CIN (_N299),
+            .I0 (),
+            .I1 (\cnt[1] [8] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_9 (
+            .COUT (_N301),
+            .Z (N35[9]),
+            .CIN (_N300),
+            .I0 (),
+            .I1 (\cnt[1] [9] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_10 (
+            .COUT (_N302),
+            .Z (N35[10]),
+            .CIN (_N301),
+            .I0 (),
+            .I1 (\cnt[1] [10] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_11 (
+            .COUT (_N303),
+            .Z (N35[11]),
+            .CIN (_N302),
+            .I0 (),
+            .I1 (\cnt[1] [11] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_12 (
+            .COUT (_N304),
+            .Z (N35[12]),
+            .CIN (_N303),
+            .I0 (),
+            .I1 (\cnt[1] [12] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_13 (
+            .COUT (_N305),
+            .Z (N35[13]),
+            .CIN (_N304),
+            .I0 (),
+            .I1 (\cnt[1] [13] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_14 (
+            .COUT (_N306),
+            .Z (N35[14]),
+            .CIN (_N305),
+            .I0 (),
+            .I1 (\cnt[1] [14] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_15 (
+            .COUT (_N307),
+            .Z (N35[15]),
+            .CIN (_N306),
+            .I0 (),
+            .I1 (\cnt[1] [15] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_16 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_16 (
+            .COUT (_N308),
+            .Z (N35[16]),
+            .CIN (_N307),
+            .I0 (),
+            .I1 (\cnt[1] [16] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_17 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_17 (
+            .COUT (_N309),
+            .Z (N35[17]),
+            .CIN (_N308),
+            .I0 (),
+            .I1 (\cnt[1] [17] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_18 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_18 (
+            .COUT (_N310),
+            .Z (N35[18]),
+            .CIN (_N309),
+            .I0 (),
+            .I1 (\cnt[1] [18] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N35_1_19 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N35_1_19 (
+            .COUT (),
+            .Z (N35[19]),
+            .CIN (_N310),
+            .I0 (),
+            .I1 (\cnt[1] [19] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_1 (
+            .COUT (_N313),
+            .Z (N57[1]),
+            .CIN (),
+            .I0 (\cnt[2] [0] ),
+            .I1 (\cnt[2] [1] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_2 (
+            .COUT (_N314),
+            .Z (N57[2]),
+            .CIN (_N313),
+            .I0 (\cnt[2] [0] ),
+            .I1 (\cnt[2] [1] ),
+            .I2 (\cnt[2] [2] ),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_3 (
+            .COUT (_N315),
+            .Z (N57[3]),
+            .CIN (_N314),
+            .I0 (),
+            .I1 (\cnt[2] [3] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_4 (
+            .COUT (_N316),
+            .Z (N57[4]),
+            .CIN (_N315),
+            .I0 (),
+            .I1 (\cnt[2] [4] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_5 (
+            .COUT (_N317),
+            .Z (N57[5]),
+            .CIN (_N316),
+            .I0 (),
+            .I1 (\cnt[2] [5] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_6 (
+            .COUT (_N318),
+            .Z (N57[6]),
+            .CIN (_N317),
+            .I0 (),
+            .I1 (\cnt[2] [6] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_7 (
+            .COUT (_N319),
+            .Z (N57[7]),
+            .CIN (_N318),
+            .I0 (),
+            .I1 (\cnt[2] [7] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_8 (
+            .COUT (_N320),
+            .Z (N57[8]),
+            .CIN (_N319),
+            .I0 (),
+            .I1 (\cnt[2] [8] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_9 (
+            .COUT (_N321),
+            .Z (N57[9]),
+            .CIN (_N320),
+            .I0 (),
+            .I1 (\cnt[2] [9] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_10 (
+            .COUT (_N322),
+            .Z (N57[10]),
+            .CIN (_N321),
+            .I0 (),
+            .I1 (\cnt[2] [10] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_11 (
+            .COUT (_N323),
+            .Z (N57[11]),
+            .CIN (_N322),
+            .I0 (),
+            .I1 (\cnt[2] [11] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_12 (
+            .COUT (_N324),
+            .Z (N57[12]),
+            .CIN (_N323),
+            .I0 (),
+            .I1 (\cnt[2] [12] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_13 (
+            .COUT (_N325),
+            .Z (N57[13]),
+            .CIN (_N324),
+            .I0 (),
+            .I1 (\cnt[2] [13] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_14 (
+            .COUT (_N326),
+            .Z (N57[14]),
+            .CIN (_N325),
+            .I0 (),
+            .I1 (\cnt[2] [14] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_15 (
+            .COUT (_N327),
+            .Z (N57[15]),
+            .CIN (_N326),
+            .I0 (),
+            .I1 (\cnt[2] [15] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_16 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_16 (
+            .COUT (_N328),
+            .Z (N57[16]),
+            .CIN (_N327),
+            .I0 (),
+            .I1 (\cnt[2] [16] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_17 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_17 (
+            .COUT (_N329),
+            .Z (N57[17]),
+            .CIN (_N328),
+            .I0 (),
+            .I1 (\cnt[2] [17] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_18 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_18 (
+            .COUT (_N330),
+            .Z (N57[18]),
+            .CIN (_N329),
+            .I0 (),
+            .I1 (\cnt[2] [18] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N57_1_19 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N57_1_19 (
+            .COUT (),
+            .Z (N57[19]),
+            .CIN (_N330),
+            .I0 (),
+            .I1 (\cnt[2] [19] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_1 (
+            .COUT (_N333),
+            .Z (N79[1]),
+            .CIN (),
+            .I0 (\cnt[3] [0] ),
+            .I1 (\cnt[3] [1] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_2 (
+            .COUT (_N334),
+            .Z (N79[2]),
+            .CIN (_N333),
+            .I0 (\cnt[3] [0] ),
+            .I1 (\cnt[3] [1] ),
+            .I2 (\cnt[3] [2] ),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_3 (
+            .COUT (_N335),
+            .Z (N79[3]),
+            .CIN (_N334),
+            .I0 (),
+            .I1 (\cnt[3] [3] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_4 (
+            .COUT (_N336),
+            .Z (N79[4]),
+            .CIN (_N335),
+            .I0 (),
+            .I1 (\cnt[3] [4] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_5 (
+            .COUT (_N337),
+            .Z (N79[5]),
+            .CIN (_N336),
+            .I0 (),
+            .I1 (\cnt[3] [5] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_6 (
+            .COUT (_N338),
+            .Z (N79[6]),
+            .CIN (_N337),
+            .I0 (),
+            .I1 (\cnt[3] [6] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_7 (
+            .COUT (_N339),
+            .Z (N79[7]),
+            .CIN (_N338),
+            .I0 (),
+            .I1 (\cnt[3] [7] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_8 (
+            .COUT (_N340),
+            .Z (N79[8]),
+            .CIN (_N339),
+            .I0 (),
+            .I1 (\cnt[3] [8] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_9 (
+            .COUT (_N341),
+            .Z (N79[9]),
+            .CIN (_N340),
+            .I0 (),
+            .I1 (\cnt[3] [9] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_10 (
+            .COUT (_N342),
+            .Z (N79[10]),
+            .CIN (_N341),
+            .I0 (),
+            .I1 (\cnt[3] [10] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_11 (
+            .COUT (_N343),
+            .Z (N79[11]),
+            .CIN (_N342),
+            .I0 (),
+            .I1 (\cnt[3] [11] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_12 (
+            .COUT (_N344),
+            .Z (N79[12]),
+            .CIN (_N343),
+            .I0 (),
+            .I1 (\cnt[3] [12] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_13 (
+            .COUT (_N345),
+            .Z (N79[13]),
+            .CIN (_N344),
+            .I0 (),
+            .I1 (\cnt[3] [13] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_14 (
+            .COUT (_N346),
+            .Z (N79[14]),
+            .CIN (_N345),
+            .I0 (),
+            .I1 (\cnt[3] [14] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_15 (
+            .COUT (_N347),
+            .Z (N79[15]),
+            .CIN (_N346),
+            .I0 (),
+            .I1 (\cnt[3] [15] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_16 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_16 (
+            .COUT (_N348),
+            .Z (N79[16]),
+            .CIN (_N347),
+            .I0 (),
+            .I1 (\cnt[3] [16] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_17 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_17 (
+            .COUT (_N349),
+            .Z (N79[17]),
+            .CIN (_N348),
+            .I0 (),
+            .I1 (\cnt[3] [17] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_18 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_18 (
+            .COUT (_N350),
+            .Z (N79[18]),
+            .CIN (_N349),
+            .I0 (),
+            .I1 (\cnt[3] [18] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N79_1_19 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N79_1_19 (
+            .COUT (),
+            .Z (N79[19]),
+            .CIN (_N350),
+            .I0 (),
+            .I1 (\cnt[3] [19] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_1 (
+            .COUT (_N353),
+            .Z (N101[1]),
+            .CIN (),
+            .I0 (\cnt[4] [0] ),
+            .I1 (\cnt[4] [1] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_2 (
+            .COUT (_N354),
+            .Z (N101[2]),
+            .CIN (_N353),
+            .I0 (\cnt[4] [0] ),
+            .I1 (\cnt[4] [1] ),
+            .I2 (\cnt[4] [2] ),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_3 (
+            .COUT (_N355),
+            .Z (N101[3]),
+            .CIN (_N354),
+            .I0 (),
+            .I1 (\cnt[4] [3] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_4 (
+            .COUT (_N356),
+            .Z (N101[4]),
+            .CIN (_N355),
+            .I0 (),
+            .I1 (\cnt[4] [4] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_5 (
+            .COUT (_N357),
+            .Z (N101[5]),
+            .CIN (_N356),
+            .I0 (),
+            .I1 (\cnt[4] [5] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_6 (
+            .COUT (_N358),
+            .Z (N101[6]),
+            .CIN (_N357),
+            .I0 (),
+            .I1 (\cnt[4] [6] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_7 (
+            .COUT (_N359),
+            .Z (N101[7]),
+            .CIN (_N358),
+            .I0 (),
+            .I1 (\cnt[4] [7] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_8 (
+            .COUT (_N360),
+            .Z (N101[8]),
+            .CIN (_N359),
+            .I0 (),
+            .I1 (\cnt[4] [8] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_9 (
+            .COUT (_N361),
+            .Z (N101[9]),
+            .CIN (_N360),
+            .I0 (),
+            .I1 (\cnt[4] [9] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_10 (
+            .COUT (_N362),
+            .Z (N101[10]),
+            .CIN (_N361),
+            .I0 (),
+            .I1 (\cnt[4] [10] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_11 (
+            .COUT (_N363),
+            .Z (N101[11]),
+            .CIN (_N362),
+            .I0 (),
+            .I1 (\cnt[4] [11] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_12 (
+            .COUT (_N364),
+            .Z (N101[12]),
+            .CIN (_N363),
+            .I0 (),
+            .I1 (\cnt[4] [12] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_13 (
+            .COUT (_N365),
+            .Z (N101[13]),
+            .CIN (_N364),
+            .I0 (),
+            .I1 (\cnt[4] [13] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_14 (
+            .COUT (_N366),
+            .Z (N101[14]),
+            .CIN (_N365),
+            .I0 (),
+            .I1 (\cnt[4] [14] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_15 (
+            .COUT (_N367),
+            .Z (N101[15]),
+            .CIN (_N366),
+            .I0 (),
+            .I1 (\cnt[4] [15] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_16 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_16 (
+            .COUT (_N368),
+            .Z (N101[16]),
+            .CIN (_N367),
+            .I0 (),
+            .I1 (\cnt[4] [16] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_17 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_17 (
+            .COUT (_N369),
+            .Z (N101[17]),
+            .CIN (_N368),
+            .I0 (),
+            .I1 (\cnt[4] [17] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_18 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_18 (
+            .COUT (_N370),
+            .Z (N101[18]),
+            .CIN (_N369),
+            .I0 (),
+            .I1 (\cnt[4] [18] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N101_1_19 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N101_1_19 (
+            .COUT (),
+            .Z (N101[19]),
+            .CIN (_N370),
+            .I0 (),
+            .I1 (\cnt[4] [19] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_1 (
+            .COUT (_N373),
+            .Z (N123[1]),
+            .CIN (),
+            .I0 (\cnt[5] [0] ),
+            .I1 (\cnt[5] [1] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_2 (
+            .COUT (_N374),
+            .Z (N123[2]),
+            .CIN (_N373),
+            .I0 (\cnt[5] [0] ),
+            .I1 (\cnt[5] [1] ),
+            .I2 (\cnt[5] [2] ),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_3 (
+            .COUT (_N375),
+            .Z (N123[3]),
+            .CIN (_N374),
+            .I0 (),
+            .I1 (\cnt[5] [3] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_4 (
+            .COUT (_N376),
+            .Z (N123[4]),
+            .CIN (_N375),
+            .I0 (),
+            .I1 (\cnt[5] [4] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_5 (
+            .COUT (_N377),
+            .Z (N123[5]),
+            .CIN (_N376),
+            .I0 (),
+            .I1 (\cnt[5] [5] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_6 (
+            .COUT (_N378),
+            .Z (N123[6]),
+            .CIN (_N377),
+            .I0 (),
+            .I1 (\cnt[5] [6] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_7 (
+            .COUT (_N379),
+            .Z (N123[7]),
+            .CIN (_N378),
+            .I0 (),
+            .I1 (\cnt[5] [7] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_8 (
+            .COUT (_N380),
+            .Z (N123[8]),
+            .CIN (_N379),
+            .I0 (),
+            .I1 (\cnt[5] [8] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_9 (
+            .COUT (_N381),
+            .Z (N123[9]),
+            .CIN (_N380),
+            .I0 (),
+            .I1 (\cnt[5] [9] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_10 (
+            .COUT (_N382),
+            .Z (N123[10]),
+            .CIN (_N381),
+            .I0 (),
+            .I1 (\cnt[5] [10] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_11 (
+            .COUT (_N383),
+            .Z (N123[11]),
+            .CIN (_N382),
+            .I0 (),
+            .I1 (\cnt[5] [11] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_12 (
+            .COUT (_N384),
+            .Z (N123[12]),
+            .CIN (_N383),
+            .I0 (),
+            .I1 (\cnt[5] [12] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_13 (
+            .COUT (_N385),
+            .Z (N123[13]),
+            .CIN (_N384),
+            .I0 (),
+            .I1 (\cnt[5] [13] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_14 (
+            .COUT (_N386),
+            .Z (N123[14]),
+            .CIN (_N385),
+            .I0 (),
+            .I1 (\cnt[5] [14] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_15 (
+            .COUT (_N387),
+            .Z (N123[15]),
+            .CIN (_N386),
+            .I0 (),
+            .I1 (\cnt[5] [15] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_16 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_16 (
+            .COUT (_N388),
+            .Z (N123[16]),
+            .CIN (_N387),
+            .I0 (),
+            .I1 (\cnt[5] [16] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_17 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_17 (
+            .COUT (_N389),
+            .Z (N123[17]),
+            .CIN (_N388),
+            .I0 (),
+            .I1 (\cnt[5] [17] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_18 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_18 (
+            .COUT (_N390),
+            .Z (N123[18]),
+            .CIN (_N389),
+            .I0 (),
+            .I1 (\cnt[5] [18] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N123_1_19 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N123_1_19 (
+            .COUT (),
+            .Z (N123[19]),
+            .CIN (_N390),
+            .I0 (),
+            .I1 (\cnt[5] [19] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_1 (
+            .COUT (_N235),
+            .Z (N145[1]),
+            .CIN (),
+            .I0 (\cnt[6] [0] ),
+            .I1 (\cnt[6] [1] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_2 (
+            .COUT (_N236),
+            .Z (N145[2]),
+            .CIN (_N235),
+            .I0 (\cnt[6] [0] ),
+            .I1 (\cnt[6] [1] ),
+            .I2 (\cnt[6] [2] ),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_3 (
+            .COUT (_N237),
+            .Z (N145[3]),
+            .CIN (_N236),
+            .I0 (),
+            .I1 (\cnt[6] [3] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_4 (
+            .COUT (_N238),
+            .Z (N145[4]),
+            .CIN (_N237),
+            .I0 (),
+            .I1 (\cnt[6] [4] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_5 (
+            .COUT (_N239),
+            .Z (N145[5]),
+            .CIN (_N238),
+            .I0 (),
+            .I1 (\cnt[6] [5] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_6 (
+            .COUT (_N240),
+            .Z (N145[6]),
+            .CIN (_N239),
+            .I0 (),
+            .I1 (\cnt[6] [6] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_7 (
+            .COUT (_N241),
+            .Z (N145[7]),
+            .CIN (_N240),
+            .I0 (),
+            .I1 (\cnt[6] [7] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_8 (
+            .COUT (_N242),
+            .Z (N145[8]),
+            .CIN (_N241),
+            .I0 (),
+            .I1 (\cnt[6] [8] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_9 (
+            .COUT (_N243),
+            .Z (N145[9]),
+            .CIN (_N242),
+            .I0 (),
+            .I1 (\cnt[6] [9] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_10 (
+            .COUT (_N244),
+            .Z (N145[10]),
+            .CIN (_N243),
+            .I0 (),
+            .I1 (\cnt[6] [10] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_11 (
+            .COUT (_N245),
+            .Z (N145[11]),
+            .CIN (_N244),
+            .I0 (),
+            .I1 (\cnt[6] [11] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_12 (
+            .COUT (_N246),
+            .Z (N145[12]),
+            .CIN (_N245),
+            .I0 (),
+            .I1 (\cnt[6] [12] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_13 (
+            .COUT (_N247),
+            .Z (N145[13]),
+            .CIN (_N246),
+            .I0 (),
+            .I1 (\cnt[6] [13] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_14 (
+            .COUT (_N248),
+            .Z (N145[14]),
+            .CIN (_N247),
+            .I0 (),
+            .I1 (\cnt[6] [14] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_15 (
+            .COUT (_N249),
+            .Z (N145[15]),
+            .CIN (_N248),
+            .I0 (),
+            .I1 (\cnt[6] [15] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_16 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_16 (
+            .COUT (_N250),
+            .Z (N145[16]),
+            .CIN (_N249),
+            .I0 (),
+            .I1 (\cnt[6] [16] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_17 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_17 (
+            .COUT (_N251),
+            .Z (N145[17]),
+            .CIN (_N250),
+            .I0 (),
+            .I1 (\cnt[6] [17] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_18 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_18 (
+            .COUT (_N252),
+            .Z (N145[18]),
+            .CIN (_N251),
+            .I0 (),
+            .I1 (\cnt[6] [18] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5CARRY /* N145_1_19 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N145_1_19 (
+            .COUT (),
+            .Z (N145[19]),
+            .CIN (_N252),
+            .I0 (),
+            .I1 (\cnt[6] [19] ),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/btn_deb.v:43
+
+    GTP_LUT5 /* N162_8 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N162_8 (
+            .Z (_N724),
+            .I0 (\cnt[0] [1] ),
+            .I1 (\cnt[0] [11] ),
+            .I2 (\cnt[0] [12] ),
+            .I3 (\cnt[0] [13] ),
+            .I4 (\cnt[0] [15] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT5 /* N162_12 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N162_12 (
+            .Z (_N728),
+            .I0 (\cnt[0] [2] ),
+            .I1 (\cnt[0] [3] ),
+            .I2 (\cnt[0] [4] ),
+            .I3 (\cnt[0] [5] ),
+            .I4 (\cnt[0] [9] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N162_16 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N162_16 (
+            .Z (_N732),
+            .I0 (\cnt[0] [14] ),
+            .I1 (\cnt[0] [16] ),
+            .I2 (\cnt[0] [17] ),
+            .I3 (\cnt[0] [18] ),
+            .I4 (\cnt[0] [19] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N162_17 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N162_17 (
+            .Z (_N733),
+            .I0 (\cnt[0] [0] ),
+            .I1 (\cnt[0] [6] ),
+            .I2 (\cnt[0] [7] ),
+            .I3 (\cnt[0] [8] ),
+            .I4 (\cnt[0] [10] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT4 /* N162_20 */ #(
+            .INIT(16'b1000000000000000))
+        N162_20 (
+            .Z (N162),
+            .I0 (_N724),
+            .I1 (_N728),
+            .I2 (_N732),
+            .I3 (_N733));
+	// LUT = I0&I1&I2&I3 ;
+
+    GTP_LUT5 /* N172_8 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N172_8 (
+            .Z (_N705),
+            .I0 (\cnt[1] [1] ),
+            .I1 (\cnt[1] [11] ),
+            .I2 (\cnt[1] [12] ),
+            .I3 (\cnt[1] [13] ),
+            .I4 (\cnt[1] [15] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT5 /* N172_12 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N172_12 (
+            .Z (_N709),
+            .I0 (\cnt[1] [2] ),
+            .I1 (\cnt[1] [3] ),
+            .I2 (\cnt[1] [4] ),
+            .I3 (\cnt[1] [5] ),
+            .I4 (\cnt[1] [9] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N172_16 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N172_16 (
+            .Z (_N713),
+            .I0 (\cnt[1] [14] ),
+            .I1 (\cnt[1] [16] ),
+            .I2 (\cnt[1] [17] ),
+            .I3 (\cnt[1] [18] ),
+            .I4 (\cnt[1] [19] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N172_17 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N172_17 (
+            .Z (_N714),
+            .I0 (\cnt[1] [0] ),
+            .I1 (\cnt[1] [6] ),
+            .I2 (\cnt[1] [7] ),
+            .I3 (\cnt[1] [8] ),
+            .I4 (\cnt[1] [10] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT4 /* N172_20 */ #(
+            .INIT(16'b1000000000000000))
+        N172_20 (
+            .Z (N172),
+            .I0 (_N705),
+            .I1 (_N709),
+            .I2 (_N713),
+            .I3 (_N714));
+	// LUT = I0&I1&I2&I3 ;
+
+    GTP_LUT5 /* N182_8 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N182_8 (
+            .Z (_N686),
+            .I0 (\cnt[2] [1] ),
+            .I1 (\cnt[2] [11] ),
+            .I2 (\cnt[2] [12] ),
+            .I3 (\cnt[2] [13] ),
+            .I4 (\cnt[2] [15] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT5 /* N182_12 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N182_12 (
+            .Z (_N690),
+            .I0 (\cnt[2] [2] ),
+            .I1 (\cnt[2] [3] ),
+            .I2 (\cnt[2] [4] ),
+            .I3 (\cnt[2] [5] ),
+            .I4 (\cnt[2] [9] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N182_16 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N182_16 (
+            .Z (_N694),
+            .I0 (\cnt[2] [14] ),
+            .I1 (\cnt[2] [16] ),
+            .I2 (\cnt[2] [17] ),
+            .I3 (\cnt[2] [18] ),
+            .I4 (\cnt[2] [19] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N182_17 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N182_17 (
+            .Z (_N695),
+            .I0 (\cnt[2] [0] ),
+            .I1 (\cnt[2] [6] ),
+            .I2 (\cnt[2] [7] ),
+            .I3 (\cnt[2] [8] ),
+            .I4 (\cnt[2] [10] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT4 /* N182_20 */ #(
+            .INIT(16'b1000000000000000))
+        N182_20 (
+            .Z (N182),
+            .I0 (_N686),
+            .I1 (_N690),
+            .I2 (_N694),
+            .I3 (_N695));
+	// LUT = I0&I1&I2&I3 ;
+
+    GTP_LUT5 /* N192_8 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N192_8 (
+            .Z (_N667),
+            .I0 (\cnt[3] [1] ),
+            .I1 (\cnt[3] [11] ),
+            .I2 (\cnt[3] [12] ),
+            .I3 (\cnt[3] [13] ),
+            .I4 (\cnt[3] [15] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT5 /* N192_12 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N192_12 (
+            .Z (_N671),
+            .I0 (\cnt[3] [2] ),
+            .I1 (\cnt[3] [3] ),
+            .I2 (\cnt[3] [4] ),
+            .I3 (\cnt[3] [5] ),
+            .I4 (\cnt[3] [9] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N192_16 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N192_16 (
+            .Z (_N675),
+            .I0 (\cnt[3] [14] ),
+            .I1 (\cnt[3] [16] ),
+            .I2 (\cnt[3] [17] ),
+            .I3 (\cnt[3] [18] ),
+            .I4 (\cnt[3] [19] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N192_17 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N192_17 (
+            .Z (_N676),
+            .I0 (\cnt[3] [0] ),
+            .I1 (\cnt[3] [6] ),
+            .I2 (\cnt[3] [7] ),
+            .I3 (\cnt[3] [8] ),
+            .I4 (\cnt[3] [10] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT4 /* N192_20 */ #(
+            .INIT(16'b1000000000000000))
+        N192_20 (
+            .Z (N192),
+            .I0 (_N667),
+            .I1 (_N671),
+            .I2 (_N675),
+            .I3 (_N676));
+	// LUT = I0&I1&I2&I3 ;
+
+    GTP_LUT5 /* N202_8 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N202_8 (
+            .Z (_N648),
+            .I0 (\cnt[4] [1] ),
+            .I1 (\cnt[4] [11] ),
+            .I2 (\cnt[4] [12] ),
+            .I3 (\cnt[4] [13] ),
+            .I4 (\cnt[4] [15] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT5 /* N202_12 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N202_12 (
+            .Z (_N652),
+            .I0 (\cnt[4] [2] ),
+            .I1 (\cnt[4] [3] ),
+            .I2 (\cnt[4] [4] ),
+            .I3 (\cnt[4] [5] ),
+            .I4 (\cnt[4] [9] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N202_16 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N202_16 (
+            .Z (_N656),
+            .I0 (\cnt[4] [14] ),
+            .I1 (\cnt[4] [16] ),
+            .I2 (\cnt[4] [17] ),
+            .I3 (\cnt[4] [18] ),
+            .I4 (\cnt[4] [19] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N202_17 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N202_17 (
+            .Z (_N657),
+            .I0 (\cnt[4] [0] ),
+            .I1 (\cnt[4] [6] ),
+            .I2 (\cnt[4] [7] ),
+            .I3 (\cnt[4] [8] ),
+            .I4 (\cnt[4] [10] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT4 /* N202_20 */ #(
+            .INIT(16'b1000000000000000))
+        N202_20 (
+            .Z (N202),
+            .I0 (_N648),
+            .I1 (_N652),
+            .I2 (_N656),
+            .I3 (_N657));
+	// LUT = I0&I1&I2&I3 ;
+
+    GTP_LUT5 /* N212_8 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N212_8 (
+            .Z (_N629),
+            .I0 (\cnt[5] [1] ),
+            .I1 (\cnt[5] [11] ),
+            .I2 (\cnt[5] [12] ),
+            .I3 (\cnt[5] [13] ),
+            .I4 (\cnt[5] [15] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT5 /* N212_12 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N212_12 (
+            .Z (_N633),
+            .I0 (\cnt[5] [2] ),
+            .I1 (\cnt[5] [3] ),
+            .I2 (\cnt[5] [4] ),
+            .I3 (\cnt[5] [5] ),
+            .I4 (\cnt[5] [9] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N212_16 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N212_16 (
+            .Z (_N637),
+            .I0 (\cnt[5] [14] ),
+            .I1 (\cnt[5] [16] ),
+            .I2 (\cnt[5] [17] ),
+            .I3 (\cnt[5] [18] ),
+            .I4 (\cnt[5] [19] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N212_17 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N212_17 (
+            .Z (_N638),
+            .I0 (\cnt[5] [0] ),
+            .I1 (\cnt[5] [6] ),
+            .I2 (\cnt[5] [7] ),
+            .I3 (\cnt[5] [8] ),
+            .I4 (\cnt[5] [10] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT4 /* N212_20 */ #(
+            .INIT(16'b1000000000000000))
+        N212_20 (
+            .Z (N212),
+            .I0 (_N629),
+            .I1 (_N633),
+            .I2 (_N637),
+            .I3 (_N638));
+	// LUT = I0&I1&I2&I3 ;
+
+    GTP_LUT5 /* N222_8 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N222_8 (
+            .Z (_N610),
+            .I0 (\cnt[6] [1] ),
+            .I1 (\cnt[6] [11] ),
+            .I2 (\cnt[6] [12] ),
+            .I3 (\cnt[6] [13] ),
+            .I4 (\cnt[6] [15] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT5 /* N222_12 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N222_12 (
+            .Z (_N614),
+            .I0 (\cnt[6] [2] ),
+            .I1 (\cnt[6] [3] ),
+            .I2 (\cnt[6] [4] ),
+            .I3 (\cnt[6] [5] ),
+            .I4 (\cnt[6] [9] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N222_16 */ #(
+            .INIT(32'b10000000000000000000000000000000))
+        N222_16 (
+            .Z (_N618),
+            .I0 (\cnt[6] [14] ),
+            .I1 (\cnt[6] [16] ),
+            .I2 (\cnt[6] [17] ),
+            .I3 (\cnt[6] [18] ),
+            .I4 (\cnt[6] [19] ));
+	// LUT = I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N222_17 */ #(
+            .INIT(32'b00000000000000000000000000000010))
+        N222_17 (
+            .Z (_N619),
+            .I0 (\cnt[6] [0] ),
+            .I1 (\cnt[6] [6] ),
+            .I2 (\cnt[6] [7] ),
+            .I3 (\cnt[6] [8] ),
+            .I4 (\cnt[6] [10] ));
+	// LUT = I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT4 /* N222_20 */ #(
+            .INIT(16'b1000000000000000))
+        N222_20 (
+            .Z (N222),
+            .I0 (_N610),
+            .I1 (_N614),
+            .I2 (_N618),
+            .I3 (_N619));
+	// LUT = I0&I1&I2&I3 ;
+
+    GTP_INV N224_1_vname (
+            .Z (N224_1),
+            .I (flag[6]));
+    // defparam N224_1_vname.orig_name = N224_1;
+
+    GTP_INV N226_1_vname (
+            .Z (N226_1),
+            .I (flag[1]));
+    // defparam N226_1_vname.orig_name = N226_1;
+
+    GTP_INV N231_1_vname (
+            .Z (N231_1),
+            .I (flag[2]));
+    // defparam N231_1_vname.orig_name = N231_1;
+
+    GTP_INV N233_1_vname (
+            .Z (N233_1),
+            .I (flag[0]));
+    // defparam N233_1_vname.orig_name = N233_1;
+
+    GTP_INV N236_1_vname (
+            .Z (N236_1),
+            .I (flag[3]));
+    // defparam N236_1_vname.orig_name = N236_1;
+
+    GTP_INV N240_1_vname (
+            .Z (N240_1),
+            .I (flag[4]));
+    // defparam N240_1_vname.orig_name = N240_1;
+
+    GTP_INV N244_1_vname (
+            .Z (N244_1),
+            .I (flag[5]));
+    // defparam N244_1_vname.orig_name = N244_1;
+
+    GTP_DFF_E /* \btn_deb[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_deb[0]  (
+            .Q (btn_deb[0]),
+            .CE (N233_1),
+            .CLK (clk),
+            .D (btn_in[0]));
+	// ../source/btn_deb.v:48
+
+    GTP_DFF_E /* \btn_deb[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_deb[1]  (
+            .Q (btn_deb[1]),
+            .CE (N226_1),
+            .CLK (clk),
+            .D (btn_in[1]));
+	// ../source/btn_deb.v:48
+
+    GTP_DFF_E /* \btn_deb[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_deb[2]  (
+            .Q (btn_deb[2]),
+            .CE (N231_1),
+            .CLK (clk),
+            .D (btn_in[2]));
+	// ../source/btn_deb.v:48
+
+    GTP_DFF_E /* \btn_deb[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_deb[3]  (
+            .Q (btn_deb[3]),
+            .CE (N236_1),
+            .CLK (clk),
+            .D (btn_in[3]));
+	// ../source/btn_deb.v:48
+
+    GTP_DFF_E /* \btn_deb[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_deb[4]  (
+            .Q (btn_deb[4]),
+            .CE (N240_1),
+            .CLK (clk),
+            .D (btn_in[4]));
+	// ../source/btn_deb.v:48
+
+    GTP_DFF_E /* \btn_deb[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_deb[5]  (
+            .Q (btn_deb[5]),
+            .CE (N244_1),
+            .CLK (clk),
+            .D (btn_in[5]));
+	// ../source/btn_deb.v:48
+
+    GTP_DFF_E /* \btn_deb[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_deb[6]  (
+            .Q (btn_deb[6]),
+            .CE (N224_1),
+            .CLK (clk),
+            .D (btn_in[6]));
+	// ../source/btn_deb.v:48
+
+    GTP_DFF /* \btn_in_reg[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_in_reg[0]  (
+            .Q (btn_in_reg[0]),
+            .CLK (clk),
+            .D (btn_in[0]));
+	// ../source/btn_deb.v:18
+
+    GTP_DFF /* \btn_in_reg[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_in_reg[1]  (
+            .Q (btn_in_reg[1]),
+            .CLK (clk),
+            .D (btn_in[1]));
+	// ../source/btn_deb.v:18
+
+    GTP_DFF /* \btn_in_reg[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_in_reg[2]  (
+            .Q (btn_in_reg[2]),
+            .CLK (clk),
+            .D (btn_in[2]));
+	// ../source/btn_deb.v:18
+
+    GTP_DFF /* \btn_in_reg[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_in_reg[3]  (
+            .Q (btn_in_reg[3]),
+            .CLK (clk),
+            .D (btn_in[3]));
+	// ../source/btn_deb.v:18
+
+    GTP_DFF /* \btn_in_reg[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_in_reg[4]  (
+            .Q (btn_in_reg[4]),
+            .CLK (clk),
+            .D (btn_in[4]));
+	// ../source/btn_deb.v:18
+
+    GTP_DFF /* \btn_in_reg[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_in_reg[5]  (
+            .Q (btn_in_reg[5]),
+            .CLK (clk),
+            .D (btn_in[5]));
+	// ../source/btn_deb.v:18
+
+    GTP_DFF /* \btn_in_reg[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \btn_in_reg[6]  (
+            .Q (btn_in_reg[6]),
+            .CLK (clk),
+            .D (btn_in[6]));
+	// ../source/btn_deb.v:18
+
+    GTP_DFF_R /* \cnt[0][0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][0]  (
+            .Q (\cnt[0] [0] ),
+            .CLK (clk),
+            .D (\cnt[0][0]_inv ),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][1]  (
+            .Q (\cnt[0] [1] ),
+            .CLK (clk),
+            .D (N13[1]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][2]  (
+            .Q (\cnt[0] [2] ),
+            .CLK (clk),
+            .D (N13[2]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][3]  (
+            .Q (\cnt[0] [3] ),
+            .CLK (clk),
+            .D (N13[3]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][4]  (
+            .Q (\cnt[0] [4] ),
+            .CLK (clk),
+            .D (N13[4]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][5]  (
+            .Q (\cnt[0] [5] ),
+            .CLK (clk),
+            .D (N13[5]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][6]  (
+            .Q (\cnt[0] [6] ),
+            .CLK (clk),
+            .D (N13[6]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][7]  (
+            .Q (\cnt[0] [7] ),
+            .CLK (clk),
+            .D (N13[7]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][8]  (
+            .Q (\cnt[0] [8] ),
+            .CLK (clk),
+            .D (N13[8]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][9]  (
+            .Q (\cnt[0] [9] ),
+            .CLK (clk),
+            .D (N13[9]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][10]  (
+            .Q (\cnt[0] [10] ),
+            .CLK (clk),
+            .D (N13[10]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][11]  (
+            .Q (\cnt[0] [11] ),
+            .CLK (clk),
+            .D (N13[11]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][12]  (
+            .Q (\cnt[0] [12] ),
+            .CLK (clk),
+            .D (N13[12]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][13]  (
+            .Q (\cnt[0] [13] ),
+            .CLK (clk),
+            .D (N13[13]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][14]  (
+            .Q (\cnt[0] [14] ),
+            .CLK (clk),
+            .D (N13[14]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][15]  (
+            .Q (\cnt[0] [15] ),
+            .CLK (clk),
+            .D (N13[15]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][16]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][16]  (
+            .Q (\cnt[0] [16] ),
+            .CLK (clk),
+            .D (N13[16]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][17]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][17]  (
+            .Q (\cnt[0] [17] ),
+            .CLK (clk),
+            .D (N13[17]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[0][18]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][18]  (
+            .Q (\cnt[0] [18] ),
+            .CLK (clk),
+            .D (N13[18]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_LUT1 /* \cnt[0][19:0]_inv  */ #(
+            .INIT(2'b01))
+        \cnt[0][19:0]_inv  (
+            .Z (\cnt[0][0]_inv ),
+            .I0 (\cnt[0] [0] ));
+	// LUT = ~I0 ;
+
+    GTP_LUT2 /* \cnt[0][19:0]_or  */ #(
+            .INIT(4'b1011))
+        \cnt[0][19:0]_or_vname  (
+            .Z (\cnt[0][19:0]_or ),
+            .I0 (N162),
+            .I1 (flag[0]));
+    // defparam \cnt[0][19:0]_or_vname .orig_name = \cnt[0][19:0]_or ;
+	// LUT = (~I1)|(I0) ;
+
+    GTP_DFF_R /* \cnt[0][19]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[0][19]  (
+            .Q (\cnt[0] [19] ),
+            .CLK (clk),
+            .D (N13[19]),
+            .R (\cnt[0][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][0]  (
+            .Q (\cnt[1] [0] ),
+            .CLK (clk),
+            .D (\cnt[1][0]_inv ),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][1]  (
+            .Q (\cnt[1] [1] ),
+            .CLK (clk),
+            .D (N35[1]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][2]  (
+            .Q (\cnt[1] [2] ),
+            .CLK (clk),
+            .D (N35[2]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][3]  (
+            .Q (\cnt[1] [3] ),
+            .CLK (clk),
+            .D (N35[3]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][4]  (
+            .Q (\cnt[1] [4] ),
+            .CLK (clk),
+            .D (N35[4]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][5]  (
+            .Q (\cnt[1] [5] ),
+            .CLK (clk),
+            .D (N35[5]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][6]  (
+            .Q (\cnt[1] [6] ),
+            .CLK (clk),
+            .D (N35[6]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][7]  (
+            .Q (\cnt[1] [7] ),
+            .CLK (clk),
+            .D (N35[7]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][8]  (
+            .Q (\cnt[1] [8] ),
+            .CLK (clk),
+            .D (N35[8]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][9]  (
+            .Q (\cnt[1] [9] ),
+            .CLK (clk),
+            .D (N35[9]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][10]  (
+            .Q (\cnt[1] [10] ),
+            .CLK (clk),
+            .D (N35[10]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][11]  (
+            .Q (\cnt[1] [11] ),
+            .CLK (clk),
+            .D (N35[11]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][12]  (
+            .Q (\cnt[1] [12] ),
+            .CLK (clk),
+            .D (N35[12]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][13]  (
+            .Q (\cnt[1] [13] ),
+            .CLK (clk),
+            .D (N35[13]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][14]  (
+            .Q (\cnt[1] [14] ),
+            .CLK (clk),
+            .D (N35[14]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][15]  (
+            .Q (\cnt[1] [15] ),
+            .CLK (clk),
+            .D (N35[15]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][16]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][16]  (
+            .Q (\cnt[1] [16] ),
+            .CLK (clk),
+            .D (N35[16]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][17]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][17]  (
+            .Q (\cnt[1] [17] ),
+            .CLK (clk),
+            .D (N35[17]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[1][18]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][18]  (
+            .Q (\cnt[1] [18] ),
+            .CLK (clk),
+            .D (N35[18]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_LUT1 /* \cnt[1][19:0]_inv  */ #(
+            .INIT(2'b01))
+        \cnt[1][19:0]_inv  (
+            .Z (\cnt[1][0]_inv ),
+            .I0 (\cnt[1] [0] ));
+	// LUT = ~I0 ;
+
+    GTP_LUT2 /* \cnt[1][19:0]_or  */ #(
+            .INIT(4'b1011))
+        \cnt[1][19:0]_or_vname  (
+            .Z (\cnt[1][19:0]_or ),
+            .I0 (N172),
+            .I1 (flag[1]));
+    // defparam \cnt[1][19:0]_or_vname .orig_name = \cnt[1][19:0]_or ;
+	// LUT = (~I1)|(I0) ;
+
+    GTP_DFF_R /* \cnt[1][19]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[1][19]  (
+            .Q (\cnt[1] [19] ),
+            .CLK (clk),
+            .D (N35[19]),
+            .R (\cnt[1][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][0]  (
+            .Q (\cnt[2] [0] ),
+            .CLK (clk),
+            .D (\cnt[2][0]_inv ),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][1]  (
+            .Q (\cnt[2] [1] ),
+            .CLK (clk),
+            .D (N57[1]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][2]  (
+            .Q (\cnt[2] [2] ),
+            .CLK (clk),
+            .D (N57[2]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][3]  (
+            .Q (\cnt[2] [3] ),
+            .CLK (clk),
+            .D (N57[3]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][4]  (
+            .Q (\cnt[2] [4] ),
+            .CLK (clk),
+            .D (N57[4]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][5]  (
+            .Q (\cnt[2] [5] ),
+            .CLK (clk),
+            .D (N57[5]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][6]  (
+            .Q (\cnt[2] [6] ),
+            .CLK (clk),
+            .D (N57[6]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][7]  (
+            .Q (\cnt[2] [7] ),
+            .CLK (clk),
+            .D (N57[7]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][8]  (
+            .Q (\cnt[2] [8] ),
+            .CLK (clk),
+            .D (N57[8]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][9]  (
+            .Q (\cnt[2] [9] ),
+            .CLK (clk),
+            .D (N57[9]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][10]  (
+            .Q (\cnt[2] [10] ),
+            .CLK (clk),
+            .D (N57[10]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][11]  (
+            .Q (\cnt[2] [11] ),
+            .CLK (clk),
+            .D (N57[11]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][12]  (
+            .Q (\cnt[2] [12] ),
+            .CLK (clk),
+            .D (N57[12]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][13]  (
+            .Q (\cnt[2] [13] ),
+            .CLK (clk),
+            .D (N57[13]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][14]  (
+            .Q (\cnt[2] [14] ),
+            .CLK (clk),
+            .D (N57[14]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][15]  (
+            .Q (\cnt[2] [15] ),
+            .CLK (clk),
+            .D (N57[15]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][16]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][16]  (
+            .Q (\cnt[2] [16] ),
+            .CLK (clk),
+            .D (N57[16]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][17]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][17]  (
+            .Q (\cnt[2] [17] ),
+            .CLK (clk),
+            .D (N57[17]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[2][18]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][18]  (
+            .Q (\cnt[2] [18] ),
+            .CLK (clk),
+            .D (N57[18]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_LUT1 /* \cnt[2][19:0]_inv  */ #(
+            .INIT(2'b01))
+        \cnt[2][19:0]_inv  (
+            .Z (\cnt[2][0]_inv ),
+            .I0 (\cnt[2] [0] ));
+	// LUT = ~I0 ;
+
+    GTP_LUT2 /* \cnt[2][19:0]_or  */ #(
+            .INIT(4'b1011))
+        \cnt[2][19:0]_or_vname  (
+            .Z (\cnt[2][19:0]_or ),
+            .I0 (N182),
+            .I1 (flag[2]));
+    // defparam \cnt[2][19:0]_or_vname .orig_name = \cnt[2][19:0]_or ;
+	// LUT = (~I1)|(I0) ;
+
+    GTP_DFF_R /* \cnt[2][19]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[2][19]  (
+            .Q (\cnt[2] [19] ),
+            .CLK (clk),
+            .D (N57[19]),
+            .R (\cnt[2][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][0]  (
+            .Q (\cnt[3] [0] ),
+            .CLK (clk),
+            .D (\cnt[3][0]_inv ),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][1]  (
+            .Q (\cnt[3] [1] ),
+            .CLK (clk),
+            .D (N79[1]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][2]  (
+            .Q (\cnt[3] [2] ),
+            .CLK (clk),
+            .D (N79[2]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][3]  (
+            .Q (\cnt[3] [3] ),
+            .CLK (clk),
+            .D (N79[3]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][4]  (
+            .Q (\cnt[3] [4] ),
+            .CLK (clk),
+            .D (N79[4]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][5]  (
+            .Q (\cnt[3] [5] ),
+            .CLK (clk),
+            .D (N79[5]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][6]  (
+            .Q (\cnt[3] [6] ),
+            .CLK (clk),
+            .D (N79[6]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][7]  (
+            .Q (\cnt[3] [7] ),
+            .CLK (clk),
+            .D (N79[7]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][8]  (
+            .Q (\cnt[3] [8] ),
+            .CLK (clk),
+            .D (N79[8]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][9]  (
+            .Q (\cnt[3] [9] ),
+            .CLK (clk),
+            .D (N79[9]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][10]  (
+            .Q (\cnt[3] [10] ),
+            .CLK (clk),
+            .D (N79[10]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][11]  (
+            .Q (\cnt[3] [11] ),
+            .CLK (clk),
+            .D (N79[11]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][12]  (
+            .Q (\cnt[3] [12] ),
+            .CLK (clk),
+            .D (N79[12]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][13]  (
+            .Q (\cnt[3] [13] ),
+            .CLK (clk),
+            .D (N79[13]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][14]  (
+            .Q (\cnt[3] [14] ),
+            .CLK (clk),
+            .D (N79[14]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][15]  (
+            .Q (\cnt[3] [15] ),
+            .CLK (clk),
+            .D (N79[15]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][16]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][16]  (
+            .Q (\cnt[3] [16] ),
+            .CLK (clk),
+            .D (N79[16]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][17]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][17]  (
+            .Q (\cnt[3] [17] ),
+            .CLK (clk),
+            .D (N79[17]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[3][18]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][18]  (
+            .Q (\cnt[3] [18] ),
+            .CLK (clk),
+            .D (N79[18]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_LUT1 /* \cnt[3][19:0]_inv  */ #(
+            .INIT(2'b01))
+        \cnt[3][19:0]_inv  (
+            .Z (\cnt[3][0]_inv ),
+            .I0 (\cnt[3] [0] ));
+	// LUT = ~I0 ;
+
+    GTP_LUT2 /* \cnt[3][19:0]_or  */ #(
+            .INIT(4'b1011))
+        \cnt[3][19:0]_or_vname  (
+            .Z (\cnt[3][19:0]_or ),
+            .I0 (N192),
+            .I1 (flag[3]));
+    // defparam \cnt[3][19:0]_or_vname .orig_name = \cnt[3][19:0]_or ;
+	// LUT = (~I1)|(I0) ;
+
+    GTP_DFF_R /* \cnt[3][19]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[3][19]  (
+            .Q (\cnt[3] [19] ),
+            .CLK (clk),
+            .D (N79[19]),
+            .R (\cnt[3][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][0]  (
+            .Q (\cnt[4] [0] ),
+            .CLK (clk),
+            .D (\cnt[4][0]_inv ),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][1]  (
+            .Q (\cnt[4] [1] ),
+            .CLK (clk),
+            .D (N101[1]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][2]  (
+            .Q (\cnt[4] [2] ),
+            .CLK (clk),
+            .D (N101[2]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][3]  (
+            .Q (\cnt[4] [3] ),
+            .CLK (clk),
+            .D (N101[3]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][4]  (
+            .Q (\cnt[4] [4] ),
+            .CLK (clk),
+            .D (N101[4]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][5]  (
+            .Q (\cnt[4] [5] ),
+            .CLK (clk),
+            .D (N101[5]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][6]  (
+            .Q (\cnt[4] [6] ),
+            .CLK (clk),
+            .D (N101[6]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][7]  (
+            .Q (\cnt[4] [7] ),
+            .CLK (clk),
+            .D (N101[7]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][8]  (
+            .Q (\cnt[4] [8] ),
+            .CLK (clk),
+            .D (N101[8]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][9]  (
+            .Q (\cnt[4] [9] ),
+            .CLK (clk),
+            .D (N101[9]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][10]  (
+            .Q (\cnt[4] [10] ),
+            .CLK (clk),
+            .D (N101[10]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][11]  (
+            .Q (\cnt[4] [11] ),
+            .CLK (clk),
+            .D (N101[11]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][12]  (
+            .Q (\cnt[4] [12] ),
+            .CLK (clk),
+            .D (N101[12]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][13]  (
+            .Q (\cnt[4] [13] ),
+            .CLK (clk),
+            .D (N101[13]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][14]  (
+            .Q (\cnt[4] [14] ),
+            .CLK (clk),
+            .D (N101[14]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][15]  (
+            .Q (\cnt[4] [15] ),
+            .CLK (clk),
+            .D (N101[15]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][16]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][16]  (
+            .Q (\cnt[4] [16] ),
+            .CLK (clk),
+            .D (N101[16]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][17]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][17]  (
+            .Q (\cnt[4] [17] ),
+            .CLK (clk),
+            .D (N101[17]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[4][18]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][18]  (
+            .Q (\cnt[4] [18] ),
+            .CLK (clk),
+            .D (N101[18]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_LUT1 /* \cnt[4][19:0]_inv  */ #(
+            .INIT(2'b01))
+        \cnt[4][19:0]_inv  (
+            .Z (\cnt[4][0]_inv ),
+            .I0 (\cnt[4] [0] ));
+	// LUT = ~I0 ;
+
+    GTP_LUT2 /* \cnt[4][19:0]_or  */ #(
+            .INIT(4'b1011))
+        \cnt[4][19:0]_or_vname  (
+            .Z (\cnt[4][19:0]_or ),
+            .I0 (N202),
+            .I1 (flag[4]));
+    // defparam \cnt[4][19:0]_or_vname .orig_name = \cnt[4][19:0]_or ;
+	// LUT = (~I1)|(I0) ;
+
+    GTP_DFF_R /* \cnt[4][19]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[4][19]  (
+            .Q (\cnt[4] [19] ),
+            .CLK (clk),
+            .D (N101[19]),
+            .R (\cnt[4][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][0]  (
+            .Q (\cnt[5] [0] ),
+            .CLK (clk),
+            .D (\cnt[5][0]_inv ),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][1]  (
+            .Q (\cnt[5] [1] ),
+            .CLK (clk),
+            .D (N123[1]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][2]  (
+            .Q (\cnt[5] [2] ),
+            .CLK (clk),
+            .D (N123[2]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][3]  (
+            .Q (\cnt[5] [3] ),
+            .CLK (clk),
+            .D (N123[3]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][4]  (
+            .Q (\cnt[5] [4] ),
+            .CLK (clk),
+            .D (N123[4]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][5]  (
+            .Q (\cnt[5] [5] ),
+            .CLK (clk),
+            .D (N123[5]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][6]  (
+            .Q (\cnt[5] [6] ),
+            .CLK (clk),
+            .D (N123[6]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][7]  (
+            .Q (\cnt[5] [7] ),
+            .CLK (clk),
+            .D (N123[7]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][8]  (
+            .Q (\cnt[5] [8] ),
+            .CLK (clk),
+            .D (N123[8]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][9]  (
+            .Q (\cnt[5] [9] ),
+            .CLK (clk),
+            .D (N123[9]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][10]  (
+            .Q (\cnt[5] [10] ),
+            .CLK (clk),
+            .D (N123[10]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][11]  (
+            .Q (\cnt[5] [11] ),
+            .CLK (clk),
+            .D (N123[11]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][12]  (
+            .Q (\cnt[5] [12] ),
+            .CLK (clk),
+            .D (N123[12]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][13]  (
+            .Q (\cnt[5] [13] ),
+            .CLK (clk),
+            .D (N123[13]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][14]  (
+            .Q (\cnt[5] [14] ),
+            .CLK (clk),
+            .D (N123[14]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][15]  (
+            .Q (\cnt[5] [15] ),
+            .CLK (clk),
+            .D (N123[15]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][16]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][16]  (
+            .Q (\cnt[5] [16] ),
+            .CLK (clk),
+            .D (N123[16]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][17]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][17]  (
+            .Q (\cnt[5] [17] ),
+            .CLK (clk),
+            .D (N123[17]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[5][18]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][18]  (
+            .Q (\cnt[5] [18] ),
+            .CLK (clk),
+            .D (N123[18]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_LUT1 /* \cnt[5][19:0]_inv  */ #(
+            .INIT(2'b01))
+        \cnt[5][19:0]_inv  (
+            .Z (\cnt[5][0]_inv ),
+            .I0 (\cnt[5] [0] ));
+	// LUT = ~I0 ;
+
+    GTP_LUT2 /* \cnt[5][19:0]_or  */ #(
+            .INIT(4'b1011))
+        \cnt[5][19:0]_or_vname  (
+            .Z (\cnt[5][19:0]_or ),
+            .I0 (N212),
+            .I1 (flag[5]));
+    // defparam \cnt[5][19:0]_or_vname .orig_name = \cnt[5][19:0]_or ;
+	// LUT = (~I1)|(I0) ;
+
+    GTP_DFF_R /* \cnt[5][19]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[5][19]  (
+            .Q (\cnt[5] [19] ),
+            .CLK (clk),
+            .D (N123[19]),
+            .R (\cnt[5][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][0]  (
+            .Q (\cnt[6] [0] ),
+            .CLK (clk),
+            .D (\cnt[6][0]_inv ),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][1]  (
+            .Q (\cnt[6] [1] ),
+            .CLK (clk),
+            .D (N145[1]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][2]  (
+            .Q (\cnt[6] [2] ),
+            .CLK (clk),
+            .D (N145[2]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][3]  (
+            .Q (\cnt[6] [3] ),
+            .CLK (clk),
+            .D (N145[3]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][4]  (
+            .Q (\cnt[6] [4] ),
+            .CLK (clk),
+            .D (N145[4]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][5]  (
+            .Q (\cnt[6] [5] ),
+            .CLK (clk),
+            .D (N145[5]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][6]  (
+            .Q (\cnt[6] [6] ),
+            .CLK (clk),
+            .D (N145[6]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][7]  (
+            .Q (\cnt[6] [7] ),
+            .CLK (clk),
+            .D (N145[7]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][8]  (
+            .Q (\cnt[6] [8] ),
+            .CLK (clk),
+            .D (N145[8]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][9]  (
+            .Q (\cnt[6] [9] ),
+            .CLK (clk),
+            .D (N145[9]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][10]  (
+            .Q (\cnt[6] [10] ),
+            .CLK (clk),
+            .D (N145[10]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][11]  (
+            .Q (\cnt[6] [11] ),
+            .CLK (clk),
+            .D (N145[11]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][12]  (
+            .Q (\cnt[6] [12] ),
+            .CLK (clk),
+            .D (N145[12]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][13]  (
+            .Q (\cnt[6] [13] ),
+            .CLK (clk),
+            .D (N145[13]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][14]  (
+            .Q (\cnt[6] [14] ),
+            .CLK (clk),
+            .D (N145[14]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][15]  (
+            .Q (\cnt[6] [15] ),
+            .CLK (clk),
+            .D (N145[15]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][16]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][16]  (
+            .Q (\cnt[6] [16] ),
+            .CLK (clk),
+            .D (N145[16]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][17]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][17]  (
+            .Q (\cnt[6] [17] ),
+            .CLK (clk),
+            .D (N145[17]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF_R /* \cnt[6][18]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][18]  (
+            .Q (\cnt[6] [18] ),
+            .CLK (clk),
+            .D (N145[18]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_LUT1 /* \cnt[6][19:0]_inv  */ #(
+            .INIT(2'b01))
+        \cnt[6][19:0]_inv  (
+            .Z (\cnt[6][0]_inv ),
+            .I0 (\cnt[6] [0] ));
+	// LUT = ~I0 ;
+
+    GTP_LUT2 /* \cnt[6][19:0]_or  */ #(
+            .INIT(4'b1011))
+        \cnt[6][19:0]_or_vname  (
+            .Z (\cnt[6][19:0]_or ),
+            .I0 (N222),
+            .I1 (flag[6]));
+    // defparam \cnt[6][19:0]_or_vname .orig_name = \cnt[6][19:0]_or ;
+	// LUT = (~I1)|(I0) ;
+
+    GTP_DFF_R /* \cnt[6][19]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt[6][19]  (
+            .Q (\cnt[6] [19] ),
+            .CLK (clk),
+            .D (N145[19]),
+            .R (\cnt[6][19:0]_or ));
+	// ../source/btn_deb.v:38
+
+    GTP_DFF /* \flag[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \flag[0]  (
+            .Q (flag[0]),
+            .CLK (clk),
+            .D (_N591));
+	// ../source/btn_deb.v:28
+
+    GTP_DFF /* \flag[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \flag[1]  (
+            .Q (flag[1]),
+            .CLK (clk),
+            .D (_N593));
+	// ../source/btn_deb.v:28
+
+    GTP_DFF /* \flag[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \flag[2]  (
+            .Q (flag[2]),
+            .CLK (clk),
+            .D (_N595));
+	// ../source/btn_deb.v:28
+
+    GTP_DFF /* \flag[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \flag[3]  (
+            .Q (flag[3]),
+            .CLK (clk),
+            .D (_N597));
+	// ../source/btn_deb.v:28
+
+    GTP_DFF /* \flag[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \flag[4]  (
+            .Q (flag[4]),
+            .CLK (clk),
+            .D (_N599));
+	// ../source/btn_deb.v:28
+
+    GTP_DFF /* \flag[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \flag[5]  (
+            .Q (flag[5]),
+            .CLK (clk),
+            .D (_N601));
+	// ../source/btn_deb.v:28
+
+    GTP_DFF /* \flag[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \flag[6]  (
+            .Q (flag[6]),
+            .CLK (clk),
+            .D (_N603));
+	// ../source/btn_deb.v:28
+
+    GTP_LUT4 /* \flag_rs_mux[0]  */ #(
+            .INIT(16'b0111101101011010))
+        \flag_rs_mux[0]  (
+            .Z (_N591),
+            .I0 (btn_in[0]),
+            .I1 (N162),
+            .I2 (btn_in_reg[0]),
+            .I3 (flag[0]));
+	// LUT = (I0&~I2)|(~I1&I3)|(~I0&I2) ;
+
+    GTP_LUT4 /* \flag_rs_mux[1]  */ #(
+            .INIT(16'b0111101101011010))
+        \flag_rs_mux[1]  (
+            .Z (_N593),
+            .I0 (btn_in[1]),
+            .I1 (N172),
+            .I2 (btn_in_reg[1]),
+            .I3 (flag[1]));
+	// LUT = (I0&~I2)|(~I1&I3)|(~I0&I2) ;
+
+    GTP_LUT4 /* \flag_rs_mux[2]  */ #(
+            .INIT(16'b0111101101011010))
+        \flag_rs_mux[2]  (
+            .Z (_N595),
+            .I0 (btn_in[2]),
+            .I1 (N182),
+            .I2 (btn_in_reg[2]),
+            .I3 (flag[2]));
+	// LUT = (I0&~I2)|(~I1&I3)|(~I0&I2) ;
+
+    GTP_LUT4 /* \flag_rs_mux[3]  */ #(
+            .INIT(16'b0111101101011010))
+        \flag_rs_mux[3]  (
+            .Z (_N597),
+            .I0 (btn_in[3]),
+            .I1 (N192),
+            .I2 (btn_in_reg[3]),
+            .I3 (flag[3]));
+	// LUT = (I0&~I2)|(~I1&I3)|(~I0&I2) ;
+
+    GTP_LUT4 /* \flag_rs_mux[4]  */ #(
+            .INIT(16'b0111101101011010))
+        \flag_rs_mux[4]  (
+            .Z (_N599),
+            .I0 (btn_in[4]),
+            .I1 (N202),
+            .I2 (btn_in_reg[4]),
+            .I3 (flag[4]));
+	// LUT = (I0&~I2)|(~I1&I3)|(~I0&I2) ;
+
+    GTP_LUT4 /* \flag_rs_mux[5]  */ #(
+            .INIT(16'b0111101101011010))
+        \flag_rs_mux[5]  (
+            .Z (_N601),
+            .I0 (btn_in[5]),
+            .I1 (N212),
+            .I2 (btn_in_reg[5]),
+            .I3 (flag[5]));
+	// LUT = (I0&~I2)|(~I1&I3)|(~I0&I2) ;
+
+    GTP_LUT4 /* \flag_rs_mux[6]  */ #(
+            .INIT(16'b0111101101011010))
+        \flag_rs_mux[6]  (
+            .Z (_N603),
+            .I0 (btn_in[6]),
+            .I1 (N222),
+            .I2 (btn_in_reg[6]),
+            .I3 (flag[6]));
+	// LUT = (I0&~I2)|(~I1&I3)|(~I0&I2) ;
+
+
+endmodule
+
+
+module beep_test
+(
+    input [6:0] key,
+    input clk,
+    input rst_n,
+    output beep
+);
+	// SDC constraint : (object clk) (id 1000) (clock beep_test|clk) (inferred)
+    wire N1_0;
+    wire N30;
+    wire N42;
+    wire N100;
+    wire N105;
+    wire N129;
+    wire N147;
+    wire [17:0] N169;
+    wire _N13;
+    wire _N23;
+    wire _N31;
+    wire _N43;
+    wire _N51;
+    wire _N59;
+    wire _N75;
+    wire _N91;
+    wire _N109;
+    wire _N125;
+    wire _N143;
+    wire _N151;
+    wire _N185;
+    wire _N193;
+    wire _N209;
+    wire _N217;
+    wire _N227;
+    wire _N255;
+    wire _N256;
+    wire _N257;
+    wire _N258;
+    wire _N259;
+    wire _N260;
+    wire _N261;
+    wire _N262;
+    wire _N263;
+    wire _N264;
+    wire _N265;
+    wire _N266;
+    wire _N267;
+    wire _N268;
+    wire _N269;
+    wire _N394;
+    wire _N398;
+    wire _N399;
+    wire _N418;
+    wire _N420;
+    wire _N423;
+    wire _N425;
+    wire _N741;
+    wire _N745;
+    wire _N754;
+    wire _N756;
+    wire _N768;
+    wire _N774;
+    wire _N783;
+    wire _N785;
+    wire [25:0] cnt_voice;
+    wire [6:0] key_deb;
+    wire nt_beep;
+(* PAP_MARK_DEBUG="true" *)    wire nt_clk;
+    wire [6:0] nt_key;
+    wire nt_rst_n;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+    GTP_LUT5M /* N1_0_inv */ #(
+            .INIT(32'b00001111110111110000111101001111))
+        N1_0_inv (
+            .Z (N1_0),
+            .I0 (_N398),
+            .I1 (cnt_voice[16]),
+            .I2 (nt_rst_n),
+            .I3 (_N774),
+            .I4 (key_deb[0]),
+            .ID (_N31));
+	// LUT = (I1&~I3&I4)|(~I0&~I3&I4)|(~ID&I1&~I3)|(~I2) ;
+
+    GTP_LUT3 /* N6_mux5_4 */ #(
+            .INIT(8'b01111111))
+        N6_mux5_4 (
+            .Z (_N768),
+            .I0 (cnt_voice[3]),
+            .I1 (cnt_voice[4]),
+            .I2 (cnt_voice[5]));
+	// LUT = (~I2)|(~I1)|(~I0) ;
+
+    GTP_LUT5 /* N6_mux6 */ #(
+            .INIT(32'b00000000111111110000000000000111))
+        N6_mux6 (
+            .Z (_N13),
+            .I0 (cnt_voice[0]),
+            .I1 (cnt_voice[1]),
+            .I2 (cnt_voice[2]),
+            .I3 (cnt_voice[6]),
+            .I4 (_N768));
+	// LUT = (~I3&I4)|(~I1&~I2&~I3)|(~I0&~I2&~I3) ;
+
+    GTP_LUT2 /* N6_mux9_1 */ #(
+            .INIT(4'b0001))
+        N6_mux9_1 (
+            .Z (_N418),
+            .I0 (cnt_voice[11]),
+            .I1 (cnt_voice[12]));
+	// LUT = ~I0&~I1 ;
+
+    GTP_LUT5 /* N6_mux11 */ #(
+            .INIT(32'b00001111000001110000001100000011))
+        N6_mux11 (
+            .Z (_N23),
+            .I0 (cnt_voice[7]),
+            .I1 (cnt_voice[10]),
+            .I2 (cnt_voice[11]),
+            .I3 (_N13),
+            .I4 (_N420));
+	// LUT = (~I1&~I2)|(~I0&~I2&I4)|(~I2&I3&I4) ;
+
+    GTP_LUT5 /* N6_mux15 */ #(
+            .INIT(32'b00000000111111110000000001111111))
+        N6_mux15 (
+            .Z (_N31),
+            .I0 (cnt_voice[12]),
+            .I1 (cnt_voice[13]),
+            .I2 (cnt_voice[14]),
+            .I3 (cnt_voice[15]),
+            .I4 (_N23));
+	// LUT = (~I2&~I3)|(~I1&~I3)|(~I0&~I3)|(~I3&I4) ;
+
+    GTP_LUT5CARRY /* N14_0_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_1 (
+            .COUT (_N255),
+            .Z (N169[1]),
+            .CIN (),
+            .I0 (cnt_voice[0]),
+            .I1 (cnt_voice[1]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_2 (
+            .COUT (_N256),
+            .Z (N169[2]),
+            .CIN (_N255),
+            .I0 (cnt_voice[0]),
+            .I1 (cnt_voice[1]),
+            .I2 (cnt_voice[2]),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_3 (
+            .COUT (_N257),
+            .Z (N169[3]),
+            .CIN (_N256),
+            .I0 (),
+            .I1 (cnt_voice[3]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_4 (
+            .COUT (_N258),
+            .Z (N169[4]),
+            .CIN (_N257),
+            .I0 (),
+            .I1 (cnt_voice[4]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_5 (
+            .COUT (_N259),
+            .Z (N169[5]),
+            .CIN (_N258),
+            .I0 (),
+            .I1 (cnt_voice[5]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_6 (
+            .COUT (_N260),
+            .Z (N169[6]),
+            .CIN (_N259),
+            .I0 (),
+            .I1 (cnt_voice[6]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_7 (
+            .COUT (_N261),
+            .Z (N169[7]),
+            .CIN (_N260),
+            .I0 (),
+            .I1 (cnt_voice[7]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_8 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_8 (
+            .COUT (_N262),
+            .Z (N169[8]),
+            .CIN (_N261),
+            .I0 (),
+            .I1 (cnt_voice[8]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_9 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_9 (
+            .COUT (_N263),
+            .Z (N169[9]),
+            .CIN (_N262),
+            .I0 (),
+            .I1 (cnt_voice[9]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_10 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_10 (
+            .COUT (_N264),
+            .Z (N169[10]),
+            .CIN (_N263),
+            .I0 (),
+            .I1 (cnt_voice[10]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_11 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_11 (
+            .COUT (_N265),
+            .Z (N169[11]),
+            .CIN (_N264),
+            .I0 (),
+            .I1 (cnt_voice[11]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_12 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_12 (
+            .COUT (_N266),
+            .Z (N169[12]),
+            .CIN (_N265),
+            .I0 (),
+            .I1 (cnt_voice[12]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_13 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_13 (
+            .COUT (_N267),
+            .Z (N169[13]),
+            .CIN (_N266),
+            .I0 (),
+            .I1 (cnt_voice[13]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_14 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_14 (
+            .COUT (_N268),
+            .Z (N169[14]),
+            .CIN (_N267),
+            .I0 (),
+            .I1 (cnt_voice[14]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_15 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_15 (
+            .COUT (_N269),
+            .Z (N169[15]),
+            .CIN (_N268),
+            .I0 (),
+            .I1 (cnt_voice[15]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5CARRY /* N14_0_16 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N14_0_16 (
+            .COUT (),
+            .Z (N169[16]),
+            .CIN (_N269),
+            .I0 (),
+            .I1 (cnt_voice[16]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../source/beep_test.v:66
+
+    GTP_LUT5 /* N18_mux4 */ #(
+            .INIT(32'b00000000000111111111111111111111))
+        N18_mux4 (
+            .Z (_N43),
+            .I0 (cnt_voice[1]),
+            .I1 (cnt_voice[2]),
+            .I2 (cnt_voice[3]),
+            .I3 (cnt_voice[4]),
+            .I4 (cnt_voice[5]));
+	// LUT = (~I4)|(~I2&~I3)|(~I0&~I1&~I3) ;
+
+    GTP_LUT5 /* N18_mux8 */ #(
+            .INIT(32'b00000000000000010000000000000000))
+        N18_mux8 (
+            .Z (_N51),
+            .I0 (cnt_voice[6]),
+            .I1 (cnt_voice[7]),
+            .I2 (cnt_voice[8]),
+            .I3 (cnt_voice[9]),
+            .I4 (_N43));
+	// LUT = ~I0&~I1&~I2&~I3&I4 ;
+
+    GTP_LUT4 /* N18_mux12_1 */ #(
+            .INIT(16'b0000000000000001))
+        N18_mux12_1 (
+            .Z (_N423),
+            .I0 (cnt_voice[6]),
+            .I1 (cnt_voice[7]),
+            .I2 (cnt_voice[8]),
+            .I3 (cnt_voice[9]));
+	// LUT = ~I0&~I1&~I2&~I3 ;
+
+    GTP_LUT5 /* N18_mux12_5 */ #(
+            .INIT(32'b00000000000011110000000000000111))
+        N18_mux12_5 (
+            .Z (_N59),
+            .I0 (cnt_voice[10]),
+            .I1 (cnt_voice[11]),
+            .I2 (cnt_voice[12]),
+            .I3 (cnt_voice[13]),
+            .I4 (_N51));
+	// LUT = (~I1&~I2&~I3)|(~I0&~I2&~I3)|(~I2&~I3&I4) ;
+
+    GTP_LUT5 /* N30_mux4 */ #(
+            .INIT(32'b00000000000000000001111111111111))
+        N30_mux4 (
+            .Z (_N75),
+            .I0 (cnt_voice[0]),
+            .I1 (cnt_voice[1]),
+            .I2 (cnt_voice[2]),
+            .I3 (cnt_voice[3]),
+            .I4 (cnt_voice[4]));
+	// LUT = (~I3&~I4)|(~I2&~I4)|(~I0&~I1&~I4) ;
+
+    GTP_LUT5 /* N30_mux12 */ #(
+            .INIT(32'b00000011000000110000001100000001))
+        N30_mux12 (
+            .Z (_N91),
+            .I0 (cnt_voice[5]),
+            .I1 (cnt_voice[11]),
+            .I2 (cnt_voice[12]),
+            .I3 (_N75),
+            .I4 (_N425));
+	// LUT = (~I0&~I1&~I2)|(~I1&~I2&I3)|(~I1&~I2&I4) ;
+
+    GTP_LUT5 /* N30_mux16 */ #(
+            .INIT(32'b00000011111111110000000111111111))
+        N30_mux16 (
+            .Z (N30),
+            .I0 (cnt_voice[13]),
+            .I1 (cnt_voice[14]),
+            .I2 (cnt_voice[15]),
+            .I3 (cnt_voice[16]),
+            .I4 (_N91));
+	// LUT = (~I3)|(~I0&~I1&~I2)|(~I1&~I2&I4) ;
+
+    GTP_LUT2 /* N42_mux3_1 */ #(
+            .INIT(4'b0001))
+        N42_mux3_1 (
+            .Z (_N420),
+            .I0 (cnt_voice[8]),
+            .I1 (cnt_voice[9]));
+	// LUT = ~I0&~I1 ;
+
+    GTP_LUT5 /* N42_mux4 */ #(
+            .INIT(32'b00000000000000011111111111111111))
+        N42_mux4 (
+            .Z (_N109),
+            .I0 (cnt_voice[0]),
+            .I1 (cnt_voice[1]),
+            .I2 (cnt_voice[2]),
+            .I3 (cnt_voice[3]),
+            .I4 (cnt_voice[4]));
+	// LUT = (~I4)|(~I0&~I1&~I2&~I3) ;
+
+    GTP_LUT5 /* N42_mux12 */ #(
+            .INIT(32'b00111111001111110001111100001111))
+        N42_mux12 (
+            .Z (_N125),
+            .I0 (cnt_voice[5]),
+            .I1 (cnt_voice[11]),
+            .I2 (cnt_voice[12]),
+            .I3 (_N109),
+            .I4 (_N425));
+	// LUT = (~I2)|(~I1&I4)|(~I0&~I1&I3) ;
+
+    GTP_LUT5 /* N42_mux16 */ #(
+            .INIT(32'b00000001111111110000000011111111))
+        N42_mux16 (
+            .Z (N42),
+            .I0 (cnt_voice[13]),
+            .I1 (cnt_voice[14]),
+            .I2 (cnt_voice[15]),
+            .I3 (cnt_voice[16]),
+            .I4 (_N125));
+	// LUT = (~I3)|(~I0&~I1&~I2&I4) ;
+
+    GTP_LUT5 /* N54_mux4 */ #(
+            .INIT(32'b01111111111111111111111111111111))
+        N54_mux4 (
+            .Z (_N143),
+            .I0 (cnt_voice[0]),
+            .I1 (cnt_voice[1]),
+            .I2 (cnt_voice[2]),
+            .I3 (cnt_voice[3]),
+            .I4 (cnt_voice[4]));
+	// LUT = (~I4)|(~I3)|(~I2)|(~I1)|(~I0) ;
+
+    GTP_LUT5 /* N54_mux8 */ #(
+            .INIT(32'b00000001111111110000000011111111))
+        N54_mux8 (
+            .Z (_N151),
+            .I0 (cnt_voice[5]),
+            .I1 (cnt_voice[6]),
+            .I2 (cnt_voice[7]),
+            .I3 (cnt_voice[8]),
+            .I4 (_N143));
+	// LUT = (~I3)|(~I0&~I1&~I2&I4) ;
+
+    GTP_LUT5 /* N54_mux15_6 */ #(
+            .INIT(32'b01111111111111111111111111111111))
+        N54_mux15_6 (
+            .Z (_N754),
+            .I0 (cnt_voice[11]),
+            .I1 (cnt_voice[12]),
+            .I2 (cnt_voice[13]),
+            .I3 (cnt_voice[14]),
+            .I4 (cnt_voice[15]));
+	// LUT = (~I4)|(~I3)|(~I2)|(~I1)|(~I0) ;
+
+    GTP_LUT5 /* N66_mux7_2 */ #(
+            .INIT(32'b00000001111111111111111111111111))
+        N66_mux7_2 (
+            .Z (_N745),
+            .I0 (cnt_voice[1]),
+            .I1 (cnt_voice[2]),
+            .I2 (cnt_voice[3]),
+            .I3 (cnt_voice[4]),
+            .I4 (cnt_voice[5]));
+	// LUT = (~I4)|(~I3)|(~I0&~I1&~I2) ;
+
+    GTP_LUT5 /* N66_mux8 */ #(
+            .INIT(32'b00000000111111110000000001111111))
+        N66_mux8 (
+            .Z (_N185),
+            .I0 (cnt_voice[6]),
+            .I1 (cnt_voice[7]),
+            .I2 (cnt_voice[8]),
+            .I3 (cnt_voice[9]),
+            .I4 (_N745));
+	// LUT = (~I2&~I3)|(~I1&~I3)|(~I0&~I3)|(~I3&I4) ;
+
+    GTP_LUT5 /* N66_mux12 */ #(
+            .INIT(32'b00000000111111110000000001111111))
+        N66_mux12 (
+            .Z (_N193),
+            .I0 (cnt_voice[10]),
+            .I1 (cnt_voice[11]),
+            .I2 (cnt_voice[12]),
+            .I3 (cnt_voice[13]),
+            .I4 (_N185));
+	// LUT = (~I2&~I3)|(~I1&~I3)|(~I0&~I3)|(~I3&I4) ;
+
+    GTP_LUT5 /* N78_mux4 */ #(
+            .INIT(32'b00000000000000000111111111111111))
+        N78_mux4 (
+            .Z (_N209),
+            .I0 (cnt_voice[0]),
+            .I1 (cnt_voice[1]),
+            .I2 (cnt_voice[2]),
+            .I3 (cnt_voice[3]),
+            .I4 (cnt_voice[4]));
+	// LUT = (~I3&~I4)|(~I2&~I4)|(~I1&~I4)|(~I0&~I4) ;
+
+    GTP_LUT5 /* N78_mux8 */ #(
+            .INIT(32'b00111111111111110001111111111111))
+        N78_mux8 (
+            .Z (_N217),
+            .I0 (cnt_voice[5]),
+            .I1 (cnt_voice[6]),
+            .I2 (cnt_voice[7]),
+            .I3 (cnt_voice[8]),
+            .I4 (_N209));
+	// LUT = (~I3)|(~I2)|(~I0&~I1)|(~I1&I4) ;
+
+    GTP_LUT5 /* N78_mux13_3 */ #(
+            .INIT(32'b00000111000000110000000000000000))
+        N78_mux13_3 (
+            .Z (_N227),
+            .I0 (cnt_voice[9]),
+            .I1 (cnt_voice[10]),
+            .I2 (cnt_voice[13]),
+            .I3 (_N217),
+            .I4 (_N418));
+	// LUT = (~I1&~I2&I4)|(~I0&~I2&I3&I4) ;
+
+    GTP_LUT5 /* N78_mux15_4 */ #(
+            .INIT(32'b01111111111111111111111111111111))
+        N78_mux15_4 (
+            .Z (_N425),
+            .I0 (cnt_voice[6]),
+            .I1 (cnt_voice[7]),
+            .I2 (cnt_voice[8]),
+            .I3 (cnt_voice[9]),
+            .I4 (cnt_voice[10]));
+	// LUT = (~I4)|(~I3)|(~I2)|(~I1)|(~I0) ;
+
+    GTP_LUT1 /* N100 */ #(
+            .INIT(2'b01))
+        N100_vname (
+            .Z (N100),
+            .I0 (nt_beep));
+    // defparam N100_vname.orig_name = N100;
+	// LUT = ~I0 ;
+
+    GTP_LUT4 /* N104_6 */ #(
+            .INIT(16'b1000000000000000))
+        N104_6 (
+            .Z (_N741),
+            .I0 (key_deb[2]),
+            .I1 (key_deb[3]),
+            .I2 (key_deb[4]),
+            .I3 (key_deb[5]));
+	// LUT = I0&I1&I2&I3 ;
+
+    GTP_LUT1 /* N105 */ #(
+            .INIT(2'b01))
+        N105_vname (
+            .Z (N105),
+            .I0 (cnt_voice[0]));
+    // defparam N105_vname.orig_name = N105;
+	// LUT = ~I0 ;
+
+    GTP_LUT5 /* N129_8 */ #(
+            .INIT(32'b00000000000000000000000000000001))
+        N129_8 (
+            .Z (_N783),
+            .I0 (cnt_voice[5]),
+            .I1 (cnt_voice[10]),
+            .I2 (cnt_voice[13]),
+            .I3 (cnt_voice[14]),
+            .I4 (cnt_voice[15]));
+	// LUT = ~I0&~I1&~I2&~I3&~I4 ;
+
+    GTP_LUT5 /* N129_10 */ #(
+            .INIT(32'b00000000000001000000000000000000))
+        N129_10 (
+            .Z (_N785),
+            .I0 (cnt_voice[2]),
+            .I1 (cnt_voice[3]),
+            .I2 (cnt_voice[4]),
+            .I3 (cnt_voice[16]),
+            .I4 (_N783));
+	// LUT = ~I0&I1&~I2&~I3&I4 ;
+
+    GTP_LUT5 /* N129_11 */ #(
+            .INIT(32'b01000000000000000000000000000000))
+        N129_11 (
+            .Z (N129),
+            .I0 (cnt_voice[0]),
+            .I1 (cnt_voice[1]),
+            .I2 (_N418),
+            .I3 (_N423),
+            .I4 (_N785));
+	// LUT = ~I0&I1&I2&I3&I4 ;
+
+    GTP_LUT5 /* N147 */ #(
+            .INIT(32'b11010101010101010101010101010101))
+        N147_vname (
+            .Z (N147),
+            .I0 (nt_rst_n),
+            .I1 (key_deb[0]),
+            .I2 (key_deb[1]),
+            .I3 (key_deb[6]),
+            .I4 (_N741));
+    // defparam N147_vname.orig_name = N147;
+	// LUT = (~I0)|(I1&I2&I3&I4) ;
+	// ../source/beep_test.v:8
+
+    GTP_LUT5 /* N153_0_3 */ #(
+            .INIT(32'b11111111111111110000101011001110))
+        N153_0_3 (
+            .Z (_N774),
+            .I0 (N30),
+            .I1 (N42),
+            .I2 (key_deb[2]),
+            .I3 (key_deb[3]),
+            .I4 (_N394));
+	// LUT = (I4)|(I1&~I3)|(I0&~I2) ;
+
+    GTP_LUT5 /* N153_2 */ #(
+            .INIT(32'b00000000001111110000000000011111))
+        N153_2 (
+            .Z (_N394),
+            .I0 (cnt_voice[14]),
+            .I1 (cnt_voice[15]),
+            .I2 (cnt_voice[16]),
+            .I3 (key_deb[1]),
+            .I4 (_N59));
+	// LUT = (~I2&~I3)|(~I0&~I1&~I3)|(~I1&~I3&I4) ;
+
+    GTP_LUT5 /* N153_6_2 */ #(
+            .INIT(32'b11111111111111110000111100000111))
+        N153_6_2 (
+            .Z (_N756),
+            .I0 (cnt_voice[14]),
+            .I1 (cnt_voice[15]),
+            .I2 (key_deb[5]),
+            .I3 (_N193),
+            .I4 (_N399));
+	// LUT = (I4)|(~I1&~I2)|(~I0&~I2)|(~I2&I3) ;
+
+    GTP_LUT5 /* N153_6_3 */ #(
+            .INIT(32'b11111111111111110000111100000111))
+        N153_6_3 (
+            .Z (_N398),
+            .I0 (cnt_voice[14]),
+            .I1 (cnt_voice[15]),
+            .I2 (key_deb[6]),
+            .I3 (_N227),
+            .I4 (_N756));
+	// LUT = (I4)|(~I1&~I2)|(~I0&~I2)|(~I2&I3) ;
+
+    GTP_LUT5 /* N153_7 */ #(
+            .INIT(32'b00001111000011110000000100000000))
+        N153_7 (
+            .Z (_N399),
+            .I0 (cnt_voice[9]),
+            .I1 (cnt_voice[10]),
+            .I2 (key_deb[4]),
+            .I3 (_N151),
+            .I4 (_N754));
+	// LUT = (~I2&I4)|(~I0&~I1&~I2&I3) ;
+
+    GTP_DFF_RE /* beep */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        beep_vname (
+            .Q (nt_beep),
+            .CE (N129),
+            .CLK (nt_clk),
+            .D (N100),
+            .R (N147));
+    // defparam beep_vname.orig_name = beep;
+	// ../source/beep_test.v:83
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="AA6", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="8", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* beep_obuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        beep_obuf (
+            .O (beep),
+            .I (nt_beep));
+	// ../source/beep_test.v:8
+
+    btn_deb btn_deb1 (
+            .btn_deb (key_deb),
+            .btn_in (nt_key),
+            .clk (nt_clk));
+	// ../source/beep_test.v:52
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="P20", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* clk_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        clk_ibuf (
+            .O (nt_clk),
+            .I (clk));
+	// ../source/beep_test.v:5
+
+    GTP_DFF_R /* \cnt_voice[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[0]  (
+            .Q (cnt_voice[0]),
+            .CLK (nt_clk),
+            .D (N105),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[1]  (
+            .Q (cnt_voice[1]),
+            .CLK (nt_clk),
+            .D (N169[1]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[2]  (
+            .Q (cnt_voice[2]),
+            .CLK (nt_clk),
+            .D (N169[2]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[3]  (
+            .Q (cnt_voice[3]),
+            .CLK (nt_clk),
+            .D (N169[3]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[4]  (
+            .Q (cnt_voice[4]),
+            .CLK (nt_clk),
+            .D (N169[4]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[5]  (
+            .Q (cnt_voice[5]),
+            .CLK (nt_clk),
+            .D (N169[5]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[6]  (
+            .Q (cnt_voice[6]),
+            .CLK (nt_clk),
+            .D (N169[6]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[7]  (
+            .Q (cnt_voice[7]),
+            .CLK (nt_clk),
+            .D (N169[7]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[8]  (
+            .Q (cnt_voice[8]),
+            .CLK (nt_clk),
+            .D (N169[8]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[9]  (
+            .Q (cnt_voice[9]),
+            .CLK (nt_clk),
+            .D (N169[9]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[10]  (
+            .Q (cnt_voice[10]),
+            .CLK (nt_clk),
+            .D (N169[10]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[11]  (
+            .Q (cnt_voice[11]),
+            .CLK (nt_clk),
+            .D (N169[11]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[12]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[12]  (
+            .Q (cnt_voice[12]),
+            .CLK (nt_clk),
+            .D (N169[12]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[13]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[13]  (
+            .Q (cnt_voice[13]),
+            .CLK (nt_clk),
+            .D (N169[13]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[14]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[14]  (
+            .Q (cnt_voice[14]),
+            .CLK (nt_clk),
+            .D (N169[14]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[15]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[15]  (
+            .Q (cnt_voice[15]),
+            .CLK (nt_clk),
+            .D (N169[15]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+    GTP_DFF_R /* \cnt_voice[16]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \cnt_voice[16]  (
+            .Q (cnt_voice[16]),
+            .CLK (nt_clk),
+            .D (N169[16]),
+            .R (N1_0));
+	// ../source/beep_test.v:61
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="K18", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \key_ibuf[0]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \key_ibuf[0]  (
+            .O (nt_key[0]),
+            .I (key[0]));
+	// ../source/beep_test.v:7
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="L15", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \key_ibuf[1]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \key_ibuf[1]  (
+            .O (nt_key[1]),
+            .I (key[1]));
+	// ../source/beep_test.v:7
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="J17", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \key_ibuf[2]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \key_ibuf[2]  (
+            .O (nt_key[2]),
+            .I (key[2]));
+	// ../source/beep_test.v:7
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="K16", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \key_ibuf[3]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \key_ibuf[3]  (
+            .O (nt_key[3]),
+            .I (key[3]));
+	// ../source/beep_test.v:7
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="J16", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \key_ibuf[4]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \key_ibuf[4]  (
+            .O (nt_key[4]),
+            .I (key[4]));
+	// ../source/beep_test.v:7
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="J19", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \key_ibuf[5]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \key_ibuf[5]  (
+            .O (nt_key[5]),
+            .I (key[5]));
+	// ../source/beep_test.v:7
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="H20", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* \key_ibuf[6]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \key_ibuf[6]  (
+            .O (nt_key[6]),
+            .I (key[6]));
+	// ../source/beep_test.v:7
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="H17", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* rst_n_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        rst_n_ibuf (
+            .O (nt_rst_n),
+            .I (rst_n));
+	// ../source/beep_test.v:6
+
+
+endmodule
+

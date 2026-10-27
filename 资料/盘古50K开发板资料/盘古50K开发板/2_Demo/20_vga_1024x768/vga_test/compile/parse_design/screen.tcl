@@ -1,0 +1,1 @@
+.rtl_screen -top_module {vga_test} -include_path {<E:/board/PGL50H_box/hardware_module/demo/demo/vga_1024x768/vga_test>} -design_files {<E:/board/PGL50H_box/hardware_module/demo/demo/vga_1024x768/vga_test/source/vga_test.v|work><E:/board/PGL50H_box/hardware_module/demo/demo/vga_1024x768/vga_test/ipcore/U_PLL/U_PLL.v|work>}

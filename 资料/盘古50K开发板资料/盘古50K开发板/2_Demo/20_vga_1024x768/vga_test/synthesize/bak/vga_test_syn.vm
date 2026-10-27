@@ -1,0 +1,1470 @@
+//
+// Generated (version 2022.1<build 99559>) at Mon Jun  3 19:21:27 2024
+//
+
+module U_PLL
+(
+    input clkin1,
+    output clkout0
+);
+    wire lock;
+    wire \u_gpll_APB_RDATA[0]_floating ;
+    wire \u_gpll_APB_RDATA[1]_floating ;
+    wire \u_gpll_APB_RDATA[2]_floating ;
+    wire \u_gpll_APB_RDATA[3]_floating ;
+    wire \u_gpll_APB_RDATA[4]_floating ;
+    wire \u_gpll_APB_RDATA[5]_floating ;
+    wire \u_gpll_APB_RDATA[6]_floating ;
+    wire \u_gpll_APB_RDATA[7]_floating ;
+    wire \u_gpll_APB_RDATA[8]_floating ;
+    wire \u_gpll_APB_RDATA[9]_floating ;
+    wire \u_gpll_APB_RDATA[10]_floating ;
+    wire \u_gpll_APB_RDATA[11]_floating ;
+    wire \u_gpll_APB_RDATA[12]_floating ;
+    wire \u_gpll_APB_RDATA[13]_floating ;
+    wire \u_gpll_APB_RDATA[14]_floating ;
+    wire \u_gpll_APB_RDATA[15]_floating ;
+
+    GTP_GPLL /* u_gpll */ #(
+            .CLKIN_FREQ(50), 
+            .LOCK_MODE(1'b0), 
+            .STATIC_RATIOI(1), 
+            .STATIC_RATIOM(1), 
+            .STATIC_RATIO0(10), 
+            .STATIC_RATIO1(13), 
+            .STATIC_RATIO2(13), 
+            .STATIC_RATIO3(13), 
+            .STATIC_RATIO4(13), 
+            .STATIC_RATIO5(13), 
+            .STATIC_RATIO6(13), 
+            .STATIC_RATIOF(13), 
+            .STATIC_DUTY0(10), 
+            .STATIC_DUTY1(13), 
+            .STATIC_DUTY2(13), 
+            .STATIC_DUTY3(13), 
+            .STATIC_DUTY4(13), 
+            .STATIC_DUTY5(13), 
+            .STATIC_DUTY6(13), 
+            .STATIC_DUTYF(13), 
+            .STATIC_PHASE(0), 
+            .STATIC_PHASE0(0), 
+            .STATIC_PHASE1(0), 
+            .STATIC_PHASE2(0), 
+            .STATIC_PHASE3(0), 
+            .STATIC_PHASE4(0), 
+            .STATIC_PHASE5(0), 
+            .STATIC_PHASE6(0), 
+            .STATIC_PHASEF(0), 
+            .STATIC_CPHASE0(0), 
+            .STATIC_CPHASE1(0), 
+            .STATIC_CPHASE2(0), 
+            .STATIC_CPHASE3(0), 
+            .STATIC_CPHASE4(0), 
+            .STATIC_CPHASE5(0), 
+            .STATIC_CPHASE6(0), 
+            .STATIC_CPHASEF(0), 
+            .CLK_DPS0_EN("FALSE"), 
+            .CLK_DPS1_EN("FALSE"), 
+            .CLK_DPS2_EN("FALSE"), 
+            .CLK_DPS3_EN("FALSE"), 
+            .CLK_DPS4_EN("FALSE"), 
+            .CLK_DPS5_EN("FALSE"), 
+            .CLK_DPS6_EN("FALSE"), 
+            .CLK_DPSF_EN("FALSE"), 
+            .CLK_CAS5_EN("FALSE"), 
+            .CLKOUT0_SYN_EN("FALSE"), 
+            .CLKOUT1_SYN_EN("FALSE"), 
+            .CLKOUT2_SYN_EN("FALSE"), 
+            .CLKOUT3_SYN_EN("FALSE"), 
+            .CLKOUT4_SYN_EN("FALSE"), 
+            .CLKOUT5_SYN_EN("FALSE"), 
+            .CLKOUT6_SYN_EN("FALSE"), 
+            .CLKOUTF_SYN_EN("FALSE"), 
+            .SSC_MODE("DISABLE"), 
+            .SSC_FREQ(25), 
+            .INTERNAL_FB("CLKOUTF"), 
+            .EXTERNAL_FB("DISABLE"), 
+            .BANDWIDTH("HIGH"))
+        u_gpll (
+            .APB_RDATA (),
+            .APB_ADDR ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .APB_WDATA ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .APB_READY (),
+            .CLKOUT0 (clkout0),
+            .CLKOUT0N (),
+            .CLKOUT1 (),
+            .CLKOUT1N (),
+            .CLKOUT2 (),
+            .CLKOUT2N (),
+            .CLKOUT3 (),
+            .CLKOUT3N (),
+            .CLKOUT4 (),
+            .CLKOUT5 (),
+            .CLKOUT6 (),
+            .CLKOUTF (),
+            .CLKOUTFN (),
+            .DPS_DONE (),
+            .LOCK (lock),
+            .APB_CLK (1'b0),
+            .APB_EN (1'b0),
+            .APB_RST_N (1'b0),
+            .APB_SEL (1'b0),
+            .APB_WRITE (1'b0),
+            .CLKFB (1'b0),
+            .CLKIN1 (clkin1),
+            .CLKIN2 (1'b0),
+            .CLKIN_SEL (1'b0),
+            .CLKOUT0_SYN (1'b0),
+            .CLKOUT1_SYN (1'b0),
+            .CLKOUT2_SYN (1'b0),
+            .CLKOUT3_SYN (1'b0),
+            .CLKOUT4_SYN (1'b0),
+            .CLKOUT5_SYN (1'b0),
+            .CLKOUT6_SYN (1'b0),
+            .CLKOUTF_SYN (1'b0),
+            .DPS_CLK (1'b0),
+            .DPS_DIR (1'b0),
+            .DPS_EN (1'b0),
+            .PLL_PWD (1'b0),
+            .RST (1'b0));
+	// ../ipcore/U_PLL/U_PLL.v:302
+	// SDC constraint : (object CLKOUT0) (id 1002) (clock U_PLL|PLL_PIX/u_gpll/CLKOUT0) (inferred)
+
+
+endmodule
+
+
+module vga_test
+(
+    input clk,
+    input rstn,
+    output [3:0] b_out,
+    output [3:0] g_out,
+    output [3:0] r_out,
+    output hs_out,
+    output vs_out
+);
+	// SDC constraint : (object clk) (id 1000) (clock vga_test|clk) (inferred)
+    wire N2_0;
+    wire [11:0] N27;
+    wire N31;
+    wire N60;
+    wire [11:0] N66;
+    wire N101;
+    wire N115;
+    wire N122;
+    wire N161;
+    wire N169_inv;
+    wire N170;
+    wire N175;
+    wire N187;
+    wire N203;
+    wire N213;
+    wire N221;
+    wire [11:0] N230;
+    wire [11:0] N232;
+    wire _N12;
+    wire _N17;
+    wire _N39;
+    wire _N55;
+    wire _N99;
+    wire _N147;
+    wire _N270;
+    wire _N271;
+    wire _N272;
+    wire _N273;
+    wire _N274;
+    wire _N275;
+    wire _N276;
+    wire _N277;
+    wire _N278;
+    wire _N279;
+    wire _N282;
+    wire _N283;
+    wire _N284;
+    wire _N285;
+    wire _N286;
+    wire _N287;
+    wire _N288;
+    wire _N289;
+    wire _N363;
+    wire _N396;
+    wire _N400;
+    wire _N406;
+    wire _N419;
+    wire _N424;
+    wire de;
+    wire [11:0] h_count;
+    wire \h_count[0]_inv ;
+    wire \h_count[11:0]_or ;
+    wire hs;
+    wire [3:0] nt_b_out;
+    wire nt_clk;
+    wire [3:0] nt_g_out;
+    wire nt_hs_out;
+    wire [3:0] nt_r_out;
+    wire nt_rstn;
+    wire nt_vs_out;
+    wire pix_clk;
+    wire [11:0] v_count;
+    wire vs;
+    wire [11:0] x_act;
+    wire \x_act[11:0]_or ;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+    GTP_INV N2_0_vname (
+            .Z (N2_0),
+            .I (nt_rstn));
+    // defparam N2_0_vname.orig_name = N2_0;
+
+    GTP_LUT6 /* N6_mux8 */ #(
+            .INIT(64'b0000000000010011111111111111111100000000001100111111111111111111))
+        N6_mux8 (
+            .Z (_N39),
+            .I0 (h_count[4]),
+            .I1 (h_count[6]),
+            .I2 (h_count[5]),
+            .I3 (h_count[7]),
+            .I4 (h_count[8]),
+            .I5 (_N363));
+	// LUT = (~I4)|(~I1&~I3&~I5)|(~I1&~I2&~I3)|(~I0&~I1&~I3) ;
+
+    GTP_LUT6CARRY /* N26_0_1 */ #(
+            .INIT(64'b0110011001100110011001100110011000000000000000000000000000000000), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("TRUE"))
+        N26_0_1 (
+            .COUT (_N282),
+            .Z (N232[1]),
+            .CIN (),
+            .I0 (v_count[0]),
+            .I1 (v_count[1]),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b1));
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6CARRY /* N26_0_2 */ #(
+            .INIT(64'b0111100001111000011110000111100010000000100000001000000010000000), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N26_0_2 (
+            .COUT (_N283),
+            .Z (N232[2]),
+            .CIN (_N282),
+            .I0 (v_count[0]),
+            .I1 (v_count[1]),
+            .I2 (v_count[2]),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = (I0&I1&I2&~CIN)|(I0&I1&~I2&CIN)|(~I1&I2&CIN)|(~I0&I2&CIN) ;
+	// CARRY = (I0&I1&I2) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6CARRY /* N26_0_3 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N26_0_3 (
+            .COUT (_N284),
+            .Z (N232[3]),
+            .CIN (_N283),
+            .I0 (v_count[3]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6CARRY /* N26_0_4 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N26_0_4 (
+            .COUT (_N285),
+            .Z (N232[4]),
+            .CIN (_N284),
+            .I0 (v_count[4]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6CARRY /* N26_0_5 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N26_0_5 (
+            .COUT (_N286),
+            .Z (N232[5]),
+            .CIN (_N285),
+            .I0 (v_count[5]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6CARRY /* N26_0_6 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N26_0_6 (
+            .COUT (_N287),
+            .Z (N232[6]),
+            .CIN (_N286),
+            .I0 (v_count[6]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6CARRY /* N26_0_7 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N26_0_7 (
+            .COUT (_N288),
+            .Z (N232[7]),
+            .CIN (_N287),
+            .I0 (v_count[7]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6CARRY /* N26_0_8 */ #(
+            .INIT(64'b0100010001000100010001000100010010001000100010001000100010001000), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N26_0_8 (
+            .COUT (_N289),
+            .Z (N27[8]),
+            .CIN (_N288),
+            .I0 (v_count[8]),
+            .I1 (N169_inv),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = (I0&I1&~CIN)|(~I0&I1&CIN) ;
+	// CARRY = (I0&I1) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6CARRY /* N26_0_9 */ #(
+            .INIT(64'b0100010001000100010001000100010010001000100010001000100010001000), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N26_0_9 (
+            .COUT (),
+            .Z (N27[9]),
+            .CIN (_N289),
+            .I0 (v_count[9]),
+            .I1 (N169_inv),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = (I0&I1&~CIN)|(~I0&I1&CIN) ;
+	// CARRY = (I0&I1) ? CIN : I5 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT2 /* \N27[0]  */ #(
+            .INIT(4'b1000))
+        \N27[0]  (
+            .Z (N27[1]),
+            .I0 (N232[1]),
+            .I1 (N169_inv));
+	// LUT = I0&I1 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6D /* \N27[2]  */ #(
+            .INIT(64'b1100000011000000110000001100000010100000101000001010000010100000))
+        \N27[2]  (
+            .Z (N27[5]),
+            .Z5 (N27[2]),
+            .I0 (N232[2]),
+            .I1 (N232[5]),
+            .I2 (N169_inv),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b1));
+	// LUT = I1&I2 ;
+	// Z5 = I0&I2 ;
+	// ../source/vga_test.v:86
+
+    GTP_LUT6D /* N31_mux4 */ #(
+            .INIT(64'b0000000000000001111111111111111111111111111000000000000000011111))
+        N31_mux4 (
+            .Z (_N55),
+            .Z5 (N66[7]),
+            .I0 (h_count[3]),
+            .I1 (h_count[4]),
+            .I2 (h_count[5]),
+            .I3 (h_count[6]),
+            .I4 (h_count[7]),
+            .I5 (1'b1));
+	// LUT = (~I4)|(~I0&~I1&~I2&~I3) ;
+	// Z5 = (~I2&~I3&~I4)|(~I0&~I1&~I3&~I4)|(I3&I4)|(I1&I2&I4)|(I0&I2&I4) ;
+
+    GTP_LUT5 /* N31_mux8_4 */ #(
+            .INIT(32'b00000000000000010000000000000000))
+        N31_mux8_4 (
+            .Z (N31),
+            .I0 (h_count[9]),
+            .I1 (h_count[11]),
+            .I2 (h_count[8]),
+            .I3 (h_count[10]),
+            .I4 (_N55));
+	// LUT = ~I0&~I1&~I2&~I3&I4 ;
+
+    GTP_LUT6 /* N47_mux5 */ #(
+            .INIT(64'b1111111111111110111111101111111000000000000000000000000000000000))
+        N47_mux5 (
+            .Z (_N99),
+            .I0 (v_count[3]),
+            .I1 (v_count[4]),
+            .I2 (v_count[2]),
+            .I3 (v_count[0]),
+            .I4 (v_count[1]),
+            .I5 (v_count[5]));
+	// LUT = (I0&I5)|(I1&I5)|(I2&I5)|(I3&I4&I5) ;
+
+    GTP_LUT6 /* N56_mux8 */ #(
+            .INIT(64'b1111111111111111111111101111000000000000000000000000000000000000))
+        N56_mux8 (
+            .Z (_N147),
+            .I0 (h_count[3]),
+            .I1 (h_count[4]),
+            .I2 (h_count[6]),
+            .I3 (h_count[5]),
+            .I4 (h_count[7]),
+            .I5 (h_count[8]));
+	// LUT = (I2&I5)|(I4&I5)|(I0&I3&I5)|(I1&I3&I5) ;
+
+    GTP_LUT5 /* N60_2 */ #(
+            .INIT(32'b00001111111111110001111111111110))
+        N60_2 (
+            .Z (_N406),
+            .I0 (v_count[6]),
+            .I1 (v_count[7]),
+            .I2 (v_count[8]),
+            .I3 (v_count[9]),
+            .I4 (_N99));
+	// LUT = (I0&~I3)|(I2&~I3)|(I1&~I2)|(~I2&I3)|(~I2&I4)|(~I0&~I1&I3&~I4) ;
+
+    GTP_LUT5 /* N60_4 */ #(
+            .INIT(32'b00000011000100100000000000000000))
+        N60_4 (
+            .Z (N60),
+            .I0 (h_count[9]),
+            .I1 (h_count[11]),
+            .I2 (h_count[10]),
+            .I3 (_N147),
+            .I4 (_N406));
+	// LUT = (I0&~I1&~I2&I4)|(~I1&~I2&I3&I4)|(~I0&~I1&I2&~I3&I4) ;
+
+    GTP_LUT6 /* N66_0_sum4 */ #(
+            .INIT(64'b0000000000000000000000010000111111111111111111111111111011110000))
+        N66_0_sum4 (
+            .Z (N66[8]),
+            .I0 (h_count[3]),
+            .I1 (h_count[4]),
+            .I2 (h_count[6]),
+            .I3 (h_count[5]),
+            .I4 (h_count[7]),
+            .I5 (h_count[8]));
+	// LUT = (I2&~I5)|(I4&~I5)|(I0&I3&~I5)|(I1&I3&~I5)|(~I2&~I3&~I4&I5)|(~I0&~I1&~I2&~I4&I5) ;
+
+    GTP_LUT6D /* N66_0_sum5_1 */ #(
+            .INIT(64'b1010010110100101101001011010010111001001110010011100100111001001))
+        N66_0_sum5_1 (
+            .Z (N66[9]),
+            .Z5 (N66[10]),
+            .I0 (h_count[9]),
+            .I1 (h_count[10]),
+            .I2 (_N147),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b1));
+	// LUT = ~I2^I0 ;
+	// Z5 = (~I0&~I1&~I2)|(I1&I2)|(I0&I1) ;
+
+    GTP_LUT6D /* N115_mux3 */ #(
+            .INIT(64'b0000000000000000000000000011111111111111111111111111111110111111))
+        N115_mux3 (
+            .Z (N115),
+            .Z5 (_N17),
+            .I0 (x_act[7]),
+            .I1 (x_act[8]),
+            .I2 (x_act[9]),
+            .I3 (x_act[10]),
+            .I4 (x_act[11]),
+            .I5 (1'b1));
+	// LUT = (~I2&~I3&~I4)|(~I1&~I3&~I4) ;
+	// Z5 = (I4)|(I3)|(~I2)|(~I1)|(I0) ;
+
+    GTP_LUT5 /* N122_mux4 */ #(
+            .INIT(32'b00000000000001110000000000001111))
+        N122_mux4 (
+            .Z (N122),
+            .I0 (x_act[8]),
+            .I1 (x_act[9]),
+            .I2 (x_act[10]),
+            .I3 (x_act[11]),
+            .I4 (x_act[7]));
+	// LUT = (~I2&~I3&~I4)|(~I1&~I2&~I3)|(~I0&~I2&~I3) ;
+
+    GTP_LUT4 /* N161_4 */ #(
+            .INIT(16'b0000000000100000))
+        N161_4 (
+            .Z (_N400),
+            .I0 (h_count[4]),
+            .I1 (h_count[6]),
+            .I2 (h_count[5]),
+            .I3 (h_count[7]));
+	// LUT = I0&~I1&I2&~I3 ;
+
+    GTP_LUT6D /* N161_8 */ #(
+            .INIT(64'b1000000000000000100000000000000001010101010101010101010101010101))
+        N161_8 (
+            .Z (_N363),
+            .Z5 (\h_count[0]_inv ),
+            .I0 (h_count[0]),
+            .I1 (h_count[1]),
+            .I2 (h_count[2]),
+            .I3 (h_count[3]),
+            .I4 (),
+            .I5 (1'b1));
+	// LUT = I0&I1&I2&I3 ;
+	// Z5 = ~I0 ;
+
+    GTP_LUT6 /* N161_11 */ #(
+            .INIT(64'b0001000000000000000000000000000000000000000000000000000000000000))
+        N161_11 (
+            .Z (N161),
+            .I0 (h_count[9]),
+            .I1 (h_count[11]),
+            .I2 (h_count[8]),
+            .I3 (h_count[10]),
+            .I4 (_N363),
+            .I5 (_N400));
+	// LUT = ~I0&~I1&I2&I3&I4&I5 ;
+
+    GTP_LUT6D /* N169_10 */ #(
+            .INIT(64'b0010000000000000000000000000000001010101010101010101010101010101))
+        N169_10 (
+            .Z (_N396),
+            .Z5 (N170),
+            .I0 (v_count[0]),
+            .I1 (v_count[1]),
+            .I2 (v_count[5]),
+            .I3 (v_count[8]),
+            .I4 (v_count[9]),
+            .I5 (1'b1));
+	// LUT = I0&~I1&I2&I3&I4 ;
+	// Z5 = ~I0 ;
+
+    GTP_LUT6 /* N169_inv */ #(
+            .INIT(64'b1111111111111110111111111111111111111111111111111111111111111111))
+        N169_inv_vname (
+            .Z (N169_inv),
+            .I0 (v_count[3]),
+            .I1 (v_count[4]),
+            .I2 (v_count[6]),
+            .I3 (v_count[7]),
+            .I4 (v_count[2]),
+            .I5 (_N396));
+    // defparam N169_inv_vname.orig_name = N169_inv;
+	// LUT = (~I5)|(~I4)|(I0)|(I1)|(I2)|(I3) ;
+
+    GTP_LUT5 /* N175_11 */ #(
+            .INIT(32'b11111111111111111111111111111110))
+        N175_11 (
+            .Z (_N424),
+            .I0 (v_count[3]),
+            .I1 (v_count[4]),
+            .I2 (v_count[2]),
+            .I3 (v_count[8]),
+            .I4 (v_count[9]));
+	// LUT = (I0)|(I1)|(I2)|(I3)|(I4) ;
+
+    GTP_LUT6 /* N175_inv */ #(
+            .INIT(64'b0000000000000000000000000000000000000000000000000000000000000001))
+        N175_inv (
+            .Z (N175),
+            .I0 (v_count[6]),
+            .I1 (v_count[7]),
+            .I2 (v_count[0]),
+            .I3 (v_count[1]),
+            .I4 (v_count[5]),
+            .I5 (_N424));
+	// LUT = ~I0&~I1&~I2&~I3&~I4&~I5 ;
+
+    GTP_LUT6 /* N186_6 */ #(
+            .INIT(64'b0000000000000000000000000000000000000000000000010000000000000000))
+        N186_6 (
+            .Z (_N419),
+            .I0 (v_count[6]),
+            .I1 (v_count[7]),
+            .I2 (v_count[8]),
+            .I3 (v_count[9]),
+            .I4 (v_count[1]),
+            .I5 (v_count[5]));
+	// LUT = ~I0&~I1&~I2&~I3&I4&~I5 ;
+
+    GTP_LUT6 /* N187 */ #(
+            .INIT(64'b0101010101010101010101110101010101010101010101010101010101010101))
+        N187_vname (
+            .Z (N187),
+            .I0 (nt_rstn),
+            .I1 (v_count[3]),
+            .I2 (v_count[4]),
+            .I3 (v_count[2]),
+            .I4 (v_count[0]),
+            .I5 (_N419));
+    // defparam N187_vname.orig_name = N187;
+	// LUT = (~I0)|(~I1&~I2&I3&~I4&I5) ;
+	// ../source/vga_test.v:52
+
+    GTP_LUT5 /* N203_0 */ #(
+            .INIT(32'b01010101010101010101010101110101))
+        N203_0 (
+            .Z (N203),
+            .I0 (de),
+            .I1 (x_act[8]),
+            .I2 (x_act[9]),
+            .I3 (x_act[10]),
+            .I4 (x_act[11]));
+	// LUT = (~I0)|(~I1&I2&~I3&~I4) ;
+
+    GTP_LUT6 /* N213_4 */ #(
+            .INIT(64'b0101010101010101010101010111111101010101010101010101010101010101))
+        N213_4 (
+            .Z (N213),
+            .I0 (de),
+            .I1 (x_act[8]),
+            .I2 (x_act[9]),
+            .I3 (x_act[10]),
+            .I4 (x_act[11]),
+            .I5 (x_act[7]));
+	// LUT = (~I0)|(~I2&~I3&~I4&I5)|(~I1&~I3&~I4&I5) ;
+
+    GTP_LUT6D /* N221 */ #(
+            .INIT(64'b0101010101010101010101010101110100000000000000000000000000001111))
+        N221_vname (
+            .Z (N221),
+            .Z5 (N101),
+            .I0 (de),
+            .I1 (x_act[8]),
+            .I2 (x_act[9]),
+            .I3 (x_act[10]),
+            .I4 (x_act[11]),
+            .I5 (1'b1));
+    // defparam N221_vname.orig_name = N221;
+	// LUT = (I1&~I2&~I3&~I4)|(~I0) ;
+	// Z5 = ~I2&~I3&~I4 ;
+	// ../source/vga_test.v:10
+
+    GTP_LUT6CARRY /* N230_0_1 */ #(
+            .INIT(64'b0110011001100110011001100110011000000000000000000000000000000000), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("TRUE"))
+        N230_0_1 (
+            .COUT (_N270),
+            .Z (N230[1]),
+            .CIN (),
+            .I0 (h_count[0]),
+            .I1 (h_count[1]),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b1));
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_2 */ #(
+            .INIT(64'b0111100001111000011110000111100010000000100000001000000010000000), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_2 (
+            .COUT (_N271),
+            .Z (N230[2]),
+            .CIN (_N270),
+            .I0 (h_count[0]),
+            .I1 (h_count[1]),
+            .I2 (h_count[2]),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = (I0&I1&I2&~CIN)|(I0&I1&~I2&CIN)|(~I1&I2&CIN)|(~I0&I2&CIN) ;
+	// CARRY = (I0&I1&I2) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_3 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_3 (
+            .COUT (_N272),
+            .Z (N230[3]),
+            .CIN (_N271),
+            .I0 (h_count[3]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_4 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_4 (
+            .COUT (_N273),
+            .Z (N230[4]),
+            .CIN (_N272),
+            .I0 (h_count[4]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_5 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_5 (
+            .COUT (_N274),
+            .Z (N230[5]),
+            .CIN (_N273),
+            .I0 (h_count[5]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_6 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_6 (
+            .COUT (_N275),
+            .Z (N230[6]),
+            .CIN (_N274),
+            .I0 (h_count[6]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_7 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_7 (
+            .COUT (_N276),
+            .Z (N230[7]),
+            .CIN (_N275),
+            .I0 (h_count[7]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_8 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_8 (
+            .COUT (_N277),
+            .Z (N230[8]),
+            .CIN (_N276),
+            .I0 (h_count[8]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_9 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_9 (
+            .COUT (_N278),
+            .Z (N230[9]),
+            .CIN (_N277),
+            .I0 (h_count[9]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_10 */ #(
+            .INIT(64'b0101010101010101010101010101010110101010101010101010101010101010), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_10 (
+            .COUT (_N279),
+            .Z (N230[10]),
+            .CIN (_N278),
+            .I0 (h_count[10]),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN^I0 ;
+	// CARRY = (I0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    GTP_LUT6CARRY /* N230_0_11 */ #(
+            .INIT(64'b1111111111111111111111111111111100000000000000000000000000000000), 
+            .I5_TO_CARRY("TRUE"), 
+            .I5_TO_LUT("FALSE"))
+        N230_0_11 (
+            .COUT (),
+            .Z (N230[11]),
+            .CIN (_N279),
+            .I0 (),
+            .I1 (),
+            .I2 (),
+            .I3 (),
+            .I4 (),
+            .I5 (1'b0));
+	// LUT = CIN ;
+	// CARRY = (1'b0) ? CIN : I5 ;
+	// ../source/vga_test.v:69
+
+    U_PLL PLL_PIX (
+            .clkout0 (pix_clk),
+            .clkin1 (nt_clk));
+	// ../source/vga_test.v:55
+
+    GTP_DFF_R /* \b_out[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \b_out[0]  (
+            .Q (nt_b_out[0]),
+            .CLK (pix_clk),
+            .D (1'b1),
+            .R (N213));
+	// ../source/vga_test.v:158
+
+    GTP_DFF_R /* \b_out[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \b_out[1]  (
+            .Q (nt_b_out[1]),
+            .CLK (pix_clk),
+            .D (N122),
+            .R (N213));
+	// ../source/vga_test.v:158
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="L5", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \b_out_obuf[0]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \b_out_obuf[0]  (
+            .O (b_out[0]),
+            .I (nt_b_out[0]));
+	// ../source/vga_test.v:12
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="L6", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \b_out_obuf[1]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \b_out_obuf[1]  (
+            .O (b_out[1]),
+            .I (nt_b_out[1]));
+	// ../source/vga_test.v:12
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="L4", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \b_out_obuf[2]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \b_out_obuf[2]  (
+            .O (b_out[2]),
+            .I (nt_b_out[0]));
+	// ../source/vga_test.v:12
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="K5", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \b_out_obuf[3]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \b_out_obuf[3]  (
+            .O (b_out[3]),
+            .I (nt_b_out[1]));
+	// ../source/vga_test.v:12
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="P17", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_UNUSED="TRUE" *)    GTP_INBUF /* clk_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        clk_ibuf (
+            .O (nt_clk),
+            .I (clk));
+	// ../source/vga_test.v:5
+
+    GTP_DFF_R /* de */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        de_vname (
+            .Q (de),
+            .CLK (pix_clk),
+            .D (N60),
+            .R (N2_0));
+    // defparam de_vname.orig_name = de;
+	// ../source/vga_test.v:113
+
+    GTP_DFF_R /* \g_out[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \g_out[0]  (
+            .Q (nt_g_out[0]),
+            .CLK (pix_clk),
+            .D (_N12),
+            .R (N203));
+	// ../source/vga_test.v:158
+
+    GTP_DFF_R /* \g_out[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \g_out[1]  (
+            .Q (nt_g_out[1]),
+            .CLK (pix_clk),
+            .D (N101),
+            .R (N203));
+	// ../source/vga_test.v:158
+
+    GTP_LUT5 /* \g_out[3:0]_d[0]  */ #(
+            .INIT(32'b11111111111110111111111111110011))
+        \g_out[3:0]_d[0]  (
+            .Z (_N12),
+            .I0 (x_act[8]),
+            .I1 (x_act[9]),
+            .I2 (x_act[10]),
+            .I3 (x_act[11]),
+            .I4 (x_act[7]));
+	// LUT = (~I1)|(I2)|(I3)|(I0&I4) ;
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="U3", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \g_out_obuf[0]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \g_out_obuf[0]  (
+            .O (g_out[0]),
+            .I (nt_g_out[0]));
+	// ../source/vga_test.v:11
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="U4", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \g_out_obuf[1]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \g_out_obuf[1]  (
+            .O (g_out[1]),
+            .I (nt_g_out[1]));
+	// ../source/vga_test.v:11
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="V1", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \g_out_obuf[2]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \g_out_obuf[2]  (
+            .O (g_out[2]),
+            .I (nt_g_out[0]));
+	// ../source/vga_test.v:11
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="U1", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \g_out_obuf[3]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \g_out_obuf[3]  (
+            .O (g_out[3]),
+            .I (nt_g_out[1]));
+	// ../source/vga_test.v:11
+
+    GTP_DFF_R /* \h_count[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[0]  (
+            .Q (h_count[0]),
+            .CLK (pix_clk),
+            .D (\h_count[0]_inv ),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[1]  (
+            .Q (h_count[1]),
+            .CLK (pix_clk),
+            .D (N230[1]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[2]  (
+            .Q (h_count[2]),
+            .CLK (pix_clk),
+            .D (N230[2]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[3]  (
+            .Q (h_count[3]),
+            .CLK (pix_clk),
+            .D (N230[3]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[4]  (
+            .Q (h_count[4]),
+            .CLK (pix_clk),
+            .D (N230[4]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[5]  (
+            .Q (h_count[5]),
+            .CLK (pix_clk),
+            .D (N230[5]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[6]  (
+            .Q (h_count[6]),
+            .CLK (pix_clk),
+            .D (N230[6]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[7]  (
+            .Q (h_count[7]),
+            .CLK (pix_clk),
+            .D (N230[7]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[8]  (
+            .Q (h_count[8]),
+            .CLK (pix_clk),
+            .D (N230[8]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[9]  (
+            .Q (h_count[9]),
+            .CLK (pix_clk),
+            .D (N230[9]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* \h_count[10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[10]  (
+            .Q (h_count[10]),
+            .CLK (pix_clk),
+            .D (N230[10]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_LUT5 /* \h_count[11:0]_or_inv  */ #(
+            .INIT(32'b11111101111101011111111111110101))
+        \h_count[11:0]_or_inv  (
+            .Z (\h_count[11:0]_or ),
+            .I0 (nt_rstn),
+            .I1 (h_count[9]),
+            .I2 (h_count[11]),
+            .I3 (h_count[10]),
+            .I4 (_N39));
+	// LUT = (~I0)|(I2)|(I3&~I4)|(I1&I3) ;
+
+    GTP_DFF_R /* \h_count[11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \h_count[11]  (
+            .Q (h_count[11]),
+            .CLK (pix_clk),
+            .D (N230[11]),
+            .R (\h_count[11:0]_or ));
+	// ../source/vga_test.v:62
+
+    GTP_DFF_R /* hs */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        hs_vname (
+            .Q (hs),
+            .CLK (pix_clk),
+            .D (N31),
+            .R (N2_0));
+    // defparam hs_vname.orig_name = hs;
+	// ../source/vga_test.v:90
+
+    GTP_DFF /* hs_out */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        hs_out_vname (
+            .Q (nt_hs_out),
+            .CLK (pix_clk),
+            .D (hs));
+    // defparam hs_out_vname.orig_name = hs_out;
+	// ../source/vga_test.v:151
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="N2", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* hs_out_obuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        hs_out_obuf (
+            .O (hs_out),
+            .I (nt_hs_out));
+	// ../source/vga_test.v:8
+
+    GTP_DFF_R /* \r_out[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \r_out[0]  (
+            .Q (nt_r_out[0]),
+            .CLK (pix_clk),
+            .D (_N17),
+            .R (N221));
+	// ../source/vga_test.v:158
+
+    GTP_DFF_R /* \r_out[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \r_out[1]  (
+            .Q (nt_r_out[1]),
+            .CLK (pix_clk),
+            .D (N115),
+            .R (N221));
+	// ../source/vga_test.v:158
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="V4", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \r_out_obuf[0]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \r_out_obuf[0]  (
+            .O (r_out[0]),
+            .I (nt_r_out[0]));
+	// ../source/vga_test.v:10
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="V5", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \r_out_obuf[1]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \r_out_obuf[1]  (
+            .O (r_out[1]),
+            .I (nt_r_out[1]));
+	// ../source/vga_test.v:10
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="V2", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \r_out_obuf[2]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \r_out_obuf[2]  (
+            .O (r_out[2]),
+            .I (nt_r_out[0]));
+	// ../source/vga_test.v:10
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="U2", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* \r_out_obuf[3]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \r_out_obuf[3]  (
+            .O (r_out[3]),
+            .I (nt_r_out[1]));
+	// ../source/vga_test.v:10
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="K6", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_UNUSED="TRUE" *)    GTP_INBUF /* rstn_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        rstn_ibuf (
+            .O (nt_rstn),
+            .I (rstn));
+	// ../source/vga_test.v:6
+
+    GTP_DFF_RE /* \v_count[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[0]  (
+            .Q (v_count[0]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N170),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[1]  (
+            .Q (v_count[1]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N27[1]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[2]  (
+            .Q (v_count[2]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N27[2]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[3]  (
+            .Q (v_count[3]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N232[3]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[4]  (
+            .Q (v_count[4]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N232[4]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[5]  (
+            .Q (v_count[5]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N27[5]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[6]  (
+            .Q (v_count[6]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N232[6]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[7]  (
+            .Q (v_count[7]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N232[7]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[8]  (
+            .Q (v_count[8]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N27[8]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* \v_count[9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \v_count[9]  (
+            .Q (v_count[9]),
+            .CE (N161),
+            .CLK (pix_clk),
+            .D (N27[9]),
+            .R (N2_0));
+	// ../source/vga_test.v:76
+
+    GTP_DFF_RE /* vs */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        vs_vname (
+            .Q (vs),
+            .CE (N175),
+            .CLK (pix_clk),
+            .D (1'b1),
+            .R (N187));
+    // defparam vs_vname.orig_name = vs;
+	// ../source/vga_test.v:98
+
+    GTP_DFF /* vs_out */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        vs_out_vname (
+            .Q (nt_vs_out),
+            .CLK (pix_clk),
+            .D (vs));
+    // defparam vs_out_vname.orig_name = vs_out;
+	// ../source/vga_test.v:151
+
+(* PAP_IO_DIRECTION="OUTPUT", PAP_IO_LOC="N1", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_DRIVE="4", PAP_IO_NONE="TRUE", PAP_IO_SLEW="FAST" *)    GTP_OUTBUF /* vs_out_obuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        vs_out_obuf (
+            .O (vs_out),
+            .I (nt_vs_out));
+	// ../source/vga_test.v:7
+
+    GTP_DFF_R /* \x_act[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \x_act[7]  (
+            .Q (x_act[7]),
+            .CLK (pix_clk),
+            .D (N66[7]),
+            .R (\x_act[11:0]_or ));
+	// ../source/vga_test.v:123
+
+    GTP_DFF_R /* \x_act[8]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \x_act[8]  (
+            .Q (x_act[8]),
+            .CLK (pix_clk),
+            .D (N66[8]),
+            .R (\x_act[11:0]_or ));
+	// ../source/vga_test.v:123
+
+    GTP_DFF_R /* \x_act[9]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \x_act[9]  (
+            .Q (x_act[9]),
+            .CLK (pix_clk),
+            .D (N66[9]),
+            .R (\x_act[11:0]_or ));
+	// ../source/vga_test.v:123
+
+    GTP_DFF_R /* \x_act[10]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \x_act[10]  (
+            .Q (x_act[10]),
+            .CLK (pix_clk),
+            .D (N66[10]),
+            .R (\x_act[11:0]_or ));
+	// ../source/vga_test.v:123
+
+    GTP_LUT6D /* \x_act[11:0]_or_inv  */ #(
+            .INIT(64'b0101010101010101010101010101011111111111000000001111110000000011))
+        \x_act[11:0]_or_inv  (
+            .Z (\x_act[11:0]_or ),
+            .Z5 (N66[11]),
+            .I0 (nt_rstn),
+            .I1 (h_count[9]),
+            .I2 (h_count[10]),
+            .I3 (h_count[11]),
+            .I4 (_N147),
+            .I5 (1'b1));
+	// LUT = (~I1&~I2&~I3&~I4)|(~I0) ;
+	// Z5 = (~I1&~I2&~I3&~I4)|(I3&I4)|(I2&I3)|(I1&I3) ;
+
+    GTP_DFF_R /* \x_act[11]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \x_act[11]  (
+            .Q (x_act[11]),
+            .CLK (pix_clk),
+            .D (N66[11]),
+            .R (\x_act[11:0]_or ));
+	// ../source/vga_test.v:123
+
+
+endmodule
+
