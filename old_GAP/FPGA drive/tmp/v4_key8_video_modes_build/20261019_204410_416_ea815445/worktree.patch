@@ -1,0 +1,695 @@
+diff --git a/HDMI_DDR3_OV5640.pds b/HDMI_DDR3_OV5640.pds
+index 671c693..afbf41e 100644
+--- a/HDMI_DDR3_OV5640.pds
++++ b/HDMI_DDR3_OV5640.pds
+@@ -27,6 +27,12 @@
+                     (_format verilog)
+                     (_timespec "2026-10-16T16:17:25")
+                 )
++                (_file "source/rtl/video_capture_status.v"
++                    (_format verilog)
++                )
++                (_file "source/rtl/video_mode_key.v"
++                    (_format verilog)
++                )
+                 (_file "source/rtl/lane_detect.v"
+                     (_format verilog)
+                 )
+@@ -52,6 +58,9 @@
+                     (_format verilog)
+                     (_timespec "2023-03-29T20:34:44")
+                 )
++                (_file "source/rtl/frame_buffer_owner.v"
++                    (_format verilog)
++                )
+                 (_file "source/rtl/fram_buf.v"
+                     (_format verilog)
+                     (_timespec "2023-03-21T14:31:28")
+diff --git a/README.md b/README.md
+index c4af263..23ba0e1 100644
+--- a/README.md
++++ b/README.md
+@@ -3,6 +3,11 @@
+ > 基于 **盘古 50K（PGL50H）** 的实时视频感知流水线
+ > 全国大学生嵌入式芯片与系统设计竞赛 · FPGA 创新设计赛道 · 紫光同创选题三
+ 
++当前开发入口：[项目进程](E:/FPGA drive/HDMI_DDR3_OV5640/reports/项目进程.md)、
++[单路ETH1接线与实施边界](E:/FPGA drive/HDMI_DDR3_OV5640/reports/单路高速互连方案_2026-10-18.md)。
++按比赛功能闭环优先推进；v11仅合成规则四键交互通过，v12手工修复停止。
++下文旧构建/下载命令不是本次执行授权；当前不改RTL、不综合/映射、不烧录。
++
+ ---
+ 
+ ## ⚙️ 硬件
+diff --git a/flow.tcl b/flow.tcl
+index bd38807..67efca0 100644
+--- a/flow.tcl
++++ b/flow.tcl
+@@ -14,6 +14,8 @@
+ # ---- Design sources (Verilog) ----------------------------------------------
+ add_design "source/rtl/hdmi_ddr_ov5640_top.v"
+ add_design "source/rtl/img_proc.v"
++add_design "source/rtl/video_mode_key.v"
++add_design "source/rtl/video_capture_status.v"
+ add_design "source/rtl/lane_detect.v"
+ add_design "source/rtl/zebra_detect.v"
+ add_design "source/rtl/zebra_overlay.v"
+@@ -23,6 +25,7 @@ add_design "source/rtl/adas_packet.v"
+ add_design "source/rtl/adas_test_pattern.v"
+ add_design "source/rtl/cmos_8_16bit.v"
+ add_design "source/rtl/fram_buf.v"
++add_design "source/rtl/frame_buffer_owner.v"
+ add_design "source/rtl/i2c_com.v"
+ add_design "source/rtl/iic_dri.v"
+ add_design "source/rtl/ms72xx_ctl.v"
+diff --git a/hdmi_ddr_ov5640_top.fdc b/hdmi_ddr_ov5640_top.fdc
+index 9fb2790..bab48d7 100644
+--- a/hdmi_ddr_ov5640_top.fdc
++++ b/hdmi_ddr_ov5640_top.fdc
+@@ -973,3 +973,9 @@ set_clock_groups -name cmos2_pclk -asynchronous -group [get_clocks {cmos2_pclk}]
+ set_clock_groups -name cmos2_pclk_16bit -asynchronous -group [get_clocks {cmos2_pclk_16bit}]
+ set_clock_groups -name ddrphy_clkin -asynchronous -group [get_clocks {ddrphy_clkin}]
+ set_clock_groups -name pix_clk -asynchronous -group [get_clocks {pix_clk}]
++# MES50HP manual physical pp32-33: KEY8=H17, active low, A3V3 pull-up.
++define_attribute {p:key8_n} {PAP_IO_DIRECTION} {INPUT}
++define_attribute {p:key8_n} {PAP_IO_LOC} {H17}
++define_attribute {p:key8_n} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:key8_n} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:key8_n} {PAP_IO_NONE} {TRUE}
+diff --git a/source/rtl/fram_buf.v b/source/rtl/fram_buf.v
+index 9674e1f..7995fa4 100644
+--- a/source/rtl/fram_buf.v
++++ b/source/rtl/fram_buf.v
+@@ -33,6 +33,11 @@ module fram_buf #(
+     input                         wr_fsync,
+     input                         wr_en,
+     input  [PIX_WIDTH- 1'b1 : 0]  wr_data,
++    input                         pipeline_running,
++    input [31:0]                  wr_frame_id, wr_frame_time,
++    input                         source_result_valid,
++    input [31:0]                  source_result_id,
++    input [7:0]                   source_result_errors,
+     output reg                    init_done=0,
+     
+     input                         ddr_clk,
+@@ -95,6 +100,38 @@ module fram_buf #(
+     wire [MEM_DQ_WIDTH*8-1:0]   read_rdata  ;
+     wire                        read_en     ;
+     wire                        ddr_wr_bac;
++    wire writer_rst_n, writer_vs, writer_de, line_event, output_sof;
++    wire write_issue, read_issue, write_bank, read_bank, read_enabled, has_frame;
++    wire [11:0] read_completed_gray;
++    wire [PIX_WIDTH-1:0] raw_vout_data;
++    wire [CTRL_ADDR_WIDTH-1:0] owned_waddr =
++        {{(CTRL_ADDR_WIDTH-LINE_ADDR_WIDTH-1){1'b0}}, write_bank,
++        ddr_waddr[LINE_ADDR_WIDTH-1:0]};
++    wire [CTRL_ADDR_WIDTH-1:0] owned_raddr =
++        {{(CTRL_ADDR_WIDTH-LINE_ADDR_WIDTH-1){1'b0}}, read_bank,
++        rd_cmd_addr[LINE_ADDR_WIDTH-1:0]};
++    wire [31:0] published_count /* synthesis syn_keep = 1 */;
++    wire [31:0] rejected_count /* synthesis syn_keep = 1 */;
++    wire [31:0] read_fault_count /* synthesis syn_keep = 1 */;
++    wire [31:0] display_id /* synthesis syn_keep = 1 */;
++    wire [31:0] display_time /* synthesis syn_keep = 1 */;
++    frame_buffer_owner #(.H_NUM(H_NUM), .V_NUM(V_NUM)) owner (
++        .clk(ddr_clk), .rst_n(ddr_rstn), .video_clk(vin_clk),
++        .pipeline_running(pipeline_running), .video_vs(wr_fsync), .video_de(wr_en),
++        .video_id(wr_frame_id), .video_time(wr_frame_time),
++        .result_valid(source_result_valid), .result_id(source_result_id),
++        .result_errors(source_result_errors),
++        .writer_rst_n(writer_rst_n), .writer_vs(writer_vs), .writer_de(writer_de),
++        .line_event(line_event), .write_request(ddr_wreq),
++        .write_ready(ddr_wrdy), .write_done(ddr_wdone),
++        .write_issue(write_issue), .write_bank(write_bank),
++        .output_sof(output_sof), .read_request(rd_cmd_en),
++        .read_ready(rd_cmd_ready), .read_done(rd_cmd_done),
++        .read_issue(read_issue), .read_bank(read_bank), .read_enabled(read_enabled),
++        .has_frame(has_frame), .read_completed_gray(read_completed_gray),
++        .published_count(published_count), .rejected_count(rejected_count),
++        .read_fault_count(read_fault_count), .display_id(display_id), .display_time(display_time)
++    );
+ 
+     wr_buf #(
+         .ADDR_WIDTH       (  CTRL_ADDR_WIDTH  ),//parameter                     ADDR_WIDTH      = 6'd27,
+@@ -108,11 +145,11 @@ module fram_buf #(
+         .FRAME_CNT_WIDTH  (  FRAME_CNT_WIDTH  ) //parameter                     FRAME_CNT_WIDTH = 4'd8
+     ) wr_buf (                                       
+         .ddr_clk          (  ddr_clk          ),//input                         ddr_clk,
+-        .ddr_rstn         (  ddr_rstn         ),//input                         ddr_rstn,
++        .ddr_rstn         (  writer_rst_n     ),
+                                               
+         .wr_clk           (  vin_clk          ),//input                         wr_clk,
+-        .wr_fsync         (  wr_fsync         ),//input                         wr_fsync,
+-        .wr_en            (  wr_en            ),//input                         wr_en,
++        .wr_fsync         (  writer_vs        ),
++        .wr_en            (  writer_de        ),
+         .wr_data          (  wr_data          ),//input  [PIX_WIDTH- 1'b1 : 0]  wr_data,
+         
+         .rd_bac           (  ddr_wr_bac       ),//input                         rd_bac,                                      
+@@ -125,16 +162,40 @@ module fram_buf #(
+         .ddr_wdata_req    (  ddr_wdata_req    ),//input                         ddr_wdata_req,
+                                               
+         .frame_wcnt       (                   ),//output [FRAME_CNT_WIDTH-1 :0] frame_wcnt,
+-        .frame_wirq       (  frame_wirq       ) //output                        frame_wirq
++        .frame_wirq       (                   ),
++        .line_request_event ( line_event     )
+     );
+     
+-    always @(posedge ddr_clk)
+-    begin
+-        if(frame_wirq)
+-            init_done <= 1'b1;
+-        else
+-            init_done <= init_done;
+-    end 
++    reg frame_ready_v;
++    always @(posedge vout_clk or negedge ddr_rstn) begin
++        if (!ddr_rstn) begin frame_ready_v <= 0; init_done <= 0; end
++        else begin frame_ready_v <= has_frame; init_done <= frame_ready_v; end
++    end
++
++    reg [1:0] enabled_v;
++    reg [11:0] lines_v1, lines_v2, output_rows;
++    reg output_de_d, output_bad;
++    wire [11:0] available_rows;
++    genvar bit_index;
++    generate for (bit_index=0; bit_index<12; bit_index=bit_index+1) begin : gray_decode
++        assign available_rows[bit_index] = ^(lines_v2 >> bit_index);
++    end endgenerate
++    always @(posedge vout_clk or negedge ddr_rstn) begin
++        if (!ddr_rstn) begin
++            enabled_v <= 0; lines_v1 <= 0; lines_v2 <= 0;
++            output_rows <= 0; output_de_d <= 0; output_bad <= 1;
++        end else begin
++            enabled_v <= {enabled_v[0], read_enabled};
++            lines_v1 <= read_completed_gray; lines_v2 <= lines_v1;
++            output_de_d <= rd_en;
++            if (rd_fsync) begin output_rows <= 0; output_bad <= 0; end
++            else if (rd_en && !output_de_d) begin
++                output_rows <= output_rows + 1'b1;
++                if (!enabled_v[1] || available_rows <= output_rows) output_bad <= 1;
++            end
++        end
++    end
++    assign vout_data = enabled_v[1] && !output_bad ? raw_vout_data : {PIX_WIDTH{1'b0}};
+     
+     rd_buf #(
+         .ADDR_WIDTH       (  CTRL_ADDR_WIDTH  ),//parameter                     ADDR_WIDTH      = 6'd27,
+@@ -154,7 +215,8 @@ module fram_buf #(
+         .rd_fsync        (  rd_fsync          ),//input                         rd_fsync,
+         .rd_en           (  rd_en             ),//input                         rd_en,
+         .vout_de         (  vout_de           ),//output                        vout_de,
+-        .vout_data       (  vout_data         ),//output [PIX_WIDTH- 1'b1 : 0]  vout_data,
++        .vout_data       (  raw_vout_data     ),
++        .frame_start_event ( output_sof      ),
+         
+         .init_done       (  init_done         ),//input                         init_done,
+       
+@@ -175,18 +237,18 @@ module fram_buf #(
+         .clk              (  ddr_clk          ),//input                        clk            ,            
+         .rstn             (  ddr_rstn         ),//input                        rstn           ,            
+                                               
+-        .wr_cmd_en        (  ddr_wreq         ),//input                        wr_cmd_en   ,
+-        .wr_cmd_addr      (  ddr_waddr        ),//input  [CTRL_ADDR_WIDTH-1:0] wr_cmd_addr ,
+-        .wr_cmd_len       (  ddr_wr_len       ),//input  [31��0]               wr_cmd_len  ,
++        .wr_cmd_en        (  write_issue      ),
++        .wr_cmd_addr      (  owned_waddr      ),
++        .wr_cmd_len       (  ddr_wr_len       ),//input  [31:0]               wr_cmd_len  ,
+         .wr_cmd_ready     (  ddr_wrdy         ),//output                       wr_cmd_ready,
+         .wr_cmd_done      (  ddr_wdone        ),//output                       wr_cmd_done,
+         .wr_bac           (  ddr_wr_bac       ),//output                       wr_bac,                                     
+         .wr_ctrl_data     (  ddr_wdata        ),//input  [MEM_DQ_WIDTH*8-1:0]  wr_ctrl_data,
+         .wr_data_re       (  ddr_wdata_req    ),//output                       wr_data_re  ,
+                                               
+-        .rd_cmd_en        (  rd_cmd_en        ),//input                        rd_cmd_en   ,
+-        .rd_cmd_addr      (  rd_cmd_addr      ),//input  [CTRL_ADDR_WIDTH-1:0] rd_cmd_addr ,
+-        .rd_cmd_len       (  rd_cmd_len       ),//input  [31��0]               rd_cmd_len  ,
++        .rd_cmd_en        (  read_issue       ),
++        .rd_cmd_addr      (  owned_raddr      ),
++        .rd_cmd_len       (  rd_cmd_len       ),//input  [31:0]               rd_cmd_len  ,
+         .rd_cmd_ready     (  rd_cmd_ready     ),//output                       rd_cmd_ready, 
+         .rd_cmd_done      (  rd_cmd_done      ),//output                       rd_cmd_done,
+                                               
+diff --git a/source/rtl/hdmi_ddr_ov5640_top.v b/source/rtl/hdmi_ddr_ov5640_top.v
+index 851b904..16a8ec9 100644
+--- a/source/rtl/hdmi_ddr_ov5640_top.v
++++ b/source/rtl/hdmi_ddr_ov5640_top.v
+@@ -32,6 +32,7 @@ module hdmi_ddr_ov5640_top#(
+     parameter SELF_TEST           = 0
+ )(
+ 	input                                sys_clk              ,//50Mhz
++    input                                key8_n               ,
+ //OV5647
+     output  [1:0]                        cmos_init_done       ,//OV5640寄存器初始化完成
+     //coms1	
+@@ -272,17 +273,59 @@ assign     i_rgb565        =    {cmos2_d_16bit[4:0],cmos2_d_16bit[10:5],cmos2_d_
+ end endgenerate
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////
+-// image pre-processing pipeline (luma / median / sobel).  Define USE_IMG_PROC to enable.
+-// MODE: 0=bypass 1=luma 2=median 3=sobel 4=road markings 5=marking mask
+-`define USE_IMG_PROC
+-`ifdef USE_IMG_PROC
++// KEY8 selects the diagnostic view stored for HDMI; reset selects clean color.
++// The independent clean stream remains available regardless of display mode.
+     wire        proc_de;
+     wire        proc_vs;
+     wire [15:0] proc_rgb;
+-    wire        img_rstn = SELF_TEST ? rstn_out : (cmos_init_done[0] | cmos_init_done[1]);
++    wire        clean_de;
++    wire        clean_vs;
++    wire [15:0] clean_rgb;
++    wire [31:0] input_frame_id, input_frame_time, clean_frame_id, clean_frame_time;
++    wire [31:0] display_frame_id, display_frame_time;
++    wire [2:0] requested_mode;
++    wire source_result_valid;
++    wire [31:0] source_result_id;
++    wire [7:0] source_result_errors;
++    wire        selected_camera_ready;
++`ifdef CMOS_1
++    assign selected_camera_ready = cmos_init_done[0];
++`elsif CMOS_2
++    assign selected_camera_ready = cmos_init_done[1];
++`else
++    assign selected_camera_ready = 1'b0;
++`endif
++    wire        source_ready = SELF_TEST ? rstn_out : selected_camera_ready;
++    wire        img_rstn;
++    wire        capture_healthy;
++    wire        capture_timed_out /* synthesis syn_keep = 1 */;
++    wire [31:0] capture_timeout_count /* synthesis syn_keep = 1 */;
++    wire        capture_snapshot_valid /* synthesis syn_keep = 1 */;
++    wire [255:0] capture_snapshot /* synthesis syn_keep = 1 */;
++    video_capture_status #(
++        .SOURCE_ID ( 0 ), .H_ACTIVE ( 1280 ), .V_ACTIVE ( 720 ),
++        .REF_HZ ( 50000000 ), .TIMEOUT_MS ( 250 )
++    ) u_capture_status (
++        .ref_clk ( sys_clk ), .video_clk ( pclk_in_test ),
++        .rst_n ( rstn_out ), .source_ready ( source_ready ),
++        .video_vs ( vs_in_test ), .video_de ( de_in_test ),
++        .pipeline_rst_n ( img_rstn ), .healthy ( capture_healthy ),
++        .timed_out ( capture_timed_out ), .timeout_count ( capture_timeout_count ),
++        .snapshot_valid ( capture_snapshot_valid ), .snapshot ( capture_snapshot ),
++        .frame_open_id(input_frame_id), .frame_open_time(input_frame_time),
++        .frame_result_valid(source_result_valid), .frame_result_id(source_result_id),
++        .frame_result_errors(source_result_errors)
++    );
+ 
++    video_mode_key u_video_mode_key (
++        .ref_clk(sys_clk), .video_clk(pclk_in_test),
++        .rst_n(rstn_out), .video_rst_n(img_rstn),
++        .key_n(key8_n), .requested_mode(requested_mode)
++    );
+     img_proc #(
+-        .MODE       ( 4    ),
++        .MODE       ( 0    ),
++        .RUNTIME_MODE ( 1  ),
++        .FRAME_TAGS ( 1    ),
+         .DIAG_CYCLE ( 0    ),
+         .ZEBRA_ENABLE ( 1  ),
+         .ADAS_ENABLE ( 1   ) // v8 experiment; retained named bitstreams stay intact
+@@ -294,9 +337,15 @@ end endgenerate
+         .vs_in   (  vs_in_test    ),
+         .rgb_out (  proc_rgb      ),
+         .de_out  (  proc_de       ),
+-        .vs_out  (  proc_vs       )
++        .vs_out  (  proc_vs       ),
++        .clean_rgb_out ( clean_rgb ),
++        .clean_de_out  ( clean_de  ),
++        .clean_vs_out  ( clean_vs  ),
++        .frame_id_in(input_frame_id), .frame_time_in(input_frame_time),
++        .clean_frame_id(clean_frame_id), .clean_frame_time(clean_frame_time),
++        .mode_request(requested_mode),
++        .display_frame_id(display_frame_id), .display_frame_time(display_frame_time)
+     );
+-`endif
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //修改ddr读写模块v1
+     fram_buf fram_buf(
+@@ -307,6 +356,10 @@ end endgenerate
+         .wr_fsync       (  proc_vs             ),//input                         wr_fsync,
+         .wr_en          (  proc_de             ),//input                         wr_en,
+         .wr_data        (  proc_rgb            ),//input  [15 : 0]  wr_data,
++        .pipeline_running(img_rstn),
++        .wr_frame_id(display_frame_id), .wr_frame_time(display_frame_time),
++        .source_result_valid(source_result_valid), .source_result_id(source_result_id),
++        .source_result_errors(source_result_errors),
+         //data_out
+         .vout_clk       (  pix_clk              ),//input                         vout_clk,
+         .rd_fsync       (  vs_o               ),//input                         rd_fsync,
+@@ -342,10 +395,16 @@ end endgenerate
+         .axi_rid        (  axi_rid              ) // input[3:0]         
+     );
+ 
++     wire show_capture_video;
++     video_present_guard u_present_guard (
++        .clk ( pix_clk ), .rst_n ( rstn_out ),
++        .healthy ( capture_healthy ), .vs ( vs_o ),
++        .show_video ( show_capture_video )
++     );
+      always@(posedge pix_clk) begin
+-        r_out<={o_rgb565[15:11],3'b0   };
+-        g_out<={o_rgb565[10:5],2'b0    };
+-        b_out<={o_rgb565[4:0],3'b0     }; 
++        r_out <= show_capture_video ? {o_rgb565[15:11],3'b0} : 8'd0;
++        g_out <= show_capture_video ? {o_rgb565[10:5],2'b0} : 8'd0;
++        b_out <= show_capture_video ? {o_rgb565[4:0],3'b0} : 8'd0;
+         vs_out<=vs_o;
+         hs_out<=hs_o;
+         de_out<=de_o;
+diff --git a/source/rtl/img_proc.v b/source/rtl/img_proc.v
+index bc0ee31..af4d705 100644
+--- a/source/rtl/img_proc.v
++++ b/source/rtl/img_proc.v
+@@ -27,7 +27,9 @@ module img_proc #(
+     parameter H_ACTIVE   = 1280,
+     parameter V_ACTIVE   = 720,
+     parameter ZEBRA_ENABLE = 0,     // opt-in experiment; preserves v6 by default
+-    parameter ADAS_ENABLE = 0      // v8 lane geometry and status HUD
++    parameter ADAS_ENABLE = 0,     // v8 lane geometry and status HUD
++    parameter FRAME_TAGS = 0,
++    parameter RUNTIME_MODE = 0     // 0..4 as above; 5 = legacy lane/zebra HUD
+ )(
+     input               clk,        // pixel_clk
+     input               rst_n,
+@@ -38,7 +40,17 @@ module img_proc #(
+     output reg          de_out,
+     output reg          vs_out,
+     output              adas_valid,
+-    output [255:0]      adas_snapshot
++    output [255:0]      adas_snapshot,
++    output reg [15:0]   clean_rgb_out,
++    output reg          clean_de_out,
++    output reg          clean_vs_out,
++    input [31:0]        frame_id_in,
++    input [31:0]        frame_time_in,
++    output reg [31:0]   clean_frame_id,
++    output reg [31:0]   clean_frame_time,
++    input [2:0]        mode_request,
++    output reg [31:0]  display_frame_id,
++    output reg [31:0]  display_frame_time
+ );
+ 
+     localparam AW = 11;             // Active columns only; supports up to 2048.
+@@ -91,6 +103,7 @@ module img_proc #(
+     reg [10:0] input_row;
+     reg [1:0] write_bank, flush_bank;
+     reg vs_seen, have_frame;
++    reg [63:0] input_frame_tag;
+     reg flush_pending, flushing;
+     wire frame_start = vs_in && !vs_seen;
+     wire input_valid = rst_n && have_frame && !vs_in
+@@ -109,12 +122,14 @@ module img_proc #(
+             flush_pending <= 0;
+             flushing <= 0;
+             flush_col <= 0;
++            input_frame_tag <= 0;
+         end else begin
+             vs_seen <= vs_in;
+             if (frame_start) begin
+                 input_col <= 0;
+                 input_row <= 0;
+                 have_frame <= 1;
++                input_frame_tag <= FRAME_TAGS ? {frame_time_in, frame_id_in} : 64'd0;
+             end else begin
+                 if (input_valid) begin
+                     if (input_col == H_ACTIVE-1) begin
+@@ -168,6 +183,7 @@ module img_proc #(
+     reg [10:0] read_row_d;
+     reg [1:0] read_bank_d;
+     reg [15:0] bottom_d;
++    reg [63:0] read_frame_tag, window_frame_tag;
+     always @(posedge clk) begin
+         if (!rst_n) begin
+             read_valid <= 0;
+@@ -176,6 +192,7 @@ module img_proc #(
+             read_row_d <= 0;
+             read_bank_d <= 0;
+             bottom_d <= 0;
++            read_frame_tag <= 0;
+         end else begin
+             read_valid <= read_event;
+             read_flush <= flushing;
+@@ -183,6 +200,7 @@ module img_proc #(
+             read_row_d <= flushing ? V_ACTIVE : input_row;
+             read_bank_d <= flushing ? flush_bank : write_bank;
+             bottom_d <= rgb_in;
++            read_frame_tag <= input_frame_tag;
+         end
+     end
+ 
+@@ -208,6 +226,7 @@ module img_proc #(
+         if (!rst_n) begin
+             c_pix <= 0;
+             window_vs <= 0;
++            window_frame_tag <= 0;
+             tail_pending <= 0;
+             top_a <= 0; top_b <= 0;
+             mid_a <= 0; mid_b <= 0;
+@@ -222,6 +241,8 @@ module img_proc #(
+             // Downstream frame counters must follow buffered data, not input VS.
+             window_vs <= window_event && !read_flush
+                           && (read_row_d == 1) && (read_col_d == 0);
++            if (window_event && !read_flush && read_row_d == 1 && read_col_d == 0)
++                window_frame_tag <= read_frame_tag;
+             tail_pending <= 0;
+             if (window_event || tail_pending) begin
+                 if (window_event && read_col_d == 0) begin
+@@ -248,6 +269,23 @@ module img_proc #(
+         end
+     end
+ 
++    // Keep the buffered color stream independent of all diagnostic drawing.
++    // Its own frame marker precedes pixel zero; never pair it with lane_de/vs.
++    always @(posedge clk) begin
++        if (!rst_n) begin
++            clean_rgb_out <= 0;
++            clean_de_out <= 0;
++            clean_vs_out <= 0;
++            clean_frame_id <= 0;
++            clean_frame_time <= 0;
++        end else begin
++            clean_rgb_out <= c_pix[15:0];
++            clean_de_out <= c_pix[16];
++            clean_vs_out <= window_vs;
++            {clean_frame_time, clean_frame_id} <= window_frame_tag;
++        end
++    end
++
+     //------------------------------------------------------------------------
+     //  6. 3x3 median : sort each column, then take the median of
+     //     {max-of-mins, median-of-medians, min-of-maxes}
+@@ -317,7 +355,23 @@ module img_proc #(
+     end
+ 
+     localparam [2:0] MODE_C = MODE;
+-    wire [2:0] msel = DIAG_CYCLE ? mode_sel : MODE_C;
++    wire lane_de, lane_vs;
++    reg [2:0] frame_mode, overlay_mode;
++    always @(posedge clk) begin
++        if (!rst_n) begin
++            frame_mode <= 0;
++            overlay_mode <= 0;
++        end else begin
++            // The buffered frame header, not raw VS, owns the mode. Raw VS
++            // may arrive while the previous frame's last row is flushing.
++            if (window_vs)
++                frame_mode <= (mode_request <= 5) ? mode_request : 3'd0;
++            if (lane_vs)
++                overlay_mode <= frame_mode;
++        end
++    end
++    wire [2:0] msel = RUNTIME_MODE ? frame_mode : (DIAG_CYCLE ? mode_sel : MODE_C);
++    wire legacy_overlay = RUNTIME_MODE ? (overlay_mode == 5) : (msel == 4);
+ 
+     wire [15:0] col_sob = to565(sobel);
+     wire [15:0] col_gry = to565(median);
+@@ -341,9 +395,9 @@ module img_proc #(
+         endcase
+     end
+ 
+-    wire [1:0] paint_mode = (msel == 4) ? 2'd1 : ((msel == 5) ? 2'd2 : 2'd0);
++    wire [1:0] paint_mode = (msel == 4 || (RUNTIME_MODE && msel == 5)) ? 2'd1
++                            : ((!RUNTIME_MODE && msel == 5) ? 2'd2 : 2'd0);
+     wire [15:0] lane_rgb;
+-    wire lane_de, lane_vs;
+     wire lane_white,lane_yellow;
+     lane_detect #(.H_ACTIVE(H_ACTIVE), .V_ACTIVE(V_ACTIVE)) u_lane (
+         .clk         ( clk               ),
+@@ -379,7 +433,7 @@ module img_proc #(
+         );
+         zebra_overlay #(.H_ACTIVE(H_ACTIVE), .V_ACTIVE(V_ACTIVE)) u_overlay (
+             .clk(clk), .rst_n(rst_n), .de(lane_de), .vs(lane_vs),
+-            .enable(msel == 4), .rgb_in(lane_rgb),
++            .enable(legacy_overlay), .rgb_in(lane_rgb),
+             .result_valid(result_valid), .candidate(candidate), .confirmed(confirmed),
+             .box_x0(x0), .box_y0(y0), .box_x1(x1), .box_y1(y1), .rgb_out(annotated_rgb)
+         );
+@@ -404,7 +458,7 @@ module img_proc #(
+             .left_support(),.right_support()
+         );
+         adas_overlay #(.H_ACTIVE(H_ACTIVE),.V_ACTIVE(V_ACTIVE)) u_overlay (
+-            .clk(clk),.rst_n(rst_n),.de(lane_de),.vs(lane_vs),.enable(msel==4),
++            .clk(clk),.rst_n(rst_n),.de(lane_de),.vs(lane_vs),.enable(legacy_overlay),
+             .rgb_in(annotated_rgb),.result_valid(adas_valid),.snapshot(adas_snapshot),.rgb_out(final_rgb)
+         );
+     end else begin : g_no_adas
+@@ -414,9 +468,21 @@ module img_proc #(
+     end endgenerate
+ 
+     always @(posedge clk) begin
+-        rgb_out <= final_rgb;
+-        de_out <= lane_de;
+-        vs_out <= lane_vs;
++        if (!rst_n) begin
++            rgb_out <= 0;
++            de_out <= 0;
++            vs_out <= 0;
++            display_frame_id <= 0;
++            display_frame_time <= 0;
++        end else begin
++            rgb_out <= final_rgb;
++            de_out <= lane_de;
++            vs_out <= lane_vs;
++            // At 1280 columns the buffered frame tag is stable long before
++            // this delayed header; never borrow tags from raw input VS.
++            if (lane_vs)
++                {display_frame_time, display_frame_id} <= window_frame_tag;
++        end
+     end
+ 
+ endmodule
+diff --git a/source/rtl/rd_buf.v b/source/rtl/rd_buf.v
+index b41db1b..72007b3 100644
+--- a/source/rtl/rd_buf.v
++++ b/source/rtl/rd_buf.v
+@@ -48,7 +48,8 @@ module rd_buf #(
+     input                         ddr_rdone,
+     
+     input [8*DQ_WIDTH- 1'b1 : 0]  ddr_rdata,
+-    input                         ddr_rdata_en 
++    input                         ddr_rdata_en,
++    output                        frame_start_event
+ );
+     localparam SIM            = 1'b0;
+     localparam RAM_WIDTH      = 16'd32;
+@@ -94,12 +95,13 @@ module rd_buf #(
+     always @(posedge ddr_clk)
+     begin
+         if(wr_rst || (~ddr_rstn))
+-            wr_line <= 12'd1;
++            wr_line <= 12'd0;
+         else if(wr_trig)
+             wr_line <= wr_line + 12'd1;
+     end 
+     
+     assign wr_rst = ~wr_fsync_3d && wr_fsync_2d;
++    assign frame_start_event = wr_rst;
+     
+     //==========================================================================
+     reg [FRAME_CNT_WIDTH - 1'b1 :0] wr_frame_cnt=0;
+diff --git a/source/rtl/wr_buf.v b/source/rtl/wr_buf.v
+index a7372fc..bf271f8 100644
+--- a/source/rtl/wr_buf.v
++++ b/source/rtl/wr_buf.v
+@@ -48,7 +48,8 @@ module wr_buf #(
+     input                         ddr_wdata_req,
+     
+     output [FRAME_CNT_WIDTH-1 :0] frame_wcnt,
+-    output                        frame_wirq
++    output                        frame_wirq,
++    output                        line_request_event
+ );
+     localparam RAM_WIDTH      = 16'd32;
+     localparam DDR_DATA_WIDTH = DQ_WIDTH * 8;
+@@ -68,14 +69,17 @@ module wr_buf #(
+     begin
+         wr_fsync_1d <= wr_fsync;
+         wr_en_1d <= wr_en;
+-        ddr_rstn_1d <= ddr_rstn;
+-        ddr_rstn_2d <= ddr_rstn_1d;
+-        
+-        if(~wr_fsync_1d & wr_fsync && ddr_rstn_2d) 
++        if (!ddr_rstn_2d)
++            wr_enable <= 1'b0;
++        else if(~wr_fsync_1d & wr_fsync && ddr_rstn_2d)
+             wr_enable <= 1'b1;
+         else 
+             wr_enable <= wr_enable;
+     end 
++    always @(posedge wr_clk or negedge ddr_rstn) begin
++        if (!ddr_rstn) begin ddr_rstn_1d <= 0; ddr_rstn_2d <= 0; end
++        else begin ddr_rstn_1d <= 1; ddr_rstn_2d <= ddr_rstn_1d; end
++    end
+     
+     assign wr_rst = (~wr_fsync_1d & wr_fsync) | (~ddr_rstn_2d);
+     
+@@ -203,13 +207,18 @@ endgenerate
+     reg rd_pulse_1d,rd_pulse_2d,rd_pulse_3d;
+     always @(posedge ddr_clk)
+     begin 
+-        rd_pulse_1d <= rd_pulse;
+-        rd_pulse_2d <= rd_pulse_1d;
+-        rd_pulse_3d <= rd_pulse_2d;
++        if (!ddr_rstn) begin
++            rd_pulse_1d <= 0; rd_pulse_2d <= 0; rd_pulse_3d <= 0;
++        end else begin
++            rd_pulse_1d <= rd_pulse;
++            rd_pulse_2d <= rd_pulse_1d;
++            rd_pulse_3d <= rd_pulse_2d;
++        end
+     end 
+     
+     wire rd_trig;
+     assign rd_trig = ~rd_pulse_3d && rd_pulse_2d;
++    assign line_request_event = rd_trig;
+     
+     reg ddr_wr_req=0;
+     reg ddr_wr_req_1d;
+@@ -217,22 +226,30 @@ endgenerate
+     
+     always @(posedge ddr_clk)
+     begin 
++        if (!ddr_rstn) begin
++            ddr_wr_req_1d <= 0;
++            ddr_wr_req <= 0;
++        end else begin
+         ddr_wr_req_1d <= ddr_wr_req;
+-        
+         if(rd_trig)
+             ddr_wr_req <= 1'b1;
+         else if(ddr_wdata_req)
+             ddr_wr_req <= 1'b0;
+         else
+             ddr_wr_req <= ddr_wr_req;
++        end
+     end 
+     
+     reg  rd_en_1d;
+     reg  ddr_wdata_req_1d;
+     always @(posedge ddr_clk)
+     begin
+-        ddr_wdata_req_1d <= ddr_wdata_req;
+-        rd_en_1d <= ~ddr_wr_req_1d & ddr_wr_req;
++        if (!ddr_rstn) begin
++            ddr_wdata_req_1d <= 0; rd_en_1d <= 0;
++        end else begin
++            ddr_wdata_req_1d <= ddr_wdata_req;
++            rd_en_1d <= ~ddr_wr_req_1d & ddr_wr_req;
++        end
+     end 
+     
+     always @(posedge ddr_clk)
+diff --git a/source/rtl/wr_cmd_trans.v b/source/rtl/wr_cmd_trans.v
+index bdfc0ba..f52a7f3 100644
+--- a/source/rtl/wr_cmd_trans.v
++++ b/source/rtl/wr_cmd_trans.v
+@@ -293,7 +293,7 @@ module wr_cmd_trans #(
+             rd_cmd_done <= 1'd0;
+         else
+         begin
+-            if(rd_data_cnt == rd_trans_len - 1'b1)
++            if(read_en && rd_data_cnt == rd_trans_len - 1'b1)
+                 rd_cmd_done <= 1'd1;
+             else
+                 rd_cmd_done <= 1'd0;

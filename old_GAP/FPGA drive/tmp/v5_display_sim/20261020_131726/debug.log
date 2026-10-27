@@ -1,0 +1,49 @@
+ ... Linking
+ ... Removing symbol tables
+ ... Compiletf functions
+Compiling VVP ...
+ ... VVP file version 13.0 (stable) (v13_0)
+Compile cleanup...
+ ...     2422 functors (net_fun pool=524288 bytes)
+                873 logic
+                  0 bufif
+                  2 resolv
+                783 signals
+ ...     2060 filters (net_fil pool=524288 bytes)
+ ...    42794 opcodes (1032192 bytes)
+ ...     1946 nets
+ ...     2422 vvp_nets (1048544 bytes)
+ ...        0 arrays (0 words)
+ ...       18 memories
+                 18 logic (147984 words)
+                  0 real (0 words)
+ ...      349 scopes
+Running ...
+ ...execute EndOfCompile callbacks
+ ...propagate initialization events
+ ...execute StartOfSim callbacks
+ ...run scheduler
+DEBUG t=            10000000 state=1 run=1 grant=1 de=1 x=0dc wr_addr=06d rd_addr=000
+WRITE_MISMATCH id=0 y=0 x=0 got=xxxx expected=0000
+WRITE_MISMATCH id=0 y=0 x=1 got=xxxx expected=9e37
+WRITE_MISMATCH id=0 y=0 x=2 got=xxxx expected=3c6e
+WRITE_MISMATCH id=0 y=0 x=3 got=xxxx expected=daa5
+WRITE_MISMATCH id=0 y=0 x=4 got=xxxx expected=78dc
+WRITE_MISMATCH id=0 y=0 x=5 got=xxxx expected=1713
+WRITE_MISMATCH id=0 y=0 x=6 got=xxxx expected=b54a
+WRITE_MISMATCH id=0 y=0 x=7 got=xxxx expected=5381
+DEBUG_WRITE t=            38145000 data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx lineRAM=28a98a72ec3b4e04afcd1196735fd52836f198bafa835c4cbe151fde81a7e370 pack=9159f322 wa=278 ra=001
+DEBUG_WRITE t=            38155000 data=28a98a72ec3b4e04afcd1196735fd52836f198bafa835c4cbe151fde81a7e370 lineRAM=28a98a72ec3b4e04afcd1196735fd52836f198bafa835c4cbe151fde81a7e370 pack=cdc72f90 wa=278 ra=002
+DEBUGEND writes=        160 errors=         16
+E:\zhoumian\FPGA\old_GAP\FPGA drive\tmp\v5_display_sim\20261020_131726\debug_tb.sv:274: $finish called at 100000000 (1ps)
+ ...execute Postsim callbacks
+Event counts:
+       52952 time steps (pool=113)
+     1194495 thread schedule events
+     2418949 assign events
+             ...assign(vec4) pool=9362
+             ...assign(vec8) pool=204
+             ...assign(real) pool=256
+             ...assign(word) pool=128
+             ...assign(word/r) pool=204
+      202427 other events (pool=4096)

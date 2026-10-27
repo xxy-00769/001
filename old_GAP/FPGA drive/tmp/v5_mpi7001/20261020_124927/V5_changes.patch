@@ -1,0 +1,187 @@
+--- flow.tcl.before
++++ flow.tcl.V5
+@@ -36,6 +36,8 @@
+ add_design "source/rtl/rd_ctrl.v"
+ add_design "source/rtl/reg_config.v"
+ add_design "source/rtl/sync_vg.v"
++add_design "source/rtl/mpi7001_timing.v"
++add_design "source/rtl/pll_mpi7001.v"
+ add_design "source/rtl/wr_buf.v"
+ add_design "source/rtl/wr_cmd_trans.v"
+ add_design "source/rtl/wr_ctrl.v"
+@@ -56,6 +58,6 @@
+ synthesize -ads -selected_syn_tool_opt 2
+ dev_map
+ # Repair short DDR3/pixel paths in both corners without relaxing constraints.
+-pnr -optimize_multi_corner_timing -fix_hold_violation -fix_hold_violation_iterations 16 -fix_hold_violation_threshold 200 -fix_hold_violation_in_route TRUE -fix_hold_violation_threshold_for_clk_tree 200
++pnr -optimize_multi_corner_timing -fix_hold_violation -fix_hold_violation_iterations 24 -fix_hold_violation_threshold 350 -fix_hold_violation_in_route TRUE -fix_hold_violation_threshold_for_clk_tree 200
+ report_timing
+ gen_bit_stream
+--- HDMI_DDR3_OV5640.pds.before
++++ HDMI_DDR3_OV5640.pds.V5
+@@ -23,6 +23,14 @@
+                     (_format verilog)
+                     (_timespec "2023-03-30T09:49:30")
+                 )
++                (_file "source/rtl/mpi7001_timing.v"
++                    (_format verilog)
++                    (_timespec "2026-10-20T12:00:00")
++                )
++                (_file "source/rtl/pll_mpi7001.v"
++                    (_format verilog)
++                    (_timespec "2026-10-20T12:00:00")
++                )
+                 (_file "source/rtl/img_proc.v"
+                     (_format verilog)
+                     (_timespec "2026-10-16T16:17:25")
+--- hdmi_ddr_ov5640_top.fdc.before
++++ hdmi_ddr_ov5640_top.fdc.V5
+@@ -748,9 +748,9 @@
+ set_clock_uncertainty {0.200} [get_clocks {cmos2_pclk_16bit}]  -setup -hold
+ set_clock_uncertainty {0.200} [get_clocks {cmos1_pclk}]  -setup -hold
+ set_clock_uncertainty {0.200} [get_clocks {cmos2_pclk}]  -setup -hold
+-create_generated_clock -name {pix_clk} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout0}] -master_clock [get_clocks {sys_clk}] -multiply_by {27} -divide_by {20}
++create_generated_clock -name {pix_clk} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout0}] -master_clock [get_clocks {sys_clk}] -multiply_by {13} -divide_by {22}
+ create_generated_clock -name {cfg_clk} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout1}] -master_clock [get_clocks {sys_clk}] -multiply_by {1} -divide_by {5}
+-create_generated_clock -name {clk_25M} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout3}] -master_clock [get_clocks {sys_clk}] -multiply_by {1} -divide_by {2}
++create_generated_clock -name {clk_25M} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout2}] -master_clock [get_clocks {sys_clk}] -multiply_by {1} -divide_by {2}
+ 
+ define_attribute {p:cmos1_data[7]} {PAP_IO_DIRECTION} {INPUT}
+ define_attribute {p:cmos1_data[7]} {PAP_IO_LOC} {AB13}
+--- impl.pds.before
++++ impl.pds.V5
+@@ -22,6 +22,14 @@
+                 (_file "source/rtl/hdmi_ddr_ov5640_top.v" + "hdmi_ddr_ov5640_top:"
+                     (_format verilog)
+                     (_timespec "2026-10-19T20:36:24")
++                )
++                (_file "source/rtl/mpi7001_timing.v"
++                    (_format verilog)
++                    (_timespec "2026-10-20T12:00:00")
++                )
++                (_file "source/rtl/pll_mpi7001.v"
++                    (_format verilog)
++                    (_timespec "2026-10-20T12:00:00")
+                 )
+                 (_file "source/rtl/img_proc.v"
+                     (_format verilog)
+--- source\rtl\fram_buf.v.before
++++ source\rtl\fram_buf.v.V5
+@@ -20,6 +20,7 @@
+ //////////////////////////////////////////////////////////////////////////////////
+ `define UD #1
+ module fram_buf #(
++    parameter DISPLAY_HALF = 0, // display-only 2x nearest-neighbour reduction
+     parameter                     MEM_ROW_WIDTH        = 15    ,
+     parameter                     MEM_COLUMN_WIDTH     = 10    ,
+     parameter                     MEM_BANK_WIDTH       = 3     ,
+@@ -198,10 +199,11 @@
+     assign vout_data = enabled_v[1] && !output_bad ? raw_vout_data : {PIX_WIDTH{1'b0}};
+     
+     rd_buf #(
++        .DISPLAY_HALF     ( DISPLAY_HALF ),
+         .ADDR_WIDTH       (  CTRL_ADDR_WIDTH  ),//parameter                     ADDR_WIDTH      = 6'd27,
+         .ADDR_OFFSET      (  32'h0000_0000    ),//parameter                     ADDR_OFFSET     = 32'h0000_0000,
+         .H_NUM            (  H_NUM            ),//parameter                     H_NUM           = 12'd1920,
+-        .V_NUM            (  V_NUM            ),//parameter                     V_NUM           = 12'd1080,
++        .V_NUM            ( DISPLAY_HALF ? V_NUM/2 : V_NUM ),//parameter                     V_NUM           = 12'd1080,
+         .DQ_WIDTH         (  MEM_DQ_WIDTH     ),//parameter                     DQ_WIDTH        = 7'd32,
+         .LEN_WIDTH        (  LEN_WIDTH        ),//parameter                     LEN_WIDTH       = 6'd16,
+         .PIX_WIDTH        (  PIX_WIDTH        ),//parameter                     PIX_WIDTH       = 6'd24,
+--- source\rtl\hdmi_ddr_ov5640_top.v.before
++++ source\rtl\hdmi_ddr_ov5640_top.v.V5
+@@ -141,9 +141,9 @@
+     reg  [15:0]                 cnt_1                      ;
+ /////////////////////////////////////////////////////////////////////////////////////
+ //PLL
+-    pll u_pll (
++    pll_mpi7001 u_pll (
+         .clkin1   (  sys_clk    ),//50MHz
+-        .clkout0  (  pix_clk    ),//37.125M 720P30
++        .clkout0  (  pix_clk    ),//29.545454 MHz MPI7001 800x480
+         .clkout1  (  cfg_clk    ),//10MHz
+         .clkout2  (  clk_25M    ),//25M
+         .pll_lock (  locked     )
+@@ -348,7 +348,7 @@
+     );
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////
+ //修改ddr读写模块v1
+-    fram_buf fram_buf(
++    fram_buf #(.DISPLAY_HALF(1)) fram_buf(
+         .ddr_clk        (  core_clk             ),//input                         ddr_clk,
+         .ddr_rstn       (  ddr_init_done        ),//input                         ddr_rstn,
+         //data_in                                  
+@@ -401,24 +401,21 @@
+         .healthy ( capture_healthy ), .vs ( vs_o ),
+         .show_video ( show_capture_video )
+      );
+-     always@(posedge pix_clk) begin
+-        r_out <= show_capture_video ? {o_rgb565[15:11],3'b0} : 8'd0;
+-        g_out <= show_capture_video ? {o_rgb565[10:5],2'b0} : 8'd0;
+-        b_out <= show_capture_video ? {o_rgb565[4:0],3'b0} : 8'd0;
+-        vs_out<=vs_o;
+-        hs_out<=hs_o;
+-        de_out<=de_o;
++     // Display-only adapter. Capture, processing and stored frames remain 720p.
++     wire panel_hs, panel_vs, panel_de, panel_image;
++     mpi7001_timing u_panel_timing (
++        .clk(pix_clk), .rst_n(rstn_out && ddr_init_done),
++        .frame_sync(vs_o), .read_request(de_re),
++        .hs(panel_hs), .vs(panel_vs), .de(panel_de), .image_area(panel_image)
++     );
++     always @(posedge pix_clk) begin
++        r_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[15:11],3'b0} : 8'd0;
++        g_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[10:5],2'b0} : 8'd0;
++        b_out <= (panel_image && show_capture_video && de_o) ? {o_rgb565[4:0],3'b0} : 8'd0;
++        vs_out <= panel_vs;
++        hs_out <= panel_hs;
++        de_out <= panel_de;
+      end
+-/////////////////////////////////////////////////////////////////////////////////////
+-//产生visa时序 
+-     sync_vg sync_vg(                            
+-        .clk            (  pix_clk              ),//input                   clk,                                 
+-        .rstn           (  init_done            ),//input                   rstn,                            
+-        .vs_out         (  vs_o                 ),//output reg              vs_out,                                                                                                                                      
+-        .hs_out         (  hs_o                 ),//output reg              hs_out,            
+-        .de_out         (                       ),//output reg              de_out, 
+-        .de_re          (  de_re                )    
+-    );  
+ ////////////////////////////////////////////////////////////////////////////////////////////
+ //ddr    
+         DDR3_50H u_DDR3_50H (
+--- source\rtl\rd_buf.v.before
++++ source\rtl\rd_buf.v.V5
+@@ -20,6 +20,7 @@
+ //////////////////////////////////////////////////////////////////////////////////
+ `define UD #1
+ module rd_buf #(
++    parameter DISPLAY_HALF = 0,
+     parameter                     ADDR_WIDTH      = 6'd27,
+     parameter                     ADDR_OFFSET     = 32'h0000_0000,
+     parameter                     H_NUM           = 12'd1920,
+@@ -119,7 +120,7 @@
+         if(wr_rst)
+             wr_cnt <= 9'd0;
+         else if(ddr_rdone)
+-            wr_cnt <= wr_cnt + DDR_ADDR_OFFSET;
++            wr_cnt <= wr_cnt + DDR_ADDR_OFFSET * (DISPLAY_HALF ? 2 : 1);
+         else
+             wr_cnt <= wr_cnt;
+     end 
+@@ -204,6 +205,15 @@
+                 read_data <= 'd0;
+         end 
+     end
++    else if(PIX_WIDTH == 6'd16 && DISPLAY_HALF) begin
++        // One 32-bit RAM word contains two source pixels: retain x=0,2,...1278.
++        // All 1280 source pixels were fetched, so the circular line RAM stays aligned.
++        assign read_en = rd_en;
++        always @(posedge vout_clk) begin
++            if (rd_en_1d) read_data <= rd_data[15:0];
++            else read_data <= 0;
++        end
++    end
+     else if(PIX_WIDTH == 6'd16)
+     begin
+         assign read_en = rd_en && (rd_cnt[0] != 1'b1);

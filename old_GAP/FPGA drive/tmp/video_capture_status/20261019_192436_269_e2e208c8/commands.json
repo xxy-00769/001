@@ -1,0 +1,140 @@
+[
+  {
+    "Tool": "vlog.exe",
+    "Arguments": [
+      "-version"
+    ],
+    "ExitCode": 0,
+    "Log": "version.log"
+  },
+  {
+    "Tool": "vlib.exe",
+    "Arguments": [
+      "work"
+    ],
+    "ExitCode": 0,
+    "Log": "library.log"
+  },
+  {
+    "Tool": "vlog.exe",
+    "Arguments": [
+      "-sv",
+      "-work",
+      "work",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\video_capture_status.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\img_proc.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\lane_detect.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\zebra_detect.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\zebra_overlay.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\lane_geometry.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\source\\rtl\\adas_overlay.v",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\video_capture_status\\capture_status_tb.sv",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\video_capture_status\\full_color_tb.sv",
+      "E:\\FPGA drive\\HDMI_DDR3_OV5640\\tools\\video_capture_status\\recovery_color_tb.sv"
+    ],
+    "ExitCode": 0,
+    "Log": "compile.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "-c"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_status_tb.config.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "work",
+      "E:\\FPGA drive\\tmp\\video_capture_status\\20261019_192436_269_e2e208c8\\work"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_status_tb.map.log"
+  },
+  {
+    "Tool": "vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "capture_status_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\video_capture_status\\20261019_192436_269_e2e208c8\\capture_status_tb\\simulation.log"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_status_tb.console.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "-c"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_full_color_tb.config.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "work",
+      "E:\\FPGA drive\\tmp\\video_capture_status\\20261019_192436_269_e2e208c8\\work"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_full_color_tb.map.log"
+  },
+  {
+    "Tool": "vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "capture_full_color_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\video_capture_status\\20261019_192436_269_e2e208c8\\capture_full_color_tb\\simulation.log"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_full_color_tb.console.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "-c"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_recovery_color_tb.config.log"
+  },
+  {
+    "Tool": "vmap.exe",
+    "Arguments": [
+      "work",
+      "E:\\FPGA drive\\tmp\\video_capture_status\\20261019_192436_269_e2e208c8\\work"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_recovery_color_tb.map.log"
+  },
+  {
+    "Tool": "vsim.exe",
+    "Arguments": [
+      "-c",
+      "-t",
+      "1ps",
+      "-lib",
+      "work",
+      "capture_recovery_color_tb",
+      "-do",
+      "onerror {quit -code 2}; run -all; quit -code 0",
+      "-l",
+      "E:\\FPGA drive\\tmp\\video_capture_status\\20261019_192436_269_e2e208c8\\capture_recovery_color_tb\\simulation.log"
+    ],
+    "ExitCode": 0,
+    "Log": "capture_recovery_color_tb.console.log"
+  }
+]
