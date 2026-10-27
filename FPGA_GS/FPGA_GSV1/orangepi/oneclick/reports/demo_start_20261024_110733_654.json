@@ -1,0 +1,283 @@
+{
+    "action":  "Start",
+    "version":  "M4-06-r1",
+    "ok":  true,
+    "remote":  {
+                   "ok":  true,
+                   "message":  "已启动本地录像／模拟车辆；不绑定UDP，不需要FPGA",
+                   "process":  {
+                                   "pid":  91424,
+                                   "start_ticks":  "929847",
+                                   "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                   "argv":  [
+                                                ".venv404/bin/python",
+                                                "m406/demo.py",
+                                                "--port",
+                                                "8080",
+                                                "--preview-width",
+                                                "640"
+                                            ],
+                                   "uid":  1000
+                               },
+                   "status":  {
+                                  "ok":  true,
+                                  "data":  {
+                                               "mode":  "FILE_TEST",
+                                               "vehicle":  "SIMULATION",
+                                               "release":  "M4-06-r1",
+                                               "instance":  "7596e5fc0a1b2b61fa6d6af4",
+                                               "control_token":  "0h3QkMtVb9vC18jNX2qflETXTUwkRYiJ",
+                                               "host_monotonic_ms":  9300230.692453,
+                                               "video":  "SC_BT.mp4",
+                                               "files":  [
+                                                             {
+                                                                 "name":  "SC_BT.mp4",
+                                                                 "duration":  59.882646,
+                                                                 "fps":  30.001687177285582,
+                                                                 "label":  "日间城区"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_BT2.mp4",
+                                                                 "duration":  32.042667,
+                                                                 "fps":  30.024968789013734,
+                                                                 "label":  "黄昏高架"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_YJ.mp4",
+                                                                 "duration":  177.834667,
+                                                                 "fps":  30.00214260849744,
+                                                                 "label":  "夜间城区"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_YJ2.mp4",
+                                                                 "duration":  78.05,
+                                                                 "fps":  39.62832425504646,
+                                                                 "label":  "蓝调高架"
+                                                             }
+                                                         ],
+                                               "source_fps":  30.001687177285582,
+                                               "duration":  59.882646,
+                                               "position":  0.7,
+                                               "playing":  true,
+                                               "loop":  true,
+                                               "epoch":  0,
+                                               "processed":  4,
+                                               "processed_fps":  8.479,
+                                               "skipped_source_frames":  18,
+                                               "loop_count":  0,
+                                               "target_fps":  15,
+                                               "preview_width":  640,
+                                               "frame_id":  21,
+                                               "sequence":  4,
+                                               "age_ms":  72.0,
+                                               "driving":  {
+                                                               "mode":  "intersection",
+                                                               "lane":  "straight",
+                                                               "intent":  "auto",
+                                                               "forced":  false,
+                                                               "motion":  "STOPPED",
+                                                               "suggestion":  "UNKNOWN",
+                                                               "reason":  "交通灯证据已过期或等待检测；不自动放行",
+                                                               "alarm":  null,
+                                                               "alarm_remaining_seconds":  0,
+                                                               "command_id":  0,
+                                                               "alarm_policy":  "告警锁存5秒；到期取消强制并停车；停车/清除告警立即解除；切视频/跳转/循环重置",
+                                                               "vehicle":  "SIMULATED_ONLY"
+                                                           },
+                                               "perception":  {
+                                                                  "signal":  {
+                                                                                 "state":  "UNKNOWN",
+                                                                                 "actions":  [
+
+                                                                                             ],
+                                                                                 "confidence":  0,
+                                                                                 "reason":  "自动灯组控制归属未知"
+                                                                             },
+                                                                  "lanes":  {
+
+                                                                            },
+                                                                  "stage_ms":  {
+
+                                                                               },
+                                                                  "detection":  {
+                                                                                    "backend":  "RKNN/NPU",
+                                                                                    "model":  "YOLOv8n COCO w8a8",
+                                                                                    "input_size":  [
+                                                                                                       640,
+                                                                                                       640
+                                                                                                   ],
+                                                                                    "threshold":  0.25,
+                                                                                    "nms_iou":  0.45,
+                                                                                    "epoch":  0,
+                                                                                    "frame_id":  0,
+                                                                                    "objects":  [
+
+                                                                                                ],
+                                                                                    "detected_count":  0,
+                                                                                    "held_count":  0,
+                                                                                    "count":  0,
+                                                                                    "detection_fps":  0,
+                                                                                    "stage_ms":  {
+                                                                                                     "det_preprocess":  10.802,
+                                                                                                     "det_inference":  52.226,
+                                                                                                     "det_postprocess":  6.185,
+                                                                                                     "det_tracking":  0.032
+                                                                                                 },
+                                                                                    "inference_age_ms":  706.4,
+                                                                                    "display_frame_id":  21,
+                                                                                    "expired":  true,
+                                                                                    "age_reference_monotonic":  9300.158716256
+                                                                                },
+                                                                  "traffic":  {
+                                                                                  "backend":  "RKNN/NPU + CPU",
+                                                                                  "method":  "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+                                                                                  "scope":  "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+                                                                                  "epoch":  0,
+                                                                                  "source_frame_id":  0,
+                                                                                  "decoded_monotonic":  9299.52431599,
+                                                                                  "age_ms":  706.4,
+                                                                                  "lights":  [
+
+                                                                                             ],
+                                                                                  "transitions":  [
+
+                                                                                                  ],
+                                                                                  "control_relation":  "UNKNOWN",
+                                                                                  "control_reason":  "自动归属未实现；不使用旧人工场景标定",
+                                                                                  "stage_ms":  {
+                                                                                                   "traffic_preprocess":  6.270427998970263,
+                                                                                                   "traffic_inference":  102.15294299996458,
+                                                                                                   "traffic_postprocess":  3.6909750015183818,
+                                                                                                   "traffic_geometry_color":  224.096,
+                                                                                                   "traffic_total":  336.286
+                                                                                               },
+                                                                                  "statistics":  {
+                                                                                                     "raw_geometry_candidates":  0,
+                                                                                                     "paired_geometry_candidates":  0,
+                                                                                                     "geometry_hypotheses":  32,
+                                                                                                     "dense_context_rejected":  0
+                                                                                                 },
+                                                                                  "expired":  true,
+                                                                                  "reason":  "交通灯证据超过600ms或播放周期已变化"
+                                                                              },
+                                                                  "road":  {
+                                                                               "state":  "UNKNOWN",
+                                                                               "reason":  "道路模型证据超过500ms失效",
+                                                                               "ego":  {
+                                                                                           "state":  "UNKNOWN",
+                                                                                           "reason":  "道路模型过期",
+                                                                                           "left":  null,
+                                                                                           "right":  null,
+                                                                                           "polygon":  [
+
+                                                                                                       ]
+                                                                                       },
+                                                                               "age_ms":  634.5,
+                                                                               "source_frame_id":  0
+                                                                           },
+                                                                  "legacy_lanes":  {
+
+                                                                                   }
+                                                              },
+                                               "traffic":  {
+                                                               "target_hz":  4,
+                                                               "update_fps":  0,
+                                                               "completed":  1,
+                                                               "skipped_source_observations":  2,
+                                                               "sampling_skipped":  2,
+                                                               "pending_replaced":  0,
+                                                               "neural_region_schedule":  "左右半图交替，每侧约总观测率的一半；逐灯update_fps单列",
+                                                               "error":  null,
+                                                               "thread_alive":  true
+                                                           },
+                                               "show_lights":  true,
+                                               "show_objects":  true,
+                                               "road":  {
+                                                            "model":  "YOLOP",
+                                                            "backend":  "RKNN/NPU FP16",
+                                                            "target_fps":  8,
+                                                            "semantic_update_fps":  3.1,
+                                                            "semantic_target_fps":  8,
+                                                            "input_size":  320,
+                                                            "outputs":  [
+                                                                            "drivable_area",
+                                                                            "binary_lane_paint"
+                                                                        ],
+                                                            "completed":  2,
+                                                            "update_fps":  3.1,
+                                                            "replaced_pending":  1,
+                                                            "error":  null,
+                                                            "alive":  true
+                                                        },
+                                               "show_road":  true,
+                                               "show_lane":  true,
+                                               "detection":  {
+                                                                 "backend":  "RKNN/NPU",
+                                                                 "model":  "YOLOv8n COCO w8a8",
+                                                                 "input_size":  [
+                                                                                    640,
+                                                                                    640
+                                                                                ],
+                                                                 "threshold":  0.25,
+                                                                 "nms_iou":  0.45,
+                                                                 "epoch":  0,
+                                                                 "frame_id":  0,
+                                                                 "objects":  [
+
+                                                                             ],
+                                                                 "detected_count":  0,
+                                                                 "held_count":  0,
+                                                                 "count":  0,
+                                                                 "detection_fps":  5.13,
+                                                                 "stage_ms":  {
+                                                                                  "det_preprocess":  10.802,
+                                                                                  "det_inference":  52.226,
+                                                                                  "det_postprocess":  6.185,
+                                                                                  "det_tracking":  0.032
+                                                                              },
+                                                                 "inference_age_ms":  706.4,
+                                                                 "display_frame_id":  21,
+                                                                 "expired":  true,
+                                                                 "age_reference_monotonic":  9300.158716256,
+                                                                 "detection_runs":  2
+                                                             },
+                                               "stage_ms":  {
+                                                                "overlay":  13.282,
+                                                                "jpeg":  2.253,
+                                                                "traffic_preprocess":  6.270427998970263,
+                                                                "traffic_inference":  102.15294299996458,
+                                                                "traffic_postprocess":  3.6909750015183818,
+                                                                "traffic_geometry_color":  224.096,
+                                                                "traffic_total":  336.286,
+                                                                "det_preprocess":  10.802,
+                                                                "det_inference":  52.226,
+                                                                "det_postprocess":  6.185,
+                                                                "det_tracking":  0.032,
+                                                                "decode":  16.238,
+                                                                "rules":  0.018,
+                                                                "total":  32.066,
+                                                                "timeline_lag_ms":  57.36
+                                                            },
+                                               "stage_mean_ms":  {
+                                                                     "overlay":  98.657,
+                                                                     "jpeg":  7.536,
+                                                                     "traffic_preprocess":  6.27,
+                                                                     "traffic_inference":  102.153,
+                                                                     "traffic_postprocess":  3.691,
+                                                                     "traffic_geometry_color":  224.096,
+                                                                     "traffic_total":  336.286,
+                                                                     "det_preprocess":  10.802,
+                                                                     "det_inference":  52.226,
+                                                                     "det_postprocess":  6.185,
+                                                                     "det_tracking":  0.032,
+                                                                     "decode":  70.657,
+                                                                     "rules":  0.03,
+                                                                     "total":  177.258,
+                                                                     "timeline_lag_ms":  197.927
+                                                                 },
+                                               "error":  null,
+                                               "note":  "模拟车辆与原录像车辆独立；录像运动不因模拟停车而冻结。无UDP、无FPGA事件；图龄从本机解码完成起算。"
+                                           }
+                              }
+               }
+}

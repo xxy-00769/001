@@ -1,0 +1,45 @@
+{
+  "release": "M4-05-r1",
+  "model": "YOLOP",
+  "upstream": "https://github.com/hustvl/YOLOP",
+  "revision": "8d8f68df318c71f01d6f813c024df646c7d1978f",
+  "license": "MIT, copyright Hust Visual Learning Team 2021",
+  "weights_source": "upstream weights/yolop-320-320.onnx",
+  "input": "RGB uint8 NHWC 1x320x320, aspect-preserving letterbox 114; ImageNet mean/std embedded in RKNN",
+  "onnx_reference": "float NCHW ImageNet normalization",
+  "outputs": [
+    "two-channel drivable area",
+    "two-channel binary lane paint"
+  ],
+  "unused_output": "YOLOP vehicle detector cropped out; human/vehicle detection retains M404 YOLOv8n",
+  "backend": "RKNN/NPU FP16, toolkit2 2.3.2, system runtime 2.3.0, driver 0.9.8",
+  "quantization": false,
+  "postprocess": "binary argmax; remove small/disconnected road components; model-paint row runs + curvature/gap limited tracks + quadratic curves; closest observed boundaries on both sides of assumed optical axis; perspective width, road support and temporal jump veto; no scene ROI",
+  "road_coordinates": "letterbox crop -> normalized original-image coordinates; 320x180 masks for geometry -> native/preview coordinates",
+  "age_policy": "latest-only worker; short hold explicitly labeled; expire 500ms; target relationship only if road+target ages<=250ms; reset on epoch",
+  "limitations": [
+    "binary paint, not lane instances",
+    "no lane count/opposite direction/solid-dashed promise",
+    "road behind occluders is not verified free space",
+    "optical axis assumes camera near lane-facing centre; not calibrated vehicle pose",
+    "320 input loses small/distant paint; intersections/weak/night/occluded boundaries may be unknown"
+  ],
+  "artifacts": [
+    {
+      "file": "yolop.onnx",
+      "bytes": 35902568,
+      "sha256": "cd66a3e0087a7258ae07768cc02cb742eed93865727ae4c9baf969b8fa190696"
+    },
+    {
+      "file": "yolop320.onnx",
+      "bytes": 31817335,
+      "sha256": "86d6e8b6dfdef195c061e9bcad82d9487bb5ee1ac4a1cf9a3dc4736657a07369"
+    },
+    {
+      "file": "yolop320_fp16.rknn",
+      "bytes": 12555759,
+      "sha256": "0f923bc9ef8f292e922c72c44f0fac4c72b83e209376f947927d650472383f0d"
+    }
+  ],
+  "target_update_fps": 8
+}

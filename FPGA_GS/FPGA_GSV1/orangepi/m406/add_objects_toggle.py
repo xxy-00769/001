@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path(__file__).parent/'index.html';s=p.read_text(encoding='utf8').replace('<label><input id="road-mask"', '<label><input id="object-layer" type="checkbox" checked>人车目标</label><label><input id="road-mask"');s=s.replace("$('traffic-layer').checked=s.show_lights;", "$('traffic-layer').checked=s.show_lights;$('object-layer').checked=s.show_objects;");s=s.replace("$('traffic-layer').onchange=", "$('object-layer').onchange=()=>control({show_objects:$('object-layer').checked});$('traffic-layer').onchange=");p.write_text(s,encoding='utf8')

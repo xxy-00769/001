@@ -1,0 +1,34 @@
+本地入口：E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\orangepi\oneclick
+目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021
+诊断只读；不会启动第二份LIVE、不会占用UDP50000、不会添加静态ARP。
+通过SSH执行 diagnose；需要认证时请在终端输入密码（不保存）。
+SSH：可连接；远端版本：M4-01-v0.1.2
+本地转发/HTTP：可访问，session与远端一致
+接收缓冲：rmem_max=8388608，请求=4194304，实际SO_RCVBUF=8388608（Linux返回值含加倍记账）
+ARP为动态邻居：REACHABLE；缓存记录不单独证明当前通信
+已有完整前摄帧持续到达、处理及预览JPEG更新，通信正常；浏览器实际解码仍需现场观察
+网卡增量：{"rx_packets":28832,"tx_packets":32,"rx_bytes":39459392,"tx_bytes":2880,"rx_errors":0,"rx_dropped":0,"rx_crc_errors":0,"rx_fifo_errors":0}
+协议增量：{"heartbeat_tx":16,"rx_packets":28824,"heartbeat_or_welcome":24,"front_fragments":28800,"complete_frames":20,"bad_packets":0,"wrong_peer":0,"wrong_session":0,"send_errors":0,"receive_errors":0}
+同服务socket丢包增量：{"183950":0}；全机UDP错误仅作旁证。
+端口占用及进程命令行：
+Netid State  Recv-Q Send-Q             Local Address:Port  Peer Address:PortProcess                             
+udp   UNCONN 0      0                     127.0.0.53:53         0.0.0.0:*                                       
+udp   UNCONN 0      0                      127.0.0.1:323        0.0.0.0:*                                       
+udp   UNCONN 0      0                   192.168.60.1:50000      0.0.0.0:*    users:(("python",pid=171342,fd=5)) 
+udp   UNCONN 0      0                          [::1]:323              *:*                                       
+udp   UNCONN 0      0      [fe80::8a5a:34:9a2c:7d9d]:546              *:*                                       
+tcp   LISTEN 0      0                      127.0.0.1:8080       0.0.0.0:*    users:(("python",pid=171342,fd=4)) 
+tcp   LISTEN 0      0                        0.0.0.0:5555       0.0.0.0:*                                       
+tcp   LISTEN 0      0                        0.0.0.0:5901       0.0.0.0:*    users:(("Xtigervnc",pid=2027,fd=7))
+tcp   LISTEN 0      0                      127.0.0.1:5037       0.0.0.0:*                                       
+tcp   LISTEN 0      0                     127.0.0.53:53         0.0.0.0:*                                       
+tcp   LISTEN 0      0                        0.0.0.0:22         0.0.0.0:*                                       
+tcp   LISTEN 0      0                      127.0.0.1:631        0.0.0.0:*                                       
+tcp   LISTEN 0      0                          [::1]:631              *:*                                       
+tcp   LISTEN 0      0                              *:5901             *:*    users:(("Xtigervnc",pid=2027,fd=8))
+tcp   LISTEN 0      0                          [::1]:3350             *:*                                       
+tcp   LISTEN 0      0                              *:22               *:*                                       
+tcp   LISTEN 0      0                              *:3389             *:*
+
+文本报告：E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\orangepi\oneclick\reports\diagnose_20261023_090506_509.txt
+JSON报告：E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\orangepi\oneclick\reports\diagnose_20261023_090506_509.json

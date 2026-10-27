@@ -1,0 +1,196 @@
+{
+    "action":  "Start",
+    "version":  "M4-03-demo-r1",
+    "ok":  true,
+    "remote":  {
+                   "ok":  true,
+                   "message":  "已复用本项目智驾录像演示",
+                   "process":  {
+                                   "pid":  220906,
+                                   "start_ticks":  "7660325",
+                                   "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                   "argv":  [
+                                                ".venv/bin/python",
+                                                "m403/demo.py",
+                                                "--port",
+                                                "8080",
+                                                "--preview-width",
+                                                "640"
+                                            ],
+                                   "uid":  1000
+                               },
+                   "status":  {
+                                  "ok":  true,
+                                  "data":  {
+                                               "mode":  "FILE_TEST",
+                                               "vehicle":  "SIMULATION",
+                                               "release":  "M4-03-demo-r1",
+                                               "instance":  "ccfc7478acac0a17f83f9359",
+                                               "control_token":  "9iS9xkFH8N1Lnu8gDAoDWZN6YKO9DIsH",
+                                               "host_monotonic_ms":  76607032.39466201,
+                                               "video":  "SC_YJ.mp4",
+                                               "files":  [
+                                                             {
+                                                                 "name":  "SC_BT.mp4",
+                                                                 "duration":  59.882646,
+                                                                 "fps":  30.001687177285582,
+                                                                 "label":  "日间城区"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_BT2.mp4",
+                                                                 "duration":  32.042667,
+                                                                 "fps":  30.024968789013734,
+                                                                 "label":  "黄昏高架"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_YJ.mp4",
+                                                                 "duration":  177.834667,
+                                                                 "fps":  30.00214260849744,
+                                                                 "label":  "夜间城区"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_YJ2.mp4",
+                                                                 "duration":  78.05,
+                                                                 "fps":  39.62832425504646,
+                                                                 "label":  "蓝调高架"
+                                                             }
+                                                         ],
+                                               "source_fps":  30.00214260849744,
+                                               "duration":  177.834667,
+                                               "position":  72.633333,
+                                               "playing":  true,
+                                               "loop":  true,
+                                               "epoch":  0,
+                                               "processed":  39,
+                                               "processed_fps":  14.774,
+                                               "skipped_source_frames":  41,
+                                               "loop_count":  0,
+                                               "target_fps":  15,
+                                               "preview_width":  640,
+                                               "frame_id":  2179,
+                                               "sequence":  39,
+                                               "age_ms":  66.8,
+                                               "driving":  {
+                                                               "mode":  "intersection",
+                                                               "lane":  "straight",
+                                                               "intent":  "auto",
+                                                               "forced":  false,
+                                                               "motion":  "STOPPED",
+                                                               "suggestion":  "STOP",
+                                                               "reason":  "相关红灯：普通请求保持停车",
+                                                               "alarm":  null,
+                                                               "alarm_remaining_seconds":  0,
+                                                               "command_id":  0,
+                                                               "alarm_policy":  "告警锁存5秒；到期取消强制并停车；停车/清除告警立即解除；切视频/跳转/循环重置",
+                                                               "vehicle":  "SIMULATED_ONLY"
+                                                           },
+                                               "perception":  {
+                                                                  "signal":  {
+                                                                                 "state":  "RED",
+                                                                                 "raw_state":  "RED",
+                                                                                 "confidence":  0.83,
+                                                                                 "actions":  [
+                                                                                                 "straight"
+                                                                                             ],
+                                                                                 "candidates":  [
+                                                                                                    {
+                                                                                                        "state":  "RED",
+                                                                                                        "box":  [
+                                                                                                                    1651,
+                                                                                                                    639,
+                                                                                                                    30,
+                                                                                                                    22
+                                                                                                                ],
+                                                                                                        "area":  262.0,
+                                                                                                        "dark_ratio":  0.674
+                                                                                                    }
+                                                                                                ],
+                                                                                 "calibration":  {
+                                                                                                     "roi":  [
+                                                                                                                 0.625,
+                                                                                                                 0.425,
+                                                                                                                 0.68,
+                                                                                                                 0.48
+                                                                                                             ],
+                                                                                                     "actions":  [
+                                                                                                                     "straight"
+                                                                                                                 ],
+                                                                                                     "template":  "signal_housing.png",
+                                                                                                     "mask":  "signal_housing_mask.png",
+                                                                                                     "kind":  "MANUAL_GROUP_ASSOCIATION",
+                                                                                                     "note":  "人工标定夜间停车路口右侧横向灯组归属直行；只限定空间和外壳模板，不预设灯色。离开或灯组不匹配应未知。"
+                                                                                                 },
+                                                                                 "housing_match":  0.969,
+                                                                                 "roi_pixels":  [
+                                                                                                    1638,
+                                                                                                    627,
+                                                                                                    1719,
+                                                                                                    668
+                                                                                                ],
+                                                                                 "reason":  "灯组空间/控制方向为人工标定，灯色来自原图ROI，连续3帧确认"
+                                                                             },
+                                                                  "lanes":  {
+                                                                                "left":  {
+                                                                                             "state":  "UNKNOWN",
+                                                                                             "raw_state":  "UNKNOWN",
+                                                                                             "confidence":  0,
+                                                                                             "coverage":  0.0,
+                                                                                             "segments":  0,
+                                                                                             "gaps":  0,
+                                                                                             "trace":  [
+
+                                                                                                       ],
+                                                                                             "reason":  "未找到稳定的当前车道边界"
+                                                                                         },
+                                                                                "right":  {
+                                                                                              "state":  "UNKNOWN",
+                                                                                              "raw_state":  "UNKNOWN",
+                                                                                              "confidence":  0,
+                                                                                              "coverage":  0.0,
+                                                                                              "segments":  0,
+                                                                                              "gaps":  0,
+                                                                                              "trace":  [
+
+                                                                                                        ],
+                                                                                              "reason":  "未找到稳定的当前车道边界"
+                                                                                          }
+                                                                            },
+                                                                  "stage_ms":  {
+                                                                                   "preprocess":  12.607,
+                                                                                   "signal_roi":  2.097,
+                                                                                   "lanes":  20.019,
+                                                                                   "inference":  22.127
+                                                                               },
+                                                                  "execution":  "CPU OpenCV; no pretrained model",
+                                                                  "evidence_kind":  "REAL_IMAGE_WITH_EXPLICIT_SPATIAL_CALIBRATION"
+                                                              },
+                                               "stage_ms":  {
+                                                                "overlay":  9.322,
+                                                                "jpeg":  1.994,
+                                                                "decode":  15.25,
+                                                                "preprocess":  12.607,
+                                                                "signal_roi":  2.097,
+                                                                "lanes":  20.019,
+                                                                "inference":  22.127,
+                                                                "rules":  0.047,
+                                                                "total":  61.41,
+                                                                "timeline_lag_ms":  67.89
+                                                            },
+                                               "stage_mean_ms":  {
+                                                                     "overlay":  8.692,
+                                                                     "jpeg":  2.024,
+                                                                     "decode":  17.855,
+                                                                     "preprocess":  10.828,
+                                                                     "signal_roi":  2.135,
+                                                                     "lanes":  19.134,
+                                                                     "inference":  21.277,
+                                                                     "rules":  0.045,
+                                                                     "total":  60.789,
+                                                                     "timeline_lag_ms":  74.526
+                                                                 },
+                                               "error":  null,
+                                               "note":  "模拟车辆与原录像车辆独立；录像运动不因模拟停车而冻结。无UDP、无FPGA事件；图龄从本机解码完成起算。"
+                                           }
+                              }
+               }
+}

@@ -1,0 +1,16 @@
+{
+  "ready": false,
+  "errors": [],
+  "text": "M4-02 · 前摄、真实按键与反馈\n画面获取失败（请求超时），正在自动重试…\n\n画面获取失败（请求超时），正在自动重试…\n\n模式：前摄输入（LIVE_FRONT）\n画面帧号：74448\n源文件：— fps\n预览：640宽 / JPEG 70\n实际处理：0.00 fps\n预览新帧：0.00 fps\n图龄上界估计：173721 ms\n前摄上传请求：15 fps\n完整接收：0.00 fps\n处理目标：15 fps\n预览目标：15 fps\n主动跳过完整帧：0\n交通灯：未知\n左边界：未知\n右边界：未知\n\n驾驶意图判定：左 未知 · 右 未知 · 直 未知 · 停 允许\n\n已处理 6419 帧；循环 —；网页状态每秒更新\n\nFILE_TEST 为录像测试；SIMULATION 为人工模拟；LIVE_FRONT 为前摄输入。场景配置可能含模拟假设，未知状态保留为未知。\n\n帧率使用近 5 秒窗口，预览只统计成功解码且帧序号改变的图像。LIVE处理仅保留最新待处理完整帧，不积累队列；主动跳过不等同网络缺片。图龄起算于香橙派收齐完整帧，含后续处理、传输和浏览器停留的上界估计，不能代表摄像头到网页的端到端延迟。\n\n板上驾驶按键 → 香橙派 → FPGA反馈\n\n当前生效：真实识别 · 严格匹配EVENT原始帧\n\n判定来源 \n真实识别（默认）\n通信自测（模拟判定）\n 自测结果 \n未知\n允许\n拒绝\n红灯告警\n实线告警\n 应用到下一个真实按键\n\n仅LIVE_FRONT可用。此页面不能生成驾驶EVENT；更改后需按真实板上KEY1～4。\n\n最近真实按键\nKEY1 左\n\n事件身份\nevent_id=1 · frame_id=72592\n\nEVENT_ACK（仅代表收到事件）\n已交给本机socket发送 · 尝试 1 次\n\n事件原帧与识别\n事件对应完整帧已收到；识别已完成\n\nRESULT判定\n【真实识别】未知 · sequence=1 · 已发送 · 尝试 1 次\n\nRESULT_ACK（板端是否接受）\n已接受\n\n有效期\n板端事件TTL 2000 ms；RESULT TTL 2000 ms；主机预算已结束，板端按事件TTL正常回未知\n\n主机侧耗时\nEVENT→ACK发送 0.2 ms；EVENT→RESULT 144.2 ms；EVENT→RESULT_ACK 144.5 ms\n\n灯色、灯组归属或动作关联证据不足；灯色=未知，灯组归属=未分配，关联动作=[]\n\n本次服务收到真实逻辑事件 1；对应完整帧命中 1（其中事件后到达 1）；对应帧完成识别 1。通信自测的结果不计作识别成功。\n\nEVENT_ACK不等于判定接受；RESULT_ACK接受不等于已人工确认屏幕。板端TTL正常到期回未知，不是通信故障。LED仍表示驾驶意图；KEY5视角、KEY6滤镜保持原功能。\n\n下列耗时只从香橙派收到EVENT起算，不是物理按键到FPGA屏幕的端到端延迟。主机预算不能代表未同步的板端剩余TTL。\n\n最近真实事件记录（最多保留32条，表中显示最近10条）\n展开诊断 JSON",
+  "metrics": {
+    "newFramesTotal": 1,
+    "duplicateResponses": 1,
+    "imageRequests": 2,
+    "inFlight": 1,
+    "maxInFlight": 1,
+    "lastSequence": "6419",
+    "lastFrame": "74448",
+    "newFrameFps": 0,
+    "imageAgeUpperMs": 174594.49919696897
+  }
+}

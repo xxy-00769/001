@@ -1,0 +1,835 @@
+{
+    "action":  "Start",
+    "version":  "M4-04-r1",
+    "ok":  true,
+    "remote":  {
+                   "ok":  true,
+                   "message":  "已启动本地录像／模拟车辆；不绑定UDP，不需要FPGA",
+                   "process":  {
+                                   "pid":  80807,
+                                   "start_ticks":  "740778",
+                                   "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                   "argv":  [
+                                                ".venv404/bin/python",
+                                                "m404/demo.py",
+                                                "--port",
+                                                "8080",
+                                                "--preview-width",
+                                                "640"
+                                            ],
+                                   "uid":  1000
+                               },
+                   "status":  {
+                                  "ok":  true,
+                                  "data":  {
+                                               "mode":  "FILE_TEST",
+                                               "vehicle":  "SIMULATION",
+                                               "release":  "M4-04-r1",
+                                               "instance":  "334c22c502ed2265c7f88d17",
+                                               "control_token":  "bMv1XkqSWWqGJgceUB5XS0DHEeCTPwyA",
+                                               "host_monotonic_ms":  7409295.162041,
+                                               "video":  "SC_YJ.mp4",
+                                               "files":  [
+                                                             {
+                                                                 "name":  "SC_BT.mp4",
+                                                                 "duration":  59.882646,
+                                                                 "fps":  30.001687177285582,
+                                                                 "label":  "日间城区"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_BT2.mp4",
+                                                                 "duration":  32.042667,
+                                                                 "fps":  30.024968789013734,
+                                                                 "label":  "黄昏高架"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_YJ.mp4",
+                                                                 "duration":  177.834667,
+                                                                 "fps":  30.00214260849744,
+                                                                 "label":  "夜间城区"
+                                                             },
+                                                             {
+                                                                 "name":  "SC_YJ2.mp4",
+                                                                 "duration":  78.05,
+                                                                 "fps":  39.62832425504646,
+                                                                 "label":  "蓝调高架"
+                                                             }
+                                                         ],
+                                               "source_fps":  30.00214260849744,
+                                               "duration":  177.834667,
+                                               "position":  70.333333,
+                                               "playing":  true,
+                                               "loop":  true,
+                                               "epoch":  0,
+                                               "processed":  4,
+                                               "processed_fps":  10.609,
+                                               "skipped_source_frames":  7,
+                                               "loop_count":  0,
+                                               "target_fps":  15,
+                                               "preview_width":  640,
+                                               "frame_id":  2110,
+                                               "sequence":  4,
+                                               "age_ms":  76.3,
+                                               "driving":  {
+                                                               "mode":  "intersection",
+                                                               "lane":  "straight",
+                                                               "intent":  "auto",
+                                                               "forced":  false,
+                                                               "motion":  "STOPPED",
+                                                               "suggestion":  "STOP",
+                                                               "reason":  "相关红灯：普通请求保持停车",
+                                                               "alarm":  null,
+                                                               "alarm_remaining_seconds":  0,
+                                                               "command_id":  0,
+                                                               "alarm_policy":  "告警锁存5秒；到期取消强制并停车；停车/清除告警立即解除；切视频/跳转/循环重置",
+                                                               "vehicle":  "SIMULATED_ONLY"
+                                                           },
+                                               "perception":  {
+                                                                  "signal":  {
+                                                                                 "state":  "RED",
+                                                                                 "raw_state":  "RED",
+                                                                                 "confidence":  0.83,
+                                                                                 "actions":  [
+                                                                                                 "straight"
+                                                                                             ],
+                                                                                 "candidates":  [
+                                                                                                    {
+                                                                                                        "state":  "RED",
+                                                                                                        "box":  [
+                                                                                                                    1655,
+                                                                                                                    639,
+                                                                                                                    25,
+                                                                                                                    21
+                                                                                                                ],
+                                                                                                        "area":  257.5,
+                                                                                                        "dark_ratio":  0.673
+                                                                                                    }
+                                                                                                ],
+                                                                                 "calibration":  {
+                                                                                                     "roi":  [
+                                                                                                                 0.625,
+                                                                                                                 0.425,
+                                                                                                                 0.68,
+                                                                                                                 0.48
+                                                                                                             ],
+                                                                                                     "actions":  [
+                                                                                                                     "straight"
+                                                                                                                 ],
+                                                                                                     "template":  "signal_housing.png",
+                                                                                                     "mask":  "signal_housing_mask.png",
+                                                                                                     "kind":  "MANUAL_GROUP_ASSOCIATION",
+                                                                                                     "note":  "人工标定夜间停车路口右侧横向灯组归属直行；只限定空间和外壳模板，不预设灯色。离开或灯组不匹配应未知。"
+                                                                                                 },
+                                                                                 "housing_match":  0.973,
+                                                                                 "roi_pixels":  [
+                                                                                                    1638,
+                                                                                                    627,
+                                                                                                    1719,
+                                                                                                    668
+                                                                                                ],
+                                                                                 "reason":  "灯组空间/控制方向为人工标定，灯色来自原图ROI，连续3帧确认"
+                                                                             },
+                                                                  "lanes":  {
+                                                                                "left":  {
+                                                                                             "state":  "UNKNOWN",
+                                                                                             "raw_state":  "UNKNOWN",
+                                                                                             "confidence":  0,
+                                                                                             "adjacent_lane_confirmed":  false,
+                                                                                             "adjacent_lane_source":  "UNCONFIRMED",
+                                                                                             "coverage":  0.0,
+                                                                                             "segments":  0,
+                                                                                             "gaps":  0,
+                                                                                             "trace":  [
+
+                                                                                                       ],
+                                                                                             "reason":  "未找到稳定的当前车道边界"
+                                                                                         },
+                                                                                "right":  {
+                                                                                              "state":  "UNKNOWN",
+                                                                                              "raw_state":  "UNKNOWN",
+                                                                                              "confidence":  0,
+                                                                                              "adjacent_lane_confirmed":  false,
+                                                                                              "adjacent_lane_source":  "UNCONFIRMED",
+                                                                                              "coverage":  0.0,
+                                                                                              "segments":  0,
+                                                                                              "gaps":  0,
+                                                                                              "trace":  [
+
+                                                                                                        ],
+                                                                                              "reason":  "未找到稳定的当前车道边界"
+                                                                                          }
+                                                                            },
+                                                                  "stage_ms":  {
+                                                                                   "preprocess":  10.239,
+                                                                                   "signal_roi":  1.624,
+                                                                                   "lanes":  19.906,
+                                                                                   "inference":  21.537
+                                                                               },
+                                                                  "execution":  "CPU OpenCV; no pretrained model",
+                                                                  "evidence_kind":  "REAL_IMAGE_WITH_EXPLICIT_SPATIAL_CALIBRATION",
+                                                                  "detection":  {
+                                                                                    "backend":  "RKNN/NPU",
+                                                                                    "model":  "YOLOv8n COCO w8a8",
+                                                                                    "input_size":  [
+                                                                                                       640,
+                                                                                                       640
+                                                                                                   ],
+                                                                                    "threshold":  0.25,
+                                                                                    "nms_iou":  0.45,
+                                                                                    "epoch":  0,
+                                                                                    "frame_id":  2107,
+                                                                                    "objects":  [
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.7908,
+                                                                                                        "box":  [
+                                                                                                                    428.74,
+                                                                                                                    793.87,
+                                                                                                                    776.02,
+                                                                                                                    954.76
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  1,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.6673,
+                                                                                                        "box":  [
+                                                                                                                    850.34,
+                                                                                                                    795.12,
+                                                                                                                    1127.38,
+                                                                                                                    914.91
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  2,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.629,
+                                                                                                        "box":  [
+                                                                                                                    239.42,
+                                                                                                                    796.3,
+                                                                                                                    405.63,
+                                                                                                                    891.81
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  6,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.6003,
+                                                                                                        "box":  [
+                                                                                                                    676.84,
+                                                                                                                    795.95,
+                                                                                                                    993.2,
+                                                                                                                    933.5
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  4,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.5928,
+                                                                                                        "box":  [
+                                                                                                                    1063.87,
+                                                                                                                    812.15,
+                                                                                                                    1163.85,
+                                                                                                                    877.03
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  7,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.4241,
+                                                                                                        "box":  [
+                                                                                                                    2116.53,
+                                                                                                                    880.25,
+                                                                                                                    2313.08,
+                                                                                                                    996.47
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  14,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  0,
+                                                                                                        "category":  "person",
+                                                                                                        "label":  "行人",
+                                                                                                        "confidence":  0.4221,
+                                                                                                        "box":  [
+                                                                                                                    2397.04,
+                                                                                                                    795.79,
+                                                                                                                    2448.46,
+                                                                                                                    907.96
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  18,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.399,
+                                                                                                        "box":  [
+                                                                                                                    1913.67,
+                                                                                                                    855.21,
+                                                                                                                    2085.95,
+                                                                                                                    970.14
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  5,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.3848,
+                                                                                                        "box":  [
+                                                                                                                    12.57,
+                                                                                                                    828.25,
+                                                                                                                    52.16,
+                                                                                                                    890.15
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  11,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.3758,
+                                                                                                        "box":  [
+                                                                                                                    0.3,
+                                                                                                                    1167.13,
+                                                                                                                    947.92,
+                                                                                                                    1420.38
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  12,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.2886,
+                                                                                                        "box":  [
+                                                                                                                    1728.94,
+                                                                                                                    815.06,
+                                                                                                                    1802.15,
+                                                                                                                    877.03
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  19,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.2824,
+                                                                                                        "box":  [
+                                                                                                                    1225.13,
+                                                                                                                    825.47,
+                                                                                                                    1327.41,
+                                                                                                                    885.13
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  8,
+                                                                                                        "last_detected_monotonic":  7409.205869235,
+                                                                                                        "missed":  0,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2107,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.3451,
+                                                                                                        "box":  [
+                                                                                                                    1005.67,
+                                                                                                                    794.05,
+                                                                                                                    1106.36,
+                                                                                                                    877.09
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  15,
+                                                                                                        "last_detected_monotonic":  7409.118702649,
+                                                                                                        "missed":  1,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2104,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.3197,
+                                                                                                        "box":  [
+                                                                                                                    2313.9,
+                                                                                                                    807.04,
+                                                                                                                    2365.49,
+                                                                                                                    853.66
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  16,
+                                                                                                        "last_detected_monotonic":  7409.118702649,
+                                                                                                        "missed":  1,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2104,
+                                                                                                        "age_ms":  118.7
+                                                                                                    },
+                                                                                                    {
+                                                                                                        "class_id":  2,
+                                                                                                        "category":  "car",
+                                                                                                        "label":  "汽车",
+                                                                                                        "confidence":  0.2762,
+                                                                                                        "box":  [
+                                                                                                                    340.94,
+                                                                                                                    785.7,
+                                                                                                                    396.78,
+                                                                                                                    823.59
+                                                                                                                ],
+                                                                                                        "source":  "optical_flow",
+                                                                                                        "track_id":  17,
+                                                                                                        "last_detected_monotonic":  7409.118702649,
+                                                                                                        "missed":  1,
+                                                                                                        "epoch":  0,
+                                                                                                        "detection_frame_id":  2104,
+                                                                                                        "age_ms":  118.7
+                                                                                                    }
+                                                                                                ],
+                                                                                    "detected_count":  0,
+                                                                                    "held_count":  15,
+                                                                                    "count":  15,
+                                                                                    "detection_fps":  12.12,
+                                                                                    "stage_ms":  {
+                                                                                                     "det_preprocess":  3.191,
+                                                                                                     "det_inference":  32.426,
+                                                                                                     "det_postprocess":  6.746,
+                                                                                                     "det_tracking":  0.373,
+                                                                                                     "det_display_tracking":  10.852
+                                                                                                 },
+                                                                                    "inference_age_ms":  118.7,
+                                                                                    "display_frame_id":  2110
+                                                                                }
+                                                              },
+                                               "detection":  {
+                                                                 "backend":  "RKNN/NPU",
+                                                                 "model":  "YOLOv8n COCO w8a8",
+                                                                 "input_size":  [
+                                                                                    640,
+                                                                                    640
+                                                                                ],
+                                                                 "threshold":  0.25,
+                                                                 "nms_iou":  0.45,
+                                                                 "epoch":  0,
+                                                                 "frame_id":  2107,
+                                                                 "objects":  [
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.7908,
+                                                                                     "box":  [
+                                                                                                 428.74,
+                                                                                                 793.87,
+                                                                                                 776.02,
+                                                                                                 954.76
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  1,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.6673,
+                                                                                     "box":  [
+                                                                                                 850.34,
+                                                                                                 795.12,
+                                                                                                 1127.38,
+                                                                                                 914.91
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  2,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.629,
+                                                                                     "box":  [
+                                                                                                 239.42,
+                                                                                                 796.3,
+                                                                                                 405.63,
+                                                                                                 891.81
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  6,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.6003,
+                                                                                     "box":  [
+                                                                                                 676.84,
+                                                                                                 795.95,
+                                                                                                 993.2,
+                                                                                                 933.5
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  4,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.5928,
+                                                                                     "box":  [
+                                                                                                 1063.87,
+                                                                                                 812.15,
+                                                                                                 1163.85,
+                                                                                                 877.03
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  7,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.4241,
+                                                                                     "box":  [
+                                                                                                 2116.53,
+                                                                                                 880.25,
+                                                                                                 2313.08,
+                                                                                                 996.47
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  14,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  0,
+                                                                                     "category":  "person",
+                                                                                     "label":  "行人",
+                                                                                     "confidence":  0.4221,
+                                                                                     "box":  [
+                                                                                                 2397.04,
+                                                                                                 795.79,
+                                                                                                 2448.46,
+                                                                                                 907.96
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  18,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.399,
+                                                                                     "box":  [
+                                                                                                 1913.67,
+                                                                                                 855.21,
+                                                                                                 2085.95,
+                                                                                                 970.14
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  5,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.3848,
+                                                                                     "box":  [
+                                                                                                 12.57,
+                                                                                                 828.25,
+                                                                                                 52.16,
+                                                                                                 890.15
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  11,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.3758,
+                                                                                     "box":  [
+                                                                                                 0.3,
+                                                                                                 1167.13,
+                                                                                                 947.92,
+                                                                                                 1420.38
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  12,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.2886,
+                                                                                     "box":  [
+                                                                                                 1728.94,
+                                                                                                 815.06,
+                                                                                                 1802.15,
+                                                                                                 877.03
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  19,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.2824,
+                                                                                     "box":  [
+                                                                                                 1225.13,
+                                                                                                 825.47,
+                                                                                                 1327.41,
+                                                                                                 885.13
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  8,
+                                                                                     "last_detected_monotonic":  7409.205869235,
+                                                                                     "missed":  0,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2107,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.3451,
+                                                                                     "box":  [
+                                                                                                 1005.67,
+                                                                                                 794.05,
+                                                                                                 1106.36,
+                                                                                                 877.09
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  15,
+                                                                                     "last_detected_monotonic":  7409.118702649,
+                                                                                     "missed":  1,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2104,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.3197,
+                                                                                     "box":  [
+                                                                                                 2313.9,
+                                                                                                 807.04,
+                                                                                                 2365.49,
+                                                                                                 853.66
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  16,
+                                                                                     "last_detected_monotonic":  7409.118702649,
+                                                                                     "missed":  1,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2104,
+                                                                                     "age_ms":  118.7
+                                                                                 },
+                                                                                 {
+                                                                                     "class_id":  2,
+                                                                                     "category":  "car",
+                                                                                     "label":  "汽车",
+                                                                                     "confidence":  0.2762,
+                                                                                     "box":  [
+                                                                                                 340.94,
+                                                                                                 785.7,
+                                                                                                 396.78,
+                                                                                                 823.59
+                                                                                             ],
+                                                                                     "source":  "optical_flow",
+                                                                                     "track_id":  17,
+                                                                                     "last_detected_monotonic":  7409.118702649,
+                                                                                     "missed":  1,
+                                                                                     "epoch":  0,
+                                                                                     "detection_frame_id":  2104,
+                                                                                     "age_ms":  118.7
+                                                                                 }
+                                                                             ],
+                                                                 "detected_count":  0,
+                                                                 "held_count":  15,
+                                                                 "count":  15,
+                                                                 "detection_fps":  7.97,
+                                                                 "stage_ms":  {
+                                                                                  "det_preprocess":  3.191,
+                                                                                  "det_inference":  32.426,
+                                                                                  "det_postprocess":  6.746,
+                                                                                  "det_tracking":  0.373,
+                                                                                  "det_display_tracking":  10.852
+                                                                              },
+                                                                 "inference_age_ms":  118.7,
+                                                                 "display_frame_id":  2110,
+                                                                 "detection_runs":  3
+                                                             },
+                                               "stage_ms":  {
+                                                                "overlay":  25.084,
+                                                                "jpeg":  2.086,
+                                                                "det_preprocess":  3.191,
+                                                                "det_inference":  32.426,
+                                                                "det_postprocess":  6.746,
+                                                                "det_tracking":  0.373,
+                                                                "det_display_tracking":  10.852,
+                                                                "decode":  14.266,
+                                                                "preprocess":  10.239,
+                                                                "signal_roi":  1.624,
+                                                                "lanes":  19.906,
+                                                                "inference":  21.537,
+                                                                "rules":  0.031,
+                                                                "total":  84.206,
+                                                                "timeline_lag_ms":  100.5
+                                                            },
+                                               "stage_mean_ms":  {
+                                                                     "overlay":  30.744,
+                                                                     "jpeg":  2.157,
+                                                                     "det_preprocess":  4.41,
+                                                                     "det_inference":  39.252,
+                                                                     "det_postprocess":  9.914,
+                                                                     "det_tracking":  0.288,
+                                                                     "det_display_tracking":  12.374,
+                                                                     "decode":  30.761,
+                                                                     "preprocess":  11.499,
+                                                                     "signal_roi":  2.711,
+                                                                     "lanes":  20.567,
+                                                                     "inference":  23.285,
+                                                                     "rules":  0.028,
+                                                                     "total":  107.883,
+                                                                     "timeline_lag_ms":  126.097
+                                                                 },
+                                               "error":  null,
+                                               "note":  "模拟车辆与原录像车辆独立；录像运动不因模拟停车而冻结。无UDP、无FPGA事件；图龄从本机解码完成起算。"
+                                           }
+                              }
+               }
+}

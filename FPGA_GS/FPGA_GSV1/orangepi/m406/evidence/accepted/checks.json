@@ -1,0 +1,124 @@
+{
+  "ok": true,
+  "rows": [
+    {
+      "color": "RED",
+      "snapshot": "SC_YJ_80.800_20261024_110929_1594",
+      "position": 80.8
+    },
+    {
+      "color": "GREEN",
+      "snapshot": "SC_YJ_108.867_20261024_110935_1671",
+      "position": 108.866667
+    }
+  ],
+  "pauseExpiry": true,
+  "unknownForceRemainsStopped": true,
+  "videoEpoch": true,
+  "loopClears": true,
+  "status": {
+    "mode": "FILE_TEST",
+    "vehicle": "SIMULATION",
+    "release": "M4-06-r1",
+    "instance": "7596e5fc0a1b2b61fa6d6af4",
+    "control_token": "0h3QkMtVb9vC18jNX2qflETXTUwkRYiJ",
+    "host_monotonic_ms": 9421555.867157,
+    "video": "SC_BT2.mp4",
+    "files": [
+      {
+        "name": "SC_BT.mp4",
+        "duration": 59.882646,
+        "fps": 30.001687177285582,
+        "label": "日间城区"
+      },
+      {
+        "name": "SC_BT2.mp4",
+        "duration": 32.042667,
+        "fps": 30.024968789013734,
+        "label": "黄昏高架"
+      },
+      {
+        "name": "SC_YJ.mp4",
+        "duration": 177.834667,
+        "fps": 30.00214260849744,
+        "label": "夜间城区"
+      },
+      {
+        "name": "SC_YJ2.mp4",
+        "duration": 78.05,
+        "fps": 39.62832425504646,
+        "label": "蓝调高架"
+      }
+    ],
+    "source_fps": 30.024968789013734,
+    "duration": 32.042667,
+    "position": 0,
+    "playing": true,
+    "loop": true,
+    "epoch": 18,
+    "processed": 1704,
+    "processed_fps": 0,
+    "skipped_source_frames": 2305,
+    "loop_count": 2,
+    "target_fps": 15,
+    "preview_width": 640,
+    "frame_id": null,
+    "sequence": 1707,
+    "age_ms": null,
+    "driving": {
+      "mode": "intersection",
+      "lane": "straight",
+      "intent": "auto",
+      "forced": false,
+      "motion": "STOPPED",
+      "suggestion": "UNKNOWN",
+      "reason": "等待新图像证据",
+      "alarm": null,
+      "alarm_remaining_seconds": 0,
+      "command_id": 0,
+      "alarm_policy": "告警锁存5秒；到期取消强制并停车；停车/清除告警立即解除；切视频/跳转/循环重置",
+      "vehicle": "SIMULATED_ONLY"
+    },
+    "perception": null,
+    "traffic": {
+      "target_hz": 4,
+      "update_fps": 0,
+      "completed": 424,
+      "skipped_source_observations": 1274,
+      "sampling_skipped": 1274,
+      "pending_replaced": 0,
+      "neural_region_schedule": "左右半图交替，每侧约总观测率的一半；逐灯update_fps单列",
+      "error": null,
+      "thread_alive": true
+    },
+    "show_lights": true,
+    "show_objects": true,
+    "road": {
+      "model": "YOLOP",
+      "backend": "RKNN/NPU FP16",
+      "target_fps": 8,
+      "semantic_update_fps": 0,
+      "semantic_target_fps": 8,
+      "input_size": 320,
+      "outputs": [
+        "drivable_area",
+        "binary_lane_paint"
+      ],
+      "completed": 851,
+      "update_fps": 0,
+      "replaced_pending": 847,
+      "error": null,
+      "alive": true
+    },
+    "show_road": true,
+    "show_lane": true,
+    "detection": {
+      "detection_runs": 1536,
+      "detection_fps": 0
+    },
+    "stage_ms": {},
+    "stage_mean_ms": {},
+    "error": null,
+    "note": "模拟车辆与原录像车辆独立；录像运动不因模拟停车而冻结。无UDP、无FPGA事件；图龄从本机解码完成起算。"
+  }
+}

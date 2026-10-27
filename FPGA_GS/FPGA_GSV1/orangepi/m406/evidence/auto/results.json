@@ -1,0 +1,1413 @@
+[
+  {
+    "name": "SC_BT2_15_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7236.087625796,
+      "age_ms": 0,
+      "lights": [],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.270811999958823,
+        "traffic_inference": 169.22365200025524,
+        "traffic_postprocess": 6.657483999333635,
+        "traffic_geometry_color": 48.891,
+        "traffic_total": 229.103
+      },
+      "statistics": {
+        "raw_geometry_candidates": 0,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 131
+      }
+    }
+  },
+  {
+    "name": "SC_BT2_5_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7236.614799047,
+      "age_ms": 0,
+      "lights": [],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.84451100055594,
+        "traffic_inference": 188.5162409989789,
+        "traffic_postprocess": 7.1763519999876735,
+        "traffic_geometry_color": 45.819,
+        "traffic_total": 246.461
+      },
+      "statistics": {
+        "raw_geometry_candidates": 0,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 103
+      }
+    }
+  },
+  {
+    "name": "SC_BT_12_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7237.153462335,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            1763.202734375,
+            555.3098591549297,
+            1797.803515625,
+            580.5774647887324
+          ],
+          "confidence": 0.3589,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "候选外壳不暗，可能为招牌/反光",
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7237.388993377,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7237.153462335,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAfACgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD29VZmwoJq1p1rPPqEMIiYqWG5vQVy/wAWvGsPw18HLq6wpcX13hLaNvU8Zrwu4/aE+JWiCe01GG1DXke6BxDsKA/zr0nNpBg8rnXd0z0+91iG2/axsdHTUl+yizcPHnjccED616frulH7fdmIFDu3LxwRXwFcX2rXGutr8uoTnVGk8zz93zbq9nsv2kvF66PYaWthHd3sCYlmK5MuO+PpSUme9iOH5RgmkfQFvaK0iLeRHcwOQT7UVh/Cv4h2vxT0EXcdstlqtidlzCDyTRRzHzdTDypy5WZ37R3g+58Y/Dq21DRonudV0aVZY7cHlwDzx+FeB/GbxZY+M/CmlGDwpf2GuaSgivH8ohQB17V9eWU8ltMHiOD/ADq5ZC1u5ZbS902xe3ukKSnyFz/KlKOhphsfOi7I/PCyuo5bUyK4O37wPau2+CGveENK8Uz6l4us55bZIj5DKCRux04ra+LPgv4aaN8YLXRLK5u4bGQk3YEbfKxPGPX8K+rNI0rwV4S8HadpGk6Pa3Vv5WUeW3BYjrklhms7u59PX4gnKios8c/Zm0a6vPGXiT4l2+nzaZod1Owtbdxt3Ke+DRXsOo6rNPZLawRxWtsv3Yol2qPyorRRufK1cTzyuf/Z"
+        },
+        {
+          "box": [
+            1554.225,
+            641.0,
+            1573.996875,
+            682.7464788732394
+          ],
+          "confidence": 0.3406,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 2,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7237.388993377,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7237.153462335,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAvABkDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDjJr9uPKQk1JpV7ZXcrw38rQhfvEHpXK+INYltrWQWgBdVwSRnFcdY6zetdM+4O0nDDGKvqehluWRxMOabPoSXwpYaVdaB4g03VBdo10OB2yM17N9vP+f/ANVfMfwf1DUb51tLmR3toZQyKeinNfR3l/5xVnnYzDKjU5UfMu2DYweFXzwc96XRPhNql5d/bpdUtrS0nO5cqMgHmkxuBXOM8Vn2ttcz6tcxPqVxsVflXzWwPwzU2OfLcZVs0mesy6RpPhzQ9K0zSbyG5umul86RSNx9a9NxL7V84eCrcw+IrNTK8hE4+8Se9fTnlr7VSM51pTk3I+X4ADKAe9ZumyQjxJeB5gpC8jFaCcODnpV7RE8N6bftqN/DcTvKMMF6UjiwFeNO9yv4WuIH16zaKUMftA7Y719L+YPU14E/inwo2paZp+maPNDNLdKPMYjivePLm9T+lB0KSk2z/9k="
+        },
+        {
+          "box": [
+            1817.30078125,
+            557.7816901408451,
+            1849.15546875,
+            583.5985915492959
+          ],
+          "confidence": 0.2603,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 3,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7237.388993377,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7237.153462335,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2qWOJ9VkiRFLg9AK0LLTG/ta1WSyO1nGWx0rn/iN4stPh14av/Es0Anu5WWO1j6/Mxx/OvCL79ov4j2UVzZalaJHLdJvtn2gFFPccV6MnY1wWXyxD0PS/Buu6lc/tZ+JPD816r6VbwqY4uwO0dK9MkZ1uJU2MNrEdK+DfD/iPXdH8XDxbHdyNqJlMkjlsl/UGvoAftTynyml8PHyxgXDABsepopvuelieH5whzI91Rziiq2h6tp/iHQrTXNMnR7S7QOhHY9xRVnz86Di2meefHPw3eeOPAFxLpUbT6jptxFItsP41U5NeG/G3xDZ+JfD+jS2/hPUtLv8ASo/IuZZFARunp9K+oI7qS1uw8fAK4YY4P1ql4uvPDX/CM3La3p8Ai/i2IMmokd2X450pI+HY7yN4chhwK774ear4OsfBOvHXFaXUpwVtoSh5GOP1rI1K38DX/wAQ1j0++ktrdpPmjaMkZ/KvWb2w0qMm3W1tzCBgME5NRex9DiM7c6djr/2drnSPDnwt06XXdUWBrkFkiY5KjP6UVw7QafFCkMe9kXhVJ4X6UU+c+YnJyk2f/9k="
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.912467999929504,
+        "traffic_inference": 188.70057100048143,
+        "traffic_postprocess": 7.47005699940928,
+        "traffic_geometry_color": 33.841,
+        "traffic_total": 235.762
+      },
+      "statistics": {
+        "raw_geometry_candidates": 0,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 8
+      }
+    }
+  },
+  {
+    "name": "SC_BT_35_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7237.678407869,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            514.38916015625,
+            585.5211267605634,
+            539.36083984375,
+            658.0281690140846
+          ],
+          "confidence": 0.3276,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7237.915401597,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7237.678407869,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABPAB8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCi3x/1An5PDrbf+uQrZ8KftBac100ev6aLOPIwzxDHYdvrXkskzxgk7M/SsjWbkXNq8CpCHcYyyjgVrY9mOAcldI+tfDvjDwz4g1Ymw1CCWQISqIdvJrxb47fDTWrnXpPEv9sQCKXCLFu5HJ9PrXjxstQ066t9a0rUvKuIWDFVJA+n869tPiw+L/hshkG66tXQSkdOoFHKYV8DOkr2PKNUmMZPJrn7uZm5BIrqb60EoYk9q56/sHjXfkBcgZPbPFO59Fg60IL3itYySZc5JRVLMCa9L+CBS68LeIFjGSrxYH/AhWTd/CXxRHpplsgLhZkU71HQHFd1ZaRD8PfBFjpka+dqOqSs1w/93YAaq5hmOY05wcUcOTkECuo8JfDnwf4g0d9S8UeKo9Lfd+7iMm3JzxXKCQAjJxXP+MLZNRu7ZUlZNoGTnj/PSsudHBT9/RH1b4zm8PeAfBkdob2RZbwLHbyNKTu6c/pXE/EHamneG7sMsokaUbsdfkrzqT4qR3WnWdh4u07+1BZD90wAzgDit+48YWvjvQNAXTbCWzSGedTu6cIOlXF3PLr6Hnbz5FUrptzCmSSA9DTN2TXL1NstrczGLbookkIBPlsOfpXffBu3EfhzSO2bm4P/AI4K4ZnXyXGR9w/yr0z4XW/l+FfDrE/NJcXHH/bOuimc2MXK3c8mil39KmOmeJLobtLsDMnQHFULViBx1qwNT8TWpzpupGCP+76VjY48NW9kz0nw98DfGeq6B/ass8VrIwz5TLzz/wDrrrdO8OX/AIQh8M6ZfzLLMslySVGAPkrzT4Zan8RNT8eaJbXHiC6e1mmIKrNhcY7jNe6eNdMni8baHBcXJlBSbaD67Oa2gzbEVfaO5//Z"
+        },
+        {
+          "box": [
+            692.62109375,
+            610.7887323943662,
+            720.0625,
+            654.7323943661972
+          ],
+          "confidence": 0.3154,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 2,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7237.915401597,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7237.678407869,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAyACIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBnxbZfhvd6D4oshK6ec3mwuCVI4PArJ+Idta/FfxfonjXRo2gS1jRrnAwBjBrlfib8V9U+InhnS7C405YpLdiWOzBPSvYfgDHoi/D+fTb6eCC7ZDtR2C544rU1VJyQ7xP4t8Hm9t47jVAkkcSKwDjjCgVzHi1tL8X6Hc2Wg3n2uaNC+xWyeBXlOu+D9V/4S2+F3YLLbeaxSQfMCM+v0rsv2TNPt4fHupBRkBCNh+vSgv2Bz1vZXMUEcTPhkUKQR0wKK+irjwjZvPI50gHcxOfL96KCfYnyx4YaWbSobl1Rg0zd8+lVfHF1qw1eP+zbh4SFHKnFdIfB1p4eurbS5NXkExdn8h1x/npWN4mZbXxE8TxyOqqBlRnNB0Q2MzQ9e8Z2cpE93JPERg73re0PVNX0i8ku9DZobuQFmKHHPWs5HWSMMhOD+lXNEkc6oqoCxwc4+lUaJ6FaT44fEaORkN5JlSR3ormLh4/tEmUfO85+T3oqDI9h/absZLP4zWV2hVE8oH5emcmuv8CeC9P8QeG7rX7+NSig4Y9OK8iu9Y1XxZHbzau7SXUK7PMPU44rtdB+LFj4X8FXPhLU4xlwwDDrzxSJg/dON1jTblL17mCAJp+9lV88EA10HwE0pdb8eSQykNEgPBGQelMPjrwfqXw9Hhy1eSO9VnYMRycn1pPgT4m0vwZ4sa91U74mHBx/n0p3HzHpN38IrFrqYiAYLsevvRWzL8cPhu0rsb6RcsTj0ooI5j540D/VL7u38657x5Gj6ym9Fb5B1Ge5oopCjsZWmwQrqC7YYxyOiiuu05EZpAyKwCnAI9qKKQmeVXYAu5gB/wAtG/nRRRTA/9k="
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.824387000553543,
+        "traffic_inference": 188.4958229993572,
+        "traffic_postprocess": 7.469181000487879,
+        "traffic_geometry_color": 35.562,
+        "traffic_total": 237.21
+      },
+      "statistics": {
+        "raw_geometry_candidates": 0,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 16
+      }
+    }
+  },
+  {
+    "name": "SC_BT_55_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7238.204869463,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            1355.056640625,
+            641.5492957746478,
+            1367.130859375,
+            665.7183098591549
+          ],
+          "confidence": 0.5796,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7238.439735515,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7238.204869463,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAeABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDv/Bl7p2jFNW8QX0Vjp8Y5cjA69K73wz4g8IeLZLr/AIRrV4L+SEFnVByBXg/xPvrXxH+zVaatKoDTujSxRnB68/yrE/Ypu/D1t491WOxmltEeFhsmkzkAHn+dd0o2Oa9z6h8pf7o/Kioze6TnjX7b/vkUVNjK58xeNPCdjoP7MyXTm8h1aPbvjaYlQ27+72rl/wBjrQND8R+OLtNdguhceS7K0MzRgjHPAr3aPwvZ+PNCXw5qsknkSncxBPUVtfD34N+G/hrrM2taZ5stw0TINzkgAitL3HKVkWf+Fb/DkceRqv8A4FtRWz5i/wB2iosc3tGf/9k="
+        },
+        {
+          "box": [
+            1405.7986328125,
+            642.3732394366198,
+            1416.7830078125,
+            661.5985915492959
+          ],
+          "confidence": 0.5068,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 2,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7238.439735515,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7238.204869463,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAZABEDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD6F8QeJNK8LeHG1fWZza6fCQpZFHU1z3gD4oeA/H2rSaZ4bu5J7pELsGGOK439ofxb4N1b4QX1vZ3kd4EuUYws4+b8q8b/AGOvEHhtPirJdzWdvpKJaMoKvwevXJrvtocahdXPsb7I3900VQ/4WD4D/wCg9b/99rRUEch5J+0Rpfw5s/hLqMunaTp+n3pYbAgw5/WvBv2OIvDkvxFe38R29rPbTWzAed2Ndp+0/wDd/wC2Q/rXlXwd/wCRoX8P5VWysaJ6H2z/AMIx8Gv+he0r/vn/AOvRXk1FTYi5/9k="
+        },
+        {
+          "box": [
+            1302.369140625,
+            644.0211267605634,
+            1314.443359375,
+            666.5422535211268
+          ],
+          "confidence": 0.4736,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 3,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7238.439735515,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7238.204869463,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAcABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1/wCJ/wASvDfwvW0XXYzcSXQyiqMkCt34a+L9F+JHhZ9d0FPJRJCjKwwc4r55/a81Pw/4m1TwstlJNkuEdpYygxj3rmNB8Ral4U+Ak2k6Nf3FneXeoeWJYTjgnHWvTjBzV0edE+zf7OvP+mX/AH1RXgdh4a8WzWNvMfG2o5eJW+/6gGiq+rzKMP8AbiS0VPDCQwi2UNl5Ix049qyPgR4PT4l/AnV/D63H2e+guC1vdSDoc+tfSt94W0HxZp8cWv6dFeCFspvHIqvBoGk+FLI2WgWUdlA7fMsYxn61Ck1sYxloeER/s8/EdI1RPic6qoAAFweB+dFe57Aecn86KfPLuPnZ/9k="
+        },
+        {
+          "box": [
+            1254.072265625,
+            645.3943661971831,
+            1266.146484375,
+            668.4647887323944
+          ],
+          "confidence": 0.3181,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 4,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7238.439735515,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7238.204869463,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAdABIDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2Tx9448NfDvQ7bWPESySJdErHGgJJpvwu+Inhn4mabdXWhW81s9qCZI5OtefftfwJL8LtJv2gExtpyef5VyP7H3iazsLrXI7qzkhZoN+yNc5H4V6R5a2Po0HjqKKwP+E68P8A/Phd/wDfFFLmCxgftERQ3XwIvYpQN0ZdlJGcV4/+xtcRad8V7jT94vY7qyVd2zhSVHFfTK2dlqtjJpep2qXVpKCHjboc1HpPhnwz4Z3T6JolvaXBGPNX7wGKGugkx1yqC4kAsrfAcgfL70VC0hJJIBJ9qKLIXMf/2Q=="
+        },
+        {
+          "box": [
+            1277.123046875,
+            648.1408450704225,
+            1291.392578125,
+            666.8169014084507
+          ],
+          "confidence": 0.2759,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "候选外壳不暗，可能为招牌/反光",
+          "id": 5,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7238.439735515,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7238.204869463,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAYABQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2b4kfEDwf8MoLVvEsk013c/6u2gTe35VmfDj4x+AviDrJ0TTkutO1ApvjS4Tb5n0rxj4poPDfx8ttb+Kivf6M9u/2dlGVDY+UDtWD4p1bwp468e+Gk+FGmXtjqtvMDPcRptULnOTivZjRjy6s8vlPre4tLuGZozESQeoHWisO+0bxqJgp8UuCEUHheuBRWV2SW9esfD3iTShp/ijR7bU4U+4ZUyR+NV/CGjeDvCMUv/CM+HLOwlkGDIifN+Zoopvawrsts5di77ixOSSxooorLnZNz//Z"
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.835469999306952,
+        "traffic_inference": 188.7151549999544,
+        "traffic_postprocess": 7.98046400086605,
+        "traffic_geometry_color": 32.485,
+        "traffic_total": 235.175
+      },
+      "statistics": {
+        "raw_geometry_candidates": 0,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 0
+      }
+    }
+  },
+  {
+    "name": "SC_BT_5_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7238.735060544,
+      "age_ms": 0,
+      "lights": [],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.8567610001555295,
+        "traffic_inference": 188.79215400011162,
+        "traffic_postprocess": 7.190933999481786,
+        "traffic_geometry_color": 39.679,
+        "traffic_total": 240.622
+      },
+      "statistics": {
+        "raw_geometry_candidates": 4,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 56
+      }
+    }
+  },
+  {
+    "name": "SC_BT_8_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7239.274691568,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            1182.0005737304687,
+            539.9295774647887,
+            1202.7164184570313,
+            568.4929577464789
+          ],
+          "confidence": 0.2979,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7239.567237054,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7239.274691568,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAjABoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3q5DfZ2CAliMACvLv2r7l7QeCLMzrEzanGxTPbHeun+NnxEh+GvgyC8ih83UrlgsSZ/Wvk74i+M9d+IWrQarq+2FolBRVPC+4r1pS1uehk2VPFK59361Y3N3YW89pJE4FogK7uc4rkfssg4cfMOD9a+SfC3xG8Y2PjHSZX1q4liWRIjEW+UqeMH8K+5rG2hubKC5dfmljVz9SM1ii8dlUcPPlbPAP21dNluvD2iX6QSS29vIPO2dRxXzTqGoWqKBCrRrsACMOTX6Av9luIPs2o2MN9bngxyLkAV89/tN+HvhxpfxH8NGLS2R7i4QXkMDbFKfQD1xWstNCcozZ4WPLE4v4U/CvxZ4tv9K1STT/ALHo8MgmN0w++OvSvsy01XSrW1htvMB8pFTOTzgY9KytRvYrfwzZWegolrp/2ddkajnGOlceNG1FxvDHDc9a53Ixx2ZVMRU5mdXkgjB71pyeHtDvry31C80mzuLuP7kskQZh+dFFdEjy8N8Rg+KGMbSrH8iqCAF4A/CuOF9dgAC4kwPeiiuaW5c9z//Z"
+        },
+        {
+          "box": [
+            1821.969140625,
+            607.2183098591549,
+            1846.683984375,
+            657.2042253521126
+          ],
+          "confidence": 0.2686,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 2,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7239.567237054,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7239.274691568,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAA4AB8DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDN+KXjHxNc6Rpd3r0cemaeWVkRV4PPoK9O0n4geGNT0mGey043SWkIaSQxYAwM9/pXzlL8UrjW9GtNI8QaOLq2sQCki8bwDmuh1z45wTeDLnQPDXhaLTDcpsMzYYgYwa2R7P8AZ6xErxPpzTdU0/X9Jg1S303fBKh2nbVG30+ytr95ba2+zuw+bAr55+HHx38RaN4dtPDMGlW0624JaYjnaOTX0d4d1/TfFfhix123ARnXbIoPQ05HHjMveGVz401HTUX4c6Zc2/DhOTjrzXNvDKNPa/X91GOOO2f/ANdeg+IdJ1PTPhlZ289lN5gizjbWd4K1Pw/p/hkDxdolxLaEfPjODS5kjqw2KnTehyXh7Tb3XZ4bDSWkaaeQI8ig/KpPNfVfwnsLjQtcs/CMcheKO1Z3z3bHWvKtL+Lfh/w7pzL4P8ATLBuGJmiLH88V3Xwg8Zy+L/G6aubaSyZLZ1Iddp59KOa5y5jiqlTcn8P+Kbbx3bnR9OMBFvEfLVgM8D/6xrhfiNDrkngmaOzlsZWSRRJAqqWA3DtXCaRdXnh/xKbjTJvLRnALDgFf8mr3jlLWDVo77Q72aR51JuFLHbkj0rjjJmGHrc0z1f8AZQ8dahqfiL/hDNS0O1nsVt3bzfIU7CB06V7hf6Po8OowtZWEVtNhs7EA4r5x/Zn+JfhrwadYGq2xTUGhZ45SBzgHgfpXZfCDxzq3jHxhcahvAtpFk2LnoBW6kVj7HzsJcHJOatWMNrcXIa6uvIhPDHPSiiueJwU3Z6HU6Zo3witQzalrc8s8mM7Tj8K774Raz4Om+Idro3goT7IbSUybmzk8UUVqmXWm5bn/2Q=="
+        },
+        {
+          "box": [
+            1860.414453125,
+            609.1408450704225,
+            1878.538671875,
+            653.0845070422536
+          ],
+          "confidence": 0.2612,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 3,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7239.567237054,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7239.274691568,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAyABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1PwrBoVpZ3b+JXtLK3gjyFBAPfPSvNvAdp8I/G+ka1BrWpGG4S8l8mR5dpEe75SPwxXh/iESSaPqs+q6pqEmoi+kXynmbbsB446Vj+AtNtNY8XWVkbe4ms2ZfPWJipxxnmq5bbHv4fAUatPmkz7TsJtAs0sbPRdS+0Wy7Yo2zndgUV4x8FtNvrbx7Dp08Fzb6Xb3e+FJmJJAPHNFaRZ5uJoU4Tsj0nx14VPiXwldta2Vh/aIQkSLGmWODXifgDwx428DPJPqFlFbNJJlXZVORXceKpo5fBF2vh975LgSuCSxrzf4f65q2qaZMNYu57p7aQoEJJIwf/rVKZ04STUNz0T4WX2q6h4zil1K5Ep87jFFUfgrNHL4uhZM4M3Q9qKRxVm3NnsXwU8y8XUrLWBZXC7mZAiZ4Jrhf2WtN0m68X+NYZ7NJUgv5wqEdtxrq/gg+k215qV5b2V7bgD52ml3DPOetcX+yvqllF4+8ZzT3Udskt9MUaTow3H8KlSOihL92xdStl0f4uw22iWixB7jcEOO9FQeP5dPvPivEbDXI45BINsydA3aijmOWpJcx6tqirF4RvTEojJTkqMetfJvxEd7Tw7O9q7W7NK+5ojtJ574ooqDSj8By/hmWWSe1eSV3ff8AeZiT0ooopHDU+I//2Q=="
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 5.276754999613331,
+        "traffic_inference": 234.56593100127066,
+        "traffic_postprocess": 8.26133599912282,
+        "traffic_geometry_color": 43.809,
+        "traffic_total": 292.762
+      },
+      "statistics": {
+        "raw_geometry_candidates": 3,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 69
+      }
+    }
+  },
+  {
+    "name": "SC_YJ2_20_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7239.795869699,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            946.5625,
+            164.569209039548,
+            984.2375,
+            243.68785310734464
+          ],
+          "confidence": 0.3491,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "YELLOW",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 23.5,
+            "component_box": [
+              18,
+              13,
+              7,
+              10
+            ],
+            "circularity": 0.389
+          },
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "YELLOW",
+          "last_confirmed": "YELLOW",
+          "seen_at": 7240.004568098,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7239.795869699,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "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"
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 3.2266610005535767,
+        "traffic_inference": 172.6751840005818,
+        "traffic_postprocess": 7.104602999788767,
+        "traffic_geometry_color": 25.201,
+        "traffic_total": 208.842
+      },
+      "statistics": {
+        "raw_geometry_candidates": 0,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 16
+      }
+    }
+  },
+  {
+    "name": "SC_YJ2_50_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7240.254480718,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            631.4,
+            343.68502824858757,
+            641.3000000000001,
+            355.77259887005647
+          ],
+          "confidence": 0.4988,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7240.477517238,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7240.254480718,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAASABADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDx2Dw5pUE87TeKbyF7iEMRcXSKXwcck46YFJH4d0uW+/c+Jbm5byw5Fveo7fjjNZXxSSG9tLA2kLyyRuwYqucLxiqPw/ZtJ+0zTWreZKixrkYIAJJPvmvfcbzseapXhzXNGQny+p61Xyd3Wiit/tmUfhP/2Q=="
+        },
+        {
+          "box": [
+            575.9828125,
+            344.9212570621469,
+            585.28125,
+            356.73411016949154
+          ],
+          "confidence": 0.2898,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 2,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7240.477517238,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7240.254480718,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAASABADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDwhtJ0FGlS+8TaxbJcABzLMnz4PfPXGauWWgeEtyWtr4o1W5UIz+VBdR8Y74wcdutYfxD0u6kt7H7LZzzSBnDmOMtgcYzil+G9ndWEepfbbGeF5UQRNJEV6Nk8n8K9ydJqrY4FJOnzXPS4CVkGCR9Kj1NmZCGYn6miivQn8SOSPwn/2Q=="
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 3.2631180010866956,
+        "traffic_inference": 172.73205899982713,
+        "traffic_postprocess": 7.302057999368117,
+        "traffic_geometry_color": 39.33,
+        "traffic_total": 223.179
+      },
+      "statistics": {
+        "raw_geometry_candidates": 1,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 104
+      }
+    }
+  },
+  {
+    "name": "SC_YJ_103_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7240.756140806,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            3.1580078124999997,
+            575.5900423728814,
+            72.771484375,
+            613.4523305084746
+          ],
+          "confidence": 0.4102,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "YELLOW",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 43.0,
+            "component_box": [
+              29,
+              14,
+              9,
+              11
+            ],
+            "circularity": 0.609
+          },
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "YELLOW",
+          "last_confirmed": "YELLOW",
+          "seen_at": 7240.993163701,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7240.756140806,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "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"
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.409934999785037,
+        "traffic_inference": 173.5705869996309,
+        "traffic_postprocess": 6.943022000086785,
+        "traffic_geometry_color": 51.616,
+        "traffic_total": 237.164
+      },
+      "statistics": {
+        "raw_geometry_candidates": 3,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 161
+      }
+    }
+  },
+  {
+    "name": "SC_YJ_105_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7241.327763105,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            2.6602783203125,
+            576.4131355932204,
+            72.8572998046875,
+            614.824152542373
+          ],
+          "confidence": 0.4634,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "RED",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 161.5,
+            "component_box": [
+              3,
+              3,
+              19,
+              25
+            ],
+            "circularity": 0.078
+          },
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "RED",
+          "last_confirmed": "RED",
+          "seen_at": 7241.561705754,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7241.327763105,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "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"
+        },
+        {
+          "box": [
+            1680.8234375,
+            638.6402266288951,
+            1712.70078125,
+            669.456090651558
+          ],
+          "confidence": 0.2808,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "同一候选中多色接近，眩光或多个灯态不明",
+          "id": 2,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7241.561705754,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7241.327763105,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAlACYDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDyqy8NeHfOXy/GFtJngZiI5rtdJ8F6btVn1iKYN90Kh61U+G3hTw7qujXWparqsNk9swEUbLy5r2H4L6Lp97dyPcBJTAwCA9MetdGFpqW58Zn+LqUnGEN27HN6b4cfS/DOq6S1u4g1AgmRkwBjoa8v8Q+DPIs5Lax1aG6mJysBUqfpX3XdaHYXulm0uYUkjZfTpxXzJ8ZvD8Oj388cbqZYxuV14IHatqTSneJhiHicDTg5u6Z5d4y8ba1apoa2EkUF3a6f9lnDLnGCDj9KKZqOh6br1na6jd63Fp0zKVk3ISXI70Vq84nB8rPpMPKcqaaM/wANaxfQ2ptxCdkpBKsleq+BvEl1plzBewF0VWBkRf4h715LLrUOtSNLbX/kX68hcALKPT2NS2Hie7gYKZjG6nDKa83BYhtXZ5XEOWSqStF6o+ytS+Jeiw+E5LqK9BnZNqRj7wJFfOHjXV73XLpoLfz55pjjcxztHqTR8P8AX21GXVY51jkWGyd0BHQgda81m1vXdVf+zrC4kZ5mI+T5do+tbSxEYN23OSngsTjFCNTZCeM9Tjjlt9Ktp1Isl2SSKeGbvRXp/wAN/hd4Ct9Le+8W6rFf3EhClVcgRseSD6mivAqZjBSeh+hUMjrKmrI+eLZ28wHJyvIPpWrBcySIWflh370UV6EdLWPFmrvU7X4QXMkmtaxEx+X+zpD+lY/gv5UkuB98EjP40UVx4qTuz08shHmWhtzX8p+QjjPQHvRRRXiSSufdwk1FH//Z"
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.296477999560011,
+        "traffic_inference": 166.7226480003592,
+        "traffic_postprocess": 6.932813999810605,
+        "traffic_geometry_color": 55.339,
+        "traffic_total": 234.133
+      },
+      "statistics": {
+        "raw_geometry_candidates": 5,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 190
+      }
+    }
+  },
+  {
+    "name": "SC_YJ_107_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7241.847879002,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            1.5103515625,
+            582.9978813559322,
+            71.123828125,
+            622.5063559322034
+          ],
+          "confidence": 0.4258,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "RED",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 124.5,
+            "component_box": [
+              6,
+              1,
+              15,
+              25
+            ],
+            "circularity": 0.136
+          },
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "RED",
+          "last_confirmed": "RED",
+          "seen_at": 7242.101378485,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7241.847879002,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAuAEoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5xPw61P8A4QIeMFeP7G0vl7M/Nmui8G/BTVta1DTINQvbfTItRQvC8p5IHtXo+m+FvEPiP4E6Ppukaa0g+2F5WB6DNU/2kjeaIvhayWZoZ7ey58tyCp4HavC+vTlPkT1PtqWV4Zx13POfi98KrjwG1uU1O31OGYld8P8ACfQ1yEXhaZoFeW9tIHYZEbvhq9k8VpNZ/AHSJZ7d3uLi6MnnSHJ9uteK2Njf65rEdrbo891cPtVRyST2rqwuIlKLc3sedj8BCE0oIbP4V1dAWS381R3QgisyfT7yBts1tIh91rvfFXg/xL4LitRqcs9rLcDcIw5yBWU+r6pCoJljmXHSZQ1dUMQpbM8+eWzjHmsccVI6im4rqH1nTZWxeaRCxPUxHFSmHwtcrgRXdqx4BPIrbnscDpnJGjFa2v6VHYFJbeYT28n3H/pWVVmbi0eu/CX4jeONEurfQfD99JJDcygC3cbhye3pWz+0dqt/qPxBSLUbaS2nito0Mb+p7ivKfBniGfw54jstatkV5bSUSKp6Eiui8e+OZPGXjebxLqcPl+a6nykOcKMcV5lTC/vOdI+mwePSWrPTPjnby6N8MfC2jtdySB4RNsY9OOv6039kHw5outeMZLq/djc2aiSFA2OfWuX+K/jzR/GWv6WbRJoNPt7BbfbIeVbHNc/4RuvEfhPXF1Xw5do0qfdKN94ehFYQw8nRcdmzfE4yEqmh9N/tC618O20a/stQjQ69GhWFHX5wfb2r471i5Em1E4CjFdN8QNb8WeKdZl1jW7ZmuXUKWjjwMCuJmSYH50cH3Fa4LCexjq9TkxWNXsvZwIQdp4p8l1K6hd2APSoWBpMGvTseDJs2Ldmn8OzxseInDLntmsbFX4i0ekygkgSMMe+KpUCYgYin+YajooEpNbDzIxp6XM0f3JXX6NioaKLIOds0Yda1KL7t5Nj0LZrRi8WXwjCTQ20/u8YzXOZozRZB7RnQnWdKnObvR4wf+mTYpfN8LsN4gu42HO1jkVzuaM07A5l3UrtbiX92myJRhF9BVTNNpaCbn//Z"
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.727555000499706,
+        "traffic_inference": 188.9969009998822,
+        "traffic_postprocess": 7.260641000357282,
+        "traffic_geometry_color": 51.955,
+        "traffic_total": 253.657
+      },
+      "statistics": {
+        "raw_geometry_candidates": 1,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 154
+      }
+    }
+  },
+  {
+    "name": "SC_YJ_120_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7242.390689437,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            1391.7203124999999,
+            712.4978813559322,
+            1404.9015625,
+            756.396186440678
+          ],
+          "confidence": 0.3115,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "UNKNOWN",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯体候选；灯区无可靠颜色证据",
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "UNKNOWN",
+          "last_confirmed": "UNKNOWN",
+          "seen_at": 7242.635400259,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7242.390689437,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAyABMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5eiQlwBSXatGSDwfSus+GPhi48U+KrfTYGAzyxPpTvin4Zl0LxVdWLMuUxgZqm7HVCjzK5wZ3E5B/WitBLKEqCz4PcUVlzsr2B0PgPxPfeEPEdvrWn7TND0Vuhp/jzxFd+J/EVxrOoMouJ+cLwAKw5EChMkAk1oLpa3ETGaXyyEyCe9auLZNOrZWMMztk9DRU5tVBIEqkDvRWVjb2hNqqCO+tgrErtBNev+OLjTYfhtb/AGWGykklhUE4HmA/hXjokEl1HuOTjAq5e3sxtxbyOdg6c130akIpqRw8j3M1HkCgbcUUoYe9Fc7auVZgeLuKr9wqmEEqDz3FFFSUirgegoooqCj/2Q=="
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.717346000688849,
+        "traffic_inference": 189.0954820000843,
+        "traffic_postprocess": 7.400931000120181,
+        "traffic_geometry_color": 43.146,
+        "traffic_total": 244.853
+      },
+      "statistics": {
+        "raw_geometry_candidates": 0,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 91
+      }
+    }
+  },
+  {
+    "name": "SC_YJ_65_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7242.939320577,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            3.569921875,
+            569.8283898305085,
+            79.15615234375,
+            607.1419491525423
+          ],
+          "confidence": 0.5332,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "RED",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 422.0,
+            "component_box": [
+              6,
+              2,
+              21,
+              29
+            ],
+            "circularity": 0.411
+          },
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "RED",
+          "last_confirmed": "RED",
+          "seen_at": 7243.191867491,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7242.939320577,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "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"
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.828760998861981,
+        "traffic_inference": 188.02479000078165,
+        "traffic_postprocess": 7.4505140000837855,
+        "traffic_geometry_color": 51.664,
+        "traffic_total": 252.707
+      },
+      "statistics": {
+        "raw_geometry_candidates": 3,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 143
+      }
+    }
+  },
+  {
+    "name": "SC_YJ_85_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7243.496307843,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            1512.82,
+            631.51,
+            1582.76,
+            659.48
+          ],
+          "color": "RED",
+          "color_evidence": "原图紧致发光区HSV + 胶囊灯壳/暗腔复查",
+          "body_source": "AUTO_CAPSULE_GEOMETRY",
+          "body_score": 0.659,
+          "evidence": {
+            "rim_coverage": 0.786,
+            "rim_contrast": 53.0,
+            "dark_fraction": 0.739,
+            "emitter_pixels": 63,
+            "slot": 0,
+            "orientation": "horizontal",
+            "paired_housing": true
+          },
+          "shape": "UNKNOWN",
+          "shape_reason": "发光区太小或眩光；圆灯/箭头不可可靠区分",
+          "direction": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "未建立灯组与本车请求方向归属",
+          "confidence": null,
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "RED",
+          "last_confirmed": "RED",
+          "seen_at": 7243.750938976,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7243.496307843,
+          "source": "DIRECT_IMAGE",
+          "reason": "灯色已识别，控制关系未知",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAiAEwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDF/am8aaL4v0aP+zbmxlksH8qRUcZJPOV9RXzxpemm+YpHLGjKuTuOK2PDeiWH2Btb1UZtkfbDAv3pW/wr1X4eaHHrs0e3wtp4hJxnklRWeaZtCyilZH0OVZU5Js8Xn0UpZ/aPtEJwcbQeayZ4dpPINfYvi74T2Wn6EL+LQ7STd0VVPBPrXhfiSSLRr+S1m8JaXIUP3ufm+lePSzCNSVj2Hl9OcHKDvY8oAUDnFHy/3q7a68VaYoJbwXpqgHnlqiHizTDyvg3TNv8AvGvThPqfPV6Nm0QSxlvB0V1q+sKYV+W0skPP1OK4dvv5Ud+K7tvGWkA4Pg3Tc+hZsUq6z4a1MrZ6loFvYRyHAubZjuQ9sj0rb2mhxSp2OFGduD60nTgCtrxXocuiakbdpFlhdd8Mg/jQ9DWPt96alcz5T0S8uA2k6ABGqQLERkd2zX0h+zprGkQWjCdATGo3ALyxr5g8MalZyaTLo2qhhbFt8U6jJib/AArtvCFxf6PMJLLXrEBfuuJACR714OPoSnqj7DLqkJU5UpaXPuvXNc0q00BLm+iP2ScbSduQufWvlHxtZ6L4y8dz2GhusP2aBnTK48xhV7xV8TNa1Tw9FpdvqumRp5e2bdIDuNePzW+sfbRfwa9YW84yPMWbHBrjoYdykuhth8PDBQlJvVnOeJYRBezW8jFpFYh+wyKoeHrCO9uLnL7REm7bnrXTavpV7qKAyavoit/Eyycsfes608M3trMJYtb0oN3/AHwr34RsrHzted2zmr1Ys8jPPFUHXa2ATiu4v/DN5dASPqujLz/DKOahtfC1hayLd61rdkLRDl44H3O/sBW3Q42dAH8Nr4W0F/FNpJNO8WEKtg7M8Vn3jeBWnJtrJFjxwGc5rk/GmuDWtTVoYzFaQIIreP8AuoKws+1Lkv1FdGtp7MBIAxAI5GaljA8zoOtFFZTPWwnQmYDB47VHP/qwO1FFYw3O7E/CVwqknKjp6UkqqE4UD8KKK6uh4FTcu+Fo45fEFvHIiuhYfKwyOvpWj4+iii1SQRRogHQKoFFFarYyZx7dT9aaKKKCD//Z"
+        },
+        {
+          "box": [
+            1644.71,
+            635.5,
+            1736.64,
+            669.48
+          ],
+          "color": "RED",
+          "color_evidence": "原图紧致发光区HSV + 胶囊灯壳/暗腔复查",
+          "body_source": "AUTO_CAPSULE_GEOMETRY",
+          "body_score": 0.481,
+          "evidence": {
+            "rim_coverage": 0.5,
+            "rim_contrast": 21.17,
+            "dark_fraction": 0.75,
+            "emitter_pixels": 112,
+            "slot": 0,
+            "orientation": "horizontal",
+            "paired_housing": true
+          },
+          "shape": "UNKNOWN",
+          "shape_reason": "发光区太小或眩光；圆灯/箭头不可可靠区分",
+          "direction": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "未建立灯组与本车请求方向归属",
+          "confidence": null,
+          "id": 2,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "RED",
+          "last_confirmed": "RED",
+          "seen_at": 7243.750938976,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7243.496307843,
+          "source": "DIRECT_IMAGE",
+          "reason": "灯色已识别，控制关系未知",
+          "change": null,
+          "thumbnail_jpeg": "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"
+        },
+        {
+          "box": [
+            1.2357421875,
+            575.8644067796611,
+            72.496875,
+            614.2754237288136
+          ],
+          "confidence": 0.4529,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "RED",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 182.5,
+            "component_box": [
+              3,
+              4,
+              20,
+              25
+            ],
+            "circularity": 0.133
+          },
+          "id": 3,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "RED",
+          "last_confirmed": "RED",
+          "seen_at": 7243.750938976,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7243.496307843,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "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"
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 4.72055500085844,
+        "traffic_inference": 189.38014400009706,
+        "traffic_postprocess": 7.319557999835524,
+        "traffic_geometry_color": 52.617,
+        "traffic_total": 254.967
+      },
+      "statistics": {
+        "raw_geometry_candidates": 3,
+        "paired_geometry_candidates": 2,
+        "geometry_hypotheses": 151
+      }
+    }
+  },
+  {
+    "name": "SC_YJ_99_raw",
+    "result": {
+      "backend": "RKNN/NPU + CPU",
+      "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+      "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+      "epoch": 0,
+      "source_frame_id": 1,
+      "decoded_monotonic": 7244.06607371,
+      "age_ms": 0,
+      "lights": [
+        {
+          "box": [
+            2.1110595703125,
+            574.4925847457628,
+            72.3080810546875,
+            614.5497881355932
+          ],
+          "confidence": 0.4739,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "RED",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 125.5,
+            "component_box": [
+              2,
+              3,
+              20,
+              29
+            ],
+            "circularity": 0.031
+          },
+          "id": 1,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "RED",
+          "last_confirmed": "RED",
+          "seen_at": 7244.385031554,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7244.06607371,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "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"
+        },
+        {
+          "box": [
+            1640.4271484375,
+            638.9153682719547,
+            1683.8462890625,
+            684.5888810198301
+          ],
+          "confidence": 0.2742,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "YELLOW",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 115.5,
+            "component_box": [
+              19,
+              4,
+              14,
+              14
+            ],
+            "circularity": 0.821
+          },
+          "id": 2,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "YELLOW",
+          "last_confirmed": "YELLOW",
+          "seen_at": 7244.385031554,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7244.06607371,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAA0ADEDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5Jg9Bk1saLp9zqV5HZ2cRkmkOFUfzr03/AIV78OVYBfE91167BU02ieH/AAtoWpat4b1WW9uFxBudcbA3WvGqYqD0R9RhqWupn6P4G0iWZbO68Rot10dI48hT6Zrp3+DcPkGSPWnYephNaPwAsNHvbwfbJUWdpABu5LZ619daZoWiJojWwjjaDZtYnGeR6141StVlNqLPaxOJp4CEbxu2fBOr+BdH0+7NvqPieO2OO8RNZV14T8IKMDx5bk+hhavev2hfB+naXpzm2KSIZB5GcZVe+T3ryLw54G8K614f1K81bX49KubfPlqUOGNdmCxLl7snqTjKUKlFVo6XOX/4Rfwj/wBDxbf9+jRWZ/wjVl/0Gbf9aK9TmXc8Qw47q5JybmUf8Cr0z4RaNPrem6yl3fiO2kiwqP1Zuxry/SbeW9vEgQFsnnHpXqWlXDabbpb2xMahdpI6muTMavso8sVqzuybD+3nd7FnwpPq3hLXI1ubSYOhwjqpIYeoNfRug/FzRYPBs9vdQXIYxlSNpzmvCovFOovBBBJMjJDwmUBIH1ol1ueQ5Lrz1wK+eqVqjldLU+yll9DE01Cr0KfxL8XTa5fRtCt60MIKxq2SMVxy6/qkGmXenx20jQ3P3wYcmuyuNTlI3B1GOc7RXN6repqDS/YNW+z6kvPlH7knsPQ16WAlzO3KeVnUFTppR2OSxP8A8+c//fFFWv7Q8Vf35P8Ax2ivZ5EfH8xQ8JSfZ77zD1xgV2cNz5n+Fed2d15GCByK2bHXgpCvHx61z4vDSqy5ketlWNp0Y2Z17zAdKFucAsW2gDk1kx38c8YZXB/GsfW9WLK1vAeP4iK4IYOUpWaPcnmdOMOZMm8Ra+8pa3t3xGO471zrSk5IJ39QfSmHOcsetCjnmvapUY0o2R8ljMfUxEm5Ml+2XX/PaT/vqio9o9KK00OG5WYnbTVdgODRRWqM7k8Usi9HYfjQxPXPNFFQ9zfmfKNR2JwTUgOKKKb2MQ3GiiipGf/Z"
+        },
+        {
+          "box": [
+            857.605078125,
+            740.208686440678,
+            880.123046875,
+            773.6811440677966
+          ],
+          "confidence": 0.2502,
+          "body_source": "YOLOv8s_COCO_class9_RKNN_FP16",
+          "color": "YELLOW",
+          "shape": "UNKNOWN",
+          "shape_reason": "灯型或分辨率/眩光证据不足",
+          "direction": "UNKNOWN",
+          "kind": "UNKNOWN",
+          "control_relation": "UNKNOWN",
+          "control_reason": "机动车/行人类别及本车方向归属未确认",
+          "reason": "灯色已识别，控制关系未知",
+          "color_evidence": {
+            "component_pixels": 5.0,
+            "component_box": [
+              5,
+              4,
+              3,
+              6
+            ],
+            "circularity": 0.462
+          },
+          "id": 3,
+          "hits": 2,
+          "streak": 2,
+          "observed_color": "YELLOW",
+          "last_confirmed": "YELLOW",
+          "seen_at": 7244.385031554,
+          "source_frame_id": 1,
+          "epoch": 0,
+          "decoded_monotonic": 7244.06607371,
+          "source": "DIRECT_IMAGE",
+          "change": null,
+          "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAnAB0DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDg9W+B5+H1/wD2qfE9nei3OGjVSG5rP8Qae2tRJoy3K27Xjqu9hwM+1et/GjR7HVvDd14gtdRMZhdCYc/eIPevM9UZtS8QaXeRgQNGUAVehxjmvl4YudX3pbo+n+rxglENa/ZgurXTZrqy8WWFzLHF5nlFCCRjOM1873kDW9zJA/3o2Kn6ivuszXd7a3kasV2WzF2H8Py18N64ANVuRuziVufXmu/KsZUxDkp9DgzDCwoxTR9efE+MRaBdx8hftPPPB5rhtMAfxJpiHlDMoNej/F/TJovBc+oz3CRgXIPlnq2T2rzPSplGuacQ2D5y4z3rxcJqpHt1d0fQWo2qReHtXitQFMtswLd+lfn9rCbNTuEznbIw/Wv0ERXuNO1GAqQ7WjEf981+f2uKy6vdKQciVh+pruyG/NUODOHHlij6X8dfFDwz8QLK00nTdNvIJUcSMZWGDXJ6xdWWkyWmqXMbmOCVThevFFFbRoQhPlWwpVZctzuV+P8A4StYrmeKy1B5HtzGqkcZIxXz3CVu1kvDboTPK789eTRRXo4TDU6TbitzzcXXnNK5/9k="
+        }
+      ],
+      "transitions": [],
+      "control_relation": "UNKNOWN",
+      "control_reason": "自动归属未实现；不使用旧人工场景标定",
+      "stage_ms": {
+        "traffic_preprocess": 5.6162509999921895,
+        "traffic_inference": 246.24350799967942,
+        "traffic_postprocess": 8.176169000762457,
+        "traffic_geometry_color": 57.933,
+        "traffic_total": 319.228
+      },
+      "statistics": {
+        "raw_geometry_candidates": 2,
+        "paired_geometry_candidates": 0,
+        "geometry_hypotheses": 174
+      }
+    }
+  }
+]

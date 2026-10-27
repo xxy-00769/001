@@ -1,0 +1,18 @@
+M4-01 前摄冻结只读采样
+目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021
+开始：2026-10-22T19:44:26.735083+08:00
+结束：2026-10-22T19:44:56.746550+08:00
+窗口：30.001秒，样本：31
+rmem_max：212992
+NIC增量：{"collisions": 0, "multicast": 0, "rx_bytes": 0, "rx_compressed": 0, "rx_crc_errors": 0, "rx_dropped": 0, "rx_errors": 0, "rx_fifo_errors": 0, "rx_frame_errors": 0, "rx_length_errors": 0, "rx_missed_errors": 0, "rx_nohandler": 0, "rx_over_errors": 0, "rx_packets": 0, "tx_aborted_errors": 0, "tx_bytes": 0, "tx_carrier_errors": 0, "tx_compressed": 0, "tx_dropped": 0, "tx_errors": 0, "tx_fifo_errors": 0, "tx_heartbeat_errors": 0, "tx_packets": 0, "tx_window_errors": 0}
+全机UDP增量（非服务专属）：{"IgnoredMulti": 0, "InCsumErrors": 0, "InDatagrams": 4, "InErrors": 0, "MemErrors": 0, "NoPorts": 0, "OutDatagrams": 5, "RcvbufErrors": 0, "SndbufErrors": 0}
+服务socket drops增量：{}
+同session协议增量：{"heartbeat_tx": null, "heartbeat_or_welcome": null, "rx_packets": null, "front_fragments": null, "complete_frames": null, "bad_packets": null, "wrong_session": null, "wrong_peer": null, "send_errors": null, "receive_errors": null, "assembly_dropped": null, "assembly_duplicates": null}
+当前30秒窗口服务未运行，接收线程未运行；不能还原重启前socket丢包、组帧及处理阻塞原因。
+本窗口eth0持续无载波；与历史千兆链路现场不同。
+板上127.0.0.1状态接口不可访问；不经过Wi-Fi/SSH，不能归因为浏览器或Wi-Fi超时。
+只读采样：没有启动/停止服务，没有绑定业务UDP端口，没有sudo、抓包或网络/sysctl修改。
+全机UDP计数仅作旁证；服务丢包仅归属于同PID/start_ticks、同socket inode。
+缺失服务/会话/socket的增量为null或空映射，不当作0；heartbeat_tx为发送轮次。
+hardware_delta涵盖ethtool窗口（包围主采样窗，边缘有命令耗时），NIC/UDP/link主窗严格对齐。
+既有版本未暴露接收线程native_id、缺片位置/当前组帧frame_id；仅凭OS线程清单不能确认接收线程身份。

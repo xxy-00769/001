@@ -1,0 +1,591 @@
+﻿本地入口：E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\orangepi\orangepi\oneclick
+目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021
+诊断只读；不会启动第二份LIVE、不会占用UDP50000、不会添加静态ARP。
+通过SSH执行 diagnose；需要认证时请在终端输入密码（不保存）。
+SSH：可连接；远端版本：M4-01-v0.1.2
+本地转发/HTTP：可访问，session与远端一致
+物理链路未建立
+ARP为PERMANENT静态条目，不证明FPGA已回应ARP
+服务正常，FPGA尚未连接（online=false）
+网卡增量：{"rx_packets":0,"tx_packets":0,"rx_bytes":0,"tx_bytes":0,"rx_errors":0,"rx_dropped":0}
+协议增量：{"heartbeat_tx":15,"rx_packets":0,"heartbeat_or_welcome":0,"front_fragments":0,"complete_frames":0,"bad_packets":0,"wrong_peer":0,"wrong_session":0,"send_errors":0,"receive_errors":0}
+端口占用及进程命令行：
+Netid State  Recv-Q Send-Q             Local Address:Port  Peer Address:PortProcess                             
+udp   UNCONN 0      0                     127.0.0.53:53         0.0.0.0:*                                       
+udp   UNCONN 0      0                      127.0.0.1:323        0.0.0.0:*                                       
+udp   UNCONN 0      0                   192.168.60.1:50000      0.0.0.0:*    users:(("python",pid=116267,fd=5)) 
+udp   UNCONN 0      0                          [::1]:323              *:*                                       
+udp   UNCONN 0      0      [fe80::8a5a:34:9a2c:7d9d]:546              *:*                                       
+tcp   LISTEN 0      0                      127.0.0.1:631        0.0.0.0:*                                       
+tcp   LISTEN 0      0                        0.0.0.0:5555       0.0.0.0:*                                       
+tcp   LISTEN 0      0                     127.0.0.53:53         0.0.0.0:*                                       
+tcp   LISTEN 0      0                        0.0.0.0:5901       0.0.0.0:*    users:(("Xtigervnc",pid=2134,fd=7))
+tcp   LISTEN 0      0                      127.0.0.1:6010       0.0.0.0:*                                       
+tcp   LISTEN 0      0                      127.0.0.1:5037       0.0.0.0:*                                       
+tcp   LISTEN 0      0                      127.0.0.1:8080       0.0.0.0:*    users:(("python",pid=116267,fd=4)) 
+tcp   LISTEN 0      0                        0.0.0.0:22         0.0.0.0:*                                       
+tcp   LISTEN 0      0                              *:5901             *:*    users:(("Xtigervnc",pid=2134,fd=8))
+tcp   LISTEN 0      0                          [::1]:6010             *:*                                       
+tcp   LISTEN 0      0                              *:3389             *:*                                       
+tcp   LISTEN 0      0                          [::1]:3350             *:*                                       
+tcp   LISTEN 0      0                          [::1]:631              *:*                                       
+tcp   LISTEN 0      0                              *:22               *:*
+
+
+结构化详情：
+{
+    "tool_version":  "M4-01-operator-v1",
+    "action":  "Diagnose",
+    "computer_time":  "2026-10-22T13:19:39.7882857+08:00",
+    "ok":  true,
+    "config":  {
+                   "ssh_host":  "10.168.29.122",
+                   "ssh_user":  "orangepi",
+                   "ssh_port":  22,
+                   "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "remote_tool":  "operator_v1/ops_manager.py",
+                   "interface":  "eth0",
+                   "business_cidr":  "192.168.60.1/24",
+                   "fpga_ip":  "192.168.60.2",
+                   "fpga_mac":  "02:00:47:53:56:32",
+                   "udp_port":  50000,
+                   "peer_port":  50000,
+                   "web_port":  8080,
+                   "local_port":  18080,
+                   "scene":  "scene.example.json",
+                   "preview_fps":  15,
+                   "preview_width":  640,
+                   "preview_quality":  70,
+                   "output":  "runs/live_dual_eth",
+                   "diagnostic_seconds":  4,
+                   "startup_timeout_seconds":  35
+               },
+    "local_before":  {
+                         "listeners":  [
+                                           {
+                                               "address":  "::1",
+                                               "port":  18080,
+                                               "pid":  39972,
+                                               "name":  "ssh.exe",
+                                               "command_line":  null,
+                                               "creation_date":  "10/22/2026 12:39:41"
+                                           },
+                                           {
+                                               "address":  "127.0.0.1",
+                                               "port":  18080,
+                                               "pid":  39972,
+                                               "name":  "ssh.exe",
+                                               "command_line":  null,
+                                               "creation_date":  "10/22/2026 12:39:41"
+                                           }
+                                       ],
+                         "http":  {
+                                      "ok":  true,
+                                      "status":  200,
+                                      "data":  {
+                                                   "mode":  "LIVE_FRONT",
+                                                   "processed":  0,
+                                                   "host_monotonic_ms":  15637421.274278,
+                                                   "processed_fps":  0,
+                                                   "processed_average_fps":  0.0,
+                                                   "target_preview_fps":  15.0,
+                                                   "preview_encoding":  {
+                                                                            "width":  640,
+                                                                            "quality":  70
+                                                                        },
+                                                   "playback":  {
+
+                                                                },
+                                                   "stage_ms":  {
+
+                                                                },
+                                                   "preview_age_ms":  null,
+                                                   "effective_feedback":  "UNKNOWN_STALE",
+                                                   "latest":  {
+
+                                                              },
+                                                   "link":  {
+                                                                "heartbeat_tx":  238,
+                                                                "session":  1589143082,
+                                                                "online":  false,
+                                                                "host_elapsed_seconds":  61.106,
+                                                                "front_receive_fps":  0.0,
+                                                                "socket_receive_buffer_bytes":  425984,
+                                                                "current_frame_fragments":  0,
+                                                                "assembly_dropped":  0,
+                                                                "assembly_duplicates":  0,
+                                                                "hardware_validation":  "网口2尚未实物联调"
+                                                            }
+                                               }
+                                  }
+                     },
+    "remote":  {
+                   "ok":  true,
+                   "tool_version":  "M4-01-operator-v1",
+                   "directory":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "version":  "M4-01-v0.1.2",
+                   "config":  {
+                                  "ssh_host":  "10.168.29.122",
+                                  "ssh_user":  "orangepi",
+                                  "ssh_port":  22,
+                                  "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                  "remote_tool":  "operator_v1/ops_manager.py",
+                                  "interface":  "eth0",
+                                  "business_cidr":  "192.168.60.1/24",
+                                  "fpga_ip":  "192.168.60.2",
+                                  "fpga_mac":  "02:00:47:53:56:32",
+                                  "udp_port":  50000,
+                                  "peer_port":  50000,
+                                  "web_port":  8080,
+                                  "local_port":  18080,
+                                  "scene":  "scene.example.json",
+                                  "preview_fps":  15,
+                                  "preview_width":  640,
+                                  "preview_quality":  70,
+                                  "output":  "runs/live_dual_eth",
+                                  "diagnostic_seconds":  4,
+                                  "startup_timeout_seconds":  35
+                              },
+                   "preflight":  {
+                                     "directory":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                     "missing":  [
+
+                                                 ],
+                                     "addresses":  {
+                                                       "ok":  true,
+                                                       "code":  0,
+                                                       "stdout":  "[{\"ifindex\":2,\"ifname\":\"eth0\",\"flags\":[\"NO-CARRIER\",\"BROADCAST\",\"MULTICAST\",\"UP\"],\"mtu\":1500,\"qdisc\":\"mq\",\"operstate\":\"DOWN\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"00:00:a4:b5:5f:ef\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"192.168.60.1\",\"prefixlen\":24,\"scope\":\"global\",\"label\":\"eth0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]",
+                                                       "stderr":  "",
+                                                       "data":  [
+                                                                    {
+                                                                        "ifindex":  2,
+                                                                        "ifname":  "eth0",
+                                                                        "flags":  [
+                                                                                      "NO-CARRIER",
+                                                                                      "BROADCAST",
+                                                                                      "MULTICAST",
+                                                                                      "UP"
+                                                                                  ],
+                                                                        "mtu":  1500,
+                                                                        "qdisc":  "mq",
+                                                                        "operstate":  "DOWN",
+                                                                        "group":  "default",
+                                                                        "txqlen":  1000,
+                                                                        "link_type":  "ether",
+                                                                        "address":  "00:00:a4:b5:5f:ef",
+                                                                        "broadcast":  "ff:ff:ff:ff:ff:ff",
+                                                                        "addr_info":  [
+                                                                                          {
+                                                                                              "family":  "inet",
+                                                                                              "local":  "192.168.60.1",
+                                                                                              "prefixlen":  24,
+                                                                                              "scope":  "global",
+                                                                                              "label":  "eth0",
+                                                                                              "valid_life_time":  4294967295,
+                                                                                              "preferred_life_time":  4294967295
+                                                                                          }
+                                                                                      ]
+                                                                    }
+                                                                ]
+                                                   },
+                                     "business_address_present":  true,
+                                     "carrier":  0,
+                                     "errors":  [
+                                                    "物理链路未建立或状态未知"
+                                                ],
+                                     "processes":  [
+                                                       {
+                                                           "pid":  116267,
+                                                           "start_ticks":  "1557577",
+                                                           "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                           "argv":  [
+                                                                        ".venv/bin/python",
+                                                                        "main.py",
+                                                                        "--mode",
+                                                                        "LIVE_FRONT",
+                                                                        "--bind",
+                                                                        "192.168.60.1",
+                                                                        "--peer",
+                                                                        "192.168.60.2",
+                                                                        "--port",
+                                                                        "50000",
+                                                                        "--peer-port",
+                                                                        "50000",
+                                                                        "--scene",
+                                                                        "scene.example.json",
+                                                                        "--preview-fps",
+                                                                        "15",
+                                                                        "--preview-width",
+                                                                        "640",
+                                                                        "--preview-quality",
+                                                                        "70",
+                                                                        "--output",
+                                                                        "runs/live_dual_eth",
+                                                                        "--web-port",
+                                                                        "8080"
+                                                                    ],
+                                                           "uid":  1000
+                                                       }
+                                                   ],
+                                     "ports":  [
+                                                   {
+                                                       "protocol":  "tcp",
+                                                       "local_hex":  "0100007F:1F90",
+                                                       "local_port":  8080,
+                                                       "inode":  "157477",
+                                                       "pids":  [
+                                                                    116267
+                                                                ],
+                                                       "processes":  [
+                                                                         {
+                                                                             "pid":  116267,
+                                                                             "start_ticks":  "1557577",
+                                                                             "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                                             "argv":  [
+                                                                                          ".venv/bin/python",
+                                                                                          "main.py",
+                                                                                          "--mode",
+                                                                                          "LIVE_FRONT",
+                                                                                          "--bind",
+                                                                                          "192.168.60.1",
+                                                                                          "--peer",
+                                                                                          "192.168.60.2",
+                                                                                          "--port",
+                                                                                          "50000",
+                                                                                          "--peer-port",
+                                                                                          "50000",
+                                                                                          "--scene",
+                                                                                          "scene.example.json",
+                                                                                          "--preview-fps",
+                                                                                          "15",
+                                                                                          "--preview-width",
+                                                                                          "640",
+                                                                                          "--preview-quality",
+                                                                                          "70",
+                                                                                          "--output",
+                                                                                          "runs/live_dual_eth",
+                                                                                          "--web-port",
+                                                                                          "8080"
+                                                                                      ],
+                                                                             "uid":  1000
+                                                                         }
+                                                                     ]
+                                                   },
+                                                   {
+                                                       "protocol":  "udp",
+                                                       "local_hex":  "013CA8C0:C350",
+                                                       "local_port":  50000,
+                                                       "inode":  "157480",
+                                                       "pids":  [
+                                                                    116267
+                                                                ],
+                                                       "processes":  [
+                                                                         {
+                                                                             "pid":  116267,
+                                                                             "start_ticks":  "1557577",
+                                                                             "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                                             "argv":  [
+                                                                                          ".venv/bin/python",
+                                                                                          "main.py",
+                                                                                          "--mode",
+                                                                                          "LIVE_FRONT",
+                                                                                          "--bind",
+                                                                                          "192.168.60.1",
+                                                                                          "--peer",
+                                                                                          "192.168.60.2",
+                                                                                          "--port",
+                                                                                          "50000",
+                                                                                          "--peer-port",
+                                                                                          "50000",
+                                                                                          "--scene",
+                                                                                          "scene.example.json",
+                                                                                          "--preview-fps",
+                                                                                          "15",
+                                                                                          "--preview-width",
+                                                                                          "640",
+                                                                                          "--preview-quality",
+                                                                                          "70",
+                                                                                          "--output",
+                                                                                          "runs/live_dual_eth",
+                                                                                          "--web-port",
+                                                                                          "8080"
+                                                                                      ],
+                                                                             "uid":  1000
+                                                                         }
+                                                                     ]
+                                                   }
+                                               ]
+                                 },
+                   "route":  {
+                                 "ok":  true,
+                                 "code":  0,
+                                 "stdout":  "[{\"dst\":\"192.168.60.2\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.60.1\",\"flags\":[],\"uid\":1000,\"cache\":[]}]",
+                                 "stderr":  "",
+                                 "data":  [
+                                              {
+                                                  "dst":  "192.168.60.2",
+                                                  "dev":  "eth0",
+                                                  "prefsrc":  "192.168.60.1",
+                                                  "flags":  [
+
+                                                            ],
+                                                  "uid":  1000,
+                                                  "cache":  [
+
+                                                            ]
+                                              }
+                                          ]
+                             },
+                   "neighbors":  {
+                                     "ok":  true,
+                                     "code":  0,
+                                     "stdout":  "[{\"dst\":\"192.168.60.2\",\"lladdr\":\"02:00:47:53:56:32\",\"state\":[\"PERMANENT\"]}]",
+                                     "stderr":  "",
+                                     "data":  [
+                                                  {
+                                                      "dst":  "192.168.60.2",
+                                                      "lladdr":  "02:00:47:53:56:32",
+                                                      "state":  [
+                                                                    "PERMANENT"
+                                                                ]
+                                                  }
+                                              ]
+                                 },
+                   "speed_mbps":  null,
+                   "samples":  [
+                                   {
+                                       "monotonic":  15638.2212535,
+                                       "status":  {
+                                                      "ok":  true,
+                                                      "data":  {
+                                                                   "mode":  "LIVE_FRONT",
+                                                                   "processed":  0,
+                                                                   "host_monotonic_ms":  15638228.19299,
+                                                                   "processed_fps":  0,
+                                                                   "processed_average_fps":  0.0,
+                                                                   "target_preview_fps":  15.0,
+                                                                   "preview_encoding":  {
+                                                                                            "width":  640,
+                                                                                            "quality":  70
+                                                                                        },
+                                                                   "playback":  {
+
+                                                                                },
+                                                                   "stage_ms":  {
+
+                                                                                },
+                                                                   "preview_age_ms":  null,
+                                                                   "effective_feedback":  "UNKNOWN_STALE",
+                                                                   "latest":  {
+
+                                                                              },
+                                                                   "link":  {
+                                                                                "heartbeat_tx":  242,
+                                                                                "session":  1589143082,
+                                                                                "online":  false,
+                                                                                "host_elapsed_seconds":  61.913,
+                                                                                "front_receive_fps":  0.0,
+                                                                                "socket_receive_buffer_bytes":  425984,
+                                                                                "current_frame_fragments":  0,
+                                                                                "assembly_dropped":  0,
+                                                                                "assembly_duplicates":  0,
+                                                                                "hardware_validation":  "网口2尚未实物联调"
+                                                                            }
+                                                               }
+                                                  },
+                                       "jpeg":  {
+                                                    "ok":  false,
+                                                    "error":  "HTTP Error 503: Waiting for complete frame"
+                                                },
+                                       "carrier":  0,
+                                       "counters":  {
+                                                        "rx_packets":  0,
+                                                        "tx_packets":  4916,
+                                                        "rx_bytes":  0,
+                                                        "tx_bytes":  372648,
+                                                        "rx_errors":  0,
+                                                        "rx_dropped":  0
+                                                    }
+                                   },
+                                   {
+                                       "monotonic":  15642.236330857,
+                                       "status":  {
+                                                      "ok":  true,
+                                                      "data":  {
+                                                                   "mode":  "LIVE_FRONT",
+                                                                   "processed":  0,
+                                                                   "host_monotonic_ms":  15642238.45765,
+                                                                   "processed_fps":  0,
+                                                                   "processed_average_fps":  0.0,
+                                                                   "target_preview_fps":  15.0,
+                                                                   "preview_encoding":  {
+                                                                                            "width":  640,
+                                                                                            "quality":  70
+                                                                                        },
+                                                                   "playback":  {
+
+                                                                                },
+                                                                   "stage_ms":  {
+
+                                                                                },
+                                                                   "preview_age_ms":  null,
+                                                                   "effective_feedback":  "UNKNOWN_STALE",
+                                                                   "latest":  {
+
+                                                                              },
+                                                                   "link":  {
+                                                                                "heartbeat_tx":  257,
+                                                                                "session":  1589143082,
+                                                                                "online":  false,
+                                                                                "host_elapsed_seconds":  65.923,
+                                                                                "front_receive_fps":  0.0,
+                                                                                "socket_receive_buffer_bytes":  425984,
+                                                                                "current_frame_fragments":  0,
+                                                                                "assembly_dropped":  0,
+                                                                                "assembly_duplicates":  0,
+                                                                                "hardware_validation":  "网口2尚未实物联调"
+                                                                            }
+                                                               }
+                                                  },
+                                       "jpeg":  {
+                                                    "ok":  false,
+                                                    "error":  "HTTP Error 503: Waiting for complete frame"
+                                                },
+                                       "carrier":  0,
+                                       "counters":  {
+                                                        "rx_packets":  0,
+                                                        "tx_packets":  4916,
+                                                        "rx_bytes":  0,
+                                                        "tx_bytes":  372648,
+                                                        "rx_errors":  0,
+                                                        "rx_dropped":  0
+                                                    }
+                                   }
+                               ],
+                   "window_seconds":  4.015077357000337,
+                   "nic_delta":  {
+                                     "rx_packets":  0,
+                                     "tx_packets":  0,
+                                     "rx_bytes":  0,
+                                     "tx_bytes":  0,
+                                     "rx_errors":  0,
+                                     "rx_dropped":  0
+                                 },
+                   "link_delta":  {
+                                      "heartbeat_tx":  15,
+                                      "rx_packets":  0,
+                                      "heartbeat_or_welcome":  0,
+                                      "front_fragments":  0,
+                                      "complete_frames":  0,
+                                      "bad_packets":  0,
+                                      "wrong_peer":  0,
+                                      "wrong_session":  0,
+                                      "send_errors":  0,
+                                      "receive_errors":  0
+                                  },
+                   "counter_notes":  "缺失Counter字段在同一可读session内按0解释；跨session/不可读/计数回退的增量为null；heartbeat_tx为每轮HELLO+HEARTBEAT计数，不是精确发包数",
+                   "conclusions":  [
+                                       "物理链路未建立",
+                                       "ARP为PERMANENT静态条目，不证明FPGA已回应ARP",
+                                       "服务正常，FPGA尚未连接（online=false）"
+                                   ],
+                   "preview_observation":  "浏览器是否收到新图不能由服务启动或累计帧数单独证明",
+                   "sockets":  {
+                                   "ok":  true,
+                                   "code":  0,
+                                   "stdout":  "Netid State  Recv-Q Send-Q             Local Address:Port  Peer Address:PortProcess                             \nudp   UNCONN 0      0                     127.0.0.53:53         0.0.0.0:*                                       \nudp   UNCONN 0      0                      127.0.0.1:323        0.0.0.0:*                                       \nudp   UNCONN 0      0                   192.168.60.1:50000      0.0.0.0:*    users:((\"python\",pid=116267,fd=5)) \nudp   UNCONN 0      0                          [::1]:323              *:*                                       \nudp   UNCONN 0      0      [fe80::8a5a:34:9a2c:7d9d]:546              *:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:631        0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:5555       0.0.0.0:*                                       \ntcp   LISTEN 0      0                     127.0.0.53:53         0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:5901       0.0.0.0:*    users:((\"Xtigervnc\",pid=2134,fd=7))\ntcp   LISTEN 0      0                      127.0.0.1:6010       0.0.0.0:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:5037       0.0.0.0:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:8080       0.0.0.0:*    users:((\"python\",pid=116267,fd=4)) \ntcp   LISTEN 0      0                        0.0.0.0:22         0.0.0.0:*                                       \ntcp   LISTEN 0      0                              *:5901             *:*    users:((\"Xtigervnc\",pid=2134,fd=8))\ntcp   LISTEN 0      0                          [::1]:6010             *:*                                       \ntcp   LISTEN 0      0                              *:3389             *:*                                       \ntcp   LISTEN 0      0                          [::1]:3350             *:*                                       \ntcp   LISTEN 0      0                          [::1]:631              *:*                                       \ntcp   LISTEN 0      0                              *:22               *:*",
+                                   "stderr":  ""
+                               },
+                   "optional_tools":  {
+                                          "ethtool":  {
+                                                          "ok":  true,
+                                                          "code":  0,
+                                                          "stdout":  "/usr/sbin/ethtool",
+                                                          "stderr":  ""
+                                                      },
+                                          "tcpdump":  {
+                                                          "ok":  false,
+                                                          "code":  1,
+                                                          "stdout":  "",
+                                                          "stderr":  ""
+                                                      }
+                                      },
+                   "optional_note":  "基础诊断只读，不运行ping或第二份UDP客户端，不添加静态ARP；未执行sudo抓包，未安装工具"
+               },
+    "ssh_ok":  true,
+    "local_after":  {
+                        "listeners":  [
+                                          {
+                                              "address":  "::1",
+                                              "port":  18080,
+                                              "pid":  39972,
+                                              "name":  "ssh.exe",
+                                              "command_line":  null,
+                                              "creation_date":  "10/22/2026 12:39:41"
+                                          },
+                                          {
+                                              "address":  "127.0.0.1",
+                                              "port":  18080,
+                                              "pid":  39972,
+                                              "name":  "ssh.exe",
+                                              "command_line":  null,
+                                              "creation_date":  "10/22/2026 12:39:41"
+                                          }
+                                      ],
+                        "http":  {
+                                     "ok":  true,
+                                     "status":  200,
+                                     "data":  {
+                                                  "mode":  "LIVE_FRONT",
+                                                  "processed":  0,
+                                                  "host_monotonic_ms":  15643539.543254001,
+                                                  "processed_fps":  0,
+                                                  "processed_average_fps":  0.0,
+                                                  "target_preview_fps":  15.0,
+                                                  "preview_encoding":  {
+                                                                           "width":  640,
+                                                                           "quality":  70
+                                                                       },
+                                                  "playback":  {
+
+                                                               },
+                                                  "stage_ms":  {
+
+                                                               },
+                                                  "preview_age_ms":  null,
+                                                  "effective_feedback":  "UNKNOWN_STALE",
+                                                  "latest":  {
+
+                                                             },
+                                                  "link":  {
+                                                               "heartbeat_tx":  262,
+                                                               "session":  1589143082,
+                                                               "online":  false,
+                                                               "host_elapsed_seconds":  67.224,
+                                                               "front_receive_fps":  0.0,
+                                                               "socket_receive_buffer_bytes":  425984,
+                                                               "current_frame_fragments":  0,
+                                                               "assembly_dropped":  0,
+                                                               "assembly_duplicates":  0,
+                                                               "hardware_validation":  "网口2尚未实物联调"
+                                                           }
+                                              }
+                                 }
+                    },
+    "forward_matches_remote":  true,
+    "summary":  [
+                    "本地入口：E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\orangepi\\oneclick",
+                    "目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                    "诊断只读；不会启动第二份LIVE、不会占用UDP50000、不会添加静态ARP。",
+                    "通过SSH执行 diagnose；需要认证时请在终端输入密码（不保存）。",
+                    "SSH：可连接；远端版本：M4-01-v0.1.2",
+                    "本地转发/HTTP：可访问，session与远端一致",
+                    "物理链路未建立",
+                    "ARP为PERMANENT静态条目，不证明FPGA已回应ARP",
+                    "服务正常，FPGA尚未连接（online=false）",
+                    "网卡增量：{\"rx_packets\":0,\"tx_packets\":0,\"rx_bytes\":0,\"tx_bytes\":0,\"rx_errors\":0,\"rx_dropped\":0}",
+                    "协议增量：{\"heartbeat_tx\":15,\"rx_packets\":0,\"heartbeat_or_welcome\":0,\"front_fragments\":0,\"complete_frames\":0,\"bad_packets\":0,\"wrong_peer\":0,\"wrong_session\":0,\"send_errors\":0,\"receive_errors\":0}",
+                    "端口占用及进程命令行：",
+                    "Netid State  Recv-Q Send-Q             Local Address:Port  Peer Address:PortProcess                             \nudp   UNCONN 0      0                     127.0.0.53:53         0.0.0.0:*                                       \nudp   UNCONN 0      0                      127.0.0.1:323        0.0.0.0:*                                       \nudp   UNCONN 0      0                   192.168.60.1:50000      0.0.0.0:*    users:((\"python\",pid=116267,fd=5)) \nudp   UNCONN 0      0                          [::1]:323              *:*                                       \nudp   UNCONN 0      0      [fe80::8a5a:34:9a2c:7d9d]:546              *:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:631        0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:5555       0.0.0.0:*                                       \ntcp   LISTEN 0      0                     127.0.0.53:53         0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:5901       0.0.0.0:*    users:((\"Xtigervnc\",pid=2134,fd=7))\ntcp   LISTEN 0      0                      127.0.0.1:6010       0.0.0.0:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:5037       0.0.0.0:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:8080       0.0.0.0:*    users:((\"python\",pid=116267,fd=4)) \ntcp   LISTEN 0      0                        0.0.0.0:22         0.0.0.0:*                                       \ntcp   LISTEN 0      0                              *:5901             *:*    users:((\"Xtigervnc\",pid=2134,fd=8))\ntcp   LISTEN 0      0                          [::1]:6010             *:*                                       \ntcp   LISTEN 0      0                              *:3389             *:*                                       \ntcp   LISTEN 0      0                          [::1]:3350             *:*                                       \ntcp   LISTEN 0      0                          [::1]:631              *:*                                       \ntcp   LISTEN 0      0                              *:22               *:*\r\n"
+                ]
+}

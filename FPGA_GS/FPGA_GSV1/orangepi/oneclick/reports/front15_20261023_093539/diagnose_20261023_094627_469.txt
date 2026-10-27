@@ -1,0 +1,1141 @@
+﻿本地入口：E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\orangepi\oneclick
+目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021
+诊断只读；不会启动第二份LIVE、不会占用UDP50000、不会添加静态ARP。
+通过SSH执行 diagnose；需要认证时请在终端输入密码（不保存）。
+SSH：可连接；远端版本：M4-01-front15-r1
+本地转发/HTTP：可访问，session与远端一致
+前摄上传请求=15 fps；处理目标=15 fps（最新完整帧，无人为限速）；预览目标=15.0 fps
+接收缓冲：rmem_max=8388608，请求=4194304，实际SO_RCVBUF=8388608（Linux返回值含加倍记账）
+ARP为动态邻居：REACHABLE；缓存记录不单独证明当前通信
+已有完整前摄帧持续到达、处理及预览JPEG更新，通信正常；浏览器实际解码仍需现场观察
+网卡增量：{"rx_packets":86671,"tx_packets":32,"rx_bytes":118709782,"tx_bytes":2880,"rx_errors":0,"rx_dropped":0,"rx_crc_errors":0,"rx_fifo_errors":0}
+协议增量：{"heartbeat_tx":16,"rx_packets":87248,"heartbeat_or_welcome":24,"telemetry_packets":8,"front_fragments":87216,"complete_frames":61,"bad_packets":0,"wrong_peer":0,"wrong_session":0,"send_errors":0,"receive_errors":0}
+同服务socket丢包增量：{"200542":0}；全机UDP错误仅作旁证。
+主动跳过完整帧增量：0（与网络缺片分开计数）
+端口占用及进程命令行：
+Netid State  Recv-Q  Send-Q             Local Address:Port  Peer Address:PortProcess                             
+udp   UNCONN 0       0                     127.0.0.53:53         0.0.0.0:*                                       
+udp   UNCONN 0       0                      127.0.0.1:323        0.0.0.0:*                                       
+udp   UNCONN 1241088 0                   192.168.60.1:50000      0.0.0.0:*    users:(("python",pid=179463,fd=5)) 
+udp   UNCONN 0       0                          [::1]:323              *:*                                       
+udp   UNCONN 0       0      [fe80::8a5a:34:9a2c:7d9d]:546              *:*                                       
+tcp   LISTEN 0       0                      127.0.0.1:8080       0.0.0.0:*    users:(("python",pid=179463,fd=4)) 
+tcp   LISTEN 0       0                        0.0.0.0:5555       0.0.0.0:*                                       
+tcp   LISTEN 0       0                        0.0.0.0:5901       0.0.0.0:*    users:(("Xtigervnc",pid=2027,fd=7))
+tcp   LISTEN 0       0                      127.0.0.1:5037       0.0.0.0:*                                       
+tcp   LISTEN 0       0                     127.0.0.53:53         0.0.0.0:*                                       
+tcp   LISTEN 0       0                        0.0.0.0:22         0.0.0.0:*                                       
+tcp   LISTEN 0       0                      127.0.0.1:631        0.0.0.0:*                                       
+tcp   LISTEN 0       0                          [::1]:631              *:*                                       
+tcp   LISTEN 0       0                              *:5901             *:*    users:(("Xtigervnc",pid=2027,fd=8))
+tcp   LISTEN 0       0                          [::1]:3350             *:*                                       
+tcp   LISTEN 0       0                              *:22               *:*                                       
+tcp   LISTEN 0       0                              *:3389             *:*
+
+
+结构化详情：
+{
+    "tool_version":  "M4-01-operator-v1",
+    "action":  "Diagnose",
+    "computer_time":  "2026-10-23T09:46:27.4706245+08:00",
+    "ok":  true,
+    "config":  {
+                   "ssh_host":  "10.168.29.122",
+                   "ssh_user":  "orangepi",
+                   "ssh_port":  22,
+                   "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "remote_tool":  "operator_v1/ops_manager.py",
+                   "interface":  "eth0",
+                   "business_cidr":  "192.168.60.1/24",
+                   "fpga_ip":  "192.168.60.2",
+                   "fpga_mac":  "02:00:47:53:56:32",
+                   "udp_port":  50000,
+                   "peer_port":  50000,
+                   "web_port":  8080,
+                   "local_port":  18080,
+                   "scene":  "scene.example.json",
+                   "preview_fps":  15,
+                   "preview_width":  640,
+                   "preview_quality":  70,
+                   "output":  "runs/live_dual_eth",
+                   "diagnostic_seconds":  4,
+                   "startup_timeout_seconds":  35,
+                   "front_fps":  15
+               },
+    "local_before":  {
+                         "listeners":  [
+                                           {
+                                               "address":  "127.0.0.1",
+                                               "port":  18080,
+                                               "pid":  46620,
+                                               "name":  "ssh.exe",
+                                               "command_line":  "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 22 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ConnectionAttempts=1 -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:8080 orangepi@10.168.29.122 ",
+                                               "creation_date":  "10/23/2026 09:39:43"
+                                           }
+                                       ],
+                         "http":  {
+                                      "ok":  true,
+                                      "status":  200,
+                                      "data":  {
+                                                   "mode":  "LIVE_FRONT",
+                                                   "processed":  6053,
+                                                   "requested_front_fps":  15,
+                                                   "target_process_fps":  15,
+                                                   "processing_policy":  "latest complete frame, no artificial throttle",
+                                                   "skipped_complete_frames":  0,
+                                                   "host_monotonic_ms":  51699355.776434,
+                                                   "processed_fps":  14.869,
+                                                   "processed_average_fps":  14.918,
+                                                   "target_preview_fps":  15.0,
+                                                   "preview_encoding":  {
+                                                                            "width":  640,
+                                                                            "quality":  70
+                                                                        },
+                                                   "playback":  {
+
+                                                                },
+                                                   "stage_ms":  {
+                                                                    "inference":  12.881,
+                                                                    "overlay_jpeg":  3.25,
+                                                                    "overlay_jpeg_bytes":  24857,
+                                                                    "raw_jpeg":  8.06,
+                                                                    "process_total":  38.13
+                                                                },
+                                                   "preview_age_ms":  59.7,
+                                                   "effective_feedback":  "SEE_EXACT_FRAME_DECISIONS",
+                                                   "latest":  {
+                                                                  "signal":  {
+                                                                                 "state":  "UNKNOWN",
+                                                                                 "confidence":  0,
+                                                                                 "actions":  [
+
+                                                                                             ],
+                                                                                 "candidates":  [
+
+                                                                                                ],
+                                                                                 "association":  "UNASSIGNED"
+                                                                             },
+                                                                  "lanes":  {
+                                                                                "left":  {
+                                                                                             "state":  "UNKNOWN",
+                                                                                             "confidence":  0.0,
+                                                                                             "coverage":  0.292,
+                                                                                             "segments":  2
+                                                                                         },
+                                                                                "right":  {
+                                                                                              "state":  "UNKNOWN",
+                                                                                              "confidence":  0.0,
+                                                                                              "coverage":  0.0,
+                                                                                              "segments":  0
+                                                                                          }
+                                                                            },
+                                                                  "inference_ms":  12.881,
+                                                                  "decisions":  {
+                                                                                    "1":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "2":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "3":  {
+                                                                                              "code":  0,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                          },
+                                                                                    "4":  {
+                                                                                              "code":  1,
+                                                                                              "reason":  0,
+                                                                                              "explanation":  "STOP_INTENT_NO_RED_VIOLATION"
+                                                                                          }
+                                                                                },
+                                                                  "frame_id":  32198,
+                                                                  "received_monotonic":  51699.296100894,
+                                                                  "source_seconds":  null,
+                                                                  "complete_to_process_wait_ms":  1.879,
+                                                                  "frame_age_at_result_ms":  27.79
+                                                              },
+                                                   "link":  {
+                                                                "heartbeat_tx":  1615,
+                                                                "rx_packets":  8723674,
+                                                                "heartbeat_or_welcome":  2427,
+                                                                "telemetry_packets":  812,
+                                                                "front_fragments":  8720435,
+                                                                "complete_frames":  6053,
+                                                                "session":  3582022188,
+                                                                "online":  true,
+                                                                "requested_front_fps":  15,
+                                                                "recent_complete_fps":  14.745,
+                                                                "telemetry":  {
+                                                                                  "mac_crc":  0,
+                                                                                  "mac_overrun":  0,
+                                                                                  "reject_format":  21,
+                                                                                  "reject_checksum":  2,
+                                                                                  "reject_session":  0,
+                                                                                  "reject_profile":  0,
+                                                                                  "sequence_errors":  0,
+                                                                                  "duplicate_packets":  0,
+                                                                                  "begin_wait_cycles":  0,
+                                                                                  "begin_requests":  0,
+                                                                                  "assembly_timeouts":  0,
+                                                                                  "assembly_aborts":  0,
+                                                                                  "ddr_beats":  0,
+                                                                                  "published":  0,
+                                                                                  "displayed_new":  0,
+                                                                                  "rx_packets":  8351
+                                                                              },
+                                                                "host_elapsed_seconds":  405.739,
+                                                                "front_receive_fps":  14.918,
+                                                                "socket_receive_buffer_bytes":  8388608,
+                                                                "current_frame_fragments":  1237,
+                                                                "assembly_dropped":  2,
+                                                                "assembly_duplicates":  0,
+                                                                "hardware_validation":  "网口2尚未实物联调"
+                                                            }
+                                               }
+                                  }
+                     },
+    "remote":  {
+                   "ok":  true,
+                   "tool_version":  "M4-01-operator-v1.2-front15",
+                   "directory":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "version":  "M4-01-front15-r1",
+                   "config":  {
+                                  "ssh_host":  "10.168.29.122",
+                                  "ssh_user":  "orangepi",
+                                  "ssh_port":  22,
+                                  "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                  "remote_tool":  "operator_v1/ops_manager.py",
+                                  "interface":  "eth0",
+                                  "business_cidr":  "192.168.60.1/24",
+                                  "fpga_ip":  "192.168.60.2",
+                                  "fpga_mac":  "02:00:47:53:56:32",
+                                  "udp_port":  50000,
+                                  "peer_port":  50000,
+                                  "web_port":  8080,
+                                  "local_port":  18080,
+                                  "scene":  "scene.example.json",
+                                  "preview_fps":  15,
+                                  "preview_width":  640,
+                                  "preview_quality":  70,
+                                  "output":  "runs/live_dual_eth",
+                                  "diagnostic_seconds":  4,
+                                  "startup_timeout_seconds":  35,
+                                  "front_fps":  15
+                              },
+                   "preflight":  {
+                                     "directory":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                     "missing":  [
+
+                                                 ],
+                                     "addresses":  {
+                                                       "ok":  true,
+                                                       "code":  0,
+                                                       "stdout":  "[{\"ifindex\":2,\"ifname\":\"eth0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"mq\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"00:00:a4:b5:5f:ef\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"192.168.60.1\",\"prefixlen\":24,\"scope\":\"global\",\"label\":\"eth0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]",
+                                                       "stderr":  "",
+                                                       "data":  [
+                                                                    {
+                                                                        "ifindex":  2,
+                                                                        "ifname":  "eth0",
+                                                                        "flags":  [
+                                                                                      "BROADCAST",
+                                                                                      "MULTICAST",
+                                                                                      "UP",
+                                                                                      "LOWER_UP"
+                                                                                  ],
+                                                                        "mtu":  1500,
+                                                                        "qdisc":  "mq",
+                                                                        "operstate":  "UP",
+                                                                        "group":  "default",
+                                                                        "txqlen":  1000,
+                                                                        "link_type":  "ether",
+                                                                        "address":  "00:00:a4:b5:5f:ef",
+                                                                        "broadcast":  "ff:ff:ff:ff:ff:ff",
+                                                                        "addr_info":  [
+                                                                                          {
+                                                                                              "family":  "inet",
+                                                                                              "local":  "192.168.60.1",
+                                                                                              "prefixlen":  24,
+                                                                                              "scope":  "global",
+                                                                                              "label":  "eth0",
+                                                                                              "valid_life_time":  4294967295,
+                                                                                              "preferred_life_time":  4294967295
+                                                                                          }
+                                                                                      ]
+                                                                    }
+                                                                ]
+                                                   },
+                                     "business_address_present":  true,
+                                     "carrier":  1,
+                                     "route":  {
+                                                   "ok":  true,
+                                                   "code":  0,
+                                                   "stdout":  "[{\"dst\":\"192.168.60.2\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.60.1\",\"flags\":[],\"uid\":1000,\"cache\":[]}]",
+                                                   "stderr":  "",
+                                                   "data":  [
+                                                                {
+                                                                    "dst":  "192.168.60.2",
+                                                                    "dev":  "eth0",
+                                                                    "prefsrc":  "192.168.60.1",
+                                                                    "flags":  [
+
+                                                                              ],
+                                                                    "uid":  1000,
+                                                                    "cache":  [
+
+                                                                              ]
+                                                                }
+                                                            ]
+                                               },
+                                     "route_ok":  true,
+                                     "receive_buffer":  {
+                                                            "kernel_max":  8388608,
+                                                            "kernel_target":  8388608,
+                                                            "socket_requested":  4194304,
+                                                            "socket_minimum":  8388608,
+                                                            "socket_actual":  8388608,
+                                                            "kernel_ready":  true,
+                                                            "socket_ready":  true
+                                                        },
+                                     "errors":  [
+
+                                                ],
+                                     "processes":  [
+                                                       {
+                                                           "pid":  179463,
+                                                           "start_ticks":  "5129306",
+                                                           "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                           "argv":  [
+                                                                        ".venv/bin/python",
+                                                                        "main.py",
+                                                                        "--mode",
+                                                                        "LIVE_FRONT",
+                                                                        "--bind",
+                                                                        "192.168.60.1",
+                                                                        "--peer",
+                                                                        "192.168.60.2",
+                                                                        "--port",
+                                                                        "50000",
+                                                                        "--peer-port",
+                                                                        "50000",
+                                                                        "--scene",
+                                                                        "scene.example.json",
+                                                                        "--front-fps",
+                                                                        "15",
+                                                                        "--preview-fps",
+                                                                        "15",
+                                                                        "--preview-width",
+                                                                        "640",
+                                                                        "--preview-quality",
+                                                                        "70",
+                                                                        "--output",
+                                                                        "runs/live_dual_eth",
+                                                                        "--web-port",
+                                                                        "8080"
+                                                                    ],
+                                                           "uid":  1000
+                                                       }
+                                                   ],
+                                     "ports":  [
+                                                   {
+                                                       "protocol":  "tcp",
+                                                       "local_hex":  "0100007F:1F90",
+                                                       "local_port":  8080,
+                                                       "inode":  "200539",
+                                                       "pids":  [
+                                                                    179463
+                                                                ],
+                                                       "processes":  [
+                                                                         {
+                                                                             "pid":  179463,
+                                                                             "start_ticks":  "5129306",
+                                                                             "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                                             "argv":  [
+                                                                                          ".venv/bin/python",
+                                                                                          "main.py",
+                                                                                          "--mode",
+                                                                                          "LIVE_FRONT",
+                                                                                          "--bind",
+                                                                                          "192.168.60.1",
+                                                                                          "--peer",
+                                                                                          "192.168.60.2",
+                                                                                          "--port",
+                                                                                          "50000",
+                                                                                          "--peer-port",
+                                                                                          "50000",
+                                                                                          "--scene",
+                                                                                          "scene.example.json",
+                                                                                          "--front-fps",
+                                                                                          "15",
+                                                                                          "--preview-fps",
+                                                                                          "15",
+                                                                                          "--preview-width",
+                                                                                          "640",
+                                                                                          "--preview-quality",
+                                                                                          "70",
+                                                                                          "--output",
+                                                                                          "runs/live_dual_eth",
+                                                                                          "--web-port",
+                                                                                          "8080"
+                                                                                      ],
+                                                                             "uid":  1000
+                                                                         }
+                                                                     ]
+                                                   },
+                                                   {
+                                                       "protocol":  "udp",
+                                                       "local_hex":  "013CA8C0:C350",
+                                                       "local_port":  50000,
+                                                       "inode":  "200542",
+                                                       "pids":  [
+                                                                    179463
+                                                                ],
+                                                       "processes":  [
+                                                                         {
+                                                                             "pid":  179463,
+                                                                             "start_ticks":  "5129306",
+                                                                             "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                                             "argv":  [
+                                                                                          ".venv/bin/python",
+                                                                                          "main.py",
+                                                                                          "--mode",
+                                                                                          "LIVE_FRONT",
+                                                                                          "--bind",
+                                                                                          "192.168.60.1",
+                                                                                          "--peer",
+                                                                                          "192.168.60.2",
+                                                                                          "--port",
+                                                                                          "50000",
+                                                                                          "--peer-port",
+                                                                                          "50000",
+                                                                                          "--scene",
+                                                                                          "scene.example.json",
+                                                                                          "--front-fps",
+                                                                                          "15",
+                                                                                          "--preview-fps",
+                                                                                          "15",
+                                                                                          "--preview-width",
+                                                                                          "640",
+                                                                                          "--preview-quality",
+                                                                                          "70",
+                                                                                          "--output",
+                                                                                          "runs/live_dual_eth",
+                                                                                          "--web-port",
+                                                                                          "8080"
+                                                                                      ],
+                                                                             "uid":  1000
+                                                                         }
+                                                                     ]
+                                                   }
+                                               ]
+                                 },
+                   "route":  {
+                                 "ok":  true,
+                                 "code":  0,
+                                 "stdout":  "[{\"dst\":\"192.168.60.2\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.60.1\",\"flags\":[],\"uid\":1000,\"cache\":[]}]",
+                                 "stderr":  "",
+                                 "data":  [
+                                              {
+                                                  "dst":  "192.168.60.2",
+                                                  "dev":  "eth0",
+                                                  "prefsrc":  "192.168.60.1",
+                                                  "flags":  [
+
+                                                            ],
+                                                  "uid":  1000,
+                                                  "cache":  [
+
+                                                            ]
+                                              }
+                                          ]
+                             },
+                   "neighbors":  {
+                                     "ok":  true,
+                                     "code":  0,
+                                     "stdout":  "[{\"dst\":\"192.168.60.2\",\"lladdr\":\"02:00:47:53:56:32\",\"state\":[\"REACHABLE\"]}]",
+                                     "stderr":  "",
+                                     "data":  [
+                                                  {
+                                                      "dst":  "192.168.60.2",
+                                                      "lladdr":  "02:00:47:53:56:32",
+                                                      "state":  [
+                                                                    "REACHABLE"
+                                                                ]
+                                                  }
+                                              ]
+                                 },
+                   "speed_mbps":  1000,
+                   "samples":  [
+                                   {
+                                       "monotonic":  51700.357867353,
+                                       "status":  {
+                                                      "ok":  true,
+                                                      "data":  {
+                                                                   "mode":  "LIVE_FRONT",
+                                                                   "processed":  6068,
+                                                                   "requested_front_fps":  15,
+                                                                   "target_process_fps":  15,
+                                                                   "processing_policy":  "latest complete frame, no artificial throttle",
+                                                                   "skipped_complete_frames":  0,
+                                                                   "host_monotonic_ms":  51700348.307881005,
+                                                                   "processed_fps":  14.713,
+                                                                   "processed_average_fps":  14.919,
+                                                                   "target_preview_fps":  15.0,
+                                                                   "preview_encoding":  {
+                                                                                            "width":  640,
+                                                                                            "quality":  70
+                                                                                        },
+                                                                   "playback":  {
+
+                                                                                },
+                                                                   "stage_ms":  {
+                                                                                    "inference":  16.243,
+                                                                                    "overlay_jpeg":  4.21,
+                                                                                    "overlay_jpeg_bytes":  24898,
+                                                                                    "raw_jpeg":  8.59,
+                                                                                    "process_total":  45.66
+                                                                                },
+                                                                   "preview_age_ms":  47.2,
+                                                                   "effective_feedback":  "SEE_EXACT_FRAME_DECISIONS",
+                                                                   "latest":  {
+                                                                                  "signal":  {
+                                                                                                 "state":  "UNKNOWN",
+                                                                                                 "confidence":  0,
+                                                                                                 "actions":  [
+
+                                                                                                             ],
+                                                                                                 "candidates":  [
+
+                                                                                                                ],
+                                                                                                 "association":  "UNASSIGNED"
+                                                                                             },
+                                                                                  "lanes":  {
+                                                                                                "left":  {
+                                                                                                             "state":  "UNKNOWN",
+                                                                                                             "confidence":  0.0,
+                                                                                                             "coverage":  0.296,
+                                                                                                             "segments":  2
+                                                                                                         },
+                                                                                                "right":  {
+                                                                                                              "state":  "UNKNOWN",
+                                                                                                              "confidence":  0.0,
+                                                                                                              "coverage":  0.0,
+                                                                                                              "segments":  0
+                                                                                                          }
+                                                                                            },
+                                                                                  "inference_ms":  16.243,
+                                                                                  "decisions":  {
+                                                                                                    "1":  {
+                                                                                                              "code":  0,
+                                                                                                              "reason":  0,
+                                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                                          },
+                                                                                                    "2":  {
+                                                                                                              "code":  0,
+                                                                                                              "reason":  0,
+                                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                                          },
+                                                                                                    "3":  {
+                                                                                                              "code":  0,
+                                                                                                              "reason":  0,
+                                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                                          },
+                                                                                                    "4":  {
+                                                                                                              "code":  1,
+                                                                                                              "reason":  0,
+                                                                                                              "explanation":  "STOP_INTENT_NO_RED_VIOLATION"
+                                                                                                          }
+                                                                                                },
+                                                                                  "frame_id":  32228,
+                                                                                  "received_monotonic":  51700.301092672,
+                                                                                  "source_seconds":  null,
+                                                                                  "complete_to_process_wait_ms":  0.629,
+                                                                                  "frame_age_at_result_ms":  32.32
+                                                                              },
+                                                                   "link":  {
+                                                                                "heartbeat_tx":  1619,
+                                                                                "rx_packets":  8744669,
+                                                                                "heartbeat_or_welcome":  2433,
+                                                                                "telemetry_packets":  814,
+                                                                                "front_fragments":  8741422,
+                                                                                "complete_frames":  6068,
+                                                                                "session":  3582022188,
+                                                                                "online":  true,
+                                                                                "requested_front_fps":  15,
+                                                                                "recent_complete_fps":  14.782,
+                                                                                "telemetry":  {
+                                                                                                  "mac_crc":  0,
+                                                                                                  "mac_overrun":  0,
+                                                                                                  "reject_format":  21,
+                                                                                                  "reject_checksum":  2,
+                                                                                                  "reject_session":  0,
+                                                                                                  "reject_profile":  0,
+                                                                                                  "sequence_errors":  0,
+                                                                                                  "duplicate_packets":  0,
+                                                                                                  "begin_wait_cycles":  0,
+                                                                                                  "begin_requests":  0,
+                                                                                                  "assembly_timeouts":  0,
+                                                                                                  "assembly_aborts":  0,
+                                                                                                  "ddr_beats":  0,
+                                                                                                  "published":  0,
+                                                                                                  "displayed_new":  0,
+                                                                                                  "rx_packets":  8359
+                                                                                              },
+                                                                                "host_elapsed_seconds":  406.731,
+                                                                                "front_receive_fps":  14.919,
+                                                                                "socket_receive_buffer_bytes":  8388608,
+                                                                                "current_frame_fragments":  624,
+                                                                                "assembly_dropped":  2,
+                                                                                "assembly_duplicates":  0,
+                                                                                "hardware_validation":  "网口2尚未实物联调"
+                                                                            }
+                                                               }
+                                                  },
+                                       "jpeg":  {
+                                                    "ok":  true,
+                                                    "sequence":  "6068",
+                                                    "frame_id":  "32228",
+                                                    "age_ms":  "58.53"
+                                                },
+                                       "carrier":  1,
+                                       "processes":  [
+                                                         {
+                                                             "pid":  179463,
+                                                             "start_ticks":  "5129306",
+                                                             "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                             "argv":  [
+                                                                          ".venv/bin/python",
+                                                                          "main.py",
+                                                                          "--mode",
+                                                                          "LIVE_FRONT",
+                                                                          "--bind",
+                                                                          "192.168.60.1",
+                                                                          "--peer",
+                                                                          "192.168.60.2",
+                                                                          "--port",
+                                                                          "50000",
+                                                                          "--peer-port",
+                                                                          "50000",
+                                                                          "--scene",
+                                                                          "scene.example.json",
+                                                                          "--front-fps",
+                                                                          "15",
+                                                                          "--preview-fps",
+                                                                          "15",
+                                                                          "--preview-width",
+                                                                          "640",
+                                                                          "--preview-quality",
+                                                                          "70",
+                                                                          "--output",
+                                                                          "runs/live_dual_eth",
+                                                                          "--web-port",
+                                                                          "8080"
+                                                                      ],
+                                                             "uid":  1000
+                                                         }
+                                                     ],
+                                       "service_sockets":  [
+                                                               {
+                                                                   "protocol":  "udp",
+                                                                   "local_hex":  "013CA8C0:C350",
+                                                                   "inode":  "200542",
+                                                                   "owners":  [
+                                                                                  {
+                                                                                      "pid":  179463,
+                                                                                      "fd":  "5"
+                                                                                  }
+                                                                              ],
+                                                                   "service_owned":  true,
+                                                                   "rx_queue_bytes":  0,
+                                                                   "tx_queue_bytes":  0,
+                                                                   "drops":  0,
+                                                                   "raw":  " 2061: 013CA8C0:C350 00000000:0000 07 00000000:00000000 00:00000000 00000000  1000        0 200542 2 0000000000000000 0"
+                                                               }
+                                                           ],
+                                       "udp_global":  {
+                                                          "InDatagrams":  34533682,
+                                                          "NoPorts":  94704,
+                                                          "InErrors":  559455,
+                                                          "OutDatagrams":  27640,
+                                                          "RcvbufErrors":  559455,
+                                                          "SndbufErrors":  0,
+                                                          "InCsumErrors":  0,
+                                                          "IgnoredMulti":  693,
+                                                          "MemErrors":  0
+                                                      },
+                                       "receive_buffer":  {
+                                                              "kernel_max":  8388608,
+                                                              "kernel_target":  8388608,
+                                                              "socket_requested":  4194304,
+                                                              "socket_minimum":  8388608,
+                                                              "socket_actual":  8388608,
+                                                              "kernel_ready":  true,
+                                                              "socket_ready":  true
+                                                          },
+                                       "counters":  {
+                                                        "rx_packets":  35201573,
+                                                        "tx_packets":  23114,
+                                                        "rx_bytes":  48197005752,
+                                                        "tx_bytes":  2088952,
+                                                        "rx_errors":  0,
+                                                        "rx_dropped":  0,
+                                                        "rx_crc_errors":  0,
+                                                        "rx_fifo_errors":  0
+                                                    }
+                                   },
+                                   {
+                                       "monotonic":  51704.394817285,
+                                       "status":  {
+                                                      "ok":  true,
+                                                      "data":  {
+                                                                   "mode":  "LIVE_FRONT",
+                                                                   "processed":  6128,
+                                                                   "requested_front_fps":  15,
+                                                                   "target_process_fps":  15,
+                                                                   "processing_policy":  "latest complete frame, no artificial throttle",
+                                                                   "skipped_complete_frames":  0,
+                                                                   "host_monotonic_ms":  51704392.42275,
+                                                                   "processed_fps":  14.842,
+                                                                   "processed_average_fps":  14.918,
+                                                                   "target_preview_fps":  15.0,
+                                                                   "preview_encoding":  {
+                                                                                            "width":  640,
+                                                                                            "quality":  70
+                                                                                        },
+                                                                   "playback":  {
+
+                                                                                },
+                                                                   "stage_ms":  {
+                                                                                    "inference":  13.051,
+                                                                                    "overlay_jpeg":  2.94,
+                                                                                    "overlay_jpeg_bytes":  24895,
+                                                                                    "raw_jpeg":  8.04,
+                                                                                    "process_total":  38.33
+                                                                                },
+                                                                   "preview_age_ms":  71.3,
+                                                                   "effective_feedback":  "SEE_EXACT_FRAME_DECISIONS",
+                                                                   "latest":  {
+                                                                                  "signal":  {
+                                                                                                 "state":  "UNKNOWN",
+                                                                                                 "confidence":  0,
+                                                                                                 "actions":  [
+
+                                                                                                             ],
+                                                                                                 "candidates":  [
+
+                                                                                                                ],
+                                                                                                 "association":  "UNASSIGNED"
+                                                                                             },
+                                                                                  "lanes":  {
+                                                                                                "left":  {
+                                                                                                             "state":  "UNKNOWN",
+                                                                                                             "confidence":  0.0,
+                                                                                                             "coverage":  0.304,
+                                                                                                             "segments":  2
+                                                                                                         },
+                                                                                                "right":  {
+                                                                                                              "state":  "UNKNOWN",
+                                                                                                              "confidence":  0.0,
+                                                                                                              "coverage":  0.0,
+                                                                                                              "segments":  0
+                                                                                                          }
+                                                                                            },
+                                                                                  "inference_ms":  13.051,
+                                                                                  "decisions":  {
+                                                                                                    "1":  {
+                                                                                                              "code":  0,
+                                                                                                              "reason":  0,
+                                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                                          },
+                                                                                                    "2":  {
+                                                                                                              "code":  0,
+                                                                                                              "reason":  0,
+                                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                                          },
+                                                                                                    "3":  {
+                                                                                                              "code":  0,
+                                                                                                              "reason":  0,
+                                                                                                              "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                                          },
+                                                                                                    "4":  {
+                                                                                                              "code":  1,
+                                                                                                              "reason":  0,
+                                                                                                              "explanation":  "STOP_INTENT_NO_RED_VIOLATION"
+                                                                                                          }
+                                                                                                },
+                                                                                  "frame_id":  32348,
+                                                                                  "received_monotonic":  51704.321165654,
+                                                                                  "source_seconds":  null,
+                                                                                  "complete_to_process_wait_ms":  3.832,
+                                                                                  "frame_age_at_result_ms":  30.29
+                                                                              },
+                                                                   "link":  {
+                                                                                "heartbeat_tx":  1635,
+                                                                                "rx_packets":  8831917,
+                                                                                "heartbeat_or_welcome":  2457,
+                                                                                "telemetry_packets":  822,
+                                                                                "front_fragments":  8828638,
+                                                                                "complete_frames":  6129,
+                                                                                "session":  3582022188,
+                                                                                "online":  true,
+                                                                                "requested_front_fps":  15,
+                                                                                "recent_complete_fps":  14.923,
+                                                                                "telemetry":  {
+                                                                                                  "mac_crc":  0,
+                                                                                                  "mac_overrun":  0,
+                                                                                                  "reject_format":  21,
+                                                                                                  "reject_checksum":  2,
+                                                                                                  "reject_session":  0,
+                                                                                                  "reject_profile":  0,
+                                                                                                  "sequence_errors":  0,
+                                                                                                  "duplicate_packets":  0,
+                                                                                                  "begin_wait_cycles":  0,
+                                                                                                  "begin_requests":  0,
+                                                                                                  "assembly_timeouts":  0,
+                                                                                                  "assembly_aborts":  0,
+                                                                                                  "ddr_beats":  0,
+                                                                                                  "published":  0,
+                                                                                                  "displayed_new":  0,
+                                                                                                  "rx_packets":  8391
+                                                                                              },
+                                                                                "host_elapsed_seconds":  410.775,
+                                                                                "front_receive_fps":  14.921,
+                                                                                "socket_receive_buffer_bytes":  8388608,
+                                                                                "current_frame_fragments":  1440,
+                                                                                "assembly_dropped":  2,
+                                                                                "assembly_duplicates":  0,
+                                                                                "hardware_validation":  "网口2尚未实物联调"
+                                                                            }
+                                                               }
+                                                  },
+                                       "jpeg":  {
+                                                    "ok":  true,
+                                                    "sequence":  "6128",
+                                                    "frame_id":  "32348",
+                                                    "age_ms":  "77.46"
+                                                },
+                                       "carrier":  1,
+                                       "processes":  [
+                                                         {
+                                                             "pid":  179463,
+                                                             "start_ticks":  "5129306",
+                                                             "cwd":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                                             "argv":  [
+                                                                          ".venv/bin/python",
+                                                                          "main.py",
+                                                                          "--mode",
+                                                                          "LIVE_FRONT",
+                                                                          "--bind",
+                                                                          "192.168.60.1",
+                                                                          "--peer",
+                                                                          "192.168.60.2",
+                                                                          "--port",
+                                                                          "50000",
+                                                                          "--peer-port",
+                                                                          "50000",
+                                                                          "--scene",
+                                                                          "scene.example.json",
+                                                                          "--front-fps",
+                                                                          "15",
+                                                                          "--preview-fps",
+                                                                          "15",
+                                                                          "--preview-width",
+                                                                          "640",
+                                                                          "--preview-quality",
+                                                                          "70",
+                                                                          "--output",
+                                                                          "runs/live_dual_eth",
+                                                                          "--web-port",
+                                                                          "8080"
+                                                                      ],
+                                                             "uid":  1000
+                                                         }
+                                                     ],
+                                       "service_sockets":  [
+                                                               {
+                                                                   "protocol":  "udp",
+                                                                   "local_hex":  "013CA8C0:C350",
+                                                                   "inode":  "200542",
+                                                                   "owners":  [
+                                                                                  {
+                                                                                      "pid":  179463,
+                                                                                      "fd":  "5"
+                                                                                  }
+                                                                              ],
+                                                                   "service_owned":  true,
+                                                                   "rx_queue_bytes":  43008,
+                                                                   "tx_queue_bytes":  0,
+                                                                   "drops":  0,
+                                                                   "raw":  " 2061: 013CA8C0:C350 00000000:0000 07 00000000:0000A800 00:00000000 00000000  1000        0 200542 2 0000000000000000 0"
+                                                               }
+                                                           ],
+                                       "udp_global":  {
+                                                          "InDatagrams":  34620326,
+                                                          "NoPorts":  94704,
+                                                          "InErrors":  559455,
+                                                          "OutDatagrams":  27672,
+                                                          "RcvbufErrors":  559455,
+                                                          "SndbufErrors":  0,
+                                                          "InCsumErrors":  0,
+                                                          "IgnoredMulti":  693,
+                                                          "MemErrors":  0
+                                                      },
+                                       "receive_buffer":  {
+                                                              "kernel_max":  8388608,
+                                                              "kernel_target":  8388608,
+                                                              "socket_requested":  4194304,
+                                                              "socket_minimum":  8388608,
+                                                              "socket_actual":  8388608,
+                                                              "kernel_ready":  true,
+                                                              "socket_ready":  true
+                                                          },
+                                       "counters":  {
+                                                        "rx_packets":  35288244,
+                                                        "tx_packets":  23146,
+                                                        "rx_bytes":  48315715534,
+                                                        "tx_bytes":  2091832,
+                                                        "rx_errors":  0,
+                                                        "rx_dropped":  0,
+                                                        "rx_crc_errors":  0,
+                                                        "rx_fifo_errors":  0
+                                                    }
+                                   }
+                               ],
+                   "window_seconds":  4.036949932000425,
+                   "nic_delta":  {
+                                     "rx_packets":  86671,
+                                     "tx_packets":  32,
+                                     "rx_bytes":  118709782,
+                                     "tx_bytes":  2880,
+                                     "rx_errors":  0,
+                                     "rx_dropped":  0,
+                                     "rx_crc_errors":  0,
+                                     "rx_fifo_errors":  0
+                                 },
+                   "link_delta":  {
+                                      "heartbeat_tx":  16,
+                                      "rx_packets":  87248,
+                                      "heartbeat_or_welcome":  24,
+                                      "telemetry_packets":  8,
+                                      "front_fragments":  87216,
+                                      "complete_frames":  61,
+                                      "bad_packets":  0,
+                                      "wrong_peer":  0,
+                                      "wrong_session":  0,
+                                      "send_errors":  0,
+                                      "receive_errors":  0
+                                  },
+                   "service_socket_drop_delta_by_inode":  {
+                                                              "200542":  0
+                                                          },
+                   "receive_buffer":  {
+                                          "kernel_max":  8388608,
+                                          "kernel_target":  8388608,
+                                          "socket_requested":  4194304,
+                                          "socket_minimum":  8388608,
+                                          "socket_actual":  8388608,
+                                          "kernel_ready":  true,
+                                          "socket_ready":  true
+                                      },
+                   "skipped_complete_frames_delta":  0,
+                   "udp_global_delta":  {
+                                            "InDatagrams":  86644,
+                                            "NoPorts":  0,
+                                            "InErrors":  0,
+                                            "OutDatagrams":  32,
+                                            "RcvbufErrors":  0,
+                                            "SndbufErrors":  0,
+                                            "InCsumErrors":  0,
+                                            "IgnoredMulti":  0,
+                                            "MemErrors":  0
+                                        },
+                   "counter_notes":  "缺失Counter字段在同一可读session内按0解释；跨session/不可读/计数回退的增量为null；heartbeat_tx为每轮HELLO+HEARTBEAT计数，不是精确发包数",
+                   "conclusions":  [
+                                       "前摄上传请求=15 fps；处理目标=15 fps（最新完整帧，无人为限速）；预览目标=15.0 fps",
+                                       "接收缓冲：rmem_max=8388608，请求=4194304，实际SO_RCVBUF=8388608（Linux返回值含加倍记账）",
+                                       "ARP为动态邻居：REACHABLE；缓存记录不单独证明当前通信",
+                                       "已有完整前摄帧持续到达、处理及预览JPEG更新，通信正常；浏览器实际解码仍需现场观察"
+                                   ],
+                   "preview_observation":  "浏览器是否收到新图不能由服务启动或累计帧数单独证明",
+                   "sockets":  {
+                                   "ok":  true,
+                                   "code":  0,
+                                   "stdout":  "Netid State  Recv-Q  Send-Q             Local Address:Port  Peer Address:PortProcess                             \nudp   UNCONN 0       0                     127.0.0.53:53         0.0.0.0:*                                       \nudp   UNCONN 0       0                      127.0.0.1:323        0.0.0.0:*                                       \nudp   UNCONN 1241088 0                   192.168.60.1:50000      0.0.0.0:*    users:((\"python\",pid=179463,fd=5)) \nudp   UNCONN 0       0                          [::1]:323              *:*                                       \nudp   UNCONN 0       0      [fe80::8a5a:34:9a2c:7d9d]:546              *:*                                       \ntcp   LISTEN 0       0                      127.0.0.1:8080       0.0.0.0:*    users:((\"python\",pid=179463,fd=4)) \ntcp   LISTEN 0       0                        0.0.0.0:5555       0.0.0.0:*                                       \ntcp   LISTEN 0       0                        0.0.0.0:5901       0.0.0.0:*    users:((\"Xtigervnc\",pid=2027,fd=7))\ntcp   LISTEN 0       0                      127.0.0.1:5037       0.0.0.0:*                                       \ntcp   LISTEN 0       0                     127.0.0.53:53         0.0.0.0:*                                       \ntcp   LISTEN 0       0                        0.0.0.0:22         0.0.0.0:*                                       \ntcp   LISTEN 0       0                      127.0.0.1:631        0.0.0.0:*                                       \ntcp   LISTEN 0       0                          [::1]:631              *:*                                       \ntcp   LISTEN 0       0                              *:5901             *:*    users:((\"Xtigervnc\",pid=2027,fd=8))\ntcp   LISTEN 0       0                          [::1]:3350             *:*                                       \ntcp   LISTEN 0       0                              *:22               *:*                                       \ntcp   LISTEN 0       0                              *:3389             *:*",
+                                   "stderr":  ""
+                               },
+                   "optional_tools":  {
+                                          "ethtool":  {
+                                                          "ok":  true,
+                                                          "code":  0,
+                                                          "stdout":  "/usr/sbin/ethtool",
+                                                          "stderr":  ""
+                                                      },
+                                          "tcpdump":  {
+                                                          "ok":  false,
+                                                          "code":  1,
+                                                          "stdout":  "",
+                                                          "stderr":  ""
+                                                      }
+                                      },
+                   "optional_note":  "基础诊断只读，不运行ping或第二份UDP客户端，不添加静态ARP；未执行sudo抓包，未安装工具"
+               },
+    "ssh_ok":  true,
+    "local_after":  {
+                        "listeners":  [
+                                          {
+                                              "address":  "127.0.0.1",
+                                              "port":  18080,
+                                              "pid":  46620,
+                                              "name":  "ssh.exe",
+                                              "command_line":  "\"C:\\Windows\\System32\\OpenSSH\\ssh.exe\" -p 22 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 -o ConnectionAttempts=1 -o ServerAliveInterval=10 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -N -L 127.0.0.1:18080:127.0.0.1:8080 orangepi@10.168.29.122 ",
+                                              "creation_date":  "10/23/2026 09:39:43"
+                                          }
+                                      ],
+                        "http":  {
+                                     "ok":  true,
+                                     "status":  200,
+                                     "data":  {
+                                                  "mode":  "LIVE_FRONT",
+                                                  "processed":  6138,
+                                                  "requested_front_fps":  15,
+                                                  "target_process_fps":  15,
+                                                  "processing_policy":  "latest complete frame, no artificial throttle",
+                                                  "skipped_complete_frames":  0,
+                                                  "host_monotonic_ms":  51705079.458812,
+                                                  "processed_fps":  14.759,
+                                                  "processed_average_fps":  14.917,
+                                                  "target_preview_fps":  15.0,
+                                                  "preview_encoding":  {
+                                                                           "width":  640,
+                                                                           "quality":  70
+                                                                       },
+                                                  "playback":  {
+
+                                                               },
+                                                  "stage_ms":  {
+                                                                   "inference":  13.071,
+                                                                   "overlay_jpeg":  3.27,
+                                                                   "overlay_jpeg_bytes":  24984,
+                                                                   "raw_jpeg":  8.01,
+                                                                   "process_total":  38.53
+                                                               },
+                                                  "preview_age_ms":  88.3,
+                                                  "effective_feedback":  "SEE_EXACT_FRAME_DECISIONS",
+                                                  "latest":  {
+                                                                 "signal":  {
+                                                                                "state":  "UNKNOWN",
+                                                                                "confidence":  0,
+                                                                                "actions":  [
+
+                                                                                            ],
+                                                                                "candidates":  [
+
+                                                                                               ],
+                                                                                "association":  "UNASSIGNED"
+                                                                            },
+                                                                 "lanes":  {
+                                                                               "left":  {
+                                                                                            "state":  "UNKNOWN",
+                                                                                            "confidence":  0.0,
+                                                                                            "coverage":  0.454,
+                                                                                            "segments":  4
+                                                                                        },
+                                                                               "right":  {
+                                                                                             "state":  "UNKNOWN",
+                                                                                             "confidence":  0.0,
+                                                                                             "coverage":  0.0,
+                                                                                             "segments":  0
+                                                                                         }
+                                                                           },
+                                                                 "inference_ms":  13.071,
+                                                                 "decisions":  {
+                                                                                   "1":  {
+                                                                                             "code":  0,
+                                                                                             "reason":  0,
+                                                                                             "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                         },
+                                                                                   "2":  {
+                                                                                             "code":  0,
+                                                                                             "reason":  0,
+                                                                                             "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                         },
+                                                                                   "3":  {
+                                                                                             "code":  0,
+                                                                                             "reason":  0,
+                                                                                             "explanation":  "SIGNAL_STATE_OR_ASSOCIATION_UNCERTAIN"
+                                                                                         },
+                                                                                   "4":  {
+                                                                                             "code":  1,
+                                                                                             "reason":  0,
+                                                                                             "explanation":  "STOP_INTENT_NO_RED_VIOLATION"
+                                                                                         }
+                                                                               },
+                                                                 "frame_id":  32368,
+                                                                 "received_monotonic":  51704.991135187,
+                                                                 "source_seconds":  null,
+                                                                 "complete_to_process_wait_ms":  2.076,
+                                                                 "frame_age_at_result_ms":  28.43
+                                                             },
+                                                  "link":  {
+                                                               "heartbeat_tx":  1638,
+                                                               "rx_packets":  8846467,
+                                                               "heartbeat_or_welcome":  2461,
+                                                               "telemetry_packets":  823,
+                                                               "front_fragments":  8843183,
+                                                               "complete_frames":  6139,
+                                                               "session":  3582022188,
+                                                               "online":  true,
+                                                               "requested_front_fps":  15,
+                                                               "recent_complete_fps":  14.861,
+                                                               "telemetry":  {
+                                                                                 "mac_crc":  0,
+                                                                                 "mac_overrun":  0,
+                                                                                 "reject_format":  21,
+                                                                                 "reject_checksum":  2,
+                                                                                 "reject_session":  0,
+                                                                                 "reject_profile":  0,
+                                                                                 "sequence_errors":  0,
+                                                                                 "duplicate_packets":  0,
+                                                                                 "begin_wait_cycles":  0,
+                                                                                 "begin_requests":  0,
+                                                                                 "assembly_timeouts":  0,
+                                                                                 "assembly_aborts":  0,
+                                                                                 "ddr_beats":  0,
+                                                                                 "published":  0,
+                                                                                 "displayed_new":  0,
+                                                                                 "rx_packets":  8395
+                                                                             },
+                                                               "host_elapsed_seconds":  411.462,
+                                                               "front_receive_fps":  14.92,
+                                                               "socket_receive_buffer_bytes":  8388608,
+                                                               "current_frame_fragments":  145,
+                                                               "assembly_dropped":  2,
+                                                               "assembly_duplicates":  0,
+                                                               "hardware_validation":  "网口2尚未实物联调"
+                                                           }
+                                              }
+                                 }
+                    },
+    "forward_matches_remote":  true,
+    "summary":  [
+                    "本地入口：E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\oneclick",
+                    "目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                    "诊断只读；不会启动第二份LIVE、不会占用UDP50000、不会添加静态ARP。",
+                    "通过SSH执行 diagnose；需要认证时请在终端输入密码（不保存）。",
+                    "SSH：可连接；远端版本：M4-01-front15-r1",
+                    "本地转发/HTTP：可访问，session与远端一致",
+                    "前摄上传请求=15 fps；处理目标=15 fps（最新完整帧，无人为限速）；预览目标=15.0 fps",
+                    "接收缓冲：rmem_max=8388608，请求=4194304，实际SO_RCVBUF=8388608（Linux返回值含加倍记账）",
+                    "ARP为动态邻居：REACHABLE；缓存记录不单独证明当前通信",
+                    "已有完整前摄帧持续到达、处理及预览JPEG更新，通信正常；浏览器实际解码仍需现场观察",
+                    "网卡增量：{\"rx_packets\":86671,\"tx_packets\":32,\"rx_bytes\":118709782,\"tx_bytes\":2880,\"rx_errors\":0,\"rx_dropped\":0,\"rx_crc_errors\":0,\"rx_fifo_errors\":0}",
+                    "协议增量：{\"heartbeat_tx\":16,\"rx_packets\":87248,\"heartbeat_or_welcome\":24,\"telemetry_packets\":8,\"front_fragments\":87216,\"complete_frames\":61,\"bad_packets\":0,\"wrong_peer\":0,\"wrong_session\":0,\"send_errors\":0,\"receive_errors\":0}",
+                    "同服务socket丢包增量：{\"200542\":0}；全机UDP错误仅作旁证。",
+                    "主动跳过完整帧增量：0（与网络缺片分开计数）",
+                    "端口占用及进程命令行：",
+                    "Netid State  Recv-Q  Send-Q             Local Address:Port  Peer Address:PortProcess                             \nudp   UNCONN 0       0                     127.0.0.53:53         0.0.0.0:*                                       \nudp   UNCONN 0       0                      127.0.0.1:323        0.0.0.0:*                                       \nudp   UNCONN 1241088 0                   192.168.60.1:50000      0.0.0.0:*    users:((\"python\",pid=179463,fd=5)) \nudp   UNCONN 0       0                          [::1]:323              *:*                                       \nudp   UNCONN 0       0      [fe80::8a5a:34:9a2c:7d9d]:546              *:*                                       \ntcp   LISTEN 0       0                      127.0.0.1:8080       0.0.0.0:*    users:((\"python\",pid=179463,fd=4)) \ntcp   LISTEN 0       0                        0.0.0.0:5555       0.0.0.0:*                                       \ntcp   LISTEN 0       0                        0.0.0.0:5901       0.0.0.0:*    users:((\"Xtigervnc\",pid=2027,fd=7))\ntcp   LISTEN 0       0                      127.0.0.1:5037       0.0.0.0:*                                       \ntcp   LISTEN 0       0                     127.0.0.53:53         0.0.0.0:*                                       \ntcp   LISTEN 0       0                        0.0.0.0:22         0.0.0.0:*                                       \ntcp   LISTEN 0       0                      127.0.0.1:631        0.0.0.0:*                                       \ntcp   LISTEN 0       0                          [::1]:631              *:*                                       \ntcp   LISTEN 0       0                              *:5901             *:*    users:((\"Xtigervnc\",pid=2027,fd=8))\ntcp   LISTEN 0       0                          [::1]:3350             *:*                                       \ntcp   LISTEN 0       0                              *:22               *:*                                       \ntcp   LISTEN 0       0                              *:3389             *:*\r\n"
+                ]
+}

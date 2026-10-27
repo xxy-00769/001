@@ -1,0 +1,55 @@
+{
+  "selected": {
+    "name": "Ultralytics YOLOv8s COCO",
+    "source": "https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s.pt",
+    "license": "AGPL-3.0",
+    "role": "80类COCO模型，仅使用class_id=9 traffic light作为灯体候选；不是灯色/箭头模型",
+    "deployment": "yolov8s640_fp16.rknn",
+    "backend": "RKNN/NPU，申请CORE_2；不宣称核利用率",
+    "input": "640x640 RGB NHWC uint8，letterbox114；模型内 /255；输出[1,84,8400]解码框/类别分数",
+    "schedule": "上方12%～66%的左右55%宽图像区域交替；总目标4Hz，每侧约2Hz；每盏实际更新率单列",
+    "thresholds": {
+      "body_candidate": 0.25,
+      "color_gate_body_confidence": 0.45,
+      "nms": 0.45
+    }
+  },
+  "color": {
+    "backend": "CPU/OpenCV",
+    "method": "原图灯区RGB/HSV发光证据；成对横排暗壳几何与标准三灯位复查；密集纹理否决；两次当前图像确认",
+    "limitation": "几何支路是受限后处理，非训练模型输出；三灯位是结构假设，非人工ROI或场景答案",
+    "tracking": "自动灯壳原图匹配≤1.2s，600ms观测失效；跟踪时重新读当前RGB，不沿用旧灯色",
+    "shape": "圆灯轮廓候选代码存在但尚未真实验收；箭头未支持；OFF不能由漏检推断",
+    "control_relation": "全部UNKNOWN，未使用旧人工灯区/方向标定，不自动放行"
+  },
+  "rejected": [
+    {
+      "name": "已有YOLOv8n COCO",
+      "reason": "原图抽检漏横排灯，误检路侧装饰物；仅开放类别不足以完成识别"
+    },
+    {
+      "name": "TLoNY tlony-yolov8n.zip（权重实际YOLO11n）",
+      "source": "https://huggingface.co/mehmetkeremturkcan/traffic-lights-of-new-york/tree/3beca3baaae790cb45916970501af541ae91cb1d",
+      "license": "AGPL-3.0",
+      "classes": [
+        "red",
+        "green",
+        "yellow",
+        "redyellow",
+        "unknown",
+        "pedred",
+        "pedgreen",
+        "pedunknown"
+      ],
+      "reason": "原图、通用裁剪及放大灯体未有有效检出；Torch/ONNX/RKNN对照，640/1280同样极低分；原训练配置3840。未作生产感知使用"
+    },
+    {
+      "name": "Aleton/trafficlight",
+      "license": "MIT（发布者声明）",
+      "source": "https://huggingface.co/Aleton/trafficlight",
+      "reason": "模型卡明确行人红/绿信号，不能用于机动车灯组；未下载/转换"
+    }
+  ],
+  "conversion": "已有.venv405build；Ultralytics8.3.40仅解压至m406/build_vendor，关闭导出时不使用的绘图/云入口，前向层不变。FP16无量化；未新增系统依赖。",
+  "parity": "evidence/backend_parity.json 六幅真实输入，分数最大差0.0062，候选坐标均差<0.15模型像素；临阈值候选数可有差异，非准确率。"
+}

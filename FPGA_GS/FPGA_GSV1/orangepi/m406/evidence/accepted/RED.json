@@ -1,0 +1,1362 @@
+{
+  "ok": true,
+  "snapshot": "SC_YJ_80.800_20261024_110929_1594",
+  "directory": "/home/orangepi/fpga_gs_m401_v0_1_2_20261021/m406/evidence/runtime",
+  "status": {
+    "mode": "FILE_TEST",
+    "vehicle": "SIMULATION",
+    "release": "M4-06-r1",
+    "instance": "7596e5fc0a1b2b61fa6d6af4",
+    "host_monotonic_ms": 9411951.576762,
+    "video": "SC_YJ.mp4",
+    "files": [
+      {
+        "name": "SC_BT.mp4",
+        "duration": 59.882646,
+        "fps": 30.001687177285582,
+        "label": "日间城区"
+      },
+      {
+        "name": "SC_BT2.mp4",
+        "duration": 32.042667,
+        "fps": 30.024968789013734,
+        "label": "黄昏高架"
+      },
+      {
+        "name": "SC_YJ.mp4",
+        "duration": 177.834667,
+        "fps": 30.00214260849744,
+        "label": "夜间城区"
+      },
+      {
+        "name": "SC_YJ2.mp4",
+        "duration": 78.05,
+        "fps": 39.62832425504646,
+        "label": "蓝调高架"
+      }
+    ],
+    "source_fps": 30.00214260849744,
+    "duration": 177.834667,
+    "position": 80.8,
+    "playing": true,
+    "loop": true,
+    "epoch": 13,
+    "processed": 1594,
+    "processed_fps": 13.665,
+    "skipped_source_frames": 2194,
+    "loop_count": 1,
+    "target_fps": 15,
+    "preview_width": 640,
+    "frame_id": 2424,
+    "sequence": 1594,
+    "age_ms": 123.5,
+    "driving": {
+      "mode": "intersection",
+      "lane": "straight",
+      "intent": "auto",
+      "forced": false,
+      "motion": "STOPPED",
+      "suggestion": "UNKNOWN",
+      "reason": "灯色已识别，控制关系未知；不自动放行",
+      "alarm": null,
+      "alarm_remaining_seconds": 0,
+      "command_id": 1,
+      "alarm_policy": "告警锁存5秒；到期取消强制并停车；停车/清除告警立即解除；切视频/跳转/循环重置",
+      "vehicle": "SIMULATED_ONLY"
+    },
+    "perception": {
+      "signal": {
+        "state": "UNKNOWN",
+        "actions": [],
+        "confidence": 0,
+        "reason": "自动灯组控制归属未知"
+      },
+      "lanes": {
+        "left": {
+          "state": "UNKNOWN",
+          "raw_state": "UNKNOWN",
+          "reason": "本车道尚未确认",
+          "adjacent": {
+            "state": "UNKNOWN",
+            "reason": "没有独立外侧边界与道路走廊证据"
+          },
+          "confidence": null,
+          "evidence": {}
+        },
+        "right": {
+          "state": "UNKNOWN",
+          "raw_state": "UNKNOWN",
+          "reason": "本车道尚未确认",
+          "adjacent": {
+            "state": "UNKNOWN",
+            "reason": "没有独立外侧边界与道路走廊证据"
+          },
+          "confidence": null,
+          "evidence": {}
+        },
+        "visible_lane_count": null,
+        "ego_ordinal": null,
+        "confirmed_corridors": 0,
+        "numbering_basis": "不能确认完整可见车道集合与最左起点；序号未知",
+        "direction_relation": "UNKNOWN",
+        "direction_reason": "标线颜色/单帧车头方向不能证明同向或对向",
+        "method": "YOLOP二值标线引导＋960宽RGB脊线＋道路几何＋短时投票；非车道实例模型",
+        "reason": "左右边界不足；不推造完整本车道"
+      },
+      "stage_ms": {},
+      "detection": {
+        "backend": "RKNN/NPU",
+        "model": "YOLOv8n COCO w8a8",
+        "input_size": [
+          640,
+          640
+        ],
+        "threshold": 0.25,
+        "nms_iou": 0.45,
+        "epoch": 13,
+        "frame_id": 2422,
+        "objects": [
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.4966,
+            "box": [
+              262.59,
+              819.23,
+              388.79,
+              891.27
+            ],
+            "source": "optical_flow",
+            "track_id": 23,
+            "last_detected_monotonic": 9411.803384824,
+            "missed": 0,
+            "epoch": 13,
+            "detection_frame_id": 2422,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.4529,
+            "box": [
+              375.92,
+              833.23,
+              560.03,
+              951.72
+            ],
+            "source": "optical_flow",
+            "track_id": 19,
+            "last_detected_monotonic": 9411.803384824,
+            "missed": 0,
+            "epoch": 13,
+            "detection_frame_id": 2422,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.4376,
+            "box": [
+              2301.1,
+              811.88,
+              2436.23,
+              865.64
+            ],
+            "source": "optical_flow",
+            "track_id": 20,
+            "last_detected_monotonic": 9411.803384824,
+            "missed": 0,
+            "epoch": 13,
+            "detection_frame_id": 2422,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.4345,
+            "box": [
+              543.67,
+              815.82,
+              711.69,
+              886.73
+            ],
+            "source": "optical_flow",
+            "track_id": 17,
+            "last_detected_monotonic": 9411.803384824,
+            "missed": 0,
+            "epoch": 13,
+            "detection_frame_id": 2422,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.4128,
+            "box": [
+              157.51,
+              829.18,
+              262.55,
+              879.87
+            ],
+            "source": "optical_flow",
+            "track_id": 21,
+            "last_detected_monotonic": 9411.803384824,
+            "missed": 0,
+            "epoch": 13,
+            "detection_frame_id": 2422,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.3693,
+            "box": [
+              2496.99,
+              847.53,
+              2558,
+              920.75
+            ],
+            "source": "optical_flow",
+            "track_id": 24,
+            "last_detected_monotonic": 9411.803384824,
+            "missed": 0,
+            "epoch": 13,
+            "detection_frame_id": 2422,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.3321,
+            "box": [
+              727.22,
+              800.73,
+              943.66,
+              933.38
+            ],
+            "source": "optical_flow",
+            "track_id": 22,
+            "last_detected_monotonic": 9411.803384824,
+            "missed": 0,
+            "epoch": 13,
+            "detection_frame_id": 2422,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          },
+          {
+            "class_id": 2,
+            "category": "car",
+            "label": "汽车",
+            "confidence": 0.2917,
+            "box": [
+              4.74,
+              825.47,
+              113.47,
+              904.6
+            ],
+            "source": "optical_flow",
+            "track_id": 2,
+            "last_detected_monotonic": 9411.803384824,
+            "missed": 0,
+            "epoch": 13,
+            "detection_frame_id": 2422,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          },
+          {
+            "class_id": 5,
+            "category": "bus",
+            "label": "客车",
+            "confidence": 0.3797,
+            "box": [
+              850.1,
+              684.61,
+              1634.57,
+              913.63
+            ],
+            "source": "optical_flow",
+            "track_id": 3,
+            "last_detected_monotonic": 9411.74332418,
+            "missed": 1,
+            "epoch": 13,
+            "detection_frame_id": 2420,
+            "age_ms": 67.9,
+            "spatial_relation": "UNKNOWN",
+            "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+          }
+        ],
+        "detected_count": 0,
+        "held_count": 9,
+        "count": 9,
+        "detection_fps": 15.08,
+        "stage_ms": {
+          "det_preprocess": 3.494,
+          "det_inference": 24.815,
+          "det_postprocess": 14.691,
+          "det_tracking": 0.119,
+          "det_display_tracking": 9.186
+        },
+        "inference_age_ms": 182.1,
+        "display_frame_id": 2424,
+        "age_reference_monotonic": 9411.837327782
+      },
+      "traffic": {
+        "backend": "RKNN/NPU + CPU",
+        "method": "YOLOv8s COCO灯体 + 成对横排灯壳几何 + 原图灯色 + 两次时序确认",
+        "scope": "上方66%画面；箭头/机动车与行人灯区分及控制归属未完成",
+        "epoch": 13,
+        "source_frame_id": 2410,
+        "decoded_monotonic": 9411.360753808,
+        "age_ms": 590.8,
+        "lights": [
+          {
+            "box": [
+              1512,
+              631,
+              1582,
+              659
+            ],
+            "body_source": "AUTO_CAPSULE_IMAGE_TRACK",
+            "body_score": 0.673,
+            "tracking_match": 0.9693,
+            "origin_frame_id": 2400,
+            "confidence": null,
+            "context_evidence": {
+              "edge_fraction": 0.1012,
+              "saturated_fraction": 0.0734,
+              "source": "密集文字/LED背景后处理否决，非模型精度"
+            },
+            "color": "RED",
+            "shape": "UNKNOWN",
+            "shape_reason": "灯型或分辨率/眩光证据不足",
+            "direction": "UNKNOWN",
+            "kind": "UNKNOWN",
+            "control_relation": "UNKNOWN",
+            "control_reason": "机动车/行人类别及本车方向归属未确认",
+            "reason": "灯色已识别，控制关系未知",
+            "lamp_cell_evidence": {
+              "rgb_support_pixels": {
+                "RED": 137,
+                "YELLOW": 0,
+                "GREEN": 0
+              },
+              "layout": "自动成对横排暗壳；标准红黄绿三灯位假设，非人工ROI"
+            },
+            "color_evidence": "暗壳三灯位 + 当前RGB色边缘；白色过曝核心不参与定色",
+            "id": 1,
+            "hits": 2,
+            "streak": 2,
+            "observed_color": "RED",
+            "last_confirmed": "RED",
+            "seen_at": 9411.647584318,
+            "source_frame_id": 2410,
+            "epoch": 13,
+            "decoded_monotonic": 9411.360753808,
+            "source": "IMAGE_BODY_TRACK",
+            "change": null,
+            "thumbnail_jpeg": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAiAEwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDG/ae8Z6F4v0QDTLiyeWxfy3RWGST3X1FfPmlaS1/IUSWNGVdx3NgVr+GtEsPsDa5q2Tbo+yGFesrf4V6t8PNDj12aMjwvYCE49SQPeozXOIcqiloj6HKMo5lueL3OiFbNrgXMRAbGN3NY8sez5SwNfZPin4T2djof9oRaBZuvHyqp4PvXg3iOaHRryS2n8H6XIVP3gTg141LMI1JWserLAUpQbpyvY8q+X+8KFKDncOtdpceLNNU/N4K0vj3NQ/8ACW6WeR4N0z8zXpwn1PCr0LOxT1mC4k8LwXWo6iixji3t4zyfc03wo/ieK7tZdF0uOSbadu+INu/A1cn8Z6Zxu8H6dx0+Zqs2/jOzvZIbS6sjpkZ+WOe1kOY8/wBK19pocMqPma1zrHxMUmKTQbZT3C2i1l3F546kk3SeHYy3ci1FX28O+LBfFIfF0SBxuhea62717Gr48KeNgOfHemH/ALfRW9J3OGpGzsYl5Ox0nQBtAhWMrkd2z3r6P/Z31XSoLcm4VcxgZUDJY18v+GtTtX0iXSNVVxblw8VwoyYm/wAK7vwbe3mj3Akstbsiq8BzLgke4r53MKDnZo+6y2pB05UpO1z7o17XNMs9Djub5SLWcbeVztyO9fJ3jq10DxX42urDTJ1torW3d1JXAdhWp4o+J2s6noEWlW+qaYqeXtmzIOT7V45d22syXZvItb06KTkF/N6+1clGhKUtrGmHwkcDTlJy1ZzniexaylCvBKA+fmZcA+4rN8P2K3t3LAMtIEJRF6sfQV2fiAa9rdnDb3uuaH5cC7V2vg1h2XhzUbK9ivLXXdLjnjO5WEwr3KcbI+er1HJtnO6jZzW8rRTwPEwzlXGCKy3G08dq9G8SaFr+qsl/qmt6QWcY3iQc1l2XhSwt5Bea1rVobOI5dYG3O/sK1Rw850aP4aXwpoUnii0lkuHiOxlbB2dqoXcngNpybez2x9synNcj4210a3qSmCMxWUCCO2j7qgrB5pcjfUWjNi2JEUoBIB6ipogNucDOKKKioexhPiRMQNo4pLgD7KB2zRRWUDtxHwlAqvPyj8qftXy/uj8qKK6jwqhp+B40uPFtjDcIs0W8fI43L19DXvnjeys4PC935FpBFiHjZGB29qKKp7HD1Pl27AFy+P7xqI0UUI1if//Z",
+            "observation_times": [
+              9411.2847285,
+              9411.647584318
+            ],
+            "update_fps": 2.76,
+            "age_ms": 590.8
+          },
+          {
+            "box": [
+              1644,
+              635,
+              1736,
+              669
+            ],
+            "body_source": "AUTO_CAPSULE_IMAGE_TRACK",
+            "body_score": 0.465,
+            "tracking_match": 0.998,
+            "origin_frame_id": 2400,
+            "confidence": null,
+            "context_evidence": {
+              "edge_fraction": 0.1244,
+              "saturated_fraction": 0.1379,
+              "source": "密集文字/LED背景后处理否决，非模型精度"
+            },
+            "color": "RED",
+            "shape": "UNKNOWN",
+            "shape_reason": "灯型或分辨率/眩光证据不足",
+            "direction": "UNKNOWN",
+            "kind": "UNKNOWN",
+            "control_relation": "UNKNOWN",
+            "control_reason": "机动车/行人类别及本车方向归属未确认",
+            "reason": "灯色已识别，控制关系未知",
+            "lamp_cell_evidence": {
+              "rgb_support_pixels": {
+                "RED": 183,
+                "YELLOW": 0,
+                "GREEN": 0
+              },
+              "layout": "自动成对横排暗壳；标准红黄绿三灯位假设，非人工ROI"
+            },
+            "color_evidence": "暗壳三灯位 + 当前RGB色边缘；白色过曝核心不参与定色",
+            "id": 2,
+            "hits": 2,
+            "streak": 2,
+            "observed_color": "RED",
+            "last_confirmed": "RED",
+            "seen_at": 9411.647584318,
+            "source_frame_id": 2410,
+            "epoch": 13,
+            "decoded_monotonic": 9411.360753808,
+            "source": "IMAGE_BODY_TRACK",
+            "change": null,
+            "thumbnail_jpeg": "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",
+            "observation_times": [
+              9411.2847285,
+              9411.647584318
+            ],
+            "update_fps": 2.76,
+            "age_ms": 590.8
+          }
+        ],
+        "transitions": [],
+        "control_relation": "UNKNOWN",
+        "control_reason": "自动归属未实现；不使用旧人工场景标定",
+        "stage_ms": {
+          "traffic_preprocess": 5.765851999967708,
+          "traffic_inference": 106.80024199973559,
+          "traffic_postprocess": 14.976808000938036,
+          "traffic_geometry_color": 152.767,
+          "traffic_total": 286.392
+        },
+        "statistics": {
+          "raw_geometry_candidates": 1,
+          "paired_geometry_candidates": 0,
+          "geometry_hypotheses": 118,
+          "dense_context_rejected": 0
+        }
+      },
+      "road": {
+        "road_contours": [
+          {
+            "points": [
+              [
+                0.9969,
+                0.6667
+              ],
+              [
+                0.9656,
+                0.6556
+              ],
+              [
+                0.9625,
+                0.65
+              ],
+              [
+                0.9375,
+                0.65
+              ],
+              [
+                0.9344,
+                0.6444
+              ],
+              [
+                0.9219,
+                0.6444
+              ],
+              [
+                0.9094,
+                0.6333
+              ],
+              [
+                0.8938,
+                0.6333
+              ],
+              [
+                0.8906,
+                0.6278
+              ],
+              [
+                0.875,
+                0.6278
+              ],
+              [
+                0.8719,
+                0.6222
+              ],
+              [
+                0.8656,
+                0.6222
+              ],
+              [
+                0.8531,
+                0.6333
+              ],
+              [
+                0.85,
+                0.6278
+              ],
+              [
+                0.7594,
+                0.6278
+              ],
+              [
+                0.7562,
+                0.6222
+              ],
+              [
+                0.7375,
+                0.6278
+              ],
+              [
+                0.7344,
+                0.6222
+              ],
+              [
+                0.7125,
+                0.6222
+              ],
+              [
+                0.7094,
+                0.6167
+              ],
+              [
+                0.7062,
+                0.6222
+              ],
+              [
+                0.7031,
+                0.6167
+              ],
+              [
+                0.6906,
+                0.6167
+              ],
+              [
+                0.6875,
+                0.6111
+              ],
+              [
+                0.6375,
+                0.6167
+              ],
+              [
+                0.6312,
+                0.6056
+              ],
+              [
+                0.6156,
+                0.6278
+              ],
+              [
+                0.6125,
+                0.6556
+              ],
+              [
+                0.6,
+                0.6722
+              ],
+              [
+                0.5906,
+                0.6722
+              ],
+              [
+                0.5781,
+                0.6833
+              ],
+              [
+                0.5719,
+                0.6833
+              ],
+              [
+                0.5688,
+                0.6778
+              ],
+              [
+                0.5656,
+                0.6833
+              ],
+              [
+                0.5406,
+                0.6833
+              ],
+              [
+                0.5375,
+                0.6889
+              ],
+              [
+                0.5312,
+                0.6833
+              ],
+              [
+                0.5094,
+                0.6833
+              ],
+              [
+                0.4969,
+                0.6944
+              ],
+              [
+                0.4812,
+                0.6944
+              ],
+              [
+                0.4719,
+                0.6833
+              ],
+              [
+                0.4531,
+                0.6889
+              ],
+              [
+                0.45,
+                0.6833
+              ],
+              [
+                0.4375,
+                0.6833
+              ],
+              [
+                0.4344,
+                0.6778
+              ],
+              [
+                0.4219,
+                0.6778
+              ],
+              [
+                0.4188,
+                0.6722
+              ],
+              [
+                0.3969,
+                0.6722
+              ],
+              [
+                0.3938,
+                0.6778
+              ],
+              [
+                0.3656,
+                0.6833
+              ],
+              [
+                0.3625,
+                0.6889
+              ],
+              [
+                0.3594,
+                0.6833
+              ],
+              [
+                0.35,
+                0.6833
+              ],
+              [
+                0.3344,
+                0.6944
+              ],
+              [
+                0.2781,
+                0.6944
+              ],
+              [
+                0.2688,
+                0.6833
+              ],
+              [
+                0.2531,
+                0.6944
+              ],
+              [
+                0.25,
+                0.6833
+              ],
+              [
+                0.2406,
+                0.6833
+              ],
+              [
+                0.2312,
+                0.6722
+              ],
+              [
+                0.1375,
+                0.6722
+              ],
+              [
+                0.1312,
+                0.6778
+              ],
+              [
+                0.1156,
+                0.6667
+              ],
+              [
+                0.1125,
+                0.6722
+              ],
+              [
+                0.1,
+                0.6667
+              ],
+              [
+                0.1094,
+                0.6778
+              ],
+              [
+                0.1062,
+                0.6833
+              ],
+              [
+                0.0906,
+                0.6833
+              ],
+              [
+                0.0938,
+                0.6889
+              ],
+              [
+                0.0906,
+                0.6944
+              ],
+              [
+                0.0469,
+                0.6944
+              ],
+              [
+                0.0438,
+                0.7
+              ],
+              [
+                0.0375,
+                0.7
+              ],
+              [
+                0.0344,
+                0.6944
+              ],
+              [
+                0.025,
+                0.7
+              ],
+              [
+                0.0219,
+                0.6944
+              ],
+              [
+                0.0156,
+                0.7056
+              ],
+              [
+                0.0094,
+                0.7056
+              ],
+              [
+                0.0062,
+                0.7
+              ],
+              [
+                0,
+                0.7056
+              ],
+              [
+                0,
+                0.8556
+              ],
+              [
+                0.0062,
+                0.8611
+              ],
+              [
+                0.0906,
+                0.8556
+              ],
+              [
+                0.0938,
+                0.85
+              ],
+              [
+                0.1094,
+                0.85
+              ],
+              [
+                0.1125,
+                0.8444
+              ],
+              [
+                0.125,
+                0.8444
+              ],
+              [
+                0.1281,
+                0.8389
+              ],
+              [
+                0.1406,
+                0.8389
+              ],
+              [
+                0.1438,
+                0.8333
+              ],
+              [
+                0.1625,
+                0.8333
+              ],
+              [
+                0.1656,
+                0.8278
+              ],
+              [
+                0.1812,
+                0.8278
+              ],
+              [
+                0.1844,
+                0.8222
+              ],
+              [
+                0.2156,
+                0.8222
+              ],
+              [
+                0.2188,
+                0.8167
+              ],
+              [
+                0.2781,
+                0.8167
+              ],
+              [
+                0.2812,
+                0.8111
+              ],
+              [
+                0.3406,
+                0.8111
+              ],
+              [
+                0.3438,
+                0.8167
+              ],
+              [
+                0.3469,
+                0.8111
+              ],
+              [
+                0.35,
+                0.8167
+              ],
+              [
+                0.3562,
+                0.8111
+              ],
+              [
+                0.375,
+                0.8111
+              ],
+              [
+                0.3781,
+                0.8167
+              ],
+              [
+                0.3812,
+                0.8111
+              ],
+              [
+                0.4906,
+                0.8111
+              ],
+              [
+                0.4938,
+                0.8056
+              ],
+              [
+                0.6,
+                0.8056
+              ],
+              [
+                0.6031,
+                0.8111
+              ],
+              [
+                0.6094,
+                0.8056
+              ],
+              [
+                0.625,
+                0.8056
+              ],
+              [
+                0.6281,
+                0.8111
+              ],
+              [
+                0.6938,
+                0.8167
+              ],
+              [
+                0.6969,
+                0.8222
+              ],
+              [
+                0.7094,
+                0.8222
+              ],
+              [
+                0.7125,
+                0.8167
+              ],
+              [
+                0.7188,
+                0.8167
+              ],
+              [
+                0.7219,
+                0.8222
+              ],
+              [
+                0.7281,
+                0.8167
+              ],
+              [
+                0.7719,
+                0.8167
+              ],
+              [
+                0.775,
+                0.8111
+              ],
+              [
+                0.7781,
+                0.8167
+              ],
+              [
+                0.7812,
+                0.8111
+              ],
+              [
+                0.875,
+                0.8111
+              ],
+              [
+                0.8781,
+                0.8167
+              ],
+              [
+                0.8969,
+                0.8167
+              ],
+              [
+                0.9,
+                0.8222
+              ],
+              [
+                0.9156,
+                0.8222
+              ],
+              [
+                0.9188,
+                0.8278
+              ],
+              [
+                0.9625,
+                0.8333
+              ],
+              [
+                0.9781,
+                0.8444
+              ],
+              [
+                0.9969,
+                0.8444
+              ]
+            ],
+            "hole": false
+          }
+        ],
+        "paint_contours": [],
+        "ego": {
+          "left": null,
+          "right": null,
+          "state": "UNKNOWN",
+          "reason": "左右边界不足；不推造完整本车道",
+          "polygon": [],
+          "candidates": [],
+          "camera_assumption": "光轴中心x=0.5；未作车辆外参标定",
+          "display_source": "short_hold"
+        },
+        "stage_ms": {
+          "road_preprocess": 7.07,
+          "road_model": 57.64,
+          "lane_postprocess": 25.99,
+          "lane_semantics": 0.11
+        },
+        "model_ego": {
+          "left": null,
+          "right": null,
+          "state": "UNKNOWN",
+          "reason": "左右边界不足；不推造完整本车道",
+          "polygon": [],
+          "candidates": [],
+          "camera_assumption": "光轴中心x=0.5；未作车辆外参标定"
+        },
+        "lane_semantics": {
+          "left": {
+            "state": "UNKNOWN",
+            "raw_state": "UNKNOWN",
+            "reason": "本车道尚未确认",
+            "adjacent": {
+              "state": "UNKNOWN",
+              "reason": "没有独立外侧边界与道路走廊证据"
+            },
+            "confidence": null,
+            "evidence": {}
+          },
+          "right": {
+            "state": "UNKNOWN",
+            "raw_state": "UNKNOWN",
+            "reason": "本车道尚未确认",
+            "adjacent": {
+              "state": "UNKNOWN",
+              "reason": "没有独立外侧边界与道路走廊证据"
+            },
+            "confidence": null,
+            "evidence": {}
+          },
+          "visible_lane_count": null,
+          "ego_ordinal": null,
+          "confirmed_corridors": 0,
+          "numbering_basis": "不能确认完整可见车道集合与最左起点；序号未知",
+          "direction_relation": "UNKNOWN",
+          "direction_reason": "标线颜色/单帧车头方向不能证明同向或对向",
+          "method": "YOLOP二值标线引导＋960宽RGB脊线＋道路几何＋短时投票；非车道实例模型",
+          "reason": "左右边界不足；不推造完整本车道"
+        },
+        "epoch": 13,
+        "source_frame_id": 2418,
+        "decoded_monotonic": 9411.627443647,
+        "completed_monotonic": 9411.777751588,
+        "state": "HELD",
+        "age_ms": 324.1,
+        "display_frame_id": 2424
+      },
+      "legacy_lanes": {}
+    },
+    "traffic": {
+      "target_hz": 4,
+      "update_fps": 3.01,
+      "completed": 397,
+      "skipped_source_observations": 1193,
+      "sampling_skipped": 1193,
+      "pending_replaced": 0,
+      "neural_region_schedule": "左右半图交替，每侧约总观测率的一半；逐灯update_fps单列",
+      "error": null,
+      "thread_alive": true
+    },
+    "show_lights": true,
+    "show_objects": true,
+    "road": {
+      "model": "YOLOP",
+      "backend": "RKNN/NPU FP16",
+      "target_fps": 8,
+      "semantic_update_fps": 5.65,
+      "semantic_target_fps": 8,
+      "input_size": 320,
+      "outputs": [
+        "drivable_area",
+        "binary_lane_paint"
+      ],
+      "completed": 791,
+      "update_fps": 5.65,
+      "replaced_pending": 799,
+      "error": null,
+      "alive": true
+    },
+    "show_road": true,
+    "show_lane": true,
+    "detection": {
+      "backend": "RKNN/NPU",
+      "model": "YOLOv8n COCO w8a8",
+      "input_size": [
+        640,
+        640
+      ],
+      "threshold": 0.25,
+      "nms_iou": 0.45,
+      "epoch": 13,
+      "frame_id": 2422,
+      "objects": [
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.4966,
+          "box": [
+            262.59,
+            819.23,
+            388.79,
+            891.27
+          ],
+          "source": "optical_flow",
+          "track_id": 23,
+          "last_detected_monotonic": 9411.803384824,
+          "missed": 0,
+          "epoch": 13,
+          "detection_frame_id": 2422,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.4529,
+          "box": [
+            375.92,
+            833.23,
+            560.03,
+            951.72
+          ],
+          "source": "optical_flow",
+          "track_id": 19,
+          "last_detected_monotonic": 9411.803384824,
+          "missed": 0,
+          "epoch": 13,
+          "detection_frame_id": 2422,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.4376,
+          "box": [
+            2301.1,
+            811.88,
+            2436.23,
+            865.64
+          ],
+          "source": "optical_flow",
+          "track_id": 20,
+          "last_detected_monotonic": 9411.803384824,
+          "missed": 0,
+          "epoch": 13,
+          "detection_frame_id": 2422,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.4345,
+          "box": [
+            543.67,
+            815.82,
+            711.69,
+            886.73
+          ],
+          "source": "optical_flow",
+          "track_id": 17,
+          "last_detected_monotonic": 9411.803384824,
+          "missed": 0,
+          "epoch": 13,
+          "detection_frame_id": 2422,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.4128,
+          "box": [
+            157.51,
+            829.18,
+            262.55,
+            879.87
+          ],
+          "source": "optical_flow",
+          "track_id": 21,
+          "last_detected_monotonic": 9411.803384824,
+          "missed": 0,
+          "epoch": 13,
+          "detection_frame_id": 2422,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.3693,
+          "box": [
+            2496.99,
+            847.53,
+            2558,
+            920.75
+          ],
+          "source": "optical_flow",
+          "track_id": 24,
+          "last_detected_monotonic": 9411.803384824,
+          "missed": 0,
+          "epoch": 13,
+          "detection_frame_id": 2422,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.3321,
+          "box": [
+            727.22,
+            800.73,
+            943.66,
+            933.38
+          ],
+          "source": "optical_flow",
+          "track_id": 22,
+          "last_detected_monotonic": 9411.803384824,
+          "missed": 0,
+          "epoch": 13,
+          "detection_frame_id": 2422,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        },
+        {
+          "class_id": 2,
+          "category": "car",
+          "label": "汽车",
+          "confidence": 0.2917,
+          "box": [
+            4.74,
+            825.47,
+            113.47,
+            904.6
+          ],
+          "source": "optical_flow",
+          "track_id": 2,
+          "last_detected_monotonic": 9411.803384824,
+          "missed": 0,
+          "epoch": 13,
+          "detection_frame_id": 2422,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        },
+        {
+          "class_id": 5,
+          "category": "bus",
+          "label": "客车",
+          "confidence": 0.3797,
+          "box": [
+            850.1,
+            684.61,
+            1634.57,
+            913.63
+          ],
+          "source": "optical_flow",
+          "track_id": 3,
+          "last_detected_monotonic": 9411.74332418,
+          "missed": 1,
+          "epoch": 13,
+          "detection_frame_id": 2420,
+          "age_ms": 67.9,
+          "spatial_relation": "UNKNOWN",
+          "spatial_reason": "本车道未知或目标底点超出边界观测范围"
+        }
+      ],
+      "detected_count": 0,
+      "held_count": 9,
+      "count": 9,
+      "detection_fps": 13.68,
+      "stage_ms": {
+        "det_preprocess": 3.494,
+        "det_inference": 24.815,
+        "det_postprocess": 14.691,
+        "det_tracking": 0.119,
+        "det_display_tracking": 9.186
+      },
+      "inference_age_ms": 182.1,
+      "display_frame_id": 2424,
+      "age_reference_monotonic": 9411.837327782,
+      "detection_runs": 1434
+    },
+    "stage_ms": {
+      "overlay": 12.449,
+      "jpeg": 2.105,
+      "traffic_preprocess": 5.765851999967708,
+      "traffic_inference": 106.80024199973559,
+      "traffic_postprocess": 14.976808000938036,
+      "traffic_geometry_color": 152.767,
+      "traffic_total": 286.392,
+      "det_preprocess": 3.494,
+      "det_inference": 24.815,
+      "det_postprocess": 14.691,
+      "det_tracking": 0.119,
+      "det_display_tracking": 9.186,
+      "road_preprocess": 7.07,
+      "road_model": 57.64,
+      "lane_postprocess": 25.99,
+      "lane_semantics": 0.11,
+      "decode": 11.123,
+      "rules": 0.026,
+      "total": 35.874,
+      "timeline_lag_ms": 35.96
+    },
+    "stage_mean_ms": {
+      "overlay": 16.969,
+      "jpeg": 2.228,
+      "traffic_preprocess": 5.867,
+      "traffic_inference": 102.97,
+      "traffic_postprocess": 14.754,
+      "traffic_geometry_color": 123.307,
+      "traffic_total": 251.807,
+      "det_preprocess": 8.062,
+      "det_inference": 34.811,
+      "det_postprocess": 15.068,
+      "det_tracking": 0.149,
+      "det_display_tracking": 8.126,
+      "road_preprocess": 6.474,
+      "road_model": 64.718,
+      "lane_postprocess": 18.76,
+      "lane_semantics": 0.09,
+      "decode": 13.416,
+      "rules": 0.028,
+      "total": 40.425,
+      "timeline_lag_ms": 40.845
+    },
+    "error": null,
+    "note": "模拟车辆与原录像车辆独立；录像运动不因模拟停车而冻结。无UDP、无FPGA事件；图龄从本机解码完成起算。"
+  }
+}

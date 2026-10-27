@@ -1,0 +1,17 @@
+M4-01 前摄冻结只读采样
+目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021
+开始：2026-10-23T09:33:39.130230+08:00
+结束：2026-10-23T09:34:39.141240+08:00
+窗口：60.001秒，样本：61
+rmem_max：8388608
+完整接收fps：14.916342136037434
+采样最大图龄ms：111.6
+NIC增量：{"collisions": 0, "multicast": 0, "rx_bytes": 1767060380, "rx_compressed": 0, "rx_crc_errors": 0, "rx_dropped": 0, "rx_errors": 0, "rx_fifo_errors": 0, "rx_frame_errors": 0, "rx_length_errors": 0, "rx_missed_errors": 0, "rx_nohandler": 0, "rx_over_errors": 0, "rx_packets": 1290259, "tx_aborted_errors": 0, "tx_bytes": 42924, "tx_carrier_errors": 0, "tx_compressed": 0, "tx_dropped": 0, "tx_errors": 0, "tx_fifo_errors": 0, "tx_heartbeat_errors": 0, "tx_packets": 478, "tx_window_errors": 0}
+全机UDP增量（非服务专属）：{"IgnoredMulti": 1, "InCsumErrors": 0, "InDatagrams": 1290273, "InErrors": 0, "MemErrors": 0, "NoPorts": 0, "OutDatagrams": 476, "RcvbufErrors": 0, "SndbufErrors": 0}
+服务socket drops增量：{"192449": 0}
+同session协议增量：{"heartbeat_tx": 238, "heartbeat_or_welcome": 358, "telemetry_packets": 120, "rx_packets": 1290357, "front_fragments": 1289879, "complete_frames": 895, "bad_packets": 0, "wrong_session": 0, "wrong_peer": 0, "send_errors": 0, "receive_errors": 0, "assembly_dropped": 0, "assembly_duplicates": 0}
+只读采样：没有启动/停止服务，没有绑定业务UDP端口，没有sudo、抓包或网络/sysctl修改。
+全机UDP计数仅作旁证；服务丢包仅归属于同PID/start_ticks、同socket inode。
+缺失服务/会话/socket的增量为null或空映射，不当作0；heartbeat_tx为发送轮次。
+hardware_delta涵盖ethtool窗口（包围主采样窗，边缘有命令耗时），NIC/UDP/link主窗严格对齐。
+既有版本未暴露接收线程native_id、缺片位置/当前组帧frame_id；仅凭OS线程清单不能确认接收线程身份。

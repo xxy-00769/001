@@ -1,0 +1,304 @@
+﻿{
+    "tool_version":  "M4-01-operator-v1",
+    "action":  "Diagnose",
+    "computer_time":  "2026-10-22T13:15:39.1764096+08:00",
+    "ok":  true,
+    "config":  {
+                   "ssh_host":  "10.168.29.122",
+                   "ssh_user":  "orangepi",
+                   "ssh_port":  22,
+                   "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "remote_tool":  "operator_v1/ops_manager.py",
+                   "interface":  "eth0",
+                   "business_cidr":  "192.168.60.1/24",
+                   "fpga_ip":  "192.168.60.2",
+                   "fpga_mac":  "02:00:47:53:56:32",
+                   "udp_port":  50000,
+                   "peer_port":  50000,
+                   "web_port":  8080,
+                   "local_port":  18080,
+                   "scene":  "scene.example.json",
+                   "preview_fps":  15,
+                   "preview_width":  640,
+                   "preview_quality":  70,
+                   "output":  "runs/live_dual_eth",
+                   "diagnostic_seconds":  4,
+                   "startup_timeout_seconds":  35
+               },
+    "local_before":  {
+                         "listeners":  [
+                                           {
+                                               "address":  "::1",
+                                               "port":  18080,
+                                               "pid":  39972,
+                                               "name":  "ssh.exe",
+                                               "command_line":  null,
+                                               "creation_date":  "10/22/2026 12:39:41"
+                                           },
+                                           {
+                                               "address":  "127.0.0.1",
+                                               "port":  18080,
+                                               "pid":  39972,
+                                               "name":  "ssh.exe",
+                                               "command_line":  null,
+                                               "creation_date":  "10/22/2026 12:39:41"
+                                           }
+                                       ],
+                         "http":  {
+                                      "ok":  false,
+                                      "error":  "基础连接已经关闭: 接收时发生错误。"
+                                  }
+                     },
+    "remote":  {
+                   "ok":  true,
+                   "tool_version":  "M4-01-operator-v1",
+                   "directory":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                   "version":  "M4-01-v0.1.2",
+                   "config":  {
+                                  "ssh_host":  "10.168.29.122",
+                                  "ssh_user":  "orangepi",
+                                  "ssh_port":  22,
+                                  "remote_dir":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                  "remote_tool":  "operator_v1/ops_manager.py",
+                                  "interface":  "eth0",
+                                  "business_cidr":  "192.168.60.1/24",
+                                  "fpga_ip":  "192.168.60.2",
+                                  "fpga_mac":  "02:00:47:53:56:32",
+                                  "udp_port":  50000,
+                                  "peer_port":  50000,
+                                  "web_port":  8080,
+                                  "local_port":  18080,
+                                  "scene":  "scene.example.json",
+                                  "preview_fps":  15,
+                                  "preview_width":  640,
+                                  "preview_quality":  70,
+                                  "output":  "runs/live_dual_eth",
+                                  "diagnostic_seconds":  4,
+                                  "startup_timeout_seconds":  35
+                              },
+                   "preflight":  {
+                                     "directory":  "/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                                     "missing":  [
+
+                                                 ],
+                                     "addresses":  {
+                                                       "ok":  true,
+                                                       "code":  0,
+                                                       "stdout":  "[{\"ifindex\":2,\"ifname\":\"eth0\",\"flags\":[\"NO-CARRIER\",\"BROADCAST\",\"MULTICAST\",\"UP\"],\"mtu\":1500,\"qdisc\":\"mq\",\"operstate\":\"DOWN\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"00:00:a4:b5:5f:ef\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"192.168.60.1\",\"prefixlen\":24,\"scope\":\"global\",\"label\":\"eth0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]",
+                                                       "stderr":  "",
+                                                       "data":  [
+                                                                    {
+                                                                        "ifindex":  2,
+                                                                        "ifname":  "eth0",
+                                                                        "flags":  [
+                                                                                      "NO-CARRIER",
+                                                                                      "BROADCAST",
+                                                                                      "MULTICAST",
+                                                                                      "UP"
+                                                                                  ],
+                                                                        "mtu":  1500,
+                                                                        "qdisc":  "mq",
+                                                                        "operstate":  "DOWN",
+                                                                        "group":  "default",
+                                                                        "txqlen":  1000,
+                                                                        "link_type":  "ether",
+                                                                        "address":  "00:00:a4:b5:5f:ef",
+                                                                        "broadcast":  "ff:ff:ff:ff:ff:ff",
+                                                                        "addr_info":  [
+                                                                                          {
+                                                                                              "family":  "inet",
+                                                                                              "local":  "192.168.60.1",
+                                                                                              "prefixlen":  24,
+                                                                                              "scope":  "global",
+                                                                                              "label":  "eth0",
+                                                                                              "valid_life_time":  4294967295,
+                                                                                              "preferred_life_time":  4294967295
+                                                                                          }
+                                                                                      ]
+                                                                    }
+                                                                ]
+                                                   },
+                                     "business_address_present":  true,
+                                     "carrier":  0,
+                                     "errors":  [
+                                                    "物理链路未建立或状态未知"
+                                                ],
+                                     "processes":  [
+
+                                                   ],
+                                     "ports":  [
+
+                                               ]
+                                 },
+                   "route":  {
+                                 "ok":  true,
+                                 "code":  0,
+                                 "stdout":  "[{\"dst\":\"192.168.60.2\",\"dev\":\"eth0\",\"prefsrc\":\"192.168.60.1\",\"flags\":[],\"uid\":1000,\"cache\":[]}]",
+                                 "stderr":  "",
+                                 "data":  [
+                                              {
+                                                  "dst":  "192.168.60.2",
+                                                  "dev":  "eth0",
+                                                  "prefsrc":  "192.168.60.1",
+                                                  "flags":  [
+
+                                                            ],
+                                                  "uid":  1000,
+                                                  "cache":  [
+
+                                                            ]
+                                              }
+                                          ]
+                             },
+                   "neighbors":  {
+                                     "ok":  true,
+                                     "code":  0,
+                                     "stdout":  "[{\"dst\":\"192.168.60.2\",\"lladdr\":\"02:00:47:53:56:32\",\"state\":[\"PERMANENT\"]}]",
+                                     "stderr":  "",
+                                     "data":  [
+                                                  {
+                                                      "dst":  "192.168.60.2",
+                                                      "lladdr":  "02:00:47:53:56:32",
+                                                      "state":  [
+                                                                    "PERMANENT"
+                                                                ]
+                                                  }
+                                              ]
+                                 },
+                   "speed_mbps":  null,
+                   "samples":  [
+                                   {
+                                       "monotonic":  15397.427728309,
+                                       "status":  {
+                                                      "ok":  false,
+                                                      "error":  "\u003curlopen error [Errno 111] Connection refused\u003e"
+                                                  },
+                                       "jpeg":  {
+                                                    "ok":  false,
+                                                    "error":  "\u003curlopen error [Errno 111] Connection refused\u003e"
+                                                },
+                                       "carrier":  0,
+                                       "counters":  {
+                                                        "rx_packets":  0,
+                                                        "tx_packets":  4916,
+                                                        "rx_bytes":  0,
+                                                        "tx_bytes":  372648,
+                                                        "rx_errors":  0,
+                                                        "rx_dropped":  0
+                                                    }
+                                   },
+                                   {
+                                       "monotonic":  15401.438623831,
+                                       "status":  {
+                                                      "ok":  false,
+                                                      "error":  "\u003curlopen error [Errno 111] Connection refused\u003e"
+                                                  },
+                                       "jpeg":  {
+                                                    "ok":  false,
+                                                    "error":  "\u003curlopen error [Errno 111] Connection refused\u003e"
+                                                },
+                                       "carrier":  0,
+                                       "counters":  {
+                                                        "rx_packets":  0,
+                                                        "tx_packets":  4916,
+                                                        "rx_bytes":  0,
+                                                        "tx_bytes":  372648,
+                                                        "rx_errors":  0,
+                                                        "rx_dropped":  0
+                                                    }
+                                   }
+                               ],
+                   "window_seconds":  4.010895522000283,
+                   "nic_delta":  {
+                                     "rx_packets":  0,
+                                     "tx_packets":  0,
+                                     "rx_bytes":  0,
+                                     "tx_bytes":  0,
+                                     "rx_errors":  0,
+                                     "rx_dropped":  0
+                                 },
+                   "link_delta":  {
+                                      "heartbeat_tx":  null,
+                                      "rx_packets":  null,
+                                      "heartbeat_or_welcome":  null,
+                                      "front_fragments":  null,
+                                      "complete_frames":  null,
+                                      "bad_packets":  null,
+                                      "wrong_peer":  null,
+                                      "wrong_session":  null,
+                                      "send_errors":  null,
+                                      "receive_errors":  null
+                                  },
+                   "counter_notes":  "缺失Counter字段在同一可读session内按0解释；跨session/不可读/计数回退的增量为null；heartbeat_tx为每轮HELLO+HEARTBEAT计数，不是精确发包数",
+                   "conclusions":  [
+                                       "服务未运行或参数与集中配置不匹配",
+                                       "物理链路未建立",
+                                       "ARP为PERMANENT静态条目，不证明FPGA已回应ARP",
+                                       "状态接口不可读取"
+                                   ],
+                   "preview_observation":  "浏览器是否收到新图不能由服务启动或累计帧数单独证明",
+                   "sockets":  {
+                                   "ok":  true,
+                                   "code":  0,
+                                   "stdout":  "Netid State  Recv-Q Send-Q             Local Address:Port Peer Address:PortProcess                             \nudp   UNCONN 0      0                     127.0.0.53:53        0.0.0.0:*                                       \nudp   UNCONN 0      0                      127.0.0.1:323       0.0.0.0:*                                       \nudp   UNCONN 0      0                          [::1]:323             *:*                                       \nudp   UNCONN 0      0      [fe80::8a5a:34:9a2c:7d9d]:546             *:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:631       0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:5555      0.0.0.0:*                                       \ntcp   LISTEN 0      0                     127.0.0.53:53        0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:5901      0.0.0.0:*    users:((\"Xtigervnc\",pid=2134,fd=7))\ntcp   LISTEN 0      0                      127.0.0.1:6010      0.0.0.0:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:5037      0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:22        0.0.0.0:*                                       \ntcp   LISTEN 0      0                              *:5901            *:*    users:((\"Xtigervnc\",pid=2134,fd=8))\ntcp   LISTEN 0      0                          [::1]:6010            *:*                                       \ntcp   LISTEN 0      0                              *:3389            *:*                                       \ntcp   LISTEN 0      0                          [::1]:3350            *:*                                       \ntcp   LISTEN 0      0                          [::1]:631             *:*                                       \ntcp   LISTEN 0      0                              *:22              *:*",
+                                   "stderr":  ""
+                               },
+                   "optional_tools":  {
+                                          "ethtool":  {
+                                                          "ok":  true,
+                                                          "code":  0,
+                                                          "stdout":  "/usr/sbin/ethtool",
+                                                          "stderr":  ""
+                                                      },
+                                          "tcpdump":  {
+                                                          "ok":  false,
+                                                          "code":  1,
+                                                          "stdout":  "",
+                                                          "stderr":  ""
+                                                      }
+                                      },
+                   "optional_note":  "基础诊断只读，不运行ping或第二份UDP客户端，不添加静态ARP；未执行sudo抓包，未安装工具"
+               },
+    "ssh_ok":  true,
+    "local_after":  {
+                        "listeners":  [
+                                          {
+                                              "address":  "::1",
+                                              "port":  18080,
+                                              "pid":  39972,
+                                              "name":  "ssh.exe",
+                                              "command_line":  null,
+                                              "creation_date":  "10/22/2026 12:39:41"
+                                          },
+                                          {
+                                              "address":  "127.0.0.1",
+                                              "port":  18080,
+                                              "pid":  39972,
+                                              "name":  "ssh.exe",
+                                              "command_line":  null,
+                                              "creation_date":  "10/22/2026 12:39:41"
+                                          }
+                                      ],
+                        "http":  {
+                                     "ok":  false,
+                                     "error":  "基础连接已经关闭: 接收时发生错误。"
+                                 }
+                    },
+    "forward_matches_remote":  false,
+    "summary":  [
+                    "本地入口：E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\orangepi\\orangepi\\oneclick",
+                    "目标：orangepi@10.168.29.122；远端目录：/home/orangepi/fpga_gs_m401_v0_1_2_20261021",
+                    "诊断只读；不会启动第二份LIVE、不会占用UDP50000、不会添加静态ARP。",
+                    "通过SSH执行 diagnose；需要认证时请在终端输入密码（不保存）。",
+                    "SSH：可连接；远端版本：M4-01-v0.1.2",
+                    "本地转发/HTTP：不可访问或不能证明对应当前服务",
+                    "服务未运行或参数与集中配置不匹配",
+                    "物理链路未建立",
+                    "ARP为PERMANENT静态条目，不证明FPGA已回应ARP",
+                    "状态接口不可读取",
+                    "网卡增量：{\"rx_packets\":0,\"tx_packets\":0,\"rx_bytes\":0,\"tx_bytes\":0,\"rx_errors\":0,\"rx_dropped\":0}",
+                    "协议增量：{\"heartbeat_tx\":null,\"rx_packets\":null,\"heartbeat_or_welcome\":null,\"front_fragments\":null,\"complete_frames\":null,\"bad_packets\":null,\"wrong_peer\":null,\"wrong_session\":null,\"send_errors\":null,\"receive_errors\":null}",
+                    "端口占用及进程命令行：",
+                    "Netid State  Recv-Q Send-Q             Local Address:Port Peer Address:PortProcess                             \nudp   UNCONN 0      0                     127.0.0.53:53        0.0.0.0:*                                       \nudp   UNCONN 0      0                      127.0.0.1:323       0.0.0.0:*                                       \nudp   UNCONN 0      0                          [::1]:323             *:*                                       \nudp   UNCONN 0      0      [fe80::8a5a:34:9a2c:7d9d]:546             *:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:631       0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:5555      0.0.0.0:*                                       \ntcp   LISTEN 0      0                     127.0.0.53:53        0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:5901      0.0.0.0:*    users:((\"Xtigervnc\",pid=2134,fd=7))\ntcp   LISTEN 0      0                      127.0.0.1:6010      0.0.0.0:*                                       \ntcp   LISTEN 0      0                      127.0.0.1:5037      0.0.0.0:*                                       \ntcp   LISTEN 0      0                        0.0.0.0:22        0.0.0.0:*                                       \ntcp   LISTEN 0      0                              *:5901            *:*    users:((\"Xtigervnc\",pid=2134,fd=8))\ntcp   LISTEN 0      0                          [::1]:6010            *:*                                       \ntcp   LISTEN 0      0                              *:3389            *:*                                       \ntcp   LISTEN 0      0                          [::1]:3350            *:*                                       \ntcp   LISTEN 0      0                          [::1]:631             *:*                                       \ntcp   LISTEN 0      0                              *:22              *:*\r\n"
+                ]
+}
