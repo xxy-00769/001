@@ -1,0 +1,7 @@
+#last_iteration_critical_path_worst_slack: -4.55 ns.
+def_route -prior_net {nt_rgmii2_rx_ctl} -load {network2/passive_diagnostics.diag/N9/gateop:L4;}
+def_route -prior_net {network2/passive_diagnostics.diag/N9} -load {network2/passive_diagnostics.diag/raw_frames[0]/opit_0_inv_L5Q:CE;}
+def_route -prior_net {network2/passive_diagnostics.diag/N9} -load {network2/passive_diagnostics.diag/raw_frames[26]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {nt_rgmii2_rx_ctl} -load {network2/passive_diagnostics.diag/raw_last/opit_0_inv:D;}
+def_route -prior_net {rgmii2_rx_ctl_ibuf/ntD} -load {network2/port2_io.phy/rx[4].sample_input/gateigdes4_IOL_del:PADI;}
+def_route -prior_net {rgmii2_rx_ctl} -load {rgmii2_rx_ctl_ibuf/opit_0:I;}

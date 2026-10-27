@@ -1,0 +1,35 @@
+
+#Iteration time: 1
+#last_iteration_critical_path_worst_slack: -3.309 ns.
+def_route -prior_net {network/core/udp_final [17]} -load {network/core/N940_1_1/gateop_A2:I12;}
+def_route -prior_net {network/core/_N12943} -load {network/core/N940_1_3/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N12945} -load {network/core/N940_1_5/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N12947} -load {network/core/N940_1_7/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N12949} -load {network/core/N940_1_9/gateop_A2:Cin;}
+def_route -prior_net {network/core/_N12951} -load {network/core/N940_1_11/gateop_A2:Cin;}
+def_route -prior_net {network/core/N21943 [11]} -load {network/core/N943_11/gateop_A2:I11;}
+def_route -prior_net {network/core/_N12971} -load {network/core/N943_13/gateop_A2:Cin;}
+def_route -prior_net {network/core/N8285} -load {network/core/N947/gateop:L1;}
+def_route -prior_net {network/core/N947} -load {network/core/N979_422/gateop:L0;}
+def_route -prior_net {network/core/N21851 [13]} -load {network/core/N8285_12/gateop:L4;}
+def_route -prior_net {network/core/_N129625} -load {network/core/N8285_16/gateop:L4;}
+def_route -prior_net {network/core/N979} -load {network/core/N12876/gateop:L1;}
+def_route -prior_net {network/core/N12876} -load {network/core/N12883/gateop:S0;}
+def_route -prior_net {network/core/N12883} -load {network/core/bad_packets[2]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {network/core/N12883} -load {network/core/bad_packets[4]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {network/core/N12883} -load {network/core/bad_packets[6]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {nt_rgmii2_rx_ctl} -load {network2/passive_diagnostics.diag/N9/gateop:L4;}
+def_route -prior_net {network2/passive_diagnostics.diag/N9} -load {network2/passive_diagnostics.diag/raw_frames[22]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {network2/passive_diagnostics.diag/N9} -load {network2/passive_diagnostics.diag/raw_frames[24]/opit_0_inv_A2Q21:CE;}
+def_route -prior_net {nt_rgmii2_rx_ctl} -load {network2/passive_diagnostics.diag/raw_last/opit_0_inv:D;}
+def_route -prior_net {rgmii2_rx_ctl_ibuf/ntD} -load {network2/port2_io.phy/rx[4].sample_input/gateigdes4_IOL_del:PADI;}
+def_route -prior_net {rgmii2_rx_ctl} -load {rgmii2_rx_ctl_ibuf/opit_0:I;}
+
+#Iteration time: 2
+#last_iteration_critical_path_worst_slack: -4.55 ns.
+#def_route -prior_net {nt_rgmii2_rx_ctl} -load {network2/passive_diagnostics.diag/N9/gateop:L4;}
+def_route -prior_net {network2/passive_diagnostics.diag/N9} -load {network2/passive_diagnostics.diag/raw_frames[0]/opit_0_inv_L5Q:CE;}
+def_route -prior_net {network2/passive_diagnostics.diag/N9} -load {network2/passive_diagnostics.diag/raw_frames[26]/opit_0_inv_A2Q21:CE;}
+#def_route -prior_net {nt_rgmii2_rx_ctl} -load {network2/passive_diagnostics.diag/raw_last/opit_0_inv:D;}
+#def_route -prior_net {rgmii2_rx_ctl_ibuf/ntD} -load {network2/port2_io.phy/rx[4].sample_input/gateigdes4_IOL_del:PADI;}
+#def_route -prior_net {rgmii2_rx_ctl} -load {rgmii2_rx_ctl_ibuf/opit_0:I;}

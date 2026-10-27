@@ -1,0 +1,1780 @@
+//
+// Generated (version 2022.2-SP6.4<build 146967>) at Thu Oct 22 18:49:10 2026
+//
+
+module ipsxb_ddrphy_pll_v1_0
+(
+    input clkin1,
+    output clkout1,
+    output pll_lock
+);
+    wire clkout0;
+    wire clkout0_2pad;
+    wire clkout2;
+    wire clkout3;
+    wire clkout4;
+    wire clkout5;
+    wire clkswitch_flag;
+
+(* PAP_LOC="PLL_158_199" *)    GTP_PLL_E3 /* u_pll_e3 */ #(
+            .CLKIN_FREQ(50), 
+            .PFDEN_EN("FALSE"), 
+            .VCOCLK_DIV2(1'b0), 
+            .DYNAMIC_RATIOI_EN("FALSE"), 
+            .DYNAMIC_RATIOM_EN("FALSE"), 
+            .DYNAMIC_RATIO0_EN("FALSE"), 
+            .DYNAMIC_RATIO1_EN("FALSE"), 
+            .DYNAMIC_RATIO2_EN("FALSE"), 
+            .DYNAMIC_RATIO3_EN("FALSE"), 
+            .DYNAMIC_RATIO4_EN("FALSE"), 
+            .DYNAMIC_RATIOF_EN("FALSE"), 
+            .STATIC_RATIOI(1), 
+            .STATIC_RATIOM(1), 
+            .STATIC_RATIO0(2), 
+            .STATIC_RATIO1(8), 
+            .STATIC_RATIO2(16), 
+            .STATIC_RATIO3(16), 
+            .STATIC_RATIO4(4), 
+            .STATIC_RATIOF(16), 
+            .DYNAMIC_DUTY0_EN("FALSE"), 
+            .DYNAMIC_DUTY1_EN("FALSE"), 
+            .DYNAMIC_DUTY2_EN("FALSE"), 
+            .DYNAMIC_DUTY3_EN("FALSE"), 
+            .DYNAMIC_DUTY4_EN("FALSE"), 
+            .STATIC_DUTY0(2), 
+            .STATIC_DUTY1(8), 
+            .STATIC_DUTY2(16), 
+            .STATIC_DUTY3(16), 
+            .STATIC_DUTY4(4), 
+            .STATIC_PHASE0(0), 
+            .STATIC_PHASE1(0), 
+            .STATIC_PHASE2(0), 
+            .STATIC_PHASE3(0), 
+            .STATIC_PHASE4(0), 
+            .STATIC_PHASEF(0), 
+            .STATIC_CPHASE0(0), 
+            .STATIC_CPHASE1(0), 
+            .STATIC_CPHASE2(0), 
+            .STATIC_CPHASE3(0), 
+            .STATIC_CPHASE4(0), 
+            .STATIC_CPHASEF(0), 
+            .CLK_CAS1_EN("FALSE"), 
+            .CLK_CAS2_EN("FALSE"), 
+            .CLK_CAS3_EN("FALSE"), 
+            .CLK_CAS4_EN("FALSE"), 
+            .CLKOUT5_SEL(0), 
+            .CLKIN_BYPASS_EN("FALSE"), 
+            .CLKOUT0_SYN_EN("TRUE"), 
+            .CLKOUT0_EXT_SYN_EN("FALSE"), 
+            .CLKOUT1_SYN_EN("FALSE"), 
+            .CLKOUT2_SYN_EN("FALSE"), 
+            .CLKOUT3_SYN_EN("FALSE"), 
+            .CLKOUT4_SYN_EN("FALSE"), 
+            .CLKOUT5_SYN_EN("FALSE"), 
+            .INTERNAL_FB("ENABLE"), 
+            .EXTERNAL_FB("DISABLE"), 
+            .DYNAMIC_LOOP_EN("FALSE"), 
+            .LOOP_MAPPING_EN("FALSE"), 
+            .BANDWIDTH("OPTIMIZED"))
+        u_pll_e3 (
+            .DUTY0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .ICP_SEL ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .LPFRES_SEL ({1'b0, 1'b0, 1'b0}),
+            .PHASE_SEL ({1'b0, 1'b0, 1'b0}),
+            .RATIO0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOF ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOM ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .CLKOUT0 (clkout0),
+            .CLKOUT0_EXT (clkout0_2pad),
+            .CLKOUT1 (clkout1),
+            .CLKOUT2 (clkout2),
+            .CLKOUT3 (clkout3),
+            .CLKOUT4 (clkout4),
+            .CLKOUT5 (clkout5),
+            .CLKSWITCH_FLAG (clkswitch_flag),
+            .LOCK (pll_lock),
+            .CLKFB (1'b0),
+            .CLKIN1 (clkin1),
+            .CLKIN2 (1'b0),
+            .CLKIN_SEL (1'b0),
+            .CLKIN_SEL_EN (1'b0),
+            .CLKOUT0_EXT_SYN (1'b0),
+            .CLKOUT0_SYN (1'b1),
+            .CLKOUT1_SYN (1'b0),
+            .CLKOUT2_SYN (1'b0),
+            .CLKOUT3_SYN (1'b0),
+            .CLKOUT4_SYN (1'b0),
+            .CLKOUT5_SYN (1'b0),
+            .CRIPPLE_SEL (1'b0),
+            .ICP_BASE (1'b0),
+            .LOAD_PHASE (1'b0),
+            .PFDEN (1'b0),
+            .PHASE_DIR (1'b0),
+            .PHASE_STEP_N (1'b0),
+            .PLL_PWD (1'b0),
+            .RST (1'b0),
+            .RSTODIV (1'b0));
+	// ../../../vendor/DDR3_50H/rtl/pll/ipsxb_ddrphy_pll_v1_0.v:235
+	// SDC constraint : (object CLKOUT1) (id 1010) (clock sys50|ddr0/u_pll_e3/CLKOUT1_Inferred) (inferred)
+
+
+endmodule
+
+
+module ipsxb_ddrphy_pll_v1_0_unq4
+(
+    input clkin1,
+    output clkout1,
+    output pll_lock
+);
+    wire clkout0;
+    wire clkout0_2pad;
+    wire clkout2;
+    wire clkout3;
+    wire clkout4;
+    wire clkout5;
+    wire clkswitch_flag;
+
+(* PAP_LOC="PLL_158_179" *)    GTP_PLL_E3 /* u_pll_e3 */ #(
+            .CLKIN_FREQ(50), 
+            .PFDEN_EN("FALSE"), 
+            .VCOCLK_DIV2(1'b0), 
+            .DYNAMIC_RATIOI_EN("FALSE"), 
+            .DYNAMIC_RATIOM_EN("FALSE"), 
+            .DYNAMIC_RATIO0_EN("FALSE"), 
+            .DYNAMIC_RATIO1_EN("FALSE"), 
+            .DYNAMIC_RATIO2_EN("FALSE"), 
+            .DYNAMIC_RATIO3_EN("FALSE"), 
+            .DYNAMIC_RATIO4_EN("FALSE"), 
+            .DYNAMIC_RATIOF_EN("FALSE"), 
+            .STATIC_RATIOI(1), 
+            .STATIC_RATIOM(1), 
+            .STATIC_RATIO0(2), 
+            .STATIC_RATIO1(8), 
+            .STATIC_RATIO2(16), 
+            .STATIC_RATIO3(16), 
+            .STATIC_RATIO4(4), 
+            .STATIC_RATIOF(16), 
+            .DYNAMIC_DUTY0_EN("FALSE"), 
+            .DYNAMIC_DUTY1_EN("FALSE"), 
+            .DYNAMIC_DUTY2_EN("FALSE"), 
+            .DYNAMIC_DUTY3_EN("FALSE"), 
+            .DYNAMIC_DUTY4_EN("FALSE"), 
+            .STATIC_DUTY0(2), 
+            .STATIC_DUTY1(8), 
+            .STATIC_DUTY2(16), 
+            .STATIC_DUTY3(16), 
+            .STATIC_DUTY4(4), 
+            .STATIC_PHASE0(0), 
+            .STATIC_PHASE1(0), 
+            .STATIC_PHASE2(0), 
+            .STATIC_PHASE3(0), 
+            .STATIC_PHASE4(0), 
+            .STATIC_PHASEF(0), 
+            .STATIC_CPHASE0(0), 
+            .STATIC_CPHASE1(0), 
+            .STATIC_CPHASE2(0), 
+            .STATIC_CPHASE3(0), 
+            .STATIC_CPHASE4(0), 
+            .STATIC_CPHASEF(0), 
+            .CLK_CAS1_EN("FALSE"), 
+            .CLK_CAS2_EN("FALSE"), 
+            .CLK_CAS3_EN("FALSE"), 
+            .CLK_CAS4_EN("FALSE"), 
+            .CLKOUT5_SEL(0), 
+            .CLKIN_BYPASS_EN("FALSE"), 
+            .CLKOUT0_SYN_EN("TRUE"), 
+            .CLKOUT0_EXT_SYN_EN("FALSE"), 
+            .CLKOUT1_SYN_EN("FALSE"), 
+            .CLKOUT2_SYN_EN("FALSE"), 
+            .CLKOUT3_SYN_EN("FALSE"), 
+            .CLKOUT4_SYN_EN("FALSE"), 
+            .CLKOUT5_SYN_EN("FALSE"), 
+            .INTERNAL_FB("ENABLE"), 
+            .EXTERNAL_FB("DISABLE"), 
+            .DYNAMIC_LOOP_EN("FALSE"), 
+            .LOOP_MAPPING_EN("FALSE"), 
+            .BANDWIDTH("OPTIMIZED"))
+        u_pll_e3 (
+            .DUTY0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .ICP_SEL ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .LPFRES_SEL ({1'b0, 1'b0, 1'b0}),
+            .PHASE_SEL ({1'b0, 1'b0, 1'b0}),
+            .RATIO0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOF ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOM ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .CLKOUT0 (clkout0),
+            .CLKOUT0_EXT (clkout0_2pad),
+            .CLKOUT1 (clkout1),
+            .CLKOUT2 (clkout2),
+            .CLKOUT3 (clkout3),
+            .CLKOUT4 (clkout4),
+            .CLKOUT5 (clkout5),
+            .CLKSWITCH_FLAG (clkswitch_flag),
+            .LOCK (pll_lock),
+            .CLKFB (1'b0),
+            .CLKIN1 (clkin1),
+            .CLKIN2 (1'b0),
+            .CLKIN_SEL (1'b0),
+            .CLKIN_SEL_EN (1'b0),
+            .CLKOUT0_EXT_SYN (1'b0),
+            .CLKOUT0_SYN (1'b1),
+            .CLKOUT1_SYN (1'b0),
+            .CLKOUT2_SYN (1'b0),
+            .CLKOUT3_SYN (1'b0),
+            .CLKOUT4_SYN (1'b0),
+            .CLKOUT5_SYN (1'b0),
+            .CRIPPLE_SEL (1'b0),
+            .ICP_BASE (1'b0),
+            .LOAD_PHASE (1'b0),
+            .PFDEN (1'b0),
+            .PHASE_DIR (1'b0),
+            .PHASE_STEP_N (1'b0),
+            .PLL_PWD (1'b0),
+            .RST (1'b0),
+            .RSTODIV (1'b0));
+	// ../../../vendor/DDR3_50H/rtl/pll/ipsxb_ddrphy_pll_v1_0.v:235
+	// SDC constraint : (object CLKOUT1) (id 1011) (clock sys50|ddr1/u_pll_e3/CLKOUT1_Inferred) (inferred)
+
+
+endmodule
+
+
+module m31_pixel_pll
+(
+    input clkin1,
+    output clkout0
+);
+    wire clkout0_2pad;
+    wire clkout1;
+    wire clkout2;
+    wire clkout3;
+    wire clkout4;
+    wire clkout5;
+    wire clkswitch_flag;
+    wire pll_lock;
+
+(* PAP_LOC="PLL_158_55" *)    GTP_PLL_E3 /* u_pll_e3 */ #(
+            .CLKIN_FREQ(50), 
+            .PFDEN_EN("FALSE"), 
+            .VCOCLK_DIV2(1'b0), 
+            .DYNAMIC_RATIOI_EN("FALSE"), 
+            .DYNAMIC_RATIOM_EN("FALSE"), 
+            .DYNAMIC_RATIO0_EN("FALSE"), 
+            .DYNAMIC_RATIO1_EN("FALSE"), 
+            .DYNAMIC_RATIO2_EN("FALSE"), 
+            .DYNAMIC_RATIO3_EN("FALSE"), 
+            .DYNAMIC_RATIO4_EN("FALSE"), 
+            .DYNAMIC_RATIOF_EN("FALSE"), 
+            .STATIC_RATIOI(10), 
+            .STATIC_RATIOM(1), 
+            .STATIC_RATIO0(10), 
+            .STATIC_RATIO1(148), 
+            .STATIC_RATIO2(60), 
+            .STATIC_RATIO3(16), 
+            .STATIC_RATIO4(16), 
+            .STATIC_RATIOF(297), 
+            .DYNAMIC_DUTY0_EN("FALSE"), 
+            .DYNAMIC_DUTY1_EN("FALSE"), 
+            .DYNAMIC_DUTY2_EN("FALSE"), 
+            .DYNAMIC_DUTY3_EN("FALSE"), 
+            .DYNAMIC_DUTY4_EN("FALSE"), 
+            .STATIC_DUTY0(10), 
+            .STATIC_DUTY1(148), 
+            .STATIC_DUTY2(60), 
+            .STATIC_DUTY3(16), 
+            .STATIC_DUTY4(16), 
+            .STATIC_PHASE0(0), 
+            .STATIC_PHASE1(0), 
+            .STATIC_PHASE2(0), 
+            .STATIC_PHASE3(0), 
+            .STATIC_PHASE4(0), 
+            .STATIC_PHASEF(0), 
+            .STATIC_CPHASE0(0), 
+            .STATIC_CPHASE1(0), 
+            .STATIC_CPHASE2(0), 
+            .STATIC_CPHASE3(0), 
+            .STATIC_CPHASE4(0), 
+            .STATIC_CPHASEF(0), 
+            .CLK_CAS1_EN("FALSE"), 
+            .CLK_CAS2_EN("FALSE"), 
+            .CLK_CAS3_EN("FALSE"), 
+            .CLK_CAS4_EN("FALSE"), 
+            .CLKOUT5_SEL(0), 
+            .CLKIN_BYPASS_EN("FALSE"), 
+            .CLKOUT0_SYN_EN("FALSE"), 
+            .CLKOUT0_EXT_SYN_EN("FALSE"), 
+            .CLKOUT1_SYN_EN("FALSE"), 
+            .CLKOUT2_SYN_EN("FALSE"), 
+            .CLKOUT3_SYN_EN("FALSE"), 
+            .CLKOUT4_SYN_EN("FALSE"), 
+            .CLKOUT5_SYN_EN("FALSE"), 
+            .INTERNAL_FB("ENABLE"), 
+            .EXTERNAL_FB("DISABLE"), 
+            .DYNAMIC_LOOP_EN("FALSE"), 
+            .LOOP_MAPPING_EN("FALSE"), 
+            .BANDWIDTH("OPTIMIZED"))
+        u_pll_e3 (
+            .DUTY0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .ICP_SEL ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .LPFRES_SEL ({1'b0, 1'b0, 1'b0}),
+            .PHASE_SEL ({1'b0, 1'b0, 1'b0}),
+            .RATIO0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOF ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOM ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .CLKOUT0 (clkout0),
+            .CLKOUT0_EXT (clkout0_2pad),
+            .CLKOUT1 (clkout1),
+            .CLKOUT2 (clkout2),
+            .CLKOUT3 (clkout3),
+            .CLKOUT4 (clkout4),
+            .CLKOUT5 (clkout5),
+            .CLKSWITCH_FLAG (clkswitch_flag),
+            .LOCK (pll_lock),
+            .CLKFB (1'b0),
+            .CLKIN1 (clkin1),
+            .CLKIN2 (1'b0),
+            .CLKIN_SEL (1'b0),
+            .CLKIN_SEL_EN (1'b0),
+            .CLKOUT0_EXT_SYN (1'b0),
+            .CLKOUT0_SYN (1'b0),
+            .CLKOUT1_SYN (1'b0),
+            .CLKOUT2_SYN (1'b0),
+            .CLKOUT3_SYN (1'b0),
+            .CLKOUT4_SYN (1'b0),
+            .CLKOUT5_SYN (1'b0),
+            .CRIPPLE_SEL (1'b0),
+            .ICP_BASE (1'b0),
+            .LOAD_PHASE (1'b0),
+            .PFDEN (1'b0),
+            .PHASE_DIR (1'b0),
+            .PHASE_STEP_N (1'b0),
+            .PLL_PWD (1'b0),
+            .RST (1'b0),
+            .RSTODIV (1'b0));
+	// ../../../rtl/display/m31_pixel_pll.v:232
+	// SDC constraint : (object CLKOUT0) (id 1007) (clock sys50|display_pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+
+
+endmodule
+
+
+module m364_e1_rgmii
+(
+    input [7:0] mac_tx_data,
+    input [3:0] rgmii_rxd,
+    input mac_tx_data_valid,
+    input rgmii_rx_ctl,
+    input rgmii_rxc,
+    input rgmii_rxc_phase_d,
+    output [3:0] rgmii_txd,
+    output rgmii_clk,
+    output rgmii_tx_ctl,
+    output rgmii_txc
+);
+    wire [7:0] N51;
+    wire [7:0] N61;
+    wire [7:0] N72;
+    wire [7:0] N83;
+    wire [7:0] N94;
+    wire gmii_ctl;
+    wire [7:0] gmii_rxd;
+    wire [7:0] mac_rx_data;
+(* PAP_MARK_DEBUG="1" *)    wire mac_rx_data_valid;
+    wire rgmii_rx_ctl_ibuf;
+    wire rgmii_rx_valid_xor_error;
+    wire [3:0] rgmii_rxd_ibuf;
+    wire rgmii_tx_ctl_obuf;
+    wire rgmii_tx_ctl_tbuf;
+    wire rgmii_txc_obuf;
+    wire rgmii_txc_tbuf;
+    wire [3:0] rgmii_txd_obuf;
+    wire [3:0] rgmii_txd_tbuf;
+
+    GTP_CLKBUFG GTP_CLKBUFG_RXSHFT (
+            .CLKOUT (rgmii_clk),
+            .CLKIN (rgmii_rxc));
+	// ../../../rtl/network/m364_e1_rgmii.v:179
+
+    GTP_ISERDES /* gmii_ctl_in */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        gmii_ctl_in (
+            .DO ({rgmii_rx_valid_xor_error, gmii_ctl, N51[5], N51[4], N51[3], N51[2], N51[1], N51[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rx_ctl_ibuf),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m364_e1_rgmii.v:203
+
+    GTP_OUTBUFT /* gtp_outbuft1 */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        gtp_outbuft1 (
+            .O (rgmii_tx_ctl),
+            .I (rgmii_tx_ctl_obuf),
+            .T (rgmii_tx_ctl_tbuf));
+	// ../../../rtl/network/m364_e1_rgmii.v:105
+
+    GTP_OUTBUFT /* gtp_outbuft6 */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        gtp_outbuft6 (
+            .O (rgmii_txc),
+            .I (rgmii_txc_obuf),
+            .T (rgmii_txc_tbuf));
+	// ../../../rtl/network/m364_e1_rgmii.v:128
+
+    GTP_DFF /* \mac_rx_data[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[0]  (
+            .Q (mac_rx_data[0]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[0]));
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_DFF /* \mac_rx_data[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[1]  (
+            .Q (mac_rx_data[1]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[1]));
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_DFF /* \mac_rx_data[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[2]  (
+            .Q (mac_rx_data[2]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[2]));
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_DFF /* \mac_rx_data[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[3]  (
+            .Q (mac_rx_data[3]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[3]));
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_DFF /* \mac_rx_data[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[4]  (
+            .Q (mac_rx_data[4]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[4]));
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_DFF /* \mac_rx_data[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[5]  (
+            .Q (mac_rx_data[5]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[5]));
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_DFF /* \mac_rx_data[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[6]  (
+            .Q (mac_rx_data[6]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[6]));
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_DFF /* \mac_rx_data[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \mac_rx_data[7]  (
+            .Q (mac_rx_data[7]),
+            .CLK (rgmii_clk),
+            .D (gmii_rxd[7]));
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_DFF /* mac_rx_data_valid */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        mac_rx_data_valid_vname (
+            .Q (mac_rx_data_valid),
+            .CLK (rgmii_clk),
+            .D (gmii_ctl));
+    // defparam mac_rx_data_valid_vname.orig_name = mac_rx_data_valid;
+	// ../../../rtl/network/m364_e1_rgmii.v:217
+
+    GTP_ISERDES /* \rgmii_rx_data[0].gmii_rxd_in  */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        \rgmii_rx_data[0].gmii_rxd_in  (
+            .DO ({gmii_rxd[4], gmii_rxd[0], N61[5], N61[4], N61[3], N61[2], N61[1], N61[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rxd_ibuf[0]),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m364_e1_rgmii.v:241
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \rgmii_rx_data[0].u_rgmii_rxd_ibuf  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \rgmii_rx_data[0].u_rgmii_rxd_ibuf  (
+            .O (rgmii_rxd_ibuf[0]),
+            .I (rgmii_rxd[0]));
+	// ../../../rtl/network/m364_e1_rgmii.v:232
+
+    GTP_ISERDES /* \rgmii_rx_data[1].gmii_rxd_in  */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        \rgmii_rx_data[1].gmii_rxd_in  (
+            .DO ({gmii_rxd[5], gmii_rxd[1], N72[5], N72[4], N72[3], N72[2], N72[1], N72[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rxd_ibuf[1]),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m364_e1_rgmii.v:241
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \rgmii_rx_data[1].u_rgmii_rxd_ibuf  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \rgmii_rx_data[1].u_rgmii_rxd_ibuf  (
+            .O (rgmii_rxd_ibuf[1]),
+            .I (rgmii_rxd[1]));
+	// ../../../rtl/network/m364_e1_rgmii.v:232
+
+    GTP_ISERDES /* \rgmii_rx_data[2].gmii_rxd_in  */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        \rgmii_rx_data[2].gmii_rxd_in  (
+            .DO ({gmii_rxd[6], gmii_rxd[2], N83[5], N83[4], N83[3], N83[2], N83[1], N83[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rxd_ibuf[2]),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m364_e1_rgmii.v:241
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \rgmii_rx_data[2].u_rgmii_rxd_ibuf  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \rgmii_rx_data[2].u_rgmii_rxd_ibuf  (
+            .O (rgmii_rxd_ibuf[2]),
+            .I (rgmii_rxd[2]));
+	// ../../../rtl/network/m364_e1_rgmii.v:232
+
+    GTP_ISERDES /* \rgmii_rx_data[3].gmii_rxd_in  */ #(
+            .ISERDES_MODE("IDDR"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"))
+        \rgmii_rx_data[3].gmii_rxd_in  (
+            .DO ({gmii_rxd[7], gmii_rxd[3], N94[5], N94[4], N94[3], N94[2], N94[1], N94[0]}),
+            .RADDR ({1'b0, 1'b0, 1'b0}),
+            .WADDR ({1'b0, 1'b0, 1'b0}),
+            .DESCLK (rgmii_clk),
+            .DI (rgmii_rxd_ibuf[3]),
+            .ICLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0));
+	// ../../../rtl/network/m364_e1_rgmii.v:241
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* \rgmii_rx_data[3].u_rgmii_rxd_ibuf  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        \rgmii_rx_data[3].u_rgmii_rxd_ibuf  (
+            .O (rgmii_rxd_ibuf[3]),
+            .I (rgmii_rxd[3]));
+	// ../../../rtl/network/m364_e1_rgmii.v:232
+
+    GTP_OUTBUFT /* \rgmii_tx_data[0].gtp_outbuft1  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \rgmii_tx_data[0].gtp_outbuft1  (
+            .O (rgmii_txd[0]),
+            .I (rgmii_txd_obuf[0]),
+            .T (rgmii_txd_tbuf[0]));
+	// ../../../rtl/network/m364_e1_rgmii.v:80
+
+    GTP_OSERDES /* \rgmii_tx_data[0].tx_data_oddr  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \rgmii_tx_data[0].tx_data_oddr  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_tx_data[4], mac_tx_data[0]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txd_obuf[0]),
+            .TQ (rgmii_txd_tbuf[0]),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m364_e1_rgmii.v:69
+
+    GTP_OUTBUFT /* \rgmii_tx_data[1].gtp_outbuft1  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \rgmii_tx_data[1].gtp_outbuft1  (
+            .O (rgmii_txd[1]),
+            .I (rgmii_txd_obuf[1]),
+            .T (rgmii_txd_tbuf[1]));
+	// ../../../rtl/network/m364_e1_rgmii.v:80
+
+    GTP_OSERDES /* \rgmii_tx_data[1].tx_data_oddr  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \rgmii_tx_data[1].tx_data_oddr  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_tx_data[5], mac_tx_data[1]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txd_obuf[1]),
+            .TQ (rgmii_txd_tbuf[1]),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m364_e1_rgmii.v:69
+
+    GTP_OUTBUFT /* \rgmii_tx_data[2].gtp_outbuft1  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \rgmii_tx_data[2].gtp_outbuft1  (
+            .O (rgmii_txd[2]),
+            .I (rgmii_txd_obuf[2]),
+            .T (rgmii_txd_tbuf[2]));
+	// ../../../rtl/network/m364_e1_rgmii.v:80
+
+    GTP_OSERDES /* \rgmii_tx_data[2].tx_data_oddr  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \rgmii_tx_data[2].tx_data_oddr  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_tx_data[6], mac_tx_data[2]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txd_obuf[2]),
+            .TQ (rgmii_txd_tbuf[2]),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m364_e1_rgmii.v:69
+
+    GTP_OUTBUFT /* \rgmii_tx_data[3].gtp_outbuft1  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \rgmii_tx_data[3].gtp_outbuft1  (
+            .O (rgmii_txd[3]),
+            .I (rgmii_txd_obuf[3]),
+            .T (rgmii_txd_tbuf[3]));
+	// ../../../rtl/network/m364_e1_rgmii.v:80
+
+    GTP_OSERDES /* \rgmii_tx_data[3].tx_data_oddr  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \rgmii_tx_data[3].tx_data_oddr  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_tx_data_valid, mac_tx_data[3]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txd_obuf[3]),
+            .TQ (rgmii_txd_tbuf[3]),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m364_e1_rgmii.v:69
+
+    GTP_OSERDES /* tx_clk_oddr */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        tx_clk_oddr (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b1}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_txc_obuf),
+            .TQ (rgmii_txc_tbuf),
+            .OCLK (1'b0),
+            .RCLK (rgmii_rxc_phase_d),
+            .RST (1'b0),
+            .SERCLK (rgmii_rxc_phase_d));
+	// ../../../rtl/network/m364_e1_rgmii.v:118
+
+    GTP_OSERDES /* tx_ctl_oddr */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        tx_ctl_oddr (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, mac_tx_data_valid, mac_tx_data_valid}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (rgmii_tx_ctl_obuf),
+            .TQ (rgmii_tx_ctl_tbuf),
+            .OCLK (1'b0),
+            .RCLK (rgmii_clk),
+            .RST (1'b0),
+            .SERCLK (rgmii_clk));
+	// ../../../rtl/network/m364_e1_rgmii.v:94
+
+    (* PAP_DONT_TOUCH *) GTP_INBUF /* u_rgmii_rx_ctl_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        u_rgmii_rx_ctl_ibuf (
+            .O (rgmii_rx_ctl_ibuf),
+            .I (rgmii_rx_ctl));
+	// ../../../rtl/network/m364_e1_rgmii.v:188
+
+
+endmodule
+
+
+module m3_eth_pll
+(
+    input clkin1,
+    output clkout0,
+    output clkout1
+);
+    wire clkout0_2pad;
+    wire clkout2;
+    wire clkout3;
+    wire clkout4;
+    wire clkout5;
+    wire clkswitch_flag;
+    wire pll_lock;
+
+(* PAP_LOC="PLL_158_303" *)    GTP_PLL_E3 /* u_pll_e3 */ #(
+            .CLKIN_FREQ(125), 
+            .PFDEN_EN("FALSE"), 
+            .VCOCLK_DIV2(1'b0), 
+            .DYNAMIC_RATIOI_EN("FALSE"), 
+            .DYNAMIC_RATIOM_EN("FALSE"), 
+            .DYNAMIC_RATIO0_EN("FALSE"), 
+            .DYNAMIC_RATIO1_EN("FALSE"), 
+            .DYNAMIC_RATIO2_EN("FALSE"), 
+            .DYNAMIC_RATIO3_EN("FALSE"), 
+            .DYNAMIC_RATIO4_EN("FALSE"), 
+            .DYNAMIC_RATIOF_EN("FALSE"), 
+            .STATIC_RATIOI(4), 
+            .STATIC_RATIOM(1), 
+            .STATIC_RATIO0(5), 
+            .STATIC_RATIO1(5), 
+            .STATIC_RATIO2(16), 
+            .STATIC_RATIO3(16), 
+            .STATIC_RATIO4(16), 
+            .STATIC_RATIOF(20), 
+            .DYNAMIC_DUTY0_EN("FALSE"), 
+            .DYNAMIC_DUTY1_EN("FALSE"), 
+            .DYNAMIC_DUTY2_EN("FALSE"), 
+            .DYNAMIC_DUTY3_EN("FALSE"), 
+            .DYNAMIC_DUTY4_EN("FALSE"), 
+            .STATIC_DUTY0(5), 
+            .STATIC_DUTY1(5), 
+            .STATIC_DUTY2(16), 
+            .STATIC_DUTY3(16), 
+            .STATIC_DUTY4(16), 
+            .STATIC_PHASE0(4), 
+            .STATIC_PHASE1(1), 
+            .STATIC_PHASE2(0), 
+            .STATIC_PHASE3(0), 
+            .STATIC_PHASE4(0), 
+            .STATIC_PHASEF(0), 
+            .STATIC_CPHASE0(2), 
+            .STATIC_CPHASE1(3), 
+            .STATIC_CPHASE2(0), 
+            .STATIC_CPHASE3(0), 
+            .STATIC_CPHASE4(0), 
+            .STATIC_CPHASEF(0), 
+            .CLK_CAS1_EN("FALSE"), 
+            .CLK_CAS2_EN("FALSE"), 
+            .CLK_CAS3_EN("FALSE"), 
+            .CLK_CAS4_EN("FALSE"), 
+            .CLKOUT5_SEL(0), 
+            .CLKIN_BYPASS_EN("FALSE"), 
+            .CLKOUT0_SYN_EN("FALSE"), 
+            .CLKOUT0_EXT_SYN_EN("FALSE"), 
+            .CLKOUT1_SYN_EN("FALSE"), 
+            .CLKOUT2_SYN_EN("FALSE"), 
+            .CLKOUT3_SYN_EN("FALSE"), 
+            .CLKOUT4_SYN_EN("FALSE"), 
+            .CLKOUT5_SYN_EN("FALSE"), 
+            .INTERNAL_FB("ENABLE"), 
+            .EXTERNAL_FB("DISABLE"), 
+            .DYNAMIC_LOOP_EN("FALSE"), 
+            .LOOP_MAPPING_EN("FALSE"), 
+            .BANDWIDTH("OPTIMIZED"))
+        u_pll_e3 (
+            .DUTY0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .ICP_SEL ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .LPFRES_SEL ({1'b0, 1'b0, 1'b0}),
+            .PHASE_SEL ({1'b0, 1'b0, 1'b0}),
+            .RATIO0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOF ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOM ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .CLKOUT0 (clkout0),
+            .CLKOUT0_EXT (clkout0_2pad),
+            .CLKOUT1 (clkout1),
+            .CLKOUT2 (clkout2),
+            .CLKOUT3 (clkout3),
+            .CLKOUT4 (clkout4),
+            .CLKOUT5 (clkout5),
+            .CLKSWITCH_FLAG (clkswitch_flag),
+            .LOCK (pll_lock),
+            .CLKFB (1'b0),
+            .CLKIN1 (clkin1),
+            .CLKIN2 (1'b0),
+            .CLKIN_SEL (1'b0),
+            .CLKIN_SEL_EN (1'b0),
+            .CLKOUT0_EXT_SYN (1'b0),
+            .CLKOUT0_SYN (1'b0),
+            .CLKOUT1_SYN (1'b0),
+            .CLKOUT2_SYN (1'b0),
+            .CLKOUT3_SYN (1'b0),
+            .CLKOUT4_SYN (1'b0),
+            .CLKOUT5_SYN (1'b0),
+            .CRIPPLE_SEL (1'b0),
+            .ICP_BASE (1'b0),
+            .LOAD_PHASE (1'b0),
+            .PFDEN (1'b0),
+            .PHASE_DIR (1'b0),
+            .PHASE_STEP_N (1'b0),
+            .PLL_PWD (1'b0),
+            .RST (1'b0),
+            .RSTODIV (1'b0));
+	// ../../../rtl/network/m3_eth_pll.v:232
+	// SDC constraint : (object CLKOUT1) (id 1009) (clock net1|port1_pll/u_pll_e3/CLKOUT1_Inferred) (inferred)
+	// SDC constraint : (object CLKOUT0) (id 1008) (clock net1|port1_pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+
+
+endmodule
+
+
+module m3_eth_pll_unq4
+(
+    input clkin1,
+    output clkout0,
+    output clkout1
+);
+    wire clkout0_2pad;
+    wire clkout2;
+    wire clkout3;
+    wire clkout4;
+    wire clkout5;
+    wire clkswitch_flag;
+    wire pll_lock;
+
+(* PAP_LOC="PLL_158_75" *)    GTP_PLL_E3 /* u_pll_e3 */ #(
+            .CLKIN_FREQ(125), 
+            .PFDEN_EN("FALSE"), 
+            .VCOCLK_DIV2(1'b0), 
+            .DYNAMIC_RATIOI_EN("FALSE"), 
+            .DYNAMIC_RATIOM_EN("FALSE"), 
+            .DYNAMIC_RATIO0_EN("FALSE"), 
+            .DYNAMIC_RATIO1_EN("FALSE"), 
+            .DYNAMIC_RATIO2_EN("FALSE"), 
+            .DYNAMIC_RATIO3_EN("FALSE"), 
+            .DYNAMIC_RATIO4_EN("FALSE"), 
+            .DYNAMIC_RATIOF_EN("FALSE"), 
+            .STATIC_RATIOI(4), 
+            .STATIC_RATIOM(1), 
+            .STATIC_RATIO0(5), 
+            .STATIC_RATIO1(5), 
+            .STATIC_RATIO2(16), 
+            .STATIC_RATIO3(16), 
+            .STATIC_RATIO4(16), 
+            .STATIC_RATIOF(20), 
+            .DYNAMIC_DUTY0_EN("FALSE"), 
+            .DYNAMIC_DUTY1_EN("FALSE"), 
+            .DYNAMIC_DUTY2_EN("FALSE"), 
+            .DYNAMIC_DUTY3_EN("FALSE"), 
+            .DYNAMIC_DUTY4_EN("FALSE"), 
+            .STATIC_DUTY0(5), 
+            .STATIC_DUTY1(5), 
+            .STATIC_DUTY2(16), 
+            .STATIC_DUTY3(16), 
+            .STATIC_DUTY4(16), 
+            .STATIC_PHASE0(4), 
+            .STATIC_PHASE1(1), 
+            .STATIC_PHASE2(0), 
+            .STATIC_PHASE3(0), 
+            .STATIC_PHASE4(0), 
+            .STATIC_PHASEF(0), 
+            .STATIC_CPHASE0(2), 
+            .STATIC_CPHASE1(3), 
+            .STATIC_CPHASE2(0), 
+            .STATIC_CPHASE3(0), 
+            .STATIC_CPHASE4(0), 
+            .STATIC_CPHASEF(0), 
+            .CLK_CAS1_EN("FALSE"), 
+            .CLK_CAS2_EN("FALSE"), 
+            .CLK_CAS3_EN("FALSE"), 
+            .CLK_CAS4_EN("FALSE"), 
+            .CLKOUT5_SEL(0), 
+            .CLKIN_BYPASS_EN("FALSE"), 
+            .CLKOUT0_SYN_EN("FALSE"), 
+            .CLKOUT0_EXT_SYN_EN("FALSE"), 
+            .CLKOUT1_SYN_EN("FALSE"), 
+            .CLKOUT2_SYN_EN("FALSE"), 
+            .CLKOUT3_SYN_EN("FALSE"), 
+            .CLKOUT4_SYN_EN("FALSE"), 
+            .CLKOUT5_SYN_EN("FALSE"), 
+            .INTERNAL_FB("ENABLE"), 
+            .EXTERNAL_FB("DISABLE"), 
+            .DYNAMIC_LOOP_EN("FALSE"), 
+            .LOOP_MAPPING_EN("FALSE"), 
+            .BANDWIDTH("OPTIMIZED"))
+        u_pll_e3 (
+            .DUTY0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .DUTY4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .ICP_SEL ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .LPFRES_SEL ({1'b0, 1'b0, 1'b0}),
+            .PHASE_SEL ({1'b0, 1'b0, 1'b0}),
+            .RATIO0 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO1 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO2 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO3 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIO4 ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOF ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .RATIOM ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0}),
+            .CLKOUT0 (clkout0),
+            .CLKOUT0_EXT (clkout0_2pad),
+            .CLKOUT1 (clkout1),
+            .CLKOUT2 (clkout2),
+            .CLKOUT3 (clkout3),
+            .CLKOUT4 (clkout4),
+            .CLKOUT5 (clkout5),
+            .CLKSWITCH_FLAG (clkswitch_flag),
+            .LOCK (pll_lock),
+            .CLKFB (1'b0),
+            .CLKIN1 (clkin1),
+            .CLKIN2 (1'b0),
+            .CLKIN_SEL (1'b0),
+            .CLKIN_SEL_EN (1'b0),
+            .CLKOUT0_EXT_SYN (1'b0),
+            .CLKOUT0_SYN (1'b0),
+            .CLKOUT1_SYN (1'b0),
+            .CLKOUT2_SYN (1'b0),
+            .CLKOUT3_SYN (1'b0),
+            .CLKOUT4_SYN (1'b0),
+            .CLKOUT5_SYN (1'b0),
+            .CRIPPLE_SEL (1'b0),
+            .ICP_BASE (1'b0),
+            .LOAD_PHASE (1'b0),
+            .PFDEN (1'b0),
+            .PHASE_DIR (1'b0),
+            .PHASE_STEP_N (1'b0),
+            .PLL_PWD (1'b0),
+            .RST (1'b0),
+            .RSTODIV (1'b0));
+	// ../../../rtl/network/m3_eth_pll.v:232
+	// SDC constraint : (object CLKOUT1) (id 1013) (clock phy_rxc|port2_pll/u_pll_e3/CLKOUT1_Inferred) (inferred)
+	// SDC constraint : (object CLKOUT0) (id 1012) (clock phy_rxc|port2_pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+
+
+endmodule
+
+
+module m364_ref_dividers
+(
+    input clkin1,
+    output camera_clk,
+    output cfg_clk,
+    output ready
+);
+    wire N19;
+    wire N25;
+    wire [2:0] N35;
+    wire _N22;
+    wire camera_raw;
+    wire cfg_raw;
+    wire [2:0] phase;
+    wire [4:0] startup;
+
+    GTP_LUT2 /* N6_sum1 */ #(
+            .INIT(4'b0110))
+        N6_sum1 (
+            .Z (N35[1]),
+            .I0 (phase[0]),
+            .I1 (phase[1]));
+	// LUT = (I0&~I1)|(~I0&I1) ;
+
+    GTP_LUT3 /* N6_sum2 */ #(
+            .INIT(8'b01111000))
+        N6_sum2 (
+            .Z (N35[2]),
+            .I0 (phase[0]),
+            .I1 (phase[1]),
+            .I2 (phase[2]));
+	// LUT = (~I1&I2)|(~I0&I2)|(I0&I1&~I2) ;
+
+    GTP_LUT1 /* N19 */ #(
+            .INIT(2'b01))
+        N19_vname (
+            .Z (N19),
+            .I0 (camera_raw));
+    // defparam N19_vname.orig_name = N19;
+	// LUT = ~I0 ;
+
+    GTP_LUT1 /* N23 */ #(
+            .INIT(2'b01))
+        N23 (
+            .Z (N35[0]),
+            .I0 (phase[0]));
+	// LUT = ~I0 ;
+
+    GTP_LUT3 /* N25_1 */ #(
+            .INIT(8'b00010000))
+        N25_1 (
+            .Z (N25),
+            .I0 (phase[0]),
+            .I1 (phase[1]),
+            .I2 (phase[2]));
+	// LUT = ~I0&~I1&I2 ;
+
+    GTP_CLKBUFG camera_buffer (
+            .CLKOUT (camera_clk),
+            .CLKIN (camera_raw));
+	// ../../../rtl/board/m364_ref_dividers.v:16
+	// SDC constraint : (object CLKOUT) (id 1006) (clock cam25) (100 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_E1_integrated_3_5_4/reports/clock_route_probe/probe.fdc)
+
+    GTP_DFF /* camera_raw */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        camera_raw_vname (
+            .Q (camera_raw),
+            .CLK (clkin1),
+            .D (N19));
+    // defparam camera_raw_vname.orig_name = camera_raw;
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_CLKBUFG cfg_buffer (
+            .CLKOUT (cfg_clk),
+            .CLKIN (cfg_raw));
+	// ../../../rtl/board/m364_ref_dividers.v:15
+	// SDC constraint : (object CLKOUT) (id 1005) (clock cfg10) (99 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_E1_integrated_3_5_4/reports/clock_route_probe/probe.fdc)
+
+    GTP_DFF /* cfg_raw */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        cfg_raw_vname (
+            .Q (cfg_raw),
+            .CLK (clkin1),
+            .D (_N22));
+    // defparam cfg_raw_vname.orig_name = cfg_raw;
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_LUT4 /* cfg_raw_rs_mux */ #(
+            .INIT(16'b1010101010001011))
+        cfg_raw_rs_mux (
+            .Z (_N22),
+            .I0 (cfg_raw),
+            .I1 (phase[0]),
+            .I2 (phase[1]),
+            .I3 (phase[2]));
+	// LUT = (I0&I1)|(I0&I3)|(~I1&~I2&~I3) ;
+
+    GTP_DFF_R /* \phase[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \phase[0]  (
+            .Q (phase[0]),
+            .CLK (clkin1),
+            .D (N35[0]),
+            .R (N25));
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_DFF_R /* \phase[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \phase[1]  (
+            .Q (phase[1]),
+            .CLK (clkin1),
+            .D (N35[1]),
+            .R (N25));
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_DFF_R /* \phase[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \phase[2]  (
+            .Q (phase[2]),
+            .CLK (clkin1),
+            .D (N35[2]),
+            .R (N25));
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_DFF /* \startup[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \startup[0]  (
+            .Q (startup[0]),
+            .CLK (clkin1),
+            .D (1'b1));
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_DFF /* \startup[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \startup[1]  (
+            .Q (startup[1]),
+            .CLK (clkin1),
+            .D (startup[0]));
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_DFF /* \startup[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \startup[2]  (
+            .Q (startup[2]),
+            .CLK (clkin1),
+            .D (startup[1]));
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_DFF /* \startup[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \startup[3]  (
+            .Q (startup[3]),
+            .CLK (clkin1),
+            .D (startup[2]));
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+    GTP_DFF /* \startup[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \startup[4]  (
+            .Q (ready),
+            .CLK (clkin1),
+            .D (startup[3]));
+	// ../../../rtl/board/m364_ref_dividers.v:8
+
+
+endmodule
+
+
+module clock_route_probe
+(
+    input [3:0] rgmii_rxd,
+    input clk_50m,
+    input net1_rxc,
+    input rgmii_rx_ctl,
+    input rgmii_rxc,
+    output [7:0] monitor,
+    output [3:0] rgmii_txd,
+    output rgmii_tx_ctl,
+    output rgmii_txc
+);
+	// SDC constraint : (object clk_50m) (id 1000) (clock sys50) (81 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_E1_integrated_3_5_4/reports/clock_route_probe/probe.fdc)
+	// SDC constraint : (object clk_50m) (id 1005) (clock cfg10) (99 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_E1_integrated_3_5_4/reports/clock_route_probe/probe.fdc)
+	// SDC constraint : (object clk_50m) (id 1006) (clock cam25) (100 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_E1_integrated_3_5_4/reports/clock_route_probe/probe.fdc)
+	// SDC constraint : (object clk_50m) (id 1007) (clock sys50|display_pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+	// SDC constraint : (object clk_50m) (id 1010) (clock sys50|ddr0/u_pll_e3/CLKOUT1_Inferred) (inferred)
+	// SDC constraint : (object clk_50m) (id 1011) (clock sys50|ddr1/u_pll_e3/CLKOUT1_Inferred) (inferred)
+	// SDC constraint : (object net1_rxc) (id 1004) (clock net1) (98 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_E1_integrated_3_5_4/reports/clock_route_probe/probe.fdc)
+	// SDC constraint : (object net1_rxc) (id 1008) (clock net1|port1_pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+	// SDC constraint : (object net1_rxc) (id 1009) (clock net1|port1_pll/u_pll_e3/CLKOUT1_Inferred) (inferred)
+	// SDC constraint : (object rgmii_rxc) (id 1001) (clock phy_rxc) (82 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_E1_integrated_3_5_4/reports/clock_route_probe/probe.fdc)
+	// SDC constraint : (object rgmii_rxc) (id 1012) (clock phy_rxc|port2_pll/u_pll_e3/CLKOUT0_Inferred) (inferred)
+	// SDC constraint : (object rgmii_rxc) (id 1013) (clock phy_rxc|port2_pll/u_pll_e3/CLKOUT1_Inferred) (inferred)
+    wire [7:0] N13;
+    wire N18;
+    wire N19;
+    wire N20;
+    wire N21;
+    wire N22;
+    wire N23;
+    wire N24;
+    wire _N9;
+    wire _N10;
+    wire _N11;
+    wire _N12;
+    wire _N13;
+    wire _N14;
+    wire cam;
+    wire cfg;
+    wire [7:0] data;
+    wire \data[0]_inv ;
+    wire dl0;
+    wire dl1;
+    wire dr0;
+    wire dr1;
+    wire n10;
+    wire n11;
+    wire n20;
+    wire n21;
+(* PAP_MARK_DEBUG="1" *)    wire nc;
+    wire nt_clk_50m;
+    wire [7:0] nt_monitor;
+    wire nt_net1_rxc;
+    wire nt_rgmii_rxc;
+    wire pixel;
+    wire ready;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+    GTP_LUT5CARRY /* N13_0_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_0_1 (
+            .COUT (_N9),
+            .Z (N13[1]),
+            .CIN (),
+            .I0 (data[0]),
+            .I1 (data[1]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../probe.v:15
+
+    GTP_LUT5CARRY /* N13_0_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_0_2 (
+            .COUT (_N10),
+            .Z (N13[2]),
+            .CIN (_N9),
+            .I0 (data[0]),
+            .I1 (data[1]),
+            .I2 (data[2]),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../probe.v:15
+
+    GTP_LUT5CARRY /* N13_0_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_0_3 (
+            .COUT (_N11),
+            .Z (N13[3]),
+            .CIN (_N10),
+            .I0 (),
+            .I1 (data[3]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:15
+
+    GTP_LUT5CARRY /* N13_0_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_0_4 (
+            .COUT (_N12),
+            .Z (N13[4]),
+            .CIN (_N11),
+            .I0 (),
+            .I1 (data[4]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:15
+
+    GTP_LUT5CARRY /* N13_0_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_0_5 (
+            .COUT (_N13),
+            .Z (N13[5]),
+            .CIN (_N12),
+            .I0 (),
+            .I1 (data[5]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:15
+
+    GTP_LUT5CARRY /* N13_0_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_0_6 (
+            .COUT (_N14),
+            .Z (N13[6]),
+            .CIN (_N13),
+            .I0 (),
+            .I1 (data[6]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:15
+
+    GTP_LUT5CARRY /* N13_0_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N13_0_7 (
+            .COUT (),
+            .Z (N13[7]),
+            .CIN (_N14),
+            .I0 (),
+            .I1 (data[7]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:15
+
+    GTP_LUT1 /* N18 */ #(
+            .INIT(2'b01))
+        N18_vname (
+            .Z (N18),
+            .I0 (nt_monitor[7]));
+    // defparam N18_vname.orig_name = N18;
+	// LUT = ~I0 ;
+
+    GTP_LUT1 /* N19 */ #(
+            .INIT(2'b01))
+        N19_vname (
+            .Z (N19),
+            .I0 (nt_monitor[6]));
+    // defparam N19_vname.orig_name = N19;
+	// LUT = ~I0 ;
+
+    GTP_LUT1 /* N20 */ #(
+            .INIT(2'b01))
+        N20_vname (
+            .Z (N20),
+            .I0 (nt_monitor[5]));
+    // defparam N20_vname.orig_name = N20;
+	// LUT = ~I0 ;
+
+    GTP_LUT1 /* N21 */ #(
+            .INIT(2'b01))
+        N21_vname (
+            .Z (N21),
+            .I0 (nt_monitor[4]));
+    // defparam N21_vname.orig_name = N21;
+	// LUT = ~I0 ;
+
+    GTP_LUT1 /* N22 */ #(
+            .INIT(2'b01))
+        N22_vname (
+            .Z (N22),
+            .I0 (nt_monitor[3]));
+    // defparam N22_vname.orig_name = N22;
+	// LUT = ~I0 ;
+
+    GTP_LUT1 /* N23 */ #(
+            .INIT(2'b01))
+        N23_vname (
+            .Z (N23),
+            .I0 (nt_monitor[2]));
+    // defparam N23_vname.orig_name = N23;
+	// LUT = ~I0 ;
+
+    GTP_LUT1 /* N24 */ #(
+            .INIT(2'b01))
+        N24_vname (
+            .Z (N24),
+            .I0 (nt_monitor[1]));
+    // defparam N24_vname.orig_name = N24;
+	// LUT = ~I0 ;
+
+    GTP_LUT3 /* N26_3 */ #(
+            .INIT(8'b10010110))
+        N26_3 (
+            .Z (nt_monitor[0]),
+            .I0 (dl0),
+            .I1 (dl1),
+            .I2 (ready));
+	// LUT = (I0&~I1&~I2)|(~I0&I1&~I2)|(~I0&~I1&I2)|(I0&I1&I2) ;
+
+    GTP_DFF /* a */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        a (
+            .Q (nt_monitor[7]),
+            .CLK (cfg),
+            .D (N18));
+	// ../probe.v:21
+
+    GTP_DFF /* b */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        b (
+            .Q (nt_monitor[6]),
+            .CLK (cam),
+            .D (N19));
+	// ../probe.v:21
+
+    GTP_DFF /* c */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        c (
+            .Q (nt_monitor[5]),
+            .CLK (pixel),
+            .D (N20));
+	// ../probe.v:22
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="P20", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_UNUSED="TRUE" *)    GTP_INBUF /* clk_50m_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        clk_50m_ibuf (
+            .O (nt_clk_50m),
+            .I (clk_50m));
+	// ../probe.v:3
+
+    GTP_DFF /* d */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        d (
+            .Q (nt_monitor[4]),
+            .CLK (n10),
+            .D (N21));
+	// ../probe.v:22
+
+    GTP_DFF /* \data[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \data[0]  (
+            .Q (data[0]),
+            .CLK (nc),
+            .D (\data[0]_inv ));
+	// ../probe.v:15
+
+    GTP_DFF /* \data[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \data[1]  (
+            .Q (data[1]),
+            .CLK (nc),
+            .D (N13[1]));
+	// ../probe.v:15
+
+    GTP_DFF /* \data[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \data[2]  (
+            .Q (data[2]),
+            .CLK (nc),
+            .D (N13[2]));
+	// ../probe.v:15
+
+    GTP_DFF /* \data[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \data[3]  (
+            .Q (data[3]),
+            .CLK (nc),
+            .D (N13[3]));
+	// ../probe.v:15
+
+    GTP_DFF /* \data[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \data[4]  (
+            .Q (data[4]),
+            .CLK (nc),
+            .D (N13[4]));
+	// ../probe.v:15
+
+    GTP_DFF /* \data[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \data[5]  (
+            .Q (data[5]),
+            .CLK (nc),
+            .D (N13[5]));
+	// ../probe.v:15
+
+    GTP_DFF /* \data[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \data[6]  (
+            .Q (data[6]),
+            .CLK (nc),
+            .D (N13[6]));
+	// ../probe.v:15
+
+    GTP_LUT1 /* \data[7:0]_inv  */ #(
+            .INIT(2'b01))
+        \data[7:0]_inv  (
+            .Z (\data[0]_inv ),
+            .I0 (data[0]));
+	// LUT = ~I0 ;
+
+    GTP_DFF /* \data[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \data[7]  (
+            .Q (data[7]),
+            .CLK (nc),
+            .D (N13[7]));
+	// ../probe.v:15
+
+    ipsxb_ddrphy_pll_v1_0 ddr0 (
+            .clkout1 (dr0),
+            .pll_lock (dl0),
+            .clkin1 (nt_clk_50m));
+	// ../probe.v:11
+
+    ipsxb_ddrphy_pll_v1_0_unq4 ddr1 (
+            .clkout1 (dr1),
+            .pll_lock (dl1),
+            .clkin1 (nt_clk_50m));
+	// ../probe.v:13
+
+    m31_pixel_pll display_pll (
+            .clkout0 (pixel),
+            .clkin1 (nt_clk_50m));
+	// ../probe.v:8
+
+    GTP_DFF /* e */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        e (
+            .Q (nt_monitor[3]),
+            .CLK (n11),
+            .D (N22));
+	// ../probe.v:23
+
+    GTP_DFF /* f */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        f (
+            .Q (nt_monitor[2]),
+            .CLK (dr0),
+            .D (N23));
+	// ../probe.v:23
+
+    GTP_DFF /* g */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        g (
+            .Q (nt_monitor[1]),
+            .CLK (dr1),
+            .D (N24));
+	// ../probe.v:24
+
+    GTP_OUTBUF /* \monitor_obuf[0]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \monitor_obuf[0]  (
+            .O (monitor[0]),
+            .I (nt_monitor[0]));
+	// ../probe.v:5
+
+    GTP_OUTBUF /* \monitor_obuf[1]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \monitor_obuf[1]  (
+            .O (monitor[1]),
+            .I (nt_monitor[1]));
+	// ../probe.v:5
+
+    GTP_OUTBUF /* \monitor_obuf[2]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \monitor_obuf[2]  (
+            .O (monitor[2]),
+            .I (nt_monitor[2]));
+	// ../probe.v:5
+
+    GTP_OUTBUF /* \monitor_obuf[3]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \monitor_obuf[3]  (
+            .O (monitor[3]),
+            .I (nt_monitor[3]));
+	// ../probe.v:5
+
+    GTP_OUTBUF /* \monitor_obuf[4]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \monitor_obuf[4]  (
+            .O (monitor[4]),
+            .I (nt_monitor[4]));
+	// ../probe.v:5
+
+    GTP_OUTBUF /* \monitor_obuf[5]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \monitor_obuf[5]  (
+            .O (monitor[5]),
+            .I (nt_monitor[5]));
+	// ../probe.v:5
+
+    GTP_OUTBUF /* \monitor_obuf[6]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \monitor_obuf[6]  (
+            .O (monitor[6]),
+            .I (nt_monitor[6]));
+	// ../probe.v:5
+
+    GTP_OUTBUF /* \monitor_obuf[7]  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \monitor_obuf[7]  (
+            .O (monitor[7]),
+            .I (nt_monitor[7]));
+	// ../probe.v:5
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="F14", PAP_IO_STANDARD="LVCMOS33", PAP_IO_VCCIO="3.3" *)    GTP_INBUF /* net1_rxc_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        net1_rxc_ibuf (
+            .O (nt_net1_rxc),
+            .I (net1_rxc));
+	// ../probe.v:3
+
+    m364_e1_rgmii physical (
+            .rgmii_txd (rgmii_txd),
+            .mac_tx_data ({1'bx, data[6], data[5], data[4], data[3], data[2], data[1], data[0]}),
+            .rgmii_rxd (rgmii_rxd),
+            .rgmii_clk (nc),
+            .rgmii_tx_ctl (rgmii_tx_ctl),
+            .rgmii_txc (rgmii_txc),
+            .mac_tx_data_valid (data[7]),
+            .rgmii_rx_ctl (rgmii_rx_ctl),
+            .rgmii_rxc (n20),
+            .rgmii_rxc_phase_d (n21));
+	// ../probe.v:16
+
+    m3_eth_pll port1_pll (
+            .clkout0 (n10),
+            .clkout1 (n11),
+            .clkin1 (nt_net1_rxc));
+	// ../probe.v:9
+
+    m3_eth_pll_unq4 port2_pll (
+            .clkout0 (n20),
+            .clkout1 (n21),
+            .clkin1 (nt_rgmii_rxc));
+	// ../probe.v:10
+
+    m364_ref_dividers refs (
+            .camera_clk (cam),
+            .cfg_clk (cfg),
+            .ready (ready),
+            .clkin1 (nt_clk_50m));
+	// ../probe.v:7
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="M19", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* rgmii_rxc_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        rgmii_rxc_ibuf (
+            .O (nt_rgmii_rxc),
+            .I (rgmii_rxc));
+	// ../probe.v:3
+
+
+endmodule
+
