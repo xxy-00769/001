@@ -1,0 +1,105 @@
+--- 
++++ 
+@@ -21,6 +21,8 @@
+ `define UD #1
+ module fram_buf #(
+     parameter M2_READER = 0,
++    parameter HD_DISPLAY = 0,
++    parameter M3_FRONT = 0,
+     parameter SOURCE_ID = 0, // 0 FRONT, 1 REAR, 2 LEFT, 3 RIGHT
+     parameter DISPLAY_HALF = 0, // display-only 2x nearest-neighbour reduction
+     parameter                     MEM_ROW_WIDTH        = 15    ,
+@@ -32,6 +34,8 @@
+     parameter                     V_NUM                = 12'd720,//12'd1080,//12'd106,//
+     parameter                     PIX_WIDTH            = 16//24 
+ )(
++    input net_acquire,net_release,output net_grant,net_held,
++    output [1:0] net_bank,output [31:0] net_id,net_time,latest_frame_id,
+     input                         vin_clk,
+     input                         wr_fsync,
+     input                         wr_en,
+@@ -106,14 +110,17 @@
+     wire                        read_en     ;
+     wire                        ddr_wr_bac;
+     wire writer_rst_n, writer_vs, writer_de, line_event, output_sof;
+-    wire write_issue, read_issue, write_bank, read_bank, read_enabled, has_frame;
++    wire write_issue, read_issue, read_enabled, has_frame;
++    wire [(M3_FRONT ? 2:1)-1:0] write_bank,read_bank;
+     wire [11:0] read_completed_gray;
+     wire [PIX_WIDTH-1:0] raw_vout_data;
+-    wire [CTRL_ADDR_WIDTH-1:0] owned_waddr =
+-        {{(CTRL_ADDR_WIDTH-LINE_ADDR_WIDTH-3){1'b0}}, SOURCE_ID[1:0], write_bank,
++    wire [CTRL_ADDR_WIDTH-1:0] owned_waddr = M3_FRONT && write_bank==2 ?
++        28'h2000000 | ddr_waddr[21:0] :
++        {{(CTRL_ADDR_WIDTH-LINE_ADDR_WIDTH-3){1'b0}}, SOURCE_ID[1:0], write_bank[0],
+         ddr_waddr[LINE_ADDR_WIDTH-1:0]};
+-    wire [CTRL_ADDR_WIDTH-1:0] owned_raddr =
+-        {{(CTRL_ADDR_WIDTH-LINE_ADDR_WIDTH-3){1'b0}}, SOURCE_ID[1:0], read_bank,
++    wire [CTRL_ADDR_WIDTH-1:0] owned_raddr = M3_FRONT && read_bank==2 ?
++        28'h2000000 | rd_cmd_addr[21:0] :
++        {{(CTRL_ADDR_WIDTH-LINE_ADDR_WIDTH-3){1'b0}}, SOURCE_ID[1:0], read_bank[0],
+         rd_cmd_addr[LINE_ADDR_WIDTH-1:0]};
+     wire [31:0] published_count /* synthesis syn_keep = 1 */;
+     wire [31:0] rejected_count /* synthesis syn_keep = 1 */;
+@@ -124,6 +131,27 @@
+     always @(posedge ddr_clk or negedge ddr_rstn)
+         if(!ddr_rstn) selected_d <= 0;
+         else selected_d <= {selected_d[0],display_selected};
++    generate if(M3_FRONT) begin: front_three_slots
++    m3_front_owner #(.H_NUM(H_NUM), .V_NUM(V_NUM)) owner (
++        .clk(ddr_clk), .rst_n(ddr_rstn), .video_clk(vin_clk),
++        .pipeline_running(pipeline_running), .video_vs(wr_fsync), .video_de(wr_en),
++        .video_id(wr_frame_id), .video_time(wr_frame_time),
++        .result_valid(source_result_valid), .result_id(source_result_id),
++        .result_errors(source_result_errors),
++        .writer_rst_n(writer_rst_n), .writer_vs(writer_vs), .writer_de(writer_de),
++        .line_event(line_event), .write_request(ddr_wreq),
++        .write_ready(ddr_wrdy), .write_done(ddr_wdone),
++        .write_issue(write_issue), .write_bank(write_bank),
++        .output_sof(output_sof), .display_selected(selected_d[1]), .read_request(rd_cmd_en),
++        .read_ready(rd_cmd_ready), .read_done(rd_cmd_done),
++        .read_issue(read_issue), .read_bank(read_bank), .read_enabled(read_enabled),
++        .has_frame(has_frame), .read_completed_gray(read_completed_gray),
++        .published_count(published_count), .rejected_count(rejected_count),
++        .read_fault_count(read_fault_count), .display_id(display_id), .display_time(display_time)
++        ,.net_acquire(net_acquire),.net_release(net_release),.net_grant(net_grant),.net_held(net_held),
++        .net_bank(net_bank),.net_id(net_id),.net_time(net_time),.latest_id(latest_frame_id)
++    );
++    end else begin: two_slots
+     frame_buffer_owner #(.H_NUM(H_NUM), .V_NUM(V_NUM)) owner (
+         .clk(ddr_clk), .rst_n(ddr_rstn), .video_clk(vin_clk),
+         .pipeline_running(pipeline_running), .video_vs(wr_fsync), .video_de(wr_en),
+@@ -141,6 +169,8 @@
+         .published_count(published_count), .rejected_count(rejected_count),
+         .read_fault_count(read_fault_count), .display_id(display_id), .display_time(display_time)
+     );
++    assign latest_frame_id=display_id;assign net_grant=0;assign net_held=0;assign net_bank=0;assign net_id=0;assign net_time=0;
++    end endgenerate
+ 
+     wr_buf #(
+         .ADDR_WIDTH       (  CTRL_ADDR_WIDTH  ),//parameter                     ADDR_WIDTH      = 6'd27,
+@@ -211,6 +241,16 @@
+     assign vout_data = enabled_v[1] && !output_bad ? raw_vout_data : {PIX_WIDTH{1'b0}};
+     
+     generate if(M2_READER) begin: m2_reader
++        if(HD_DISPLAY) begin: hd
++        m31_rd_buf #(.H_NUM(H_NUM),.V_NUM(V_NUM),.ADDR_WIDTH(CTRL_ADDR_WIDTH)) reader(
++            .ddr_clk(ddr_clk),.ddr_rstn(ddr_rstn),.vout_clk(vout_clk),
++            .rd_fsync(rd_fsync),.rd_en(rd_en),.quarter(display_quarter),
++            .selected(selected_d[1]),.enabled(read_enabled),
++            .vout_de(vout_de),.vout_data(raw_vout_data),
++            .ddr_rreq(rd_cmd_en),.ddr_raddr(rd_cmd_addr),.ddr_rd_len(rd_cmd_len),
++            .ddr_rrdy(rd_cmd_ready),.ddr_rdone(rd_cmd_done),
++            .ddr_rdata(read_rdata),.ddr_rdata_en(read_en),.frame_start_event(output_sof));
++        end else begin: sd
+         m2_rd_buf #(.H_NUM(H_NUM),.V_NUM(V_NUM),.ADDR_WIDTH(CTRL_ADDR_WIDTH)) reader(
+             .ddr_clk(ddr_clk),.ddr_rstn(ddr_rstn),.vout_clk(vout_clk),
+             .rd_fsync(rd_fsync),.rd_en(rd_en),.quarter(display_quarter),
+@@ -219,6 +259,7 @@
+             .ddr_rreq(rd_cmd_en),.ddr_raddr(rd_cmd_addr),.ddr_rd_len(rd_cmd_len),
+             .ddr_rrdy(rd_cmd_ready),.ddr_rdone(rd_cmd_done),
+             .ddr_rdata(read_rdata),.ddr_rdata_en(read_en),.frame_start_event(output_sof));
++        end
+     end else begin: legacy_reader
+     rd_buf #(
+         .DISPLAY_HALF     ( DISPLAY_HALF ),

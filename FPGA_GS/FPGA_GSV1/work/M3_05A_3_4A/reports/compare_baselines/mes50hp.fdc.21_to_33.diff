@@ -1,0 +1,142 @@
+--- 
++++ 
+@@ -748,7 +748,7 @@
+ set_clock_uncertainty {0.200} [get_clocks {cmos2_pclk_16bit}]  -setup -hold
+ set_clock_uncertainty {0.200} [get_clocks {cmos1_pclk}]  -setup -hold
+ set_clock_uncertainty {0.200} [get_clocks {cmos2_pclk}]  -setup -hold
+-create_generated_clock -name {pix_clk} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout0}] -master_clock [get_clocks {sys_clk}] -multiply_by {13} -divide_by {22}
++create_generated_clock -name {pix_clk} -source [get_ports {sys_clk}] [get_nets {u_hd_pll.clkout0}] -master_clock [get_clocks {sys_clk}] -multiply_by {297} -divide_by {100}
+ create_generated_clock -name {cfg_clk} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout1}] -master_clock [get_clocks {sys_clk}] -multiply_by {1} -divide_by {5}
+ create_generated_clock -name {clk_25M} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout2}] -master_clock [get_clocks {sys_clk}] -multiply_by {1} -divide_by {2}
+ 
+@@ -907,30 +907,30 @@
+ 
+ define_attribute {p:intent_led[0]} {PAP_IO_DIRECTION} {OUTPUT}
+ define_attribute {p:intent_led[0]} {PAP_IO_LOC} {B2}
+-define_attribute {p:intent_led[0]} {PAP_IO_VCCIO} {1.2}
+-define_attribute {p:intent_led[0]} {PAP_IO_STANDARD} {LVCMOS12}
+-define_attribute {p:intent_led[0]} {PAP_IO_DRIVE} {2}
++define_attribute {p:intent_led[0]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:intent_led[0]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:intent_led[0]} {PAP_IO_DRIVE} {4}
+ define_attribute {p:intent_led[0]} {PAP_IO_NONE} {TRUE}
+ define_attribute {p:intent_led[0]} {PAP_IO_SLEW} {SLOW}
+ define_attribute {p:intent_led[1]} {PAP_IO_DIRECTION} {OUTPUT}
+ define_attribute {p:intent_led[1]} {PAP_IO_LOC} {A2}
+-define_attribute {p:intent_led[1]} {PAP_IO_VCCIO} {1.2}
+-define_attribute {p:intent_led[1]} {PAP_IO_STANDARD} {LVCMOS12}
+-define_attribute {p:intent_led[1]} {PAP_IO_DRIVE} {2}
++define_attribute {p:intent_led[1]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:intent_led[1]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:intent_led[1]} {PAP_IO_DRIVE} {4}
+ define_attribute {p:intent_led[1]} {PAP_IO_NONE} {TRUE}
+ define_attribute {p:intent_led[1]} {PAP_IO_SLEW} {SLOW}
+ define_attribute {p:intent_led[2]} {PAP_IO_DIRECTION} {OUTPUT}
+ define_attribute {p:intent_led[2]} {PAP_IO_LOC} {B3}
+-define_attribute {p:intent_led[2]} {PAP_IO_VCCIO} {1.2}
+-define_attribute {p:intent_led[2]} {PAP_IO_STANDARD} {LVCMOS12}
+-define_attribute {p:intent_led[2]} {PAP_IO_DRIVE} {2}
++define_attribute {p:intent_led[2]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:intent_led[2]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:intent_led[2]} {PAP_IO_DRIVE} {4}
+ define_attribute {p:intent_led[2]} {PAP_IO_NONE} {TRUE}
+ define_attribute {p:intent_led[2]} {PAP_IO_SLEW} {SLOW}
+ define_attribute {p:intent_led[3]} {PAP_IO_DIRECTION} {OUTPUT}
+ define_attribute {p:intent_led[3]} {PAP_IO_LOC} {A3}
+-define_attribute {p:intent_led[3]} {PAP_IO_VCCIO} {1.2}
+-define_attribute {p:intent_led[3]} {PAP_IO_STANDARD} {LVCMOS12}
+-define_attribute {p:intent_led[3]} {PAP_IO_DRIVE} {2}
++define_attribute {p:intent_led[3]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:intent_led[3]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:intent_led[3]} {PAP_IO_DRIVE} {4}
+ define_attribute {p:intent_led[3]} {PAP_IO_NONE} {TRUE}
+ define_attribute {p:intent_led[3]} {PAP_IO_SLEW} {SLOW}
+ 
+@@ -1313,3 +1313,87 @@
+ # HDMI RX clock is independent of system/DDR/display. Capture and geometry
+ # logic remain timed at 74.25 MHz; only asynchronous-domain crossings are cut.
+ set_clock_groups -name hdmi_rx_async -asynchronous -group [get_clocks {hdmi_rx_clk}]
++
++# M3 MES50HP port1 RTL8211E; exact reference pin map
++define_attribute {p:rgmii_rx_ctl} {PAP_IO_DIRECTION} {INPUT}
++define_attribute {p:rgmii_rx_ctl} {PAP_IO_LOC} {F9}
++define_attribute {p:rgmii_rx_ctl} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_rx_ctl} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_rx_ctl} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_rxc} {PAP_IO_DIRECTION} {INPUT}
++define_attribute {p:rgmii_rxc} {PAP_IO_LOC} {F14}
++define_attribute {p:rgmii_rxc} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_rxc} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_rxc} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_rxd[0]} {PAP_IO_DIRECTION} {INPUT}
++define_attribute {p:rgmii_rxd[0]} {PAP_IO_LOC} {H10}
++define_attribute {p:rgmii_rxd[0]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_rxd[0]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_rxd[0]} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_rxd[1]} {PAP_IO_DIRECTION} {INPUT}
++define_attribute {p:rgmii_rxd[1]} {PAP_IO_LOC} {H11}
++define_attribute {p:rgmii_rxd[1]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_rxd[1]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_rxd[1]} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_rxd[2]} {PAP_IO_DIRECTION} {INPUT}
++define_attribute {p:rgmii_rxd[2]} {PAP_IO_LOC} {G13}
++define_attribute {p:rgmii_rxd[2]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_rxd[2]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_rxd[2]} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_rxd[3]} {PAP_IO_DIRECTION} {INPUT}
++define_attribute {p:rgmii_rxd[3]} {PAP_IO_LOC} {H13}
++define_attribute {p:rgmii_rxd[3]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_rxd[3]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_rxd[3]} {PAP_IO_NONE} {TRUE}
++define_attribute {p:phy_rstn} {PAP_IO_DIRECTION} {OUTPUT}
++define_attribute {p:phy_rstn} {PAP_IO_LOC} {B20}
++define_attribute {p:phy_rstn} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:phy_rstn} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:phy_rstn} {PAP_IO_DRIVE} {4}
++define_attribute {p:phy_rstn} {PAP_IO_NONE} {TRUE}
++define_attribute {p:phy_rstn} {PAP_IO_SLEW} {FAST}
++define_attribute {p:rgmii_tx_ctl} {PAP_IO_DIRECTION} {OUTPUT}
++define_attribute {p:rgmii_tx_ctl} {PAP_IO_LOC} {B18}
++define_attribute {p:rgmii_tx_ctl} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_tx_ctl} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_tx_ctl} {PAP_IO_DRIVE} {4}
++define_attribute {p:rgmii_tx_ctl} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_tx_ctl} {PAP_IO_SLEW} {FAST}
++define_attribute {p:rgmii_txc} {PAP_IO_DIRECTION} {OUTPUT}
++define_attribute {p:rgmii_txc} {PAP_IO_LOC} {G16}
++define_attribute {p:rgmii_txc} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_txc} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_txc} {PAP_IO_DRIVE} {4}
++define_attribute {p:rgmii_txc} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_txc} {PAP_IO_SLEW} {FAST}
++define_attribute {p:rgmii_txd[0]} {PAP_IO_DIRECTION} {OUTPUT}
++define_attribute {p:rgmii_txd[0]} {PAP_IO_LOC} {F17}
++define_attribute {p:rgmii_txd[0]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_txd[0]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_txd[0]} {PAP_IO_DRIVE} {4}
++define_attribute {p:rgmii_txd[0]} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_txd[0]} {PAP_IO_SLEW} {FAST}
++define_attribute {p:rgmii_txd[1]} {PAP_IO_DIRECTION} {OUTPUT}
++define_attribute {p:rgmii_txd[1]} {PAP_IO_LOC} {D17}
++define_attribute {p:rgmii_txd[1]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_txd[1]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_txd[1]} {PAP_IO_DRIVE} {4}
++define_attribute {p:rgmii_txd[1]} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_txd[1]} {PAP_IO_SLEW} {FAST}
++define_attribute {p:rgmii_txd[2]} {PAP_IO_DIRECTION} {OUTPUT}
++define_attribute {p:rgmii_txd[2]} {PAP_IO_LOC} {C18}
++define_attribute {p:rgmii_txd[2]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_txd[2]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_txd[2]} {PAP_IO_DRIVE} {4}
++define_attribute {p:rgmii_txd[2]} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_txd[2]} {PAP_IO_SLEW} {FAST}
++define_attribute {p:rgmii_txd[3]} {PAP_IO_DIRECTION} {OUTPUT}
++define_attribute {p:rgmii_txd[3]} {PAP_IO_LOC} {A18}
++define_attribute {p:rgmii_txd[3]} {PAP_IO_VCCIO} {3.3}
++define_attribute {p:rgmii_txd[3]} {PAP_IO_STANDARD} {LVCMOS33}
++define_attribute {p:rgmii_txd[3]} {PAP_IO_DRIVE} {4}
++define_attribute {p:rgmii_txd[3]} {PAP_IO_NONE} {TRUE}
++define_attribute {p:rgmii_txd[3]} {PAP_IO_SLEW} {FAST}
++create_clock -name eth_rxc [get_ports {rgmii_rxc}] -period 8.000 -waveform {0 4}
++set_clock_uncertainty 0.200 [get_clocks {eth_rxc}] -setup -hold
++set_clock_groups -name eth_async -asynchronous -group [get_clocks {eth_rxc}]

@@ -1,0 +1,8 @@
+    video_capture_status #(.SOURCE_ID(2)) monitor2(
+        .ref_clk(sys_clk),.video_clk(pixclk_in),.rst_n(rstn_out),
+        .source_ready(rx_done && hdmi_format),.video_vs(hdmi_vs),
+        .video_de(hdmi_de),.pipeline_rst_n(pipe_rst2),
+        .healthy(source_healthy[2]),.timed_out(),.timeout_count(),
+        .snapshot_valid(),.snapshot(status2),.frame_open_id(open_id2),
+        .frame_open_time(open_time2),.frame_result_valid(verdict_valid2),
+        .frame_result_id(verdict_id2),.frame_result_errors(verdict_errors2));

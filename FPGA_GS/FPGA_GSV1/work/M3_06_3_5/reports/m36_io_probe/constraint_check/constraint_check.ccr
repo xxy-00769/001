@@ -1,0 +1,82 @@
+##### Written on 2026/10/21 20:56:10 ###############################
+
+
+##### INFO ##################################################
+
+Current device : 
+	PGL50H-6FBG484
+
+Top Module : 
+	io_probe
+
+Constraint File(s) : 
+	E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc
+
+##### SUMMARY ######################################################
+
+Found 0 error(s), 5 critical warning(s), 0 warning(s), out of 90 constraint(s)
+
+
+Inapplicable constraints(except overwritten constraints):
+********************************************
+
+define_attribute {p:rgmii2_rxd[3]} {PAP_IO_LOC} {F18}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 32)] | Port rgmii2_rxd[3] has been placed at location F18, whose type is share pin.
+
+define_attribute {p:rgmii2_tx_ctl} {PAP_IO_LOC} {F22}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 46)] | Port rgmii2_tx_ctl has been placed at location F22, whose type is share pin.
+
+define_attribute {p:rgmii2_txd[1]} {PAP_IO_LOC} {E20}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 62)] | Port rgmii2_txd[1] has been placed at location E20, whose type is share pin.
+
+define_attribute {p:rgmii2_txd[2]} {PAP_IO_LOC} {E22}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 70)] | Port rgmii2_txd[2] has been placed at location E22, whose type is share pin.
+
+define_attribute {p:rgmii2_txd[3]} {PAP_IO_LOC} {F21}
+	C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 78)] | Port rgmii2_txd[3] has been placed at location F21, whose type is share pin.
+
+
+Constraints with issues:
+********************************************
+
+
+Issues without commands:
+********************************************
+
+
+Unconstrained ports:
+********************************************
+
+
+Constraints with matching wildcard expressions:
+********************************************
+
+set_input_delay -clock [get_clocks {eth2_rxc}] -clock_fall -add_delay -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+	I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+	I: port rgmii2_rxd[0]
+	I: port rgmii2_rxd[1]
+	I: port rgmii2_rxd[2]
+	I: port rgmii2_rxd[3]
+
+set_input_delay -clock [get_clocks {eth2_rxc}] -clock_fall -add_delay -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+	I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+	I: port rgmii2_rxd[0]
+	I: port rgmii2_rxd[1]
+	I: port rgmii2_rxd[2]
+	I: port rgmii2_rxd[3]
+
+set_input_delay -clock [get_clocks {eth2_rxc}] -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+	I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+	I: port rgmii2_rxd[0]
+	I: port rgmii2_rxd[1]
+	I: port rgmii2_rxd[2]
+	I: port rgmii2_rxd[3]
+
+set_input_delay -clock [get_clocks {eth2_rxc}] -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+	I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+	I: port rgmii2_rxd[0]
+	I: port rgmii2_rxd[1]
+	I: port rgmii2_rxd[2]
+	I: port rgmii2_rxd[3]
+
+

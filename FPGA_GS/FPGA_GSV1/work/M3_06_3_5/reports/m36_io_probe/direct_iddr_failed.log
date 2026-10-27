@@ -1,0 +1,1391 @@
+License checkout: fabric_shell from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling architecture definition.
+W: Warning : The license will invalid in 13 days. In order not to affect your usage, please update the license in time.
+
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+Executing : add_design top.v
+Executing : add_design top.v successfully.
+Executing : add_design io.v
+Executing : add_design io.v successfully.
+Executing : add_constraint io.fdc
+Executing : add_constraint io.fdc successfully.
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484
+Executing : set_arch -family Logos -device PGL50H -speedgrade -6 -package FBG484 successfully.
+
+
+Executing : compile -top_module io_probe
+
+
+Process "Compile" started.
+Current time: Wed Oct 21 20:31:00 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+License checkout: fabric_ads from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+I: Enable Verilog2k features and keywords
+Start rtl-analyze.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v
+I: Verilog-0001: Analyzing file E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v
+I: Verilog-0002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v(line number: 1)] Analyzing module io_probe (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v successfully.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v
+I: Verilog-0001: Analyzing file E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v
+I: Verilog-0002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 23)] Analyzing module m36_rgmii_probe (library work)
+Parsing done.
+Executing : .rtl_analyze -work work -include_path {E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe} E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v successfully.
+I: Module "io_probe" is set as top module.
+Executing : rtl-analyze successfully. Time elapsed: 1.209s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-elaborate.
+I: Verilog-0003: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v(line number: 1)] Elaborating module io_probe
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/top.v(line number: 6)] Elaborating instance io
+I: Verilog-0003: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 23)] Elaborating module m36_rgmii_probe
+I: Module instance {io_probe/io} parameter value:
+    DELAY_STEP = 8'b00001111
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 66)] Elaborating instance tx_data_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 77)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 66)] Elaborating instance tx_data_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 77)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 66)] Elaborating instance tx_data_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 77)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 66)] Elaborating instance tx_data_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 77)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 91)] Elaborating instance tx_ctl_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 102)] Elaborating instance gtp_outbuft1
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 115)] Elaborating instance tx_clk_oddr
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 125)] Elaborating instance gtp_outbuft6
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 177)] Elaborating instance rx_iobuf
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 178)] Elaborating instance GTP_CLKBUFG_RXSHFT
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 187)] Elaborating instance u_rgmii_rx_ctl_ibuf
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 202)] Elaborating instance gmii_ctl_in
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 231)] Elaborating instance u_rgmii_rxd_ibuf
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 240)] Elaborating instance gmii_rxd_in
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 231)] Elaborating instance u_rgmii_rxd_ibuf
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 240)] Elaborating instance gmii_rxd_in
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 231)] Elaborating instance u_rgmii_rxd_ibuf
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 240)] Elaborating instance gmii_rxd_in
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 231)] Elaborating instance u_rgmii_rxd_ibuf
+I: Verilog-0004: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number: 240)] Elaborating instance gmii_rxd_in
+Executing : rtl-elaborate successfully. Time elapsed: 0.002s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-prep.
+Executing : rtl-prep successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-infer.
+Start DFF-inference.
+Executing : DFF-inference successfully.
+Executing : rtl-infer successfully. Time elapsed: 0.004s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-control-opt.
+Executing : rtl-control-opt successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start rtl-data-opt.
+Executing : rtl-data-opt successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start FSM inference.
+Executing : FSM inference successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start sdm2adm.
+W: Loop was found during constant probe.
+Executing : sdm2adm successfully. Time elapsed: 0.004s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Saving design to DB.
+Action compile: Real time elapsed is 0h:0m:3s
+Action compile: CPU time elapsed is 0h:0m:0s
+Action compile: Process CPU time elapsed is 0h:0m:0s
+Current time: Wed Oct 21 20:31:02 2026
+Action compile: Peak memory pool usage is 140 MB
+Action from compile to compile: Total Real Time elapsed is 0h:0m:3s
+Action from compile to compile: Total CPU time elapsed is 0h:0m:0s
+Action from compile to compile: Total Process CPU Time elapsed is 0h:0m:0s
+Process "Compile" done.
+Executing : compile -top_module io_probe successfully.
+
+
+Executing : synthesize -ads -selected_syn_tool_opt 2
+
+
+Process "Synthesize" started.
+Current time: Wed Oct 21 20:31:02 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+License checkout: fabric_ads from E:\zhoumian\FPGA\old_GAP\new_pds_F4A80DA47D72.lic
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Reading design from compile DB
+Reading design from compile DB successfully.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Constraint check start.
+Compiling prim grid devices.
+Building architecture model.
+Loading device packaging model.
+Building architecture floorplan logic view.
+Executing : get_ports sys_clk
+Executing : get_ports sys_clk successfully.
+Executing : create_clock -name sys_clk [get_ports sys_clk] -period 20
+Executing : create_clock -name sys_clk [get_ports sys_clk] -period 20 successfully.
+Executing : get_ports rgmii2_rxc
+Executing : get_ports rgmii2_rxc successfully.
+Executing : create_clock -name eth2_rxc [get_ports rgmii2_rxc] -period 8
+Executing : create_clock -name eth2_rxc [get_ports rgmii2_rxc] -period 8 successfully.
+Executing : get_clocks sys_clk
+Executing : get_clocks sys_clk successfully.
+Executing : set_clock_groups -asynchronous -group [get_clocks sys_clk]
+Executing : set_clock_groups -asynchronous -group [get_clocks sys_clk] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}
+I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+I: port rgmii2_rxd[0]
+I: port rgmii2_rxd[1]
+I: port rgmii2_rxd[2]
+I: port rgmii2_rxd[3]
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl} successfully.
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}
+I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+I: port rgmii2_rxd[0]
+I: port rgmii2_rxd[1]
+I: port rgmii2_rxd[2]
+I: port rgmii2_rxd[3]
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl} successfully.
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}
+I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+I: port rgmii2_rxd[0]
+I: port rgmii2_rxd[1]
+I: port rgmii2_rxd[2]
+I: port rgmii2_rxd[3]
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl} successfully.
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -clock_fall -add_delay -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -clock_fall -add_delay -max 2.800 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}] successfully.
+Executing : get_clocks eth2_rxc
+Executing : get_clocks eth2_rxc successfully.
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}
+I: The pattern 'rgmii2_rxd[*]' in command 'get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}' match 4 objects below:
+I: port rgmii2_rxd[0]
+I: port rgmii2_rxd[1]
+I: port rgmii2_rxd[2]
+I: port rgmii2_rxd[3]
+Executing : get_ports {rgmii2_rxd[*] rgmii2_rx_ctl} successfully.
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -clock_fall -add_delay -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}]
+Executing : set_input_delay -clock [get_clocks eth2_rxc] -clock_fall -add_delay -min 1.200 [get_ports {rgmii2_rxd[*] rgmii2_rx_ctl}] successfully.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 32)] | Port rgmii2_rxd[3] has been placed at location F18, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 46)] | Port rgmii2_tx_ctl has been placed at location F22, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 62)] | Port rgmii2_txd[1] has been placed at location E20, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 70)] | Port rgmii2_txd[2] has been placed at location E22, whose type is share pin.
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.fdc(line number: 78)] | Port rgmii2_txd[3] has been placed at location F21, whose type is share pin.
+Constraint check end.
+
+Start pre-mapping.
+Executing : pre-mapping successfully. Time elapsed: 0.025s wall, 0.016s user + 0.000s system = 0.016s CPU (62.0%)
+
+Start mod-gen.
+I: Constant propagation done on N6_sum0 (bmsREDXOR).
+I: Constant propagation done on N6_ab0 (bmsREDAND).
+I: Constant propagation done on N6_bc0 (bmsREDAND).
+I: Constant propagation done on N6_ac0 (bmsREDAND).
+I: Constant propagation done on N6_sum1 (bmsREDXOR).
+I: Constant propagation done on N6_ab1 (bmsREDAND).
+I: Constant propagation done on N6_bc1 (bmsREDAND).
+I: Constant propagation done on N6_sum2 (bmsREDXOR).
+I: Constant propagation done on N6_ab2 (bmsREDAND).
+I: Constant propagation done on N6_bc2 (bmsREDAND).
+Executing : mod-gen successfully. Time elapsed: 0.013s wall, 0.016s user + 0.000s system = 0.016s CPU (122.4%)
+
+Start logic-optimization.
+Executing : logic-optimization successfully. Time elapsed: 0.011s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start tech-mapping phase 1.
+Executing : tech-mapping phase 1 successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start tech-mapping phase 2.
+Executing : tech-mapping phase 2 successfully. Time elapsed: 0.015s wall, 0.000s user + 0.062s system = 0.062s CPU (428.2%)
+
+Start tech-optimization.
+Executing : tech-optimization successfully. Time elapsed: 0.008s wall, 0.016s user + 0.016s system = 0.031s CPU (402.6%)
+
+Start phys-optimization.
+Executing : phys-optimization successfully. Time elapsed: 0.000s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+Start restore-hierarchy.
+Executing : restore-hierarchy successfully. Time elapsed: 0.001s wall, 0.000s user + 0.000s system = 0.000s CPU (n/a%)
+
+
+Cell Usage:
+GTP_CLKBUFG                   1 use
+GTP_DFF                      18 uses
+GTP_DFF_E                     4 uses
+GTP_GRS                       1 use
+GTP_IOCLKBUF                  1 use
+GTP_ISERDES                   5 uses
+GTP_LUT1                      1 use
+GTP_LUT2                      2 uses
+GTP_LUT3                      1 use
+GTP_LUT4                      2 uses
+GTP_LUT5CARRY                 9 uses
+GTP_OSERDES                   6 uses
+
+I/O ports: 13
+GTP_INBUF                   7 uses
+GTP_OUTBUFT                 6 uses
+
+Mapping Summary:
+Total LUTs: 15 of 42800 (0.04%)
+	LUTs as dram: 0 of 17000 (0.00%)
+	LUTs as logic: 15
+Total Registers: 22 of 64200 (0.03%)
+Total Latches: 0
+
+DRM18K:
+Total DRM18K = 0.0 of 134 (0.00%)
+
+APMs:
+Total APMs = 0.00 of 84 (0.00%)
+
+Total I/O ports = 13 of 296 (4.39%)
+
+
+Overview of Control Sets:
+
+Number of unique control sets : 2
+
+Histogram:
+**************************************************************
+  Fanout      | Count    | Sync Set/Reset    Async Set/Reset
+--------------------------------------------------------------
+  [0, 2)      | 0        | 0                 0
+  [2, 4)      | 0        | 0                 0
+  [4, 6)      | 1        | 1                 0
+  [6, 8)      | 0        | 0                 0
+  [8, 10)     | 0        | 0                 0
+  [10, 12)    | 0        | 0                 0
+  [12, 14)    | 0        | 0                 0
+  [14, 16)    | 0        | 0                 0
+  [16, Inf)   | 1        | 1                 0
+--------------------------------------------------------------
+  The maximum fanout: 18
+==============================================================
+
+Flip-Flop Distribution:
+************************************************************************
+  Clock Enable    Sync Set/Reset    Async Set/Reset    Total Registers
+------------------------------------------------------------------------
+  NO              NO                NO                 18
+  NO              NO                YES                0
+  NO              YES               NO                 0
+  YES             NO                NO                 4
+  YES             NO                YES                0
+  YES             YES               NO                 0
+========================================================================
+
+Latch Distribution:
+************************************************
+  Gate Enable    Preset/Clear    Total Latches
+************************************************
+  NO             NO              0
+  NO             YES             0
+  YES            NO              0
+  YES            YES             0
+************************************************
+
+Design 'io_probe' has been successfully synthesized to architecture-specific objects.
+Saving design to DB.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND6'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND7'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND14[0]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND9'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND14[1]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND11'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND14[2]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND13'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND14[3]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[0]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[1]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[2]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[3]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[4]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[5]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[6]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND8[7]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[0]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[1]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[2]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[3]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[4]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[5]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[6]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND10[7]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND12[0]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND12[1]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND12[2]'.
+I: Adm-6003: Trying to disconnect un-connected pin 'Z[0]' of instance 'ND12[3]'.
+Saving design to io_probe_syn.vm
+Constructing timing graph ...
+Timing graph has been constructed successfully
+W: Timing-4087: Port 'rgmii2_tx_ctl' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txc' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[0]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[1]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[2]' is not constrained, it is treated as combinational output.
+W: Timing-4087: Port 'rgmii2_txd[3]' is not constrained, it is treated as combinational output.
+Action synthesize: Real time elapsed is 0h:0m:3s
+Action synthesize: CPU time elapsed is 0h:0m:2s
+Action synthesize: Process CPU time elapsed is 0h:0m:2s
+Current time: Wed Oct 21 20:31:04 2026
+Action synthesize: Peak memory pool usage is 266 MB
+Action from compile to synthesize: Total Real Time elapsed is 0h:0m:6s
+Action from compile to synthesize: Total CPU time elapsed is 0h:0m:2s
+Action from compile to synthesize: Total Process CPU Time elapsed is 0h:0m:2s
+Process "Synthesize" done.
+Executing : synthesize -ads -selected_syn_tool_opt 2 successfully.
+
+
+Executing : dev_map
+
+
+Process "Device Map" started.
+Current time: Wed Oct 21 20:31:05 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Loading technology operator library.
+Compiling technology operator library.
+Compiling technology operator (valence) library.
+Compiling operator packing rules.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Compiling tech operator impls.
+Building architecture model.
+Loading device packaging model.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 111555
+
+Flattening design 'io_probe'
+Device mapping started.
+Optimizing circuit logic.
+Checking design netlist.
+Processing tech operator.
+I: The instance clkbufg_0(GTP_CLKBUFG) has been inserted on the net nt_sys_clk in design, driver pin O(instance sys_clk_ibuf) -> load pin CLK(instance reset_count[0]).
+Converting tech operator to gate operator.
+Processing gate operator.
+I: Infer CARRY group, base inst: N8_0/gateop, insts:9.
+Device Utilization Summary:
++------------------------------------------------------------------------+
+| Logic Utilization     | Used     | Available     | Utilization(%)     
++------------------------------------------------------------------------+
+| APM                   | 0        | 84            | 0                  
+| IOCKDLY               | 0        | 40            | 0                  
+| FF                    | 22       | 64200         | 1                  
+| LUT                   | 15       | 42800         | 1                  
+| Distributed RAM       | 0        | 17000         | 0                  
+| DLL                   | 0        | 10            | 0                  
+| DQSL                  | 0        | 18            | 0                  
+| DRM                   | 0        | 134           | 0                  
+| FUSECODE              | 0        | 1             | 0                  
+| IO                    | 13       | 296           | 5                  
+| IOCKDIV               | 0        | 20            | 0                  
+| IOCKGATE              | 1        | 20            | 5                  
+| IPAL                  | 0        | 1             | 0                  
+| PLL                   | 0        | 5             | 0                  
+| RCKB                  | 0        | 24            | 0                  
+| SCANCHAIN             | 0        | 2             | 0                  
+| START                 | 0        | 1             | 0                  
+| USCM                  | 2        | 30            | 7                  
+| HSST                  | 0        | 1             | 0                  
+| OSC                   | 0        | 1             | 0                  
+| CRYSTAL               | 0        | 2             | 0                  
+| RESCAL                | 0        | 4             | 0                  
+| UDID                  | 0        | 1             | 0                  
+| PCIE                  | 0        | 1             | 0                  
++------------------------------------------------------------------------+
+
+Device mapping done.
+Total device mapping takes 0.00 sec.
+
+Design 'io_probe' has been successfully mapped to architecture-specific objects.
+Saving design to DB.
+Action dev_map: Real time elapsed is 0h:0m:3s
+Action dev_map: CPU time elapsed is 0h:0m:2s
+Action dev_map: Process CPU time elapsed is 0h:0m:2s
+Current time: Wed Oct 21 20:31:07 2026
+Action dev_map: Peak memory pool usage is 235 MB
+Action from compile to dev_map: Total Real Time elapsed is 0h:0m:9s
+Action from compile to dev_map: Total CPU time elapsed is 0h:0m:4s
+Action from compile to dev_map: Total Process CPU Time elapsed is 0h:0m:4s
+Process "Device Map" done.
+Executing : dev_map successfully.
+
+
+Executing : pnr -gplace_seed 5 -fix_hold_violation -fix_hold_violation_iterations 4 -fix_hold_violation_in_route TRUE
+
+
+Process "Place & Route" started.
+Current time: Wed Oct 21 20:31:07 2026
+Compiling architecture definition.
+Analyzing project file 'E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/flow.pds'.
+Compiling verification operator library.
+Compiling common defs.
+Compiling prim grid devices.
+Compiling gate devices.
+Compiling gate operators.
+Building architecture model.
+Loading device packaging model.
+pnr strategy configuration : 
+strategy name : 0
+Building architecture floorplan logic view.
+Constraint check start.
+Executing : def_port {rgmii2_tx_ctl} LOC=F22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 3)] | Port rgmii2_tx_ctl has been placed at location F22, whose type is share pin.
+Executing : def_port {rgmii2_tx_ctl} LOC=F22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txc} LOC=C20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+Executing : def_port {rgmii2_txc} LOC=C20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txd[0]} LOC=C22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+Executing : def_port {rgmii2_txd[0]} LOC=C22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txd[1]} LOC=E20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 6)] | Port rgmii2_txd[1] has been placed at location E20, whose type is share pin.
+Executing : def_port {rgmii2_txd[1]} LOC=E20 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txd[2]} LOC=E22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 7)] | Port rgmii2_txd[2] has been placed at location E22, whose type is share pin.
+Executing : def_port {rgmii2_txd[2]} LOC=E22 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_txd[3]} LOC=F21 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 8)] | Port rgmii2_txd[3] has been placed at location F21, whose type is share pin.
+Executing : def_port {rgmii2_txd[3]} LOC=F21 VCCIO=3.3 IOSTANDARD=LVCMOS33 DRIVE=4 SLEW=FAST NONE=TRUE successfully
+Executing : def_port {rgmii2_rx_ctl} LOC=B21 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE
+Executing : def_port {rgmii2_rx_ctl} LOC=B21 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxc} LOC=M19 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE
+Executing : def_port {rgmii2_rxc} LOC=M19 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxd[0]} LOC=B22 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE
+Executing : def_port {rgmii2_rxd[0]} LOC=B22 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxd[1]} LOC=D21 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE
+Executing : def_port {rgmii2_rxd[1]} LOC=D21 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxd[2]} LOC=D22 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE
+Executing : def_port {rgmii2_rxd[2]} LOC=D22 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE successfully
+Executing : def_port {rgmii2_rxd[3]} LOC=F18 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE
+C: ConstraintEditor-2002: [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/device_map/io_probe.pcf(line number: 14)] | Port rgmii2_rxd[3] has been placed at location F18, whose type is share pin.
+Executing : def_port {rgmii2_rxd[3]} LOC=F18 VCCIO=3.3 IOSTANDARD=LVCMOS33 NONE=TRUE successfully
+Executing : def_port {sys_clk} LOC=P20 VCCIO=3.3 IOSTANDARD=LVCMOS33
+Executing : def_port {sys_clk} LOC=P20 VCCIO=3.3 IOSTANDARD=LVCMOS33 successfully
+Constraint check end.
+NOTE: The technology fpga was specified.
+NOTE: delay_model specified was generic_cmos.
+NOTE: Using the fpga syntax tables...
+Totals:
+ Calls to malloc = 0
+ Calls to calloc = 5993935
+
+I: Column Clock Check open.
+Read Column Clock Map.
+
+Placement started.
+Phase 1 Pre global placement started.
+Phase 1.1 1st GP placement started.
+Design Utilization : 1%.
+First map gop timing takes 0.03 sec
+Worst slack after clock region global placement is -1586
+Wirelength after clock region global placement is 5004 and checksum is 2EBBFE8BE74CE308.
+1st GP placement takes 1.53 sec.
+
+Phase 1.2 Clock placement started.
+Mapping instance io/rx_iobuf/gopclkgate to IOCKGATE_326_312.
+Mapping instance io/GTP_CLKBUFG_RXSHFT/gopclkbufg to USCM_84_108.
+Mapping instance clkbufg_0/gopclkbufg to USCM_84_109.
+Clock placement takes 0.11 sec.
+
+Wirelength after Pre Global Placement is 5004 and checksum is 2EBBFE8BE74CE308.
+Pre global placement takes 1.72 sec.
+
+Phase 2 Global placement started.
+Phase 2.1 Fixed placement started.
+Placed fixed group with base inst io/gmii_ctl_in/gateigddr_IOL on IOL_327_362.
+Placed fixed group with base inst io/gtp_outbuft1/opit_1_IOL on IOL_327_269.
+Placed fixed group with base inst io/gtp_outbuft6/opit_1_IOL on IOL_327_294.
+Placed fixed group with base inst io/rgmii_rx_data[0].gmii_rxd_in/gateigddr_IOL on IOL_327_361.
+Placed fixed group with base inst io/rgmii_rx_data[1].gmii_rxd_in/gateigddr_IOL on IOL_327_290.
+Placed fixed group with base inst io/rgmii_rx_data[2].gmii_rxd_in/gateigddr_IOL on IOL_327_289.
+Placed fixed group with base inst io/rgmii_rx_data[3].gmii_rxd_in/gateigddr_IOL on IOL_327_370.
+Placed fixed group with base inst io/rgmii_tx_data[0].gtp_outbuft1/opit_1_IOL on IOL_327_293.
+Placed fixed group with base inst io/rgmii_tx_data[1].gtp_outbuft1/opit_1_IOL on IOL_327_266.
+Placed fixed group with base inst io/rgmii_tx_data[2].gtp_outbuft1/opit_1_IOL on IOL_327_265.
+Placed fixed group with base inst io/rgmii_tx_data[3].gtp_outbuft1/opit_1_IOL on IOL_327_270.
+Placed fixed group with base inst rgmii2_rxc_ibuf/opit_1 on IOL_327_217.
+Placed fixed group with base inst sys_clk_ibuf/opit_1 on IOL_327_210.
+Placed fixed instance clkbufg_0/gopclkbufg on USCM_84_109.
+Placed fixed instance io/GTP_CLKBUFG_RXSHFT/gopclkbufg on USCM_84_108.
+Placed fixed instance io/rx_iobuf/gopclkgate on IOCKGATE_326_312.
+Placed fixed instance BKCL_auto_0 on BKCL_328_184.
+Fixed placement takes 0.02 sec.
+
+Phase 2.2 Process placement started.
+Process placement takes 0.00 sec.
+
+Phase 2.3 IO placement started.
+IO placement takes 0.00 sec.
+
+Phase 2.4 2nd GP placement started.
+Run super clustering :
+	Initial slack 1208.
+	1 iterations finished.
+	Final slack 1208.
+Super clustering done.
+Design Utilization : 1%.
+Worst slack after global placement is 1208
+2nd GP placement takes 0.28 sec.
+
+Wirelength after global placement is 522 and checksum is D6D71A567CAC5B16.
+Global placement takes 0.30 sec.
+
+Phase 3 Post global placement started.
+Phase 3.1 Macro cell placement started.
+I: Process macros using "Greedy".
+Wirelength after macro cell placement is 522 and checksum is D6D71A567CAC5B16.
+Macro cell placement takes 0.00 sec.
+
+Phase 3.2 3rd GP placement started.
+Run super clustering :
+	Initial slack 1208.
+	1 iterations finished.
+	Final slack 1208.
+Super clustering done.
+Design Utilization : 1%.
+Worst slack after post global placement is 1208
+3rd GP placement takes 0.31 sec.
+
+Wirelength after post global placement is 522 and checksum is D6D71A567CAC5B16.
+Post global placement takes 0.31 sec.
+
+Phase 4 Legalization started.
+The average distance in LP is 2.000000.
+Wirelength after legalization is 578 and checksum is 705BD7B03E8F8630.
+Legalization takes 0.02 sec.
+
+Phase 5 Timing-driven detailed placement started.
+Phase 5.1 Replication placement started.
+Worst slack before Replication Place is 1208.
+Replication placement takes 0.00 sec.
+
+Wirelength after replication placement is 578 and checksum is 705BD7B03E8F8630.
+Phase 5.2 DP placement started.
+Legalized cost 1208.000000.
+The detailed placement ends at 0th iteration.
+DP placement takes 0.00 sec.
+
+Wirelength after detailed placement is 578 and checksum is 705BD7B03E8F8630.
+Timing-driven detailed placement takes 0.00 sec.
+
+Worst slack is 1208, TNS after placement is 0.
+Placement done.
+Total placement takes 2.36 sec.
+Finished placement.
+
+Routing started.
+Building routing graph takes 1.11 sec.
+Worst slack is 1208, TNS before global route is 0.
+Processing design graph takes 0.17 sec.
+Total memory for routing:
+	115.213961 M.
+Total nets for routing : 74.
+Global Routing step 1 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 1 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 2 processed 0 nets, it takes 0.00 sec.
+Rcf routing step 3 processed 0 nets, it takes 0.00 sec.
+Unrouted nets 0 at the end of iteration 0.
+Global Routing step 1 processed 15 nets, it takes 0.00 sec.
+Unrouted nets 14 at the end of iteration 0.
+Unrouted nets 4 at the end of iteration 1.
+Unrouted nets 2 at the end of iteration 2.
+Unrouted nets 0 at the end of iteration 3.
+Global Routing step 2 processed 33 nets, it takes 0.03 sec.
+Global Routing step 3 processed 0 nets, it takes 0.00 sec.
+Global routing takes 0.05 sec.
+Total 74 subnets.
+    forward max bucket size 496 , backward 14.
+        Unrouted nets 7 at the end of iteration 0.
+    route iteration 0, CPU time elapsed 0.015625 sec.
+    forward max bucket size 390 , backward 8.
+        Unrouted nets 1 at the end of iteration 1.
+    route iteration 1, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 2.
+    route iteration 2, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 3.
+    route iteration 3, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 4.
+    route iteration 4, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 5.
+    route iteration 5, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 6.
+    route iteration 6, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 7.
+    route iteration 7, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 8.
+    route iteration 8, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 9.
+    route iteration 9, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 10.
+    route iteration 10, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 11.
+    route iteration 11, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 12.
+    route iteration 12, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 13.
+    route iteration 13, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 14.
+    route iteration 14, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 15.
+    route iteration 15, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 16.
+    route iteration 16, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 17.
+    route iteration 17, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 18.
+    route iteration 18, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 19.
+    route iteration 19, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 20.
+    route iteration 20, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 21.
+    route iteration 21, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 22.
+    route iteration 22, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 23.
+    route iteration 23, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 24.
+    route iteration 24, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 25.
+    route iteration 25, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 26.
+    route iteration 26, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 27.
+    route iteration 27, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 28.
+    route iteration 28, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 29.
+    route iteration 29, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 30.
+    route iteration 30, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 31.
+    route iteration 31, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 32.
+    route iteration 32, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 33.
+    route iteration 33, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 34.
+    route iteration 34, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 35.
+    route iteration 35, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 36.
+    route iteration 36, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 37.
+    route iteration 37, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 38.
+    route iteration 38, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 39.
+    route iteration 39, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 40.
+    route iteration 40, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 41.
+    route iteration 41, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 42.
+    route iteration 42, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 43.
+    route iteration 43, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 44.
+    route iteration 44, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 45.
+    route iteration 45, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 46.
+    route iteration 46, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 47.
+    route iteration 47, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 48.
+    route iteration 48, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 49.
+    route iteration 49, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 50.
+    route iteration 50, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 51.
+    route iteration 51, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 52.
+    route iteration 52, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 53.
+    route iteration 53, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 54.
+    route iteration 54, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 55.
+    route iteration 55, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 56.
+    route iteration 56, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 57.
+    route iteration 57, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 58.
+    route iteration 58, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 59.
+    route iteration 59, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 60.
+    route iteration 60, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 61.
+    route iteration 61, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 62.
+    route iteration 62, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 63.
+    route iteration 63, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 64.
+    route iteration 64, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 65.
+    route iteration 65, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 66.
+    route iteration 66, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 67.
+    route iteration 67, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 68.
+    route iteration 68, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 69.
+    route iteration 69, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 70.
+    route iteration 70, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 71.
+    route iteration 71, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 72.
+    route iteration 72, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 73.
+    route iteration 73, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 74.
+    route iteration 74, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 75.
+    route iteration 75, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 76.
+    route iteration 76, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 77.
+    route iteration 77, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 78.
+    route iteration 78, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 79.
+    route iteration 79, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 80.
+    route iteration 80, CPU time elapsed 0.000000 sec.
+    forward max bucket size 3 , backward 1.
+        Unrouted nets 1 at the end of iteration 81.
+    route iteration 81, CPU time elapsed 0.000000 sec.
+Detailed routing takes 81 iterations
+    Unrouted nets 1 at the end of fading iteration 11.
+    Unrouted nets 1 at the end of fading iteration 10.
+    Unrouted nets 1 at the end of fading iteration 9.
+    Unrouted nets 1 at the end of fading iteration 8.
+    Unrouted nets 1 at the end of fading iteration 7.
+    Unrouted nets 1 at the end of fading iteration 6.
+    Unrouted nets 1 at the end of fading iteration 5.
+    Unrouted nets 1 at the end of fading iteration 4.
+    Unrouted nets 1 at the end of fading iteration 3.
+    Unrouted nets 1 at the end of fading iteration 2.
+    Unrouted nets 1 at the end of fading iteration 1.
+Fading routing takes 11 iterations.
+    Unrouted nets 1 at the end of congested iteration 201.
+
+    Unrouted nets 1 at the end of congested iteration 200.
+
+    Unrouted nets 1 at the end of congested iteration 199.
+
+    Unrouted nets 1 at the end of congested iteration 198.
+
+    Unrouted nets 1 at the end of congested iteration 197.
+
+    Unrouted nets 1 at the end of congested iteration 196.
+
+    Unrouted nets 1 at the end of congested iteration 195.
+
+    Unrouted nets 1 at the end of congested iteration 194.
+
+    Unrouted nets 1 at the end of congested iteration 193.
+
+    Unrouted nets 1 at the end of congested iteration 192.
+
+    Unrouted nets 1 at the end of congested iteration 191.
+
+    Unrouted nets 1 at the end of congested iteration 190.
+
+    Unrouted nets 1 at the end of congested iteration 189.
+
+    Unrouted nets 1 at the end of congested iteration 188.
+
+    Unrouted nets 1 at the end of congested iteration 187.
+
+    Unrouted nets 1 at the end of congested iteration 186.
+
+    Unrouted nets 1 at the end of congested iteration 185.
+
+    Unrouted nets 1 at the end of congested iteration 184.
+
+    Unrouted nets 1 at the end of congested iteration 183.
+
+    Unrouted nets 1 at the end of congested iteration 182.
+
+    Unrouted nets 1 at the end of congested iteration 181.
+
+    Unrouted nets 1 at the end of congested iteration 180.
+
+    Unrouted nets 1 at the end of congested iteration 179.
+
+    Unrouted nets 1 at the end of congested iteration 178.
+
+    Unrouted nets 1 at the end of congested iteration 177.
+
+    Unrouted nets 1 at the end of congested iteration 176.
+
+    Unrouted nets 1 at the end of congested iteration 175.
+
+    Unrouted nets 1 at the end of congested iteration 174.
+
+    Unrouted nets 1 at the end of congested iteration 173.
+
+    Unrouted nets 1 at the end of congested iteration 172.
+
+    Unrouted nets 1 at the end of congested iteration 171.
+
+    Unrouted nets 1 at the end of congested iteration 170.
+
+    Unrouted nets 1 at the end of congested iteration 169.
+
+    Unrouted nets 1 at the end of congested iteration 168.
+
+    Unrouted nets 1 at the end of congested iteration 167.
+
+    Unrouted nets 1 at the end of congested iteration 166.
+
+    Unrouted nets 1 at the end of congested iteration 165.
+
+    Unrouted nets 1 at the end of congested iteration 164.
+
+    Unrouted nets 1 at the end of congested iteration 163.
+
+    Unrouted nets 1 at the end of congested iteration 162.
+
+    Unrouted nets 1 at the end of congested iteration 161.
+
+    Unrouted nets 1 at the end of congested iteration 160.
+
+    Unrouted nets 1 at the end of congested iteration 159.
+
+    Unrouted nets 1 at the end of congested iteration 158.
+
+    Unrouted nets 1 at the end of congested iteration 157.
+
+    Unrouted nets 1 at the end of congested iteration 156.
+
+    Unrouted nets 1 at the end of congested iteration 155.
+
+    Unrouted nets 1 at the end of congested iteration 154.
+
+    Unrouted nets 1 at the end of congested iteration 153.
+
+    Unrouted nets 1 at the end of congested iteration 152.
+
+    Unrouted nets 1 at the end of congested iteration 151.
+
+    Unrouted nets 1 at the end of congested iteration 150.
+
+    Unrouted nets 1 at the end of congested iteration 149.
+
+    Unrouted nets 1 at the end of congested iteration 148.
+
+    Unrouted nets 1 at the end of congested iteration 147.
+
+    Unrouted nets 1 at the end of congested iteration 146.
+
+    Unrouted nets 1 at the end of congested iteration 145.
+
+    Unrouted nets 1 at the end of congested iteration 144.
+
+    Unrouted nets 1 at the end of congested iteration 143.
+
+    Unrouted nets 1 at the end of congested iteration 142.
+
+    Unrouted nets 1 at the end of congested iteration 141.
+
+    Unrouted nets 1 at the end of congested iteration 140.
+
+    Unrouted nets 1 at the end of congested iteration 139.
+
+    Unrouted nets 1 at the end of congested iteration 138.
+
+    Unrouted nets 1 at the end of congested iteration 137.
+
+    Unrouted nets 1 at the end of congested iteration 136.
+
+    Unrouted nets 1 at the end of congested iteration 135.
+
+    Unrouted nets 1 at the end of congested iteration 134.
+
+    Unrouted nets 1 at the end of congested iteration 133.
+
+    Unrouted nets 1 at the end of congested iteration 132.
+
+    Unrouted nets 1 at the end of congested iteration 131.
+
+    Unrouted nets 1 at the end of congested iteration 130.
+
+    Unrouted nets 1 at the end of congested iteration 129.
+
+    Unrouted nets 1 at the end of congested iteration 128.
+
+    Unrouted nets 1 at the end of congested iteration 127.
+
+    Unrouted nets 1 at the end of congested iteration 126.
+
+    Unrouted nets 1 at the end of congested iteration 125.
+
+    Unrouted nets 1 at the end of congested iteration 124.
+
+    Unrouted nets 1 at the end of congested iteration 123.
+
+    Unrouted nets 1 at the end of congested iteration 122.
+
+    Unrouted nets 1 at the end of congested iteration 121.
+
+    Unrouted nets 1 at the end of congested iteration 120.
+
+    Unrouted nets 1 at the end of congested iteration 119.
+
+    Unrouted nets 1 at the end of congested iteration 118.
+
+    Unrouted nets 1 at the end of congested iteration 117.
+
+    Unrouted nets 1 at the end of congested iteration 116.
+
+    Unrouted nets 1 at the end of congested iteration 115.
+
+    Unrouted nets 1 at the end of congested iteration 114.
+
+    Unrouted nets 1 at the end of congested iteration 113.
+
+    Unrouted nets 1 at the end of congested iteration 112.
+
+    Unrouted nets 1 at the end of congested iteration 111.
+
+    Unrouted nets 1 at the end of congested iteration 110.
+
+    Unrouted nets 1 at the end of congested iteration 109.
+
+    Unrouted nets 1 at the end of congested iteration 108.
+
+    Unrouted nets 1 at the end of congested iteration 107.
+
+    Unrouted nets 1 at the end of congested iteration 106.
+
+    Unrouted nets 1 at the end of congested iteration 105.
+
+    Unrouted nets 1 at the end of congested iteration 104.
+
+    Unrouted nets 1 at the end of congested iteration 103.
+
+    Unrouted nets 1 at the end of congested iteration 102.
+
+    Unrouted nets 1 at the end of congested iteration 101.
+
+    Unrouted nets 1 at the end of congested iteration 100.
+
+    Unrouted nets 1 at the end of congested iteration 99.
+
+    Unrouted nets 1 at the end of congested iteration 98.
+
+    Unrouted nets 1 at the end of congested iteration 97.
+
+    Unrouted nets 1 at the end of congested iteration 96.
+
+    Unrouted nets 1 at the end of congested iteration 95.
+
+    Unrouted nets 1 at the end of congested iteration 94.
+
+    Unrouted nets 1 at the end of congested iteration 93.
+
+    Unrouted nets 1 at the end of congested iteration 92.
+
+    Unrouted nets 1 at the end of congested iteration 91.
+
+    Unrouted nets 1 at the end of congested iteration 90.
+
+    Unrouted nets 1 at the end of congested iteration 89.
+
+    Unrouted nets 1 at the end of congested iteration 88.
+
+    Unrouted nets 1 at the end of congested iteration 87.
+
+    Unrouted nets 1 at the end of congested iteration 86.
+
+    Unrouted nets 1 at the end of congested iteration 85.
+
+    Unrouted nets 1 at the end of congested iteration 84.
+
+    Unrouted nets 1 at the end of congested iteration 83.
+
+    Unrouted nets 1 at the end of congested iteration 82.
+
+    Unrouted nets 1 at the end of congested iteration 81.
+
+    Unrouted nets 1 at the end of congested iteration 80.
+
+    Unrouted nets 1 at the end of congested iteration 79.
+
+    Unrouted nets 1 at the end of congested iteration 78.
+
+    Unrouted nets 1 at the end of congested iteration 77.
+
+    Unrouted nets 1 at the end of congested iteration 76.
+
+    Unrouted nets 1 at the end of congested iteration 75.
+
+    Unrouted nets 1 at the end of congested iteration 74.
+
+    Unrouted nets 1 at the end of congested iteration 73.
+
+    Unrouted nets 1 at the end of congested iteration 72.
+
+    Unrouted nets 1 at the end of congested iteration 71.
+
+    Unrouted nets 1 at the end of congested iteration 70.
+
+    Unrouted nets 1 at the end of congested iteration 69.
+
+    Unrouted nets 1 at the end of congested iteration 68.
+
+    Unrouted nets 1 at the end of congested iteration 67.
+
+    Unrouted nets 1 at the end of congested iteration 66.
+
+    Unrouted nets 1 at the end of congested iteration 65.
+
+    Unrouted nets 1 at the end of congested iteration 64.
+
+    Unrouted nets 1 at the end of congested iteration 63.
+
+    Unrouted nets 1 at the end of congested iteration 62.
+
+    Unrouted nets 1 at the end of congested iteration 61.
+
+    Unrouted nets 1 at the end of congested iteration 60.
+
+    Unrouted nets 1 at the end of congested iteration 59.
+
+    Unrouted nets 1 at the end of congested iteration 58.
+
+    Unrouted nets 1 at the end of congested iteration 57.
+
+    Unrouted nets 1 at the end of congested iteration 56.
+
+    Unrouted nets 1 at the end of congested iteration 55.
+
+    Unrouted nets 1 at the end of congested iteration 54.
+
+    Unrouted nets 1 at the end of congested iteration 53.
+
+    Unrouted nets 1 at the end of congested iteration 52.
+
+    Unrouted nets 1 at the end of congested iteration 51.
+
+    Unrouted nets 1 at the end of congested iteration 50.
+
+    Unrouted nets 1 at the end of congested iteration 49.
+
+    Unrouted nets 1 at the end of congested iteration 48.
+
+    Unrouted nets 1 at the end of congested iteration 47.
+
+    Unrouted nets 1 at the end of congested iteration 46.
+
+    Unrouted nets 1 at the end of congested iteration 45.
+
+    Unrouted nets 1 at the end of congested iteration 44.
+
+    Unrouted nets 1 at the end of congested iteration 43.
+
+    Unrouted nets 1 at the end of congested iteration 42.
+
+    Unrouted nets 1 at the end of congested iteration 41.
+
+    Unrouted nets 1 at the end of congested iteration 40.
+
+    Unrouted nets 1 at the end of congested iteration 39.
+
+    Unrouted nets 1 at the end of congested iteration 38.
+
+    Unrouted nets 1 at the end of congested iteration 37.
+
+    Unrouted nets 1 at the end of congested iteration 36.
+
+    Unrouted nets 1 at the end of congested iteration 35.
+
+    Unrouted nets 1 at the end of congested iteration 34.
+
+    Unrouted nets 1 at the end of congested iteration 33.
+
+    Unrouted nets 1 at the end of congested iteration 32.
+
+    Unrouted nets 1 at the end of congested iteration 31.
+
+    Unrouted nets 1 at the end of congested iteration 30.
+
+    Unrouted nets 1 at the end of congested iteration 29.
+
+    Unrouted nets 1 at the end of congested iteration 28.
+
+    Unrouted nets 1 at the end of congested iteration 27.
+
+    Unrouted nets 1 at the end of congested iteration 26.
+
+    Unrouted nets 1 at the end of congested iteration 25.
+
+    Unrouted nets 1 at the end of congested iteration 24.
+
+    Unrouted nets 1 at the end of congested iteration 23.
+
+    Unrouted nets 1 at the end of congested iteration 22.
+
+    Unrouted nets 1 at the end of congested iteration 21.
+
+    Unrouted nets 1 at the end of congested iteration 20.
+
+    Unrouted nets 1 at the end of congested iteration 19.
+
+    Unrouted nets 1 at the end of congested iteration 18.
+
+    Unrouted nets 1 at the end of congested iteration 17.
+
+    Unrouted nets 1 at the end of congested iteration 16.
+
+    Unrouted nets 1 at the end of congested iteration 15.
+
+    Unrouted nets 1 at the end of congested iteration 14.
+
+    Unrouted nets 1 at the end of congested iteration 13.
+
+    Unrouted nets 1 at the end of congested iteration 12.
+
+    Unrouted nets 1 at the end of congested iteration 11.
+
+    Unrouted nets 1 at the end of congested iteration 10.
+
+    Unrouted nets 1 at the end of congested iteration 9.
+
+    Unrouted nets 1 at the end of congested iteration 8.
+
+    Unrouted nets 1 at the end of congested iteration 7.
+
+    Unrouted nets 1 at the end of congested iteration 6.
+
+    Unrouted nets 1 at the end of congested iteration 5.
+
+    Unrouted nets 1 at the end of congested iteration 4.
+
+    Unrouted nets 1 at the end of congested iteration 3.
+
+    Unrouted nets 1 at the end of congested iteration 2.
+
+I: The last route iteration fail design net io/rx_ioclk source from [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number:176)]
+I: Route-6004: Last route iteration: design net io/rx_ioclk, driver io/rx_iobuf/gopclkgate:OUT, load io/rgmii_rx_data[1].gmii_rxd_in/gateigddr_IOL:SYSCLK.
+I: Route-6003: Last route iteration: net io/rx_ioclk, driver IOCKGATE_326_312 OUT, load IOL_327_290 CLK_SYS.
+I: The last route iteration fail design net io/rx_ioclk source from [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number:176)]
+I: Route-6004: Last route iteration: design net io/rx_ioclk, driver io/rx_iobuf/gopclkgate:OUT, load io/rgmii_rx_data[2].gmii_rxd_in/gateigddr_IOL:SYSCLK.
+I: Route-6003: Last route iteration: net io/rx_ioclk, driver IOCKGATE_326_312 OUT, load IOL_327_289 CLK_SYS.
+I: The last route iteration fail design net io/rx_ioclk source from [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number:176)]
+I: Route-6004: Last route iteration: design net io/rx_ioclk, driver io/rx_iobuf/gopclkgate:OUT, load io/gmii_ctl_in/gateigddr_IOL:SYSCLK.
+I: Route-6003: Last route iteration: net io/rx_ioclk, driver IOCKGATE_326_312 OUT, load IOL_327_362 CLK_SYS.
+I: The last route iteration fail design net io/rx_ioclk source from [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number:176)]
+I: Route-6004: Last route iteration: design net io/rx_ioclk, driver io/rx_iobuf/gopclkgate:OUT, load io/rgmii_rx_data[0].gmii_rxd_in/gateigddr_IOL:SYSCLK.
+I: Route-6003: Last route iteration: net io/rx_ioclk, driver IOCKGATE_326_312 OUT, load IOL_327_361 CLK_SYS.
+I: The last route iteration fail design net io/rx_ioclk source from [E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/work/M3_06_3_5/reports/m36_io_probe/io.v(line number:176)]
+I: Route-6004: Last route iteration: design net io/rx_ioclk, driver io/rx_iobuf/gopclkgate:OUT, load io/rgmii_rx_data[3].gmii_rxd_in/gateigddr_IOL:SYSCLK.
+I: Route-6003: Last route iteration: net io/rx_ioclk, driver IOCKGATE_326_312 OUT, load IOL_327_370 CLK_SYS.
+    Unrouted nets 1 at the end of congested iteration 1.
+
+Congestion routing takes 201 iterations.
+Design cannot be routed.
+
+C: Route-2014: Design net io/rx_ioclk can not be routed from driver IOCKGATE_326_312:OUT to load IOL_327_362:CLK_SYS.
+C: Route-2014: Design net io/rx_ioclk can not be routed from driver IOCKGATE_326_312:OUT to load IOL_327_361:CLK_SYS.
+C: Route-2014: Design net io/rx_ioclk can not be routed from driver IOCKGATE_326_312:OUT to load IOL_327_290:CLK_SYS.
+C: Route-2014: Design net io/rx_ioclk can not be routed from driver IOCKGATE_326_312:OUT to load IOL_327_289:CLK_SYS.
+C: Route-2014: Design net io/rx_ioclk can not be routed from driver IOCKGATE_326_312:OUT to load IOL_327_370:CLK_SYS.
+You may use the PAP_CLOCK_DEDICATED_ROUTE constraint in the .fdc file to allow routed by SRB.
+You can find the related information of the nets {io/rx_ioclk} to set the attribute.
+These following examples can be referenced in the .fdc file to override this clock rule, or you can find the actual object in the UCE GUI.
+define_attribute {n:io/rx_ioclk} {PAP_CLOCK_DEDICATED_ROUTE} {FALSE}
+Detailed routing takes 0.05 sec.
+
+Dispose routing result:
+    Collect routing result.
+    Delete unused device instances.
+    Annotate routing result.
+    Change LUT configuration.
+    Dispose misc instances.
+    Annotate routing result again.
+Finish routing takes 0.00 sec.
+Used SRB routing arc is 243.
+Cleanup routing takes 0.02 sec.
+Routing failed.
+Total routing takes 1.73 sec.
+
+
+Device Utilization Summary :
++---------------------------------------------------------------------------+
+| Logic Utilization        | Used     | Available     | Utilization(%)     
++---------------------------------------------------------------------------+
+| Use of APM               | 0        | 84            | 0                  
+| Use of BKCL              | 1        | 4             | 25                 
+| Use of CLMA              | 3        | 6450          | 1                  
+|   FF                     | 6        | 38700         | 1                  
+|   LUT                    | 5        | 25800         | 1                  
+|   LUT-FF pairs           | 4        | 25800         | 1                  
+| Use of CLMS              | 6        | 4250          | 1                  
+|   FF                     | 16       | 25500         | 1                  
+|   LUT                    | 10       | 17000         | 1                  
+|   LUT-FF pairs           | 2        | 17000         | 1                  
+|   Distributed RAM        | 0        | 17000         | 0                  
+| Use of CRYSTAL           | 0        | 2             | 0                  
+| Use of DLL               | 0        | 10            | 0                  
+| Use of DQSL              | 0        | 18            | 0                  
+| Use of DRM               | 0        | 134           | 0                  
+| Use of FUSECODE          | 0        | 1             | 0                  
+| Use of HARD0N1           | 7        | 6672          | 1                  
+| Use of HSST              | 0        | 1             | 0                  
+| Use of IO                | 13       | 296           | 5                  
+|   IOBD                   | 0        | 64            | 0                  
+|   IOBR_LR                | 1        | 7             | 15                 
+|   IOBR_TB                | 0        | 8             | 0                  
+|   IOBS_LR                | 12       | 161           | 8                  
+|   IOBS_TB                | 0        | 56            | 0                  
+| Use of IOCKDIV           | 0        | 20            | 0                  
+| Use of IOCKDLY           | 0        | 40            | 0                  
+| Use of IOCKGATE          | 1        | 20            | 5                  
+| Use of IOCKGMUX_TEST     | 0        | 20            | 0                  
+| Use of IOL               | 13       | 400           | 4                  
+| Use of IPAL              | 0        | 1             | 0                  
+| Use of LDO               | 0        | 4             | 0                  
+| Use of MFG_TEST          | 0        | 1             | 0                  
+| Use of OSC               | 0        | 1             | 0                  
+| Use of PCIE              | 0        | 1             | 0                  
+| Use of PIOMUX_TEST       | 0        | 10            | 0                  
+| Use of PLL               | 0        | 5             | 0                  
+| Use of PREGMUX_TEST      | 0        | 6             | 0                  
+| Use of RCKB              | 0        | 24            | 0                  
+|  RCKB dataused           | 0        | 24            | 0                  
+| Use of RCKBMUX_TEST      | 0        | 12            | 0                  
+| Use of RESCAL            | 0        | 4             | 0                  
+| Use of SCANCHAIN         | 0        | 2             | 0                  
+| Use of START             | 1        | 1             | 100                
+| Use of UDID              | 0        | 1             | 0                  
+| Use of USCM              | 2        | 30            | 7                  
+|  USCM dataused           | 0        | 30            | 0                  
+| Use of USCMMUX_TEST      | 0        | 30            | 0                  
+| Use of VCKBMUX_TEST      | 0        | 12            | 0                  
++---------------------------------------------------------------------------+
+
+E: Route-0008: Design cannot be routed.
+Action pnr: Real time elapsed is 0h:0m:11s
+Action pnr: CPU time elapsed is 0h:0m:8s
+Action pnr: Process CPU time elapsed is 0h:0m:8s
+Current time: Wed Oct 21 20:31:17 2026
+Action pnr: Peak memory pool usage is 880 MB
+E: Failed to execute the script : 
