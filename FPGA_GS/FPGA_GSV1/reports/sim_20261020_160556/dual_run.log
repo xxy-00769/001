@@ -1,0 +1,44 @@
+SOF src=0 tag=0 accept=1 active=0 rows=0 cols=0
+FIRST_INPUT src=0 col=0 rgb=0000 wraddr=000 enable=1 wen=0 x=0 reset=0
+FIRST_INPUT src=0 col=1 rgb=9e37 wraddr=000 enable=1 wen=0 x=1 reset=0
+FIRST_INPUT src=0 col=2 rgb=3c6e wraddr=000 enable=1 wen=1 x=2 reset=0
+FIRST_INPUT src=0 col=3 rgb=daa5 wraddr=001 enable=1 wen=0 x=3 reset=0
+SOF src=1 tag=0 accept=1 active=0 rows=0 cols=0
+FIRST_INPUT src=1 col=0 rgb=4ac3 wraddr=000 enable=1 wen=0 x=0 reset=0
+FIRST_INPUT src=1 col=1 rgb=d4f4 wraddr=000 enable=1 wen=0 x=1 reset=0
+FIRST_INPUT src=1 col=2 rgb=76ad wraddr=000 enable=1 wen=1 x=2 reset=0
+FIRST_INPUT src=1 col=3 rgb=9066 wraddr=001 enable=1 wen=0 x=3 reset=0
+FIRST_BEAT src=0 rdaddr=001 saved=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx live=28a98a72ec3b4e04afcd1196735fd52836f198bafa835c4cbe151fde81a7e370 data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+WRITE_MISMATCH src=0 tag=0 row=0 col=0 got=xxxx expected=0000
+WRITE_MISMATCH src=0 tag=0 row=0 col=1 got=xxxx expected=9e37
+WRITE_MISMATCH src=0 tag=0 row=0 col=2 got=xxxx expected=3c6e
+WRITE_MISMATCH src=0 tag=0 row=0 col=3 got=xxxx expected=daa5
+FIRST_BEAT src=1 rdaddr=001 saved=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx live=626ac0b1a6f804c7e50e5b55399c9feb7c32d279b040168ff4d6551dcb64a9b3 data=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+VERDICT src=0 id=0 errors=00 activeid=0 active=1 rows=8 cols=0 bad=0 geom=1 vs=0
+SOF src=0 tag=1 accept=0 active=0 rows=8 cols=0
+DRAIN src=0 endgood=1 writebad=0 lines=8/8 captured=1
+VERDICT src=1 id=0 errors=00 activeid=0 active=1 rows=8 cols=0 bad=0 geom=1 vs=0
+SOF src=1 tag=1 accept=0 active=0 rows=8 cols=0
+DRAIN src=1 endgood=1 writebad=0 lines=8/8 captured=1
+VERDICT src=0 id=1 errors=00 activeid=0 active=0 rows=8 cols=0 bad=0 geom=1 vs=0
+SOF src=0 tag=2 accept=0 active=0 rows=8 cols=0
+READ_MISMATCH id=0 y=0 x=0 got=xxxx expected=0000
+READ_MISMATCH id=0 y=0 x=1 got=xxxx expected=3c6e
+READ_MISMATCH id=0 y=0 x=2 got=xxxx expected=78dc
+READ_MISMATCH id=0 y=0 x=3 got=xxxx expected=b54a
+READ_MISMATCH id=0 y=0 x=4 got=xxxx expected=f1b8
+READ_MISMATCH id=0 y=0 x=5 got=xxxx expected=2e26
+READ_MISMATCH id=0 y=0 x=6 got=xxxx expected=6a94
+READ_MISMATCH id=0 y=0 x=7 got=xxxx expected=a702
+VERDICT src=1 id=1 errors=00 activeid=0 active=0 rows=8 cols=0 bad=0 geom=1 vs=0
+SOF src=1 tag=2 accept=0 active=0 rows=8 cols=0
+READ_MISMATCH id=0 y=0 x=0 got=xxxx expected=4ac3
+READ_MISMATCH id=0 y=0 x=1 got=xxxx expected=76ad
+READ_MISMATCH id=0 y=0 x=2 got=xxxx expected=321f
+READ_MISMATCH id=0 y=0 x=3 got=xxxx expected=ff89
+READ_MISMATCH id=0 y=0 x=4 got=xxxx expected=bb7b
+READ_MISMATCH id=0 y=0 x=5 got=xxxx expected=64e5
+READ_MISMATCH id=0 y=0 x=6 got=xxxx expected=2057
+READ_MISMATCH id=0 y=0 x=7 got=xxxx expected=edc1
+FATAL: E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\sim\camera_case.sv:144: Incomplete frame id=0 pixels=2560 rows=4 errors=8 beats=320
+       Time: 860801000  Scope: dual_tb.cam[0].source.display_frame

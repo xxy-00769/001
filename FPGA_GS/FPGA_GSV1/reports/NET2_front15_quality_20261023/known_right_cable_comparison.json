@@ -1,0 +1,25 @@
+{
+  "operation": "User confirms earlier operation was reseating the original cable; this operation replaces it with the cable used successfully for port1 right-camera video.",
+  "evidence": "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\reports\\NET2_front15_quality_20261023\\known_right_cable_short_20261023_113508_980",
+  "start": "2026-10-23T11:35:12.448923+08:00",
+  "end": "2026-10-23T11:35:22.449731+08:00",
+  "seconds": 10.001032257001498,
+  "complete_frames": 141,
+  "complete_fps": 14.098544667855567,
+  "assembly_dropped": 9,
+  "hardware_crc": 8,
+  "hardware_bad_octets": 10992,
+  "socket_drops": {
+    "223210": 0
+  },
+  "same_process": true,
+  "same_session": true,
+  "pid": 190067,
+  "session": 2332712237,
+  "all_samples_gigabit": true,
+  "acceptance_60s": "Not started: CRC and assembly loss remain.",
+  "scope": "No RTL, software, buffer, network configuration or bitstream changed. Existing routed database timing paths extracted only; no synthesis or PNR run.",
+  "conclusion": "Reseating and changing to the known working right-camera cable did not eliminate CRC. Original cable alone is insufficient to explain the fault. A single short window does not prove statistically significant improvement, or uniquely identify the FPGA/PHY/peer physical receiver.",
+  "hardware_boundary": "ethtool counters bracket the application window with command overhead. Exact ethtool timestamps not exported by unchanged collector.",
+  "next_control": "FPGA-only cold power cycle then reload identical release3.5.4; preserve Orange Pi service and replacement cable. Startup state is the sole intended variable."
+}

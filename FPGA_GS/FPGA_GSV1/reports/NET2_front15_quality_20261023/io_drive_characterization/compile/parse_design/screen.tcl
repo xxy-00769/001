@@ -1,0 +1,1 @@
+.rtl_screen -top_module {probe} -include_path {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/NET2_front15_quality_20261023/io_drive_characterization>} -design_files {<E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/NET2_front15_quality_20261023/io_drive_characterization/probe.v|work>}

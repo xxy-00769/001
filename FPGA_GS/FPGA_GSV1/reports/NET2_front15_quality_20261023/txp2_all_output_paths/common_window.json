@@ -1,0 +1,30 @@
+{
+  "all_path_count": 120,
+  "true_DO_count": 80,
+  "static_TO_count": 40,
+  "window_phase_ns_with_reported_uncertainty_0_05": [
+    2.214,
+    1.737
+  ],
+  "window_if_capture_uncertainty_0_2": [
+    2.364,
+    1.587
+  ],
+  "setup_limit": {
+    "pin": "rgmii2_txd[0]",
+    "type": "max (slow corner)",
+    "source_edge": "rising edge",
+    "capture_edge": "rising edge",
+    "slack_ns": -0.214,
+    "data_path": "DO"
+  },
+  "hold_limit": {
+    "pin": "rgmii2_tx_ctl",
+    "type": "min (slow corner)",
+    "source_edge": "rising edge",
+    "capture_edge": "falling edge",
+    "slack_ns": -0.263,
+    "data_path": "DO"
+  },
+  "not_external_signoff": "assumes no extra internal TX delay and zero PCB skew; window changes routing if rebuilt"
+}

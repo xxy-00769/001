@@ -1,0 +1,34 @@
+SOF src=0 tag=0 accept=1 active=0 rows=0 cols=0
+SOF src=1 tag=0 accept=1 active=0 rows=0 cols=0
+WRITE_MISMATCH src=0 tag=0 row=0 col=0 got=xxxx expected=0000
+WRITE_MISMATCH src=0 tag=0 row=0 col=1 got=xxxx expected=9e37
+WRITE_MISMATCH src=0 tag=0 row=0 col=2 got=xxxx expected=3c6e
+WRITE_MISMATCH src=0 tag=0 row=0 col=3 got=xxxx expected=daa5
+VERDICT src=0 id=0 errors=00 activeid=0 active=1 rows=8 cols=0 bad=0 geom=1 vs=0
+SOF src=0 tag=1 accept=0 active=0 rows=8 cols=0
+DRAIN src=0 endgood=1 writebad=0 lines=8/8 captured=1
+VERDICT src=1 id=0 errors=00 activeid=0 active=1 rows=8 cols=0 bad=0 geom=1 vs=0
+SOF src=1 tag=1 accept=0 active=0 rows=8 cols=0
+DRAIN src=1 endgood=1 writebad=0 lines=8/8 captured=1
+VERDICT src=0 id=1 errors=00 activeid=0 active=0 rows=8 cols=0 bad=0 geom=1 vs=0
+SOF src=0 tag=2 accept=0 active=0 rows=8 cols=0
+READ_MISMATCH id=0 y=0 x=0 got=xxxx expected=0000
+READ_MISMATCH id=0 y=0 x=1 got=xxxx expected=3c6e
+READ_MISMATCH id=0 y=0 x=2 got=xxxx expected=78dc
+READ_MISMATCH id=0 y=0 x=3 got=xxxx expected=b54a
+READ_MISMATCH id=0 y=0 x=4 got=xxxx expected=f1b8
+READ_MISMATCH id=0 y=0 x=5 got=xxxx expected=2e26
+READ_MISMATCH id=0 y=0 x=6 got=xxxx expected=6a94
+READ_MISMATCH id=0 y=0 x=7 got=xxxx expected=a702
+VERDICT src=1 id=1 errors=00 activeid=0 active=0 rows=8 cols=0 bad=0 geom=1 vs=0
+SOF src=1 tag=2 accept=0 active=0 rows=8 cols=0
+READ_MISMATCH id=0 y=0 x=0 got=xxxx expected=4ac3
+READ_MISMATCH id=0 y=0 x=1 got=xxxx expected=76ad
+READ_MISMATCH id=0 y=0 x=2 got=xxxx expected=321f
+READ_MISMATCH id=0 y=0 x=3 got=xxxx expected=ff89
+READ_MISMATCH id=0 y=0 x=4 got=xxxx expected=bb7b
+READ_MISMATCH id=0 y=0 x=5 got=xxxx expected=64e5
+READ_MISMATCH id=0 y=0 x=6 got=xxxx expected=2057
+READ_MISMATCH id=0 y=0 x=7 got=xxxx expected=edc1
+FATAL: E:\zhoumian\FPGA\FPGA_GS\FPGA_GSV1\sim\camera_case.sv:138: Incomplete frame id=0 pixels=2560 rows=4 errors=8 beats=320
+       Time: 860801000  Scope: dual_tb.cam[0].source.display_frame

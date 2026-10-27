@@ -1,0 +1,49 @@
+{
+  "operation": "User reports reconnecting cable only; actual cable replacement not yet confirmed.",
+  "changed_by_agent": "Only read-only collection and evidence files; no RTL, bitstream, service, configuration, protocol or buffer changes.",
+  "windows": [
+    {
+      "evidence": "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\reports\\NET2_front15_quality_20261023\\confirmed_354_short",
+      "start": "2026-10-23T11:12:45.675237+08:00",
+      "end": "2026-10-23T11:12:55.683703+08:00",
+      "seconds": 10.001008888997603,
+      "complete_frames": 132,
+      "complete_fps": 13.198668400866735,
+      "assembly_dropped": 17,
+      "socket_drops": {
+        "223210": 0
+      },
+      "hardware_crc": 18,
+      "hardware_bad_octets": 24732,
+      "all_samples_gigabit": true,
+      "same_process": true,
+      "same_session": true,
+      "session": 2665145916,
+      "pid": 190067,
+      "socket_buffer_bytes": 8388608
+    },
+    {
+      "evidence": "E:\\zhoumian\\FPGA\\FPGA_GS\\FPGA_GSV1\\reports\\NET2_front15_quality_20261023\\reconnected_short_20261023_112849_154",
+      "start": "2026-10-23T11:28:52.642589+08:00",
+      "end": "2026-10-23T11:29:02.644002+08:00",
+      "seconds": 10.000844214999233,
+      "complete_frames": 130,
+      "complete_fps": 12.998902613144041,
+      "assembly_dropped": 19,
+      "socket_drops": {
+        "223210": 0
+      },
+      "hardware_crc": 19,
+      "hardware_bad_octets": 26106,
+      "all_samples_gigabit": true,
+      "same_process": true,
+      "same_session": true,
+      "session": 1741122105,
+      "pid": 190067,
+      "socket_buffer_bytes": 8388608
+    }
+  ],
+  "hardware_boundary": "ethtool start precedes first application snapshot; ethtool end follows final application snapshot. Hardware window encloses application window with command overhead, not exactly simultaneous.",
+  "acceptance_60s": "Not started: post-reconnect short window still has hardware CRC and assembly loss.",
+  "interpretation": "Reseating did not restore quality. CRC increments and assembly drops have similar counts but per-packet causality is not established. Bad-octet difference matches CRC_count * 1374, consistent with production video frame length including FCS; this does not locate corruption between RGMII, PHY and cable."
+}

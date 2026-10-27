@@ -1,0 +1,376 @@
+//
+// Generated (version 2022.2-SP6.4<build 146967>) at Fri Oct 23 12:57:17 2026
+//
+
+module probe
+(
+    input clk,
+    output [3:0] data
+);
+	// SDC constraint : (object clk) (id 1000) (clock clk) (1 : E:/zhoumian/FPGA/FPGA_GS/FPGA_GSV1/reports/NET2_front15_quality_20261023/io_drive_characterization/probe.fdc)
+    wire [7:0] N2;
+    wire _N1;
+    wire _N2;
+    wire _N3;
+    wire _N4;
+    wire _N5;
+    wire _N6;
+    wire c;
+    wire \channel[0].d ;
+    wire \channel[0].t ;
+    wire \channel[1].d ;
+    wire \channel[1].t ;
+    wire \channel[2].d ;
+    wire \channel[2].t ;
+    wire \channel[3].d ;
+    wire \channel[3].t ;
+    wire [7:0] counter;
+    wire \counter[0]_inv ;
+    wire nt_clk;
+
+    GTP_GRS GRS_INST (
+            .GRS_N (1'b1));
+
+    GTP_LUT5CARRY /* N2_0_1 */ #(
+            .INIT(32'b01100110011001100000000000000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N2_0_1 (
+            .COUT (_N1),
+            .Z (N2[1]),
+            .CIN (),
+            .I0 (counter[0]),
+            .I1 (counter[1]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b1),
+            .ID ());
+	// LUT = I1^I0 ;
+	// CARRY = (1'b0) ? CIN : (I4) ;
+	// ../probe.v:5
+
+    GTP_LUT5CARRY /* N2_0_2 */ #(
+            .INIT(32'b01111000011110001000000010000000), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("FALSE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N2_0_2 (
+            .COUT (_N2),
+            .Z (N2[2]),
+            .CIN (_N1),
+            .I0 (counter[0]),
+            .I1 (counter[1]),
+            .I2 (counter[2]),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = (I0&I1&~I2)|(~I1&I2)|(~I0&I2) ;
+	// CARRY = (I0&I1&I2) ? CIN : (I4) ;
+	// ../probe.v:5
+
+    GTP_LUT5CARRY /* N2_0_3 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N2_0_3 (
+            .COUT (_N3),
+            .Z (N2[3]),
+            .CIN (_N2),
+            .I0 (),
+            .I1 (counter[3]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:5
+
+    GTP_LUT5CARRY /* N2_0_4 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N2_0_4 (
+            .COUT (_N4),
+            .Z (N2[4]),
+            .CIN (_N3),
+            .I0 (),
+            .I1 (counter[4]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:5
+
+    GTP_LUT5CARRY /* N2_0_5 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N2_0_5 (
+            .COUT (_N5),
+            .Z (N2[5]),
+            .CIN (_N4),
+            .I0 (),
+            .I1 (counter[5]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:5
+
+    GTP_LUT5CARRY /* N2_0_6 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N2_0_6 (
+            .COUT (_N6),
+            .Z (N2[6]),
+            .CIN (_N5),
+            .I0 (),
+            .I1 (counter[6]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:5
+
+    GTP_LUT5CARRY /* N2_0_7 */ #(
+            .INIT(32'b01100110011001101100110011001100), 
+            .ID_TO_LUT("FALSE"), 
+            .CIN_TO_LUT("TRUE"), 
+            .I4_TO_CARRY("TRUE"), 
+            .I4_TO_LUT("FALSE"))
+        N2_0_7 (
+            .COUT (),
+            .Z (N2[7]),
+            .CIN (_N6),
+            .I0 (),
+            .I1 (counter[7]),
+            .I2 (),
+            .I3 (),
+            .I4 (1'b0),
+            .ID ());
+	// LUT = I1^CIN ;
+	// CARRY = (I1) ? CIN : (I4) ;
+	// ../probe.v:5
+
+    GTP_CLKBUFG cb (
+            .CLKOUT (c),
+            .CLKIN (nt_clk));
+	// ../probe.v:3
+
+    GTP_OUTBUFT /* \channel[0].ob  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \channel[0].ob  (
+            .O (data[0]),
+            .I (\channel[0].d ),
+            .T (\channel[0].t ));
+	// ../probe.v:10
+
+    GTP_OSERDES /* \channel[0].od  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \channel[0].od  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, counter[1], counter[0]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (\channel[0].d ),
+            .TQ (\channel[0].t ),
+            .OCLK (1'b0),
+            .RCLK (c),
+            .RST (1'b0),
+            .SERCLK (c));
+	// ../probe.v:8
+
+    GTP_OUTBUFT /* \channel[1].ob  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \channel[1].ob  (
+            .O (data[1]),
+            .I (\channel[1].d ),
+            .T (\channel[1].t ));
+	// ../probe.v:10
+
+    GTP_OSERDES /* \channel[1].od  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \channel[1].od  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, counter[3], counter[2]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (\channel[1].d ),
+            .TQ (\channel[1].t ),
+            .OCLK (1'b0),
+            .RCLK (c),
+            .RST (1'b0),
+            .SERCLK (c));
+	// ../probe.v:8
+
+    GTP_OUTBUFT /* \channel[2].ob  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \channel[2].ob  (
+            .O (data[2]),
+            .I (\channel[2].d ),
+            .T (\channel[2].t ));
+	// ../probe.v:10
+
+    GTP_OSERDES /* \channel[2].od  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \channel[2].od  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, counter[5], counter[4]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (\channel[2].d ),
+            .TQ (\channel[2].t ),
+            .OCLK (1'b0),
+            .RCLK (c),
+            .RST (1'b0),
+            .SERCLK (c));
+	// ../probe.v:8
+
+    GTP_OUTBUFT /* \channel[3].ob  */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .SLEW_RATE("SLOW"), 
+            .DRIVE_STRENGTH("8"))
+        \channel[3].ob  (
+            .O (data[3]),
+            .I (\channel[3].d ),
+            .T (\channel[3].t ));
+	// ../probe.v:10
+
+    GTP_OSERDES /* \channel[3].od  */ #(
+            .OSERDES_MODE("ODDR"), 
+            .WL_EXTEND("FALSE"), 
+            .GRS_EN("TRUE"), 
+            .LRS_EN("TRUE"), 
+            .TSDDR_INIT(1'b0))
+        \channel[3].od  (
+            .DI ({1'b0, 1'b0, 1'b0, 1'b0, 1'b0, 1'b0, counter[7], counter[6]}),
+            .TI ({1'b0, 1'b0, 1'b0, 1'b0}),
+            .DO (\channel[3].d ),
+            .TQ (\channel[3].t ),
+            .OCLK (1'b0),
+            .RCLK (c),
+            .RST (1'b0),
+            .SERCLK (c));
+	// ../probe.v:8
+
+(* PAP_IO_DIRECTION="INPUT", PAP_IO_LOC="M19", PAP_IO_VCCIO="3.3", PAP_IO_STANDARD="LVCMOS33", PAP_IO_NONE="TRUE" *)    GTP_INBUF /* clk_ibuf */ #(
+            .IOSTANDARD("DEFAULT"), 
+            .TERM_DDR("ON"))
+        clk_ibuf (
+            .O (nt_clk),
+            .I (clk));
+	// ../probe.v:1
+
+    GTP_DFF /* \counter[0]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \counter[0]  (
+            .Q (counter[0]),
+            .CLK (c),
+            .D (\counter[0]_inv ));
+	// ../probe.v:5
+
+    GTP_DFF /* \counter[1]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \counter[1]  (
+            .Q (counter[1]),
+            .CLK (c),
+            .D (N2[1]));
+	// ../probe.v:5
+
+    GTP_DFF /* \counter[2]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \counter[2]  (
+            .Q (counter[2]),
+            .CLK (c),
+            .D (N2[2]));
+	// ../probe.v:5
+
+    GTP_DFF /* \counter[3]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \counter[3]  (
+            .Q (counter[3]),
+            .CLK (c),
+            .D (N2[3]));
+	// ../probe.v:5
+
+    GTP_DFF /* \counter[4]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \counter[4]  (
+            .Q (counter[4]),
+            .CLK (c),
+            .D (N2[4]));
+	// ../probe.v:5
+
+    GTP_DFF /* \counter[5]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \counter[5]  (
+            .Q (counter[5]),
+            .CLK (c),
+            .D (N2[5]));
+	// ../probe.v:5
+
+    GTP_DFF /* \counter[6]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \counter[6]  (
+            .Q (counter[6]),
+            .CLK (c),
+            .D (N2[6]));
+	// ../probe.v:5
+
+    GTP_LUT1 /* \counter[7:0]_inv  */ #(
+            .INIT(2'b01))
+        \counter[7:0]_inv  (
+            .Z (\counter[0]_inv ),
+            .I0 (counter[0]));
+	// LUT = ~I0 ;
+
+    GTP_DFF /* \counter[7]  */ #(
+            .GRS_EN("TRUE"), 
+            .INIT(1'b0))
+        \counter[7]  (
+            .Q (counter[7]),
+            .CLK (c),
+            .D (N2[7]));
+	// ../probe.v:5
+
+
+endmodule
+
