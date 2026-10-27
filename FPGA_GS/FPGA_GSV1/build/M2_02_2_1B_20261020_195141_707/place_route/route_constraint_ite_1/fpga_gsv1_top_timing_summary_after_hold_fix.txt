@@ -1,0 +1,144 @@
+Design Summary : Some Constraints Violated.
+
+Setup Summary(Slow Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                     13.154       0.000              0           1181
+ ddrphy_clkin           ddrphy_clkin                 1.675       0.000              0          19104
+ ioclk0                 ioclk0                       1.692       0.000              0             24
+ ioclk1                 ioclk1                       1.692       0.000              0             72
+ cmos1_pclk             cmos1_pclk                   9.014       0.000              0             64
+ cmos2_pclk             cmos2_pclk                   9.094       0.000              0             64
+ cmos1_pclk_16bit       cmos1_pclk_16bit            17.624       0.000              0           1102
+ cmos2_pclk_16bit       cmos2_pclk_16bit            17.463       0.000              0           1102
+ pix_clk                pix_clk                     14.169       0.000              0           1172
+ cfg_clk                cfg_clk                     95.248       0.000              0           1100
+ clk_25M                clk_25M                     36.911       0.000              0             31
+ hdmi_rx_clk            hdmi_rx_clk                  7.545       0.000              0           1156
+====================================================================================================
+
+Hold Summary(Slow Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                      0.258       0.000              0           1181
+ ddrphy_clkin           ddrphy_clkin                -0.039      -0.039              1          19104
+ ioclk0                 ioclk0                       0.450       0.000              0             24
+ ioclk1                 ioclk1                       0.450       0.000              0             72
+ cmos1_pclk             cmos1_pclk                   0.343       0.000              0             64
+ cmos2_pclk             cmos2_pclk                   0.447       0.000              0             64
+ cmos1_pclk_16bit       cmos1_pclk_16bit             0.314       0.000              0           1102
+ cmos2_pclk_16bit       cmos2_pclk_16bit             0.415       0.000              0           1102
+ pix_clk                pix_clk                      0.312       0.000              0           1172
+ cfg_clk                cfg_clk                      0.325       0.000              0           1100
+ clk_25M                clk_25M                      0.427       0.000              0             31
+ hdmi_rx_clk            hdmi_rx_clk                  0.299       0.000              0           1156
+====================================================================================================
+
+Recovery Summary(Slow Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                     17.052       0.000              0             64
+ ddrphy_clkin           ddrphy_clkin                 4.618       0.000              0           2491
+ cmos1_pclk_16bit       cmos1_pclk_16bit            21.083       0.000              0             92
+ cmos2_pclk_16bit       cmos2_pclk_16bit            21.093       0.000              0             92
+ cfg_clk                cfg_clk                     95.693       0.000              0              3
+ hdmi_rx_clk            hdmi_rx_clk                 10.554       0.000              0             94
+====================================================================================================
+
+Removal Summary(Slow Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                      0.593       0.000              0             64
+ ddrphy_clkin           ddrphy_clkin                 0.516       0.000              0           2491
+ cmos1_pclk_16bit       cmos1_pclk_16bit             0.393       0.000              0             92
+ cmos2_pclk_16bit       cmos2_pclk_16bit             0.432       0.000              0             92
+ cfg_clk                cfg_clk                      2.226       0.000              0              3
+ hdmi_rx_clk            hdmi_rx_clk                  0.574       0.000              0             94
+====================================================================================================
+
+Minimum Pulse Width Summary(Slow Corner):
+****************************************************************************************************
+                                                                         WPWS Failing     WPWS Total
+ Clock                                            WPWS(ns)    TPWS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+====================================================================================================
+
+Setup Summary(Fast Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                     15.202       0.000              0           1181
+ ddrphy_clkin           ddrphy_clkin                 4.003       0.000              0          19104
+ ioclk0                 ioclk0                       1.834       0.000              0             24
+ ioclk1                 ioclk1                       1.834       0.000              0             72
+ cmos1_pclk             cmos1_pclk                   9.793       0.000              0             64
+ cmos2_pclk             cmos2_pclk                   9.834       0.000              0             64
+ cmos1_pclk_16bit       cmos1_pclk_16bit            19.321       0.000              0           1102
+ cmos2_pclk_16bit       cmos2_pclk_16bit            19.252       0.000              0           1102
+ pix_clk                pix_clk                     20.091       0.000              0           1172
+ cfg_clk                cfg_clk                     96.695       0.000              0           1100
+ clk_25M                clk_25M                     37.724       0.000              0             31
+ hdmi_rx_clk            hdmi_rx_clk                  9.181       0.000              0           1156
+====================================================================================================
+
+Hold Summary(Fast Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                      0.250       0.000              0           1181
+ ddrphy_clkin           ddrphy_clkin                -0.084      -0.084              1          19104
+ ioclk0                 ioclk0                       0.383       0.000              0             24
+ ioclk1                 ioclk1                       0.383       0.000              0             72
+ cmos1_pclk             cmos1_pclk                   0.224       0.000              0             64
+ cmos2_pclk             cmos2_pclk                   0.261       0.000              0             64
+ cmos1_pclk_16bit       cmos1_pclk_16bit             0.200       0.000              0           1102
+ cmos2_pclk_16bit       cmos2_pclk_16bit             0.254       0.000              0           1102
+ pix_clk                pix_clk                      0.251       0.000              0           1172
+ cfg_clk                cfg_clk                      0.250       0.000              0           1100
+ clk_25M                clk_25M                      0.334       0.000              0             31
+ hdmi_rx_clk            hdmi_rx_clk                  0.200       0.000              0           1156
+====================================================================================================
+
+Recovery Summary(Fast Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                     17.835       0.000              0             64
+ ddrphy_clkin           ddrphy_clkin                 6.031       0.000              0           2491
+ cmos1_pclk_16bit       cmos1_pclk_16bit            21.787       0.000              0             92
+ cmos2_pclk_16bit       cmos2_pclk_16bit            21.824       0.000              0             92
+ cfg_clk                cfg_clk                     96.884       0.000              0              3
+ hdmi_rx_clk            hdmi_rx_clk                 11.293       0.000              0             94
+====================================================================================================
+
+Removal Summary(Fast Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                      0.448       0.000              0             64
+ ddrphy_clkin           ddrphy_clkin                 0.303       0.000              0           2491
+ cmos1_pclk_16bit       cmos1_pclk_16bit             0.248       0.000              0             92
+ cmos2_pclk_16bit       cmos2_pclk_16bit             0.264       0.000              0             92
+ cfg_clk                cfg_clk                      1.546       0.000              0              3
+ hdmi_rx_clk            hdmi_rx_clk                  0.393       0.000              0             94
+====================================================================================================
+
+Minimum Pulse Width Summary(Fast Corner):
+****************************************************************************************************
+                                                                         WPWS Failing     WPWS Total
+ Clock                                            WPWS(ns)    TPWS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+====================================================================================================
+

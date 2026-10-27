@@ -1,0 +1,180 @@
+Design Summary : Some Constraints Violated.
+
+Setup Summary(Slow Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                     11.948       0.000              0           1407
+ ddrphy_clkin           ddrphy_clkin                 0.144       0.000              0          31666
+ ioclk0                 ioclk0                       1.692       0.000              0             24
+ ioclk1                 ioclk1                       1.692       0.000              0             72
+ cmos1_pclk             cmos1_pclk                   8.420       0.000              0             64
+ cmos2_pclk             cmos2_pclk                   8.711       0.000              0             64
+ cmos1_pclk_16bit       cmos1_pclk_16bit            13.128       0.000              0           1460
+ cmos2_pclk_16bit       cmos2_pclk_16bit            17.027       0.000              0           1102
+ pix_clk                pix_clk                     13.665       0.000              0           2036
+ cfg_clk                cfg_clk                     94.564       0.000              0           1098
+ clk_25M                clk_25M                     36.897       0.000              0             31
+ hdmi_rx_clk            hdmi_rx_clk                  7.306       0.000              0           1156
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                                                     2.081       0.000              0           1096
+====================================================================================================
+
+Hold Summary(Slow Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                      0.264       0.000              0           1407
+ ddrphy_clkin           ddrphy_clkin                 0.203       0.000              0          31666
+ ioclk0                 ioclk0                       0.450       0.000              0             24
+ ioclk1                 ioclk1                       0.450       0.000              0             72
+ cmos1_pclk             cmos1_pclk                   0.330       0.000              0             64
+ cmos2_pclk             cmos2_pclk                   0.432       0.000              0             64
+ cmos1_pclk_16bit       cmos1_pclk_16bit             0.323       0.000              0           1460
+ cmos2_pclk_16bit       cmos2_pclk_16bit             0.399       0.000              0           1102
+ pix_clk                pix_clk                      0.324       0.000              0           2036
+ cfg_clk                cfg_clk                      0.312       0.000              0           1098
+ clk_25M                clk_25M                      0.339       0.000              0             31
+ hdmi_rx_clk            hdmi_rx_clk                  0.314       0.000              0           1156
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                                                     0.310       0.000              0           1096
+====================================================================================================
+
+Recovery Summary(Slow Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                     17.666       0.000              0             64
+ ddrphy_clkin           ddrphy_clkin                 3.777       0.000              0           5230
+ cmos1_pclk_16bit       cmos1_pclk_16bit            20.463       0.000              0            156
+ cmos2_pclk_16bit       cmos2_pclk_16bit            20.118       0.000              0             92
+ cfg_clk                cfg_clk                     95.841       0.000              0              3
+ hdmi_rx_clk            hdmi_rx_clk                  9.704       0.000              0             94
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT1_Inferred
+                                                    -2.187      -2.187              1              1
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                                                     4.702       0.000              0            204
+====================================================================================================
+
+Removal Summary(Slow Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                      0.605       0.000              0             64
+ ddrphy_clkin           ddrphy_clkin                 0.448       0.000              0           5230
+ cmos1_pclk_16bit       cmos1_pclk_16bit             0.449       0.000              0            156
+ cmos2_pclk_16bit       cmos2_pclk_16bit             0.616       0.000              0             92
+ cfg_clk                cfg_clk                      2.238       0.000              0              3
+ hdmi_rx_clk            hdmi_rx_clk                  0.578       0.000              0             94
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT1_Inferred
+                                                     8.876       0.000              0              1
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                                                     0.924       0.000              0            204
+====================================================================================================
+
+Minimum Pulse Width Summary(Slow Corner):
+****************************************************************************************************
+                                                                         WPWS Failing     WPWS Total
+ Clock                                            WPWS(ns)    TPWS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+====================================================================================================
+
+Setup Summary(Fast Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                     14.371       0.000              0           1407
+ ddrphy_clkin           ddrphy_clkin                 2.870       0.000              0          31666
+ ioclk0                 ioclk0                       1.834       0.000              0             24
+ ioclk1                 ioclk1                       1.834       0.000              0             72
+ cmos1_pclk             cmos1_pclk                   9.362       0.000              0             64
+ cmos2_pclk             cmos2_pclk                   9.573       0.000              0             64
+ cmos1_pclk_16bit       cmos1_pclk_16bit            16.453       0.000              0           1460
+ cmos2_pclk_16bit       cmos2_pclk_16bit            18.956       0.000              0           1102
+ pix_clk                pix_clk                     19.593       0.000              0           2036
+ cfg_clk                cfg_clk                     96.219       0.000              0           1098
+ clk_25M                clk_25M                     37.711       0.000              0             31
+ hdmi_rx_clk            hdmi_rx_clk                  9.013       0.000              0           1156
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                                                     3.896       0.000              0           1096
+====================================================================================================
+
+Hold Summary(Fast Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                      0.251       0.000              0           1407
+ ddrphy_clkin           ddrphy_clkin                 0.125       0.000              0          31666
+ ioclk0                 ioclk0                       0.383       0.000              0             24
+ ioclk1                 ioclk1                       0.383       0.000              0             72
+ cmos1_pclk             cmos1_pclk                   0.201       0.000              0             64
+ cmos2_pclk             cmos2_pclk                   0.251       0.000              0             64
+ cmos1_pclk_16bit       cmos1_pclk_16bit             0.200       0.000              0           1460
+ cmos2_pclk_16bit       cmos2_pclk_16bit             0.251       0.000              0           1102
+ pix_clk                pix_clk                      0.253       0.000              0           2036
+ cfg_clk                cfg_clk                      0.251       0.000              0           1098
+ clk_25M                clk_25M                      0.264       0.000              0             31
+ hdmi_rx_clk            hdmi_rx_clk                  0.200       0.000              0           1156
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                                                     0.230       0.000              0           1096
+====================================================================================================
+
+Recovery Summary(Fast Corner):
+****************************************************************************************************
+                                                                          TNS Failing      TNS Total
+ Launch Clock           Capture Clock              WNS(ns)     TNS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                     18.301       0.000              0             64
+ ddrphy_clkin           ddrphy_clkin                 5.513       0.000              0           5230
+ cmos1_pclk_16bit       cmos1_pclk_16bit            21.359       0.000              0            156
+ cmos2_pclk_16bit       cmos2_pclk_16bit            21.087       0.000              0             92
+ cfg_clk                cfg_clk                     96.944       0.000              0              3
+ hdmi_rx_clk            hdmi_rx_clk                 10.717       0.000              0             94
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT1_Inferred
+                                                    -1.316      -1.316              1              1
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                                                     5.614       0.000              0            204
+====================================================================================================
+
+Removal Summary(Fast Corner):
+****************************************************************************************************
+                                                                          THS Failing      THS Total
+ Launch Clock           Capture Clock              WHS(ns)     THS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+ sys_clk                sys_clk                      0.460       0.000              0             64
+ ddrphy_clkin           ddrphy_clkin                 0.285       0.000              0           5230
+ cmos1_pclk_16bit       cmos1_pclk_16bit             0.267       0.000              0            156
+ cmos2_pclk_16bit       cmos2_pclk_16bit             0.384       0.000              0             92
+ cfg_clk                cfg_clk                      1.595       0.000              0              3
+ hdmi_rx_clk            hdmi_rx_clk                  0.370       0.000              0             94
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT1_Inferred
+                                                     8.241       0.000              0              1
+ eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                        eth_rxc|network/pll/u_pll_e3/CLKOUT0_Inferred
+                                                     0.671       0.000              0            204
+====================================================================================================
+
+Minimum Pulse Width Summary(Fast Corner):
+****************************************************************************************************
+                                                                         WPWS Failing     WPWS Total
+ Clock                                            WPWS(ns)    TPWS(ns)      Endpoints      Endpoints
+----------------------------------------------------------------------------------------------------
+====================================================================================================
+
